@@ -1,0 +1,198 @@
+iNT72668>nvt_boot
+
+MMC read: dev # 0, block # 14201, count 2047 ... 2047 blocks read: OK
+Checking for NFSK image.
+NFSK image verified.
+
+MMC read: dev # 0, block # 14209, count 1 ... 1 blocks read: OK
+
+MMC read: dev # 0, block # 14209, count 1398 ... 1398 blocks read: OK
+
+MMC read: dev # 0, block # 186368, count 3 ... 3 blocks read: OK
+command=?
+
+MMC read: dev # 0, block # 34816, count 4 ... 4 blocks read: OK
+
+MMC read: dev # 0, block # 34820, count 31252 ... 31252 blocks read: OK
+Checking for NFSK image.
+NFSK image verified.
+Checking for NFSK image.
+NFSK image verified.
+NT72668>tcl_dump
+
+MMC write: dev # 0, block # 186368, count 3 ... 3 blocks write: OK
+
+MMC read: dev # 0, block # 14201, count 2047 ... 2047 blocks read: OK
+Checking for NFSK image.
+NFSK image verified.
+
+MMC read: dev # 0, block # 14209, count 1 ... 1 blocks read: OK
+
+MMC read: dev # 0, block # 14209, count 1398 ... 1398 blocks read: OK
+
+MMC read: dev # 0, block # 186368, count 3 ... 3 blocks read: OK
+command=emmc-dump
+
+MMC read: dev # 0, block # 34816, count 4 ... 4 blocks read: OK
+
+MMC read: dev # 0, block # 34820, count 31252 ... 31252 blocks read: OK
+Checking for NFSK image.
+NFSK image verified.
+Checking for NFSK image.
+NFSK image verified.
+## Booting kernel from Legacy Image at 04407fc0 ...
+   Image Name:   668-tk-kernel
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    8835437 Bytes = 8.4 MiB
+   Load Address: 04408000
+   Entry Point:  04408000
+## Loading init Ramdisk from Legacy Image at 04e00000 ...
+   Image Name:   Root Filesystem
+   Image Type:   ARM Linux RAMDisk Image (uncompressed)
+   Data Size:    7146369 Bytes = 6.8 MiB
+   Load Address: 04e00000
+   Entry Point:  04e00000
+   XIP Kernel Image ... OK
+OK
+
+Starting kernel ...
+
+Request to start secos
+Start to wait secos
+secos revision: r2762M_20151106-09:48:54
+TZDevice_ProtectSECOS
+[TZASC] region<1> setup: 00000000, 0000f032
+Loading SVCS-DRM         ......[OK]
+Loading SVCS-NFLX        ......[OK]
+Loading SVCS-SYS         ......[OK]
+Finish to wait secos
+�[    1.052608] [KDEBUGD] enter : kdebugd
+[    1.052608] 
+/etc/rc.local start
+[    1.150936] HS200 CLOCKING SETTING
+[    1.159332] HS200 CLOCKING SETTING
+usb gpio Enabled
+[    1.227209] NT72668-ehci NT72668-ehci.0: APB cfe38000
+[    1.245434] NT726681-ehci NT726681-ehci.0: APB cfe42000
+[    1.265256] NT726682-ehci NT726682-ehci.0: APB cfe4a000
+[    1.285235] NT726683-ehci NT726683-ehci.0: APB cfe54000
+umount: can't umount /mnt: Invalid argument
+1+0 records in
+1+0 records out
+20 bytes (20B) copied, 0.001235 seconds, 15.8KB/s
+command = emmc-dump
+
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+1
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+2
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+3
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+4
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+5
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+6
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+7
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+8
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+9
+fdisk: can't open '/dev/sda': No such file or directory
+fdisk: can't open '/dev/sda': No such file or directory
+mount: mounting /dev/sda on /sdcard failed: No such file or directory
+10
+Mount U-disk timeout, quit...
+
+ start fwupdate process...20160112
+ show update.bmp!!
+cd /bin; tar -zxvf /bin/logo.tgz
+update_img/
+update_img/misMatchFail.bmp
+update_img/checkFail.bmp
+update_img/updating.bmp
+update_img/success.bmp
+update_img/fail.bmp
+./bin/nt72667_OSD /bin/update_img/updating.bmp 0 0 140 10e 500 21c 500 21c
+
+ show bmp:/bin/update_img/updating.bmp
+ logo size :2764856
+ mali_fb_start:0x14600000 
+
+ mali_fb_start = 0x14600000 
+
+ b8VFlip:0 
+
+ b8VFlip=0 
+
+ argc:10
+
+ stMode60Hz.u16Width:1920 
+
+ panelwidth=1920 
+
+ FRC=0 
+
+ 4K panel
+ [LINE:706]stDispWinsrc:x=0,y=0,w=1280,h=540
+ [LINE:707]stDispWinDST:x=640,y=540,w=2560,h=1080rm -rf /bin/update_img
+[   24.812369] EXT3-fs (mmcblk0p14): error: couldn't mount because of unsupported optional features (240)
+[   24.822027] EXT2-fs (mmcblk0p14): error: couldn't mount because of unsupported optional features (244)
+open image file /data/upgrade//update.img fail !
+Invalid image signature !
+
+ verify error !
+cd /bin; tar -zxvf /bin/logo.tgz
+update_img/
+update_img/misMatchFail.bmp
+update_img/checkFail.bmp
+update_img/updating.bmp
+update_img/success.bmp
+update_img/fail.bmp
+./bin/nt72667_OSD /bin/update_img/checkFail.bmp 0 0 140 10e 500 21c 500 21c
+
+ show bmp:/bin/update_img/checkFail.bmp
+ logo size :2764856
+ mali_fb_start:0x14600000 
+
+ mali_fb_start = 0x14600000 
+
+ b8VFlip:0 
+
+ b8VFlip=0 
+
+ argc:10
+
+ stMode60Hz.u16Width:1920 
+
+ panelwidth=1920 
+
+ FRC=0 
+
+ 4K panel
+ [LINE:706]stDispWinsrc:x=0,y=0,w=1280,h=540
+ [LINE:707]stDispWinDST:x=640,y=540,w=2560,h=1080rm -rf /bin/update_img
+error state : 7
+wakup~
+over !!!!!!
+

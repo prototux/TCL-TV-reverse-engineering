@@ -1,0 +1,45 @@
+NT72668>mmcinfo
+Device: nt72668 emmc
+Manufacturer ID: 11
+OEM: 100
+Name: 004G6 
+Tran Speed: 52000000
+Rd Block Len: 512
+MMC version 4.0
+High Capacity: Yes
+Capacity: 3.7 GiB
+Bus Width: 8-bit
+DDR in boot mode
+x8(sdr/ddr) bus width in boot mode
+No boot ack sent
+Boot partition 1 enabled for boot
+No access to boot partition
+
+
+NT72668>mmc part
+
+Partition Map for MMC device 0  --   Partition Type: DOS
+
+Part	Start Sector	Num Sectors	UUID		Type
+  1	2048      	16384     	00000000-01	83
+  2	18432     	16384     	00000000-02	83
+  3	34816     	49152     	00000000-03	83
+  4	83968     	7649280   	00000000-04	05 Extd
+  5	86016     	98304     	00000000-05	83
+  6	186368    	16384     	00000000-06	83
+  7	204800    	16384     	00000000-07	83
+  8	223232    	65536     	00000000-08	83
+  9	290816    	65536     	00000000-09	83
+ 10	358400    	65536     	00000000-0a	83
+ 11	425984    	526336    	00000000-0b	83
+ 12	954368    	32768     	00000000-0c	83
+ 13	989184    	2097152   	00000000-0d	83
+ 14	3088384   	4052991   	00000000-0e	83
+
+
+NT72668>mmc dev 0
+mmc0(part 0) is current device
+
+NT72668>mmc list
+nt72668 emmc: 0
+
