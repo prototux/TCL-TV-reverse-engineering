@@ -1,0 +1,56 @@
+/ # /bin/bootlogoEXE --help
+nt72668_stbc_wait_response timeout !
+disable wdog no response !
+Set in VX1 mode
+FRC is 667
+Scanning panel
+set stMode60Hz.u16Width 1920
+set stMode60Hz.u16Height 1080
+set b8VFlip 0
+set u8TconType 0
+set u16BackLightLevel 23
+set b8PWMDutyInv 0
+set u16aDIMFreq2D50Hz 18000
+set u16PDIMFreq2D60Hz 120
+set b8LocalDIMControl 0
+set u16PanelTiming2D 1
+set u16PWM2DSync 1
+set u8Tcon 2
+set u16PanelPowerOnDelay2 580
+Panel BackLight ON!
++++++++++++++++++++++duty=4095+++++++++++++++++++
++++++++++++++++++++++0xFC0E6008=0xdf+++++++++++++++++++
++++++++++++++++++++++freq=0xcb735 ==>0xcb735+++++++++++++++++++
++++++++++++++++++++++setting=0x33e+++++++++++++++++++
++++++++++++++++++++++current mux to 0x536872993+++++++++++++++++++
++++++++++++++++++++++current setting=13e+++++++++++++++++++
++++++++++++++++++++++current duty=4095+++++++++++++++++++
+tttttttttttttttttttttt22222222=4055
+tttttttttttttttttttttt22222222=4015
+tttttttttttttttttttttt22222222=3975
+tttttttttttttttttttttt22222222=3935
+tttttttttttttttttttttt22222222=3895
+tttttttttttttttttttttt22222222=3855
+tttttttttttttttttttttt22222222=3815
+tttttttttttttttttttttt22222222=3775
+tttttttttttttttttttttt22222222=3735
+tttttttttttttttttttttt22222222=3695
+tttttttttttttttttttttt22222222=3655
+tttttttttttttttttttttt22222222=3615
+tttttttttttttttttttttt22222222=3575
+tttttttttttttttttttttt22222222=3455
+tttttttttttttttttttttt22222222=3335
+tttttttttttttttttttttt22222222=3215
+tttttttttttttttttttttt22222222=3095
+tttttttttttttttttttttt22222222=2975
+tttttttttttttttttttttt22222222=2175
+tttttttttttttttttttttt22222222=1375
+tttttttttttttttttttttt22222222=941
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+panel power on sequence end...
+LOGO typte:JPEG
+image info:width (1920) height (1080) offset (0x247) u32ImageLength (0x1422b) u16ColorSpace (3) u8RestartInterval (0)
+1section set OSD output to 4K
+!![OSD-RevB]: nt72668_OSD_Set(0x14eda000) ...
+OSD-Size, SrcWin: WxH = 1920x1080, DstWin: WxH = 3840x2160
+

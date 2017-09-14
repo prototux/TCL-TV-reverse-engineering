@@ -1,0 +1,7 @@
+/applications/tv_bin # ls /tmp/
+boot_by_netflix_key    log                    ntkddcci2              ntkgpio                ntkpq
+boot_by_netflix_ready  nfappman               ntkddcci3              ntkhdma                nvtpipe
+dialserver-0522        ntfx_model_name        ntkddcci4              ntkiics5               system_language
+gstreamer.registry     ntkddcci0              ntkfb3                 ntkirsync              teec
+ipc_socket             ntkddcci1              ntkfb4                 ntkled                 timezoneinfo
+
