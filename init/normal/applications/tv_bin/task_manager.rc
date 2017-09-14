@@ -1,0 +1,77 @@
+######################################################################################################
+##																									##
+## Config file for event_manager. 																	##
+##																									##
+## Edited by liuxiaofeng 71203																		##
+######################################################################################################
+
+service webkit /applications/webkit-resource/bin/chwebkit file:///applications/webkit-resource/ui/framework.html &
+setenv DFBHOME /applications/tv_bin/etc
+setenv LD_LIBRARY_PATH /applications/webkit-resource/lib:/applications/soc_lib/:/applications/media/lib
+setenv F1_CONFIG /applications/tv_bin/run_config
+oneshot
+focus
+#/bin/sh
+#sleep 2
+#capability key_feedback
+
+#service hbbtv /media/sda1/chenhui/armv7-corsair/gcc-4.7.3-libc-2.15/run-Corsair &
+#service hbbtv /applications/thirdpart/hbbtv/bin/corsair &
+#setenv F1_CONFIG /applications/tv_bin/run_config
+#setenv DFBHOME /applications/tv_bin/etc
+#setenv LD_LIBRARY_PATH /applications/webkit-resource/lib:/applications/soc_lib/:/applications/media/lib:/applications/thirdpart/hbbtv/lib
+#setenv LD_PRELOAD /applications/thirdpart/hbbtv/lib/liboperamalloc.so:/applications/thirdpart/hbbtv/3rdpartylibs/freetype/libfreetype.so:/applications/thirdpart/hbbtv/lib/libuvadrmbackendloader.so
+#setenv SCRIPT_DIRECTORY /applications/thirdpart/hbbtv/
+#setenv OPERA_HOME /applications/thirdpart/hbbtv/opera_home
+#setenv OPERA_DIR /applications/thirdpart/hbbtv/opera_dir
+#setenv OPERA_FONTS /applications/thirdpart/hbbtv/fonts
+#setenv UVA_BACKEND libuvabackend-hbbtv.so
+#setenv UVA_DRM_LIB /applications/thirdpart/hbbtv/lib/libuvadrmbackendloader.so
+#setenv UVA_DRM_LIB_DIR /applications/thirdpart/hbbtv/lib/drm
+
+service opera.mmh /applications/thirdpart/opera/run-mmh &
+oneshot
+disabled
+
+service opera.youtube /applications/thirdpart/opera/run-youtube &
+oneshot
+disabled
+
+service opera.opera /applications/thirdpart/opera/run-Opera &
+oneshot
+disabled
+
+service opera.ipepg /applications/thirdpart/opera/run-ipepg &
+oneshot
+disabled
+
+service opera.golive /applications/thirdpart/opera/run-golive &
+oneshot                                                                        
+disabled
+
+service opera.sbs /applications/thirdpart/opera/run-sbs &
+oneshot                                                                        
+disabled
+
+service opera.foxxum /applications/thirdpart/opera/run-foxxum &
+oneshot                                                                        
+disabled
+
+service opera.common /applications/thirdpart/opera/run-comm &
+oneshot                                                                        
+disabled
+
+service opera.youtube_au /applications/thirdpart/opera/run-youtube_au &
+oneshot                                                                        
+disabled
+
+service opera.golive_au /applications/thirdpart/opera/run-golive_au &
+oneshot                                                                        
+disabled
+
+service opera.sbs_au /applications/thirdpart/opera/run-sbs_au &
+oneshot                                                                        
+disabled
+
+service T-DIAL /applications/thirdpart/opera/run-dial &
+oneshot

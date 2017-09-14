@@ -1,0 +1,244 @@
+#!/bin/sh
+
+echo "/etc/rc.local start"
+
+# bring up ethernet loopback interface.
+ifconfig lo 127.0.0.1
+ifconfig lo up
+#ifconfig eth0 down
+#ifconfig eth0 hw ether 00:01:02:03:04:05
+#ifconfig eth0 up
+
+
+# mount ramdisk 
+mount -n -t proc proc /proc
+mount -n -t sysfs sysfs /sys
+mount -t tmpfs tmpfs /dev/
+mkdir /dev/shm
+mount -t tmpfs tmpfs /media
+mdev -s
+
+bootlogoEXE > /dev/console &
+#echo "Welcome" > /dev/console
+
+mknod /dev/ntkaud0 c 129 0
+mknod /dev/ntkaud1 c 129 1
+mknod /dev/ntkaud2 c 129 2
+
+mknod /dev/ntkblast c 122 0
+mknod /dev/ntkcec c 130 0
+mknod /dev/ntkci c 131 0
+
+mknod /dev/ntkcrypt c 227 0
+mknod /dev/ntkfb0 c 29 0
+mknod /dev/ntkfb1 c 29 1
+
+mknod /dev/ntkfb2 c 29 2
+mknod /dev/ntkfr2ip c 65 0
+mknod /dev/ntkfr2ip0 c 65 0
+
+mknod /dev/ntkfr2ip1 c 65 1
+mknod /dev/ntkgpu c 139 0
+mknod /dev/ntkhdmi c 244 0
+
+mknod /dev/ntkiic0 c 134 0
+mknod /dev/ntkiic1 c 134 1
+mknod /dev/ntkiic2 c 134 2
+
+mknod /dev/ntkiic3 c 134 3
+mknod /dev/ntkiic4 c 134 4
+mknod /dev/ntkiic5 c 134 5
+
+mknod /dev/ntkiic6 c 134 6
+mknod /dev/ntkiic7 c 134 7
+mknod /dev/ntkiic8 c 134 8
+
+mknod /dev/ntkimg c 63 0
+mknod /dev/ntkosdmem c 121 0
+mknod /dev/ntkpq c 222 0
+
+mknod /dev/ntksb0 c 61 0
+mknod /dev/ntksb1 c 61 1
+mknod /dev/ntksb2 c 61 2
+
+mknod /dev/ntksb3 c 61 3
+mknod /dev/ntksclr c 142 0
+mknod /dev/ntksgpio c 126 0
+
+mknod /dev/ntkspi c 133 0
+mknod /dev/ntkstbc c 126 0
+mknod /dev/ntkstc0 c 240 0
+
+mknod /dev/ntkstc1 c 240 1
+mknod /dev/ntksys c 141 0
+mknod /dev/ntktspu c 127 0
+
+mknod /dev/ntktvenc c 124 0
+mknod /dev/ntkvbi c 233 0
+mknod /dev/ntkvenc0 c 137 0
+
+mknod /dev/ntkvid0 c 125 0
+mknod /dev/ntkvid1 c 125 1
+mknod /dev/ntkvod c 60 0
+
+mknod /dev/ntkvod1 c 60 1
+mknod /dev/ntkxdma c 229 0
+
+
+#mount -t tmpfs tmpfs /dtv -o size=40M,mode=1777
+mount -t tmpfs tmpfs /tmp -o size=36M,mode=1777
+#mount -t tmpfs tmpfs /freesia -o size=2M,mode=1777
+#mount -t tmpfs tmpfs /core -o size=30M,mode=1777
+
+#mount  /dev/mmcblk0p16 /applications
+
+#ln -sf /proc/mounts /etc/mtab
+
+
+mount -t ext4 /dev/mmcblk0p7 /impdat -o ro,noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum
+umount /impdat
+echo "e2fsck tcl impdat part partition!"
+e2fsck -p /dev/mmcblk0p7
+var=$?
+if [ $var -ne "2" ]; then
+    if  $TIME mount -t ext4 /dev/mmcblk0p7 /impdat -o ro,noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum;then
+       echo "tcl impdat part partition had be mounted!!!"
+    else
+       echo "error! tcl impdat part partition can't be mounted!!!"
+       reboot
+    fi
+else
+    echo "e2fsck mmcblk0p7 success,but need reboot"
+    reboot
+fi
+
+
+mount -t ext4 /dev/mmcblk0p8 /applications/database  -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+umount /applications/database
+echo "e2fsck tcl applications/database part partition!"
+e2fsck -p /dev/mmcblk0p8
+var=$?
+if [ $var -ne "2" ]; then
+    if  $TIME mount -t ext4 /dev/mmcblk0p8 /applications/database  -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc;then
+       echo "tcl applications/database part partition had be mounted!!!"
+    else
+       echo "error! tcl applications/database part partition can't be mounted!!!"
+       reboot
+    fi
+else
+    echo "e2fsck mmcblk0p8 success,but need reboot"
+    reboot
+fi
+
+mount -t ext4 -o rw /dev/mmcblk0p9 /cache  -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+umount /cache
+echo "e2fsck tcl cache part partition!"
+e2fsck -p /dev/mmcblk0p9
+var=$?
+if [ $var -ne "0" ] && [ $var -ne "1" ]; then
+   if [ $var -ne "2" ]; then
+      mkfs.ext4 /dev/mmcblk0p9
+      sleep 3
+      echo "tcl cache part partition format success!!!"
+      if  $TIME mount -t ext4 -o rw /dev/mmcblk0p9 /cache  -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc;then
+         echo "tcl cache part partition had be mounted!!!"
+      else
+         echo "error! tcl cache part partition can't be mounted!!!"
+         reboot
+      fi
+   else
+      echo "e2fsck mmcblk0p9 success,but need reboot"
+      reboot
+   fi
+else
+   echo "e2fsck mmcblk0p9 success, mount again!!"
+   if  $TIME mount -t ext4 -o rw /dev/mmcblk0p9 /cache  -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc;then
+      echo "tcl cache part partition format success!!!"
+   else
+      echo "error! tcl cache part partition can't be mounted!!!"
+      reboot
+   fi  
+fi
+
+mount -t ext4  /dev/mmcblk0p10 /applications/tclconfig -o ro,noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum
+umount /applications/tclconfig
+echo "e2fsck tcl applications/tclconfig part partition!"
+e2fsck -p /dev/mmcblk0p10
+var=$?
+if [ $var -ne "2" ]; then
+    if  $TIME mount -t ext4  /dev/mmcblk0p10 /applications/tclconfig -o ro,noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum;then
+       echo "tcl applications/tclconfig part partition had be mounted!!!"
+    else
+       echo "error! tcl applications/tclconfig part partition can't be mounted!!!"
+       reboot
+    fi
+else
+    echo "e2fsck mmcblk0p10 success,but need reboot"
+    reboot
+fi
+
+mount -t ext4 /dev/mmcblk0p11 /applications/soc_lib -o ro,noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum
+umount /applications/soc_lib
+echo "e2fsck tcl applications/soc_lib part partition!"
+e2fsck -p /dev/mmcblk0p11
+var=$?
+if [ $var -ne "2" ]; then
+    if  $TIME mount -t ext4 /dev/mmcblk0p11 /applications/soc_lib -o ro,noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum;then
+        echo "tcl applications/soc_lib part partition had be mounted!!!"
+    else
+        echo "error! tcl applications/soc_lib part partition can't be mounted!!!"
+        reboot
+    fi
+else
+    echo "e2fsck mmcblk0p11 success,but need reboot"
+    reboot
+fi
+
+mount -t ext4 /dev/mmcblk0p12  /mtd_apdat -o noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum
+umount /mtd_apdat
+echo "e2fsck tcl mtd_apdat part partition!"
+e2fsck -p /dev/mmcblk0p12
+var=$?
+if [ $var -ne "2" ]; then
+    if  $TIME mount -t ext4 /dev/mmcblk0p12  /mtd_apdat -o noatime,nosuid,nodev,block_validity,nodiscard,data=ordered,journal_checksum;then
+       echo "tcl mtd_apdat part partition had be mounted!!!"
+    else
+       echo "error! tcl mtd_apdat part partition can't be mounted!!!"
+       reboot
+    fi
+else
+    echo "e2fsck mmcblk0p12 success,but need reboot"
+    reboot
+fi
+
+mount -t ext4 -o rw /dev/mmcblk0p14  /data -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+umount /data
+echo "e2fsck tcl data part partition!"
+e2fsck -p /dev/mmcblk0p14
+var=$?
+if [ $var -ne "0" ] && [ $var -ne "1" ]; then
+   if [ $var -ne "2" ]; then
+      mkfs.ext4 /dev/mmcblk0p14
+      sleep 3
+      echo "tcl data part partition format success!!!"
+      if  $TIME mount -t ext4 -o rw /dev/mmcblk0p14  /data -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc;then
+         echo "tcl data part partition had be mounted!!!"
+      else
+         echo "error! tcl data part partition can't be mounted!!!"
+         reboot
+      fi
+   else
+      echo "e2fsck mmcblk0p14 success,but need reboot"
+      reboot
+      exit -2
+   fi
+else
+   echo "e2fsck mmcblk0p14 success, mount again!!"
+   if  $TIME mount -t ext4 -o rw /dev/mmcblk0p14  /data -o noatime,nodiratime,nosuid,nodev,noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc;then
+      echo "tcl data part partition format success!!!"
+   else
+      echo "error! tcl data part partition can't be mounted!!!"
+      reboot
+      exit -2
+   fi  
+fi

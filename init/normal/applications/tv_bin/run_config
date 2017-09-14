@@ -1,0 +1,57 @@
+[COMMON]
+OS = "linux";
+AREA = 1; # 0:CN , 1:EU, 2:AU
+TYPE = 0; #reserve
+VIDEO_MUTE_COLOR = 1; # 0:blue 1: black
+CH_FREEZE = 0; # 0: disable change channel freeze, 1:enable
+DISP_SNOWFLAKE = 1; # 0: donot diplay snowflake, 1:display snowflake
+MALLOC_RECORD = 0;
+AV_OUT = 1;
+SCART_OUT = 1; 
+MM_OUT = 0; 
+
+[PATH]
+PicCurve = "/applications/tclconfig/PicCurve/";
+PQ = "/applications/tclconfig/pq/";
+PQ_PATCH = "/applications/tclconfig/pq/patch/";
+WIRELESS_TOOLS = "";
+RUN_WPA_SUPPLICANT = "/data/run/wpa_supplicant"
+SUPPLICANT_CONF = "/data/wifi/wpa_supplicant.conf"
+OAD = "/data/upgrade/";
+NET_UPDATE = "/data/upgrade/";
+DATABASE = "/applications/database/";
+TMP = "/tmp/";
+IMPDAT_PATH = "/impdat/";
+
+[FILE]
+DATABASE_ATV = "/applications/database/AtvData.db";
+DATABASE_DTV = "/applications/database/DtvData.db";
+DATABASE_FACTORY = "/applications/database/FactoryData.db";
+DATABASE_USR = "/applications/database/UsrData.db";
+DATABASE_EPG = "/applications/database/epg_db/EpgData.db";
+DATABASE_PROPERTY = "/applications/database/PropertyData.db";
+DATABASE_DTV_CONFIG = "/applications/tclconfig/dtv_config.db";
+DATABASE_SATELLITE = "/applications/database/satellite.db";
+DATABASE_SATELLITE_DEFAULT = "/applications/tclconfig/satellite_default.db";
+IMPDAT_PERSIST = "/impdat/PersistData.db"
+INI_SYS = "/applications/tclconfig/sys.ini";
+FIFO_APP = "/data/com_fifo";
+FIFO_MID = "/data/com_fifo_mid";
+PANEL_NAME = "/applications/tclconfig/panel/panel_1920.txt";
+OAD_UPGRADE = "/data/upgrade/oad.bin";
+UPDATE_MD5 = "/tmp/update.md5";
+UPDATE_XML = "/tmp/update.xml";
+REPORT_XML = "/tmp/report.xml";
+INFO_XML = "/tmp/info.xml"
+INFOPUSH_FILE = "/data/upgrade/logo.jpg";
+IMPDAT_MAC = "/impdat/mac.bin";
+IMPDAT_DEVICE_ID = "/impdat/device_id.bin";
+IMPDAT_SERIAL_NUM = "/impdat/sn.bin";
+IMPDAT_REGISTER_CODE = "/impdat/register.bin";
+IMPDAT_POWER_MODE = "/impdat/power_mode.bin";
+IMPDAT_ESN_KEY = "/impdat/esn_key.bin";
+IMPDAT_HDCP_KEY = "/impdat/hdcp_key.bin";
+IMPDAT_PORTAL_DATA = "/impdat/portal_data.bin";
+IMPDAT_OTHER_DATA = "/impdat/other.bin";      
+IMPDAT_PROJECT_ID = "/impdat/project_id.bin";
+IMPDAT_HDCP2_KEY = "/impdat/hdcp_key2.0.bin";
