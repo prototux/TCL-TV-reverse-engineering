@@ -65,3 +65,6 @@ so unless i can compile my own working uboot with WoL patch for this thing, whic
 ## Exploitation
 Given the quality of the code/scripts i've seen so far, the age of the software (2013) and the overall system, i would guess that it isn't hard at all to exploit this,
 especially using the browser. I didn't tried it, though, my focus is to have a remote shell and add automation features, not do a security audit of the device.
+
+## Shell
+I finally managed to get a shell on the serial port! the magic command being `env set quiet n` before `boot` in the uboot shell. there's the full boot log attached in bootlog.txt

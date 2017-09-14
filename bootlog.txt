@@ -1,0 +1,3657 @@
+
+REG_SDC_CLK_CTRL = c043
+REG_SDC_CLK_CTRL = 203
+
+boot0 start: IPC mode....................
+AC ON......
+bdJump boot1...
+
+Onboot eMMC mode
+part is 1
+_emmc_simple_load to buf 0xfc150000 from device sector 104, count 96
+part is 0
+cid:3
+POWER ON COLD
+	_emmc_simple_load to buf 0x1500000 from device sector 202750, count 1
+_emmc_simple_load to buf 0x1600000 from device sector 202751, count 1
+run uboot
+_emmc_simple_load to buf 0x27ffefc from device sector 4097, count 1280
+Vertify OK !
+
+
+U-Boot 2013.01.01-svn5501 (Jul 22 2016 - 15:45:54)
+
+DRAM:  512 MiB
+MMC:   wait for sdc sw reset stable...wait for emmc internal clk stable...
+nt72668 emmc: 0
+wait for emmc internal clk stable...
+In:    serial
+Out:   serial
+Err:   serial
+Power on IR!
+
+STBC clock is 12MHz
+2 bytes read in 3 ms (0 Bytes/s)
+Power on IR!
+8 bytes read in 1 ms (7.8 KiB/s)
+20 bytes read in 3 ms (5.9 KiB/s)
+8 bytes read in 2 ms (3.9 KiB/s)
+
+DDRF: EnableVref_NT72668B_TCL_20141208_1500M_NR.txt
+DDRS: 512 MB
+DDR CHID REG: 0XFE007FE0
+DDR CHID VAL: 0X3
+DDR GPIO REG: 0XFC040428
+DDR GPIO VAL: 0X40
+DDR GPIO MSK: 0X1C0
+
+CPU:  1000 MHz x 4 COREs
+AXI:  250 MHz
+AHB:  100 MHz
+DDR:  1500 MHz
+EMMC: 720 MHz
+
+ NVTFW_UPDATE_FLAG_BLK_ID:317fe 
+MMC read: dev # 0, block # 202750, count 1 ... 1 blocks read: OK
+
+ panel gPanelpartition = 1 
+
+ panel partition 6666888   
+oooooooooooooooooooooo222222222222222
+PWM defult last 400ms
+ 777777777777777777777777
+
+ 508  : TCON  Panel 
+set u16ADIMFreq2D50Hz 18000
+uuuuuuuuuuuuuuuuuuuuttttttttttttt22222222
+8 bytes read in 2 ms (3.9 KiB/s)
+NT72668>
+NT72668>
+NT72668>
+NT72668>
+NT72668>
+NT72668>
+NT72668>
+NT72668>
+NT72668>
+NT72668>env set quiet n
+NT72668>boot
+do_tcleu_boot_cmd flag = 0, argc = 1, tcleu_boot
+hotkey_update:0
+
+MMC read: dev # 0, block # 202751, count 1 ... 1 blocks read: OK
+
+ NVTFW_UPDATE_FLAG_BLK_ID:317fe 
+MMC read: dev # 0, block # 202750, count 1 ... 1 blocks read: OK
+
+MMC read: dev # 0, block # 14201, count 2047 ... 2047 blocks read: OK
+Checking for NFSK image.
+NFSK image verified.
+
+MMC read: dev # 0, block # 14209, count 1 ... 1 blocks read: OK
+
+MMC read: dev # 0, block # 14209, count 1398 ... 1398 blocks read: OK
+
+MMC read: dev # 0, block # 34816, count 4 ... 4 blocks read: OK
+
+MMC read: dev # 0, block # 34820, count 17284 ... 17284 blocks read: OK
+Checking for NFSK image.
+NFSK image verified.
+yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyooooooooooooooo2222
+pancommand2222================================## Booting kernel from Legacy Image at 04407fc0 ...
+   Image Name:   668-tk-kernel
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    8835437 Bytes = 8.4 MiB
+   Load Address: 04408000
+   Entry Point:  04408000
+   XIP Kernel Image ... OK
+OK
+
+Starting kernel ...
+
+Request to start secos
+Start to wait secos
+secos revision: [1;37mr2762M_20151106-09:48:54[m
+TZDevice_ProtectSECOS
+[TZASC] region<1> setup: 00000000, 0000f032
+Loading SVCS-DRM         ......[[1;37mOK[m]
+Loading SVCS-NFLX        ......[[1;37mOK[m]
+Loading SVCS-SYS         ......[[1;37mOK[m]
+Finish to wait secos
+4�[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 3.8.0-svn3571 (root@novatek) (gcc version 4.7.3 20130328 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.04-20130415 - Linaro GCC 2013.04) ) #1 SMP PREEMPT Mon Apr 27 18:18:41 CST 2015
+[    0.000000] CPU: ARMv7 Processor [414fc091] revision 1 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: Novatek-Cortex A9, model: nvt-72668
+[    0.000000] Memory policy: ECC disabled, Data cache writealloc
+[    0.000000] PERCPU: Embedded 8 pages/cpu @c1d0c000 s11136 r8192 d13440 u32768
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 128136
+[    0.000000] Kernel command line: console=ttyS0,115200 mem=244M@68M mem=276M@2284M mali.mali_active_cores=4 mali.mali_dedicated_mem_start=0 mali.mali_dedicated_mem_size=0 mali.mali_shared_mem_size=0x28000000 ump.ump_memory_address=0x98000000 ump.ump_memory_size=0x08000000 mali.mali_fb_start=0x14600000 mali.mali_fb_size=0x03100000 ethaddr=3c:59:1e:b1:38:16 root=/dev/mmcblk0p13 ro rootfstype=ext4 vmalloc=560M maxcpus=4 init=/init rootwait
+[    0.000000] get_ethernet_addr: 3c:59:1e:b1:38:16:
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] __ex_table already sorted, skipping sort
+[    0.000000] Memory: 244MB 276MB = 520MB total
+[    0.000000] Memory: 518168k/518168k available, 14312k reserved, 282624K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffdf000   ( 892 kB)
+[    0.000000]     vmalloc : 0xcf800000 - 0xff000000   ( 760 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xcf400000   ( 244 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc07db04c   (8013 kB)
+[    0.000000]       .init : 0xc07dc000 - 0xc0820b80   ( 275 kB)
+[    0.000000]       .data : 0xc0822000 - 0xc0874248   ( 329 kB)
+[    0.000000]        .bss : 0xc0874248 - 0xc0982edc   (1084 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] NR_IRQS:256
+[    0.000000] 	Select local PLL
+[    0.000000] cpu clk = 1000MHz
+[    0.000000] ahb clk =  100MHz
+[    0.000000] axi clk =  250MHz
+[    0.000000] mmc clk =  720MHz
+[    0.000000] sched_clock: 32 bits at 125MHz, resolution 8ns, wraps every 34359ms
+[    0.000000] Console: colour dummy device 80x30
+[    0.000190] Calibrating delay loop... 1987.37 BogoMIPS (lpj=9936896)
+[    0.060097] pid_max: default: 32768 minimum: 301
+[    0.060218] Security Framework initialized
+[    0.060236] SELinux:  Initializing.
+[    0.060279] AppArmor: AppArmor disabled by boot time parameter
+[    0.060335] Mount-cache hash table entries: 512
+[    0.061088] Initializing cgroup subsys cpuacct
+[    0.061104] Initializing cgroup subsys devices
+[    0.061115] Initializing cgroup subsys freezer
+[    0.061152] CPU: Testing write buffer coherency: ok
+[    0.061187] ftrace: allocating 19998 entries in 59 pages
+[    0.103450] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.103561] Setting up static identity map for 0x49d2a10 - 0x49d2a68
+[    0.183676] remap L2 page sucess
+[    0.183969] CPU1: Booted secondary processor
+[    0.243530] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.263671] pen_release: -1
+[    0.263671] 	remap L2 page sucess
+[    0.263929] CPU2: Booted secondary processor
+[    0.323528] CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+[    0.343657] pen_release: -1
+[    0.343657] 	remap L2 page sucess
+[    0.343913] CPU3: Booted secondary processor
+[    0.403528] CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+[    0.403580] pen_release: -1
+[    0.403580] 	
+[    0.403580] Brought up 4 CPUs
+[    0.403600] SMP: Total of 4 processors activated (7969.17 BogoMIPS).
+[    0.404355] devtmpfs: initialized
+[    0.410502] NET: Registered protocol family 16
+[    0.411321] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.412440] L310 cache controller enabled
+[    0.412454] l2x0: 16 ways, CACHE_ID 0x410000c9, AUX_CTRL 0x72270000, Cache size: 1048576 B
+[    0.414264] *** [AHB] ctrl base = 0xfc0f0088, irq=100
+[    0.414361] *** [MMC] src_clk = 720000000, max bus clk = 200000000, irq=95
+[    0.417455] hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+[    0.417466] hw-breakpoint: maximum watchpoint size is 4 bytes.
+[    0.421217] bio: create slab <bio-0> at 0
+[    0.421601] SCSI subsystem initialized
+[    0.421680] Linux video capture interface: v2.00
+[    0.421802] Advanced Linux Sound Architecture Driver Initialized.
+[    0.422402] cfg80211: Calling CRDA to update world regulatory domain
+[    0.422932] Switching to clocksource global_timer
+[    0.452775] NET: Registered protocol family 2
+[    0.453253] TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.453296] TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.453333] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.453381] TCP: reno registered
+[    0.453397] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.453423] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.453606] NET: Registered protocol family 1
+[    0.454243] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 7 counters available
+[    0.454853] audit: initializing netlink socket (disabled)
+[    0.454898] type=2000 audit(0.420:1): initialized
+[    0.516916]  Creating worker thread
+[    0.516981]  Succsesfuly Created
+[    0.517673] bounce pool size: 64 pages
+[    0.521924] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.522376] NTFS driver 2.1.30 [Flags: R/W].
+[    0.522537] fuse init (API version 7.20)
+[    0.522892] msgmni has been set to 460
+[    0.525684] alg: No test for stdrng (krng)
+[    0.525727] io scheduler noop registered
+[    0.525738] io scheduler deadline registered
+[    0.525870] io scheduler cfq registered (default)
+[    0.528960] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.549965] serial8250.0: ttyS0 at MMIO 0xfd091000 (irq = 61) is a 16550A
+[    1.129241] console [ttyS0] enabled
+[    1.153137] serial8250.0: ttyS1 at MMIO 0xfd090000 (irq = 83) is a 16550A
+[    1.180265] serial8250.0: ttyS2 at MMIO 0xfd092000 (irq = 77) is a 16550A
+[    1.187357] [drm] Initialized drm 1.1.0 20060810
+[    1.197359] brd: module loaded
+[    1.203228] loop: module loaded
+[    1.207041] tun: Universal TUN/TAP device driver, 1.6
+[    1.212076] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.233575] [NTKETHMAC] : Now Registering the netdevice
+[    1.239113] PPP generic driver version 2.4.2
+[    1.243554] PPP BSD Compression module registered
+[    1.248242] PPP Deflate Compression module registered
+[    1.253306] PPP MPPE Compression module registered
+[    1.258077] NET: Registered protocol family 24
+[    1.262758] mousedev: PS/2 mouse device common for all mice
+[    1.268811] nt72668_rtc nt72668_rtc.0: rtc core: registered nt72668 as rtc0
+[    1.276052] device-mapper: uevent: version 1.0.3
+[    1.280867] device-mapper: ioctl: 4.23.1-ioctl (2012-12-18) initialised: dm-devel@redhat.com
+[    1.289452] sdhci: Secure Digital Host Controller Interface driver
+[    1.295623] sdhci: Copyright(c) Pierre Ossman
+[    1.299961] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.352996] mmc0: SDHCI controller on sdhci_nvt.0 [sdhci_nvt.0] using ADMA
+[    1.364243] ashmem: initialized
+[    1.367522] logger: created 256K log 'log_main'
+[    1.372191] logger: created 256K log 'log_events'
+[    1.377028] logger: created 256K log 'log_radio'
+[    1.383793] logger: created 256K log 'log_system'
+[    1.397695] oprofile: using arm/armv7-ca9
+[    1.403735] AOP:Oprofile Driver init done
+[    1.409948] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.417423] arp_tables: (C) 2002 David S. Miller
+[    1.424091] TCP: cubic registered
+[    1.427791] NET: Registered protocol family 10
+[    1.432907] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    1.438419] sit: IPv6 over IPv4 tunneling driver
+[    1.443477] NET: Registered protocol family 17
+[    1.447936] lib80211: common routines for IEEE802.11 drivers
+[    1.454011] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+[    1.461655] [nt72668_pm_syscore_init]
+[    1.465364] Registering SWP/SWPB emulation handler
+[    1.470723] nt72668_rtc nt72668_rtc.0: setting system clock to 2017-09-14 20:27:08 UTC (1505420828)
+[    1.479815] ALSA device list:
+[    1.482775]   No soundcards found.
+[    1.486203] ============================================================
+[    1.492891] Kernel range1 [RO sections]: 0x04408000 ~ 0x04bd9ffc
+[    1.498900] Range0 [kernel memory]: 0x04400000 ~ 0x13800000
+[    1.504480] Range1 [kernel memory]: 0x8ec00000 ~ 0xa0000000
+[    1.510045] ============================================================
+[    1.516846] [SERIAL INPUT MANAGE] Managed tty_struct(.name:ttyS0) Setup!!!
+[   1.523734] mmc0: BKOPS_EN bit is not set
+[    1.523769] [KDEBUGD] enter : kdebugd
+[    1.523769] 
+[    1.533023] Waiting for root device /dev/mmcblk0p13...
+[    1.550298] HS200 CLOCKING SETTING
+[    1.558689] HS200 CLOCKING SETTING
+[    1.563636] mmc0: new HS200 MMC card at address 0001
+[    1.568943] mmcblk0: mmc0:0001 004G60 3.68 GiB 
+[    1.573668] mmcblk0boot0: mmc0:0001 004G60 partition 1 2.00 MiB
+[    1.579708] mmcblk0boot1: mmc0:0001 004G60 partition 2 2.00 MiB
+[    1.585764] mmcblk0rpmb: mmc0:0001 004G60 partition 3 512 KiB
+[    1.594781]  mmcblk0: p1 p2 p3 p4 < p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 >
+[    1.605296]  mmcblk0boot1: unknown partition table
+[    1.611366]  mmcblk0boot0: unknown partition table
+[    1.647002] EXT4-fs (mmcblk0p13): mounted filesystem with ordered data mode. Opts: (null)
+[    1.655236] VFS: Mounted root (ext4 filesystem) readonly on device 179:13.
+[    1.663256] devtmpfs: mounted
+[    1.666422] Freeing init memory: 272K
+/etc/rc.local start
+Power on IR!
+[    1.923056] EXT4-fs (mmcblk0p8): recovery complete
+[    1.928381] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: (null)
+Set in VX1 mode
+FRC is 667
+Scanning panel
+set stMode60Hz.u16Width 1920
+set stMode60Hz.u16Height 1080
+set b8VFlip 0
+set u8TconType 0
+set u16BackLightLevel 23
+set b8PWMDutyInv 0
+set u16aDIMFreq2D50Hz 18000
+set u16PDIMFreq2D60Hz 120
+set b8LocalDIMControl 0
+set u16PanelTiming2D 1
+set u16PWM2DSync 1
+set u8Tcon 2
+set u16PanelPowerOnDelay2 580
+Panel BackLight ON!
++++++++++++++++++++++duty=128+++++++++++++++++++
++++++++++++++++++++++0xFC0E6008=0xdf+++++++++++++++++++
++++++++++++++++++++++freq=0x186a0 ==>0xcb735++++++++++++++++[    2.013233] EXT4-fs (mmcblk0p7): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
++++
++++++++++++++++++++++setting=0x13e+++++++++++++++++++
+e2fsck tcl impdat part partition!
+/dev/mmcblk0p7: clean, 19/2048 files, 1341/8192 blocks
+[    2.052370] EXT4-fs (mmcblk0p7): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+tcl impdat part partition had be mounted!!!
+[    2.070880] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
++++++++++++++++++++++current mux to 0x33+++++++++++++++++++
++++++++++++++++++++++current setting=13e+++++++++++++++++++
++++++++++++++++++++++current duty=4095+++++++++++++++++++
+e2fsck tcl applications/database part parti[    2.104566] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+tion!
+/dev/mmcblk0p8: clean, 25/8192 files, 5798/32768 blocks
+tttttttttttttttt[    2.125930] EXT4-fs (mmcblk0p9): recovery complete
+tttttt22222222=4[    2.131398] EXT4-fs (mmcblk0p9): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+055
+tcl applications/database part partition had be mounted!!!
+tttttttttttttttttttttt22222222=4015
+e2fsck tcl cache part partition!
+/dev/mmcblk0p9: clean, 22/8192 files, 18691/32768 blocks
+e2fsck mmcblk0p9 succe[    2.166784] EXT4-fs (mmcblk0p9): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+ss, mount again!!
+tttttttttttttttttttttt22222222=3975
+tcl cache part partition[    2.187877] EXT4-fs (mmcblk0p10): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+ format success!!!
+tttttttttttttttttttttt22222222=3935
+e2fsck tcl applications/tclconfig part partition!
+/dev/mmcblk0p10: clean, 462/7168 files, 5920/7168 blocks
+[    2.219386] EXT4-fs (mmcblk0p10): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+tttttttttttttttttttttt22222222=3895
+tcl applications/tclconfig part partition h[    2.237498] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+ad be mounted!!!
+tttttttttttttttttttttt22222222=3855
+e2fsck tcl applications/soc_lib part partition!
+/dev/mmcblk0p11: clean, 161/61440 files, 18692/61440 blocks
+[    2.270132] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+tttttttttttttttttttttt22222222=3815
+tcl applications/soc_lib part partition had be mounted!!!
+[    2.293681] EXT4-fs (mmcblk0p12): 1 orphan inode deleted
+[    2.298979] EXT4-fs (mmcblk0p12): recovery complete
+tttttttttttttttttttttt22222222=3775
+[    2.308092] EXT4-fs (mmcblk0p12): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+tttttttttttttttttttttt22222222=3735
+e2fsck tcl mtd_apdat part partition!
+/dev/mmcblk0p12: clean, 32/4096 files, 16115/16384 blocks
+[    2.339637] EXT4-fs (mmcblk0p12): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+tttttttttttttttttttttt22222222=3695
+tcl mtd_apdat part partition had be mounted!!!
+[    2.368208] EXT4-fs (mmcblk0p14): recovery complete
+tttttttttttttttt[    2.373517] EXT4-fs (mmcblk0p14): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+tttttt22222222=3655
+tttttttttttttttttttttt22222222=3615
+e2fsck tcl data part partition!
+/dev/mmcblk0p14: clean, 164/126720 files, 23603/506623 blocks
+e2fsck mmcblk0p14 success, mount again!!
+[    2.412494] EXT4-fs (mmcblk0p14): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+tttttttttttttttttttttt22222222=3575
+tcl data part partition format success!!!
+/applications/tv_bin # tttttttttttttttttttttt22222222=3455
+mkdir: can't create directory '/applications/database/epg_db': File exists
+mkdir: can't create directory '/dev/shm': File exists
+ttttttttttttt[    2.471831] usbcore: registered new interface driver usbfs
+ttttttttt2222222[    2.478903] usbcore: registered new interface driver hub
+2=3335
+[    2.485529] usbcore: registered new device driver usb
+tttttttttttttttttttttt22222222=3215
+[    2.499795] NT72668-xhci NT72668-xhci.0: Novatek NT72668 u3
+[    2.505519] NT72668-xhci NT72668-xhci.0: new USB bus registered, assigned bus number 1
+tttttttttttttttt[    2.513870] NT72668-xhci NT72668-xhci.0: irq 85, io mem 0xfc200000 mapped cfa80000
+tttttt22222222=3[    2.522484] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+095
+[    2.530572] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+tttttttttttttttt[    2.538189] usb usb1: Product: Novatek NT72668 u3
+tttttt22222222=2[    2.544313] usb usb1: Manufacturer: Linux 3.8.0-svn3571 xhci-hcd
+975
+[    2.551582] usb usb1: SerialNumber: NT72668-xhci
+[    2.557353] hub 1-0:1.0: USB hub found
+tttttttttttttttt[    2.561173] hub 1-0:1.0: 1 port detected
+tttttt22222222=2[    2.566979] NT72668-xhci NT72668-xhci.0: Novatek NT72668 u3
+175
+[    2.573379] NT72668-xhci NT72668-xhci.0: new USB bus registered, assigned bus number 2
+tttttttttttttttt[    2.581772] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003
+[    2.588127] ================================================================================
+[    2.588134]  NT13 Driver
+[    2.588137]  Version : NT14U SDAL_v0.0508.0
+[    2.588140] ================================================================================
+tttttt22222222=1!!!!!!Leo[n s tar t( 1)! !!2!.
+588143] ntkdrvs: NOVATEK drivers loaded begin.
+375
+ttttttttttt[    2.588174] [KER!_!!P!!!MLeIon _stIartn(2i)!!t!!]
+Init 
+ttttttttttt22222[    2.588303] [KER_PMI_Init]NetLink 
+222=941
+[    2.588438] KREG-1.0.2 [20131227]
+[    2.588784] Chip id: 909523010
+[    2.592811] Func KER_CLK_DrvInit: MALI clk rate = 430000000Hz
+rrrrrrrrrrrrrrrr[    2.593298] ntkMP Msg: Ker_MEMORY[0]: Start[0x  4400000], End[0x 137fffff]
+rrrrrrrrrrrrrrrr[    2.593304] ntkMP Msg: ROSection: Start[0x  4408000], End[0x  4bdb04b]
+r
+panel power o[    2.593309] ntkMP Msg: Ker_MEMORY[1]: Start[0x 8ec00000], End[0x 9fffffff]
+n sequence end..[    2.593445] ntkMP Msg: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.
+[    2.593452] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593452] [MAU0]IR Region 0: [0x 4408000, 0x 4bdb048])
+[    2.593458] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593458] [MAU0]IR Region 1: [0x 4400000, 0x137ffff0])
+[    2.593463] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593463] [MAU0]IR Region 2: [0x       0, 0x       0])
+[    2.593468] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593468] [MAU0]IR Region 3: [0x       0, 0x       0])
+[    2.593473] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593473] [MAU0]IR Region 4: [0x       0, 0x       0])
+[    2.593478] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593478] [MAU1]IR Region 0: [0x       0, 0x       0])
+[    2.593483] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593483] [MAU1]IR Region 1: [0x       0, 0x       0])
+[    2.593488] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593488] [MAU1]IR Region 2: [0x8ec00000, 0x9ffffff0])
+[    2.593493] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593493] [MAU1]IR Region 3: [0x       0, 0x       0])
+[    2.593498] ntkMP Msg: KER_MP_IR_ShowRegions() :
+[    2.593498] [MAU1]IR Region 4: [0x       0, 0x       0])
+[    2.593501] ntkMP Msg: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[    2.593506] ntkMP Msg: MP driver loaded > OK
+[    2.594675] ntktspu driver(major 127) installed. 
+[    2.594734] 
+[    2.594734] AUDIO-0.4.745.MS12.017 [20160617]
+[    2.599279] 
+[    2.599279] 
+[    2.599279] -- Enter < alsa_card_dummy_init >--
+[    2.599279] 
+[    2.599406] --(alloc_fake_buffer:2020)--
+[    2.599504] --(snd_dummy_probe:634)--
+[    2.599524] --(snd_card_dummy_pcm:0-2)--
+[    2.599637] --(snd_card_dummy_pcm:1-2)--
+[    2.599726] --(snd_card_dummy_pcm:2-2)--
+[    2.599821] --(snd_card_dummy_pcm:3-2)--
+[    2.599924] Search Unit(OUT0) Fail!!
+[    2.599929] ||snd_card_dummy_new_mixer-1659||
+[    2.599935] Search Unit(OUT0) Fail!!
+[    2.599940] Search Unit(OUT1) Fail!!
+LOGO typte:JPEG[    2.599944] ||snd_card_dummy_new_mixer-1666||
+
+[    2.599949] Search Unit(OUT1) Fail!!
+image info:width[    2.599954] Search Unit(OUT2) Fail!!
+ (1920) height ([    2.599957] ||snd_card_dummy_new_mixer-1673||
+1080) offset (0x[    2.599962] Search Unit(OUT2) Fail!!
+247) u32ImageLen[    2.599967] Search Unit(SPDF) Fail!!
+gth (0x1422b) u1[    2.599971] ||snd_card_dummy_new_mixer-1680||
+6ColorSpace (3) [    2.599976] Search Unit(SPDF) Fail!!
+u8RestartInterva[    2.599980] --(dummy_proc_init:2160)--
+l (0)
+1section [    2.602086] [snd_dummy_probe] (err=0) After snd_card_register
+set OSD output t[    2.602114] 
+[    2.602114] 
+[    2.602114] -- Exit < alsa_card_dummy_init >--
+[    2.602114] 
+o 4K
+[    2.602503] input: novatek-blast as /devices/virtual/input/input0
+!![OSD-RevB]: nt[    2.603165] input: novatek-keypad as /devices/virtual/input/input1
+72668_OSD_Set(0x[    2.603469] KER_GPIO_DrvInit:2108gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPA][d08f0000]
+[    2.603469] KER_GPIO_DrvInit:2109gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPB][d08f0018]
+[    2.603469] KER_GPIO_DrvInit:2110gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPC][d08f0030]
+[    2.603469] KER_GPIO_DrvInit:2111gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPD][d08f0048]
+[    2.603469] KER_GPIO_DrvInit:2112gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPE][d0900000]
+[    2.603469] KER_GPIO_DrvInit:2113gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPH][d0900400]
+[    2.603469] KER_GPIO_DrvInit:2115gstMIPS_gpio_gp[EN_KER_MIPS_GPIO_GROUP_MIPS_GPJ][d08f0060]
+[    2.603469] [SPI]: Driver registered
+[    2.604100] 5kfre: Novatek FRE Driver loaded
+14eda000) ...
+O[    2.604107] [KVENC][KER_VENC_DrvInit][2078] enter.
+SD-Size, SrcWin:[    2.604134] [KVENC][FLOW1][2143] vk_cdev_add
+ WxH = 1920x1080[    2.604138] [KVENC][FLOW1][2156] device_create
+, DstWin: WxH = [    2.604264] [KVENC][FLOW1][2165] kobject_init_and_add
+3840x2160
+[    2.604294] [KVENC][VENC_init_platform][780] enter.
+[    2.604333] [KVENC][VENC_init_platform][790] exit(0).
+[    2.604345] Novatek VENC Driver loaded Dec 20 2016-09:38:12
+[    2.604349] [KVENC][FLOW1][2200] exit, KER_VENC_DrvInit
+[    2.604353] [KVENC][KER_VENC_DrvInit][2201] exit(0).
+[    2.605539] [OSD]: [OSD-INFO]: RevB DrvInit => [PlaneOrder: 0, 0], [NumOfBuffer: 2], [FastLogoPlaneID: 2], [SUPPORT_UPDATE_WAIT_VSYNC: 1] ...
+[    2.607414] HELLO DDCCI
+[    2.607426] ntiic: Novatek DDCCI Driver registered
+[    2.607435] Enter AXIDMA open
+[    2.613967] irq 53 exist
+[    2.613979] Enter HDMA open
+[    2.613995] HDMA mem phys addr 0x12200000, virt addr 0xCDE00000!
+[    2.624410] Leon init
+[    2.624421] ntkdrvs: NOVATEK drivers loaded end.
+[    2.633336] Starting fusion driver v9.0.2
+[    2.633351]   -> initializing shared area at cdce4000
+[    2.643086] UMP<2>: Inserting UMP device driver. Compiled: Aug 27 2014, time: 18:02:46
+[    2.643293] UMP<2>: Using OS memory backend, allocation limit: -2147483648
+[    2.643299] UMP: UMP device driver -r145471 loaded
+[    3.115204] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.115213] usb usb2: Product: Novatek NT72668 u3
+[    3.115220] usb usb2: Manufacturer: Linux 3.8.0-svn3571 xhci-hcd
+[    3.115225] usb usb2: SerialNumber: NT72668-xhci.0
+[    3.115737] hub 2-0:1.0: USB hub found
+[    3.115753] hub 2-0:1.0: 1 port detected
+[    3.117468] Mali: Mali device driver loaded
+[    3.123823] ****************** ntkvm_init 1218********************* 
+[    3.124128] input: novatek virtual mouse as /devices/virtual/input/input2
+[    3.124455] Virtual Mouse Driver reigster success.
+[    3.125201] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    3.125325] NT72668-ehci NT72668-ehci.0: APB cff16000
+[    3.125748] NT72668-ehci NT72668-ehci.0: Novatek NT72668
+[    3.125786] NT72668-ehci NT72668-ehci.0: new USB bus registered, assigned bus number 3
+[    3.125997] NT72668-ehci NT72668-ehci.0: irq 108, io mem 0xfc1f0000 mapped cff14000
+[    3.143009] NT72668-ehci NT72668-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+[    3.143140] usb usb3: New USB device found, idVendor=1d6b, idProduct=0002
+[    3.143147] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.143153] usb usb3: Product: Novatek NT72668
+[    3.143159] usb usb3: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    3.143164] usb usb3: SerialNumber: NT72668
+[    3.143642] hub 3-0:1.0: USB hub found
+[    3.143656] hub 3-0:1.0: 1 port detected
+[    3.144068] NT726681-ehci NT726681-ehci.0: APB cff20000
+[    3.144406] NT726681-ehci NT726681-ehci.0: Novatek NT726681
+[    3.144426] NT726681-ehci NT726681-ehci.0: new USB bus registered, assigned bus number 4
+[    3.144567] NT726681-ehci NT726681-ehci.0: irq 86, io mem 0xfc000000 mapped cff1e000
+usb gpio Enabled[    3.163002] NT726681-ehci NT726681-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+
+[    3.163118] usb usb4: New USB device found, idVendor=1d6b, idProduct=0002
+[    3.163125] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.163132] usb usb4: Product: Novatek NT726681
+[    3.163138] usb usb4: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    3.163143] usb usb4: SerialNumber: NT726681
+1+0 records in[    3.163607] hub 4-0:1.0: USB hub found
+[    3.163621] hub 4-0:1.0: 1 port detected
+
+[    3.164016] NT726682-ehci NT726682-ehci.0: APB cff28000
+[    3.164427] NT726682-ehci NT726682-ehci.0: Novatek NT726682
+[    3.164446] NT726682-ehci NT726682-ehci.0: new USB bus registered, assigned bus number 5
+[    3.164580] NT726682-ehci NT726682-ehci.0: irq 87, io mem 0xfc140000 mapped cff26000
+[    3.183001] NT726682-ehci NT726682-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+1+0 records out[    3.183126] usb usb5: New USB device found, idVendor=1d6b, idProduct=0002
+
+36846 bytes (36[    3.183133] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.183140] usb usb5: Product: Novatek NT726682
+[    3.183145] usb usb5: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+.0KB) copied, 0.[    3.183150] usb usb5: SerialNumber: NT726682
+[    3.183601] hub 5-0:1.0: USB hub found
+000537 seconds, [    3.183615] hub 5-0:1.0: 1 port detected
+65.4MB/s
+[    3.183998] NT726683-ehci NT726683-ehci.0: APB cff32000
+[    3.184412] NT726683-ehci NT726683-ehci.0: Novatek NT726683
+starting sitatvs[    3.184438] NT726683-ehci NT726683-ehci.0: new USB bus registered, assigned bus number 6
+ervice
+[    3.184567] NT726683-ehci NT726683-ehci.0: irq 88, io mem 0xfc1a0000 mapped cff30000
+[    3.203005] NT726683-ehci NT726683-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+[    3.203127] usb usb6: New USB device found, idVendor=1d6b, idProduct=0002
+RC config: read [    3.203134] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+project_id.bin [    3.203140] usb usb6: Product: Novatek NT726683
+[    3.203145] usb usb6: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    3.203151] usb usb6: SerialNumber: NT726683
+
+[    3.203599] hub 6-0:1.0: USB hub found
+[    3.203618] hub 6-0:1.0: 1 port detected
+RC config: proje[    3.211237] Initializing USB Mass Storage driver...
+ct id: 87 
+[    3.211366] usbcore: registered new interface driver usb-storage
+[    3.211370] USB Mass Storage support registered.
+RC config: rc ty[    3.229269] usbcore: registered new interface driver usbhid
+[    3.229275] usbhid: USB HID core driver
+pe is not found [    3.239069] gspca_main: v2.14.0 registered
+[    3.259945] usbcore: registered new interface driver uvcvideo
+in rc.ini!!! 
+[    3.259950] USB Video Class driver (1.1.1)
+[    3.267389] ===get USB MAGIC KEY===
+RC config: read [    3.277330] usbcore: registered new interface driver btusb
+[    3.302368] kteeclient module revision r4705M_20141021-15:12:27 
+rc.ini failed, r[    3.338264] RTL871X: module init start
+eturn -1 
+[    3.338272] RTL871X: rtl8812au v4.3.8_12175.20140902
+[    3.338276] RTL871X: build time: Dec 20 2016 09:43:52
+[    3.338772] usbcore: registered new interface driver rtl8812au
+[    3.338779] RTL871X: module init ret=0
+[    3.384902] RTL871X: module init start
+RC config: did n[    3.384911] RTL871X: rtl8192eu v4.3.8_12924.20150121_beta
+[    3.384914] RTL871X: build time: Apr 20 2016 15:18:29
+[    3.388596] usbcore: registered new interface driver rtl8192eu
+ot found project[    3.388602] RTL871X: module init ret=0
+id, or format of rc.ini is wrong!
+[    3.863052] usb 5-1: new high-speed USB device number 2 using NT726682-ehci
+@@@###tvh start :3932
+**os_function_event_create**
+fpi_common_get_sita_version,len=20
+sita version = V8-1611030-MF2V100
+app_common_get_sita_build,len=20sita build=9665
+*f1 config*the OS=linux
+ini=/applications/tclconfig/sys.ini
+wang.q load_ini_file, m_u16SpiProjectID = 0x57 
+wang.q load_ini_file, m_pModelName = /applications/tclconfig/model/EU_87_T324.ini 
+iniparser: syntax error in /applications/tclconfig/overscan/overscan_ID15.ini (1):
+-> ﻿#OVERSCAN
+[    4.023634] usb 5-1: New USB device found, idVendor=0bda, idProduct=818b
+[    4.030319] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    4.037460] usb 5-1: Product: 802.11n NIC
+[    4.041459] usb 5-1: Manufacturer: Realtek
+[    4.045554] usb 5-1: SerialNumber: 1C1EE306BF1D
+#_#[sys_func_enable_init] subtit[    4.051606] RTL871X: 
+[    4.051606] usb_endpoint_descriptor(0):
+le_enable:1,ttx_[    4.058969] RTL871X: bLength=7
+enable:1,mheg5_e[    4.063353] RTL871X: bDescriptorType=5
+nable:1,dfb_enab[    4.068445] RTL871X: bEndpointAddress=84
+le:1
+
+ [frc] <[    4.073745] RTL871X: wMaxPacketSize=512
+[    4.078938] RTL871X: bInterval=0
+0>[    4.082152] RTL871X: RT_usb_endpoint_is_bulk_in = 4
+
+[    4.087195] RTL871X: 
+[    4.087195] usb_endpoint_descriptor(1):
+ db_dtv_load_ope[    4.093468] RTL871X: bLength=7
+rator_config_sql[    4.097880] RTL871X: bDescriptorType=5
+ite3(/applicatio[    4.103014] RTL871X: bEndpointAddress=5
+ns/tclconfig/dtv[    4.108194] RTL871X: wMaxPacketSize=512
+_config.db) .
+[    4.113409] RTL871X: bInterval=0
+[    4.117905] RTL871X: RT_usb_endpoint_is_bulk_out = 5
+[    4.122847] RTL871X: 
+[    4.122847] usb_endpoint_descriptor(2):
+[    4.128925] RTL871X: bLength=7
+[    4.131971] RTL871X: bDescriptorType=5
+[    4.135726] RTL871X: bEndpointAddress=6
+[    4.139549] RTL871X: wMaxPacketSize=512
+[    4.143388] RTL871X: bInterval=0
+[    4.146613] RTL871X: RT_usb_endpoint_is_bulk_out = 6
+ cfg total: 49ct[    4.151560] RTL871X: 
+[    4.151560] usb_endpoint_descriptor(3):
+ test .... chmod[    4.159024] RTL871X: bLength=7
+ 666 db epg!!![    4.163451] RTL871X: bDescriptorType=5
+
+[    4.168562] RTL871X: bEndpointAddress=87
+[    4.172553] RTL871X: wMaxPacketSize=64
+[    4.176335] RTL871X: bInterval=3
+[db_property_loa[    4.179567] RTL871X: RT_usb_endpoint_is_int_in = 7, Interval = 3
+d_to_hash_table:[    4.186949] RTL871X: 
+[    4.186949] usb_endpoint_descriptor(4):
+ 273]key is app.[    4.194401] RTL871X: bLength=7
+ui.netflix.boot,[    4.198801] RTL871X: bDescriptorType=5
+ value is false![    4.203921] RTL871X: bEndpointAddress=8
+!!
+[db_property[    4.209109] RTL871X: wMaxPacketSize=512
+_load_to_hash_ta[    4.214314] RTL871X: bInterval=0
+ble: 273]key is [    4.218890] RTL871X: RT_usb_endpoint_is_bulk_out = 8
+app.ui.hpstatus,[    4.225226] RTL871X: nr_endpoint=5, in_num=2, out_num=3
+[    4.225226] 
+ value is output[    4.233277] RTL871X: USB_SPEED_HIGH
+!!!
+[db_propert[    4.238195] RTL871X: CHIP TYPE: RTL8192E
+y_load_to_hash_t[    4.243031] EXT4-fs (mmcblk0p7): re-mounted. Opts: block_validity,journal_checksum,data=ordered
+able: 273]key is[    4.253513] RTL871X: register rtw_netdev_ops to netdev_ops
+ IR_MOUSE, value[    4.257863] EXT4-fs (mmcblk0p7): re-mounted. Opts: block_validity,journal_checksum,data=ordered
+ is 0!!!
+[db_pr[    4.270349] RTL871X: rtw_wdev_alloc(padapter=cffd7000)
+operty_load_to_h[    4.278084] RTL871X: ReadChipVersion192e 0xF0 = 0xc441135 
+ash_table: 273]k[    4.283785] RTL871X: Chip Version Info: CHIP_8192E_Normal_Chip_SMIC_B_CUT_2T2R_RomVer(0)
+ey is memory.app[    4.293169] RTL871X: RF_Type is 2!!
+.ui.virtualRemot[    4.297997] RTL871X: _ConfigChipOutEP_8192E OutEpQueueSel(0x07), OutEpNumber(3) 
+e.state, value i[    4.306777] RTL871X: ====> ReadAdapterInfo8192EU
+s off!!!
+[db_pr[    4.312816] RTL871X: Boot from EFUSE, Autoload OK !
+operty_load_to_hash_table: 273]key is app.ui.netflixDialog, value is 1!!!
+[db_property_load_to_hash_table: 273]key is ui.eu.breathing, value is 2!!!
+[db_persist_load_to_hash_table: 452]key is persist.app.runntingTime, value is 195!!!
+[db_persist_load_to_hash_table: 452]key is persist.app.ui.netflixRemoteDialog, value is 1!!!
+tvh svn version: 9665 
+***F1 service start*OS=1,Area=1,Type=0,compile date=Nov  3 2016:18:20:37
+fpp_system_set_config_path_and_name, config_path 0
+not support 
+fpp_system_set_co[    4.362342] 
+[    4.362342] _SYS_MMAP 0: vma start 0xAEE39000 size 0x05C00000 pgoff 0x00000000
+nfig_path_and_name, config_path 1
+not support [    4.375265] 
+[    4.375265] _SYS_MMAP 0: vma start 0xACF39000 size 0x01F00000 pgoff 0x00000001
+[    4.382924] RTL871X: EEPROM ID=0x8129
+
+fpp_system_set_[    4.382930] RTL871X: VID = 0x0BDA, PID = 0x818B
+config_path_and_[    4.382934] RTL871X: Customer ID: 0x00, SubCustomer ID: 0xCD
+name, config_pat[    4.382940] RTL871X: hal_ReadMACAddress_8192EU MAC Address from EFUSE = 1c:1e:e3:06:bf:1d
+h 6
+not support[    4.382948] RTL871X: Hal_ReadPowerSavingMode8192E...bHWPwrPindetect(0)-bHWPowerdown(0) ,bSupportRemoteWakeup(1)
+ 
+fpp_system_se[    4.382953] RTL871X: ### PS params=>  power_mgnt(0),usbss_enable(0) ###
+t_config_path_an[    4.382960] RTL871X: EEPROMRegulatory = 0x1 TxPwrCalibrateRate=0x0
+d_name, config_p[    4.382984] RTL871X: Board Type: Dongle or WIFI only Module 
+ath 8
+do HDMI E[    4.382989] RTL871X: mlmepriv.ChannelPlan = 0x20
+DID write,filena[    4.382992] RTL871X: CrystalCap: 0x14
+me /applications[    4.382995] RTL871X: ThermalMeter = 0x1f
+/tclconfig/EDID_[    4.382998] RTL871X: SWAS: bHwAntDiv = 0, TRxAntDivType = ff
+BIN/HDMI_EDID_4K[    4.383002] RTL871X: pHalData->PAType_2G is 0x0, pHalData->ExternalPA_2G = 0
+_NO3D.bin
+nFile[    4.383006] RTL871X: pHalData->LNAType_2G is 0x0, pHalData->ExternalLNA_2G = 0
+Len 256
+fpp_sys[    4.383010] RTL871X: ReadAdapterInfo8192EU <====
+tem_set_config_p[    4.383135] RTL871X: Hal_ChannelPlanToRegulation ChannelPlan:0x20,Regulation(2_4G/5G):0x03,0x03
+ath_and_name, co[    4.383143] RTL871X: init_channel_set ChannelPlan ID 20 Chan num:13  
+nfig_path 7
+do [    4.385657] RTL871X: rtw_alloc_macid(eth%d) if1, hwaddr:ff:ff:ff:ff:ff:ff macid:1
+VGA EDID write,f[    4.385723] RTL871X: pwrctrlpriv.bSupportRemoteWakeup~~~~~~
+ilename /applica[    4.385727] RTL871X: pwrctrlpriv.bSupportRemoteWakeup~~~[1]~~~
+tions/tclconfig/[    4.385734] RTL871X: rtw_macaddr_cfg MAC Address  = 1c:1e:e3:06:bf:1d
+EDID_BIN/VGA_EDI[    4.385739] RTL871X: bDriverStopped:1, bSurpriseRemoved:0, bup:0, hw_init_completed:0
+D.bin
+nFileLen [    4.385798] RTL871X: register rtw_netdev_ops to netdev_ops
+128
+fpp_system_[    4.385804] RTL871X: register rtw_netdev_if2_ops to netdev_ops
+set_config_path_[    4.385833] RTL871X: rtw_wdev_alloc(padapter=d03dc000)
+and_name, config[    4.386873] RTL871X: ReadChipVersion192e 0xF0 = 0xc441135 
+_path 16
+do ms1[    4.386884] RTL871X: Chip Version Info: CHIP_8192E_Normal_Chip_SMIC_B_CUT_2T2R_RomVer(0)
+2 audioPP path f[    4.386888] RTL871X: RF_Type is 2!!
+ilename /applica[    4.386895] RTL871X: _ConfigChipOutEP_8192E OutEpQueueSel(0x07), OutEpNumber(3) 
+tions/tclconfig/[    4.387044] RTL871X: Hal_ChannelPlanToRegulation ChannelPlan:0x20,Regulation(2_4G/5G):0x03,0x03
+audio/audioPP/au[    4.387053] RTL871X: init_channel_set ChannelPlan ID 20 Chan num:13  
+dioPP_23.txt
+[f[    4.390287] RTL871X: rtw_alloc_macid(eth%d) if2, hwaddr:ff:ff:ff:ff:ff:ff macid:1
+pp_driver_init] [    4.390325] RTL871X: rtw_ndev_init(wlan0)
+fpp svn version [    4.400416] RTL871X: _rtw_drv_register_netdev, MAC Address (if1) = 1c:1e:e3:06:bf:1d
+:1391
+fpp versi[    4.400443] RTL871X: rtw_ndev_init(wlan1)
+on : fpp20150505[    4.414795] RTL871X: _rtw_drv_register_netdev, MAC Address (if2) = 1e:1e:e3:06:bf:1d
+.1.0_r181524
+D[    4.655443] 
+[    4.655443] _SYS_MMAP 0: vma start 0xAB039000 size 0x01F00000 pgoff 0x00000002
+EV_COMMON_SET_PC[    4.665423] 
+[    4.665423] _SYS_MMAP 0: vma start 0x9E839000 size 0x0C800000 pgoff 0x00000003
+BLAYOUTTYPE 3 
+[36;48m [DEV_COMMON_SET_PCBLAYOUTTYPE] =======[    4.679823] 
+[    4.679823] _SYS_MMAP 0: vma start 0x92039000 size 0x0C800000 pgoff 0x00000004
+=== [0m
+[36;48m [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== Fir[    4.694152] 
+[    4.694152] _SYS_MMAP 0: vma start 0x83439000 size 0x0EC00000 pgoff 0x00000005
+st Init ===> Yes[3][0m
+tv redirect : have debug requirement
+tv redirect : fil[    4.709206] 
+[    4.709206] _SYS_MMAP 0: vma start 0x74839000 size 0x0EC00000 pgoff 0x00000006
+e name /mtd_apdat/tv_pipe_fifo_0
+tv redirect : file name /mtd_apdat/tv_pipe_fifo_1
+tv redirect : file name /mtd_apdat/tv_pipe_fifo_2
+tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_0 failed errno 17
+tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_1 failed errno 17
+tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_2 failed errno 17
+[    4.758854] irq 50 exist
+[    4.761407] irq 53 exist
+[34m
+[VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
+[    4.818829] MHL : HDCP_Bksv= [0x0c][0x85][0xaf][0xf3][0x1a]
+[    4.824441] MHL : HDCP_BCaps = [0x80]
+[0m
+ DRV_VD : Create g_pDrvVDMutex Success 
+
+ DRV_VD_Initialize Start !!! PID = 259 
+
+ DRV_VD_Initialize gpDrvVDShareMem = 1953562624
+
+ DRV_VD_Initialize u32ProcessCnt = 0 gb8DrvVDInit = 0
+
+ DRV_VD : [Line 9130] drv_vd_SourceSel EN_DRV_VD_CHROMA_KILL_MODE_ENABLE
+
+ DRV_VD : [Line 1532] drv_vd_SetChromaKillMode enMode = 0
+
+ CALL_VD:  [Line 9158] drv_vd_SourceSel  drv_vd_SVideoModeSel OFF !!!!
+
+ [Line 10567] DRV_VD_Initialize  DRV_VD_Set_TaskStatus  Enable 
+
+ drv_vd_SetTaskStatus =  1 
+
+ # g_VDModeDetectTask ok
+
+ DRV_V[    4.889208] [NBSM][1][1] I/O chg en 0=> 0 ch 0 => 2 md 0 => 0
+D_Initialize End[    4.895799] [NBSM][2][1] I/O chg en 0=> 0 ch 0 => 2 md 0 => 0
+ PID = 259 
+ DR[    4.902859] [NBSM][3][1] I/O chg en 0=> 0 ch 0 => 2 md 0 => 0
+V_VD_Set_TaskSta[    4.910014] [NBSM][4][1] I/O chg en 0=> 0 ch 0 => 2 md 0 => 0
+tus bEnable=1 PID = 259 
+
+ [Line 10407] DRV_VD[    4.920641] ############################[SB Memory]###############################
+_Set_TaskStatus [    4.928834] [KSB]stSbMemCtx.enInitMode = (1)
+ DRV_VD_Set_Task[    4.934525] [KSB] ioremap success addr:(d4200000) size:(0x100000)
+Status  Enable![    4.941949] [KSB] ioremap success addr:(d5800000) size:(0x100000)
+
+
+ drv_vd_SetTa[    4.949506] ###########################################################
+skStatus =  1 
+[DRV_VOD][WRN] [0259] DRV_VOD_Init
+DRV_GPU_Open[    4.961793] [_ker_pmi_nl_cb_p]Begin 
+
+
+ DRV_VBI : D[    4.966580] [_ker_pmi_nl_cb_p]SetPid 
+RV_VBI_Init memA[    4.971558] [_ker_pmi_nl_cb_p]pid is 259 
+ddr = 0x02500000[    4.976993] [_ker_pmi_nl_cb_p]End 
+ memSize = 0x00040000 
+
+ DRV_VBI_Init HW Start PID = 259 
+
+ DRV_VBI : DRV_VBI Init HW Done PID = 259 
+g_VDBaseAddr 0xb2e39000 PID = 259 
+g_TTXBaseAddr 0xaf639000 
+
+ Drv_VBI : drv_vbi_Initialize  NT_TTX_DRAM_WRITE_REG = 0x00000000 
+
+ drv_vbi_Initialize
+
+ drv_vbi_SetTaskStatus =  1 
+fpp_driver_init Sucess ! 
+DEV_COMMON_SET_PCBLAYOUTTYPE 3 
+[36;48m [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== [0m
+cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
+[36;48m EN_DEV_PCB_TYPE_N61001_EU [0m
+[licl]===>_DEV_GPIO_InitPWM	pPWMSemaphoreMP is waiting.......
+find fre u16PDIMFreq2D60Hz=120
+find fre u16BackLightLevel=23
+Open /tmp/ntkled successfully 
+===> [1;40;31m _DEV_GPIO_EP_Handler 2182 [0m
+Device NIM ATV create complete
+Device NIM DTV create complete
+[lwhite]===>DEV_IIC_Init  pI2CSemaphoreMP is waiting.......
+Create _IIC_S_Handler to callback functionP
+Open Bus 5 Done
+DEV_FRC_Init!
+SHM Nim Digital Init First 
+DEV_FRC_Init First entry 
+DEV_GPIO_SetDirection fail  enPin[100] enDirection[2]
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+find env FRC=0
+No FRC!
+Normal Panel mode !
+DEV_FRC_SelectIICBus select bus 6 
+/r/n**DEV_FRC_CheckFRCMode bSeparateMode = 0
+FRC_IIC = 6
+fpp_board_ic_init Fail ! 
+mobo dbg...
+#PLAT-INI# Chip Type: 668B (0x36363842)
+Crypto : Create Mutex Success 
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+#PLAT-OSD#MSG Enter PLAT_OSD_Init
+find tcontype u8TconType=0
+
+ parse paneltxt [    5.189517] [ntiic_Write(): 3960][channel: 0] Dev NACK 
+here u8Tcon:2 @@@
+
+ parse pane[    5.196668] [ntiic_Read: 3535][channel: 0] Dev NACK 
+ltxt here u8IdentifyTunerType:0 @@@
+
+ parse paneltxt here u8AudioCurveType:0 @@@
+
+ Get TunerType is 0 
+
+ parse paneltxt here u8Tcon:2 @@@
+
+ parse paneltxt here u8IdentifyTunerType:0 @@@
+
+ parse paneltxt here u8AudioCurveType:0 @@@
+
+ Get PCB type is TCL/EU --> SAL_DEMOD_TUN_GetInitTunerType  EN_DEMOD_TUNER_SONY_RE331ZN
+C_SalTunerSony_RE331ZN Start ~~~ 
+drvi2c_re331zn_Write:fail!!! 
+Init: EN_TUNER_SONY_RE331ZN is initialized failure
+
+<SDADC> SOURCE: DEMOD
+
+<SDADC> SOURCE: DEMOD
+SAL_DEMOD_TUN_GetInitTunerType: already get before as Tuner Type 16 
+
+<SDADC> SOURCE: DEMOD
+BBB _nt316tb_user_RegisterSuspendResumeToDriver(1593) 
+#PLAT-OSD#MSG Exit PLAT_OSD_Init
+cannt find env UPGRADE_ENV!
+[VIU_IPCShm]Platform VIU Shm Ini have Create yet!!!
+[VIU_IPCMsg]PLAT_IPC_Message_Ini OK
+[VIU_IPCMsg]PLAT_AdIPC_Message_Ini OK
+[34m
+[VIDERR][PLAT_VIN_Init():295] [PLAT_VIN_AutoInit]Init Fail
+[0muuuuuuuuuuuuuuuuuuuuuuuuu=0
+[34m
+[VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
+[0m[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 0
+#DEV-SRC#Toogle HDMI0 HotPlug Successfully#DEV-SRC#Toogle HDMI1 HotPlug Successfully#DEV-SRC#Toogle HDMI2 HotPlug Successfully#DEV-SRC#Toogle HDMI3 HotPlug Successfully#DEV-SRC#Toogle HDMI4 HotPlug SuccessfullyNflip done
+[34m
+[VIDSCHG]: PLAT_VLIB_UpdateSCLR( u8Path(1) enSCLR_Update(0) )
+[0mPID(259)[ERROR][_Fb_RecordErrCode():9627]_Fb_RecordErrCode
+PID(259)[ERROR][_Fb_RecordErrCode():9628]  gErrInfoQueue[0].u8ErrorCnt  = 1
+PID(259)[ERROR][_Fb_RecordErrCode():9629]  gErrInfoQueue[0].enErrorCode = EN_FB_ERR_CODE_OUT_OF_RANGE
+PID(259)[ERROR][_Fb_RecordErrCode():9630]  gErrInfoQueue[0].pcFunction  = FB_P_FrameBufUpdate
+PID(259)[ERROR][_Fb_RecordErrCode():9631]  gErrInfoQueue[0].u32Line     = 2119
+PID(259)[ERROR][_FrameBufUpdate():26240]FB_P_FrameBufUpdate() is fail(1)
+PID(259)[ERROR][SCLR_SHL_FrameBufUpdate():7514]_FrameBufUpdate() is fail(1)
+PID(259)[ERROR][DRV_SCLR_FrameBufConfigUpdate():13970]SCLR_SHL_FrameBufUpdate() is fail(1)
+[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1150] DAL_SCLR_FB_Alloc Alloc buffer Error!
+[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1152] enPhyFb[1] desired size 11143kb > available size 9928kb
+[0m[34m
+[VIDERR][DAL_SCLR_Update_ScalingWithFrameBuffer():1897] enSclrPath(1), please check!
+[0m[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 60000
+HAL FRC Is NOT Initialized
+[PLAT_FRC_ERR] PLAT FRC [    5.798594] tspu_dev_open: tspu major 127 minor 0 (pid 259)
+Is NOT Initializ[    5.806217] [TSPU] vk_ioremap_cached OK, u32CacheAddr(0xd6000000), u32DemuxBufSize(0x2600000)
+ed
+
+[34m
+[VI[    5.815746] [TSPU] vk_ioremap_nocache OK, u32NonCacheAddr(0xd9000000), u32DemuxBufSize(0x2600000)
+DSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=5756]
+[0m[PLAT_AIN] (_AIN_GenerateAQTable) -- SIF AQ table using default settings...
+************************************************************************************
+ [    5.843867] irq 50 exist
+NOVATEK NT72668 [    5.847159] irq 50 exist
+SIF AQ Table - Date(20130205) Version(000E) Revisor(NVT01699)
+************************************************************************************
+[PARSER]PLAT_PARSER_Register_Interrupt_Handle Enter 
+plat_tspu_initDriver: Get CacheAddr is 0x80e39000 and NonCacheAddr is 0x8fa39000
+
+[4127]/home/yuer/NT667EU/tcl_fpp/soc/Linux_TV_RevB/code/platform/src/mm/avctrl.c _Avctrl_InitMem Success [VIU_IPCShm]PLAT_IPC_Shm_DecodeType_Write En_DecodeType=-1  !!! 
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:8710 
+Platform Init Start!
+
+PID:259, [PLAT_PQDBG]PLAT_PQ_ChipDefineCheck():
+Top_CHIP_TYPE_Define = CFG_72668_REV_B !
+
+PID:259, [DRV_PQ_DBG]DRV_PQ_Init():Driver PQ Init Start!
+PID:259, [DRV_PQ_ERR]DRV_PQ_Init(), Line:1030 Can not mknod /dev/ntkpq
+PID:259, [DRV_PQ_ERR]DRV_PQ_Init(), Line:1035 Can not open /dev/ntkpq
+PID:259, [DRV_PQ_DBG]DRV_PQ_Init():Open /tmp/ntkpq successfully 
+PID:259, [DRV_PQ_DBG]DRV_PQ_Init():
+ # DRV_PQ_Bio Task ok
+PID:259, [DRV_PQ_DBG]DRV_PQ_Init():Driver Init HW Start!
+PID:259, [DRV_PQ_DBG]DRV_PQ_Init():Driver Init HW Done!
+PID:259, [DRV_PQ_DBG]DRV_PQ_Init():Driver PQ Init Done!
+PID:259, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init Start!
+PID:259, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init HW Start!
+PID:259, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init HW Done!
+PID:259, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init Done!
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16047 
+
+
+**********************PQ TABLE VERSION MESSAGE**********************
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16048 
+                      DATE   : 2016/5/9
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16049 
+                      VERSION: 0001
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16050 
+0****************************************************************26
+
+
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9503 
+Platform Init HW Start!
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_Set_AP_Gamma(), Line:2184 
+g_BootOnGammaFlag =1 , delay 50ms 
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9585 
+Platform Init HW Done!
+
+PID:259, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9598 
+Platform Init Done!
+
+SAL_DEMOD_TUN_GetInitTunerType: already get before as Tuner Type 16 
+[PLAT_INI_Init] plat_venc_init ret=1
+ xxxxxxxxxxx init for Plat INI 5 
+
+ ntttx_EnableWSS
+
+ ntttx_EnableWSS
+
+ DRV_VBI : ntttx_EnableTTX
+#PLAT-OS#update RTC Clock time as 2017-09-14  20:27:12, OldTotalSec=5, NewTotalSec=1505420832, diff:+1505420827
+ 
+fpp_para_init=====================
+PID:259, [MGR_PQ_DBG]MGR_PQ_ParsingDB[    6.080066] [ntiic_Write(): 3960][channel: 0] Dev NACK 
+File(), Line:3156:
+Project PQF path =/applications/tclconfig/pq/ID87/PQDB_PQF.csv 
+
+PID:259, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3211:
+Project PCF path =/applications/tclconfig/pq/ID87/PQDB_PCF.csv 
+
+PID:259, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3254:
+ PCF and PQF Parsing[    6.109639] UMP<2>:  Success 
+
+
+aNew session opened
+vtask init is 1PLAT_IPC_MM_Set_PQ_Setting_InstallCallback start
+PLAT_IPC_MM_Set_PQ_Setting_InstallCallback OK
+ plat_3d_cus_set_PQ_Setting_InstallCallback start
+plat_3d_cus_set_PQ_Setting_InstallCallback OK
+
+Create Update key task
+id = 20
+
+fd_socket = 74, socket_family_id = 20, pid = 259
+
+socket num is 74
+
+This is wait ker msg
+ESPLAYERSRV_Open (296)
+fpp_board_soc_init Sucess ! 
+PID:259, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3156:
+Project PQF path =/applications/tclconfig/pq/ID87/PQDB_PQF.csv 
+
+PID:259, [    6.160334] INIT Done
+[MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3211:
+Project PCF path =/applications/tclconfig/pq/ID87/PQDB_PCF.csv 
+
+PID:259, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3254:
+ PCF and PQF Parsing Success 
+
+
+avtask init is 1PLAT_IPC_MM_Set_PQ_Setting_InstallCallback start
+PLAT_IPC_MM_Set_PQ_Setting_InstallCallback OK
+ plat_3d_cus_set_PQ_Setting_InstallCallback start
+plat_3d_cus_set_PQ_Setting_InstallCallback OK
+fpp_driver_init*end*
+un enter 1  tcl_debug_init successfully WYJ----------------------
+
+un enter 2 Init UserTimer
++++++fpp demod init ++++++
+fpp_power_get_wakeup_source Sucess ! and enEvent=3
+
+ [pwr] [false]
+commandline read: sitatvservice
+(*) Direct/Thread: Started 'SigHandler' (377) [CRITICAL - OTHER/0] <8388608>...
+
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~| DirectFB 1.7.1 |~~~~~~~~~~~~~~~~~~~~~~~~~~
+        (c) 2012-2013  DirectFB integrated media GmbH
+        (c) 2001-2013  The world wide DirectFB Open Source Community
+        (c) 2000-2004  Convergence (integrated media) GmbH
+      ----------------------------------------------------------------
+
+(*) DirectFB/Core: Multi Application Core. (2015-04-29 02:41) [ DEBUG ][ TRACE ]
+(*) Direct/Memcpy: Using libc memcpy()
+(*) Fusion/SHM: Using MADV_REMOVE (3.8.0.0 >= 2.6.19.2)
+(*) Fusion/SHM: Shared root (0) is 1440 bytes [0x1000 @ 0x20000000]
+ [boot] source<0x0>fpp_iic_write Fail ! 
+cxd2837_i2c_Write failed 
+  Error: Unable to initialise the integration driver to terrestiral / cable mode. (result = I2C Error)
+(*) Direct/Thread: Started 'Fusion Dispatch' (378) [MESSAGING - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'Fusion Deferred' (379) [MESSAGING - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'EGL/LayerT0' (380) [CRITICAL - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'EGL/LayerT1' (381) [CRITICAL - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'EGL/LayerT2' (382) [CRITICAL - OTHER/0] <8388608>...
+(*) NVT Remote driver_open_device In (user mode)!
+(*) Direct/Thread: Started 'Nvt Remote Input' (383) [INPUT - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'Nvt KP Input' (384) [INPUT - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'Nvt pipe input' (385) [INPUT - OTHER/0] <8388608>...
+(*) DirectFB/Input: Novatek Remote Control 0.9 (Novatek)
+[    6.363644] [KDEBUGD] enter : kdebugd
+[    6.363644] 
+(*) Direct/Thread: Started 'Linux Input' (388) [INPUT - OTHER/0] <8388608>...
+(*) DirectFB/Input: novatek-blast (1) 0.1 (directfb.org)
+(*) Direct/Thread: Started 'Linux Input' (389) [INPUT - OTHER/0] <8388608>...
+(*) DirectFB/Input: novatek-keypad (2) 0.1 (directfb.org)
+(*) Direct/Thread: Started 'Linux Input' (390) [INPUT - OTHER/0] <8388608>...
+(*) DirectFB/Input: novatek virtual mouse (3) 0.1 (directfb.org)
+(*) Direct/Thread: Started 'Hotplug with Linux Input' (391) [INPUT - OTHER/0] <8388608>...
+(*) DirectFB/Input: Hot-plug detection enabled with Linux Input Driver 
+(*) DirectFB/Graphics: GLES2 Acceleration - Unknown 0.1 (Mark J Hood / Denis Oliver Kropp)
+(*) DirectFB/Core/WM: Default 0.3 (directfb.org)
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+(*) Direct/Thread: Started 'Genefx' (392) [DEFAULT - OTHER/0] <8388608>...
+Error! DirectFB/DirectFBCreate: Setting desktop format failed!
+     -> Using default format.
+
+ TM-[dfb_1], tm[1505420833579]
+ [dfb] source<0x0>
+ [tvh] not nflx key<0x0> ! 
+ TM-[dfb_2], tm[1505420833580]**fpi_audio_init**
+runing in fpi_audio_init,setAudioDelayTimerID ==  0 ---by qiugr---
+do amp init, fpi_amp_reset
+do amp init, fpp_gpio_set is done
+fpi_audio_init, addr0 = 0x54,channel_num = 1fpi_amp_init, fpi_NTP8212_Create
+amp_ntp8212_init
+fpi_audio_init, audio_amp_addr is 54
+fpp_iic_write Fail ! 
+ATBMRead 1 failed 
+ power on init failed, chip not correctly detected
+tbm8878 ATBMPowerOnInit failed 
+------fpp demod init total device=2 -------
+fpi_amp_create, fpi_NTP8212_Create
+fpi_audio_initvolume_curves=/applications/tclconfig/AudioCurve/VolumeCurve.ini
+******* u8AudioCurveType:0 *********
+******* u16VolumeCurveSpeaker has done *********
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+luhm----- Enter fpi_ms12_sound_preset_data_read 427 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+lk----MS12----app_ms12_sound_preset_data_read sucess!
+lk----MS12----ms12_sound_preset_data.SoundOutputMode=0
+lk----MS12----ms12_sound_preset_data.DigitalAudioType=1
+lk----MS12----ms12_sound_preset_data.enSoundPreset=5
+
+___KEVIN__fpi_audio_ms12_init____mode=0, sound_mode:5______
+**luhm----ms12----fpi_audio_set_ms12_sound_preset mode =5
+******* fpp_audio_set_dolby_sence_mode type:0*****
+tvhsipsi initialize
+tvh mngr main task process is running
+ENTER matrix_ringbuf_init
+####EXIT matrix_ringbuf_init bufsize =524288
+++++++++tvhdtv reload usersetting mode=1+++++++++
+------load db_get_user_common_setting------
+
+ tvhdtv_set_parent_rate(18) .tvhdtv set lock state lock mask=16,lock tate=0,curr lock=0
+------tvhdtv reload usersetting mode=1,first language=6,second=6,aud descriptor=0,track type=0------
+[sita_property_hash_get: 268]can't find hash value from table!!!
+[sita_property_get: 1071]sita_property_hash_get nothing, return default value!!!
+
+ db_dtv_get_select_operator_info() operator_id invalid !
+ TM-[xx_1], tm[1505420833740]
+ TM-[xx_3], tm[1505420833740][function: fpi_cec_module_init]--[line: 1866]
+[function: fpi_cec_monitor]--[line: 1597]
+
+---------gCecPara.bTimeReady == 0, LOOPTIME == 0--------------------
+Fpp_Vbi_Init ok ! 
+Fpp_Vbi_Register_callback ok ! 
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bCecStatus == 1
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bArcStatus == 1
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bAutoPowerOn == 1
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bAutoStandby == 1
+bIsHdmiInsert[0]==0,bIsHdmiInsert[1]==0,bIsHdmiInsert[2]==1,bIsHdmiInsert[3]==0
+bHdmiStatus[0]==0,bHdmiStatus[1]==0,bHdmiStatus[2]==0,bHdmiStatus[3]==0
+ct test ..... un8DevNum = 1 un8tmp = 0
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+...zhouzs...ttx_decoder init set_level 0..
+ (!!!)  *** WARNING [letting unprivileged IDirectFBDisplayLayer::GetSurface() call pass until cooperative level handling is finished] *** [idirectfbdisplaylayer.c:197 in IDirectFBDisplayLayer_GetSurface()]
+[draw] tvh_graphic_surface_fill_rectangle 1205 please set the palette befor fill rectangle 
+***************************************fpi_dtv_subtitle_init*
+
+ -----111111--creat sub primary surface:DISPLAY_WIDTH*DISPLAY_HEIGHT[1920 * 1080]------
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+fpp_power_get_wakeup_source Sucess ! and enEvent=3
+
+
+[tvh_scart_out_set_mute,672][PORT_SCART1] mute == 1,mute_level == 0x1,scart_out_tatus.scart1_mute_level == 0x0
+
+
+
+[tvh_scart_out_set_mute,672][PORT_SCART1] mute == 0,mute_level == 0x100,scart_out_tatus.scart1_mute_level == 0x1
+
+fpi_get_panel_resolution_ratio: width:3840,height:2160
+WOTV Options LOADED (-1 bytes)
+WOTV_CFG_WOTV_LoadOptions:  WebTvURL="http://10.50.1.37/"
+WOTV_CFG_WOTV_LoadOptions:  UserAgent="HbbTV/1.1.1 (+DL;SmarD TV; ST7105; 1.32.455; 2.002;) WOTV/0.1"
+WOTV_CFG_WOTV_LoadOptions:  IgnoreHttpInAit="Disable"
+WOTV_CFG_WOTV_LoadOptions:  DnsWorkAround="Disable"
+WOTV_CFG_WOTV_LoadOptions:  RedirectDvbUrl=""
+WOTV_CFG_WOTV_LoadOptions:  Ethernet Interface Name="eth0"
+WEBKIT Patch activation
+WOTV_CFG_WOTV_LoadOptions:  Patch Finish Data at receive="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Skip timer during request="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch DVB is HTTP="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Empty URL is HRef="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Arrow is TAB="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Timer Heap="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace Loading="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace Timers="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace Patchs="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace External Loading Error="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace External Loading Debug="Disable"
+WOTV DSMCC Options LOADED
+WOTV_CFG_WOTV_LoadOptions: - dumpEntry: Disable
+WOTV_CFG_WOTV_LoadOptions: - dsmcc timeout: 20
+WOTV Debug Options
+WOTV_CFG_WOTV_LoadOptions: - Browser Mgr Trace enabled="Disable"
+WOTV_CFG_WOTV_LoadOptions: - App Manager Trace enabled="Disable"
+WOTV Patch activation
+WOTV_CFG_WOTV_LoadOptions:  Patch Wrong url on lifecycle="Disable"
+WOTV_CFG_WOTV_LoadOptions: - fakeEntry: Disable
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+
+[fpp_ci_dm_init]
+Desc init error	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+Enter fpp_pcmcia_init
+
+gu8FirstInitFlag is FALSE
+fpp_power_get_wakeup_source Sucess ! and enEvent=3
+@@[fpi_linein_pre_init] input:400000
+
+ TM-[pre_s], tm[1505420834518]@@[fpi_linein_pre_init] boot_source:0
+
+[tvh_scart_get_linein_by_pin8_level,580]change to scart:0x0
+ERROR:Sendding message id=33685504 must after running message_inits 
+*enter -->fpi_linein_changeto: current_linein=0 ,linein to=4
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chglinein,mute=1
+fpi_check_reason*,dev==1,reason=tos.chglinein
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+fpi_check_reason*,dev==2,reason=tos.chglinein
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+fpi_check_reason*,dev==4,reason=tos.chglinein
+fpi_check_reason*,dev==8,reason=tos.chglinein
+fpi_check_reason*,dev==16,reason=tos.chglinein
+fpi_check_reason*,dev==128,reason=tos.chglinein
+lhm****b_current_hp_mute=1,b_pre_hp_mute=0
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=0
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=0
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=0
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=0
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=0
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x2000 (first),reason=0x2000
+[34m
+[VIDSCHG]: Mute -- PLAT_VC_UnMuteVideo(0) = 0 [Time=7482]
+[0m[34m
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=7482]
+[0m######## [ ntk_fpp_tvout_close_tve ] ##########
+[34m
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail![0m[34m
+[VIDERR][PLAT_TVOUT_VideoStop():435] PLAT_VOUT_TVOUT_Action Stop fail![0m[34m
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail![0m[34m
+[VIDERR][PLAT_TVOUT_VideoDisConnect():227] PLAT_VOUT_TVOUT_Action Stop fail![0mERROR:Sendding message id=268566528 must after running message_inits 
+luhm*******fpi_set_mutes_for_device*,dev==191,reason=tos.scart,mute=0
+fpi_check_reason*,dev==1,reason=tos.scart
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.scart
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.scart
+fpi_check_reason*,dev==8,reason=tos.scart
+fpi_check_reason*,dev==16,reason=tos.scart
+fpi_check_reason*,dev==32,reason=tos.scart
+luhm***fpi_amp_mute_info[1].reason_name=tos.scart,.reason_status==0
+fpi_check_reason*,dev==128,reason=tos.scart
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x20000
++++++fpp_demod_set_tone_burst++++++
+[lwhite]===>PLAT_AIN_Open!!
+ DRV_VD_Set_TaskStatus bEnable=0 PID = 259 
+
+ [Line 10421] DRV_VD_Set_TaskStatus  DRV_VD_Set_TaskStatus  False 
+
+ drv_vd_SetTaskStatus =  0 
+[34m
+[VIDSCHG]: PLAT_VIU_ChangeInput( u8Path=0, enSourceType=1) [Time=7500][0m[34m
+[VIDSCHG]: Get source description ok,[Time=7500] [0m[34m
+[VIDSCHG]: Source description: [0m[34m
+[VIDSCHG]: enSourceType 1 	---[FppCEC]fpp_cec_tx_msg():[0m[    7.892393] 
+[    7.892393] IPU STREAM : LIVE=1 MDAL=0 PVR=0
+[34mSend CEC tx Msg error!
+
+[VIDSCHG]: u8Instance  0 [0m[34m  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+
+[VIDSCHG]: enADC0Mux 0 [0m[34m
+[VIDSCHG]: enADC1Mux  0 [0m[34m
+[VIDSCHG]: enADC2Mux 0 [0m[34m
+[VIDSCHG]: enADC3Mux  0 [0m[34m
+[VIDSCHG]: enSOGMux 3 [0m[34m
+[VIDSCHG]: u8SOGThreshold 0 [0m[34m
+[VIDSCHG]: enFBMux 2 [0m[34m
+[VIDSCHG]: u8FBThreshold  0
+ [0m[34m
+[VIDSCHG]: 
+ -------------> Start PLAT_VIN_ChangeInput( 0, 1) [Time=7832]
+[0m[34m
+[VIDSCHG]: 
+  2-X( path0)
+[0m[34m
+[VIDSCHG]: 
+ TEST 3-X( path0, to interface5,SRC1)
+[0m[34m
+[VIDSCHG]: _VIN_GetInputSrcMethod( enType(1) )
+[0m[34m
+[VIDSCHG]: DAL_SRC_ConnectInput(enSourceType=1) [Time=7832]
+[0m[34m
+[VIDSCHG]: 
+  5-X Init VInTask P0 SearchTimer(150),state(0) to sync&detect.---- Interface5[0m[34m
+[VIDSCHG]: 
+  6-1 [0m[34m
+[VIDSCHG]: PLAT_VLIB_PlayControl path:0  enControl:0  
+[0m[34m
+[VIDSCHG]: 
+  -------------> Exit PLAT_VIN_ChangeInput() [Time=7833]
+[0m
+ ntttx_EnableWSS
+
+ DRV_VBI : ntttx_EnableTTX
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+[PLAT_AIN] PLAT_AIN_Disconnect() - input error ( IN -32767 )
+
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+[PLAT_AIN] PLAT_AIN_Disconnect() - input error ( IN -32767 )
+
+[lwhite]===>PLAT_AIN_Close!!  pPathIndex=32767
+[PLAT_AIN] PLAT_AIN_Connect() - PLAT_AIN_SetPathConfig() should be used on this source first.
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x0, R:0x0
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+***[_GetAudioFile] get the audioPP path, For MS12 New path
+************ _fpp_system_get_MS12_AudioPP_Path *********
+_GetAudioFile pFileName=/applications/tclconfig/audio/audioPP/audioPP_23.txt
+LOAD Audio PP SETTING FORM FILE : /applications/tclconfig/audio/audioPP/audioPP_23.txt ; Result = TRUE 
+*****_fpp_audio_load_dac_scale for  new av-out dac*****
++++++fpp_demod_set_active_state++++++
+find support delivery device
+
+<SDADC> SOURCE: DEMOD
+SAL_DEMOD_TUN_GetInitTunerType: already get before as Tuner Type 16 
+SAL_DEMOD_TUN_GetIsSupportRFSW: already got IsSupportRFSW(1) 
+
+ NT316TB_User_RFSW(2) 
+
+ action of SAL_DEMOD_TUN_RFSW() failed!!!!  
+fpp_demux_set_source_type:2126 Set Tuner AGC Switch pin to Low successfully
+
+[lwhite]===>PLAT_TSPU_SetDemuxSource   u8DemuxNo=0  enSource=2  u8Param=0  u8DemodType=0
+-------fpp_demod_set_active_state,ret=0-------
+luok----MS12----fpi_audio_set_audio_CompMode,enCompMode=1
+[fpp_audio_set_audio_CompMode],enter.  enCompMode =1
+*** skip setting the CompMode***
+**fpi_audio_set_SPDIF_delay,delay=60
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 0---by qiugr---
+un32_audio_delay_time == 100,user_audiodelay ==  60,Dolby Delay == 40,audio_delay_from_ini=0---by qiugr---
+
+ [fpi_cec_routing_change,710]: when tv start up,has not send msg(0x85)to request active source,no need send msg(0x82) 
+
+
+[tvh_ci_notify_linein_change,1392]CI Card is not INserted, Nothing to do!!!
+
+fpi_linein_changeto exit end 
+luhm*******fpi_set_mutes_for_device*,dev==191,reason=tos.scart,mute=1
+fpi_check_reason*,dev==1,reason=tos.scart
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==1
+fpi_check_reason*,dev==2,reason=tos.scart
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==1
+fpi_check_reason*,dev==4,reason=tos.scart
+fpi_check_reason*,dev==8,reason=tos.scart
+CJ HDMI line in =0x400000
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+wang.q enter tvhsignal_src_check_callback
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+fpi_check_reason*,dev==16,reason=tos.scart
+fpi_check_reason*,dev==32,reason=tos.scart
+luhm***fpi_amp_mute_info[1].reason_name=tos.scart,.reason_status==1
+fpi_check_reason*,dev==128,reason=tos.scart
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+ERROR:Sendding message id=221315072 must after running message_inits 
+wang.q tvhsignal_src_check_callback, tvh_nortify_event return --> 1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=1,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=1
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x22000,reason=0x20000
+ERROR:Sendding message id=268566528 must after running message_inits 
++++++fpp_demod_set_active_state++++++
+-------fpp_demod_set_active_state,ret=0-------
+tvhdtv play current program failure get data
+Enter [fpi_hbbtv_start],s_hbbtv_context.b_hbbtv_enable = 1 
+commandline read: (null)
+(*) Direct/Thread: Started 'SigHandler' (467) [CRITICAL - OTHER/0] <8388608>...
+
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~| DirectFB 1.7.1 |~~~~~~~~~~~~~~~~~~~~~~~~~~[    8.456879] UMP<2>: 
+        (c) 201New session opened
+2-2013  DirectFB integrated media GmbH
+        (c) 2001-2013  The world wide DirectFB Open Source Community
+        (c) 2000-2004  Convergence (integrated media) GmbH
+      ----------------------------------------------------------------
+
+(*) DirectFB/Core: Multi Application Core. (2015-04-29 02:41) [ DEBUG ][ TRACE ]
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+(*) Direct/Memcpy: Using libc memcpy()
+(*) Fusion/SHM: Using MADV_REMOVE (3.8.0.0 >= 2.6.19.2)
+(*) Fusion/SHM: Shared root (0) is 1440 bytes [0x1000 @ 0x20000000]
+(*) Direct/Thread: Started 'Fusion Dispatch' (468) [MESSAGING - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'Fusion Deferred' (469) [MESSAGING - OTHER/0] <8388608>...
+(*) Core/Resource: Adding ID 2 - '/applications/thirdpart/hbbtv/opt/bin/hbbtv-web-browser'
+(*) DirectFB/Graphics: GLES2 Acceleration - Unknown 0.1 (Mark J Hood / Denis Oliver Kropp)
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x10
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x40000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x80000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x40000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x80000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x40000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x80000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x40000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x80000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x40000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x80000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x40000
+x--<[gfx]:gles2_2d.c>(259:378)<gles2CheckState:845>: unsupported function 0x80000
+(*) Direct/Thread: Started 'EventBufferFeed' (470) [MESSAGING - OTHER/0] <8388608>...
+
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+Gdk-DirectFB-Message: gdk_screen_width_mm() assumes a screen resolution of 72 dpi
+Gdk-DirectFB-Message: gdk_screen_height_mm() assumes a screen resolution of 72 dpi
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+
+(<unknown>:465): Gdk-DirectFB-WARNING **: gdk_window_set_keep_above() not implemented.
+
+
+(<unknown>:465): Gdk-DirectFB-WARNING **: gdk_window_set_keep_below() not implemented.
+
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[1;32;40mPRINTF :[0;37;40m S->[1;36;40msrc/main.c[0;37;40m F->[1;36;40mmessage_recieved[0;37;40m, L->[1;36;40m525: [1;37;40mapi_sockIPC_setKeySet is init yet--pchannel=0x0
+[0;37;40m
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:12
+[1;32;40mPRINTF :[1;32;40m[0;37;40mPRINTF : S->[0;37;40m S->[1;36;40msrc/main.c[1;36;40m[0;37;40msrc/main.c F->[1;36;40m[0;37;40mhbbtv_sockIPC_process[0;37;40m, L-> F->[1;36;40m293: [1;37;40m[1;36;40mhbbtv_sockIPC_process[0;37;40m, L->api_sockIPC_get_channel to after channel:0x1f566d8
+[1;36;40m[0;37;40m293: 
+[1;37;40mapi_sockIPC_get_channel to after channel:0x1f566d8
+[0;37;40m
+[1;32;40mPRINTF :[0;37;40m S->[1;36;40msrc/main.c[0;37;40m F->[1;36;40mmessage_recieved[0;37;40m, L->[1;36;40m535: [1;37;40mhbbtv_sockIPC_process is init yet--pchannel=0x1f566d8
+[0;37;40m
+ threads status[0][0]
+ [PM] reg: pid[465]fd[7]name[iwedia_hbbtv]
+ [em-reg] ok[iwedia_hbbtv]-5!
+ append pname: [/proc/465].
+ [PM] reg: pid[465]fd[7]name[iwedia_hbbtv]
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x83
+ [em-reg] err-3!
+ threads ok, times[2][ service webkit ]
+[ service opera.mmh ]
+[ service opera.youtube ]
+[ service opera.opera ]
+[ service opera.ipepg ]
+[ service opera.golive ]
+[ service opera.sbs ]
+[ service opera.foxxum ]
+[ service opera.common ]
+[ service opera.youtube_au ]
+[ service opera.golive_au ]
+[ service opera.sbs_au ]
+[ service T-DIAL ]
+(*) Direct/Thread: Started 'SigHandler' (481) [CRITICAL - OTHER/0] [    9.586381] UMP<2>: <8388608>...
+
+New session opened
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~| DirectFB 1.7.1 |~~~~~~~~~~~~~~~~~~~~~~~~~~
+        (c) 2012-2013  DirectFB integrated media GmbH
+        (c) 2001-2013  The world wide DirectFB Open Source Community
+        (c) 2000-2004  Convergence (integrated media) GmbH
+      ----------------------------------------------------------------
+
+(*) DirectFB/Core: Multi Application Core. (2015-04-29 02:41) [ DEBUG ][ TRACE ]
+(*) Direct/Memcpy: Using libc memcpy()
+(*) Fusion/SHM: Using MADV_REMOVE (3.8.0.0 >= 2.6.19.2)
+(*) Fusion/SHM: Shared root (0) is 1440 bytes [0x1000 @ 0x20000000]
+(*) Direct/Thread: Started 'Fusion Dispatch' (482) [MESSAGING - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'Fusion Deferred' (483) [MESSAGING - OTHER/0] <8388608>...
+(*) Core/Resource: Adding ID 3 - '/applications/tv_bin/event_manager'
+(*) DirectFB/Graphics: GLES2 Acceleration - Unknown 0.1 (Mark J Hood / Denis Oliver Kropp)
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+
+	---[FppCEC]fpp_cec_tx_msg():Send CEC tx Msg error!
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chgchannel,mute=0
+fpi_check_reason*,dev==1,reason=tos.chgchannel
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==1
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.chgchannel
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==1
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.chgchannel
+fpi_check_reason*,dev==8,reason=tos.chgchannel
+fpi_check_reason*,dev==16,reason=tos.chgchannel
+fpi_check_reason*,dev==128,reason=tos.chgchannel
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=1,b_pre_amp_mute=1
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=1
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x22000,reason=0x80
+ERROR:Sendding message id=33685504 must after running message_inits 
+*enter -->fpi_linein_changeto: current_linein=4 ,linein to=4194304
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chglinein,mute=1
+fpi_check_reason*,dev==1,reason=tos.chglinein
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==1
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.chglinein
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==1
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.chglinein
+fpi_check_reason*,dev==8,reason=tos.chglinein
+fpi_check_reason*,dev==16,reason=tos.chglinein
+fpi_check_reason*,dev==128,reason=tos.chglinein
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=1,b_pre_amp_mute=1
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=1
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x22000 (first),reason=0x2000
+[34m
+[VIDSCHG]: Mute -- PLAT_VC_UnMuteVideo(0) = 0 [Time=9776]
+[0m[34m
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=9776]
+[0m######## [ ntk_fpp_tvout_close_tve ] ##########
+[34m
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail![0m[34m
+[VIDERR][PLAT_TVOUT_VideoStop():435] PLAT_VOUT_TVOUT_Action Stop fail![0m[34m
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail![0m[34m
+[VIDERR][PLAT_TVOUT_VideoDisConnect():227] PLAT_VOUT_TVOUT_Action Stop fail![0mERROR:Sendding message id=268566528 must after running message_inits 
+luhm*******fpi_set_mutes_for_device*,dev==191,reason=tos.scart,mute=0
+fpi_check_reason*,dev==1,reason=tos.scart
+~~~~~~~~~~~~~~~~~~~~~~|webkit enter|~~~~~~~~~~~~~~~~~~~~~~
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.scart
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.scart
+fpi_check_reason*,dev==8,reason=tos.scart
+fpi_check_reason*,dev==16,reason=tos.scart
+fpi_check_reason*,dev==32,reason=tos.scart
+luhm***fpi_amp_mute_info[1].reason_name=tos.scart,.reason_status==0
+fpi_check_reason*,dev==128,reason=tos.scart
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+[webkit]: api_lib_init enter
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+@@@$$$ app start :10114
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=1
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x20000
+DTV Source not need this monitor callback!!!! 
+DTV Source not need this monitor callback!!!! 
++++++fpp_demod_set_tone_burst++++++
++++++tvhdtv terminate play++++++
+-------tvhdtv terminate play--------
++++++fpp_demod_set_active_state++++++
+-------fpp_demod_set_active_state,ret=0-------
+**fpi_program_close_subtitle:enOpenType == 3
+*f1 config*the OS=linux
+ DRV_VD_Set_TaskStatus bEnable=0 PID = 259 
+[34m
+[VIDSCHG]: PLAT_VIU_ChangeInput( u8Path=0, enSourceType=17) [Time=10126][0m[34m
+[VIDSCHG]: Get source description ok,[Time=10126] [0m[34m
+[VIDSCHG]: Source description: [0m[34m
+@@@$$$ app_time:100,delta:12
+[VIDSCHG]: enSourceType 5 [0m[34m
+[VIDSCHG]: u8Instance  3 [0m[34m
+api svn version: 9665
+[VIDSCHG]: enADC0Mux 0 [0m[34m
+api svn data: 2016-11-03 17:48:30 +0800 (Thu, 03 Nov 2016) 
+[VIDSCHG]: enADC1Mux  0 [0m[34m
+[VIDSCHG]: enADC2Mux 0 [0m[34m
+[VIDSCHG]: enADC3Mux  0 [0m[34m
+[VIDSCHG]: enSOGMux 3 [0m[34m
+[VIDSCHG]: u8SOGThreshold 0 [0m[34m
+[VIDSCHG]: enFBMux 2 [0m[34m
+[VIDSCHG]: u8FBThreshold  0
+ [0m[34m
+[VIDSCHG]: 
+ -------------> Start PLAT_VIN_ChangeInput( 0, 5) [Time=10127]
+enter = tvh_request_init
+[0m[34m
+[VIDSCHG]: DAL_SRC_DisconnectInput(u8Path=0, enSourceType=1) [Time=10127]
+[0m**os_message_create**
+[34m
+[VIDSCHG]: 
+  2-1 PLAT_VLIB_DisconnectSource(0,1)
+[0m[34m
+[VIDSCHG]: 
+  2-X( path0)
+[0m[34m
+[VIDSCHG]: 
+ TEST 3-X( path0, to interface2,SRC5)
+[0m[34m
+[VIDSCHG]: _VIN_GetInputSrcMethod( enType(5) )
+[0mERROR:Sendding message id=-1 must after the cliend init 
+[34m
+[VIDSCHG]: DAL_SRC_ConnectInput(enSourceType=5) [Time=10128]
+ini=/applications/tclconfig/sys.ini
+[0m[34m
+[VIDSCHG]: 
+  5-X Init VInTask P0 SearchTimer(50),state(0) to sync&detect.---- Interface2[0m[34m
+[VIDSCHG]: 
+  6-1 [0m[34m
+[VIDSCHG]: PLAT_VLIB_PlayControl path:0  enControl:0  
+[0m[34m
+[VIDSCHG]: 
+  6-2 [0m[34m
+[VIDSCHG]: 
+  -------------> Exit PLAT_VIN_ChangeInput() [Time=10129]
+[0m
+ ntttx_EnableWSS
+
+ DRV_VBI : ntttx_EnableTTX
+***** MS12 Modify path  for scartout ******
+[PLAT_AIN] PLAT_AIN_Connect() - PLAT_AIN_SetPathConfig() should be used on this source first.
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x0, R:0x0
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[1;32mbgroupcert.dat[0m       [1;32mpriv.dat[0m
+[1;32mdevcerttemplate.dat[0m  [1;32mzgpriv.dat[0m
+[34m[34m
+[VIDSCHG]: 
+   VIN_EvtHanlder:EN_PLAT_VIN_SIGNAL_STABLE_SYNC [Time=10497]
+[0m
+[VIDSCHG]: _SRC_HDMI_StatusCallback(path=0) -> EN_DAL_SRC_SIGNAL_STABLE_SYNC [Time=10497]
+[0m[34m
+[VIDSCHG]: u16ActiveH(1920) u16ActiveV(1080) b8Interlace(0) enColorSpace(2) b8Format422(0)
+[0m[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+*****_fpp_audio_load_dac_scale for  new av-out dac*****
+luok----MS12----fpi_audio_set_audio_CompMode,enCompMode=0
+[fpp_audio_set_audio_CompMode],enter.  enCompMode =0
+*** skip setting the CompMode***
+[fpi_zoom.c] enter fpi_zoom_set_small_window_state set window state 0
+luhm----- Enter fpi_football_data_read 412 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm--fpi_football_data_read---football_enable=0
+fpp_zoom_get_afd_info *aspectRate=2
+luhm6014-------aspectRate=2,afdValue=0
+
+
+[zoom_convert_zoom_mode_to_wss,322] zoom_mode == E_AR_16x9,wss_value == 0x7
+
+
+[tvh_scart_out_set_wss,969]wss_data == 0x7
+
+########## Enter -- > [ fpp_scart_out_set_wss ] ######## wss_data = 7
+########### [ ntk_fpp_tvout_set_wss_and_cgms ] ############ g_is_user_set_wss = 0x1 , au8Data[0] = 0x7
+luhm6014-------wang.q eAspectRate=2, eAFDValue=0, zoom_mode=1
+FPP DISP --> (0,0,1920,1080) 
+[VIDSCHG] PLAT_VIU_SetOutMode_ByUser:  OutMode = 1
+[34m
+[VIDSCHG]: VIU_BuildScalerParams->Crop/Geom from User
+[0m[VIDSCHG] VIU --> Crop=(1920 1080 0 0),Geometry=(3840 2160 0 0)
+[VIDSCHG] VIU --> 3D In:0 , Out:0 , LRSwap:0 , LLOut:0
+Source is HDMI, PC mode setting is determined by UI
+[34m
+[VIDERR][PLAT_VC_SetScale():1959] Divide By Zero![0m[34m
+[VIDERR][PLAT_VC_BuildScale():2060] PLAT_VC_SetScale Error![0m[34m
+[VIDMSET|VIDSCHG]: PLAT_VC_BuildPostScale():[0m[34m
+[VIDMSET|VIDSCHG]: POST IP stCap :  X(0) Y(0) W(1920) H(1080) stIpOut : W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: u16FBHSize(1920) u16FBVSize(1080)[0m[34m
+[VIDMSET|VIDSCHG]: POST VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: POST DP  stOutRect :  X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=0) [Time=10536][0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(0) H(0) stOutSize : W(0) H(0)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(0) H(0)[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** POST Scaling - enOutMode(1): 1 => Main, 2 => PIP ***[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDSCHG]: 
+ PLAT_VC_SendUpdateQueue(): stMsg.u32UpdatePath=1 ,[Time=10536]
+[0mPID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4822:
+Get sync info failed
+
+PID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4829:
+SetHdmiBlackLevel ok
+
+[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 0
+[34m
+[VIDSCHG]: PLAT_VLIB_UpdateSCLR( u8Path(0) enSCLR_Update(0) )
+[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1140] DAL_SCLR_FB_Alloc  Set to Zero Error , FB Size=33185792,  FB Hsize=0, FB Vsize=0
+[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1150] DAL_SCLR_FB_Alloc Alloc buffer Error!
+[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1152] enPhyFb[0] desired size 0kb , available size 32408kb
+[0m[34m
+[VIDERR][DAL_SCLR_Update_ScalingWithFrameBuffer():1897] enSclrPath(0), please check!
+[0m[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=2) [Time=10542][0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(0) H(0) stOutSize : W(0) H(0)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(0) H(0)[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** P[   10.910150] 
+[   10.910150] [AUD_APU_NBSM:1617] CMD:0, param:1
+OST Scaling - enOutMode(1): 1 =>[   10.919347] 
+[   10.919347] [AUD_APU_NBSM:1652] CMD:5
+ Main, 2 => PIP [   10.925742] 
+[   10.925742] [AUD_APU_NBSM:1628] CMD:1, param:0
+***[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1140] DAL_SCLR_FB_Alloc  Set to Zero Error , FB Size=11460608,  FB Hsize=0, FB Vsize=0
+	 ,u8GMA_Param[0] =50
+######## [ _fpp_polling_hdmi_ratio ] ########### aspect ratio has been changed 2!!! 
+[34mtvhsignal_afd_change_callback, afd changed-->linein=0x400000!!!!!!!!!!!!!!!!!!
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+
+[VIDSCHG]: 
+[_PLAT_VIU_EvtHandler]VIN->VIU,u8Path=0, VIU Get event=12, [Time=10875]
+[0m[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1150] DAL_SCLR_FB_Alloc Alloc buffer Error!
+[0m[34m
+[VIDERR][DAL_SCLR_FB_Alloc():1152] enPhyFb[2] desired size 0kb , available size 11192kb
+[0m[34m
+[VIDERR][DAL_SCLR_Update_ScalingWithFrameBuffer():1897] enSclrPath(2), please check!
+[0m[34m
+[VIDSCHG]: 
+[_PLAT_VIU_EvtHandler]VIN->VIU,u8Path=0, VIU Get event=5, [Time=10875]
+[0m[34m
+[VIDSCHG]: 
+[_PLAT_VIU_EvtHandler] Config Mode Done, Ready to Call back/Send Event to Upper Layer [Time=10875]
+[0m[34m
+[VIDSCHG]: 
+[_PLAT_VIU_SendVIDEvt]viu send event= 0, [Time=10875]
+[0m	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+====enter=====[_fpp_audio_event_callback],pstEventParam= 26,
+[_fpp_audio_event_callback],gFpp_Audio_SpdifType == 0
+[_fpp_audio_event_callback],set PLAT_AIN_SetBypassCapability == 0
+fpp_zoom_get_afd_info *aspectRate=2
+luhm6014-------aspectRate=2,afdValue=0
+
+
+[zoom_convert_zoom_mode_to_wss,322] zoom_mode == E_AR_16x9,wss_value == 0x7
+
+
+[tvh_scart_out_set_wss,969]wss_data == 0x7
+
+########## Enter -- > [ fpp_scart_out_set_wss ] ######## wss_data = 7
+########### [ ntk_fpp_tvout_set_wss_and_cgms ] ############ g_is_user_set_wss = 0x1 , au8Data[0] = 0x7
+luhm6014-------wang.q eAspectRate=2, eAFDValue=0, zoom_mode=1
+wang.q fpi_zoom_set_pic_size_view, fpi_signal_get_format fail, (7, 20845816)
+fpi_zoom_set_dtv_auto_format fpi_zoom_set_pic_size_view fail
+wang.q fpi_zoom_set_pic_size_view, video size (1920, 1080) -- scale_video=177
+**fpi_audio_set_SPDIF_delay,delay=60
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 6000---by qiugr---
+un32_audio_delay_time == 75,user_audiodelay ==  60,Dolby Delay == 15,audio_delay_from_ini=0---by qiugr---
+FPP CROP --> (0,0,1920,1080) 
+FPP DISP --> (0,0,1920,1080) 
+[VIDSCHG] PLAT_VIU_SetOutMode_ByUser:  OutMode = 1
+[34m
+[VIDSCHG]: VIU_BuildScalerParams->Crop/Geom from User
+[0m[VIDSCHG] VIU --> Crop=(1920 1080 0 0),Geometry=(3840 2160 0 0)
+[VIDSCHG] VIU --> 3D In:0 , Out:0 , LRSwap:0 , LLOut:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:11
+
+ [fpi_cec_routing_change,710]: when tv start up,has not send msg(0x85)to request active source,no need send msg(0x82) 
+
+
+[tvh_ci_notify_linein_change,1392]CI Card is not INserted, Nothing to do!!!
+
+Source is HDMI, PC mode setting is determined by UI
+[_fpp_audio_event_callback],set PLAT_AOUT_SetSpeakerDataType EN_PLAT_AUD_SPK_DATA_TYPE_SRC
+[34m
+[VIDMSET|VIDSCHG]: PLAT_VC_BuildScale():[0m[34m
+[VIDMSET|VIDSCHG]: IP stCap :  X(0) Y(0) W(1920) H(1080) stIpOut : W(1920) H(1080)[0m[34mluhm-----SCART_OUT_BY_SOURCE-----ENABLE is True
+
+[VIDMSET|VIDSCHG]: PLAT_VC_BuildPostScale():[0m[34m
+[VIDMSET|VIDSCHG]: POST IP stCap :  X(0) Y(0) W(1920) H(1080) stIpOut : W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: u16FBHSize(1920) u16FBVSize(1080)[0m[34m
+[VIDMSET|VIDSCHG]: POST VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: POST DP  stOutRect :  X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=0) [Time=10892]
+
+ -----------[tvh_scart_notify_linein_change,844]save scart out linein 0x00400000
+
+fpi_linein_changeto exit end 
+[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** POST Scaling - enOutMode(1): 1 => Main, 2 => PIP ***[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDSCHG]: 
+ PLAT_VC_SendUpdateQueue(): stMsg.u32UpdatePath=1 ,[Time=11230]
+[0mPID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4822:
+Get sync info failed
+
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.lock,mute=0
+fpi_check_reason*,dev==1,reason=tos.lock
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+luhm***fpi_speaker_mute_info[4].reason_name= tos.lock,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.lock
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+luhm***fpi_hp_mute_info[4].reason_name= tos.lock,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.lock
+fpi_check_reason*,dev==8,reason=tos.lock
+fpi_check_reason*,dev==16,reason=tos.lock
+fpi_check_reason*,dev==128,reason=tos.lock
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+PID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4829:
+SetHdmiBlackLevel ok
+
+[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 60000
+[34m
+[VIDSCHG]: PLAT_VLIB_UpdateSCLR( u8Path(0) enSCLR_Update(0) )
+[0mlhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x100
+hx----->enter _linein_init_play,fpi_video_unmutefpi_video_mute->after set mute gun32mute_level:0x2040,reason=0x40
+ERROR:Sendding message id=268566528 must after the cliend init 
+	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+ERROR:Sendding message id=536875008 must after the cliend init 
+tvhsignal_process_locked-->fpp_signal_get_format: w*h is 1920 * 1080 (id:16)
+[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=2) [Time=11297][0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(720) H(480) stOutSize : W(720) H(480)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(720) H(480)[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** POST Scaling - enOutMode(1): 1 => Main, 2 => PIP ***[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0mluhm----- Enter fpi_football_data_read 412 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm--fpi_football_data_read---football_enable=0
+[_linein_init_zoom] auto-1, overscan-1, pisSize-1, pisView-1
+fpi_get_panel_resolution_ratio: width:3840,height:2160
+fpi_zoom_init *****s_IsStartOverScan:1,***s_bIsStartAutoFormat:1,s_zoom_mode:1,s_CurrentPanelType:2
+
+(<unknown>:489): GLib-GObject-CRITICAL **: g_param_spec_uint: assertion `default_value >= minimum && default_value <= maximum' failed
+PID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4822:
+Get sync info failed
+
+
+(<unknown>:489): GLib-GObject-CRITICAL **: g_object_class_install_property: assertion `G_IS_PARAM_SPEC (pspec)' failed
+
+ TM-[pre_end], tm[1505420838709]PID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4829:
+[34mSetHdmiBlackLevel ok
+
+
+[VIDSCHG]: Mute -- PLAT_VC_UnMuteVideo(0) = 0 [Time=11647]
+[0m[34m
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=11647]
+[0m	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+fpp_zoom_get_afd_info *aspectRate=2
+luhm6014-------aspectRate=2,afdValue=0
+
+
+[zoom_convert_zoom_mode_to_wss,322] zoom_mode == E_AR_16x9,wss_value == 0x7
+
+
+[tvh_scart_out_set_wss,969]wss_data == 0x7
+
+########## Enter -- > [ fpp_scart_out_set_wss ] ######## wss_data = 7
+########### [ ntk_fpp_tvout_set_wss_and_cgms ] ############ g_is_user_set_wss = 0x1 , au8Data[0] = 0x7
+luhm6014-------wang.q eAspectRate=2, eAFDValue=0, zoom_mode=1
+wang.q fpi_zoom_set_pic_size_view, video size (1920, 1080) -- scale_video=177
+FPP CROP --> (0,0,1920,1080) 
+FPP DISP --> (0,0,1920,1080) 
+[VIDSCHG] PLAT_VIU_SetOutMode_ByUser:  OutMode = 1
+[34m
+[VIDSCHG]: VIU_BuildScalerParams->Crop/Geom from User
+[0m[VIDSCHG] VIU --> Crop=(1920 1080 0 0),Geometry=(3840 2160 0 0)
+[VIDSCHG] VIU --> 3D In:0 , Out:0 , LRSwap:0 , LLOut:0
+Source is HDMI, PC mode setting is determined by UI
+[34m
+[VIDMSET|VIDSCHG]: PLAT_VC_BuildScale():[0m[34m
+[VIDMSET|VIDSCHG]: IP stCap :  X(0) Y(0) W(1920) H(1080) stIpOut : W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: PLAT_VC_BuildPostScale():[0m[34m
+[VIDMSET|VIDSCHG]: POST IP stCap :  X(0) Y(0) W(1920) H(1080) stIpOut : W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: u16FBHSize(1920) u16FBVSize(1080)[0m[34m
+[VIDMSET|VIDSCHG]: POST VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: POST DP  stOutRect :  X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=0) [Time=11652][0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(1920) H(1080)[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** POST Scaling - enOutMode(1): 1 => Main, 2 => PIP ***[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0m[34m
+[VIDSCHG]: 
+ PLAT_VC_SendUpdateQueue(): stMsg.u32UpdatePath=1 ,[Time=11653]
+[0mPID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4822:
+Get sync info failed
+
+PID:259, [MGR_PQ_ERR]MGR_PQ_RestoreToDefault(), Line:4829:
+SetHdmiBlackLevel ok
+
+[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 60000
+[34m
+[VIDSCHG]: PLAT_VLIB_UpdateSCLR( u8Path(0) enSCLR_Update(0) )
+[0m	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=2) [Time=11657][0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(720) H(480) stOutSize : W(720) H(480)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(720) H(480)ERROR:Sendding message id=536875008 must after the cliend init 
+
+PicMode.ini:[/applications/tclconfig/PicCurve/PicMode.ini]
+ct test st_format.u16HResolution = 1920 , st_format.u16VResolution = 1080
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 6000---by qiugr---
+un32_audio_delay_time == 75,user_audiodelay ==  60,Dolby Delay == 15,audio_delay_from_ini=0---by qiugr---
+[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** POST Scaling - enOutMode(1): 1 => Main, 2 => PIP ***[0m[34m
+[VIDMSET|VI[   12.108664] [ntiic_Write(): 3960][channel: 4] Dev NACK 
+DSCHG]: VEP stCapRect : X(0) Y(0[   12.116961] [ntiic_Write(): 3960][channel: 4] Dev NACK 
+) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0mluhm----- Enter fpi_factory_football_data_read 660 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-fpi_get_stadium_mode-fpi_get_football_data---enable=0
+	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+fpi_video_set_rgb:-- red_gain=134,green_gain=128,blue_gain=125,r_offset=128,g_offset=128,b_offset=128
+ucBGain=125,ucGGain=128,ucRGain=134
+ucBOffset=128,ucGOffset=128,ucROffset=128
+[property_local_dimming_enable_set: 731]fpp_system_panel_get_param_bool failed!!!
+enter-->fpi_video_set_game_mode = 0,pre_val=255
+luhm----- Enter fpi_factory_football_data_read 660 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+function: _fpi_update_10p_white_balance, index=0,base_color_t[index].red=100,ten_p_data.rgb_data[index].red_gain=0
+luhm-fpi_get_stadium_mode-fpi_get_football_data---enable=0
+	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+
+ TCON_MEMC_LEVEL_731  level =4
+ Set TCON  MEMC CUSTOMER 
+
+------fpi_video_set_color_param:value = 0
+IIC fail to write data!! 
+ DEV_Write_TCON_MEMC_Blur_By_667	level =10
+
+ Set TCON_MEMC_Blur _Command[i]=195 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=2 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=10 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=255 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=0 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=0 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=0 checksum 
+
+ Set TCON_MEMC_Blur _Command[i]=179 checksum end
+
+ Set TCON_MEMC_Blur _Command[i]=2 checksum end
+
+ Set TCON_MEMC_Blur _Command[i]=10 checksum end
+
+ Set TCON_MEMC_Blur _Command[i]=255 checksum end
+
+ Set TCON_MEMC_Blur _Command[i]=0 checksum end
+
+ Set TCON_MEMC_Blur _Command[i]=0 checksum end
+
+ Set TCON_MEMC_Blur _Command[i]=0 checksum end
+[###FPI LOG###]  FUNCTION:fpi_video_set_pq_algorithm--====en_algorithm:1---on_off:0
+init===========================
+football off=========================
+IIC fail to write data!!
+ MEMC_DeJudder_By_667_731 level =10
+ 
+ Set TCON_MEMC_De_Judder	 _Command[i]=195	checksum
+
+ Set TCON_MEMC_De_Judder	 _Command[i]=2	checksum
+
+ Set TCON_MEMC_De_Judder	 _Command[i]=10	checksum
+
+ Set TCON_MEMC_De_Judder	 _Command[i]=255	checksum
+
+ Set TCON_MEMC_De_Judder	 _Command[i]=0	checksum
+
+ Set TCON_MEMC_De_Judder	 _Command[i]=0	checksum
+
+ Set TCON_MEMC_De_Judder	 _Command[i]=0	checksum
+
+ Set TCON_MEMC_De_Judder _Command[i]=179 checksum end
+
+ Set[   12.456941] [ntiic_Write(): 3960][channel: 4] Dev NACK 
+ TCON_MEMC_De_Judder _Command[i]=2 checksum end
+
+ Set TCON_MEMC_De_Judder _Command[i]=10 checksum end
+
+ Set TCON_MEMC_De_Judder _Command[i]=255 checksum end
+
+ Set TCON_MEMC_De_Judder _Command[i]=0 checksum end
+
+ Set TCON_MEMC_De_Judder _Command[i]=0 checksum end
+
+ Set TCON_MEMC_De_Judder _Command[i]=0 checksum end
+ERROR:Sendding message id=219283456 must after the cliend init 
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x40
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.sync,mute=0
+fpi_check_reason*,dev==1,reason=tos.sync
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+luhm***fpi_speaker_mute_info[4].reason_name= tos.lock,.reason_status==0
+luhm***fpi_speaker_mute_info[5].reason_name= tos.sync,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.sync
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+luhm***fpi_hp_mute_info[4].reason_name= tos.lock,reason_status==0
+luhm***fpi_hp_mute_info[5].reason_name= tos.sync,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.sync
+fpi_check_reason*,dev==8,reason=tos.sync
+fpi_check_reason*,dev==16,reason=tos.sync
+fpi_check_reason*,dev==128,reason=tos.sync
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+IIC fail to write data!!EN_FPP_MEMC_CUSTOME xxxxxxx p_ctrl->para2: 10  p_ctrl->para3: 10 
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+fpi_video_set_rgb:-- red_gain=134,green_gain=128,blue_gain=125,r_offset=128,g_offset=128,b_offset=128
+ucBGain=125,ucGGain=128,ucRGain=134
+ucBOffset=128,ucGOffset=128,ucROffset=128
+[property_local_dimming_enable_set: 731]fpp_system_panel_get_param_bool failed!!!
+enter-->fpi_video_set_game_mode = 0,pre_val=0
+function: _fpi_update_10p_white_balance, index=0,base_color_t[index].red=100,ten_p_data.rgb_data[index].red_gain=0
+
+------fpi_video_set_color_param:value = 0
+[###FPI LOG###]  FUNCTION:fpi_video_set_pq_algorithm--====en_algorithm:1---on_off:0
+football off=========================
+
+ CHECK ESN KEY ......!lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+[32mPASS!![m
+$$$$$$$ verify playready ok $$$$$$$$$ 
+
+ TM-[pre_ready], tm[1505420839508]lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+fpi_get_panel_resolution_ratio: width:3840,height:2160
+Tvh_service_avmute av_svr_init begin
+Tvh_service_avmute av_svr_init end
+fpp_power_get_backlight Sucess ! 
+ct test ... backlight_onoff = 1 *back_light_on = 1 backlight_ui_value = 100
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x0,reason=0x2000
+ERROR:Sendding message id=268566528 must after the cliend init 
+[34m
+[VIDSCHG]: Unmute -- PLAT_VC_UnMuteVideo(0) = 200 [Time=12459]
+[0mfpi_video_mute->unmute now fpi_video_mute set --> fpp_video_mute ret:0,reason=0x2000
+######## [ ntk_fpp_tvout_open_tve(4194304) ] ##########
+[34m
+[VIDSCHG]: ntk_fpp_tvout_open_tve(scart_out_get_source=4194304)
+ TM-[boot_1], tm[1505420836645]
+ [netflix] boot tm[121]
+ TM-[boot_2], tm[1505420839550]
+ sys-info: boot[0],NF_ONLY_SUSPEND is NOT set.  Background state is supported by the application manager.
+[AM]TCL_FIRMWARE_VERSION= V8-NT67F02-LF1V504  
+[AM] env[6],[TCL_IMAGE_SW_VERSION= V8-NT67F02-LF1V504 ] 
+[AM] model env[7],[TV_MODEL_NAME=U55S6906] 
+
+ TM-[boot_3], tm[1505420839553]
+ [AM]-socket appfd<17>
+[0m**fpi_audio_enable_avl**p_config->b_enable=1, p_config->n32_audio_source=4194304
+#P-AOUT# PLAT_AOUT_SetPostParams() - same parameters -> skip
+**fpi_audio_set_SPDIF_type,type=1
+---lk--- u8_ms12_enable=1
+**fpi_audio_set_stereo**STEREO_TYPE=0
+#P-AOUT# PLAT_AOUT_SetPostParams() - same parameters -> skip
+**fpi_audio_set_balance**p_balance=-1093280884
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+wtt:gst_ffmpegdemux_register begin.
+[34mdddddddddddddddddddddddddddddddddd=0
+interlace == 0---by qiugr---
+un16_format_framerate == 6000---by qiugr---
+
+[VIDSCHG]: PLAT_VOUT_EnableDisplayWindow( 0, 1) [Time=12829]
+[0mun32_audio_delay_time == 75,user_audiodelay ==  60,Dolby Delay == 15,audio_delay_from_ini=0---by qiugr---
+[34m
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 0) [Time=12829]
+[0m stTVE_SETUP.b8Format422 0 
+**fpi_audio_set_SPDIF_delay,delay=60
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 6000---by qiugr---
+un32_audio_delay_time == 75,user_audiodelay ==  60,Dolby Delay == 15,audio_delay_from_ini=0---by qiugr---
+
+ luhm----fpi_audio_set_headphone_option-->headphone_op = 0
+
+[34m
+[VIDMSET|VIDSCHG]: 
+ DAL_SCLR_SetVidSetting(enDalSclrPath=1) [Time=12830][0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(704) H(576) stOutSize : W(704) H(576)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(704) H(576)[0m[34m
+[VIDMSET|VIDSCHG]: 
+*** POST Scaling - enOutMode(1): 1 => Main, 2 => PIP ***[0m[34m
+[VIDMSET|VIDSCHG]: VEP stCapRect : X(0) Y(0) W(1920) H(1080) stOutSize : W(3840) H(2160)[0m[34m
+[VIDMSET|VIDSCHG]: DP  stOutRect : X(0) Y(0) W(3840) H(2160)[0m**fpi_audio_set_hp_volume**p_volume=-1093280876
+source=-1246944460,volume=20
+curve0=0,curve1=25,curve2=50,curve3=75,curve4=100[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+**fpi_audio_set_speaker_volume**p_volume=-1093280876
+source=-1246944460,volume=15
+curve0=0,curve1=25,curve2=50,curve3=75,curve4=100USE ini file CURVE
+******* u8AudioCurveType:0 *********
+******* u16VolumeCurveSpeaker has done *********
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+@@[fpi_linein_later_init] finished! 
+[FPP_3D]_fpp_3d_SetPanelArch()[line: 517]:Set 3D Panel and Arch[FPP_3D]fpp_3d_init()[line: 192]:<<fpp_3d_init>> <<Non MM source or MEMC Mode>>
+plat_3d_cus_init FUNCTION START
+EN_3D_TYPE_ARCH_INTERNAL + EN_3D_TYPE_PANEL_SG
+Open 3D enable pin successfullyOpen 3D ctrl pin successfullyFHD[1]	enSoc3dOut:[1]	enFrc3dOut:[5]
+FHD[2]	enSoc3dOut:[2]	enFrc3dOut:[5]
+FHD[3]	enSoc3dOut:[3]	enFrc3dOut:[5]
+FHD[4]	enSoc3dOut:[4]	enFrc3dOut:[5]
+FHD[5]	enSoc3dOut:[5]	enFrc3dOut:[5]
+FHD[6]	enSoc3dOut:[0]	enFrc3dOut:[5]
+FHD[7]	enSoc3dOut:[0]	enFrc3dOut:[0]
+FHD[8]	enSoc3dOut:[0]	enFrc3dOut:[0]
+FHD[9]	enSoc3dOut:[0]	enFrc3dOut:[0]
+UHD[1]	enSoc3dOut:[1]	enFrc3dOut:[5]
+UHD[2]	enSoc3dOut:[2]	enFrc3dOut:[5]
+UHD[3]	enSoc3dOut:[3]	enFrc3dOut:[5]
+UHD[4]	enSoc3dOut:[4]	enFrc3dOut:[5]
+UHD[5]	enSoc3dOut:[5]	enFrc3dOut:[5]
+UHD[6]	enSoc3dOut:[0]	enFrc3dOut:[5]
+UHD[7]	enSoc3dOut:[0]	enFrc3dOut:[0]
+UHD[8]	enSoc3dOut:[0]	enFrc3dOut:[0]
+UHD[9]	enSoc3dOut:[0]	enFrc3dOut:[0]
+plat_3d_cus_init FUNCTION END
+[fpi_3d.c]---read model ini 3d LR SWITCH===1
+[fpi_3d.c]---read model ini 3d delay ===0
+watch_dog db = 1
+MhlDevice_Init complete
+wang.q load_ini_file, m_u16SpiProjectID = 0x57 
+wang.q load_ini_file, m_pModelName = /applications/tclconfig/model/EU_87_T324.ini 
+ERROR:Sendding message id=536879106 must after the cliend init 
+luhm----fpi_set_ms12_sound_preset_for_hp---hp_plug=0
+luhm***fpi_audio_get_mute_for_device****en_dev=1,mute_reason==tos.chglinein
+fpi_check_reason*,dev==1,reason=tos.chglinein
+luhm***fpi_check_reason****index==1
+luhm****fpi_audio_get_mute_for_device****return ret=0
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chglinein,mute=0
+fpi_check_reason*,dev==1,reason=tos.chglinein
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==0
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+iniparser: syntax error in /applications/tclconfig/overscan/overscan_ID15.ini (1):
+| gst_msessrc_base_init, begin.
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+-> ﻿#OVERSCAN
+luhm***fpi_speaker_mute_info[4].reason_name= tos.lock,.reason_status==0
+luhm***fpi_speaker_mute_info[5].reason_name= tos.sync,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.chglinein
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==0
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+luhm***fpi_hp_mute_info[4].reason_name= tos.lock,reason_status==0
+luhm***fpi_hp_mute_info[5].reason_name= tos.sync,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.chglinein
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+| gst_msessrc_base_init, end.
+| gst_msessrc_class_init, begin.
+fpi_check_reason*,dev==8,reason=tos.chglinein
+fpi_check_reason*,dev==16,reason=tos.chglinein
+fpi_check_reason*,dev==128,reason=tos.chglinein
+lhm****b_current_hp_mute=0,b_pre_hp_mute=1
+| gst_msessrc_class_init, end.
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=0
+| gst_msessrc_uri_get_type, begin.
+luhm-----*f1 config*the ms12_bin=(null)
+| gst_msessrc_uri_get_protocols, begin.
+| gst_msessrc_uri_get_protocols, end.
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+enSoundPreset=5
+**luhm----ms12----fpi_audio_set_ms12_sound_preset mode =5
+******* fpp_audio_set_dolby_sence_mode type:0*****
+
+
+luhm----fpi_audio_headphone_insert_handle-->E_HP_SPEAKER set_balance= 0
+
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+Warning!!!, callback: Id 13d5418 takes too long time!!!
+lhm****b_current_speaker_mute=0,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=0
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:10
+lhm****b_current_spdif_mute=0,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=0
+lhm****b_current_avout_mute=0,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=0
+audio_out_mute=false
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=0,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=0
+***enter->fpp_capture_audio_mute,b_mute = 0
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=0,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=0
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 0
+chaifr--------fpi_audio_set_bluetooth_mute UNMUTE, volume = 50 ---
+luhm***fpi_audio_get_mute_for_device****en_dev=1,mute_reason==tos.chgchannel
+fpi_check_reason*,dev==1,reason=tos.chgchannel
+luhm***fpi_check_reason****index==3
+luhm****fpi_audio_get_mute_for_device****return ret=0
+
+
+ [41;30m@@@###power_on_total_time:9267 [0m
+#_#[sys_func_enable_init] subtitle_enable:1,ttx_enable:1,mheg5_enable:1,dfb_enable:1
+
+ [frc] <0>Init UserTimer
+ct test .... chmod 666 db epg!!!
+
+ db_dtv_load_operator_config_sqlite3(/applications/tclconfig/dtv_config.db) .
+ cfg total: 49------load db_get_user_common_setting------
+[drm_ipc_server_init--256]-----
+[drm_ipc_server_init--269]-----
+
+ [dial] - get status timeout !app[name=gogiopera-tv-store] is not running...
+ [netflix] checking eth0.
+ [PM] reg: pid[480]fd[18]name[T-DIAL]
+launcher listening on gDialPort 56789
+ [nfx] language = [6] [en]
+
+-init-PicCurve.ini:[/applications/tclconfig/PicCurve/PicCurve_ID87.ini]
+White balance file size = 322 
+app_factory_database_init,warm2 flag1=0,flag2=1 
+Add warm2 read white balance CRC check error,CRC=0xf08, Read crc is:0xff,0xfd.
+**********CLIENT ID = 1 is READY***************
+ct test ... panel is note 3d panel , return;
+Function app_video_init:line:3049
+WARNING!! app_video_get_pic_curve_ini:2074,b_have_loaded=1
+
+PicMode.ini:[/applications/tclconfig/PicCurve/PicMode.ini]
+
+==============================first calling========================
+  ct test  TV SEND TO CEC DEVICE-----------------ENMSG:0x85
+function: app_video_init:gain=100,offset=2
+***fpi_signal_get_hdmi_provider_type*,type==2
+app_get_football_data*
+luhm----- Enter app_football_data_read 3694 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm--app_get_football_data---enable=0
+app_video_get_special_mode  shopMode:0 stadiumMode=0
+[app_video.c] enter app_video_dbc_arg_update_ex line==2517,src_type=4194304,value==100
+
+[app_video.c] enter app_get_pic_mode_element_ex line==5218,ePicModeElem=45,value==100,st_pic_set.enPicMode=0,src_type=0x400000
+
+[app_video_get_autoformat_Info]autoformat_picture_size == 0,b_autoformat_valid == 0
+
+[app_video_set_autoformat_info]autoformat_picture_size == 0,b_autoformat_valid ==1
+[app_video.c] enter app_video_update enCurMode==0,src_type=4194304,value==50
+xxx_db.c Color tmp = 1 , ret = 1 
+xxx_db.c Color tmp = 1 , ret = 1 
+fpi_video_set_rgb:-- red_gain=134,green_gain=128,blue_gain=125,r_offset=128,g_offset=128,b_offset=128
+ucBGain=125,ucGGain=128,ucRGain=134
+ucBOffset=128,ucGOffset=128,ucROffset=128
+enter >>fpi_video_set_basic_parameters,line==3649,value=50
+enter-->fpi_video_set_game_mode = 0,pre_val=0
+function: app_update_10p_white_balance:gain=2,offset=100
+--red: 0, green=0,blue=0
+function: app_update_10p_white_balance, index=0,base_color_t[index].red=100
+
+------fpi_video_set_color_param:value = 0
+	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+[###FPI LOG###]  FUNCTION:fpi_video_set_pq_algorithm--====en_algorithm:1---on_off:0
+football off=========================
+
+[app_video.c] enter app_get_pic_mode_element_ex line==5218,ePicModeElem=27,value==2,st_pic_set.enPicMode=0,src_type=0x400000
++++++app channel list load all type=0+++++
++++++E_APP_CHANNEL_LIST_LOAD_TYPE_BY_LIST_CHANGE list ver=60917,new ver=9474+++++
+failure load all channel list count is zero
+
+
+
+
+========app_input_source_init
+luhm--------@@[app_input_source_init] app_ms12_sound_preset_data_init()!
+luhm----app_dolby_ms12_sound_preset_data_init
+luhm-----ms12-------g_currentSoundPreset=5
+luhm---MS12----g_stSoundPresetData[0].ensurround_virtualizer = 0
+luhm---MS12----g_stSoundPresetData[0].endialog_enhancer = 0
+luhm---MS12----g_stSoundPresetData[0].enbass_enhancer = 2
+luhm---MS12----g_stSoundPresetData[0].enintelligent_loudness = 0
+luhm---MS12----g_stSoundPresetData[0].enmedia_intelligence = 0
+luhm---MS12----g_stSoundPresetData[0].enInteligentEQ = 2
+luhm---MS12----g_stSoundPresetData[0].i8Balance200 = 50
+luhm---MS12----g_stSoundPresetData[0].i8Balance750 = 50
+luhm---MS12----g_stSoundPresetData[0].i8Balance2K = 50
+luhm---MS12----g_stSoundPresetData[0].i8Balance5K = 50
+luhm---MS12----g_stSoundPresetData[0].i8Balance15K = 50
+luhm---MS12----g_stSoundPresetData[1].ensurround_virtualizer = 4
+luhm---MS12----g_stSoundPresetData[1].endialog_enhancer = 2
+luhm---MS12----g_stSoundPresetData[1].enbass_enhancer = 2
+luhm---MS12----g_stSoundPresetData[1].enintelligent_loudness = 0
+luhm---MS12----g_stSoundPresetData[1].enmedia_intelligence = 0
+luhm---MS12----g_stSoundPresetData[1].enInteligentEQ = 0
+luhm---MS12----g_stSoundPresetData[1].i8Balance200 = 50
+luhm---MS12----g_stSoundPresetData[1].i8Balance750 = 50
+luhm---MS12----g_stSoundPresetData[1].i8Balance2K = 50
+luhm---MS12----g_stSoundPresetData[1].i8Balance5K = 50
+luhm---MS12----g_stSoundPresetData[1].i8Balance15K = 50
+luhm---MS12----g_stSoundPresetData[2].ensurround_virtualizer = 3
+luhm---MS12----g_stSoundPresetData[2].endialog_enhancer = 2
+luhm---MS12----g_stSoundPresetData[2].enbass_enhancer = 2
+luhm---MS12----g_stSoundPresetData[2].enintelligent_loudness = 2
+luhm---MS12----g_stSoundPresetData[2].enmedia_intelligence = 0
+luhm---MS12----g_stSoundPresetData[2].enInteligentEQ = 0
+luhm---MS12----g_stSoundPresetData[2].i8Balance200 = 50
+luhm---MS12----g_stSoundPresetData[2].i8Balance750 = 50
+luhm---MS12----g_stSoundPresetData[2].i8Balance2K = 50
+luhm---MS12----g_stSoundPresetData[2].i8Balance5K = 50
+luhm---MS12----g_stSoundPresetData[2].i8Balance15K = 50
+
+[app_signal]:signal_callback_locked0 
+luhm---MS12----g_stSoundPresetData[3].ensurround_virtualizer = 0
+luhm---MS12----g_stSoundPresetData[3].endialog_enhancer = 0
+luhm---MS12----g_stSoundPresetData[3].enbass_enhancer = 0
+luhm---MS12----g_stSoundPresetData[3].enintelligent_loudness = 0
+luhm---MS12----g_stSoundPresetData[3].enmedia_intelligence = 0
+luhm---MS12----g_stSoundPresetData[3].enInteligentEQ = 0
+luhm---MS12----g_stSoundPresetData[3].i8Balance200 = 50
+luhm---MS12----g_stSoundPresetData[3].i8Balance750 = 50
+luhm---MS12----g_stSoundPresetData[3].i8Balance2K = 50
+luhm---MS12----g_stSoundPresetData[3].i8Balance5K = 50
+luhm---MS12----g_stSoundPresetData[3].i8Balance15K = 50
+
+[app_signal]:check channel lock state source = 4194304
+luhm---MS12----g_stSoundPresetData[4].ensurround_virtualizer = 0
+luhm---MS12----g_stSoundPresetData[4].endialog_enhancer = 0
+luhm---MS12----g_stSoundPresetData[4].enbass_enhancer = 0
+luhm---MS12----g_stSoundPresetData[4].enintelligent_loudness = 0
+luhm---MS12----g_stSoundPresetData[4].enmedia_intelligence = 0
+luhm---MS12----g_stSoundPresetData[4].enInteligentEQ = 0
+luhm---MS12----g_stSoundPresetData[4].i8Balance200 = 50
+luhm---MS12----g_stSoundPresetData[4].i8Balance750 = 50
+luhm---MS12----g_stSoundPresetData[4].i8Balance2K = 50
+luhm---MS12----g_stSoundPresetData[4].i8Balance5K = 50
+luhm---MS12----g_stSoundPresetData[4].i8Balance15K = 50
+luhm---MS12----g_stSoundPresetData[5].ensurround_virtualizer = 0
+luhm---MS12----g_stSoundPresetData[5].endialog_enhancer = 2
+luhm---MS12----g_stSoundPresetData[5].enbass_enhancer = 2
+luhm---MS12----g_stSoundPresetData[5].enintelligent_loudness = 0
+luhm---MS12----g_stSoundPresetData[5].enmedia_intelligence = 0
+luhm---MS12----g_stSoundPresetData[5].enInteligentEQ = 0
+luhm---MS12----g_stSoundPresetData[5].i8Balance200 = 50
+luhm---MS12----g_stSoundPresetData[5].i8Balance750 = 50
+luhm---MS12----g_stSoundPresetData[5].i8Balance2K = 50
+luhm---MS12----g_stSoundPresetData[5].i8Balance5K = 50
+luhm---MS12----g_stSoundPresetData[5].i8Balance15K = 50
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+
+--app_input_source_get_unlock_state ==0------
+luhm----MS12----app_ms12_sound_preset_data_read sucess!
+luhm----MS12----ms12_sound_preset_data.Sign=MS12
+luhm----MS12----ms12_sound_preset_data.enSoundPreset=5
+luhm----MS12----ms12_sound_preset_data.SurroundVirtualizer=0
+luhm----MS12----ms12_sound_preset_data.BassEnhancer=0
+luhm----MS12----ms12_sound_preset_data.DialogEnhancer=0
+luhm----MS12----ms12_sound_preset_data.IntelligentLoudness=0
+luhm----MS12----ms12_sound_preset_data.MediaIntelligence=0
+luhm----MS12----ms12_sound_preset_data.InteligentEQ=0
+luhm----MS12----ms12_sound_preset_data.Ms12_5balanceData.i8Balance200=50
+luhm----MS12----ms12_sound_preset_data.Ms12_5balanceData.i8Balance750=50
+luhm----MS12----ms12_sound_preset_data.Ms12_5balanceDa[   14.811363] 
+[   14.811363] [AUD_APU_NBSM:1617] CMD:0, param:0
+ta.i8Balance2K=50
+luhm----MS12----ms12_sound_preset_data.Ms12_5balanceData.i8Balance5K=50
+luhm----MS12----ms12_sound_preset_data.Ms12_5balanceData.i8Balance15K=50
+luhm--------@@[app_input_source_init] app_football_mode_ini()!
+luhm----- Enter app_football_data_read 3694 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm----app_football_mode_ini----Football_mode=0,
+luhm---ms12----app_get_dolby_ms12_sound_mode,g_currentDolbySoundPreset=5
+football_sound_mode = 5
+luhm----ms12----app_audio_update_dolby_ms12_sound_mode,mode =5
+**luhm----ms12----fpi_audio_set_ms12_sound_preset mode =5
+******* fpp_audio_set_dolby_sence_mode type:0*****
+#P-AOUT# PLAT_AOUT_SetPostParams() - same parameters -> skip
+luhm--------@@[app_input_source_init] app_audio_description_data_ini()!
+luhm----- Enter app_audio_description_data_read 1995 
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm----app_audio_description_data_ini----HpInputType=1,SpeakerInputType=1
+luhm*******fpi_set_audio_description_for_device*,dev==1,input=1
+******fpp_audio_set_output_channel_type  current_linein:4194304,out_type:0,channel_type:0******
+fpi_set_audio_description_for_device return ret = 0
+luhm*******fpi_set_audio_description_for_device*,dev==2,input=1
+******fpp_audio_set_output_channel_type  current_linein:4194304,out_type:1,channel_type:0******
+fpi_set_audio_description_for_device return ret = 0
+++++++++tvhdtv reload usersetting mode=6+++++++++
+------tvhdtv reload usersetting mode=6,first language=6,second=6,aud descriptor=0,track type=0------
+app_get_digital_audio_output_type*,line=3186
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+$$$$$$$$$$*type == 1$$$$$$
+----lk----enter app_set_digital_audio_output_type,line==2887,type=1
+---lk---ArcSupportType DDP == 0, DD == 0
+---lk---ArcStatus == 0
+-------lk------currentLinein == 4194304
+---lk---isWithAD == 0
+---lk---AdSwitch == 0
+---lk---AudioInfo.eu_format == 0
+---lk---audio_format == 2
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+---lk---SoundMode == 0
+luok----MS12----fpi_set_digital_output_type,type=1
+[fpp_cec_set_arc_type] type ==1, gPathIndex=0 source 0x900
+app_save_digital_audio_output_type*,line=3203
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm------ Enter app_ms12_sound_preset_data_write 2501 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+Warning!!!, callback: Id 13d5418 takes too long time!!!
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:9
+[   15.273416] EXT4-fs (mmcblk0p8): re-mounted. Opts: nodelalloc,journal_checksum,noauto_da_alloc,data=ordered
+Data write Success .
+luhm------Write ms12 sound preset data success. 
+
+[app_input_source_lock_state_update]--gu32InputSourceLockState = 0x0
+hx--------->app_set_vol_gain,input = 4194304
+<app_power_set_backlight_state>Line:454, ret = 0
+app_get_mutes_for_device*en_dev=1,ch_reason=tos.highest
+luhm***fpi_audio_get_mute_for_device****en_dev=1,mute_reason==tos.highest
+fpi_check_reason*,dev==1,reason=tos.highest
+luhm***fpi_check_reason****index==0
+luhm**error**fpi_audio_get_mute_for_device****can not find this reason for this dev & input
+luhm****fpi_audio_get_mute_for_device****return ret=1
+fpp_power_get_backlight Sucess ! 
+ct test ... backlight_onoff = 1 *back_light_on = 1 backlight_ui_value = 100
+
+[app_video.c] enter app_get_pic_mode_element_ex line==5218,ePicModeElem=28,value==1,st_pic_set.enPicMode=0,src_type=0x400000
+get mid init linein status:4
+[zxs-mhl]---app_mhl_init....
+pDevInfo->un8FpiMhlCable == 1---by qiugr---
+pDevInfo->un8FpiMhlSignal == 1---by qiugr---
+[zxs-mhl]---app_mhl_init with cable status = 1,signal status = 1
+os_set_timezone 3600!
+usb_monitor_register_callback,i=0, cb_num=0
+*the buffer size enough*id=460
+---start---app_audio_sound_output_init
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*[   15.454818] [NTKETHMAC] : NVT Internal PHY Ethernet PHY ready
+the ms12_bin=(nu[   15.461352] [NTKETHMAC] Autonegotiation Complete
+ll)
+luhm-----*f1 config*default[   15.468569] [NTKETHMAC] Link UP
+ ms12_bin=/appli[   15.473472] [NTKETHMAC] Auto-nego result = 0x3500
+cations/database[   15.479202] [NTKETHMAC] PHY 100M
+/ms12.bin
+luhm-[   15.484186] [NTKETHMAC] PHY FULLDUPLEX
+----*f1 config*t[   15.488990] [NTKETHMAC] PHY reg 0x4 data = 0x01e1
+he ms12_bin=(nul[   15.495417] [NTKETHMAC] PHY reg 0x5 data = 0xc5e1
+l)
+luhm-----*f1[   15.501138] [NTKETHMAC] PHY reg 0x6 data = 0x000b
+ config*default [   15.507457] [NTKETHMAC] : Set PHY into rising edge output
+ms12_bin=/applic[   15.514677] [NTKETHMAC] MAC init duplex=2, speed=2
+ations/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+lk----MS12----app_ms12_sound_preset_data_read sucess!
+lk----MS12----ms12_sound_preset_data.SoundOutputMode=0
+lk----MS12----ms12_sound_preset_data.DigitalAudioType=1
+lk----MS12----ms12_sound_preset_data.enSoundPreset=5
+**luhm----ms12----fpi_audio_set_ms12_sound_preset mode =5
+******* fpp_audio_set_dolby_sence_mode type:0*****
+#P-AOUT# PLAT_AOUT_SetPostParams() - same parameters -> skip
+app_set_sound_output_mode*,line=3220,mode=0
+luhm----- Enter app_audio_description_data_read 1995 
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm*******app_set_mutes_for_device*,dev==1,reason=app.device_mute,mute=0
+luhm*******fpi_set_mutes_for_device*,dev==1,reason=app.device_mute,mute=0
+fpi_check_reason*,dev==1,reason=app.device_mute
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==0
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+luhm***fpi_speaker_mute_info[4].reason_name= tos.lock,.reason_status==0
+luhm**[   15.645878] EXT4-fs (mmcblk0p8): re-mounted. Opts: nodelalloc,journal_checksum,noauto_da_alloc,data=ordered
+*fpi_speaker_mute_info[5].reason_name= tos.sync,.reason_status==0
+luhm***fpi_speaker_mute_info[6].reason_name= [   15.664440] 
+[   15.664440] [AUD_APU_NBSM:1617] CMD:0, param:0
+app.device_mute,.reason_status==0
+lhm****b_current_hp_mute=0,b_pre_hp_mute=0
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=0
+lhm****b_current_speaker_mute=0,b_pre_speaker_mute=0
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=0
+lhm****b_current_spdif_mute=0,b_pre_spdif_mute=0
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=0
+lhm****b_current_avout_mute=0,b_pre_avout_mute=0
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=0
+audio_out_mute=false
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=0,b_pre_capture_mute=0
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=0
+***enter->fpp_capture_audio_mute,b_mute = 0
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=0,b_pre_bluetooth_mute=0
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=0
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 0
+chaifr--------fpi_audio_set_bluetooth_mute UNMUTE, volume = 50 ---
+app_save_sound_output_mode*,line=3265
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-[   15.794850] EXT4-fs (mmcblk0p8): re-mounted. Opts: nodelalloc,journal_checksum,noauto_da_alloc,data=ordered
+----- Enter app_ms12_sound_preset_data_write 2501 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+--->ren<---start to accept,in Function [ipepg_socketControl] , line Number [88] 
+CLI_IPC:api_cli_ipc_init (VER=2014-11-27 14:10:00)
+[api_cli_ipc_init--103]-----baby ,i going here. the port is:9900
+Data write Success .
+luhm------Write ms12 sound preset data success. 
+----lk----enter app_set_digital_audio_output_type,line==2887,type=1
+---lk---ArcSupportType DDP == 0, DD == 0
+---lk---ArcStatu[   15.873174] UMP<2>: s == 0
+-------lNew session opened
+k------currentLinein == 4194304
+---lk---isWithAD == 0
+---lk---AdSwitch == 0
+---lk---AudioInfo.eu_format == 0
+---lk---audio_format == 2
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+---lk---SoundMode == 0
+luok----MS12----fpi_set_digital_output_type,type=1
+[fpp_cec_set_arc_type] type ==1, gPathIndex=0 source 0x900
+app_save_digital_audio_output_type*,line=3203
+luhm----- Enter app_ms12_sound_preset_data_read 2524 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm------ Enter app_ms12_sound_preset_data_write 2501 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+Data write Success .
+luhm------Write ms12 sound preset data success. 
+---end---app_audio_sound_output_init,app_set_sound_output_mode == 0,app_set_digital_audio_output_type == 1
+@@@$$$ app_time:-1,delta:5653
+@@@$$$ app_total_time:5665
+@@[_app_init] end
+---lk---ArcStatus_pre == 0
+---lk---AudioInfo_pre.eu_format == 0
+@@@$$$ app_time:200,delta:1
+[webkit]: api_lib_init out
+**********ipepg msg_engine_init success, port:9900*********
+Threaded Eventloop!
+commandline read: chwebkit
+commandline read: file:///applications/webkit-resource/ui/framework.html
+commandline read: &
+(*) Direct/Thread: Started 'SigHandler' (573) [CRITICAL - OTHER/0] <8388608>...
+
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~| DirectFB 1.7.1 |~~~~~~~~~~~~~~~~~~~~~~~~~~
+        (c) 2012-2013  DirectFB integrated media GmbH
+        (c) 2001-2013  The world wide DirectFB Open Source Community
+        (c) 2000-2004  Convergence (integrated media) GmbH
+      ----------------------------------------------------------------
+
+(*) DirectFB/Core: Multi Application Core. (2015-04-29 02:41) [ DEBUG ][ TRACE ]
+(*) Direct/Memcpy: Using libc memcpy()
+(*) Fusion/SHM: Using MADV_REMOVE (3.8.0.0 >= 2.6.19.2)
+(*) Fusion/SHM: Shared root (0) is 1440 bytes [0x1000 @ 0x20000000]
+(*) Direct/Thread: Started 'Fusion Dispatch' (574) [MESSAGING - OTHER/0] <8388608>...
+(*) Direct/Thread: Started 'Fusion Deferred' (575) [MESSAGING - OTHER/0] <8388608>...
+(*) Core/Resource: Adding ID 4 - '/applications/webkit-resource/bin/chwebkit'
+(*) DirectFB/Graphics: GLES2 Acceleration - Unknown 0.1 (Mark J Hood / Denis Oliver Kropp)
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+init ** screenlayer = 0x739d68
+ [em-reg] ok[T-DIAL]-1[   16.156614] RTL871X: +871x_drv - drv_open, bup=0
+!
+ [PM] reg: pi[   16.162081] RTL871X: ==>_InitPowerOn_8192EU 
+d[479]fd[19]name[webkit]
+(*) Direct/Interface: [   16.171588] RTL871X: SetHwReg8192E: bMacPwrCtrlOn=1
+Loaded 'PNG' implementation of '[   16.178128] RTL871X:  ===> FirmwareDownload88E() fw source from Header.
+IDirectFBImagePr[   16.186985] RTL871X: FirmwareDownload8192E fw:NIC, size: 31818
+ovider'.
+
+SetV[   16.194022] RTL871X: FirmwareDownload8192E: fw_ver=19 fw_subver=0 sig=0x92e1
+ideoMode: 1920x1080@32, flags: 0x00000050
+Install signal action successfully!
+ [em-reg] ok[webkit]-1![SYS] start netflix with suspend mode 
+
+ command ---- 6 ---- 
+
+ [netflix] exec str[start_suspend]init[1]cmd[2]
+ [netflix] get lang[en].
+ re-launch: lang[en]
+ malloc [0xb4600ec0]
+ [AMC] sent-[14]
+ TM-[AMC sended], tm[1505420843077]sent 'start_suspend', received 9
+
+ TM-[AM got], tm[1505420843077]
+ [AM]read from(14)(2)  Launching '/applications/tv_bin/netflix_runtime/netflix' in the background sin[   16.244854] RTL871X: polling_fwdl_chksum: Checksum report OK! (1, 0ms), REG_MCUFWDL:0x00070305
+ce there was no authorized exit.
+
+ netflix PID[   16.257975] RTL871X: =====> _8051Reset8192E(): 8051 reset success .
+ is '579'.
+
+
+ bootargv[0][/applications/tv_bin/netflix_runtime/netflix]
+ bootargv[1][--dpi-displaypanelwidth]
+ bootargv[2][122]
+ bootargv[3][--dpi-displaypanelheight]
+ bootargv[4][69]
+ bootargv[5][--r[   16.282582] RTL871X: _FWFreeToGo8192E: Polling FW ready OK! (159, 20ms), REG_MCUFWDL:0x000706c6
+esource-cache-ca[   16.292924] RTL871X: FWDL success. write_fw:1, 90ms
+pacity]
+ bootargv[6][10485760]
+ bootargv[7][--screen-width]
+ bootargv[8][1280]
+ bootargv[9][--screen-height]
+ bootargv[10][720]
+ bootargv[11][--ui-cache-capacity]
+ bootargv[12][29360128]
+ bootargv[13][--disk-cache-capacity]
+ bootargv[14][12582912]
+ bootargv[15][--suspend-mode]
+ bootargv[16][--dpi-language]
+ bootargv[17][en]
+ bootargv[18][-Q]
+ bootargv[19][source_type=22]
+ ntfx execve[env]DFB_OSD_PL[   16.333971] RTL871X: ===> phy_BB8192E_Config_ParaFile() EEPROMRegulatory 1
+ANE_ORDER_PARAM=L3P3_L2P1_L1P2[env]DFBHOME=/applications/tv_bin/etc[env]ALSA_CONFIG_PATH=/applications/tv_bin/netflix_runtime/alsa.conf[env]LD_LIBRARY_PATH=/applications/tv_bin/netflix_runtime/lib:/applications/soc_lib[env]NF_DATA_DIR=/applications/tv_bin/netflix_runtime/rodata[env]NF_WDATA_DIR=/data/netflix_runtime/data[env]TCL_IMAGE_SW_VERSION= V8-NT67F02-LF1V504 
+##function=net[   16.373684] RTL871X: PHY_BBConfig8192E ==> CrystalCap:0x14 
+work_first_connect,line=1468,
+##function=pthread_dhcp_auto_connect,line=1403,
+[webkit]: createSDLWindow 757558
+[webkit] main createSDLWindow 757558
+webkit: cache CacheminDeadBytes:4194304 CachemaxDeadBytes:62914560 CachetotalBytes:62914560 DeletionInterva:0.000000
+
+ [init] reg start !
+ [init] reg turely !++++++++++++++++++++++++++++ 
+
+ [TCL]-amc, fd<24>, sock pa[   16.513090] [NTKETHMAC] Unplug is detected : 00007809
+sth</tmp/nfappman>! 
+
+ [TCL]-am client thread running! 
+ [AM] accepting by fd<17>
+ [AM] accepting to fd<20>
+ TM-[AM processed], tm[1505420843536]Processed 'start_suspend', returning 0
+
+ [TCL]-amc select ing! 
+
+NRD (2014.1.5::2014.1.5) - [DEBUG:no] [PRODUCTION:yes] [MDX: 2014.1.5]
+[api_cli_ipc_init--111]-----
+[api_cli_ipc_init--121]-----
+progress : 13 
+[api_cli_ipc_init--156]-----sessionId:0
+progress : 16 
+progress : 20 
+progress : 23 
+progress : 27 
+progress : 30 
+progress : 34 
+progress : 37 
+progress : 41 
+[0m[0;1m00:00:00.061 [GIBBON_MAIN:0xb6299000] LOG([0m[33;1mwarn[0m[0;1m): [0m[33;1m{"buildDate":"Sep 25 2015","buildTime":"17:28:56","compiler":{"cflags":"-O3 -DNDEBUG -DBUILD_PRODUCTION  -O3  -g","cxxflags":"-O3 -DNDEBUG -DBUILD_PRODUCTION  -O3 -fvisibility=hidden -fvisibility-inlines-hidden -g","lflags":"  -L/usr/local/tcl-gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/netflixdrmAgentInit: calling drmLoadProvisionedKeys()
+drmLoadProvisionedKeys: loading Model private key
+drmLoadProvisionedKeys: Model private key Length is 32
+
+ Oem_InitZgPrivBuffer    copy zgpriv data to buffer (449ae0)drmLoadProvisionedKeys: loading playready model cert
+drmLoadProvisionedKeys: Model cert Length is 1300
+/lib -L/usr/loca
+ Oem_InitCertBuffer    copy cert data to buffer (449b10), szie(1316)drmLoadProvisionedKeys: loading playready device cert template
+drmLoadProvisionedKeys: Cert template length is 4948
+
+ Oem_InitCertBuffer    copy cert data to buffer (565af0), szie(4948)drmAgentInit: done with drmLoadProvisionedKeys()
+l/tcl-gcc-linaro-arm-linux-gnueacaGetEsn: returning 42 for ESN length.
+bihf-4.7-2013.04-20130415_linux/netflix/malisdk-r4p0/lib -ldl -lrt","libc":{"type":"glibc","version":"2.15"},"type":"gcc","version":"4.7.3 20130328 (prerelease)"},"debug":false,"production":true,"serverTime":1505420843,"string":"NRDLIB 2014.1.5 - Built 17:28:56 Sep 25 201[   16.739782] [NTALSA] snd_pcm_set_params buf = 19200
+5","systemTime":[   16.746673] [KALSA] rate(48000, 48000)/bufsz(0, 4800)/pdsz(120000, 1200)
+1505420843,"version":"2014.1.5","versionString":"2014.1.5"}[0m[0;1m[0m
+
+progress : 44 
+progress : 47 
+@@[_app_init_step2_run] enter
+vicu usb monitor start ok 
+usb mount path is: dev 
+waiting socket...
+[app_media_service.c] enter @@app_media_service_thread line==2092, search type ==5
+enter fisrt boot detect.
+first boot usbstat msg is null
+[0m[0;1m00:00:00.460 [GIBBON_MAIN:0xb6299000] DPI([0m[33;1mwarn[0m[0;1m): [0m[33;1m>> Using WebCryptoTee <<[0m[0;1m[0m
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:8
+[api_bluttooth.c] api_bluetooth_registerEventHandle......start func point ==0xb6ba8f39
+[api_function_setting.c] enter api_get_menu_language line==122
+progress : 49 
+Read success, Power mode = 2
+[   17.036816] RTL871X: Auto InitLLTTable8192E success 
+__dlna_setloglevel set g_s32DlnaPrintfLevel = 0
+[   17.070383] RTL871X: ADAPTIVITY_VERSION 7.1
+[   17.075823] RTL871X: RTW_ADAPTIVITY_EN_ENABLE
+[   17.080967] RTL871X: RTW_ADAPTIVITY_MODE_NORMAL
+[   17.086647] RTL871X: RTW_NHM_EN_DISABLE
+xxxxxx[dlna_lib]:[cg_mediacontrol_init(357)] strIFName=eth0 
+*********************
+dlna version : dlna2014121001, strIFName = eth0
+*********************
+[   17.173351] RTL871X: pDM_Odm TxPowerTrackControl = 1
+[   17.210911] EXT4-fs (mmcblk0p8): re-mounted. Opts: nodelalloc,journal_checksum,noauto_da_alloc,data=ordered
+Data write Success .
+Write usr stbc data success. 
+fpp_factory_set_ssc--type=1 enable=1 step=20 span=30 
+fpp_factory_set_ssc--type=2 enable=1 step=20 span=30 
+fpp_factory_set_ssc--type=0 enable=1 step=10 span=30 
+hzz Enter fpi_factory_set_frc_ssc line=415
+fpp_factory_set_ssc--type=4 enable=1 step=10 span=30 
+HAL FRC Is NOT Initialized
+[PLAT_FRC_ERR] HAL FRC IS NOT Initialized
+
+fpp_factory_set_ssc fail
+fpi_factory_set_frc_ssc fail
+hzz Enter fpi_factory_set_osd_ssc line=394
+fpp_factory_set_ssc--type=3 enable=1 step=1 span=30 
+Read success, Power mode = 2
+webkit: setLocation = 
+webkit: setLocation = 
+webkit: setLocation = 
+webkit: setLocation = globleShow.html
+webkit: setLocation = virtualRemote.html
+SkFontHost::GetFileName unimplemented
+progress : 65 
+progress : 80 
+progress : 90 
+[   17.472537] RTL871X: phy_SpurCalibration_8192E =>AFE_PHASE_SEL 
+progress : 90 
+[   17.513069] [NTKETHMAC] Plug is detected : 0000780d
+[   17.578409] [NTKETHMAC] Autonegotiation Complete
+progress : 90 
+[   17.584154] [NTKETHMAC] Link UP
+[   17.587743] [NTKETHMAC] Auto-nego result = 0x3500
+[   17.592450] [NTKETHMAC] PHY 100M
+[   17.592457] [NTKETHMAC] PHY FULLDUPLEX
+[   17.592509] [NTKETHMAC] PHY reg 0x4 data = 0x01e1
+[   17.592554] [NTKETHMAC] PHY reg 0x5 data = 0xc5e1
+[   17.592598] [NTKETHMAC] PHY reg 0x6 data = 0x000b
+[   17.592601] [NTKETHMAC] : Set PHY into rising edge output
+[   17.592615] [NTKETHMAC] MAC init duplex=2, speed=2
+[   17.625080] RTL871X: ===FixSpur NOT Pass!
+file:///applications/webkit-resource/ui/virtualRemote.html:1: JS ERROR: SyntaxError: Parse error
+progress : 90 
+[   17.879347] RTL871X: === PathA=1, PathB=1
+[   17.883589] RTL871X: ===FixSpur Pass!
+webui debug: in doChangeMultilanguage m_language = 6
+[   17.902724] RTL871X: wlan0 MAC Address from REG_MACID = 1c:1e:e3:06:bf:1d
+[   17.910502] RTL871X: rtl8192eu_hal_init in 1750ms
+[   17.916005] RTL871X: wlan0Port-0  set opmode = 2
+[   17.933955] RTL871X: MAC Address = 1c:1e:e3:06:bf:1d
+file:///applicat[   17.939931] RTL871X: rtw_cfg80211_init_wiphy:rf_type=2
+ions/webkit-reso[   17.946647] RTL871X: +871x_drv - if2_open, bup=0
+urce/ui/framewor[   17.951801] RTL871X:  rtw_hal_inirp_init HalFunc.inirp_init is NULL!!!
+k.html: JS LOG: [   17.960141] RTL871X: rtw_cfg80211_init_wiphy:rf_type=2
+NETFLIX :app.ui.[   17.966522] RTL871X: -871x_drv - if2_open, bup=1
+netflix.boot = f[   17.972258] RTL871X: -871x_drv - drv_open, bup=1
+alse
+[sita_prop[   17.978557] RTL871X: cfg80211_rtw_set_power_mgmt(wlan0) enabled:0, timeout:-1
+erty_hash_get: 2[   17.987168] IPv6: ADDRCONF(NETDEV_UP): wlan0: link is not ready
+68]can't find hash value from table!!!
+[sita_property_get: 1071]sita_property_hash_get nothing, return default value!!!
+file:///applications/webkit-resource/ui/framework.html: JS LOG: YM g_setting.getProperty:OFF
+[api_channel.c] chType==0,chListType==2
+app channel module load select channel list failure
+[api_function_setting.c] enter api_cec_get_device_info un8Num == 0,type==0
+[0m[0;1m00:00:01.572 [REFERENCE_DPI_NETWORKMONITOR:0xb560f460] LOG([0m[31;1merror[0m[0;1m): [0m[31;1mSystemData::updateNetworkInterfaceInfo([   18.041276] input: TCL virtual mouse as /devices/virtual/input/input3
+): no default interface[0m[0;1m[0m
+++++++++++++++++++++++eth link up: dhcp status: 0
+[EN_API_CEC_DEVICE_INFO_TYPE_IS_SUPPORT_ARC] *param==0
+[api_sound_setting.c] >> api_get_mute_state,line==79
+app_get_mutes_for_device*en_dev=1,ch_reason=app.user
+luhm***fpi_audio_get_mute_for_device****en_dev=1,mute_reason==app.user
+fpi_check_reason*,dev==1,reason=app.user
+luhm***fpi_check_reason****index==0
+luhm**error**fpi_audio_get_mute_for_device****can not find this reason for this dev & input
+luhm****fpi_audio_get_mute_for_device****return ret=1
+[api_function_setting.c] enter api_get_manufcturer_info line==1767
+InitUpnp: UpnpInit() Error: -208
+cg_upnpav_dmr_new
+[api_function_setting.c] enter api_get_manufcturer_info pbuff==TCL
+--app_dmr_init--,gDMRInitOK = 0
+Length of Buff: 464 
+
+==Char===============
+add@/devices/virtual/input/input3 ACTION=add DEVPATH=/devices/virtual/input/input3 SUBSYSTEM=input PRODUCT=3/1d5a/b3/1 NAME="TCL virtual mouse" PROP=0 EV=7 KEY=4 fcc18 ba453060 0 0 70000 0 18000 51a8 48004801 9e1680 0 0 10000ffc REL=103 MODALIAS=input:b0003v1D5Ap00B3e0001-e0,1,2,k71,72,73,74,77,80,8B,8E,9B,9E,A3,A5,A7,A8,AC,AE,CF,D0,110,111,112,165,166,16C,16D,170,172,176,179,17B,17C,17D,17F,183,184,18A,18B,18E,18F,190,191,192,193,1A2,r0,1,8,amlsfw SEQNUM=721 
+file:///applications/webkit-resource/ui/framework.html: JS LOG:  i will check this way
+[api_media.c] functoin==api_media_get_latest_usb_list,line=3573, count=0
+[api_media.c]api_media_get_latest_usb_list,    usb_monitor_register_callback
+usb_monitor_register_callback,i=20, cb_num=1
+[api_media.c] functoin==api_media_get_latest_usb_list,line=3619, clear cmd
+[api_media.c] functoin==api_media_get_latest_usb_list,line=3756, end
+_CheckDevice Path[/devices/virtual/input/input3]Length of Buff: 163 
+
+==Char===============
+add@/devices/virtual/input/input3/mouse3 ACTION=add DEVPATH=/devices/virtual/input/input3/mouse3 SUBSYSTEM=input MAJOR=13 MINOR=35 DEVNAME=input/mouse3 SEQNUM=722 
+=== different major 
+Length of Buff: 163 
+
+==Char===============
+add@/devices/virtual/input/input3/event3 ACTION=add DEVPATH=/devices/virtual/input/input3/event3 SUBSYSTEM=input MAJOR=13 MINOR=67 DEVNAME=input/event3 SEQNUM=723 
+=== different major 
+fpp_power_get_wakeup_source Sucess ! and enEvent=3
+file:///applications/webkit-resource/ui/framework.html: JS LOG: Total running time is 0Y/0M/2D 17:0
+ [ntfx] @@U55S6906@@ 
+ [init] setsus<0> 
+ [init] < start-re >
+
+progress : 90 
+i=0,ip=,get cable ip successful,line=2747!
+ [init] reg start !
+
+==wyj printf buff:(len:790)=====
+add@/devices/virtual/input/input3 ACTION=add DEVPATH=/devices/virtual/input/input3 SUBSYSTEM=input PRODUCT=3/1d5a/b3/1 NAME="TCL virtual mouse" PROP=0 EV=7 KEY=4 fcc18 ba453060 0 0 70000 0 18000 51a8 48004801 9e1680 0 0 10000ffc REL=103 MODALIAS=input:b0003v1D5Ap00B3e0001-e0,1,2,k71,72,73,74,77,80,8B,8E,9B,9E,A3,A5,A7,A8,AC,AE,CF,D0,110,111,112,165,166,16C,16D,170,172,176,179,17B,17C,17D,17F,183,184,18A,18B,18E,18F,190,191,192,193,1A2,r0,1,8,amlsfw SEQNUM=721
+add@/devices/virtual/input/input3/mouse3 ACTION=add DEVPATH=/devices/virtual/input/input3/mouse3 SUBSYSTEM=input MAJOR=13 MINOR=35 DEVNAME=input/mouse3 SEQNUM=722
+add@/devices/virtual/input/input3/event3 ACTION=add DEVPATH=/devices/virtual/input/input3/event3 SUBSYSTEM=input MAJOR=13 MINOR=67 DEVNAME=input/event3 SEQNUM=723 <<<end
+parse_usb_event_msg enter len=463
+parse_usb_event_msg enter len=162
+parse_usb_event_msg enter len=163
+ [init] hsus<0> 
+ TEEC_InitializeContext--
+[0m[0;1m00:00:01.858 [GIBBON_MAIN:0xb6299000] UI_ENGINE([0m[33;1mwarn[0m[0;1m): [0m[33;1mUrlChanged: http://localcontrol.netflix.com/js/boot.js[0m[0;1m[0m
+[0m[0;1m00:00:02.045 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 8 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.051 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.083 [GIBBON_MAIN:0xb6299000] MSL([0m[33;1mwarn[0m[0;1m): [0m[33;1mESN: TCL-TVN67E00000000000000000000000000427550[0m[0;1m[0m
+[0m[0;1m00:00:02.295 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.299 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.304 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.367 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.371 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.376 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:02.382 [GIBBON_MAIN:0xb6299000] MSL([0m[33;1mwarn[0m[0;1m): [0m[33;1mRequest (1) to http://appboot.netflix.com/appboot/TCL-TVN67E failed : DNS_ERROR[0m[0;1m[0m
+[0m[0;1m00:00:02.392 [GIBBON_MAIN:0xb6299000] BOOT([0m[35;1mfatal[0m[0;1m): [0m[35;1mApp boot failed: MslIoException: DNS_ERROR
+	({"mesg":"DNS_ERROR","url":"http://appboot.netflix.com/appboot/TCL-TVN67E","errorCode":6,"errorGroup":3,"finalUrl":"http://appboot.netflix.com/appboot/TCL-TVN67E","httpCode":400,"line":577,"sourceURL":"http://localcontrol.netflix.com/js/boot.js"})[0m[0;1m[0m
+[0m[0;1m00:00:02.393 [GIBBON_MAIN:0xb6299000] BOOT([0m[33;1mwarn[0m[0;1m): [0m[33;1mRetrying using SSL[0m[0;1m[0m
+[0m[0;1m00:00:02.394 [GIBBON_MAIN:0xb6299000] BOOT([0m[33;1mwarn[0m[0;1m): [0m[33;1mRetrying this request[0m[0;1m[0m
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:7
+(*) Direct/Thread: Started 'Linux Input' (677) [INPUT - OTHER/0] <8388608>...
+(*) DirectFB/Input: TCL virtual mouse (3) 0.1 (directfb.org)
+[cec_switch_timer_timeout,200] tcl_debug_init successfully @@[_app_init_step2_run] end
+[30;47mBSA_trace 1@ 01/01 00h:00m:19s:163ms: bsa_sv_dm_set_3d_type type=chip_id (not safe)
+[30;47mBSA_trace 2@ 01/01 00h:00m:19s:163ms: Command [all] with arg [0]
+[30;47mBSA_trace 3@ 01/01 00h:00m:19s:163ms: [ all ] trace level = 0
+[30;47mBSA_trace 4@ 01/01 00h:00m:19s:163ms: BTM_SetTraceLevel
+un enter 1 un enter 2 i=1,ip=,get cable ip successful,line=2747!
+[sita_property_hash_get: 268]can't find hash value from table!!!
+[sita_property_get: 1071]sita_property_hash_get nothing, return default value!!!
+[api_sound_setting.c] >> api_get_sound_device_output_enable_mode,line==2200,dev=1
+luhm----- Enter app_audio_description_data_read 1995 
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+[api_sound_setting.c] >> api_get_sound_device_output_enable_mode,*enable==0
+zenglm get mute 0 
+[api_function_setting.c] enter api_get_tv_install_guide_state line==3600
+[api_function_setting.c] install guide==1
+[api_function_setting.c] enter api_get_tv_install_guide_state line==3600
+[api_function_setting.c] install guide==1
+webkit: setLocation = 
+webkit: setLocation = 
+webkit: setLocation = channelPlay.html
+progress : 90 
+progress : 100 
+webkit: cache CacheminDeadBytes:4194304 CachemaxDeadBytes:62914560 CachetotalBytes:62914560 DeletionInterva:0.000000
+progress : 100 
+progress : 100 
+progress : 14 
+progress : 18 
+progress : 22 
+progress : 26 
+progress : 30 
+progress : 34 
+progress : 38 
+progress : 42 
+progress : 46 
+webui debug: [object Utils]
+lwf enter api_get_input_source line==170
+[api_function_setting.c] enter api_get_input_source_unlock_state line==4174,input src==8
+
+--app_input_source_get_unlock_state ==0------
+[api_function_setting.c] input src unlock state==0
+Enter app_hbbtv_set_enable
+Enter [fpi_hbbtv_enable],s_hbbtv_context.b_hbbtv_enable = 1 
+[api_channel.c] current channel index==65535,service type==5
+channel.cpp function==>getCurrentChannelInfo service_id= 0,service_type= 0,number = 0,name = 
+setting.cpp setContextOf5in1 num = 2
+
+[app_video_get_autoformat_Info]autoformat_picture_size == 0,b_autoformat_valid == 1
+
+
+[app_notify_video_auto_format_change]--old--enPictureSize==0,new picture size == 1
+
+
+[app_video_set_autoformat_info]autoformat_picture_size == 1,b_autoformat_valid ==1
+[html_msg_process.c]zhangyuting---APP_NOTIFY_SET_VIDEO_SIZE-:1--
+ SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1145,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1145,p1 = 0, browser = 0
+
+[app_video_get_autoformat_Info]autoformat_picture_size == 1,b_autoformat_valid == 1
+[html_msg_process.c]zhangyuting---APP_NOTIFY_SET_VIDEO_SIZE-:1--
+ SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1145,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1145, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1145,p1 = 0, browser = 0
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1230,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1145, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1230,p1 = 0, browser = 0
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1131,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1230, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1131,p1 = 0, browser = 0
+---APP_NOTIFY_APP_SIGNAL_STATE(1)(1:lock)--
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1131, data=0, start.
+[api_input_source.c] enter api_get_signal_state,line==376
+[api_cli_ipc_event_cb--71]-----
+[api_input_source.c] signal state==2
+-api_get_signal_state--> state =2,(1:unlcok 2:lock)
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1017,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1017,p1 = 0, browser = 0
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1146,data->data=0
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1017, data=0, start.
+[api_ser_ipepg_cb--259]---payload.size:12
+[api_cli_ipc_event_cb--71]-----
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1146,p1 = 0, browser = 0
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1146, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+[api_function_setting.c] enter api_get_location line==2906
+lwf enter api_get_input_source line==170
+channelInfo.cpp function ===>vResolution: h = 1920,v = 1080,rate = 60,scan_type = 0,FPI_ERROR_SIGNAL_NOT_SUPPORT = 655362,t = 0
+lwf enter api_get_input_source line==170
+lwf enter api_get_input_source line==170
+lwf enter api_get_input_source line==170
+lwf enter api_get_input_source line==170
+lwf enter api_get_input_source line==170
+lwf enter api_get_input_source line==170
+lwf enter api_get_input_source line==170
+[api_function_setting.c] enter api_power_get_backlight_state line==3744
+fpp_power_get_backlight Sucess ! 
+setting.cpp function===>powerBacklightState state = 1[api_function_setting.c] enter api_get_auto_standby_mode line==3029
+webui debug: >>>>>>Sun>>>>>>>>>>>>>>initEnd>>>>
+progress : 46 
+[0m[0;1m00:00:03.399 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 8 consecutive failures[0m[0;1m[0m
+[0m[0;1m00:00:03.406 [GIBBON_MAIN:0xb6299000] MSL([0m[33;1mwarn[0m[0;1m): [0m[33;1mESN: TCL-TVN67E00000000000000000000000000427550[0m[0;1m[0m
+[0m[0;1m00:00:03.408 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+webui debug: in framework systemEventProc
+webui debug: in framework systemEventProc
+webui debug: in framework systemEventProc
+lwf enter api_get_input_source line==170
+[api_function_setting.c] enter api_get_input_source_name line==3848,input==8
+[api_function_setting.c]dbLinein==20
+[api_function_setting.c] get input name==0
+lwf enter api_get_input_source line==170
+channelInfo.cpp function ===>vResolution: h = 1920,v = 1080,rate = 60,scan_type = 0,FPI_ERROR_SIGNAL_NOT_SUPPORT = 655362,t = 0
+[api_picture_setting.c] enter api_get_HDMI_picture_type line==1347
+
+[app_video.c] enter app_get_pic_mode_element_ex line==5218,ePicModeElem=22,value==0,st_pic_set.enPicMode=0,src_type=0x400000
+***fpi_signal_get_hdmi_provider_type*,type==2
+[api_picture_setting.c] api_get_HDMI_picture_type ==2
+
+
+dbtype = 0,type = 2,value = 2
+
+lwf enter api_get_input_source line==170
+[api_function_setting.c] enter api_get_current_date line==2129
+[api_function_setting.c] enter api_get_current_time line==2205
+hx--------->time_base = 1505420846,clock_offset= 3600
+hx--------->hour = 21,minute= 27, second = 26
+lwf enter api_get_input_source line==170
+channelInfo.cpp function ===>vResolution: h = 1920,v = 1080,rate = 60,scan_type = 0,FPI_ERROR_SIGNAL_NOT_SUPPORT = 655362,t = 0
+[api_picture_setting.c] enter api_get_HDMI_picture_type line==1347
+
+[app_video.c] enter app_get_pic_mode_element_ex line==5218,ePicModeElem=22,value==0,st_pic_set.enPicMode=0,src_type=0x400000
+***fpi_signal_get_hdmi_provider_type*,type==2
+[api_picture_setting.c] api_get_HDMI_picture_type ==2
+
+
+dbtype = 0,type = 2,value = 2
+
+webui debug: in framework systemEventProc
+lwf enter api_get_input_source line==170
+[api_function_setting.c] enter api_get_input_source_name line==3848,input==8
+[api_function_setting.c]dbLinein==20
+[api_function_setting.c] get input name==0
+lwf enter api_get_input_source line==170
+channelInfo.cpp function ===>vResolution: h = 1920,v = 1080,rate = 60,scan_type = 0,FPI_ERROR_SIGNAL_NOT_SUPPORT = 655362,t = 0
+[0m[0;1m00:00:03.574 [RESOURCE_HTTP:0xb4ecf460] DNS_MANAGER([0m[31;1merror[0m[0;1m): [0m[31;1mrestarting after 5 consecutive failures[0m[0;1m[0m
+[api_picture_setting.c] enter api_get_HDMI_picture_type line==1347
+
+[app_video.c] enter app_get_pic_mode_element_ex line==5218,ePicModeElem=22,value==0,st_pic_set.enPicMode=0,src_type=0x400000
+[0m[0;1m00:00:03.845 [GIBBON_MAIN:0xb6299000] MSL([0m[33;1mwarn[0m[0;1m): [0m[33;1mRequest (1) to https://appboot.netflix.com/appboot/TCL-TVN67E failed : DNS_ERROR[0m[0;1m[0m
+***fpi_signal_get_hdmi_provider_type*,type==2
+[api_picture_setting.c] api_get_HDMI_picture_type ==2
+
+
+dbtype = 0,type = 2,value = 2
+
+lwf enter api_get_input_source line==170
+[api_function_setting.c] enter api_get_current_date line==2129
+[api_function_setting.c] enter api_get_current_time line==2205
+[0m[0;1m00:00:03.850 [GIBBON_MAIN:0xb6299000] BOOT([0m[35;1mfatal[0m[0;1m): [0m[35;1mApp boot failed: MslIoException: DNS_ERROR
+	({"mesg":"DNS_ERROR","url":"https://appboot.netflix.com/appboot/TCL-TVN67E","errorCode":6,"errorGroup":3,"finalUrl":"https://appboot.netflix.com/appboot/TCL-TVN67E","httpCode":400,"line":577,"sourceURL":"http://localcontrol.netflix.com/js/boot.js"})[0m[0;1m[0m
+hx--------->time_base = 1505420847,clock_offset= 3600
+hx--------->hour = 21,minute= 27, second = 27
+[0m[0;1m00:00:03.851 [GIBBON_MAIN:0xb6299000] BOOT([0m[33;1mwarn[0m[0;1m): [0m[33;1mRetrying without SSL[0m[0;1m[0m
+[0m[0;1m00:00:03.851 [GIBBON_MAIN:0xb6299000] BOOT([0m[33;1mwarn[0m[0;1m): [0m[33;1mRetrying this request[0m[0;1m[0m
+webui debug: in framework systemEventProc
+webui debug: in framework systemEventProc
+progress : 47 
+progress : 50 
+progress : 52 
+progress : 54 
+progress : 57 
+i=2,ip=,get cable ip successful,line=2747!
+progress : 65 
+progress : 100 
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:6
+route: SIOCDELRT: No such process
+++++++++++++++++++++++DHCP get eth0 ip ok
+++++++++++++++++++++++checkIfDhcpIPChange 0
++++++++++++++++++++++0.0.0.0 192.168.0.27
+
+wsj:ip is 192.168.0.27,line=2779
+sh: /etc/init.d/nscd: not found
+
+ count=1,ip=192.168.0.27,network connect successful,line=2812;
+access check!
+
+[app_dlna][lan_connect_success]--enter,ui1_interface=0(331)
+[0m[0;1m00:00:05.858 [GIBBON_MAIN:0xb6299000] MSL([0m[33;1mwarn[0m[0;1m): [0m[33;1mESN: TCL-TVN67E00000000000000000000000000427550[0m[0;1m[0m
+[0m[0;1m00:00:06.287 [NBP_POOL [1]:0xb4ebf460] SYSTEM([0m[33;1mwarn[0m[0;1m): [0m[33;1mservertime=1505420852,systemtime=1505420849[0m[0;1m[0m
+[0m[0;1m00:00:06.304 [GIBBON_MAIN:0xb6299000] UI_ENGINE([0m[33;1mwarn[0m[0;1m): [0m[33;1mUrlChanged: https://secure.netflix.com/us/tvui/groovyloader/redirector-1.js?dh=720&q=source_type%3D22&dw=1280&dar=&fallback=https%3A%2F%2Fsecure.netflix.com%2Fus%2Ftvui%2Fql%2F20170907%2F5726%2Frelease%2FdarwinBootstrap.js%3Fdh%3D720%26q%3Dsource_type%253D22%26dw%3D1280%26dar%3D%26reg%3Dfalse%26bootloader_trace%3Dapiusernull&url=https%3A%2F%2Fuiboot.netflix.com%2Fapps%2Fgibbontvui_nonmember%2Fupgrade_policy%3Fnrdlib_version%3D2014.1.5%26appboot_prefetch%3Dtrue%26dh%3D720%26e%3DTCL-TVN67E00000000000000000000000000427550%26mdxlib_version%3D2014.1.5%26device_type%3DTCL-TVN67E%26certification_version%3D0%26sw_version%3D%2BV8-NT67F02-LF1V504%2B%26q%3Dsource_type%253D22%26nrdapp_version%3D2014.1.5%26dw%3D1280%26dar%3D%26reg%3Dfalse%26v%3D2.0%26sdk_version%3D2014.1.5%26target%3Dhttps%253A%252F%252Fsecure.netflix.com%252Fus%252Ftvui%252Fql%252F20170907%252F5726%252Frelease%252FdarwinBootstrap.js%253Fdh%253D720%2526q%253Dsource_type%25253D22%2526dw%253D1280%2526dar%253D%2526reg%253Dfalse%2526bootloader_trace%253Dapiusernull[0m[0;1m[0m
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:5
+ TEEC_OpenSession--
+ [init] setsus<0> 
+ [init] < start-re >
+
+** app_net_update_monitor_start()checktime=5 network connect status=0
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++start dmp
+ [init] reg start !
+[0m[0;1m00:00:07.385 [GIBBON_MAIN:0xb6299000] UI_ENGINE([0m[33;1mwarn[0m[0;1m): [0m[33;1mUrlChanged: https://secure.netflix.com/us/tvui/release-2017_09_11-24/13_3/sapphire/720p/gibbon/signupwizard.js?dh=720&q=source_type%3D22&dw=1280&reg=false&target=&mp=https%3A%2F%2Fsecure.netflix.com%2Fus%2Ftvui%2Fql%2F20170907%2F5726%2Frelease%2FdarwinBootstrap.js%3Fdh%3D720%26q%3Dsource_type%253D22%26dw%3D1280%26dar%3D%26reg%3Dfalse%26bootloader_trace%3Dapiusernull&noMemberTarget=true[0m[0;1m[0m
+** app_net_update_monitor_start()checktime=6 network connect status=0
+network connect to www.google.com successfully!
+
+ count=1,ip=192.168.0.27,network connect successful,line=2816;
+
+
+
+###################time_update=0,line=1981;
+
+
+clock_gettime:date_time=2017-09-14 20:27:31
+
+true,cnt=0,line=2010;
+
+
+network_system_shell_cmd command = "rdate -s time.nist.gov > /tmp/log 2>&1"
+network_system_shell_cmd command return=0
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:4
+** app_net_update_monitor_start()checktime=7 network connect status=1
+*********************
+dlna version : dlna2014121001, strIFName = eth0
+*********************
+enter MID_Network_DLNA_DMR_Start pstrUDN = uuid:ffffffff-ffff-ffff-ffff-ffffffffffff
+tv_render_upnp_start1 ip_address = 192.168.0.27, port = 49152
+Initialize RenderControl servicve
+Initialize AVTransport servicve...
+DMRTimerLoop thread start
+MID_Network_DLNA_DMR_Start ret = 0
+leave MID_Network_DLNA_DMR_Start pstrUDN = uuid:24b7a4bc-1dd2-11b2-bd7c-81a3cfc9e86d
+enter MID_Network_DLNA_DMP_Start
+Control Point Registered
+DMPCtrlPointTimerLoop thread start
+dlna line=3270, add device
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++start dmr
+mkdir: can't create directory '/data/qrcode/': File exists
+[app_dlna_dmr.c]-1743,last ssid:,pwd:,SECURITY=0,encryption=0
+[0m[0;1m00:00:09.275 [GIBBON_MAIN:0xb6299000] NRDJS([0m[33;1mwarn[0m[0;1m): [0m[33;1m(NRDJS) NRDJS version v2.22.8[0m[0;1m[0m
+[0m[0;1m00:00:09.284 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1m(CONFIG) NRDAPP version is 2014.1.5 : overriding nrdp.setConfigData because there is no "configChanged" event[0m[0;1m[0m
+chmod: /applications/tv_bin/qr_run.sh: Read-only file system
+[app_dlna_dmr.c]-1821,app_dmr_qr_init,systemStr=./qr_run.sh "WIFI:T:NULL;S:;P:;A:192.168.0.27;D:0;" 
+[0m[0;1m00:00:09.309 [GIBBON_MAIN:0xb6299000] DRMSYSTEM([0m[33;1mwarn[0m[0;1m): [0m[33;1m(DRMSYSTEM) [NRDJS] DRM type from nrdp.device is playready : DRM version (before open) is 2[0m[0;1m[0m
+ [init] hsus<0> 
+ [init] setsus<1> 
+[0m[0;1m00:00:09.319 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1m(IPV6) Device does not support IPv6, according to nrdp.device.ipv6Supported[0m[0;1m[0m
+[0m[0;1m00:00:09.321 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1m(PAYMENT) Missing nrdp or nrdp.signup, DPI version = 0[0m[0;1m[0m
+S=================================TART
+mkdir: can't create directory '/data/qrcode': File exists
+WIFI:T:NULL;S:;P:;A:192.168.0.27;D:0;
+E=================================ND
+
+ yes connect ok
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1028,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+Enter [fpi_hbbtv_set_network_state] net_state=1
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1028,p1 = 0, browser = 1
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1028, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+[1;32;40mPRINTF :[0;37;40m S->[1;36;40msrc/core/ApplicationManagerCore.c[0;37;40m F->[1;36;40msendNetworkStatus[0;37;40m, L->[1;36;40m1345: [1;37;40mOld network status 0 new network status 1[0;37;40m
+
+ netwoek connect test successful
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1140,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1140,p1 = 0, browser = 1
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1140, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+webui debug: in framework systemEventProc
+webui debug: in framework systemEventProc
+[app_dlna]APP_NOTIFY_DLNA_DEVICE_INSERT3580(0)
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1042,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1042,p1 = 0, browser = 1
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1042, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+webui debug: in framework systemEventProc
+[0m[0;1m00:00:09.419 [GIBBON_MAIN:0xb6299000] MSL([0m[33;1mwarn[0m[0;1m): [0m[33;1m(MSL) (device) ESN : TCL-TVN67E00000000000000000000000000427550[0m[0;1m[0m
+[0m[0;1m00:00:09.460 [GIBBON_MAIN:0xb6299000] CRYPTO([0m[33;1mwarn[0m[0;1m): [0m[33;1m(CRYPTO) Changing HMAC algorithm for {"handle":3,"extractable":false,"algorithm":{"name":"HMAC"},"name":"DKH","type":"secret","keyUsage":["sign","verify"],"_info":{"algorithm":{"name":"HMAC"},"extractable":false,"handle":3,"keyUsage":12,"name":"DKH","type":0,"usage":[4,8]},"keyUsages":["sign","verify"]}[0m[0;1m[0m
+[0m[0;1m00:00:09.461 [GIBBON_MAIN:0xb6299000] CRYPTO([0m[33;1mwarn[0m[0;1m): [0m[33;1m(CRYPTO)   Key is now {"handle":3,"extractable":false,"algorithm":{"name":"HMAC","params":{"hash":"SHA-256"}},"name":"DKH","type":"secret","keyUsage":["sign","verify"],"_info":{"algorithm":{"name":"HMAC","params":{"hash":"SHA-256"}},"extractable":false,"handle":3,"keyUsage":12,"name":"DKH","type":0,"usage":[4,8]},"keyUsages":["sign","verify"]}[0m[0;1m[0m
+[0m[0;1m00:00:09.490 [GIBBON_MAIN:0xb6299000] CRYPTO([0m[33;1mwarn[0m[0;1m): [0m[33;1m(CRYPTO) Changing HMAC algorithm for {"handle":10,"extractable":false,"algorithm":{"name":"HMAC"},"type":"secret","keyUsage":["sign","verify"],"_info":{"algorithm":{"name":"HMAC"},"extractable":false,"handle":10,"keyUsage":12,"type":0,"usage":[4,8]},"keyUsages":["sign","verify"]}[0m[0;1m[0m
+[0m[0;1m00:00:09.491 [GIBBON_MAIN:0xb6299000] CRYPTO([0m[33;1mwarn[0m[0;1m): [0m[33;1m(CRYPTO)   Key is now {"handle":10,"extractable":false,"algorithm":{"name":"HMAC","params":{"hash":"SHA-256"}},"type":"secret","keyUsage":["sign","verify"],"_info":{"algorithm":{"name":"HMAC","params":{"hash":"SHA-256"}},"extractable":false,"handle":10,"keyUsage":12,"type":0,"usage":[4,8]},"keyUsages":["sign","verify"]}[0m[0;1m[0m
+[0m[0;1m00:00:09.525 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1m(SUBTITLECACHE) initializing subtitle cache (we should only do this once)[0m[0;1m[0m
+Device id is 580987e2c3ebbce413d9c52fa775e0fc39a85a08
+app_load_portal_data-----userid: 510862454
+app_load_portal_data-----useridflag: a5
+app_load_portal_data-----activekey: 43f6cb64fec445fb90d89986eae27705
+app_load_portal_data-----activekeyflag: 5a
+app_load_portal_data-----usetesthostflag: ff
+GetKeyToken2--uDEVICE_ID: 580987e2c3ebbce413d9c52fa775e0fc39a85a08
+GetKeyToken2--uTclClinet.uKey(didtoken=MD5(DID+Activekey)):3cc82c98a14fe3cd8c24465362e49d9b
+Initialize Clienttype TCL-EU-NT667-F1  RegionCode: EU
+===>Initialize language index=0  code:en_GB 
+===>Initialize APPID: nt667UpgradeIncrement0
+===>Init NetupdateFilePath :/data/upgrade/
+[app_portal_login]usetesthostflag: ff
+[APP_TPS_DEVICE_CONN]POST /uc/json HTTP/1.1
+Host: eu-tvuser-tcl.cedock.com:80 
+Content-Length: 209
+Accept: */*
+connection:close
+
+
+{ "action": "DeviceLogin", "device": { "dnum": "510862454", "didtoken": "3cc82c98a14fe3cd8c24465362e49d9b", "activekey": "43f6cb64fec445fb90d89986eae27705" }, "param": { "osversion": "V8-NT67F02-LF1V504" } }
+
+ [init] setsus<0> 
+Gethostname error, No such file or directory
+error_num=-1
+ error_info:ERROR_GETHOSTNAME
+[APP_TPS_DEVICE_CONN]POST /uc/json HTTP/1.1
+Host: eu-tvuser-tcl.cedock.com:80 
+Content-Length: 209
+Accept: */*
+connection:close
+
+
+{ "action": "DeviceLogin", "device": { "dnum": "510862454", "didtoken": "3cc82c98a14fe3cd8c24465362e49d9b", "activekey": "43f6cb64fec445fb90d89986eae27705" }, "param": { "osversion": "V8-NT67F02-LF1V504" } }
+
+Gethostname error, No such file or directory
+error_num=-1
+ error_info:ERROR_GETHOSTNAME
+[   26.468021] EXT4-fs (mmcblk0p7): re-mounted. Opts: block_validity,journal_checksum,data=ordered
+Data write Success .
+[   26.601225] EXT4-fs (mmcblk0p7): re-mounted. Opts: block_validity,journal_checksum,data=ordered
+app_load_portal_data-----userid: 510862454
+app_load_portal_data-----useridflag: a5
+app_load_portal_data-----activekey: 43f6cb64fec445fb90d89986eae27705
+app_load_portal_data-----activekeyflag: 5a
+app_load_portal_data-----usetesthostflag: ff
+GetKeyToken2--uDEVICE_ID: 580987e2c3ebbce413d9c52fa775e0fc39a85a08
+GetKeyToken2--uTclClinet.uKey(didtoken=MD5(DID+Activekey)):3cc82c98a14fe3cd8c24465362e49d9b
+app new potal login fail.
+SER_IPC:[api_ser_ipepg_cb---241]---data->evt=1085,data->data=0
+[api_ser_ipepg_cb--259]---payload.size:12
+[api_ser_ipepg_cb--266]-----g_connection_id[0]=0
+[webkit] receive msg from mw:msg = 1085,p1 = 0, browser = 1
+CLI_IPC:[api_cli_ipc_event_cb---66]---playerId=0, msg=1085, data=0, start.
+[api_cli_ipc_event_cb--71]-----
+webui debug: in framework systemEventProc
+[0m[0;1m00:00:10.436 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1m(LICENSE_CACHE) Using legacy media, license cache will be disabled[0m[0;1m[0m
+[0m[0;1m00:00:10.442 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1m(CONFIG) Streaming config arrived (provided)[0m[0;1m[0m
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:1,check_count:3
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+
+Recv EN_HBBTV_ENABLE
+[hbbtv_task_entry] current linein is not DTV,so ruturn
+[0m[0;1m00:00:10.912 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[31;1merror[0m[0;1m): [0m[31;1mUI 'says' it is loaded [3527].[0m[0;1m[0m
+clock_gettime:date_time=2017-09-14 20:27:38
+
+true,cnt=1,line=2010;
+
+
+network_system_shell_cmd command = "rdate -s time.nist.gov > /tmp/log 2>&1"
+network_system_shell_cmd command return=0
+clock_gettime:date_time=2017-09-14 20:27:38
+clock_gettime:date_time=2017-09-14 20:27:38
+
+ sync network time successful,line=2019;
+
+ network time successful,time_update=1,line=2033;
+function=app_network_connect,line=2831,
+[0m[0;1m00:00:13.585 [GIBBON_ANIMATION:0xb6277460] GIBBON_TEXT([0m[31;1merror[0m[0;1m): [0m[31;1mFreeType: No valid surface at cache creation time[0m[0;1m[0m
+lwf enter api_get_input_source line==170
+channelInfo.cpp function ===>vResolution: h = 1920,v = 1080,rate = 60,scan_type = 0,FPI_ERROR_SIGNAL_NOT_SUPPORT = 655362,t = 0
+[   34.495371] ##### deliver signal SIG : 15, bsa_server(685) get_signal_to_deliver
+[   34.502942] ##### deliver signal SIG : 9, bsa_server(686) get_signal_to_deliver
+[   34.510239] ##### deliver signal SIG : 9, bsa_server(687) get_signal_to_deliver
+[   34.517535] ##### deliver signal SIG : 9, bsa_server(689) get_signal_to_deliver
+[   34.524824] ##### deliver signal SIG : 9, bsa_server(690) get_signal_to_deliver
+[   34.532111] ##### deliver signal SIG : 9, bsa_server(688) get_signal_to_deliver
+[   34.539404] ##### deliver signal SIG : 9, bsa_server(683) get_signal_to_deliver
+[0m[0;1m00:01:09.360 [GIBBON_MAIN:0xb6299000] UI_SCRIPT([0m[33;1mwarn[0m[0;1m): [0m[33;1musing bladerunner for logs : sending 21 entries : appid = 6465733288218453134 : useHttps = false[0m[0;1m[0m
+[api_function_setting.c] enter api_get_location line==2906
+
+[2]+  Done                       source run.sh
+[1]+  Done                       /etc/postinit.sh
+/applications/tv_bin # 
+Thanks for using picocom
+picocom v1.7
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+
