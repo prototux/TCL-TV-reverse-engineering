@@ -36,8 +36,10 @@ This last file seems to handle all the TV interface + upnp server.
 The TV UI is under /applications/webkit-resource/ui, it's apparently all web-based, using html/css/js+jquery. there seems to have some custom js objects that
 are injected to be able to run commands and change settings such as network interfaces. i still don't know if it's operaTV or hbbtv_browser that runs it.
 
-My current guess is that they started the dev on OperaTV, but for some reason stopped using it and started using hbbtv_browser instead, as i can't find where
-OperaTV is lanched from. there's also a lot (And i mean a **lot** of stuff done especially for netflix, from the remote control to the boot process, with
+~~My current guess is that they started the dev on OperaTV, but for some reason stopped using it and started using hbbtv_browser instead, as i can't find where
+OperaTV is lanched from~~.
+**UPDATE**: I digged more on this, and actually, that's the chwebkit binary that is is in charge of the interface, but for the smart tv part (the smart tv is launched like an app, wtf?), that's actually done by operatv, same for youtube and golive (that seems to actually be smarttv.2 apps). the hbbtbrowser seems to be related to interactive tv, didn't found out when it's launched, but i honestly don't care about that. the actual display of the hdmi inputs is done somewhere else, either sitatvservice or in hardware directly, the latter seems probable as i've found clues toward this option in some binaries. the interface else seems to be done as a OSD, including the whole menu thing.
+There's also a lot (And i mean a **lot** of stuff done especially for netflix, from the remote control to the boot process, with
 also /etc/rc.local scripts that tries to get network as soon as possible to please netflix. apparently, the lower-end tv (such as the S69 series) are
 basically "netflix TVs" that also do TV and youtube as side-features, and the higher end TV (s79?) are runny androidTV, but they're using the same SoC
 and probably the same boot process, only the ram quantity (512MB in my TV, i've seen 2GB on Android TVs) and the final system changes.
