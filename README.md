@@ -50,9 +50,9 @@ Also, the TV and satellite seems to be self-contained modules, apparently using 
 It's rare, but the PCB seems quite well designed, didn't saw any obvious planned obsolescence features on it, like putting heatsinks just behind capacitors.
 
 ## Remote shell
-This is the first step i want to achieve to be able to see what's happenning inside the TV, unfortunately, i didn't managed to have one yet, tried to use
-busybox-telnetd, but it didn't worked, apparently, it cannot spawn a shell. i'm still trying some stuff there.
+I finally managed to get a shell on the serial port! the magic command being `env set quiet n` before `boot` in the uboot shell. there's the full boot log attached in bootlog.txt
 
+I've also managed to port dropbear to that TV, the binaries and instructions are in ./ssh, next, reverse engineering of the binaries that's in the TV, especially `bootlogoEXE` and `sitatvservice`.
 
 ## AndroidTV
 From what i've seen so far, that doesn't seems so far fetched to think that it's possible to put AndroidTV on it, as the SoC's tools were apparently designed for it
@@ -65,8 +65,3 @@ so unless i can compile my own working uboot with WoL patch for this thing, whic
 ## Exploitation
 Given the quality of the code/scripts i've seen so far, the age of the software (2013) and the overall system, i would guess that it isn't hard at all to exploit this,
 especially using the browser. I didn't tried it, though, my focus is to have a remote shell and add automation features, not do a security audit of the device.
-
-## Shell, SSH
-I finally managed to get a shell on the serial port! the magic command being `env set quiet n` before `boot` in the uboot shell. there's the full boot log attached in bootlog.txt
-
-I've also managed to port dropbear to that TV, the binaries and instructions are in ./ssh
