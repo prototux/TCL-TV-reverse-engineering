@@ -67,3 +67,6 @@ so unless i can compile my own working uboot with WoL patch for this thing, whic
 ## Exploitation
 Given the quality of the code/scripts i've seen so far, the age of the software (2013) and the overall system, i would guess that it isn't hard at all to exploit this,
 especially using the browser. I didn't tried it, though, my focus is to have a remote shell and add automation features, not do a security audit of the device.
+
+## Sitatvservice
+This binary seems to be the core of the TV actually, as it seems to handle almost everything, especially the hardware interface. apparently, that's also where the javascript objects end talking to, using a binary lib called libsitatv.so in webkit. that's also the service that listens to port 9996 and also some others binded to localhost. so either I can use it to do what i want, or i would need to reverse engineer the shit out of it so i can reimplement this 10mB mastodon to something more usuable. also, this seems what launches hbbtvbrowser, wut?
