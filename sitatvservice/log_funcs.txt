@@ -10,6 +10,9 @@
     ++++ fpi_common_get_sita_build ++++
     app_common_get_sita_build,len=20sita build=9665
     
+++++ uti_config_init ++++
+++++ tvh_get_config_path_table ++++
+++++ set_config_path_table ++++
     
 ++++ ???? ++++
 *f1 config*the OS=linux
@@ -17,9 +20,13 @@ ini=/applications/tclconfig/sys.ini
 **os_function_event_create**
 *connect errno=98 
 **os_message_create**
+
+++++ load_ini_file ++++
 wang.q load_ini_file, m_u16SpiProjectID = 0x57 
 wang.q load_ini_file, m_pModelName = /applications/tclconfig/model/EU_87_T324.ini 
 iniparser: syntax error in /applications/tclconfig/overscan/overscan_ID15.ini (1):
+
+++++ tvh_database_init ++++
 -> ﻿#OVERSCAN
 #_#[sys_func_enable_init] subtitle_enable:1,ttx_enable:1,mheg5_enable:1,dfb_enable:1
 
