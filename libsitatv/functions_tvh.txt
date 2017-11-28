@@ -1,0 +1,32 @@
+t_exit(void);
+fpi_error tvh_request_expands(void *);
+fpi_error tvh_request_function(entry_id_e, void *, uint32_t);
+fpi_error tvh_request_functions(entry_id_e, void *, uint32_t, uint32_t);
+fpi_bool tvh_request_init(void);
+fpi_bool tvh_request_inits(uint32_t, uint32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/utils/log/fpi_debug_parser.c:
+void tvh_add_test_model(EN_MODEL_ID_T, stTestList *);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/client/impl/base/app_audio.c:
+static void app_aduio_audio_format_change_tvh_play_callback();
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/client/impl/base/app_init.c:
+void tvh_app_printf_init_times(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/client/impl/utility/app_debug_func_set.c:
+void test_tvh_app_printf_init_times(unsigned char *);
+void test_tvh_get_mts(unsigned char *);
+void test_tvh_printf_socket_times(unsigned char *);
+void test_tvh_set_mts(unsigned char *);
+void test_tvh_spiflash(unsigned char *);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/client/request/client_socket/tvh_request_socket.c:
+void tvh_printf_request_socket_times(void);
+void tvh_request_function_exit(void);
+fpi_bool tvh_request_function_init(fpi_bool);
+fpi_bool tvh_request_function_receive(tvh_route_para *);
+fpi_bool tvh_request_function_send(tvh_route_para *);
+void tvh_request_recv_send_test_func(TEST_COUNT_TYPE, communicate_count_t *, int32_t, uint32_t);
+static fpi_bool tvh_request_socket_init(int32_t *, uint32_t);
+

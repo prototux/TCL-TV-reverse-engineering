@@ -1,36 +1,125 @@
-uti_config_get                                uti_config_get_path_hdcp_key
-uti_config_get_area                           uti_config_get_path_impdat
-uti_config_get_atv_out_mute                   uti_config_get_path_info_xml
-uti_config_get_atv_scan_step                  uti_config_get_path_infopush_file
-uti_config_get_atv_snowflake_flag             uti_config_get_path_mac
-uti_config_get_av_out_mute                    uti_config_get_path_ms12_sound_preset_bin
-uti_config_get_ch_freeze_flag                 uti_config_get_path_net_card
-uti_config_get_cmp_out_mute                   uti_config_get_path_netupdate_file
-uti_config_get_dtv_out_mute                   uti_config_get_path_nscd
-uti_config_get_hdmi_out_mute                  uti_config_get_path_oad
-uti_config_get_mm_out_mute                    uti_config_get_path_oad_upgrade
-uti_config_get_os                             uti_config_get_path_other_data
-uti_config_get_path_10p_white_balance         uti_config_get_path_portal_data
-uti_config_get_path_AtvDataBase               uti_config_get_path_portal_data_abs
-uti_config_get_path_DefaultSatelliteDataBase  uti_config_get_path_power_mode
-uti_config_get_path_DtvConfigDataBase         uti_config_get_path_project_id
-uti_config_get_path_DtvDataBase               uti_config_get_path_register_code
-uti_config_get_path_EpgDataBase               uti_config_get_path_report_xml
-uti_config_get_path_FacDataBase               uti_config_get_path_resolv_conf
-uti_config_get_path_Log                       uti_config_get_path_run_supplicant
-uti_config_get_path_PersistDataBase           uti_config_get_path_serial_num
-uti_config_get_path_PropertyDataBase          uti_config_get_path_supplicant_conf
-uti_config_get_path_SatelliteDataBase         uti_config_get_path_tmp
-uti_config_get_path_SysIni                    uti_config_get_path_update_md5
-uti_config_get_path_UsrDataBase               uti_config_get_path_update_xml
-uti_config_get_path_adc_data_path             uti_config_get_path_usr_stbc_bin
-uti_config_get_path_audio_description_bin     uti_config_get_path_volume_curve
-uti_config_get_path_browser                   uti_config_get_path_white_balance
-uti_config_get_path_database                  uti_config_get_path_wireless_tools
-uti_config_get_path_date                      uti_config_get_scart_out_mute
-uti_config_get_path_device_id                 uti_config_get_vga_out_mute
-uti_config_get_path_esn_key                   uti_config_getint
-uti_config_get_path_fifo_app                  uti_config_getstr
-uti_config_get_path_fifo_mid                  uti_config_init
-uti_config_get_path_football_data             uti_config_uninit
-uti_config_get_path_hdcp2_key 
+File /home/zhouguoqiang/samba/TMER1.0/core/utils/iniparser/sys_utility.c:
+uint16_t sys_utility_char_mapping_dvb_text_to_ucs2(const uint8_t *, uint16_t * const, const uint16_t, const uint16_t, 
+    const uint16_t, const MEMBER_COUNTRY, EN_CHARACTER_CODE_TABLE);
+uint16_t sys_utility_conver_utf16_to_utf8(const uint16_t *, uint8_t *, const uint16_t, const uint16_t);
+MEMBER_COUNTRY sys_utility_get_country_index(const uint8_t *);
+uint8_t sys_utility_get_day_of_week(uint16_t, uint8_t, uint8_t);
+uint8_t sys_utility_get_days_of_month(uint16_t, uint8_t);
+uint16_t sys_utility_get_days_of_year(uint16_t);
+MEMBER_COUNTRY sys_utility_get_iso3166_country_code(const uint8_t *);
+fpi_bool sys_utility_get_iso3166_country_code_from_index(const MEMBER_COUNTRY, uint8_t * const);
+MEMBER_LANGUAGE sys_utility_get_iso639_lang_code(const uint8_t *);
+fpi_bool sys_utility_get_iso639_lang_code_from_index(const MEMBER_LANGUAGE, uint8_t * const);
+MEMBER_LANGUAGE sys_utility_get_language_index(const uint8_t *);
+uint16_t sys_utility_get_string(uint8_t * const, const uint16_t, uint8_t *, uint16_t, const uint8_t);
+EN_Clock_TimeZone sys_utility_get_time_offset(const EN_TIMEZONE);
+int32_t sys_utility_get_time_zone_offset(EN_Clock_TimeZone);
+uint32_t sys_utility_mjd_utc_to_second(const uint8_t *, SI_TIME *);
+void sys_utility_second_to_time(uint32_t, SI_TIME *);
+void sys_utility_time_to_mjd_utc(SI_TIME, uint8_t *);
+uint32_t sys_utility_time_to_second(const SI_TIME *);
+uint32_t sys_utility_utc_to_second(const uint8_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/utils/dataserver/sqlite3/sqlite3.c:
+static int generateOutputSubroutine(Parse *, Select *, SelectDest *, SelectDest *, int, int, KeyInfo *, int, int);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/state/tvh_state.c:
+void tvh_state_routine(TVH_STATE);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/utils/iniparser/uti_config.c:
+fpi_error uti_config_get(const char *, const char *, char **);
+EN_AREA uti_config_get_area(void);
+fpi_bool uti_config_get_atv_out_mute(void);
+int32_t uti_config_get_atv_scan_step(void);
+int32_t uti_config_get_atv_snowflake_flag(void);
+fpi_bool uti_config_get_av_out_mute(void);
+fpi_bool uti_config_get_ch_freeze_flag(void);
+fpi_bool uti_config_get_cmp_out_mute(void);
+fpi_bool uti_config_get_dtv_out_mute(void);
+fpi_bool uti_config_get_hdmi_out_mute(void);
+fpi_bool uti_config_get_mm_out_mute(void);
+EN_OS uti_config_get_os(void);
+char *uti_config_get_path_10p_white_balance(void);
+char *uti_config_get_path_AtvDataBase(void);
+char *uti_config_get_path_DefaultSatelliteDataBase(void);
+char *uti_config_get_path_DtvConfigDataBase(void);
+char *uti_config_get_path_DtvDataBase(void);
+char *uti_config_get_path_EpgDataBase(void);
+char *uti_config_get_path_FacDataBase(void);
+char *uti_config_get_path_Log(void);
+char *uti_config_get_path_PersistDataBase(void);
+char *uti_config_get_path_PropertyDataBase(void);
+char *uti_config_get_path_SatelliteDataBase(void);
+char *uti_config_get_path_SysIni(void);
+char *uti_config_get_path_UsrDataBase(void);
+char *uti_config_get_path_adc_data_path(void);
+char *uti_config_get_path_audio_description_bin(void);
+char *uti_config_get_path_browser(void);
+char *uti_config_get_path_database(void);
+char *uti_config_get_path_date(void);
+char *uti_config_get_path_device_id(void);
+char *uti_config_get_path_esn_key(void);
+char *uti_config_get_path_fifo_app(void);
+char *uti_config_get_path_fifo_mid(void);
+char *uti_config_get_path_football_data(void);
+char *uti_config_get_path_hdcp2_key(void);
+char *uti_config_get_path_hdcp_key(void);
+char *uti_config_get_path_impdat(void);
+char *uti_config_get_path_info_xml(void);
+char *uti_config_get_path_infopush_file(void);
+char *uti_config_get_path_mac(void);
+char *uti_config_get_path_ms12_sound_preset_bin(void);
+char *uti_config_get_path_net_card(void);
+char *uti_config_get_path_netupdate_file(void);
+char *uti_config_get_path_nscd(void);
+char *uti_config_get_path_oad(void);
+char *uti_config_get_path_oad_upgrade(void);
+char *uti_config_get_path_other_data(void);
+char *uti_config_get_path_portal_data(void);
+char *uti_config_get_path_portal_data_abs(void);
+char *uti_config_get_path_power_mode(void);
+char *uti_config_get_path_project_id(void);
+char *uti_config_get_path_register_code(void);
+char *uti_config_get_path_report_xml(void);
+char *uti_config_get_path_resolv_conf(void);
+char *uti_config_get_path_run_supplicant(void);
+char *uti_config_get_path_serial_num(void);
+char *uti_config_get_path_supplicant_conf(void);
+char *uti_config_get_path_tmp(void);
+char *uti_config_get_path_update_md5(void);
+char *uti_config_get_path_update_xml(void);
+char *uti_config_get_path_usr_stbc_bin(void);
+char *uti_config_get_path_volume_curve(void);
+char *uti_config_get_path_white_balance(void);
+char *uti_config_get_path_wireless_tools(void);
+fpi_bool uti_config_get_scart_out_mute(void);
+fpi_bool uti_config_get_vga_out_mute(void);
+int32_t uti_config_getint(const char *, const char *);
+char *uti_config_getstr(const char *, const char *);
+fpi_error uti_config_init(void);
+fpi_error uti_config_uninit(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/common/tvh_service_common.c:
+void service_fpi_get_panel_resolution_ratio(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/common/tvh_service_system.c:
+void service_fpi_system_get_luma_level_distribution(void *);
+void service_fpi_system_get_panel_resolution(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/cec/Fpi_cec.c:
+fpi_error fpi_cec_routing_change(fpi_linein_t, fpi_linein_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/common/fpi_common.c:
+fpi_error fpi_get_panel_resolution_ratio(en_res_ratio *);
+fpi_error fpi_set_panel_resolution_ratio(en_res_ratio *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/common/fpi_system.c:
+fpi_error fpi_system_get_luma_level_distribution(uint16_t *, uint8_t);
+fpi_error fpi_system_get_panel_resolution(st_fpi_panel_property *);
+
+Non-debugging symbols:
+0x00063328  utimes
+0x00063368  fpp_system_get_panel_resolution
+0x000634d8  fpp_system_get_luma_level_distribution
+0x001f439c  MHG_HDTEXT_SetOutputResolution
+0x00245848  d_substitution

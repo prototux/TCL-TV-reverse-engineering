@@ -1,257 +1,1103 @@
-tvh_add_service_info                          tvh_graphic_thread
-tvh_add_test_model                            tvh_is_hh_subtitle
-tvh_analog_scan_main_proc                     tvh_is_nordig_country_dvbt_onid
-tvh_analog_search_start_scan                  tvh_lrc_player_thread
-tvh_analog_search_state_check                 tvh_manual_scan_freq_check
-tvh_analog_search_stop_ready                  tvh_media_lrc_get_text_rows
-tvh_analog_search_stop_scan                   tvh_media_lrc_get_title_info
-tvh_analog_search_variable_init               tvh_media_lrc_play
-tvh_atv_ch_info_t                             tvh_media_lrc_stop
-tvh_atv_scan_video_mute_t                     tvh_message_notify_module_ready
-tvh_change_ttx_digital_language               tvh_message_para
-tvh_channel_aft_direct_offset_freq            tvh_miracast_start
-tvh_channel_aft_set_tuner                     tvh_miracast_stop
-tvh_channel_atv_aft                           tvh_miracast_test
-tvh_channel_atv_aft_get_interval              tvh_mmi_enq_t
-tvh_channel_atv_aft_set_interval              tvh_mmi_information
-tvh_channel_atv_get_channel_info              tvh_mmi_menu_t
-tvh_channel_atv_set_channel_info              tvh_model_exit
-tvh_ci_ai_enter_menu                          tvh_model_init
-tvh_ci_ai_get_appinfo                         tvh_nortify_event
-tvh_ci_ammi_close_subtitle                    tvh_notify_func
-tvh_ci_api_mutex_protect                      tvh_notifys_func
-tvh_ci_api_mutex_unprotect                    tvh_notifys_init
-tvh_ci_ca_clear_pmt                           tvh_notifyx_func
-tvh_ci_ca_pmt_change                          tvh_notifyx_init
-tvh_ci_cam_io_t                               tvh_oad_confirm_future_update
-tvh_ci_cam_mem_t                              tvh_oad_confirm_system_software_update
-tvh_ci_cam_ssignal_t                          tvh_oad_get_ddb_status
-tvh_ci_cam_tsignal_t                          tvh_oad_is_enabled
-tvh_ci_card_e                                 tvh_oad_is_monitor
-tvh_ci_card_ireq_t                            tvh_oad_set_enabled
-tvh_ci_card_movement_isr_fn                   tvh_oad_set_monitor
-tvh_ci_cc_card_movement_callback_register     tvh_oad_set_path
-tvh_ci_check_tune_lock_status                 tvh_oad_set_tdt_is_ready
-tvh_ci_cis_ciplus_compatibility_item_t        tvh_oad_set_tot_is_ready
-tvh_ci_configure_with_key                     tvh_playback_Counter
-tvh_ci_control_init                           tvh_playback_check_timeshift_cache
-tvh_ci_debug                                  tvh_playback_get_real_data_file_number
-tvh_ci_dm_erase_certificate                   tvh_printf_service_socket_times
-tvh_ci_dm_get_custom_code                     tvh_program_ci_subtitle_lang
-tvh_ci_dm_get_custom_code_length              tvh_program_get_sbt_count
-tvh_ci_dm_update_certificate                  tvh_program_get_sbt_index
-tvh_ci_drv_close                              tvh_program_set_page_id
-tvh_ci_drv_get_card_plug_status               tvh_pvr_add_first_event
-tvh_ci_drv_get_compatibility_length           tvh_pvr_calc_offset_per_second
-tvh_ci_drv_get_compatibility_string           tvh_pvr_calc_second_per_offset
-tvh_ci_drv_init                               tvh_pvr_calculate_current_offset
-tvh_ci_drv_init_bypass_state                  tvh_pvr_delete_recording
-tvh_ci_drv_init_ireq                          tvh_pvr_file_sync_message_handle_task
-tvh_ci_drv_io_control                         tvh_pvr_get_current_play_time
-tvh_ci_drv_lic_f_init                         tvh_pvr_get_index_array
-tvh_ci_drv_open                               tvh_pvr_get_timeshift_data_file_max_number
-tvh_ci_drv_phys_check_cis                     tvh_pvr_index_timer
-tvh_ci_drv_phys_read_byte                     tvh_pvr_init_playback
-tvh_ci_drv_phys_receive_data                  tvh_pvr_init_record
-tvh_ci_drv_phys_send_data                     tvh_pvr_is_playback
-tvh_ci_drv_phys_write_byte                    tvh_pvr_is_radio
-tvh_ci_drv_poweron_with_cam                   tvh_pvr_load_record_list
-tvh_ci_drv_register_callback                  tvh_pvr_message_handle_task
-tvh_ci_drv_set_bypass_mode                    tvh_pvr_message_send
-tvh_ci_drv_set_poweron_with_cam               tvh_pvr_physical_path_is_recording
-tvh_ci_ex_cc_init                             tvh_pvr_play_backword_end_handle
-tvh_ci_ex_cc_init_uri_version_on_card_remove  tvh_pvr_playback_calc_current_speed
-tvh_ci_ex_cc_is_process_pin                   tvh_pvr_playback_get_slow_motion_factor
-tvh_ci_ex_cc_register_key_mng_callback        tvh_pvr_playback_is_drop_mode
-tvh_ci_ex_cc_register_pin_callback            tvh_pvr_playback_is_jump_mode
-tvh_ci_ex_cc_register_srm_callback            tvh_pvr_playback_is_motion_support
-tvh_ci_ex_cc_register_uri_callback            tvh_pvr_playback_is_repeat
-tvh_ci_ex_hss_init                            tvh_pvr_playback_normal
-tvh_ci_ex_hss_register                        tvh_pvr_playback_pause
-tvh_ci_ex_hss_unregister                      tvh_pvr_playback_realtime_read
-tvh_ci_get_ca_handle                          tvh_pvr_playback_resource_free
-tvh_ci_get_ca_system_number                   tvh_pvr_playback_task
-tvh_ci_get_card_plug_status                   tvh_pvr_read_recorded_program_info
-tvh_ci_get_cc_card_movement_callback          tvh_pvr_record_get_start_offset
-tvh_ci_get_current_linein                     tvh_pvr_record_realtime_write
-tvh_ci_get_dt_handle                          tvh_pvr_record_resource_free
-tvh_ci_get_event                              tvh_pvr_record_task
-tvh_ci_get_hss_handle                         tvh_pvr_record_write_info
-tvh_ci_get_op_handle                          tvh_pvr_reset_tsd_buffer
-tvh_ci_get_satellite_id                       tvh_pvr_set_playback_index_buffer
-tvh_ci_handle_ai_module_msg                   tvh_pvr_skip_to_next_position
-tvh_ci_handle_ca_module_msg                   tvh_pvr_switch_subtitle
-tvh_ci_handle_cc_module_msg                   tvh_pvr_sync_message_send
-tvh_ci_handle_hc_module_msg                   tvh_pvr_write_recorded_program_info
-tvh_ci_handle_hlc_module_msg                  tvh_record_get_real_data_file_number
-tvh_ci_handle_hss_module_msg                  tvh_route_para
-tvh_ci_handle_int_init_para_on_card_remove    tvh_sbt_pes_buffer_handle
-tvh_ci_handle_int_module_msg                  tvh_scan_aft_without_hsync_loop_check
-tvh_ci_handle_int_module_msg_remove_mmi       tvh_scan_channel_set_end
-tvh_ci_handle_mmi_module_msg                  tvh_scan_check_afc_window
-tvh_ci_handle_op_module_msg                   tvh_scan_check_false_channel
-tvh_ci_handle_scan_callback                   tvh_scan_check_sync
-tvh_ci_handle_source_change_callback          tvh_scan_exact_freq_loop_check
-tvh_ci_handle_status_module_msg               tvh_scan_excat_freq
-tvh_ci_handle_upgr_module_msg                 tvh_scan_exit_check
-tvh_ci_hc_check_tune_done                     tvh_scan_get_color_audio_system
-tvh_ci_hc_control_channel_change              tvh_scan_get_pause_status
-tvh_ci_hc_end_wait_pmt_and_play_program       tvh_scan_good_afc
-tvh_ci_hc_is_wait_pmt                         tvh_scan_interval_check
-tvh_ci_hc_save_program_info                   tvh_scan_record_max_freq_has_been_set
-tvh_ci_hc_tune_restore                        tvh_scan_save_program_manual
-tvh_ci_hlc_get_country                        tvh_scan_set_freq
-tvh_ci_hss_init_sdt_version                   tvh_scan_set_pause_status
-tvh_ci_hss_sdt_change                         tvh_scan_start_for_all
-tvh_ci_hss_signal_lock                        tvh_scan_start_for_pal
-tvh_ci_init                                   tvh_scan_test_secam_l
-tvh_ci_init_op_info                           tvh_scart_analyse_level
-tvh_ci_inscan                                 tvh_scart_analyse_level.part.1
-tvh_ci_is_ciplus_cam                          tvh_scart_config_scart_out
-tvh_ci_mheg_is_disable_sbt                    tvh_scart_get_linein_by_pin8_level
-tvh_ci_mheg_is_open                           tvh_scart_get_pin8_aspect_ratio
-tvh_ci_mmi_close_by_user                      tvh_scart_get_scart_change_step
-tvh_ci_mmi_event                              tvh_scart_in_set_video_type
-tvh_ci_mmi_get_current_application_index      tvh_scart_init
-tvh_ci_mmi_is_mmi_session_open                tvh_scart_notify_linein_change
-tvh_ci_mmi_mutex_lock                         tvh_scart_out_get_mute_status
-tvh_ci_mmi_mutex_unlock                       tvh_scart_out_set_mute
-tvh_ci_mmi_send_enq_answ                      tvh_scart_out_set_source
-tvh_ci_mmi_send_menu_answ                     tvh_scart_out_set_wss
-tvh_ci_mmi_set_current_application_index      tvh_scart_out_t
-tvh_ci_mmi_ui_display_info                    tvh_scart_process_pin8_change
-tvh_ci_notify_linein_change                   tvh_scart_set_scart_change_step
-tvh_ci_notify_scan                            tvh_scart_system_on_detect
-tvh_ci_notify_sourcechange                    tvh_scart_t
-tvh_ci_ok_to_route_ts                         tvh_send_cmd_to_app_open_subtitle
-tvh_ci_ok_to_show_osd                         tvh_server_recv_send_test_func
-tvh_ci_op_checktune_done                      tvh_service_debug_func_set_init
-tvh_ci_op_del_all                             tvh_service_dev_ower
-tvh_ci_op_exist                               tvh_service_dev_release
-tvh_ci_op_factory_reset                       tvh_service_dispatch
-tvh_ci_op_get_channel_list_type               tvh_service_exit
-tvh_ci_op_get_channel_list_type_name          tvh_service_get_comunicate_sucess_status
-tvh_ci_op_get_power_on_time                   tvh_service_init
-tvh_ci_op_search_start                        tvh_service_printf_init_times
-tvh_ci_op_set_audio_index                     tvh_service_printf_name
-tvh_ci_op_set_channel_list_type               tvh_service_process_event
-tvh_ci_op_update_nit                          tvh_service_save_time
-tvh_ci_pmt_update_register_callback           tvh_service_send_system_message
-tvh_ci_rs_ai_application_list_callback        tvh_service_send_system_messages
-tvh_ci_rs_ai_free_app_info                    tvh_service_send_system_messagex
-tvh_ci_rs_ai_init                             tvh_service_socket_init
-tvh_ci_rs_ai_register                         tvh_set_if
-tvh_ci_rs_ammi_init                           tvh_set_scan_act_type
-tvh_ci_rs_ammi_register                       tvh_set_sound_system
-tvh_ci_rs_ammi_unregister                     tvh_simulator_key_run
-tvh_ci_rs_ca_init                             tvh_simulator_key_set
-tvh_ci_rs_ca_register                         tvh_sort_menu_subtitle_info_by_language
-tvh_ci_rs_ca_unregister                       tvh_state_enter
-tvh_ci_rs_dt_init                             tvh_state_get_current
-tvh_ci_rs_dt_register                         tvh_state_get_handle
-tvh_ci_rs_dt_unregister                       tvh_state_get_private_data
-tvh_ci_rs_hc_init                             tvh_state_h
-tvh_ci_rs_hc_register                         tvh_state_init
-tvh_ci_rs_hc_unregister                       tvh_state_leave
-tvh_ci_rs_hlc_set_country                     tvh_state_notify
-tvh_ci_rs_hlc_set_language                    tvh_state_routine
-tvh_ci_rs_mmi_init                            tvh_state_set_handle_context
-tvh_ci_rs_mmi_register                        tvh_state_set_private_data
-tvh_ci_rs_mmi_unregister                      tvh_state_wait_event
-tvh_ci_rs_op_init                             tvh_subtitle_decode_display_exit
-tvh_ci_rs_op_register                         tvh_subtitle_decode_display_init
-tvh_ci_rs_op_unregister                       tvh_subtitle_decode_exit
-tvh_ci_rs_upgr_init                           tvh_subtitle_decoder
-tvh_ci_rs_upgr_register                       tvh_subtitle_decoder_init
-tvh_ci_rs_upgr_unregister                     tvh_subtitle_display_hide
-tvh_ci_save_current_linein                    tvh_subtitle_display_show
-tvh_ci_sdt_update_register_callback           tvh_subtitle_displaypthead_exit
-tvh_ci_sema_signal                            tvh_subtitle_displaypthead_init
-tvh_ci_sema_wait                              tvh_subtitle_pmt_callback
-tvh_ci_send_msg_to_ci_task                    tvh_test_os_malloc
-tvh_ci_send_msg_to_ci_task_no_wait            tvh_test_video_mute_level
-tvh_ci_set_ready_signal_timeout               tvh_time_diff_time
-tvh_ci_slot_attributes_t                      tvh_timeshift_speed_test_task
-tvh_ci_slot_e                                 tvh_ttx_GetDisplayState
-tvh_ci_slot_open_close_e                      tvh_ttx_SetDisplayState
-tvh_ci_start                                  tvh_ttx_alarmpage_is_available
-tvh_ci_status_notify_callback                 tvh_ttx_capture_proc
-tvh_ci_statusreg_isr_fn                       tvh_ttx_change_language_group
-tvh_ci_task                                   tvh_ttx_clear_display
-tvh_com_event                                 tvh_ttx_close_stream
-tvh_com_large                                 tvh_ttx_copy_from_decode_buffer
-tvh_com_msg                                   tvh_ttx_dec_get_number_of_pages_in_DB
-tvh_database_init                             tvh_ttx_dec_init
-tvh_debug_handle                              tvh_ttx_dec_onoff_preset
-tvh_dtv_get_play_status                       tvh_ttx_digital_close
-tvh_dtv_get_play_status.part.3                tvh_ttx_digital_event
-tvh_dtv_service_type_priority                 tvh_ttx_digital_event_task
-tvh_dtv_subtitle_get_state                    tvh_ttx_digital_get_line
-tvh_dtv_subtitle_set_page_id                  tvh_ttx_digital_init
-tvh_dtv_subtitle_start                        tvh_ttx_disable_digital_source
-tvh_dtv_subtitle_stop                         tvh_ttx_display
-tvh_dtv_subtitle_thread                       tvh_ttx_display_init
-tvh_epg_callback                              tvh_ttx_enable_digital_source
-tvh_epg_delete_all_event                      tvh_ttx_get_clock
-tvh_epg_event_pf_cache                        tvh_ttx_get_flof_top
-tvh_epg_get_descriptors_by_tag_and_event      tvh_ttx_get_index_page
-tvh_epg_get_parental_rating                   tvh_ttx_get_language_group
-tvh_epg_init_setting                          tvh_ttx_get_last_page
-tvh_epg_monitor_start                         tvh_ttx_get_last_request_page
-tvh_epg_monitor_stop                          tvh_ttx_get_last_subpage
-tvh_epg_monitor_thread                        tvh_ttx_get_next_sub_page
-tvh_epg_parser                                tvh_ttx_get_stream_bytes
-tvh_epg_parser.constprop.1                    tvh_ttx_get_stream_ready_bytes_count
-tvh_epg_pf_event_cache_st                     tvh_ttx_goto_page
-tvh_epg_pf_event_cache_t                      tvh_ttx_handle_key
-tvh_epg_pf_event_item_st                      tvh_ttx_init_decode
-tvh_epg_pf_event_item_t                       tvh_ttx_input_alarm_page
-tvh_epg_refresh_section_received_state        tvh_ttx_is_cancel_mode
-tvh_epg_restart_filter                        tvh_ttx_is_display_on
-tvh_epg_set_country                           tvh_ttx_is_sub_available
-tvh_epg_set_language                          tvh_ttx_open_page_request
-tvh_epg_set_read_flag                         tvh_ttx_open_stream
-tvh_epg_start_filter                          tvh_ttx_page_freeze
-tvh_freq_dvbc_China                           tvh_ttx_page_is_subnews
-tvh_freq_dvbc_Finland                         tvh_ttx_pes_buffer_handle
-tvh_freq_dvbc_Other                           tvh_ttx_pes_find_new_packet
-tvh_freq_dvbt_Australia                       tvh_ttx_pes_get_header
-tvh_freq_dvbt_Boxer                           tvh_ttx_pes_get_line
-tvh_freq_dvbt_China                           tvh_ttx_pes_getdata_len
-tvh_freq_dvbt_Europe                          tvh_ttx_pes_invalidate_packet
-tvh_freq_dvbt_Iran                            tvh_ttx_pes_parse_header
-tvh_freq_dvbt_Italy                           tvh_ttx_pes_peek_bytes
-tvh_freq_dvbt_Other                           tvh_ttx_pes_read_bytes
-tvh_freq_dvbt_Russia                          tvh_ttx_pes_read_uint16
-tvh_freq_dvbt_Taiwan                          tvh_ttx_pes_read_uint8
-tvh_freq_dvbt_UK_NewZealand                   tvh_ttx_pes_skip_bytes
-tvh_freq_dvbt_Vietnam                         tvh_ttx_print_dec_status
-tvh_freq_table_get_by_country                 tvh_ttx_req_page_available
-tvh_get_config_path_table                     tvh_ttx_reset
-tvh_get_miracast_info                         tvh_ttx_reveal_is_available
-tvh_get_playback_params_pointer               tvh_ttx_set_display_flag
-tvh_get_ready_client_id                       tvh_ttx_set_flof_top
-tvh_get_record_params_pointer                 tvh_ttx_set_language_group_by_country
-tvh_get_scan_act_type                         tvh_ttx_set_level
-tvh_graphic_cleanup                           tvh_ttx_set_no_black_side_bar
-tvh_graphic_init                              tvh_ttx_set_timer_page_info_visible
-tvh_graphic_layer_configure_get               tvh_ttx_stream_opened
-tvh_graphic_layer_free                        tvh_ttx_subpage_cycle_available
-tvh_graphic_layer_get                         tvh_ttx_subpage_cycle_model
-tvh_graphic_layer_hide                        tvh_ttx_subpage_is_available
-tvh_graphic_layer_show                        tvh_ttx_subtitle_switch
-tvh_graphic_layer_update                      tvh_ttx_toggle_hold
-tvh_graphic_layer_viewport_set                tvh_ttx_toggle_reveal
-tvh_graphic_surface_blit                      tvh_ttx_toggle_size
-tvh_graphic_surface_create                    tvh_ttx_toggle_subpage_input
-tvh_graphic_surface_destroy                   tvh_ttx_toggle_update
-tvh_graphic_surface_fill_rectangle            tvh_ttx_vbi_cancel
-tvh_graphic_surface_info_get                  tvh_ttx_vbi_data_is_ttx
-tvh_graphic_surface_lock                      tvh_ttx_vbi_init
-tvh_graphic_surface_palette_get               tvh_ttx_vbi_on
-tvh_graphic_surface_palette_set               tvh_ttx_vbi_reset
-tvh_graphic_surface_provider_create           tvh_update_menu_service_subtitle
-tvh_graphic_surface_read                      tvh_usb_format_task
-tvh_graphic_surface_unlock                    tvh_zoom_get_default_config
-tvh_graphic_surface_write                     tvh_zoom_get_default_config_count
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/service_socket/tvh_service.c:
+int tvh_message_notify_module_ready(void);
+void tvh_printf_service_socket_times(void);
+void tvh_server_recv_send_test_func(TEST_COUNT_TYPE, communicate_count_t *, int32_t, unsigned int);
+void tvh_service_exit(void);
+fpi_bool tvh_service_get_comunicate_sucess_status(void);
+fpi_bool tvh_service_init(void);
+void tvh_service_process_event(void);
+void tvh_service_send_system_message(unsigned int, unsigned int, unsigned int);
+void tvh_service_send_system_messages(unsigned int, uint8_t *, unsigned int);
+void tvh_service_send_system_messagex(unsigned int, unsigned int, unsigned int, uint8_t *, unsigned int);
+static void *tvh_service_socket_init(void *);
 
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/service_utility/tvh_simulate_key.c:
+void tvh_simulator_key_set(fpi_bool);
+static void *tvh_simulator_key_run(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/channel_scan/tvh_dtv_search.c:
+void _tvhsearch_oad_save_info(fpi_dtv_delivery_t *);
+fpi_error tvhsearch_add_delivery(fpi_dtv_delivery_t *);
+fpi_error tvhsearch_add_new_tp_from_nit(fpi_dtv_delivery_t *);
+fpi_error tvhsearch_add_searched_delivery(unsigned int, unsigned int, uint16_t);
+void tvhsearch_advance_search_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_append_delivery(fpi_dtv_delivery_t *);
+void tvhsearch_bat_callback(int32_t, tvhsipsi_data_event_t, void *);
+void tvhsearch_check_all_received(void);
+fpi_bool tvhsearch_check_is_searched_delivery(unsigned int, unsigned int);
+fpi_error tvhsearch_common_initialize(fpi_dtv_scan_seting_t *);
+fpi_error tvhsearch_deinit_tvhsearch_nit_tp_list(void);
+void tvhsearch_full_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_full_scan_switch_next_freq(void);
+tvhsearch_module_param_t *tvhsearch_get_module_param(void);
+fpi_error tvhsearch_get_scan_info(tvhsearch_scaned_info_t *);
+int16_t tvhsearch_get_total_delivery_from_nit_table(tvhsipsi_nit_table_t *, fpi_dtv_delivery_type_t);
+fpi_error tvhsearch_init_tvhsearch_nit_tp_list(int32_t);
+fpi_error tvhsearch_initialize(fpi_dtv_scan_seting_t *);
+fpi_bool tvhsearch_is_dvbt2_supported(void);
+fpi_bool tvhsearch_is_oad_scanning(void);
+void tvhsearch_main_proc(TVHMGR_Message_t *);
+void tvhsearch_nit_callback(int32_t, tvhsipsi_data_event_t, void *);
+void tvhsearch_nit_search_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_oad_scan_continue_next_freq(void);
+fpi_error tvhsearch_oad_scan_continue_next_pmt(void);
+fpi_error tvhsearch_oad_scan_exit_scan(void);
+void tvhsearch_oad_scan_proc(TVHMGR_Message_t *);
+void tvhsearch_pat_callback(int32_t, tvhsipsi_data_event_t, void *);
+void tvhsearch_pmt_callback(int32_t, tvhsipsi_data_event_t, void *);
+fpi_error tvhsearch_process_close_command(void);
+fpi_error tvhsearch_process_sdt_other_section(tvhsipsi_sdt_table_t *);
+fpi_error tvhsearch_process_tuner_locked(void);
+fpi_error tvhsearch_receive_next_pmt_table(void);
+void tvhsearch_save_current_tp(void);
+void tvhsearch_sdt_callback(int32_t, tvhsipsi_data_event_t, void *);
+void tvhsearch_sdt_other_callback(int32_t, tvhsipsi_data_event_t, void *);
+fpi_error tvhsearch_switch_next_delivery(void);
+fpi_error tvhsearch_terminate(void);
+void tvhsearch_upc_search_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_upc_switch_next_network(void);
+void tvhsearch_update_scan_proc(TVHMGR_Message_t *);
+static fpi_error _tvhearch_process_bgm_mode_nit_tp_list(void);
+static fpi_error _tvhsearch_process_dvbt2_locked(fpi_dtv_delivery_t *);
+static fpi_error _tvhsearch_process_nit_table(tvhsipsi_nit_table_t *);
+static void tvhsearch_signal_change_callback(fpi_dtv_stream_port_t, fpp_demod_event_t, unsigned int, void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/channel_scan/tvh_dtv_search_dvbs.c:
+fpi_error tvhsearch_dvbs_blind_scan_initialize(fpi_dtv_scan_seting_t *, fpi_bool);
+void tvhsearch_dvbs_blind_scan_main_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_dvbs_blind_scan_swtich_next_tp(tvhsearch_module_param_t *);
+fpi_error tvhsearch_dvbs_initialize(fpi_dtv_scan_seting_t *);
+void tvhsearch_dvbs_nit_search_main_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_dvbs_switch_next_delivery(tvhsearch_module_param_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/channel_scan/tvh_channel_scan_atv.c:
+void _tvh_scan_frequency_fix(search_state_analog_t *);
+void tvh_analog_scan_main_proc(TVHMGR_Message_t *);
+fpi_error tvh_analog_search_start_scan(void *);
+fpi_error tvh_analog_search_state_check(search_state_analog_t *);
+int tvh_analog_search_stop_ready(void);
+void tvh_analog_search_stop_scan(void);
+void tvh_analog_search_variable_init(search_state_analog_t *);
+uint8_t tvh_get_scan_act_type(void);
+void tvh_manual_scan_freq_check(search_state_analog_t *);
+fpi_bool tvh_scan_aft_without_hsync_loop_check(search_state_analog_t *, int32_t);
+void tvh_scan_channel_set_end(search_state_analog_t *);
+void tvh_scan_check_afc_window(search_state_analog_t *);
+void tvh_scan_check_false_channel(search_state_analog_t *);
+void tvh_scan_check_sync(search_state_analog_t *);
+fpi_bool tvh_scan_exact_freq_loop_check(search_state_analog_t *, int32_t);
+void tvh_scan_excat_freq(search_state_analog_t *);
+fpi_bool tvh_scan_exit_check(search_state_analog_t *);
+void tvh_scan_get_color_audio_system(search_state_analog_t *);
+fpi_bool tvh_scan_get_pause_status(void);
+void tvh_scan_good_afc(search_state_analog_t *);
+fpi_bool tvh_scan_interval_check(void);
+void tvh_scan_record_max_freq_has_been_set(search_state_analog_t *);
+void tvh_scan_save_program_manual(uint16_t, uint8_t);
+void tvh_scan_set_freq(search_state_analog_t *);
+void tvh_scan_set_pause_status(fpi_bool);
+void tvh_scan_start_for_all(search_state_analog_t *);
+void tvh_scan_start_for_pal(search_state_analog_t *);
+void tvh_scan_test_secam_l(unsigned int, unsigned int);
+void tvh_set_if(uint8_t);
+void tvh_set_scan_act_type(uint8_t);
+void tvh_set_sound_system(uint8_t);
+unsigned int tvh_time_diff_time(unsigned int);
+static void _tvh_scan_gen_freq_change(search_state_analog_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/channel_scan/tvh_dtv_search_fransat_dvbs.c:
+fpi_error tvhsearch_dvbs_fransat_get_bouquet_info(fpi_dtv_bouquet_info_t *);
+fpi_error tvhsearch_dvbs_fransat_initialize(fpi_dtv_scan_seting_t *);
+void tvhsearch_dvbs_fransat_search_main_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_dvbs_fransat_set_bouquet_info_index(uint8_t);
+static void tvhsearch_dvbs_fransat_process_bat(tvhsipsi_bat_table_t *);
+static fpi_error tvhsearch_fransat_process_sdt_other_section(tvhsipsi_sdt_table_t *, tvhsearch_module_param_t *);
+static void tvhsearch_fransat_sdt_other_callback(int32_t, tvhsipsi_data_event_t, void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/channel_scan/tvh_frequency_table.c:
+fpi_error tvh_freq_table_get_by_country(MEMBER_COUNTRY, fpi_dtv_delivery_type_t, fpi_dtv_stream_port_t, fpi_dtv_delivery_t *, 
+    int32_t, int32_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/channel_scan/tvh_dtv_search_china.c:
+fpi_error _tvhsearch_china_initialize_customer_search(tvhsearch_module_param_t *);
+fpi_error tvhsearch_add_main_tp(tvhsearch_main_frequency_t *);
+fpi_error tvhsearch_analyse_operator_from_main_tp_list(tvhsearch_operator_list_info_t *);
+fpi_error tvhsearch_auto_check_main_frequency_by_nit(tvhsipsi_nit_table_t *);
+void tvhsearch_china_default_main_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_china_initialize(fpi_dtv_scan_seting_t *);
+void tvhsearch_china_quick_search_proc(TVHMGR_Message_t *);
+void tvhsearch_china_search_customer_info_proc(TVHMGR_Message_t *);
+fpi_error tvhsearch_deinit_tvhsearch_main_tp_list(void);
+fpi_error tvhsearch_init_tvhsearch_main_tp_list(int32_t);
+static fpi_error _tvhsearch_china_update_lcn_by_bat_table(tvhsipsi_bat_table_t *);
+static fpi_error _tvhsearch_china_update_lcn_by_nit_table(tvhsipsi_nit_table_t *);
+static fpi_error _tvhsearch_china_update_lcn_by_sdt_table(tvhsipsi_sdt_table_t *);
+static tvhsearch_lcn_item_t *_tvhsearch_get_new_lcn_item(uint16_t, uint16_t, uint16_t);
+static fpi_error _tvhsearch_terminate_customer_tp_list(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/oad/tvh_oad_mgr.c:
+void tvh_oad_confirm_future_update(fpi_bool);
+void tvh_oad_confirm_system_software_update(fpi_bool);
+void tvh_oad_get_ddb_status(fpi_bool *);
+fpi_bool tvh_oad_is_enabled(void);
+fpi_bool tvh_oad_is_monitor(void);
+void tvh_oad_set_enabled(fpi_bool);
+void tvh_oad_set_monitor(fpi_bool);
+void tvh_oad_set_path(uint8_t *);
+void tvh_oad_set_tdt_is_ready(void);
+void tvh_oad_set_tot_is_ready(void);
+fpi_error tvhoad_inject(unsigned int, tvhdtv_oad_inject_type_t, unsigned int, unsigned int);
+fpi_error tvhoad_query(unsigned int, tvhdtv_oad_query_type_t, unsigned int *);
+fpi_error tvhoad_start_manager(void);
+fpi_error tvhoad_stop_manager(void);
+static void _tvh_bgm_callback(unsigned int);
+static void _tvh_notify_future_software(fpi_bool);
+static void *_tvh_oad_booking_task(void *);
+static void _tvh_oad_check_schedule_start();
+static void _tvh_oad_check_schedule_stop();
+static void _tvh_oad_check_state_time_out(unsigned int, fpi_bool);
+static void _tvh_oad_check_state_time_out(fpi_bool, unsigned int);
+static fpi_bool _tvh_oad_current_is_trigger_muxid(int *);
+static void _tvh_oad_state_time_out_callback(unsigned int);
+static void _tvh_schedule_callback(unsigned int);
+static void tvhoad_mgr_proc(TVHMGR_Message_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_pmt.c:
+fpi_error tvhsipsi_free_pmt_table(tvhsipsi_pmt_table_type_t, tvhsipsi_pmt_table_t *);
+fpi_error tvhsipsi_get_pmt_table(tvhsipsi_pmt_table_type_t, tvhsipsi_pmt_table_t *);
+fpi_error tvhsipsi_init_receive_pmt(void);
+fpi_error tvhsipsi_parse_pmt(tvhsipsi_pmt_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_start_receive_pmt(tvhsipsi_pmt_table_type_t, uint16_t, uint16_t, uint8_t, unsigned int, 
+    tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_pmt(tvhsipsi_pmt_table_type_t);
+static void tvhsipsi_pmt_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_nit.c:
+fpi_error tvhsipsi_free_all_nit_table(void);
+fpi_error tvhsipsi_free_nit_table(tvhsipsi_nit_table_t *);
+fpi_error tvhsipsi_get_nit_table(tvhsipsi_nit_table_t *);
+fpi_error tvhsipsi_init_receive_nit(void);
+fpi_error tvhsipsi_parse_ciplus_service_descriptor(tvhsipsi_nit_stream_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_parse_nit(tvhsipsi_nit_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_start_receive_all_nit(tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_start_receive_nit(uint16_t, uint8_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_nit(void);
+static void tvhsipsi_all_nit_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+static void tvhsipsi_free_nit_table_node(tvhsipsi_nit_table_t *);
+static void tvhsipsi_nit_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_bat.c:
+fpi_error tvhsipsi_free_bat_table(tvhsipsi_bat_table_t *);
+fpi_error tvhsipsi_get_bat_table(tvhsipsi_bat_table_t *);
+fpi_error tvhsipsi_init_receive_bat(void);
+fpi_error tvhsipsi_parse_bat(tvhsipsi_bat_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_start_receive_bat(uint16_t, uint8_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_bat(void);
+static void tvhsipsi_bat_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_sdt.c:
+fpi_error tvhsipsi_free_sdt_table(tvhsipsi_sdt_table_t *);
+uint8_t *tvhsipsi_get_sdt_other_buffer_by_length(int32_t);
+fpi_error tvhsipsi_get_sdt_table(tvhsipsi_sdt_table_t *);
+fpi_error tvhsipsi_init_receive_sdt(void);
+fpi_error tvhsipsi_parse_sdt(tvhsipsi_sdt_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_start_receive_sdt(uint8_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_start_receive_sdt_other(tvhsipsi_network_stream_t *, int16_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_sdt(void);
+static void tvhsipsi_sdt_other_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+static void tvhsipsi_sdt_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_pat.c:
+fpi_error tvhsipsi_free_pat_table(tvhsipsi_pat_table_t *);
+fpi_error tvhsipsi_get_pat_table(tvhsipsi_pat_table_t *);
+fpi_error tvhsipsi_init_receive_pat(void);
+fpi_error tvhsipsi_parse_pat(tvhsipsi_pat_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_start_receive_pat(uint8_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_pat(void);
+static void tvhsipsi_pat_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_unt.c:
+fpi_error tvhsipsi_free_unt_table(tvhsipsi_unt_table_t *);
+fpi_error tvhsipsi_get_unt_table(tvhsipsi_unt_table_t *);
+fpi_error tvhsipsi_init_receive_unt(void);
+fpi_error tvhsipsi_start_receive_unt(uint16_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_unt(void);
+static void tvhsipsi_unt_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_tdt.c:
+fpi_error tvhsipsi_free_tdt_table(tvhsipsi_tdt_table_t *);
+fpi_error tvhsipsi_get_tdt_table(tvhsipsi_tdt_table_t *);
+fpi_error tvhsipsi_get_tot_table(tvhsipsi_tot_table_t *);
+fpi_error tvhsipsi_init_receive_tdt_and_tot(void);
+fpi_error tvhsipsi_parse_tdt(tvhsipsi_tdt_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_parse_tot(tvhsipsi_tot_table_t *, uint8_t *, int32_t);
+fpi_error tvhsipsi_set_clock_mode(uint8_t);
+fpi_error tvhsipsi_set_timezone(uint8_t);
+fpi_error tvhsipsi_start_receive_tdt_and_tot(tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_tdt_and_tot(void);
+static void tvhsipsi_tdt_and_tot_section_callback(int32_t, tvhsipsi_data_event_t, uint8_t *, int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_dsmcc.c:
+fpi_error tvhsipsi_free_ddb_table(tvhsipsi_ddb_table_t *);
+fpi_error tvhsipsi_free_dii_table(tvhsipsi_dii_table_t *);
+fpi_error tvhsipsi_free_dsi_table(tvhsipsi_dsi_table_t *);
+fpi_error tvhsipsi_get_ddb_table(tvhsipsi_ddb_table_t *);
+fpi_error tvhsipsi_get_dii_table(tvhsipsi_dii_table_t *);
+fpi_error tvhsipsi_get_dsi_table(tvhsipsi_dsi_table_t *);
+fpi_error tvhsipsi_init_receive_ddb(void);
+fpi_error tvhsipsi_init_receive_dii(void);
+fpi_error tvhsipsi_init_receive_dsi(void);
+fpi_error tvhsipsi_start_receive_ddb(uint16_t, unsigned int, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_start_receive_dii(uint16_t, unsigned int, uint8_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_start_receive_dsi(uint16_t, uint8_t, tvhsipsi_event_callback_t);
+fpi_error tvhsipsi_stop_receive_ddb(void);
+fpi_error tvhsipsi_stop_receive_dii(void);
+fpi_error tvhsipsi_stop_receive_dsi(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/psi/tvh_sipsi_base.c:
+unsigned int tvhsipsi_calc_crc32(uint8_t *, int);
+void tvhsipsi_change_delivery_to_mux(fpi_dtv_delivery_t *, ST_DVB_MUX_INFO *);
+void tvhsipsi_change_mux_to_delivery(fpi_dtv_delivery_t *, ST_DVB_MUX_INFO *);
+fpi_bool tvhsipsi_check_logical_no_is_support(unsigned int, uint8_t, MEMBER_COUNTRY);
+fpi_bool tvhsipsi_check_section_crc32(uint8_t *, int);
+int32_t tvhsipsi_get_country(void);
+uint8_t tvhsipsi_get_current_delivery(void);
+MEMBER_LANGUAGE tvhsipsi_get_current_language(void);
+uint8_t tvhsipsi_get_current_operator(void);
+fpi_error tvhsipsi_get_delivery_descriptor(uint8_t *, uint8_t, fpi_dtv_delivery_t *);
+uint16_t tvhsipsi_get_network_id(void);
+fpi_error tvhsipsi_get_network_name_by_nit(tvhsipsi_nit_table_t *, uint8_t *, int32_t);
+int32_t tvhsipsi_get_region(void);
+fpi_bool tvhsipsi_get_sdt_short_name(uint8_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_initialize(void);
+void *tvhsipsi_memory_reallocate(void *, int32_t, int32_t);
+fpi_error tvhsipsi_parse_bat_logical_descriptor_china(tvhsipsi_bat_stream_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_parse_linkage_descriptor(tvhsipsi_linkage_descriptor_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_parse_nit_logical_descriptor(tvhsipsi_nit_stream_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_parse_nit_logical_descriptor_china(tvhsipsi_nit_stream_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_parse_sdt_logical_descriptor_china(uint16_t *, uint8_t *, uint8_t);
+fpi_error tvhsipsi_parse_text(uint8_t *, uint16_t, uint8_t *, uint16_t);
+fpi_error tvhsipsi_reset_data_buffer(void);
+void tvhsipsi_set_country(int32_t);
+void tvhsipsi_set_current_delivery(uint8_t);
+void tvhsipsi_set_current_language(MEMBER_LANGUAGE);
+void tvhsipsi_set_current_operator(uint8_t);
+void tvhsipsi_set_network_id(uint16_t);
+void tvhsipsi_set_region(int32_t);
+fpi_error tvhsipsi_start_receive_table(int32_t *, uint16_t, uint8_t, uint8_t, uint8_t, uint16_t, uint16_t, unsigned int, fpi_bool, 
+    tvhsipsi_section_callback_t);
+fpi_error tvhsipsi_start_receive_table_ext(int32_t *, uint16_t, uint8_t *, uint8_t *, uint8_t, unsigned int, fpi_bool, 
+    tvhsipsi_section_callback_t);
+fpi_error tvhsipsi_stop_receive_table(int32_t, fpi_bool);
+fpi_error tvhsipsi_stop_receive_table_ext(int32_t, fpi_bool);
+fpi_error tvhsipsi_terminate(void);
+static uint16_t _tvhsipsi_get_bits_from_buffer(uint8_t *, uint8_t, uint8_t);
+static void *tvhsipsi_main_task_process(void *);
+static void tvhsipsi_section_callback(int32_t, uint8_t *, unsigned int, unsigned int);
+static void tvhsipsi_section_callback_ext(int32_t, uint8_t *, unsigned int, unsigned int);
+static void *tvhsipsi_sub_task_process(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/zoom/tvh_zoom_default_config.c:
+fpi_zoom_config_item *tvh_zoom_get_default_config(void);
+uint32_t tvh_zoom_get_default_config_count(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/signal/tvh_signal_mgr.c:
+unsigned int tvhsignal_format_mapping(fpi_linein_t, video_format_t *);
+fpi_bool tvhsignal_get_processing_lock_status(void);
+void tvhsignal_mngr_proc(TVHMGR_Message_t *);
+uint8_t tvhsignal_search_format_id_from_db(unsigned int, fpi_geometry_setting *);
+fpi_error tvhsignal_start_manager(fpi_linein_t);
+fpi_error tvhsignal_start_src_insert_manager(void);
+fpi_error tvhsignal_stop_manager(void);
+fpi_error tvhsignal_stop_src_insert_manager(void);
+static void tvhsignal_afd_change_callback(void);
+static void tvhsignal_av_mute(fpi_linein_t);
+static void tvhsignal_av_unmute(tvhsignal_av_crtl_e);
+static void tvhsignal_formatchange_callback(void);
+static void tvhsignal_lock_callback(void);
+static void tvhsignal_scart_change_callback(void);
+static void tvhsignal_src_check_callback(fpi_linein_t, fpi_bool);
+static void tvhsignal_timer_callback(unsigned int);
+static void tvhsignal_unlock_callback(void);
+static void tvhsignal_wss_change_callback(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/state/tvh_state.c:
+fpi_bool tvh_nortify_event(unsigned int, unsigned int, unsigned int);
+void tvh_state_enter(TVH_STATE);
+unsigned int tvh_state_get_current(void);
+TVH_STATE tvh_state_get_handle(void);
+void *tvh_state_get_private_data(TVH_STATE);
+fpi_bool tvh_state_init(void);
+void tvh_state_leave(TVH_STATE);
+void tvh_state_notify(TVH_STATE, unsigned int);
+void tvh_state_routine(TVH_STATE);
+void tvh_state_set_handle_context(TVH_STATE, unsigned int, TVH_ROUTINE_FUNC, TVH_ROUTINE_FUNC, TVH_ROUTINE_FUNC);
+void tvh_state_set_private_data(TVH_STATE, void *);
+fpi_bool tvh_state_wait_event(TVH_STATE, unsigned int, unsigned int *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/epg/tvh_epg_parser.c:
+void tvh_epg_delete_all_event(void);
+fpi_bool tvh_epg_get_descriptors_by_tag_and_event(uint16_t, uint8_t, uint8_t **, uint8_t, uint8_t *);
+uint8_t tvh_epg_get_parental_rating(void);
+void tvh_epg_init_setting(void);
+fpi_bool tvh_epg_monitor_start(fpi_event_settings *);
+fpi_bool tvh_epg_monitor_stop(uint8_t);
+void tvh_epg_refresh_section_received_state(uint16_t, uint16_t, uint16_t, uint8_t, uint8_t);
+fpi_bool tvh_epg_restart_filter(uint8_t);
+void tvh_epg_set_country(MEMBER_COUNTRY);
+void tvh_epg_set_language(MEMBER_LANGUAGE);
+void tvh_epg_set_read_flag(fpi_bool);
+static int16_t tvh_add_service_info(uint16_t, uint16_t, uint16_t, uint8_t);
+static void tvh_epg_callback(int32_t, uint8_t *, unsigned int, unsigned int);
+static void *tvh_epg_monitor_thread(void *);
+static uint8_t tvh_epg_parser(uint16_t, uint8_t *);
+static int32_t tvh_epg_start_filter(uint8_t, uint16_t, uint16_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/teletext/AppTeletext/tvh_ttx_decode.c:
+void tvh_ttx_close_stream(void);
+unsigned int tvh_ttx_get_stream_bytes(uint8_t *, unsigned int);
+unsigned int tvh_ttx_get_stream_ready_bytes_count(void);
+fpi_bool tvh_ttx_init_decode(void);
+fpi_bool tvh_ttx_open_stream(uint16_t);
+fpi_bool tvh_ttx_stream_opened(void);
+static void tvh_ttx_pes_buffer_handle(int32_t, uint8_t *, unsigned int, unsigned int);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/teletext/AppTeletext/tvh_ttx.c:
+TtxDisplayStateFlags tvh_ttx_GetDisplayState(void);
+void tvh_ttx_SetDisplayState(TtxDisplayStateFlags);
+fpi_bool tvh_ttx_alarmpage_is_available(void);
+void tvh_ttx_change_language_group(uint8_t);
+void tvh_ttx_clear_display();
+void tvh_ttx_dec_get_number_of_pages_in_DB(unsigned int *, unsigned int *, unsigned int *);
+void tvh_ttx_dec_init(void);
+void tvh_ttx_dec_onoff_preset(fpi_bool, uint16_t);
+void tvh_ttx_display(uint16_t);
+void tvh_ttx_display_init(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+fpi_bool tvh_ttx_get_clock(uint8_t *, uint8_t);
+uint8_t tvh_ttx_get_flof_top(void);
+void tvh_ttx_get_index_page(uint16_t *);
+uint8_t tvh_ttx_get_language_group(void);
+uint16_t tvh_ttx_get_last_page(void);
+uint16_t tvh_ttx_get_last_request_page(void);
+uint16_t tvh_ttx_get_last_subpage(void);
+uint8_t tvh_ttx_get_next_sub_page(uint16_t *, uint16_t *);
+void tvh_ttx_goto_page(uint16_t, uint16_t, uint16_t);
+void tvh_ttx_handle_key(uint16_t);
+void tvh_ttx_input_alarm_page(uint16_t);
+fpi_bool tvh_ttx_is_cancel_mode(void);
+fpi_bool tvh_ttx_is_display_on(void);
+fpi_bool tvh_ttx_is_sub_available(void);
+fpi_bool tvh_ttx_open_page_request(uint16_t);
+void tvh_ttx_page_freeze(fpi_bool);
+fpi_bool tvh_ttx_page_is_subnews(void);
+void tvh_ttx_print_dec_status(void);
+fpi_bool tvh_ttx_req_page_available(void);
+void tvh_ttx_reset(void);
+fpi_bool tvh_ttx_reveal_is_available(void);
+void tvh_ttx_set_display_flag(fpi_bool);
+void tvh_ttx_set_flof_top(uint8_t);
+void tvh_ttx_set_language_group_by_country(unsigned int);
+void tvh_ttx_set_level(uint16_t);
+void tvh_ttx_set_no_black_side_bar(fpi_bool);
+void tvh_ttx_set_timer_page_info_visible(uint16_t);
+fpi_bool tvh_ttx_subpage_cycle_available(void);
+void tvh_ttx_subpage_cycle_model(void);
+fpi_bool tvh_ttx_subpage_is_available(void);
+void tvh_ttx_subtitle_switch(void);
+void tvh_ttx_toggle_hold(void);
+void tvh_ttx_toggle_reveal(void);
+void tvh_ttx_toggle_size(void);
+void tvh_ttx_toggle_subpage_input(void);
+void tvh_ttx_toggle_update(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/teletext/AppTeletext/tvh_ttx_digital.c:
+void tvh_ttx_copy_from_decode_buffer(uint8_t *, unsigned int);
+void tvh_ttx_digital_close(void);
+void tvh_ttx_digital_event(void);
+void *tvh_ttx_digital_event_task(void *);
+PES_LINE_STATUS tvh_ttx_digital_get_line(int32_t, int32_t, uint8_t *, uint8_t *);
+void tvh_ttx_digital_init(void);
+void tvh_ttx_disable_digital_source(void);
+void tvh_ttx_enable_digital_source(void);
+fpi_bool tvh_ttx_pes_find_new_packet(void);
+fpi_bool tvh_ttx_pes_get_header(void);
+PES_LINE_STATUS tvh_ttx_pes_get_line(int32_t, int32_t, uint8_t *, uint8_t *);
+int32_t tvh_ttx_pes_getdata_len(void);
+void tvh_ttx_pes_invalidate_packet(void);
+PES_PARSE_STATUS tvh_ttx_pes_parse_header(void);
+void tvh_ttx_pes_peek_bytes(uint8_t *, int32_t);
+void tvh_ttx_pes_read_bytes(uint8_t *, unsigned int);
+uint16_t tvh_ttx_pes_read_uint16(void);
+uint8_t tvh_ttx_pes_read_uint8(void);
+void tvh_ttx_pes_skip_bytes(int32_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/teletext/AppTeletext/tvh_ttx_vbi.c:
+void tvh_ttx_capture_proc(fpp_vbi_ttx_sliced_data_t *);
+void tvh_ttx_vbi_cancel(void);
+fpi_bool tvh_ttx_vbi_data_is_ttx(void);
+fpi_bool tvh_ttx_vbi_init(void);
+fpi_bool tvh_ttx_vbi_on(void);
+void tvh_ttx_vbi_reset(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/common/tvh_mngr.c:
+fpi_error tvhmgr_add_child_object(TVHMGR_Handle_t, TVHMGR_Handle_t);
+fpi_error tvhmgr_change_focus(TVHMGR_Handle_t);
+fpi_bool tvhmgr_check_handle(TVHMGR_Handle_t);
+fpi_error tvhmgr_close_object(TVHMGR_Handle_t);
+fpi_error tvhmgr_create_object(unsigned int, TVHMGR_ObjectType_t, TVHMGR_ObjectCallback_t, TVHMGR_Handle_t *);
+fpi_error tvhmgr_delete_object(TVHMGR_Handle_t);
+TVHMGR_Handle_t tvhmgr_get_handle_by_objid(unsigned int);
+unsigned int tvhmgr_get_objid_by_handle(TVHMGR_Handle_t);
+fpi_error tvhmgr_get_root_object_id(unsigned int *);
+fpi_error tvhmgr_initialize(void);
+void tvhmgr_object_default_proc(TVHMGR_Message_t *);
+void tvhmgr_object_test_proc(TVHMGR_Message_t *);
+fpi_error tvhmgr_pop_message(TVHMGR_Message_t *);
+fpi_error tvhmgr_remove_all_message(void);
+fpi_error tvhmgr_remove_child_object(TVHMGR_Handle_t);
+fpi_error tvhmgr_remove_message_by_handle(unsigned int);
+fpi_error tvhmgr_remove_message_by_type(unsigned int, unsigned int);
+fpi_error tvhmgr_send_message(TVHMGR_Message_t *);
+fpi_error tvhmgr_send_message_ex(TVHMGR_Handle_t, unsigned int, unsigned int, unsigned int);
+fpi_error tvhmgr_set_focus_state(TVHMGR_Handle_t, fpi_bool);
+fpi_error tvhmgr_set_object_callback(TVHMGR_Handle_t, TVHMGR_ObjectCallback_t);
+fpi_error tvhmgr_set_system_timer(TVHMGR_Handle_t, unsigned int, fpi_bool);
+fpi_error tvhmgr_terminate(void);
+void tvhmgr_test_run(void);
+static void tvhmgr_check_timer_cycle(void);
+static void *tvhmgr_main_task_process(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/common/tvh_msg_queue.c:
+fpi_error tvhmsg_queue_create(TVHMSG_QueueHandle_t *, unsigned int, int32_t);
+fpi_error tvhmsg_queue_delete(TVHMSG_QueueHandle_t);
+fpi_error tvhmsg_queue_receive(TVHMSG_QueueHandle_t, void *, unsigned int);
+fpi_error tvhmsg_queue_remove_by_element(TVHMSG_QueueHandle_t, uint8_t, unsigned int, unsigned int);
+fpi_error tvhmsg_queue_reset(TVHMSG_QueueHandle_t);
+fpi_error tvhmsg_queue_send(TVHMSG_QueueHandle_t, void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/dtv_base/tvh_dtv_monitor.c:
+fpi_error _tvhdtv_sipsi_monitor_check_sdt_table_changed(tvhsipsi_sdt_table_t *, DVB_PROGRAM_INFO *, ST_DVB_MUX_INFO *, 
+    tvhdtv_sipsi_changed_type_t *);
+fpi_bool _tvhdtv_sipsi_monitor_check_service_changed(tvhsipsi_sdt_service_t *, uint8_t *, uint8_t);
+fpi_error _tvhdtv_sipsi_process_nit_change_notify(ST_DVB_MUX_INFO *, DVB_PROGRAM_INFO *, tvhsipsi_nit_table_t *, MEMBER_COUNTRY);
+fpi_error _tvhdtv_sipsi_switch_receive_next_pmt(void);
+fpi_error tvhdtv_ci_pmt_notify(uint8_t *);
+fpi_error tvhdtv_get_current_dvbsi_service(DVB_SI_ServiceInfo *);
+fpi_error tvhdtv_register_sipsi_callback(uint8_t, uint16_t, tvhdtv_sipsi_data_callback, fpi_bool);
+fpi_error tvhdtv_set_channel_play_update_status(fpi_bool);
+fpi_error tvhdtv_set_sipsi_monitor_mode(EN_SI_MONITOR_MODE);
+fpi_error tvhdtv_sipsi_monitor_ci_pmt_notify(uint8_t *);
+fpi_error tvhdtv_sipsi_monitor_deinit(void);
+fpi_error tvhdtv_sipsi_monitor_excute_callback(uint8_t, uint8_t, uint16_t, uint8_t *, uint16_t);
+fpi_error tvhdtv_sipsi_monitor_get_current_dvbsi_service(DVB_SI_ServiceInfo *);
+fpi_error tvhdtv_sipsi_monitor_init(void);
+void tvhdtv_sipsi_monitor_nit_callback(int32_t, tvhsipsi_data_event_t, void *);
+void tvhdtv_sipsi_monitor_pat_callback(int32_t, tvhsipsi_data_event_t, void *);
+void tvhdtv_sipsi_monitor_pmt_callback(int32_t, tvhsipsi_data_event_t, void *);
+fpi_error tvhdtv_sipsi_monitor_receive_pmt(uint16_t, uint16_t, uint8_t, unsigned int);
+fpi_error tvhdtv_sipsi_monitor_register_callback(uint8_t, uint16_t, tvhdtv_sipsi_data_callback, fpi_bool);
+void tvhdtv_sipsi_monitor_sdt_callback(int32_t, tvhsipsi_data_event_t, void *);
+fpi_error tvhdtv_sipsi_monitor_set_mode(EN_SI_MONITOR_MODE);
+fpi_error tvhdtv_sipsi_monitor_set_notify_scan_state(fpi_bool);
+fpi_error tvhdtv_sipsi_monitor_start(uint16_t, void *);
+fpi_error tvhdtv_sipsi_monitor_stop(void);
+fpi_error tvhdtv_sipsi_monitor_update_nit_table(tvhsipsi_nit_table_t *);
+fpi_error tvhdtv_sipsi_monitor_update_pat_table(tvhsipsi_pat_table_t *);
+fpi_error tvhdtv_sipsi_monitor_update_pmt_table(tvhsipsi_pmt_table_t *);
+fpi_error tvhdtv_sipsi_monitor_update_sdt_table(tvhsipsi_sdt_table_t *);
+fpi_error tvhdtv_start_sipsi_monitor(uint16_t, void *);
+fpi_error tvhdtv_stop_sipsi_monitor(void);
+static fpi_error _tvhdtv_sipsi_monitor_load_current_tp_all_programs(fpi_bool);
+static fpi_error tvhdtv_sipsi_monitor_check_all_update_finished(void);
+static fpi_error tvhdtv_sipsi_monitor_process_sdt_linkage_descriptor(DVB_PROGRAM_INFO *, tvhsipsi_sdt_table_t *);
+static fpi_error tvhdtv_sipsi_monitor_update_service_info(tvhsipsi_pmt_table_t *, DVB_PROGRAM_INFO *, DVB_SERVICE_CHANGE_TYPE, 
+    DVB_SI_ServiceInfo *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/dtv_base/tvh_dtv_sort.c:
+fpi_error _tvh_sort_get_satellite_id_count_and_list(uint32_t *, uint16_t *);
+void _tvhdtv_sort_auto_callback(dvb_service_info_t *, uint16_t);
+void _tvhdtv_sort_by_order_assign_num_callback(dvb_service_info_t *, uint16_t);
+void _tvhdtv_sort_by_order_pre_list_assign_num_callback(dvb_service_info_t *, uint16_t);
+void _tvhdtv_sort_by_serviceid_and_name_callback(dvb_service_info_t *, uint16_t);
+void _tvhdtv_sort_common_callback(dvb_service_info_t *, uint16_t);
+int _tvhdtv_sort_dtv_prog_auto_compare(const void *, const void *);
+int _tvhdtv_sort_dtv_prog_compare_lcn(const void *, const void *);
+int _tvhdtv_sort_dtv_prog_compare_program_no(const void *, const void *);
+int _tvhdtv_sort_dtv_prog_compare_service_id(const void *, const void *);
+int _tvhdtv_sort_dtv_prog_compare_service_name(const void *, const void *);
+int _tvhdtv_sort_dtv_prog_compare_serviceid_and_name(const void *, const void *);
+void _tvhdtv_sort_lcn_patch_callback(dvb_service_info_t *, uint16_t);
+fpi_bool tvhsipsi_build_is_sort_by_fav_network_needed(void);
+fpi_bool tvhsipsi_build_sort_by_fav_network(uint16_t);
+fpi_bool tvhsipsi_build_sort_by_rules(tvhsipsi_build_sort_rule_type_t);
+static uint16_t _tvhdtv_sort_auto_get_new_program_index(dvb_service_info_t *, int16_t, EN_MEMBER_SERVICETYPE, uint16_t);
+static fpi_bool _tvhdtv_sort_check_is_eu_special_dtv_type(const dvb_service_info_t *, const dvb_service_info_t *);
+static fpi_bool _tvhdtv_sort_check_is_matched_onid(const dvb_service_info_t *, fpi_dtv_delivery_type_t);
+static fpi_bool _tvhdtv_sort_check_is_nordig_SpecialSrv(const dvb_service_info_t *, fpi_dtv_delivery_type_t);
+static int _tvhdtv_sort_dtv_prog_presort_by_priority(const void *, const void *);
+static int _tvhdtv_sort_dtv_prog_presort_by_priority_and_pre_list(const void *, const void *);
+static uint16_t _tvhdtv_sort_find_same_program_index(dvb_service_info_t *, int16_t, EN_MEMBER_SERVICETYPE, uint16_t, fpi_bool);
+static fpi_error _tvhdtv_sort_get_nordig_conflict_start_program_no(MEMBER_COUNTRY, dvb_service_info_t *, uint16_t, uint16_t *);
+static uint16_t _tvhdtv_sort_get_pre_list_index(const dvb_service_info_t *);
+static fpi_error _tvhdtv_sort_get_start_program_no_by_service_type_and_country(fpi_dtv_ui_channel_list_type_t, MEMBER_COUNTRY, 
+    dvb_service_info_t *, uint16_t, uint16_t *, fpi_bool *);
+static uint16_t _tvhdtv_sort_lcn_radio_channel_num_offset(fpi_dtv_delivery_type_t);
+static fpi_error _tvhdtv_sort_process_lcn_conflict(dvb_service_info_t *, EN_MEMBER_SERVICETYPE, uint16_t, uint16_t, uint16_t, 
+    uint16_t *, uint16_t);
+static int _tvhdtv_sort_service_name_compare(const uint8_t *, const uint8_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/dtv_base/tvh_sipsi_build.c:
+fpi_error _tvhsipsi_build_process_conflict_programs(ST_DVB_MUX_INFO *, ST_DVB_MUX_INFO *, tvhsipsi_process_conflict_rule_t, 
+    tvhsipsi_build_save_program_reason_t, tvhsipsi_build_conflict_info_t *);
+fpi_bool tvh_is_nordig_country_dvbt_onid(MEMBER_COUNTRY, uint16_t);
+uint8_t tvhsipsi_build_get_default_audio_track_by_type_and_country(uint8_t, MEMBER_COUNTRY, EN_CABLE_OPERATORS, uint8_t, uint8_t);
+fpi_error tvhsipsi_build_get_first_prog_type_num(uint8_t *, uint16_t *, uint8_t);
+fpi_bool tvhsipsi_build_get_first_prog_type_num_by_muxid(uint8_t *, uint16_t *, int16_t);
+fpi_error tvhsipsi_build_get_logical_no_from_bat_stream(DVB_PROGRAM_INFO *, tvhsipsi_bat_stream_t *);
+fpi_error tvhsipsi_build_get_program_info(tvhsipsi_build_program_info_t *);
+fpi_error tvhsipsi_build_get_save_config_info(tvhsipsi_build_save_config_t *);
+fpi_error tvhsipsi_build_get_saved_program_list(DVB_PROGRAM_INFO **, uint16_t *);
+fpi_error tvhsipsi_build_get_support_service_type(uint8_t *, int32_t, int32_t *);
+fpi_error tvhsipsi_build_program_by_tables(unsigned int, void *, unsigned int);
+fpi_error tvhsipsi_build_save_programs(ST_DVB_MUX_INFO *, tvhsipsi_build_save_program_reason_t);
+void tvhsipsi_build_update_program_by_pmt(DVB_PROGRAM_INFO *, tvhsipsi_pmt_table_t *);
+void tvhsipsi_build_update_service_type(DVB_PROGRAM_INFO *, uint8_t, uint8_t);
+static fpi_error _tvhsipsi_build_check_and_process_conflict_programs_by_mux(ST_DVB_MUX_INFO *, tvhsipsi_process_conflict_rule_t, 
+    tvhsipsi_build_save_program_reason_t);
+static DVB_PROGRAM_INFO *tvhsipsi_build_get_program_by_service_id(uint16_t);
+static fpi_error tvhsipsi_build_process_logical_no_v2(DVB_PROGRAM_INFO *, uint16_t *);
+static fpi_error tvhsipsi_build_update_program_audio_by_pmt_es(DVB_PROGRAM_INFO *, tvhsipsi_es_info_t *, uint8_t, uint8_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/play/tvh_channel_atv_play.c:
+play_aft_status_e tvh_channel_aft_direct_offset_freq(int32_t, int32_t *);
+void tvh_channel_aft_set_tuner(unsigned int);
+void tvh_channel_atv_aft(void);
+unsigned int tvh_channel_atv_aft_get_interval(void);
+void tvh_channel_atv_aft_set_interval(unsigned int);
+fpi_error tvh_channel_atv_get_channel_info(tvh_atv_ch_info_t *);
+fpi_error tvh_channel_atv_set_channel_info(tvh_atv_ch_info_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/scart/tvh_scart.c:
+fpi_error tvh_scart_config_scart_out(void);
+fpi_linein_t tvh_scart_get_linein_by_pin8_level(void);
+EN_PICTURE_SIZE tvh_scart_get_pin8_aspect_ratio(scart_port_type);
+CHG_TO_SCART_STEP tvh_scart_get_scart_change_step(void);
+fpi_error tvh_scart_in_set_video_type(scart_port_type, scart_video_signal_type);
+void tvh_scart_init(void);
+fpi_error tvh_scart_notify_linein_change(fpi_linein_t);
+fpi_error tvh_scart_out_get_mute_status(scart_port_type, fpi_bool *, EN_VIDEO_OUT_MUTE_LEVEL);
+fpi_error tvh_scart_out_set_mute(scart_port_type, fpi_bool, EN_VIDEO_OUT_MUTE_LEVEL);
+fpi_error tvh_scart_out_set_source(scart_port_type, fpi_linein_t);
+fpi_error tvh_scart_out_set_wss(unsigned int);
+void tvh_scart_process_pin8_change(fpi_linein_t);
+void tvh_scart_set_scart_change_step(CHG_TO_SCART_STEP);
+fpi_error tvh_scart_system_on_detect(void);
+static void tvh_scart_analyse_level(scart_port_type, scart_pin8_level_type);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/utils/log/fpi_debug_parser.c:
+void tvh_add_test_model(EN_MODEL_ID_T, stTestList *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/subtitle/tvh_sbt_decode.c:
+void tvh_dtv_subtitle_set_page_id(uint16_t, uint16_t);
+void tvh_subtitle_decode_display_exit(void);
+void tvh_subtitle_decode_display_init(void);
+void tvh_subtitle_decode_exit(void);
+void tvh_subtitle_decoder(uint64_t);
+void tvh_subtitle_decoder_init(void);
+void tvh_subtitle_display_hide(fpi_bool);
+void tvh_subtitle_display_show(void);
+void tvh_subtitle_displaypthead_exit(void);
+fpi_bool tvh_subtitle_displaypthead_init(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/draw/tvh_graphic.c:
+fpi_bool _tvh_graphic_init_status_check(void);
+fpi_bool tvh_graphic_cleanup(void);
+fpi_bool tvh_graphic_init(void);
+fpi_bool tvh_graphic_layer_configure_get(unsigned int, GraphicViewPort *);
+fpi_bool tvh_graphic_layer_free(unsigned int);
+fpi_bool tvh_graphic_layer_get(GraphicLayerID, unsigned int *);
+fpi_bool tvh_graphic_layer_hide(unsigned int);
+fpi_bool tvh_graphic_layer_show(unsigned int);
+fpi_bool tvh_graphic_layer_update(unsigned int, GraphicDrawUpdate);
+fpi_bool tvh_graphic_layer_viewport_set(unsigned int, GraphicViewPort *);
+fpi_bool tvh_graphic_surface_blit(unsigned int, GraphicRect *, unsigned int, GraphicRect *, GraphicBlitFlag);
+fpi_bool tvh_graphic_surface_create(unsigned int, GraphicDescription *, unsigned int *);
+fpi_bool tvh_graphic_surface_destroy(unsigned int);
+fpi_bool tvh_graphic_surface_fill_rectangle(unsigned int, GraphicRect *, GraphicColor *);
+fpi_bool tvh_graphic_surface_info_get(unsigned int, GraphicSurfaceInfo *);
+fpi_bool tvh_graphic_surface_lock(unsigned int, void **, int *);
+fpi_bool tvh_graphic_surface_palette_get(unsigned int, GraphicPalette *);
+fpi_bool tvh_graphic_surface_palette_set(unsigned int, GraphicPalette *);
+fpi_bool tvh_graphic_surface_provider_create(unsigned int, GraphicProviderDescription *, unsigned int *);
+fpi_bool tvh_graphic_surface_read(unsigned int, GraphicRect *, void *, int32_t);
+fpi_bool tvh_graphic_surface_unlock(unsigned int);
+fpi_bool tvh_graphic_surface_write(unsigned int, GraphicRect *, void *, int32_t);
+static void _tvh_graphic_layer_update(void);
+static fpi_bool _tvh_graphic_surface_blit(IDirectFBSurface *, DFBRectangle *, IDirectFBSurface *, DFBRectangle *, GraphicBlitFlag);
+static void *tvh_graphic_thread(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/wfd/tvh_miracast.c:
+fpi_bool tvh_get_miracast_info(PWFD_DEVICE_INFO_T);
+fpi_bool tvh_miracast_start();
+fpi_bool tvh_miracast_stop();
+void tvh_miracast_test(unsigned char);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/media/tvh_media_lrc.c:
+int32_t tvh_media_lrc_get_text_rows(unsigned int, unsigned int, uint8_t **, unsigned int *);
+fpi_error tvh_media_lrc_get_title_info(uint8_t **, unsigned int *);
+void tvh_media_lrc_play(const char *);
+void tvh_media_lrc_stop(void);
+static void *tvh_lrc_player_thread(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_hc.c:
+void tvh_ci_handle_hc_module_msg(ciplus_rs_hc_control_t *, ci_event_hc_info_t *);
+void tvh_ci_hc_check_tune_done(void);
+fpi_bool tvh_ci_hc_control_channel_change(ci_service_info *);
+void tvh_ci_hc_end_wait_pmt_and_play_program(uint8_t *, uint16_t);
+fpi_bool tvh_ci_hc_is_wait_pmt(void);
+void tvh_ci_hc_save_program_info(ci_service_info *);
+void tvh_ci_hc_tune_restore(void);
+void tvh_ci_rs_hc_init(ciplus_rs_hc_control_t *);
+int tvh_ci_rs_hc_register(tCI_RS_HC_Handle *);
+int tvh_ci_rs_hc_unregister(tCI_RS_HC_Handle);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_ca.c:
+void tvh_ci_ca_clear_pmt(void);
+void tvh_ci_ca_pmt_change(uint8_t *, uint16_t);
+void tvh_ci_handle_ca_module_msg(ciplus_rs_ca_control_t *, ci_event_ca_info_t *);
+void tvh_ci_rs_ca_init(ciplus_rs_ca_control_t *);
+int tvh_ci_rs_ca_register(tCI_RS_CA_Handle *);
+int tvh_ci_rs_ca_unregister(ciplus_rs_ca_control_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_service_callback.c:
+fpi_bool tvh_ci_pmt_update_register_callback(void);
+fpi_bool tvh_ci_sdt_update_register_callback(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_main.c:
+void tvh_ci_api_mutex_protect(void);
+void tvh_ci_api_mutex_unprotect(void);
+fpi_bool tvh_ci_check_tune_lock_status(void);
+void tvh_ci_control_init(void);
+unsigned int tvh_ci_debug(void);
+fpi_error tvh_ci_dm_erase_certificate(void);
+fpi_error tvh_ci_dm_get_custom_code(uint8_t *, uint16_t *);
+fpi_error tvh_ci_dm_get_custom_code_length(uint16_t *);
+fpi_error tvh_ci_dm_update_certificate(ci_cert_info *);
+tCI_RS_CA_Handle tvh_ci_get_ca_handle(void);
+unsigned short tvh_ci_get_ca_system_number(void);
+ci_card_plug_status tvh_ci_get_card_plug_status(void);
+tCI_RS_DT_Handle tvh_ci_get_dt_handle(void);
+tCI_EX_HSS_Handle tvh_ci_get_hss_handle(void);
+tCI_RS_OP_Handle tvh_ci_get_op_handle(void);
+fpi_error tvh_ci_get_satellite_id(unsigned int *);
+void tvh_ci_handle_int_init_para_on_card_remove(ci_event_int_info_t *);
+void tvh_ci_handle_scan_callback(unsigned char);
+void tvh_ci_handle_source_change_callback(unsigned char);
+void tvh_ci_handle_status_module_msg(ci_event_status_info_t *);
+fpi_error tvh_ci_init(void);
+unsigned char tvh_ci_inscan(void);
+fpi_bool tvh_ci_is_ciplus_cam(void);
+void tvh_ci_notify_linein_change(fpi_linein_t);
+void tvh_ci_notify_scan(unsigned char);
+void tvh_ci_notify_sourcechange(int8_t);
+byte tvh_ci_ok_to_route_ts(unsigned char);
+fpi_bool tvh_ci_ok_to_show_osd(void);
+void tvh_ci_sema_signal(void);
+void tvh_ci_sema_wait(void);
+fpi_bool tvh_ci_send_msg_to_ci_task(ciplus_msg_t *);
+int tvh_ci_send_msg_to_ci_task_no_wait(ciplus_msg_t *);
+void tvh_ci_status_notify_callback(tCI_EX_STA_Origin, tCI_EX_STA_Status, tCI_EX_STA_Event, unsigned short, unsigned long);
+void *tvh_ci_task(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_dt.c:
+void tvh_ci_rs_dt_init(ciplus_rs_dt_control_t *);
+int tvh_ci_rs_dt_register(tCI_RS_DT_Handle *);
+int tvh_ci_rs_dt_unregister(tCI_RS_DT_Handle);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_debug.c:
+const char *tvh_ci_get_event(tCI_EX_STA_Event);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_drv_lic_f.c:
+void tvh_ci_configure_with_key(int);
+void tvh_ci_drv_lic_f_init(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_ammi.c:
+void tvh_ci_ammi_close_subtitle(void);
+fpi_bool tvh_ci_mheg_is_disable_sbt(void);
+fpi_bool tvh_ci_mheg_is_open(void);
+void tvh_ci_rs_ammi_init(ciplus_rs_ammi_control_t *);
+int tvh_ci_rs_ammi_register(tCI_RS_AMMI_Handle *);
+int tvh_ci_rs_ammi_unregister(tCI_RS_AMMI_Handle);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_hss.c:
+void tvh_ci_ex_hss_init(ciplus_ex_hss_control_t *);
+int tvh_ci_ex_hss_register(tCI_EX_HSS_Handle *);
+int tvh_ci_ex_hss_unregister(tCI_EX_HSS_Handle);
+void tvh_ci_handle_hss_module_msg(ciplus_ex_hss_control_t *, ci_event_hss_info_t *);
+void tvh_ci_hss_init_sdt_version();
+void tvh_ci_hss_sdt_change(uint8_t *, uint16_t);
+void tvh_ci_hss_signal_lock(fpi_bool);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_op.c:
+void tvh_ci_handle_op_module_msg(ciplus_rs_op_control_t *, ci_event_op_info_t *);
+void tvh_ci_init_op_info(void);
+void tvh_ci_op_checktune_done(void);
+fpi_bool tvh_ci_op_del_all(void);
+fpi_bool tvh_ci_op_exist(CIPlusOPInfo *);
+fpi_bool tvh_ci_op_factory_reset(void);
+dtv_channel_list_type_e tvh_ci_op_get_channel_list_type(void);
+unsigned short tvh_ci_op_get_channel_list_type_name(unsigned char *, uint16_t);
+void tvh_ci_op_get_power_on_time(SI_TIME *);
+void tvh_ci_op_search_start(void);
+fpi_bool tvh_ci_op_set_audio_index(DVB_PROGRAM_INFO *, uint8_t *, AUDIO_ISO639TYPE);
+void tvh_ci_op_set_channel_list_type(dtv_channel_list_type_e);
+void tvh_ci_op_update_nit(void);
+void tvh_ci_rs_op_init(ciplus_rs_op_control_t *);
+int tvh_ci_rs_op_register(tCI_RS_OP_Handle *);
+int tvh_ci_rs_op_unregister(tCI_RS_OP_Handle);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_cc.c:
+void tvh_ci_ex_cc_init(ciplus_ex_cc_control_t *);
+void tvh_ci_ex_cc_init_uri_version_on_card_remove(void);
+fpi_bool tvh_ci_ex_cc_is_process_pin(uint8_t, uint8_t);
+int tvh_ci_ex_cc_register_key_mng_callback(void);
+int tvh_ci_ex_cc_register_pin_callback(void);
+int tvh_ci_ex_cc_register_srm_callback(void);
+int tvh_ci_ex_cc_register_uri_callback(void);
+void tvh_ci_handle_cc_module_msg(ciplus_ex_cc_control_t *, ci_event_cc_info_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_mmi.c:
+void tvh_ci_handle_int_module_msg_remove_mmi(ci_event_int_info_t *);
+void tvh_ci_handle_mmi_module_msg(ciplus_rs_mmi_control_t *, ci_event_mmi_info_t *);
+void tvh_ci_mmi_close_by_user(void);
+void tvh_ci_mmi_event(ci_mmi_callback_event_e);
+unsigned short tvh_ci_mmi_get_current_application_index(void);
+fpi_bool tvh_ci_mmi_is_mmi_session_open(void);
+void tvh_ci_mmi_mutex_lock(void);
+void tvh_ci_mmi_mutex_unlock(void);
+void tvh_ci_mmi_send_enq_answ(unsigned short, unsigned char *);
+void tvh_ci_mmi_send_menu_answ(unsigned short, unsigned char);
+void tvh_ci_mmi_set_current_application_index(unsigned short);
+ci_mmi_info_t *tvh_ci_mmi_ui_display_info(void);
+void tvh_ci_rs_mmi_init(ciplus_rs_mmi_control_t *);
+int tvh_ci_rs_mmi_register(tCI_RS_MMI_Handle *);
+int tvh_ci_rs_mmi_unregister(tCI_RS_MMI_Handle);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/porting/tdal_ci.c:
+void tvh_ci_handle_int_module_msg(ci_event_int_info_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/porting/tvh_ci_drv.c:
+void tvh_ci_cc_card_movement_callback_register(ci_ex_cc_card_movement_fn);
+int tvh_ci_drv_close(int);
+tvh_ci_card_e tvh_ci_drv_get_card_plug_status(void);
+fpi_bool tvh_ci_drv_get_compatibility_length(int, unsigned short *);
+fpi_bool tvh_ci_drv_get_compatibility_string(int, unsigned short *, unsigned char *);
+int tvh_ci_drv_init(void);
+void tvh_ci_drv_init_bypass_state(fpi_bool);
+void tvh_ci_drv_init_ireq(void);
+int tvh_ci_drv_io_control(int, int, void *);
+int tvh_ci_drv_open(char *);
+int tvh_ci_drv_phys_check_cis(unsigned char *, int, unsigned short *, unsigned char *, unsigned char *, 
+    tvh_ci_cis_ciplus_compatibility_item_t *, int *);
+int tvh_ci_drv_phys_read_byte(int, int, unsigned char *);
+int tvh_ci_drv_phys_receive_data(int, unsigned char *, unsigned short *);
+int tvh_ci_drv_phys_send_data(int, unsigned char *, unsigned short, tvh_ci_card_ireq_t);
+int tvh_ci_drv_phys_write_byte(int, int, unsigned char);
+fpi_bool tvh_ci_drv_poweron_with_cam(void);
+void tvh_ci_drv_register_callback(tvh_ci_card_movement_isr_fn, tvh_ci_statusreg_isr_fn);
+void tvh_ci_drv_set_bypass_mode(fpi_bool);
+void tvh_ci_drv_set_poweron_with_cam(fpi_bool);
+ci_ex_cc_card_movement_fn tvh_ci_get_cc_card_movement_callback(void);
+void tvh_ci_get_current_linein(fpi_linein_t *);
+void tvh_ci_save_current_linein(fpi_linein_t);
+void tvh_ci_set_ready_signal_timeout(unsigned int);
+void tvh_ci_start(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_upgr.c:
+void tvh_ci_handle_upgr_module_msg(ciplus_rs_upgr_control_t *, ci_event_upgr_info_t *);
+void tvh_ci_rs_upgr_init(ciplus_rs_upgr_control_t *);
+int tvh_ci_rs_upgr_register(tCI_RS_UPGR_Handle *);
+int tvh_ci_rs_upgr_unregister(tCI_RS_UPGR_Handle);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_hlc.c:
+void tvh_ci_handle_hlc_module_msg(ci_event_hlc_info_t *);
+MEMBER_COUNTRY tvh_ci_hlc_get_country(void);
+void tvh_ci_rs_hlc_set_country(void);
+void tvh_ci_rs_hlc_set_language(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/ci_plus/host_api/tvh_ci_ai.c:
+fpi_bool tvh_ci_ai_enter_menu(unsigned short);
+int tvh_ci_ai_get_appinfo(app_info_struct_t *, int);
+void tvh_ci_handle_ai_module_msg(ciplus_rs_ai_control_t *, ci_event_ai_info_t *);
+void tvh_ci_rs_ai_application_list_callback(tCI_RS_AI_Handle, tCI_RS_AI_ApplicationInfoList *);
+void tvh_ci_rs_ai_free_app_info(unsigned short, app_info_struct_t *);
+void tvh_ci_rs_ai_init(ciplus_rs_ai_control_t *);
+int tvh_ci_rs_ai_register(tCI_RS_AI_Handle *);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/service_utility/tvh_service_debug_func_set.c:
+void test_tvh_atv_auto_scan(unsigned char *);
+void test_tvh_atv_manual_scan(unsigned char *);
+void test_tvh_cmd(const char *, unsigned char *);
+void test_tvh_color_sys(unsigned char *);
+void test_tvh_func1(unsigned char *);
+void test_tvh_get_power_on_time(unsigned char *);
+void test_tvh_gpio(unsigned char *);
+void test_tvh_rc_passthrough(unsigned char *);
+void test_tvh_scan_stop(unsigned char *);
+void test_tvh_set_mts_mode(unsigned char *);
+void test_tvh_simulate_key_set(unsigned char *);
+void test_tvh_sound_sys(unsigned char *);
+void test_tvh_trace_cmd(const char *, unsigned char *);
+void test_tvh_wb(unsigned char *);
+void tvh_service_debug_func_set_init(void);
+void tvh_test_os_malloc(unsigned char *);
+void tvh_test_video_mute_level(unsigned char *);
+static void test_tvh_atv_aft(unsigned char *);
+static void test_tvh_atv_scan_set_freq(unsigned char *);
+static void test_tvh_atv_set_freq(unsigned char *);
+static void test_tvh_factory(unsigned char *);
+static void test_tvh_media(unsigned char *);
+static void test_tvh_pause_atv_scan(unsigned char *);
+static void test_tvh_printf_service_socket_times(unsigned char *);
+static void test_tvh_route_entry_name(unsigned char *);
+static void test_tvh_scart(unsigned char *);
+static void test_tvh_secam_l(unsigned char *);
+static void test_tvh_service_printf_init_times(unsigned char *);
+static void test_tvh_signal(unsigned char *);
+static void test_tvh_system(unsigned char *);
+static void test_tvh_video(unsigned char *);
+static void test_tvh_video_mute(unsigned char *);
+static void test_tvh_video_out_mute(unsigned char *);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/common/tvh_service_entry.c:
+fpi_bool tvh_service_dev_ower(dev_id_e, unsigned int);
+fpi_bool tvh_service_dev_release(dev_id_e, unsigned int);
+void tvh_service_dispatch(tvh_route_para *);
+void tvh_service_printf_name(uint16_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/common/tvh_service_init.c:
+int main_tvh_display_init(void);
+int main_tvh_state_init(void);
+void tvh_database_init(void);
+void tvh_model_exit(void);
+void tvh_model_init(int, char **);
+void tvh_service_printf_init_times(void);
+void tvh_service_save_time(uint8_t, unsigned int);
+
+File /home/zhouguoqiang/samba/TMER1.0/integrated/server/service/common/tvh_service_cec.c:
+void service_tvh_route_entry_fpi_cec_get_dev_info(void *);
+void service_tvh_route_entry_fpi_cec_get_device_total_num(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/zoom/fpi_zoom.c:
+static void test_tvh_zoom_get_window_state(unsigned char *);
+static void test_tvh_zoom_set_auto_format(unsigned char *);
+static void test_tvh_zoom_set_capture_window(unsigned char *);
+static void test_tvh_zoom_set_output_window(unsigned char *);
+static void test_tvh_zoom_set_over_scan(unsigned char *);
+static void test_tvh_zoom_set_window(unsigned char *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/teletext/AppTeletext/fpi_teletext.c:
+fpi_bool tvh_change_ttx_digital_language(uint8_t, uint16_t *, uint8_t *, uint8_t *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/pvr/fpi_record.c:
+RECORD_PARAMS *tvh_get_record_params_pointer(void);
+fpi_error tvh_pvr_init_record(void);
+fpi_bool tvh_pvr_physical_path_is_recording(int8_t *);
+fpi_bool tvh_pvr_read_recorded_program_info(int8_t *, PVR_RECORDING_INFO *);
+uint64_t tvh_pvr_record_get_start_offset(void);
+fpi_bool tvh_pvr_write_recorded_program_info(int8_t *, PVR_RECORDING_INFO *);
+static fpi_bool tvh_pvr_delete_recording(int8_t *);
+static fpi_bool tvh_pvr_get_timeshift_data_file_max_number(uint16_t *);
+static void tvh_pvr_index_timer(unsigned int);
+static fpi_error tvh_pvr_load_record_list(void);
+static fpi_bool tvh_pvr_record_realtime_write(PVR_CHANNEL_TYPE, unsigned int);
+static void tvh_pvr_record_resource_free(PVR_CHANNEL_TYPE);
+static void *tvh_pvr_record_task(void *);
+static fpi_bool tvh_pvr_record_write_info(PVR_CHANNEL_TYPE);
+static uint8_t tvh_record_get_real_data_file_number(PVR_CHANNEL_TYPE, uint16_t);
+static void *tvh_timeshift_speed_test_task(void *);
+static void *tvh_usb_format_task(void *);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/pvr/fpi_pvr.c:
+void tvh_pvr_message_send(PVR_MSG, unsigned int);
+void tvh_pvr_sync_message_send(void);
+static void test_tvh_delete_recording(unsigned char *);
+static void test_tvh_get_recorded_prog_info(unsigned char *);
+static void test_tvh_get_recording_prog_info(unsigned char *);
+static void test_tvh_lock_recorded_prog(unsigned char *);
+static void test_tvh_pvr_add_bookmark(unsigned char *);
+static void test_tvh_pvr_change_params(unsigned char *);
+static void test_tvh_pvr_delete_all_bookmark(unsigned char *);
+static void test_tvh_pvr_delete_bookmark(unsigned char *);
+static void test_tvh_pvr_disk_get(unsigned char *);
+static void test_tvh_pvr_disk_set(unsigned char *);
+static void test_tvh_pvr_get_bookmark(unsigned char *);
+static void test_tvh_pvr_get_bookmark_count(unsigned char *);
+static void test_tvh_pvr_get_current_bookmark_index(unsigned char *);
+static void test_tvh_pvr_get_record_list(unsigned char *);
+static void test_tvh_pvr_get_record_num(unsigned char *);
+static void test_tvh_pvr_get_tish_init_state(unsigned char *);
+static void test_tvh_pvr_playback_change_audio(unsigned char *);
+static void test_tvh_pvr_playback_change_subtitle(unsigned char *);
+static void test_tvh_pvr_playback_get_info(unsigned char *);
+static void test_tvh_pvr_playback_jump_absolute(unsigned char *);
+static void test_tvh_pvr_playback_jump_relative_time(unsigned char *);
+static void test_tvh_pvr_playback_motion(unsigned char *);
+static void test_tvh_pvr_playback_set_repeat(unsigned char *);
+static void test_tvh_pvr_playback_start(unsigned char *);
+static void test_tvh_pvr_playback_stop(unsigned char *);
+static void test_tvh_pvr_playback_subtitle_enable(unsigned char *);
+static void test_tvh_pvr_record_start(unsigned char *);
+static void test_tvh_pvr_record_stop(unsigned char *);
+static void test_tvh_pvr_set_current_bookmark_index(unsigned char *);
+static void test_tvh_pvr_set_last_stop(unsigned char *);
+static void test_tvh_pvr_tish_init(unsigned char *);
+static void test_tvh_pvr_tish_speed_test(unsigned char *);
+static void test_tvh_recording_add_new_event(unsigned char *);
+static void test_tvh_recording_get_event_info(unsigned char *);
+static void test_tvh_recording_get_event_number(unsigned char *);
+static void test_tvh_recording_pause(unsigned char *);
+static void test_tvh_rename_recorded_prog(unsigned char *);
+static void test_tvh_set_recording_length(unsigned char *);
+static void tvh_pvr_add_first_event(void);
+static void *tvh_pvr_file_sync_message_handle_task(void *);
+static void *tvh_pvr_message_handle_task(void *);
+static void tvh_pvr_play_backword_end_handle(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/pvr/fpi_playback.c:
+PLAYBACK_PARAMS *tvh_get_playback_params_pointer(void);
+void tvh_playback_check_timeshift_cache(void);
+fpi_bool tvh_pvr_calc_offset_per_second(PVR_RECORDING_INFO *, unsigned int, uint64_t *);
+fpi_bool tvh_pvr_calc_second_per_offset(PVR_RECORDING_INFO *, uint64_t, unsigned int *);
+unsigned int tvh_pvr_get_current_play_time(void);
+fpi_error tvh_pvr_init_playback(void);
+fpi_bool tvh_pvr_is_playback(void);
+int32_t tvh_pvr_playback_calc_current_speed(void);
+unsigned int tvh_pvr_playback_get_slow_motion_factor(void);
+fpi_bool tvh_pvr_playback_is_drop_mode(void);
+fpi_bool tvh_pvr_playback_is_jump_mode(void);
+fpi_bool tvh_pvr_playback_is_repeat(void);
+void tvh_pvr_set_playback_index_buffer(unsigned int *, unsigned int);
+static void tvh_playback_Counter(unsigned int);
+static uint16_t tvh_playback_get_real_data_file_number(uint16_t);
+static uint64_t tvh_pvr_calculate_current_offset(void);
+static fpi_bool tvh_pvr_get_index_array(PVR_RECORDING_INFO *, unsigned int **, unsigned int *);
+static fpi_bool tvh_pvr_is_radio(void);
+static fpi_bool tvh_pvr_playback_is_motion_support(PVR_MOTION);
+static fpi_bool tvh_pvr_playback_normal(void);
+static fpi_bool tvh_pvr_playback_pause(void);
+static fpi_bool tvh_pvr_playback_realtime_read(unsigned int);
+static void tvh_pvr_playback_resource_free(void);
+static void *tvh_pvr_playback_task(void *);
+static void tvh_pvr_reset_tsd_buffer(void);
+static void tvh_pvr_skip_to_next_position(void);
+static void tvh_pvr_switch_subtitle(fpi_bool);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/atv/common/fpi_common.c:
+uint8_t tvh_get_config_path_table(st_config_path_ctrl **);
+fpi_error tvh_get_ready_client_id(unsigned int *);
+void tvh_notify_func(unsigned int, unsigned int, unsigned int);
+void tvh_notifys_func(unsigned int, uint8_t *, unsigned int);
+fpi_bool tvh_notifys_init(FPI_NOTIFYS_CALLBACK);
+void tvh_notifyx_func(unsigned int, unsigned int, unsigned int, uint8_t *, unsigned int);
+fpi_bool tvh_notifyx_init(FPI_NOTIFYX_CALLBACK);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/dtv_base/tvh_dtv_play.c:
+fpi_error _tvhdtv_change_audio_play(tvhdtv_av_play_param_t *);
+void _tvhdtv_check_lock_main_tp_proc(TVHMGR_Message_t *);
+fpi_error _tvhdtv_process_play_by_type_nummber_request(uint16_t, uint8_t);
+fpi_error tvhdtv_change_channel_setting(EN_SETTING_CHANGE_TYPE);
+void tvhdtv_check_program_lock_state(fpi_bool *);
+void tvhdtv_check_program_state(void);
+fpi_error tvhdtv_check_replay_and_save_current_program(fpi_bool, fpi_bool);
+uint8_t tvhdtv_get_audio_index_by_priority(DVB_PROGRAM_INFO *, uint8_t, MEMBER_LANGUAGE, fpi_bool, fpi_bool);
+fpi_bool tvhdtv_get_audio_is_mix_ad_config(MEMBER_COUNTRY);
+uint8_t tvhdtv_get_av_mute_state(void);
+fpi_error tvhdtv_get_channel_lock_config_by_country(MEMBER_COUNTRY, tvhdtv_channel_lock_config_t *);
+fpi_error tvhdtv_get_current_mux_info(ST_DVB_MUX_INFO *);
+tvhdtv_play_param_t *tvhdtv_get_current_play_param(void);
+fpi_error tvhdtv_get_current_program(DVB_PROGRAM_INFO *);
+fpi_dtv_screen_info_mode_t tvhdtv_get_dtv_screen_info_mode(void);
+fpi_bool tvhdtv_get_enter_epg_falg(void);
+fpi_error tvhdtv_get_play_state(void);
+EN_SCART_OUT_MODE tvhdtv_get_scart_out_mode(void);
+tvhdtv_service_move_type_t tvhdtv_get_service_move_type(void);
+fpi_error tvhdtv_get_still_image_state(fpi_bool *);
+fpi_error tvhdtv_initialize_play(void);
+fpi_error tvhdtv_manager_get_current_program_info(DVB_PROGRAM_INFO *);
+fpi_error tvhdtv_manager_get_last_program_info(DVB_PROGRAM_INFO *);
+fpi_error tvhdtv_manager_get_next_program_info(DVB_PROGRAM_INFO *);
+fpi_error tvhdtv_manager_get_previous_program_info(DVB_PROGRAM_INFO *);
+fpi_error tvhdtv_manager_get_program_info_by_type_number(DVB_PROGRAM_INFO *, uint8_t, uint16_t);
+fpi_bool tvhdtv_manager_save_audio_index(uint8_t, uint16_t, uint8_t);
+fpi_error tvhdtv_manager_set_current_program_info(uint8_t, uint16_t);
+fpi_error tvhdtv_notify_event(unsigned int, unsigned int, unsigned int);
+fpi_error tvhdtv_pause_av_play(tvhdtv_av_pause_resume_type_t);
+fpi_error tvhdtv_play_auto_get_audio_index(DVB_PROGRAM_INFO *, uint8_t, tvhdtv_av_play_param_t *);
+fpi_error tvhdtv_play_current_program(void);
+fpi_error tvhdtv_play_get_ad_audio_index_by_program(DVB_PROGRAM_INFO *, uint8_t, uint8_t *);
+uint8_t tvhdtv_play_get_audio_main_index_by_program(DVB_PROGRAM_INFO *);
+fpi_error tvhdtv_play_get_av_param_by_program(DVB_PROGRAM_INFO *, tvhdtv_av_play_param_t *);
+fpi_error tvhdtv_play_get_broadcast_mix_audio_index(DVB_PROGRAM_INFO *, uint8_t, uint8_t *);
+fpi_error tvhdtv_play_last_program(void);
+void tvhdtv_play_main_proc(TVHMGR_Message_t *);
+fpi_error tvhdtv_play_next_program(void);
+fpi_error tvhdtv_play_notify_event(unsigned int, unsigned int, unsigned int);
+fpi_error tvhdtv_play_previous_program(void);
+fpi_error tvhdtv_play_program_by_triplet(st_dvb_triplet_t *);
+fpi_error tvhdtv_play_program_by_type_nummber(uint8_t, uint16_t);
+fpi_error tvhdtv_play_set_program_update_flag(fpi_bool);
+fpi_error tvhdtv_process_play_request(unsigned int, unsigned int, unsigned int);
+fpi_error tvhdtv_process_service_move(DVB_PROGRAM_INFO *, fpi_bool);
+fpi_error tvhdtv_register_play_callback(tvhdtv_play_callback, tvhdtv_play_callback, fpi_bool);
+fpi_error tvhdtv_register_play_message_callback(TVHMGR_ObjectCallback_t, fpi_bool);
+fpi_error tvhdtv_register_play_state_change_callback(tvhdtv_play_change_callback, fpi_bool);
+fpi_error tvhdtv_reload_usersetting(tvhdtv_load_user_data_mode_t);
+fpi_error tvhdtv_resume_av_play(tvhdtv_av_pause_resume_type_t);
+fpi_error tvhdtv_service_enter_epg_check_epg_linkage(fpi_bool);
+fpi_error tvhdtv_set_audio_mode(tvhdtv_audio_mode_t);
+fpi_error tvhdtv_set_av_mute_state(uint8_t, fpi_bool);
+fpi_error tvhdtv_set_channel_unlock_state(fpi_bool);
+fpi_error tvhdtv_set_current_program_sdt_running_status(uint8_t);
+fpi_error tvhdtv_set_input_lock_state(fpi_bool);
+fpi_error tvhdtv_set_lock_state(unsigned int, fpi_bool);
+fpi_error tvhdtv_set_parent_rate(uint8_t);
+fpi_error tvhdtv_set_scart_out_mode(EN_SCART_OUT_MODE);
+fpi_error tvhdtv_set_time_interval_lock(fpi_bool);
+fpi_error tvhdtv_set_video_still_image(fpi_bool);
+fpi_error tvhdtv_start_audio_file_play(unsigned int, unsigned int, unsigned int, unsigned int, fpi_bool);
+fpi_error tvhdtv_start_av_play(tvhdtv_av_play_param_t *);
+fpi_error tvhdtv_start_iframe_play(uint8_t, unsigned int, unsigned int);
+fpi_error tvhdtv_start_play(tvhdtv_play_param_t *);
+fpi_error tvhdtv_start_play_by_audio_index(uint8_t, fpi_bool);
+fpi_error tvhdtv_stop_av_play(tvhdtv_av_stop_type_t);
+fpi_error tvhdtv_stop_play(void);
+fpi_error tvhdtv_stop_play_with_demod_working(void);
+fpi_error tvhdtv_terminate_play(void);
+static void _tvhdtv_get_cur_epg_linkage_info(unsigned int, unsigned int);
+static fpi_error _tvhdtv_process_service_move_epg_linkage(ST_DVB_MUX_INFO *, fpi_bool);
+static fpi_error _tvhdtv_process_service_move_epg_linkage(ST_DVB_MUX_INFO *, fpi_bool);
+static fpi_error _tvhdtv_refresh_zoom(void);
+static tvhdtv_parental_lock_mode tvhdtv_check_parental_rating_lock(uint8_t, uint8_t);
+static void tvhdtv_excute_play_state_change_callback(tvhdtv_play_error_state_t, unsigned int, void *);
+static fpi_error tvhdtv_start_play_change_callback(tvhdtv_play_change_type_t);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/subtitle/fpi_program_play_subtitle.c:
+EN_DTV_PLAY_MODE tvh_dtv_get_play_status(void);
+EN_DTV_PLAY_MODE tvh_dtv_get_play_status(void);
+fpi_bool tvh_program_ci_subtitle_lang(uint8_t *, MEMBER_LANGUAGE *);
+uint8_t tvh_program_get_sbt_count(void);
+uint8_t tvh_program_get_sbt_index(void);
+void tvh_program_set_page_id(uint16_t, uint16_t);
+void tvh_subtitle_pmt_callback(uint8_t *, uint16_t);
+static fpi_bool tvh_is_hh_subtitle(EN_SUBTITLING_TYPE);
+static void tvh_send_cmd_to_app_open_subtitle(uint8_t);
+static fpi_error tvh_sort_menu_subtitle_info_by_language(void);
+static void tvh_update_menu_service_subtitle(void);
+
+File /home/zhouguoqiang/samba/TMER1.0/core/dtv/subtitle/fpi_subtitle.c:
+fpi_bool tvh_dtv_subtitle_get_state(void);
+fpi_bool tvh_dtv_subtitle_start(uint16_t);
+static void tvh_dtv_subtitle_stop(void);
+static void *tvh_dtv_subtitle_thread(void *);
+static void tvh_sbt_pes_buffer_handle(int32_t, uint8_t *, unsigned int, unsigned int);
