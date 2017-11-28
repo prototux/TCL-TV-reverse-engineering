@@ -1,10 +1,17 @@
 ### Trying to match sitatvservice and functions called
 
-++++ ???? ++++
+++++ tvh_service_init ++++
 @@@###tvh start :593580959
-fpi_common_get_sita_version,len=20
-sita version = V8-1611030-MF2V100
-app_common_get_sita_build,len=20sita build=9665
+
+    ++++ fpi_common_get_sita_version ++++
+    fpi_common_get_sita_version,len=20
+    sita version = V8-1611030-MF2V100
+    
+    ++++ fpi_common_get_sita_build ++++
+    app_common_get_sita_build,len=20sita build=9665
+    
+    
+++++ ???? ++++
 *f1 config*the OS=linux
 ini=/applications/tclconfig/sys.ini
 **os_function_event_create**
@@ -30,103 +37,114 @@ iniparser: syntax error in /applications/tclconfig/overscan/overscan_ID15.ini (1
 tvh svn version: 9665 
 ***F1 service start*OS=1,Area=1,Type=0,compile date=Nov  3 2016:18:20:37
 
-++++ fpp_system_set_config_path_and_name ++++
-fpp_system_set_config_path_and_name, config_path 0
-not support 
+++++ fpi_init ++++
 
-++++ fpp_system_set_config_path_and_name ++++
-fpp_system_set_config_path_and_name, config_path 1
-not support 
+    ++++ fpp_system_set_config_path_and_name ++++
+    fpp_system_set_config_path_and_name, config_path 0
+    not support 
 
-++++ fpp_system_set_config_path_and_name ++++
-fpp_system_set_config_path_and_name, config_path 6
-not support 
+    ++++ fpp_system_set_config_path_and_name ++++
+    fpp_system_set_config_path_and_name, config_path 1
+    not support 
 
-++++ fpp_system_set_config_path_and_name ++++
-fpp_system_set_config_path_and_name, config_path 8
-do HDMI EDID write,filename /applications/tclconfig/EDID_BIN/HDMI_EDID_4K_NO3D.bin
-nFileLen 256
+    ++++ fpp_system_set_config_path_and_name ++++
+    fpp_system_set_config_path_and_name, config_path 6
+    not support 
 
-++++ fpp_system_set_config_path_and_name ++++
-fpp_system_set_config_path_and_name, config_path 7
-do VGA EDID write,filename /applications/tclconfig/EDID_BIN/VGA_EDID.bin
-nFileLen 128
+    ++++ fpp_system_set_config_path_and_name ++++
+    fpp_system_set_config_path_and_name, config_path 8
+    do HDMI EDID write,filename /applications/tclconfig/EDID_BIN/HDMI_EDID_4K_NO3D.bin
+    nFileLen 256
 
-++++ fpp_system_set_config_path_and_name ++++
-fpp_system_set_config_path_and_name, config_path 16
-do ms12 audioPP path filename /applications/tclconfig/audio/audioPP/audioPP_23.txt
+    ++++ fpp_system_set_config_path_and_name ++++
+    fpp_system_set_config_path_and_name, config_path 7
+    do VGA EDID write,filename /applications/tclconfig/EDID_BIN/VGA_EDID.bin
+    nFileLen 128
 
-++++ fpp_driver_init ++++
-[fpp_driver_init] fpp svn version :1391
-fpp version : fpp20150505.1.0_r181524
-DEV_COMMON_SET_PCBLAYOUTTYPE 3 
- [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== 
-cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
-tv redirect : have debug requirement
-tv redirect : file name /mtd_apdat/tv_pipe_fifo_0
-tv redirect : file name /mtd_apdat/tv_pipe_fifo_1
-tv redirect : file name /mtd_apdat/tv_pipe_fifo_2
-tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_0 failed errno 17
-tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_1 failed errno 17
-tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_2 failed errno 17
+    ++++ fpp_system_set_config_path_and_name ++++
+    fpp_system_set_config_path_and_name, config_path 16
+    do ms12 audioPP path filename /applications/tclconfig/audio/audioPP/audioPP_23.txt
 
-[VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
+    ++++ fpp_driver_init ++++
+    [fpp_driver_init] fpp svn version :1391
+    fpp version : fpp20150505.1.0_r181524
+    DEV_COMMON_SET_PCBLAYOUTTYPE 3 
+     [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== 
+    cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
+    tv redirect : have debug requirement
+    tv redirect : file name /mtd_apdat/tv_pipe_fifo_0
+    tv redirect : file name /mtd_apdat/tv_pipe_fifo_1
+    tv redirect : file name /mtd_apdat/tv_pipe_fifo_2
+    tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_0 failed errno 17
+    tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_1 failed errno 17
+    tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_2 failed errno 17
 
- DRV_VD : Create g_pDrvVDMutex Success 
+    [VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
 
- DRV_VD_Initialize Start !!! PID = 27207 
+     DRV_VD : Create g_pDrvVDMutex Success 
 
- DRV_VD_Initialize gpDrvVDShareMem = 1944956928
+     DRV_VD_Initialize Start !!! PID = 27207 
 
- DRV_VD_Initialize u32ProcessCnt = 1 gb8DrvVDInit = 0
+     DRV_VD_Initialize gpDrvVDShareMem = 1944956928
 
- DRV_VD_Initialize HW already Init PID = 27207 
+     DRV_VD_Initialize u32ProcessCnt = 1 gb8DrvVDInit = 0
 
- # g_VDModeDetectTask ok
+     DRV_VD_Initialize HW already Init PID = 27207 
 
- DRV_VD_Initialize End PID = 27207 
- DRV_VD_Set_TaskStatus bEnable=1 PID = 27207 
-[DRV_VOD][WRN] [27207] DRV_VOD_Init
-DRV_GPU_Open
+     # g_VDModeDetectTask ok
 
- DRV_VBI : DRV_VBI_Init memAddr = 0x02500000 memSize = 0x00040000 
+     DRV_VD_Initialize End PID = 27207 
+     DRV_VD_Set_TaskStatus bEnable=1 PID = 27207 
+    [DRV_VOD][WRN] [27207] DRV_VOD_Init
+    DRV_GPU_Open
 
- DRV_VBI_Init HW Start PID = 27207 
-fpp_driver_init Sucess ! 
-DEV_COMMON_SET_PCBLAYOUTTYPE 3 
- [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== 
-cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
-Device NIM ATV create complete
-Device NIM DTV create complete
-[lwhite]===>DEV_IIC_Init  pI2CSemaphoreMP is waiting.......
-Create _IIC_S_Handler to callback functionP
-Open Bus 5 Done
-DEV_FRC_Init!
-DEV_FRC_Init Reentry 
-DEV_FRC_Init successfpp_board_ic_init Sucess ! 
-SHM Nim Digital Init Already....
-SHM Nim Digital Init Already....
-PID:27207, [PLAT_PQ_ERR]PLAT_PQ_Set_TaskStatus(), Line:8660 
-There is a task already enable in another process. So this process can not enable task.
+     DRV_VBI : DRV_VBI_Init memAddr = 0x02500000 memSize = 0x00040000 
 
-mobo dbg...
-#PLAT-INI# Chip Type: 668B (0x36363842)
-Crypto : Create Mutex Success 
-DRV_CRYPTO_Open got error!!
-find env VX1=1
-VX1 mode !
-find env SEP=0
-Blending mode !
-#PLAT-OSD#MSG Enter PLAT_OSD_Init
-find tcontype u8TconType=0
-#PLAT-OSD#MSG Exit PLAT_OSD_Init
-cannt find env UPGRADE_ENV!
-[VIU_IPCShm]Platform VIU Shm Ini have Create yet!!!
-[VIU_IPCMsg]PLAT_IPC_Message_Ini OK
-[VIU_IPCMsg]PLAT_AdIPC_Message_Ini OK
+     DRV_VBI_Init HW Start PID = 27207 
+    fpp_driver_init Sucess ! 
+    
+    ++++ fpp_gpio_init ++++
+    ++++ fpp_icc_init ++++
+    
+    ++++ fpp_board_ic_init ++++
+    DEV_COMMON_SET_PCBLAYOUTTYPE 3 
+     [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== 
+    cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
+    Device NIM ATV create complete
+    Device NIM DTV create complete
+    [lwhite]===>DEV_IIC_Init  pI2CSemaphoreMP is waiting.......
+    Create _IIC_S_Handler to callback functionP
+    Open Bus 5 Done
+    DEV_FRC_Init!
+    DEV_FRC_Init Reentry 
+    DEV_FRC_Init successfpp_board_ic_init Sucess ! 
 
-[VIDERR][PLAT_VIN_Init():295] [PLAT_VIN_AutoInit]Init Fail
-uuuuuuuuuuuuuuuuuuuuuuuuu=0
+    ++++ fpp_board_soc_init +++
+    SHM Nim Digital Init Already....
+    SHM Nim Digital Init Already....
+    PID:27207, [PLAT_PQ_ERR]PLAT_PQ_Set_TaskStatus(), Line:8660 
+    There is a task already enable in another process. So this process can not enable task.
+
+    mobo dbg...
+    #PLAT-INI# Chip Type: 668B (0x36363842)
+    Crypto : Create Mutex Success 
+    DRV_CRYPTO_Open got error!!
+    find env VX1=1
+    VX1 mode !
+    find env SEP=0
+    Blending mode !
+    #PLAT-OSD#MSG Enter PLAT_OSD_Init
+    find tcontype u8TconType=0
+    #PLAT-OSD#MSG Exit PLAT_OSD_Init
+    cannt find env UPGRADE_ENV!
+    [VIU_IPCShm]Platform VIU Shm Ini have Create yet!!!
+    [VIU_IPCMsg]PLAT_IPC_Message_Ini OK
+    [VIU_IPCMsg]PLAT_AdIPC_Message_Ini OK
+
+    [VIDERR][PLAT_VIN_Init():295] [PLAT_VIN_AutoInit]Init Fail
+    uuuuuuuuuuuuuuuuuuuuuuuuu=0
+
+++++ ???? ++++
 
 [VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
 [VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 0
