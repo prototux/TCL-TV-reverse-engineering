@@ -1,16 +1,12 @@
-@@@###tvh start :593580959
+@@@###tvh start :2586
+**os_function_event_create**
 fpi_common_get_sita_version,len=20
 sita version = V8-1611030-MF2V100
 app_common_get_sita_build,len=20sita build=9665
 *f1 config*the OS=linux
 ini=/applications/tclconfig/sys.ini
-**os_function_event_create**
-*connect errno=98 
-**os_message_create**
 wang.q load_ini_file, m_u16SpiProjectID = 0x57 
 wang.q load_ini_file, m_pModelName = /applications/tclconfig/model/EU_87_T324.ini 
-iniparser: syntax error in /applications/tclconfig/overscan/overscan_ID15.ini (1):
--> ﻿#OVERSCAN
 #_#[sys_func_enable_init] subtitle_enable:1,ttx_enable:1,mheg5_enable:1,dfb_enable:1
 
  [frc] <0>
@@ -44,7 +40,7 @@ do ms12 audioPP path filename /applications/tclconfig/audio/audioPP/audioPP_23.t
 fpp version : fpp20150505.1.0_r181524
 DEV_COMMON_SET_PCBLAYOUTTYPE 3 
  [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== 
-cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
+ [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== First Init ===> Yes[3]
 tv redirect : have debug requirement
 tv redirect : file name /mtd_apdat/tv_pipe_fifo_0
 tv redirect : file name /mtd_apdat/tv_pipe_fifo_1
@@ -57,132 +53,85 @@ tv redirect : mkfifo /mtd_apdat/tv_pipe_fifo_2 failed errno 17
 
  DRV_VD : Create g_pDrvVDMutex Success 
 
- DRV_VD_Initialize Start !!! PID = 27207 
+ DRV_VD_Initialize Start !!! PID = 317 
 
- DRV_VD_Initialize gpDrvVDShareMem = 1944956928
+ DRV_VD_Initialize gpDrvVDShareMem = 1953603584
 
- DRV_VD_Initialize u32ProcessCnt = 1 gb8DrvVDInit = 0
+ DRV_VD_Initialize u32ProcessCnt = 0 gb8DrvVDInit = 0
 
- DRV_VD_Initialize HW already Init PID = 27207 
+ DRV_VD : [Line 9130] drv_vd_SourceSel EN_DRV_VD_CHROMA_KILL_MODE_ENABLE
+
+ DRV_VD : [Line 1532] drv_vd_SetChromaKillMode enMode = 0
+
+ CALL_VD:  [Line 9158] drv_vd_SourceSel  drv_vd_SVideoModeSel OFF !!!!
+
+ [Line 10567] DRV_VD_Initialize  DRV_VD_Set_TaskStatus  Enable 
+
+ drv_vd_SetTaskStatus =  1 
 
  # g_VDModeDetectTask ok
 
- DRV_VD_Initialize End PID = 27207 
- DRV_VD_Set_TaskStatus bEnable=1 PID = 27207 
-[DRV_VOD][WRN] [27207] DRV_VOD_Init
+ DRV_VD_Initialize End PID = 317 
+ DRV_VD_Set_TaskStatus bEnable=1 PID = 317 
+
+ [Line 10407] DRV_VD_Set_TaskStatus  DRV_VD_Set_TaskStatus  Enable!
+
+ drv_vd_SetTaskStatus =  1 
+[DRV_VOD][WRN] [0317] DRV_VOD_Init
 DRV_GPU_Open
 
  DRV_VBI : DRV_VBI_Init memAddr = 0x02500000 memSize = 0x00040000 
 
- DRV_VBI_Init HW Start PID = 27207 
+ DRV_VBI_Init HW Start PID = 317 
+
+ DRV_VBI : DRV_VBI Init HW Done PID = 317 
+g_VDBaseAddr 0xb2e43000 PID = 317 
+g_TTXBaseAddr 0xaf643000 
+
+ Drv_VBI : drv_vbi_Initialize  NT_TTX_DRAM_WRITE_REG = 0x00000000 
+
+ drv_vbi_Initialize
+
+ drv_vbi_SetTaskStatus =  1 
 fpp_driver_init Sucess ! 
 DEV_COMMON_SET_PCBLAYOUTTYPE 3 
  [DEV_COMMON_SET_PCBLAYOUTTYPE] ========== 
 cview set sem fail xxxxxxxxxxxxxxxxxxxxx 
+ EN_DEV_PCB_TYPE_N61001_EU 
+[licl]===>_DEV_GPIO_InitPWM	pPWMSemaphoreMP is waiting.......
+find fre u16PDIMFreq2D60Hz=120
+find fre u16BackLightLevel=23
+Open /tmp/ntkled successfully 
+===>  _DEV_GPIO_EP_Handler 2182 
 Device NIM ATV create complete
 Device NIM DTV create complete
 [lwhite]===>DEV_IIC_Init  pI2CSemaphoreMP is waiting.......
 Create _IIC_S_Handler to callback functionP
 Open Bus 5 Done
 DEV_FRC_Init!
-DEV_FRC_Init Reentry 
-DEV_FRC_Init successfpp_board_ic_init Sucess ! 
-SHM Nim Digital Init Already....
-SHM Nim Digital Init Already....
-PID:27207, [PLAT_PQ_ERR]PLAT_PQ_Set_TaskStatus(), Line:8660 
-There is a task already enable in another process. So this process can not enable task.
-
+SHM Nim Digital Init First 
+DEV_GPIO_SetDirection fail  enPin[100] enDirection[2]
+DEV_FRC_Init First entry 
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+find env FRC=0
+No FRC!
+Normal Panel mode !
+DEV_FRC_SelectIICBus select bus 6 
+/r/n**DEV_FRC_CheckFRCMode bSeparateMode = 0
+FRC_IIC = 6
+fpp_board_ic_init Fail ! 
 mobo dbg...
 #PLAT-INI# Chip Type: 668B (0x36363842)
 Crypto : Create Mutex Success 
-DRV_CRYPTO_Open got error!!
 find env VX1=1
 VX1 mode !
 find env SEP=0
 Blending mode !
 #PLAT-OSD#MSG Enter PLAT_OSD_Init
 find tcontype u8TconType=0
-#PLAT-OSD#MSG Exit PLAT_OSD_Init
-cannt find env UPGRADE_ENV!
-[VIU_IPCShm]Platform VIU Shm Ini have Create yet!!!
-[VIU_IPCMsg]PLAT_IPC_Message_Ini OK
-[VIU_IPCMsg]PLAT_AdIPC_Message_Ini OK
-
-[VIDERR][PLAT_VIN_Init():295] [PLAT_VIN_AutoInit]Init Fail
-uuuuuuuuuuuuuuuuuuuuuuuuu=0
-
-[VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
-[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 0
-Nflip done
-
-[VIDSCHG]: PLAT_VLIB_UpdateSCLR( u8Path(1) enSCLR_Update(0) )
-PID(27207)[ERROR][_Fb_RecordErrCode():9627]_Fb_RecordErrCode
-PID(27207)[ERROR][_Fb_RecordErrCode():9628]  gErrInfoQueue[0].u8ErrorCnt  = 1
-PID(27207)[ERROR][_Fb_RecordErrCode():9629]  gErrInfoQueue[0].enErrorCode = EN_FB_ERR_CODE_OUT_OF_RANGE
-PID(27207)[ERROR][_Fb_RecordErrCode():9630]  gErrInfoQueue[0].pcFunction  = FB_P_FrameBufUpdate
-PID(27207)[ERROR][_Fb_RecordErrCode():9631]  gErrInfoQueue[0].u32Line     = 2119
-PID(27207)[ERROR][_FrameBufUpdate():26240]FB_P_FrameBufUpdate() is fail(1)
-PID(27207)[ERROR][SCLR_SHL_FrameBufUpdate():7514]_FrameBufUpdate() is fail(1)
-PID(27207)[ERROR][DRV_SCLR_FrameBufConfigUpdate():13970]SCLR_SHL_FrameBufUpdate() is fail(1)
-
-[VIDERR][DAL_SCLR_FB_Alloc():1150] DAL_SCLR_FB_Alloc Alloc buffer Error!
-
-[VIDERR][DAL_SCLR_FB_Alloc():1152] enPhyFb[1] desired size 11143kb > available size 9928kb
-
-[VIDERR][DAL_SCLR_Update_ScalingWithFrameBuffer():1897] enSclrPath(1), please check!
-[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 60000
-HAL FRC Is NOT Initialized
-[PLAT_FRC_ERR] PLAT FRC Is NOT Initialized
-
-
-[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=593582138]
-[PLAT_AIN] (_AIN_GenerateAQTable) -- SIF AQ table using default settings...
-************************************************************************************
- NOVATEK NT72668 SIF AQ Table - Date(20130205) Version(000E) Revisor(NVT01699)
-************************************************************************************
-[PARSER]PLAT_PARSER_Register_Interrupt_Handle Enter 
-plat_tspu_initDriver: Get CacheAddr is 0x80e64000 and NonCacheAddr is 0x8fa64000
-
-[4127]/home/yuer/NT667EU/tcl_fpp/soc/Linux_TV_RevB/code/platform/src/mm/avctrl.c _Avctrl_InitMem Success [VIU_IPCShm]PLAT_IPC_Shm_DecodeType_Write En_DecodeType=-1  !!! 
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:8710 
-Platform Init Start!
-
-PID:27207, [PLAT_PQDBG]PLAT_PQ_ChipDefineCheck():
-Top_CHIP_TYPE_Define = CFG_72668_REV_B !
-
-PID:27207, [DRV_PQ_DBG]DRV_PQ_Init():Driver PQ Init Start!
-PID:27207, [DRV_PQ_ERR]DRV_PQ_Init(), Line:1030 Can not mknod /dev/ntkpq
-PID:27207, [DRV_PQ_ERR]DRV_PQ_Init(), Line:1035 Can not open /dev/ntkpq
-PID:27207, [DRV_PQ_DBG]DRV_PQ_Init():Open /tmp/ntkpq successfully 
-PID:27207, [DRV_PQ_DBG]DRV_PQ_Init():
- # DRV_PQ_Bio Task ok
-PID:27207, [DRV_PQ_DBG]DRV_PQ_Init():HW already Init 
-PID:27207, [DRV_PQ_DBG]DRV_PQ_Init():Driver PQ Init Done!
-PID:27207, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init Start!
-PID:27207, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det HW already Init 
-PID:27207, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init Done!
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16047 
-
-
-**********************PQ TABLE VERSION MESSAGE**********************
-
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16048 
-                      DATE   : 2016/5/9
-
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16049 
-                      VERSION: 0001
-
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16050 
-0****************************************************************26
-
-
-
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9590 
-HW already Init !
-
-PID:27207, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9598 
-Platform Init Done!
-
 
  parse paneltxt here u8Tcon:2 @@@
 
@@ -199,15 +148,124 @@ Platform Init Done!
  parse paneltxt here u8AudioCurveType:0 @@@
 
  Get PCB type is TCL/EU --> SAL_DEMOD_TUN_GetInitTunerType  EN_DEMOD_TUNER_SONY_RE331ZN
+C_SalTunerSony_RE331ZN Start ~~~ 
+drvi2c_re331zn_Write:fail!!! 
+Init: EN_TUNER_SONY_RE331ZN is initialized failure
+
+<SDADC> SOURCE: DEMOD
+
+<SDADC> SOURCE: DEMOD
+SAL_DEMOD_TUN_GetInitTunerType: already get before as Tuner Type 16 
+
+<SDADC> SOURCE: DEMOD
+BBB _nt316tb_user_RegisterSuspendResumeToDriver(1593) 
+#PLAT-OSD#MSG Exit PLAT_OSD_Init
+cannt find env UPGRADE_ENV!
+[VIU_IPCShm]Platform VIU Shm Ini have Create yet!!!
+[VIU_IPCMsg]PLAT_IPC_Message_Ini OK
+[VIU_IPCMsg]PLAT_AdIPC_Message_Ini OK
+
+[VIDERR][PLAT_VIN_Init():295] [PLAT_VIN_AutoInit]Init Fail
+uuuuuuuuuuuuuuuuuuuuuuuuu=0
+
+[VIDMJ][DAL_SCLR_FB_LoadLayoutTab():986] Change pLayoutTab!
+[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 0
+#DEV-SRC#Toogle HDMI0 HotPlug Successfully#DEV-SRC#Toogle HDMI1 HotPlug Successfully#DEV-SRC#Toogle HDMI2 HotPlug Successfully#DEV-SRC#Toogle HDMI3 HotPlug Successfully#DEV-SRC#Toogle HDMI4 HotPlug SuccessfullyNflip done
+
+[VIDSCHG]: PLAT_VLIB_UpdateSCLR( u8Path(1) enSCLR_Update(0) )
+PID(317)[ERROR][_Fb_RecordErrCode():9627]_Fb_RecordErrCode
+PID(317)[ERROR][_Fb_RecordErrCode():9628]  gErrInfoQueue[0].u8ErrorCnt  = 1
+PID(317)[ERROR][_Fb_RecordErrCode():9629]  gErrInfoQueue[0].enErrorCode = EN_FB_ERR_CODE_OUT_OF_RANGE
+PID(317)[ERROR][_Fb_RecordErrCode():9630]  gErrInfoQueue[0].pcFunction  = FB_P_FrameBufUpdate
+PID(317)[ERROR][_Fb_RecordErrCode():9631]  gErrInfoQueue[0].u32Line     = 2119
+PID(317)[ERROR][_FrameBufUpdate():26240]FB_P_FrameBufUpdate() is fail(1)
+PID(317)[ERROR][SCLR_SHL_FrameBufUpdate():7514]_FrameBufUpdate() is fail(1)
+PID(317)[ERROR][DRV_SCLR_FrameBufConfigUpdate():13970]SCLR_SHL_FrameBufUpdate() is fail(1)
+
+[VIDERR][DAL_SCLR_FB_Alloc():1150] DAL_SCLR_FB_Alloc Alloc buffer Error!
+
+[VIDERR][DAL_SCLR_FB_Alloc():1152] enPhyFb[1] desired size 11143kb > available size 9928kb
+
+[VIDERR][DAL_SCLR_Update_ScalingWithFrameBuffer():1897] enSclrPath(1), please check!
+[VIDSCHG] PLAT_VIU_ConfigPanelTiming: u8Path = 0, u32frameRate = 60000
+HAL FRC Is NOT Initialized
+[PLAT_FRC_ERR] PLAT FRC Is NOT Initialized
+
+
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=3872]
+[PLAT_AIN] (_AIN_GenerateAQTable) -- SIF AQ table using default settings...
+************************************************************************************
+ NOVATEK NT72668 SIF AQ Table - Date(20130205) Version(000E) Revisor(NVT01699)
+************************************************************************************
+[PARSER]PLAT_PARSER_Register_Interrupt_Handle Enter 
+plat_tspu_initDriver: Get CacheAddr is 0x80e43000 and NonCacheAddr is 0x8fa43000
+
+[4127]/home/yuer/NT667EU/tcl_fpp/soc/Linux_TV_RevB/code/platform/src/mm/avctrl.c _Avctrl_InitMem Success [VIU_IPCShm]PLAT_IPC_Shm_DecodeType_Write En_DecodeType=-1  !!! 
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:8710 
+Platform Init Start!
+
+PID:317, [PLAT_PQDBG]PLAT_PQ_ChipDefineCheck():
+Top_CHIP_TYPE_Define = CFG_72668_REV_B !
+
+PID:317, [DRV_PQ_DBG]DRV_PQ_Init():Driver PQ Init Start!
+PID:317, [DRV_PQ_ERR]DRV_PQ_Init(), Line:1030 Can not mknod /dev/ntkpq
+PID:317, [DRV_PQ_ERR]DRV_PQ_Init(), Line:1035 Can not open /dev/ntkpq
+PID:317, [DRV_PQ_DBG]DRV_PQ_Init():Open /tmp/ntkpq successfully 
+PID:317, [DRV_PQ_DBG]DRV_PQ_Init():
+ # DRV_PQ_Bio Task ok
+PID:317, [DRV_PQ_DBG]DRV_PQ_Init():Driver Init HW Start!
+PID:317, [DRV_PQ_DBG]DRV_PQ_Init():Driver Init HW Done!
+PID:317, [DRV_PQ_DBG]DRV_PQ_Init():Driver PQ Init Done!
+PID:317, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init Start!
+PID:317, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init HW Start!
+PID:317, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init HW Done!
+PID:317, [DRV_PQ_DBG]DRV_PQ_3DDET_Init():3D Det Driver Init Done!
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16047 
+
+
+**********************PQ TABLE VERSION MESSAGE**********************
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16048 
+                      DATE   : 2016/5/9
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16049 
+                      VERSION: 0001
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_PQSet_Common(), Line:16050 
+0****************************************************************26
+
+
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9503 
+Platform Init HW Start!
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_Set_AP_Gamma(), Line:2184 
+g_BootOnGammaFlag =1 , delay 50ms 
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9585 
+Platform Init HW Done!
+
+PID:317, [PLAT_PQ_DBG_MSG]PLAT_PQ_Initialise(), Line:9598 
+Platform Init Done!
+
+SAL_DEMOD_TUN_GetInitTunerType: already get before as Tuner Type 16 
 [PLAT_INI_Init] plat_venc_init ret=1
+ xxxxxxxxxxx init for Plat INI 5 
+
+ ntttx_EnableWSS
+
+ ntttx_EnableWSS
+
+ DRV_VBI : ntttx_EnableTTX
+++++++++++++++++++++++eth link up: dhcp status: 0
 fpp_para_init=====================
-PID:27207, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3156:
+PID:317, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3156:
 Project PQF path =/applications/tclconfig/pq/ID87/PQDB_PQF.csv 
 
-PID:27207, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3211:
+PID:317, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3211:
 Project PCF path =/applications/tclconfig/pq/ID87/PQDB_PCF.csv 
 
-PID:27207, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3254:
+PID:317, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3254:
  PCF and PQF Parsing Success 
 
 
@@ -217,15 +275,22 @@ PLAT_IPC_MM_Set_PQ_Setting_InstallCallback OK
 plat_3d_cus_set_PQ_Setting_InstallCallback OK
 
 Create Update key task
+id = 20
+
+fd_socket = 74, socket_family_id = 20, pid = 317
+
+socket num is 74
+
+This is wait ker msg
 ESPLAYERSRV_Open (296)
 fpp_board_soc_init Sucess ! 
-PID:27207, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3156:
+PID:317, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3156:
 Project PQF path =/applications/tclconfig/pq/ID87/PQDB_PQF.csv 
 
-PID:27207, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3211:
+PID:317, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3211:
 Project PCF path =/applications/tclconfig/pq/ID87/PQDB_PCF.csv 
 
-PID:27207, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3254:
+PID:317, [MGR_PQ_DBG]MGR_PQ_ParsingDBFile(), Line:3254:
  PCF and PQF Parsing Success 
 
 
@@ -236,31 +301,911 @@ plat_3d_cus_set_PQ_Setting_InstallCallback OK
 fpp_driver_init*end*
  tcl_debug_init successfully WYJ----------------------
 
-un enter 2 Init UserTimer
-+++++fpp demod init ++++++
-fpp_power_get_wakeup_source Sucess ! and enEvent=3
+Init UserTimer
+un enter 2 +++++fpp demod init ++++++
+fpp_power_get_wakeup_source Sucess ! and enEvent=35
 
  [pwr] [false]
-commandline read: sitatvservice
-(*) Direct/Thread: Started 'SigHandler' (27284) [CRITICAL - OTHER/0] <8388608>...
-
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~| DirectFB 1.7.1 |~~~~~~~~~~~~~~~~~~~~~~~~~~
-        (c) 2012-2013  DirectFB integrated media GmbH
-        (c) 2001-2013  The world wide DirectFB Open Source Community
-        (c) 2000-2004  Convergence (integrated media) GmbH
-      ----------------------------------------------------------------
-
-(*) DirectFB/Core: Multi Application Core. (2015-04-29 02:41) [ DEBUG ][ TRACE ]
-(*) Direct/Memcpy: Using libc memcpy()
-(*) Fusion/SHM: Using MADV_REMOVE (3.8.0.0 >= 2.6.19.2)
-(*) Fusion/SHM: Shared root (0) is 1440 bytes [0x1000 @ 0x20000000]
-(*) Direct/Thread: Started 'Fusion Dispatch' (27285) [MESSAGING - OTHER/0] <8388608>...
-(*) Direct/Thread: Started 'Fusion Deferred' (27286) [MESSAGING - OTHER/0] <8388608>...
  [boot] source<0x0>fpp_iic_write Fail ! 
 cxd2837_i2c_Write failed 
   Error: Unable to initialise the integration driver to terrestiral / cable mode. (result = I2C Error)
-(!) [Main Thread     593582.336] (27207) *** Assertion [name != NULL] failed *** [filesystem.c:45 in direct_file_open()]
-(-) [Main Thread      593582.336,929] (27207) Direct/Trap:               Raising signal 5 from Assertion...
-(-) [Main Thread      593582.337,373] (27207) Direct/Trap:               ...tgkill(5) on ourself returned, maybe blocked, calling abort()!
-Trace/breakpoint trap
+find env VX1=1
+VX1 mode !
+find env SEP=0
+Blending mode !
+fpp_iic_write Fail ! 
+ATBMRead 1 failed 
+ power on init failed, chip not correctly detected
+Error! DirectFB/DirectFBCreate: Setting desktop format failed!
+     -> Using default format.
+tbm8878 ATBMPowerOnInit failed 
+------fpp demod init total device=2 -------
 
+ TM-[dfb_1], tm[4630]
+ [dfb] source<0x0>
+ [tvh] not nflx key<0x0> ! 
+ TM-[dfb_2], tm[4630]**fpi_audio_init**
+runing in fpi_audio_init,setAudioDelayTimerID ==  0 ---by qiugr---
+do amp init, fpi_amp_reset
+do amp init, fpp_gpio_set is done
+fpi_audio_init, addr0 = 0x54,channel_num = 1fpi_amp_init, fpi_NTP8212_Create
+amp_ntp8212_init
+fpi_audio_init, audio_amp_addr is 54
+fpi_amp_create, fpi_NTP8212_Create
+fpi_audio_initvolume_curves=/applications/tclconfig/AudioCurve/VolumeCurve.ini
+******* u8AudioCurveType:0 *********
+******* u16VolumeCurveSpeaker has done *********
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+luhm----- Enter fpi_ms12_sound_preset_data_read 427 
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+lk----MS12----app_ms12_sound_preset_data_read sucess!
+lk----MS12----ms12_sound_preset_data.SoundOutputMode=0
+lk----MS12----ms12_sound_preset_data.DigitalAudioType=1
+lk----MS12----ms12_sound_preset_data.enSoundPreset=5
+
+___KEVIN__fpi_audio_ms12_init____mode=0, sound_mode:5______
+**luhm----ms12----fpi_audio_set_ms12_sound_preset mode =5
+******* fpp_audio_set_dolby_sence_mode type:0*****
+tvhsipsi initialize
+tvh mngr main task process is running
+ENTER matrix_ringbuf_init
+####EXIT matrix_ringbuf_init bufsize =524288
+++++++++tvhdtv reload usersetting mode=1+++++++++
+------load db_get_user_common_setting------
+
+ tvhdtv_set_parent_rate(18) .tvhdtv set lock state lock mask=16,lock tate=0,curr lock=0
+------tvhdtv reload usersetting mode=1,first language=6,second=6,aud descriptor=0,track type=0------
+[sita_property_hash_get: 268]can't find hash value from table!!!
+[sita_property_get: 1071]sita_property_hash_get nothing, return default value!!!
+
+ db_dtv_get_select_operator_info() operator_id invalid !
+ TM-[xx_1], tm[4704]
+ TM-[xx_3], tm[4704][function: fpi_cec_module_init]--[line: 1866]
+[function: fpi_cec_monitor]--[line: 1597]
+
+---------gCecPara.bTimeReady == 0, LOOPTIME == 0--------------------
+Fpp_Vbi_Init ok ! 
+Fpp_Vbi_Register_callback ok ! 
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bCecStatus == 1
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bArcStatus == 1
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bAutoPowerOn == 1
+[function: fpi_cec_get_cec_status_from_database]--gCecPara.bAutoStandby == 1
+...zhouzs...ttx_decoder init set_level 0..
+[draw] tvh_graphic_surface_fill_rectangle 1205 please set the palette befor fill rectangle 
+***************************************fpi_dtv_subtitle_init*
+
+ -----111111--creat sub primary surface:DISPLAY_WIDTH*DISPLAY_HEIGHT[1920 * 1080]------
+fpp_power_get_wakeup_source Sucess ! and enEvent=35
+
+
+[tvh_scart_out_set_mute,672][PORT_SCART1] mute == 1,mute_level == 0x1,scart_out_tatus.scart1_mute_level == 0x0
+
+
+
+[tvh_scart_out_set_mute,672][PORT_SCART1] mute == 0,mute_level == 0x100,scart_out_tatus.scart1_mute_level == 0x1
+
+fpi_get_panel_resolution_ratio: width:3840,height:2160
+WOTV Options LOADED (-1 bytes)
+WOTV_CFG_WOTV_LoadOptions:  WebTvURL="http://10.50.1.37/"
+WOTV_CFG_WOTV_LoadOptions:  UserAgent="HbbTV/1.1.1 (+DL;SmarD TV; ST7105; 1.32.455; 2.002;) WOTV/0.1"
+WOTV_CFG_WOTV_LoadOptions:  IgnoreHttpInAit="Disable"
+WOTV_CFG_WOTV_LoadOptions:  DnsWorkAround="Disable"
+WOTV_CFG_WOTV_LoadOptions:  RedirectDvbUrl=""
+WOTV_CFG_WOTV_LoadOptions:  Ethernet Interface Name="eth0"
+WEBKIT Patch activation
+WOTV_CFG_WOTV_LoadOptions:  Patch Finish Data at receive="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Skip timer during request="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch DVB is HTTP="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Empty URL is HRef="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Arrow is TAB="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Patch Timer Heap="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace Loading="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace Timers="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace Patchs="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace External Loading Error="Disable"
+WOTV_CFG_WOTV_LoadOptions:  Trace External Loading Debug="Disable"
+WOTV DSMCC Options LOADED
+WOTV_CFG_WOTV_LoadOptions: - dumpEntry: Disable
+WOTV_CFG_WOTV_LoadOptions: - dsmcc timeout: 20
+WOTV Debug Options
+WOTV_CFG_WOTV_LoadOptions: - Browser Mgr Trace enabled="Disable"
+WOTV_CFG_WOTV_LoadOptions: - App Manager Trace enabled="Disable"
+WOTV Patch activation
+WOTV_CFG_WOTV_LoadOptions:  Patch Wrong url on lifecycle="Disable"
+WOTV_CFG_WOTV_LoadOptions: - fakeEntry: Disable
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+#PLAT-SYS#Return value of Call system() is 0 
+#PLAT-SYS#System Call Success : Child process Return Yeat
+
+[fpp_ci_dm_init]
+Desc init errorEnter fpp_pcmcia_init
+
+gu8FirstInitFlag is FALSE
+fpp_power_get_wakeup_source Sucess ! and enEvent=35
+@@[fpi_linein_pre_init] input:400000
+
+ TM-[pre_s], tm[5499]@@[fpi_linein_pre_init] boot_source:0
+
+[tvh_scart_get_linein_by_pin8_level,580]change to scart:0x0
+ERROR:Sendding message id=33685504 must after running message_inits 
+*enter -->fpi_linein_changeto: current_linein=0 ,linein to=4
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chglinein,mute=1
+fpi_check_reason*,dev==1,reason=tos.chglinein
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+fpi_check_reason*,dev==2,reason=tos.chglinein
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+fpi_check_reason*,dev==4,reason=tos.chglinein
+fpi_check_reason*,dev==8,reason=tos.chglinein
+fpi_check_reason*,dev==16,reason=tos.chglinein
+fpi_check_reason*,dev==128,reason=tos.chglinein
+lhm****b_current_hp_mute=1,b_pre_hp_mute=0
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=0
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=0
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=0
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=0
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=0
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x2000 (first),reason=0x2000
+
+[VIDSCHG]: Mute -- PLAT_VC_UnMuteVideo(0) = 0 [Time=5529]
+
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=5529]
+######## [ ntk_fpp_tvout_close_tve ] ##########
+
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail!
+[VIDERR][PLAT_TVOUT_VideoStop():435] PLAT_VOUT_TVOUT_Action Stop fail!
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail!
+[VIDERR][PLAT_TVOUT_VideoDisConnect():227] PLAT_VOUT_TVOUT_Action Stop fail!ERROR:Sendding message id=268566528 must after running message_inits 
+luhm*******fpi_set_mutes_for_device*,dev==191,reason=tos.scart,mute=0
+fpi_check_reason*,dev==1,reason=tos.scart
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.scart
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.scart
+fpi_check_reason*,dev==8,reason=tos.scart
+fpi_check_reason*,dev==16,reason=tos.scart
+fpi_check_reason*,dev==32,reason=tos.scart
+luhm***fpi_amp_mute_info[1].reason_name=tos.scart,.reason_status==0
+fpi_check_reason*,dev==128,reason=tos.scart
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x20000
++++++fpp_demod_set_tone_burst++++++
+[lwhite]===>PLAT_AIN_Open!!
+ DRV_VD_Set_TaskStatus bEnable=0 PID = 317 
+
+ [Line 10421] DRV_VD_Set_TaskStatus  DRV_VD_Set_TaskStatus  False 
+
+ drv_vd_SetTaskStatus =  0 
+
+[VIDSCHG]: PLAT_VIU_ChangeInput( u8Path=0, enSourceType=1) [Time=5545]
+[VIDSCHG]: Get source description ok,[Time=5546] 
+[VIDSCHG]: Source description: 
+[VIDSCHG]: enSourceType 1 
+[VIDSCHG]: u8Instance  0 
+[VIDSCHG]: enADC0Mux 0 
+[VIDSCHG]: enADC1Mux  0 
+[VIDSCHG]: enADC2Mux 0 
+[VIDSCHG]: enADC3Mux  0 
+[VIDSCHG]: enSOGMux 3 
+[VIDSCHG]: u8SOGThreshold 0 
+[VIDSCHG]: enFBMux 2 
+[VIDSCHG]: u8FBThreshold  0
+ 
+[VIDSCHG]: 
+ -------------> Start PLAT_VIN_ChangeInput( 0, 1) [Time=5546]
+
+[VIDSCHG]: 
+  2-X( path0)
+
+[VIDSCHG]: 
+ TEST 3-X( path0, to interface5,SRC1)
+
+[VIDSCHG]: _VIN_GetInputSrcMethod( enType(1) )
+
+[VIDSCHG]: DAL_SRC_ConnectInput(enSourceType=1) [Time=5546]
+
+[VIDSCHG]: 
+  5-X Init VInTask P0 SearchTimer(150),state(0) to sync&detect.---- Interface5
+[VIDSCHG]: 
+  6-1 
+[VIDSCHG]: PLAT_VLIB_PlayControl path:0  enControl:0  
+
+[VIDSCHG]: 
+  -------------> Exit PLAT_VIN_ChangeInput() [Time=5547]
+
+ ntttx_EnableWSS
+
+ DRV_VBI : ntttx_EnableTTX
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+[PLAT_AIN] PLAT_AIN_Disconnect() - input error ( IN -32767 )
+
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_SetMute() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+#P-AOUT# PLAT_AOUT_Disconnect() - input error ( OUT-32767 )
+[PLAT_AIN] PLAT_AIN_Disconnect() - input error ( IN -32767 )
+
+[lwhite]===>PLAT_AIN_Close!!  pPathIndex=32767
+[PLAT_AIN] PLAT_AIN_Connect() - PLAT_AIN_SetPathConfig() should be used on this source first.
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x0, R:0x0
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+***[_GetAudioFile] get the audioPP path, For MS12 New path
+************ _fpp_system_get_MS12_AudioPP_Path *********
+_GetAudioFile pFileName=/applications/tclconfig/audio/audioPP/audioPP_23.txt
+LOAD Audio PP SETTING FORM FILE : /applications/tclconfig/audio/audioPP/audioPP_23.txt ; Result = TRUE 
+*****_fpp_audio_load_dac_scale for  new av-out dac*****
++++++fpp_demod_set_active_state++++++
+find support delivery device
+
+<SDADC> SOURCE: DEMOD
+SAL_DEMOD_TUN_GetInitTunerType: already get before as Tuner Type 16 
+SAL_DEMOD_TUN_GetIsSupportRFSW: already got IsSupportRFSW(1) 
+
+ NT316TB_User_RFSW(2) 
+
+ action of SAL_DEMOD_TUN_RFSW() failed!!!!  
+fpp_demux_set_source_type:2126 Set Tuner AGC Switch pin to Low successfully
+
+[lwhite]===>PLAT_TSPU_SetDemuxSource   u8DemuxNo=0  enSource=2  u8Param=0  u8DemodType=0
+-------fpp_demod_set_active_state,ret=0-------
+luok----MS12----fpi_audio_set_audio_CompMode,enCompMode=1
+[fpp_audio_set_audio_CompMode],enter.  enCompMode =1
+*** skip setting the CompMode***
+**fpi_audio_set_SPDIF_delay,delay=60
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 0---by qiugr---
+un32_audio_delay_time == 100,user_audiodelay ==  60,Dolby Delay == 40,audio_delay_from_ini=0---by qiugr---
+
+ [fpi_cec_routing_change,710]: when tv start up,has not send msg(0x85)to request active source,no need send msg(0x82) 
+
+
+[tvh_ci_notify_linein_change,1392]CI Card is not INserted, Nothing to do!!!
+
+fpi_linein_changeto exit end 
+luhm*******fpi_set_mutes_for_device*,dev==191,reason=tos.scart,mute=1
+fpi_check_reason*,dev==1,reason=tos.scart
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==1
+fpi_check_reason*,dev==2,reason=tos.scart
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==1
+fpi_check_reason*,dev==4,reason=tos.scart
+fpi_check_reason*,dev==8,reason=tos.scart
+fpi_check_reason*,dev==16,reason=tos.scart
+fpi_check_reason*,dev==32,reason=tos.scart
+luhm***fpi_amp_mute_info[1].reason_name=tos.scart,.reason_status==1
+fpi_check_reason*,dev==128,reason=tos.scart
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=1,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=1
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x22000,reason=0x20000
+ERROR:Sendding message id=268566528 must after running message_inits 
++++++fpp_demod_set_active_state++++++
+-------fpp_demod_set_active_state,ret=0-------
+tvhdtv play current program failure get data
+Enter [fpi_hbbtv_start],s_hbbtv_context.b_hbbtv_enable = 1 
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chgchannel,mute=0
+fpi_check_reason*,dev==1,reason=tos.chgchannel
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==1
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.chgchannel
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==1
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.chgchannel
+fpi_check_reason*,dev==8,reason=tos.chgchannel
+fpi_check_reason*,dev==16,reason=tos.chgchannel
+fpi_check_reason*,dev==128,reason=tos.chgchannel
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=1,b_pre_amp_mute=1
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=1
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x22000,reason=0x80
+ERROR:Sendding message id=33685504 must after running message_inits 
+*enter -->fpi_linein_changeto: current_linein=4 ,linein to=4194304
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.chglinein,mute=1
+fpi_check_reason*,dev==1,reason=tos.chglinein
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==1
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.chglinein
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==1
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.chglinein
+fpi_check_reason*,dev==8,reason=tos.chglinein
+fpi_check_reason*,dev==16,reason=tos.chglinein
+fpi_check_reason*,dev==128,reason=tos.chglinein
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=1,b_pre_amp_mute=1
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=1
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x22000 (first),reason=0x2000
+
+[VIDSCHG]: Mute -- PLAT_VC_UnMuteVideo(0) = 0 [Time=7146]
+
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=7146]
+######## [ ntk_fpp_tvout_close_tve ] ##########
+
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail!
+[VIDERR][PLAT_TVOUT_VideoStop():435] PLAT_VOUT_TVOUT_Action Stop fail!
+[VIDERR][PLAT_TVOUT_Action():308] DRV_TVE_Action fail!
+[VIDERR][PLAT_TVOUT_VideoDisConnect():227] PLAT_VOUT_TVOUT_Action Stop fail!ERROR:Sendding message id=268566528 must after running message_inits 
+luhm*******fpi_set_mutes_for_device*,dev==191,reason=tos.scart,mute=0
+fpi_check_reason*,dev==1,reason=tos.scart
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.scart
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.scart
+fpi_check_reason*,dev==8,reason=tos.scart
+fpi_check_reason*,dev==16,reason=tos.scart
+fpi_check_reason*,dev==32,reason=tos.scart
+luhm***fpi_amp_mute_info[1].reason_name=tos.scart,.reason_status==0
+fpi_check_reason*,dev==128,reason=tos.scart
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=1
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x20000
+DTV Source not need this monitor callback!!!! 
+DTV Source not need this monitor callback!!!! 
++++++fpp_demod_set_tone_burst++++++
++++++tvhdtv terminate play++++++
+-------tvhdtv terminate play--------
++++++fpp_demod_set_active_state++++++
+-------fpp_demod_set_active_state,ret=0-------
+**fpi_program_close_subtitle:enOpenType == 3
+ DRV_VD_Set_TaskStatus bEnable=0 PID = 317 
+
+[VIDSCHG]: PLAT_VIU_ChangeInput( u8Path=0, enSourceType=17) [Time=7161]
+[VIDSCHG]: Get source description ok,[Time=7161] 
+[VIDSCHG]: Source description: 
+[VIDSCHG]: enSourceType 5 
+[VIDSCHG]: u8Instance  3 
+[VIDSCHG]: enADC0Mux 0 
+[VIDSCHG]: enADC1Mux  0 
+[VIDSCHG]: enADC2Mux 0 
+[VIDSCHG]: enADC3Mux  0 
+[VIDSCHG]: enSOGMux 3 
+[VIDSCHG]: u8SOGThreshold 0 
+[VIDSCHG]: enFBMux 2 
+[VIDSCHG]: u8FBThreshold  0
+ 
+[VIDSCHG]: 
+ -------------> Start PLAT_VIN_ChangeInput( 0, 5) [Time=7161]
+
+[VIDSCHG]: DAL_SRC_DisconnectInput(u8Path=0, enSourceType=1) [Time=7162]
+
+[VIDSCHG]: 
+  2-1 PLAT_VLIB_DisconnectSource(0,1)
+
+[VIDSCHG]: 
+  2-X( path0)
+
+[VIDSCHG]: 
+ TEST 3-X( path0, to interface2,SRC5)
+
+[VIDSCHG]: _VIN_GetInputSrcMethod( enType(5) )
+
+[VIDSCHG]: DAL_SRC_ConnectInput(enSourceType=5) [Time=7162]
+
+[VIDSCHG]: 
+  5-X Init VInTask P0 SearchTimer(50),state(0) to sync&detect.---- Interface2
+[VIDSCHG]: 
+  6-1 
+[VIDSCHG]: PLAT_VLIB_PlayControl path:0  enControl:0  
+
+[VIDSCHG]: 
+  6-2 
+[VIDSCHG]: 
+  -------------> Exit PLAT_VIN_ChangeInput() [Time=7163]
+
+ ntttx_EnableWSS
+
+ DRV_VBI : ntttx_EnableTTX
+***** MS12 Modify path  for scartout ******
+[PLAT_AIN] PLAT_AIN_Connect() - PLAT_AIN_SetPathConfig() should be used on this source first.
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x0, R:0x0
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+[LIM.YAO][_AOUT_AttachSPK]=======>L:0x8000, R:0x8000
+*****_fpp_audio_load_dac_scale for  new av-out dac*****
+luok----MS12----fpi_audio_set_audio_CompMode,enCompMode=0
+[fpp_audio_set_audio_CompMode],enter.  enCompMode =0
+*** skip setting the CompMode***
+[fpi_zoom.c] enter fpi_zoom_set_small_window_state set window state 0
+luhm----- Enter fpi_football_data_read 412 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm--fpi_football_data_read---football_enable=0
+other source can not detect HDMI format!
+**fpi_audio_set_SPDIF_delay,delay=60
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 0---by qiugr---
+un32_audio_delay_time == 100,user_audiodelay ==  60,Dolby Delay == 40,audio_delay_from_ini=0---by qiugr---
+
+ [fpi_cec_routing_change,710]: when tv start up,has not send msg(0x85)to request active source,no need send msg(0x82) 
+
+
+[tvh_ci_notify_linein_change,1392]CI Card is not INserted, Nothing to do!!!
+
+luhm-----SCART_OUT_BY_SOURCE-----ENABLE is True
+
+
+ -----------[tvh_scart_notify_linein_change,844]save scart out linein 0x00400000
+
+fpi_linein_changeto exit end 
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.lock,mute=0
+fpi_check_reason*,dev==1,reason=tos.lock
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+luhm***fpi_speaker_mute_info[4].reason_name= tos.lock,.reason_status==0
+fpi_check_reason*,dev==2,reason=tos.lock
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+luhm***fpi_hp_mute_info[4].reason_name= tos.lock,reason_status==0
+fpi_check_reason*,dev==4,reason=tos.lock
+fpi_check_reason*,dev==8,reason=tos.lock
+fpi_check_reason*,dev==16,reason=tos.lock
+fpi_check_reason*,dev==128,reason=tos.lock
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->unmute now set mute gun32mute_level:0x2000,reason=0x100
+hx----->enter _linein_init_play,fpi_video_unmutefpi_video_mute->after set mute gun32mute_level:0x2040,reason=0x40
+ERROR:Sendding message id=268566528 must after running message_inits 
+luhm----- Enter fpi_football_data_read 412 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm--fpi_football_data_read---football_enable=0
+[_linein_init_zoom] auto-1, overscan-1, pisSize-1, pisView-1
+fpi_get_panel_resolution_ratio: width:3840,height:2160
+fpi_zoom_init *****s_IsStartOverScan:1,***s_bIsStartAutoFormat:1,s_zoom_mode:1,s_CurrentPanelType:2
+
+ TM-[pre_end], tm[7275]
+[VIDSCHG]: Mute -- PLAT_VC_UnMuteVideo(0) = 0 [Time=7275]
+
+[VIDSCHG]: PLAT_VOUT_EnableBlueScreen( 0, 1) [Time=7275]
+
+PicMode.ini:[/applications/tclconfig/PicCurve/PicMode.ini]
+luhm----- Enter fpi_factory_football_data_read 660 
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-----*f1 config*the football_data=(null)
+luhm-----*f1 config*default football_data=/applications/database/football.bin
+luhm-fpi_get_stadium_mode-fpi_get_football_data---enable=0
+[property_local_dimming_enable_set: 731]fpp_system_panel_get_param_bool failed!!!
+fpi_video_set_rgb:-- red_gain=134,green_gain=128,blue_gain=125,r_offset=128,g_offset=128,b_offset=128
+ucBGain=125,ucGGain=128,ucRGain=134
+ucBOffset=128,ucGOffset=128,ucROffset=128
+enter >>fpi_video_set_basic_parameters,line==3649,value=50
+	 ,u8GMA_Param[0] =50
+	 ,u8GMA_Param[1] =0
+	 ,u8GMA_Param[2] =0
+	 ,u8GMA_Param[3] =0
+	 ,u8GMA_Param[4] =50
+	 ,u8GMA_Param[5] =0
+	 ,u8GMA_Param[6] =0
+	 ,u8GMA_Param[7] =0
+	 ,u8GMA_Param[8] =50
+	 ,u8GMA_Param[9] =50
+	 ,u8GMA_Param[10] =50
+	 ,u8GMA_Param[11] =0
+	 ,u8GMA_Param[12] =0
+	 ,u8GMA_Param[13] =50
+	 ,u8GMA_Param[14] =50
+	 ,u8GMA_Param[15] =50
+	 ,u8GMA_Param[16] =0
+	 ,u8GMA_Param[17] =50
+function: _fpi_update_10p_white_balance, index=0,base_color_t[index].red=100,ten_p_data.rgb_data[index].red_gain=0
+
+ CHECK ESN KEY ......!PASS!!
+$$$$$$$ verify playready ok $$$$$$$$$ 
+
+ TM-[pre_ready], tm[7343]fpi_get_panel_resolution_ratio: width:3840,height:2160
+Tvh_service_avmute av_svr_init begin
+Tvh_service_avmute av_svr_init end
+fpp_power_get_backlight Sucess ! 
+ct test ... backlight_onoff = 1 *back_light_on = 1 backlight_ui_value = 100
+**fpi_audio_enable_avl**p_config->b_enable=1, p_config->n32_audio_source=4194304
+#P-AOUT# PLAT_AOUT_SetPostParams() - same parameters -> skip
+**fpi_audio_set_SPDIF_type,type=1
+---lk--- u8_ms12_enable=1
+**fpi_audio_set_stereo**STEREO_TYPE=0
+#P-AOUT# PLAT_AOUT_SetPostParams() - same parameters -> skip
+**fpi_audio_set_balance**p_balance=-1098728564
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 0---by qiugr---
+un32_audio_delay_time == 100,user_audiodelay ==  60,Dolby Delay == 40,audio_delay_from_ini=0---by qiugr---
+**fpi_audio_set_SPDIF_delay,delay=60
+the following log will be deleted later,now debuging Dolby Delay,thank you!---by qiugr---
+interlace == 0---by qiugr---
+un16_format_framerate == 0---by qiugr---
+un32_audio_delay_time == 100,user_audiodelay ==  60,Dolby Delay == 40,audio_delay_from_ini=0---by qiugr---
+
+ luhm----fpi_audio_set_headphone_option-->headphone_op = 0
+
+**fpi_audio_set_hp_volume**p_volume=-1098728556
+source=-1246903500,volume=20
+curve0=0,curve1=25,curve2=50,curve3=75,curve4=100[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+**fpi_audio_set_speaker_volume**p_volume=-1098728556
+source=-1246903500,volume=15
+curve0=0,curve1=25,curve2=50,curve3=75,curve4=100USE ini file CURVE
+******* u8AudioCurveType:0 *********
+******* u16VolumeCurveSpeaker has done *********
+[LIM.YAO][PLAT_AOUT_SetSpeakerVolume]=======>L:0x0, R:0x0
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+luhm-----*f1 config*the AD_bin=(null)
+luhm-----*f1 config*default ad_bin=/applications/database/ad.bin
+@@[fpi_linein_later_init] finished! 
+[FPP_3D]_fpp_3d_SetPanelArch()[line: 517]:Set 3D Panel and Arch[FPP_3D]fpp_3d_init()[line: 192]:<<fpp_3d_init>> <<Non MM source or MEMC Mode>>
+plat_3d_cus_init FUNCTION START
+EN_3D_TYPE_ARCH_INTERNAL + EN_3D_TYPE_PANEL_SG
+Open 3D enable pin successfullyOpen 3D ctrl pin successfullyFHD[1]	enSoc3dOut:[1]	enFrc3dOut:[5]
+FHD[2]	enSoc3dOut:[2]	enFrc3dOut:[5]
+FHD[3]	enSoc3dOut:[3]	enFrc3dOut:[5]
+FHD[4]	enSoc3dOut:[4]	enFrc3dOut:[5]
+FHD[5]	enSoc3dOut:[5]	enFrc3dOut:[5]
+FHD[6]	enSoc3dOut:[0]	enFrc3dOut:[5]
+FHD[7]	enSoc3dOut:[0]	enFrc3dOut:[0]
+FHD[8]	enSoc3dOut:[0]	enFrc3dOut:[0]
+FHD[9]	enSoc3dOut:[0]	enFrc3dOut:[0]
+UHD[1]	enSoc3dOut:[1]	enFrc3dOut:[5]
+UHD[2]	enSoc3dOut:[2]	enFrc3dOut:[5]
+UHD[3]	enSoc3dOut:[3]	enFrc3dOut:[5]
+UHD[4]	enSoc3dOut:[4]	enFrc3dOut:[5]
+UHD[5]	enSoc3dOut:[5]	enFrc3dOut:[5]
+UHD[6]	enSoc3dOut:[0]	enFrc3dOut:[5]
+UHD[7]	enSoc3dOut:[0]	enFrc3dOut:[0]
+UHD[8]	enSoc3dOut:[0]	enFrc3dOut:[0]
+UHD[9]	enSoc3dOut:[0]	enFrc3dOut:[0]
+plat_3d_cus_init FUNCTION END
+[fpi_3d.c]---read model ini 3d LR SWITCH===1
+[fpi_3d.c]---read model ini 3d delay ===0
+watch_dog db = 1
+MhlDevice_Init complete
+ERROR:Sendding message id=536879106 must after running message_inits 
+luhm----fpi_set_ms12_sound_preset_for_hp---hp_plug=0
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+luhm-----*f1 config*the ms12_bin=(null)
+luhm-----*f1 config*default ms12_bin=/applications/database/ms12.bin
+enSoundPreset=5
+**luhm----ms12----fpi_audio_set_ms12_sound_preset mode =5
+******* fpp_audio_set_dolby_sence_mode type:0*****
+
+
+luhm----fpi_audio_headphone_insert_handle-->E_HP_SPEAKER set_balance= 0
+
+
+[VIDSCHG]: 
+[_PLAT_VIU_EvtHandler]VIN->VIU,u8Path=0, VIU Get event=1, [Time=8184]
+
+[VIDSCHG]: 
+[_PLAT_VIU_EvtHandler] Config Mode Done, Ready to Call back/Send Event to Upper Layer [Time=8184]
+
+[VIDSCHG]: 
+[_PLAT_VIU_SendVIDEvt]viu send event= 2, [Time=8184]
+luhm*******fpi_set_mutes_for_device*,dev==159,reason=tos.sync,mute=1
+fpi_check_reason*,dev==1,reason=tos.sync
+luhm***fpi_speaker_mute_info[1].reason_name= tos.chglinein,.reason_status==1
+luhm***fpi_speaker_mute_info[2].reason_name= tos.scart,.reason_status==0
+luhm***fpi_speaker_mute_info[3].reason_name= tos.chgchannel,.reason_status==0
+luhm***fpi_speaker_mute_info[4].reason_name= tos.lock,.reason_status==0
+luhm***fpi_speaker_mute_info[5].reason_name= tos.sync,.reason_status==1
+fpi_check_reason*,dev==2,reason=tos.sync
+luhm***fpi_hp_mute_info[1].reason_name= tos.chglinein,reason_status==1
+luhm***fpi_hp_mute_info[2].reason_name= tos.scart,reason_status==0
+luhm***fpi_hp_mute_info[3].reason_name= tos.chgchannel,reason_status==0
+luhm***fpi_hp_mute_info[4].reason_name= tos.lock,reason_status==0
+luhm***fpi_hp_mute_info[5].reason_name= tos.sync,reason_status==1
+fpi_check_reason*,dev==4,reason=tos.sync
+fpi_check_reason*,dev==8,reason=tos.sync
+fpi_check_reason*,dev==16,reason=tos.sync
+fpi_check_reason*,dev==128,reason=tos.sync
+lhm****b_current_hp_mute=1,b_pre_hp_mute=1
+lhm****MUTE/UNMUTE HEADPHONE,b_current_hp_mute=1
+lhm****b_current_speaker_mute=1,b_pre_speaker_mute=1
+lhm****MUTE/UNMUTE SPEAKER,b_current_speaker_mute=1
+lhm****b_current_spdif_mute=1,b_pre_spdif_mute=1
+lhm****MUTE/UNMUTE SPDIF,b_current_spdif_mute=1
+lhm****b_current_avout_mute=1,b_pre_avout_mute=1
+lhm****MUTE/UNMUTE AVOUT,b_current_avout_mute=1
+audio_out_mute=true
+lhm****b_current_amp_mute=0,b_pre_amp_mute=0
+lhm****MUTE/UNMUTE AMP,b_current_amp_mute=0
+lhm****b_current_capture_mute=1,b_pre_capture_mute=1
+lhm****MUTE/UNMUTE CAPTURE,b_current_capture_mute=1
+***enter->fpp_capture_audio_mute,b_mute = 1
+enter-->PLAT_AUD_CENTER_getCptStatus
+enter-->PLAT_AUD_CENTER_getCptStatus
+lhm****b_current_bluetooth_mute=1,b_pre_bluetooth_mute=1
+lhm****MUTE/UNMUTE BLUETOOTH,b_current_bluetooth_mute=1
+chaifr---fpi_audio_set_bluetooth_mute b_mute = 1
+chaifr--------fpi_audio_set_bluetooth_mute MUTE ---
+fpi_video_mute->after set mute gun32mute_level:0x2040,reason=0x40
+ERROR:Sendding message id=268566528 must after running message_inits 
+ERROR:Sendding message id=219283456 must after running message_inits 
+other source can not detect HDMI format!
+
+
+ @@@###power_on_total_time:5613 
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+[hbbtv_network_check],Send EN_HBBTV_NETWORK_CHECK msg
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:12
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:11
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:10
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:9
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:8
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:7
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:6
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:5
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:4
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:3
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:2
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:1
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
+wtx--->EN_HBBTV_NETWORK_CHECK OK--net_state:0,check_count:0
+wtx--->EN_HBBTV_NETWORK_CHECK OK
+error!!! an invalid User Timer
+Deleting an invalid User Timer
