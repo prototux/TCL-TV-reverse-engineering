@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int /* (???) */ g_config_file;
+int /* (???) */ g_fconfig_file;
 
 int32_t uti_config_init()
 {
@@ -31,10 +31,10 @@ int32_t uti_config_init()
 	{
 
 		// Load ini file
-		g_config_file = iniparser_load(config_file);
+		g_fconfig_file = iniparser_load(config_file);
 
 		// Load config from ini
-		if (g_config_file)
+		if (g_fconfig_file)
 		{
 			// I don't know what it's used for but...
 			return 0;
