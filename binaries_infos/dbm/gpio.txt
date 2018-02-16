@@ -1,0 +1,8 @@
+cmd :gpio
+-----------------------gpio test para introduce-----------------------------------
+u8Para[0]: operate type,    1-->gpio config, 2-->gpio set, 3-->gpio get
+u8Para[1]: operate index,   0-->GPIO_INDEX_TEST, 1-->GPIO_INDEX_DEMOD_DTMB_RESET, 7-->GPIO_INDEX_WIFI_POWER_ON
+u8Para[2]: when gpio config: 0-->GPIO_DIRECTION_OUTPUT,1-->GPIO_DIRECTION_INPUT
+        when gpio set: 0-->GPIO_LOW_STATUS,1-->GPIO_HIGH_STATUS
+        when gpio get: no need to input
+

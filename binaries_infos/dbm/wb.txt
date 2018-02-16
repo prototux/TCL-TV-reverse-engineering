@@ -1,0 +1,26 @@
+cmd :wb
+@@ wb para[0]=101
+ucBGain=101,ucGGain=103,ucRGain=105
+ucBOffset=102,ucGOffset=104,ucROffset=106
+
+
+@@ wb para[0]=0
+ucBGain=0,ucGGain=0,ucRGain=0
+ucBOffset=0,ucGOffset=0,ucROffset=0
+fpp_power_get_backlight Sucess ! 
+ct test ..222. video set bklight = 0 uivalue = 100
+fpi_video.c , line:4348
+fpi_video.c , turn_off_start line:4401
+fpi_video.c , turn_off_end line:4421
+Warning!!!, callback: Id 0 takes too long time!!!
+
+
+ cmd :wb
+@@ wb para[0]=100
+ucBGain=100,ucGGain=0,ucRGain=0
+ucBOffset=0,ucGOffset=0,ucROffset=0
+fpp_power_get_backlight Sucess ! 
+ct test ..222. video set bklight = 1 uivalue = 100
+fpi_video.c , line:4348
+fpi_video.c ,turn_on_start line:4351
+
