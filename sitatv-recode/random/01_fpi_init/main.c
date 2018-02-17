@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <inttypes.h>
+#include <string.h>
 
 struct st_config_path_ctrl {
 	const char *section;
@@ -89,12 +90,13 @@ int main(int argc, char *argv[])
 	fpp_board_rtc_init();
 
 	// Init system (?)
+	// apparently also activate the watchdog
+	// isn't used by sitatvservice?!?
 	//fpp_system_init();
 
 	// Works but seems useless...
 	//printf("Set panel filename\n");
 	//fpp_system_set_panel_file_name("/applications/tclconfig/panel/panel_64_3840_2160.txt");
-
 
 	/**************************
 	 * Here goes the sandbox! *
@@ -140,7 +142,7 @@ int main(int argc, char *argv[])
 
 	// Activate debug switch for all
 	// correction: it is a debug menu?!?
-	//fpp_system_fpp_debug_switch(1, 1);
+	fpp_system_fpp_debug_switch(1, 1);
 
 	// Doesn't work, send error with
 	// "Do not support recently!"
