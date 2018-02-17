@@ -883,13 +883,143 @@
 		15. change Blending mode
  4. DEVICE +
 	 1. DEV_PANEL +
+		 1. Show Revision
+		 2. Show Debugging Message
+		 3. Panel Descriptor : Get
+		 4. Panel Descriptor : Set (valid)
+		 5. Panel Power : Get
+		 6. Panel Power : Set
+		 7. Panel Backlight: Power Get
+		 8. Panel Backlight: Power Set
+		 9. Panel Backlight: Level Get (valid)
+		10. Panel Backlight: Level Set
+		11. Panel Backlight: Freq  Get (valid)
+		12. Panel Backlight: Freq  Set
+		13. Panel Backlight: Status
+		14. LVDS Enable : Get (valid)
+		15. LVDS Enable : Set
 	 2. DEV_NIM +
+		 1. Show Revision
+		 2. Get Current Signal Path
+		 3. ATV/DTV Debug Message On/Off
+		 4. ATV Test Menu +
+			 1. ATV Open Tune
+			 2. ATV Start Tune
+			 3. ATV Monitor Tune
+			 4. ATV Stop Tune
+			 5. ATV Close Tune
+			 6. ATV Get Min/Max/VHF/UHF Freq info
+			 7. ATV Direct Set RF & IF
+			 8. ATV Direct Set IF
+			 9. ATV Direct Set RF
+			10. ATV Direct Check Tuner Phase Lock
+			11. ATV Check VIF Lock
+			12. ATV Check VD Lock Status
+			13. ATV Check Lock Status
+			14. Get ATV Target Value
+			15. Set ATV Target Value
+			16. Supported Video System Operation
+			17. Change VD source path
+			18. Check DVIF Supported
+			19. Get/Set ATV Scan Type
+			20. Set MPLL CLK-Change function of dVIF for changing channel
+			21. Get MPLL CLK-Change Frequency Domain of dVIF
+			22. Set ATV MPLL CLK of dVIF with provided Signal Type for the same channel
+			23. Set ATV Fre offset Threshold
+			24. ATV Disable upper layer tuning
+			25. ATV opposite set IF&RF
+		 5. DTV Test Menu +
+			 1. DTV Open Tune
+			 2. DTV DVB-T Start Tune
+			 3. DTV DVB-C Start Tune
+			 4. DTV ISDB-T Start Tune
+			 5. DTV DVB-S Start Tune
+			 6. DTV ATSC Start Tune
+			 7. DTV Monitor Tune
+			 8. DTV Stop Tune
+			 9. DTV Close Tune
+			10. DTV Power Control
+			11. DTV Get Max/Min Freq Hz, BER, Signal Quality, Signal Strength info
+			12. DTV Terminate Tune
+		 6. Tuner Test Menu +
+			 1. SAL Tuner Suspend
+			 2. SAL Tuner Resume
+			 3. ATV IIC garbage
+		 7. Other Test Menu +
+			 1. Show Revision
+			 2. Set Tuner
+			 3. Set VIF
+			 4. Get Lock Status
+			 5. AutoTune
+			 6. Lock VD Task
+			 7. Set VD Forced Mode
+			 8. Set Channel (Taiwan)
+			 9. Channel Up (Taiwan)
+			10. Channel Down(Taiwan)
+			11. Path Set
+			12. Full Scan(DTMB)
+			13. IIC Test
+			14. Debug Message
+			15. SAL tuner Debug
 	 3. TUNER TDA18275 +
+		 1. TDA18275 Debug Msg Enable/Disable
+		 2. TDA18275 Manual Init
+		 3. TDA18275 Change Standard
+		 4. TDA18275 SetRF
+		 5. TDA18275 Read
+		 6. TDA18275 Write
+		 7. TDA18275 Get SW Version
+		 8. TDA18275 Get SW Setting Version
+		 9. TDA18275 Get Power State
+		10. TDA18275 Get RF
+		11. TDA18275 Get Standard Mode
+		12. TDA18275 Get IF
+		13. TDA18275 Get Power Level
+		14. TDA18275 Get Thermo
 	 4. TUNER RE331ZN +
+		 1. RE331ZN Debug Msg Enable/Disable
+		 2. RE331ZN Manual Init
+		 3. RE331ZN Change Standard
+		 4. RE331ZN SetRF
+		 5. RE331ZN Command Enable/Disable
+		 6. RE331ZN Set Skip Same Aud Std (SECAM) Enable/Disable
 	 5. DEV_USB +
+		 1. Show USB-Device Info
+		 2. USB Device-Count          Get:
+		 3. USB Device-Name           Get:
+		 4. USB Device-ModeName       Get:
+		 5. USB Device-Path           Get:
+		 6. USB Device-stat           Get:
+		 7. USB Partition of specific Device Count Get:
+		 8. USB Performance Auto test
+		 9. USB PortEffect  test
+		10. USB Performance Unit Test
+		11. USB EYE Test
 	 6. DEV_FP +
+		 1. [IR and KeyPad] Status
+		 2. [IR] Init
+		 3. [IR] Open
+		 4. [IR] Close
+		 5. [IR] Register Key Callback
+		 6. [IR] Enable display KeyCode
+		 7. [IR] Disable display KeyCode
+		 8. [IR] Create IR thread
+		 9. [IR] CancelIR thread
+		10. [IR] Set KeyCode
+		11. [KeyPad] Init
+		12. [KeyPad] Register Key Callback
+		13. [KeyPad] Enable display KeyCode
+		14. [KeyPad] Disable display KeyCode
 	 7. DEV_IIC +
+		 1. IIC Used Status
+		 2. IIC Auto Test
+		 3. IIC Write Byte
+		 4. IIC Read Byte
+		 5. IIC Scan
 	 8. DEV_INI +
+		 1. Show Revision
+		 2. Module Ini Status
+		 3. Module DeIni Status
  5. DRIVER +
 	 1. DRV_OS +
 	 2. DRV_DBG +
