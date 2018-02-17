@@ -1685,24 +1685,309 @@
 		 2. Crypto Trace OFF
 		 3. Crypto AES test
 	12. DRV_SB +
+		 1. SB DEBUG +
+		 2. PTSQ DEBUG +
+		 3. Show Revision
+		 4. SBM Test Program
+		 5. SBM open
+		 6. SBM close
+		 7. SBM flush
+		 8. SBM add frame
+		 9. SBM read frame
+		10. SBM show info
 	13. DRV_STC +
+		 1. Show Revision
+		 2. Open
+		 3. Close
+		 4. Set Mode
+		 5. Get STC
+		 6. Set STC
+		 7. Get Offset
+		 8. Set Offset
+		 9. Pause
+		10. Resume
+		11. Get Config
+		12. Get Register
+		13. Change Get STC Mode
+		14. MPLL control
+		15. STC control
+		16. Enable Message
 	14. DRV_VOD +
+		 1. [Debug Info]
+		 2. Show Revision
+		 3. Open Decoder
+		 4. Close Decoder
+		 5. Play
+		 6. Stop
+		 7. PlaySpeed
+		 8. Pause
+		 9. Resume
+		10. Step
+		11. Choose Debug Target
+		12. Set Log Control of VOD
+		13. Set Status Monitor of VOD
+		14. Set Control Mask of VOD
+		15. Get Control Mask of VOD
+		16. Get ES buffer status
+		17. Set IMVQ Clock
+		18. Get IMVQ Clock
+		19. Set HEVC Threshold
+		20. Get HEVC Threshold
+		21. Dump Driver Context
+		22. Moive Rotate
 	15. DRV_IMG +
+		 1. Show Revision
+		 2. Open Decoder
+		 3. Start
+		 4. Stop
+		 5. Close Decoder
+		 6. DrvImg Debug Message Enable
+		 7. DrvImg Debug Message Disable
+		 8. Kernel Debug Message Enable
+		 9. Kernel Debug Message Disable
+		10. Set HwDecMode
+		11. Dump Memory
+		12. Self Test
+		13. Decode File Test
 	16. DRV_GPU +
+		 1. Show Revision
+		 2. Open
+		 3. Close
+		 4. Get Info
+		 5. List Mode
+		 6. Fill Rectangle
+		 7. Blt Copy
+		 8. Blt ROP
+		 9. Blt Logical
+		10. Scale
+		11. GA memory mmap
+		12. GA memory cache flush
 	17. DRV_VBI +
+		 1. Open Drv VBI Debug Mode +
+		 2. Show Revision & Status info
+		 3. Get Data
+		 4. Delay EQ
+		 5. Set Support Region
+		 6. Lock VBI Task
+		 7. VBI Open
 	18. DRV_LEDTOP +
+		 1. Show Revision
+		 2. LED PWM Channel FreeRunMode(CH:0-7, Hz x 100, Permil, Offset)
+		 3. LED PWM Channel 3DMode(CH:0-7, Hz x 100, Permil, Offset)
+		 4. LED PWM Channel 2DMode(CH:0-7, Hz x 100, Permil, Offset)
+		 5. LED PWM All by FreeRunMode
+		 6. LED PWM All by 3DMode
+		 7. LED PWM All by 2DMode
+		 8. Ouput DP Vsync
+		 9. Vsync come from PAD
+		10. PWM come from PAD
+		11. Stop Upper or INT Call(Upper, INT, PRINT)
+		12. PWMDIM Show Lock status
+		13. LED PWM 2-Channel 3D(CH1:0-7, CH2:0-7, Hz x 100, Permil)
+		14. STOP Channel(CH:0-7), Enable(0 or 1)
 	19. DRV_SDADC +
+		 1. Revision
+		 2. Get Source
+		 3. Set Source
+		 4. Get Config
+		 5. Set Config
 	20. DRV_DVIF +
+		 1. Enable DRV_DVIF_DBG Message Function
+		 2. Enable Get AFC DBG Message
+		 3. Get IC or Driver version
+		 4. Get AFC Status
+		 5. Get Major Status
+		 6. Get Reg.Table
+		 7. Get dVIF PMI Status
+		 8. Get dVIF Share Mem Info
+		 9. Get PID
+		10. Get IF-AGC Status
+		11. Debug ADC settings
+		12. Debug System settings
+		13. Debug the related settings of dVIF+SIF
+		14. Debug the related settings of dVIF+VD
+		15. Debug Scart/DAC Out settings
+		16. Debug MPLL Test Mode
+		17. Debug dVIF/Demod HW sharing setting
+		18. Set AFC On/Off
+		19. Set Standard
+		20. Set ADC settings
+		21. Set System settings
+		22. Set dVIF + SIF Path settings
+		23. Set dVIF + VD Path settings
+		24. Set Scart/DAC Out settings
+		25. Set 'Internal Pattern' +
+		26. Set TVADC Connect dVIF & MPLL CLK settings
+		27. Set dVIF/Demod HW sharing setting
+		28. Set IF-AGC Polarity Normal/Opposite
+		29. Set AFC Freq. Offset Threshold
+		30. Set 'IF-AGC Control' +
+		31. Set Condition of judging AFC Lock
+		32. Set Logic Reset Switch Dis/En Able
+		33. Set Adjustment Value of CVBS Output
+		34. Execute dVIF Reset
+		35. Execute dVIF Logic Reset
+		36. Execute AFC Reset
+		37. Execute Stand-By Mode
+		38. Execute WRITE-16 function
+		39. Execute READ-16 function
+		40. Execute WRITE-32 function
+		41. Execute READ-32 function
+		42. Execute WRITE-16 Specif. Bit function
+		43. Execute READ-16 Specific Bit function
+		44. Execute WRITE-32 Specif. Bit function
+		45. Execute READ-32 Specific Bit function
+		46. Execute dVIF PMI Suspend
+		47. Execute dVIF PMI Resume
+		48. Load/Debug Test Script
 	21. DRV_BLAST +
+		 1. Show Version
+		 2. Create Blast Listen Task
+		 3. Set NEC protocol
+		 4. _dbgFunSetMultiProtocol
+		 5. Set Multi-Protocol sampel for Tcx IR mouse
+		 6. Set repeat timing parameter (ms)
 	22. DRV_IIC +
+		 1. Show Revision
+		 2. Show Help
+		 3. IIC Open
+		 4. IIC Read
+		 5. IIC Write
+		 6. IIC Test
 	23. DRV_DDCCI +
+		 1. Show Revision
+		 2. Show all bus status
+		 3. Drv Open (create a task to listen)
+		 4. Drv Close
+		 5. DDCCI Write
+		 6. IIC slave(5) read
+		 7. IIC slave(5) write
 	24. DRV_OSD +
+		 1. Show Revision
+		 2. Show Enable (Get Handle)
+		 3. Plane/Region Enable
+		 4. Scale Enable
+		 5. Alpha Blend Enable
+		 6. RL Decode Enable
+		 7. ColorKey Enable
+		 8. Set Color Mode
+		 9. Set Stride (Bytes)
+		10. Set Display Window
+		11. Update Sync By ATV Enable
+		12. Update Enable
+		13. Self Frame Window Enable
+		14. Separate OSD Enable
+		15. TransparentKey Enable
+		16. Separate LVDS Enable
+		17. Separate Time Gen Enable
+		18. Set Plane Order
+		19. Layer1 Behind Video Enable
+		20. Video Mask Enable
+		21. 3D Mode Enable
+		22. BIST Mode Enable
+		23. Flush AXI Read Enable
+		24. Auto Mute Enable
+		25. Protect Area Enable
+		26. AXI Freeze Enable
+		27. VFlip Enable
+		28. Dram Save Mode Enable
+		29. Dual-Pixel Output Enable
+		30. Alpha Calculate Enable
+		31. Gain Offset Enable
+		32. Load Source File
+		33. Demo BIST Mode
+		34. Demo Blend Mode (Include Palette)
+		35. Demo Seperate Mode
+		36. Demo Region Alpha Inc
+		37. Demo Region Alpha Dec
+		38. PM Suspend
+		39. PM Resume
+		40. Dump Register Value
+		41. Dump FB RawData
+		42. Show Dimension Info
+		43. Show Function Info
+		44. API Trace Enable
 	25. DRV_TVENC +
+		 1. TVE DBG Enable
+		 2. TVE Start PAL
+		 3. TVE Start NTSC
+		 4. TVE Init/Term
+		 5. TVE Open/Close
+		 6. TVE Connect/Disconnect
+		 7. TVE SetupMode
+		 8. TVE Action
+		 9. TVE Mixout Debug
+		10. TVE Debug
+		11. TVE Get MPLL
+		12. TVE Get Info
+		13. TVE Get SCL Info
+		14. WSS Debug
+		15. CC  Debug
+		16. CGMSA Debug
 	26. DRV_TSPU +
+		 1. [DBG] +
+			 1. Zone Toggle
+			 2. Desc Test
 	27. DRV_PQ +
+		 1. Show Drv PQ Revision
+		 2. Show DrvPQ Dbg Msg
+		 3. Enabe Check Register R/W
+		 4. Dump ADC0 Raw Data To USB
+		 5. Install Resume Callback
+		 6. 3D Detection + +
 	28. DRV_HDMA +
+		 1. Open HDMA
+		 2. Test MMAP
+		 3. Test Src incre, Dst fixed
+		 4. Test Src incre, Dst incre
+		 5. Test Src fixed, Dst incre
+		 6. Test Dst addr in DRAM
+		 7. Test All
+		 8. Show Revision
 	29. DRV_STBC +
+		 1. Show Revision
+		 2. _dbgCmdSetCurrentTime
+		 3. _dbgCmdGetCurrentTime
+		 4. _dbgCmdSetWakeUpTime
+		 5. _dbgCmdGetWakeUpTime
+		 6. _dbgCmdSetPowerOffTime
+		 7. _dbgCmdGetPowerOffTime
+		 8. _dbgCmdPowerOff
+		 9. _dbgCmdPowerSaving
+		10. _dbgCmdReadRegister
+		11. _dbgCmdWriteRegister
+		12. _dbgCmdReadFlash
+		13. _dbgCmdWriteFlash
+		14. _dbgCmdGetDRMKey
+		15. _dbgCmdSendIRKey
+		16. _dbgCmdEnableDebugFeature
+		17. _dbgCmdCheckDebugFeature
+		18. _dbgCmdSwitchSPIAuthority
+		19. _dbgCmdCheckSPIAuthority
+		20. _dbgCmdControlLEDState
+		21. _dbgCmdControlInternalEDID
+		22. _dbgCmdControlInternalEDIDWriteProtect
+		23. _dbgCmdGetTVADCData
+		24. _dbgCmdReadInternalEDIDStatus
+		25. _dbgCmdReadInternalEDIDWriteProtectStatus
+		26. _dbgCmdGetEfuseData
+		27. _dbgCmdCheckEfuseWriten
+		28. _dbgCmdCheckAdcCalibrationWriten
+		29. _dbgCmdReadICVersion
+		30. _dbgCmdWdtTest
+		31. _dbgCmdVGASelfTestModeEnable
+		32. _dbgCmdVGASelfTestModeDisable
+		33. _dbgCmdVGASelfTestModeLevelCtrl
+		34. _dbgCmdRstTest
+		35. _dbgCmdBusyIPCTest
+		36. AGPIO control
+		37. STB_CKECK control
 	30. DRV_MAU_DM +
+		 1. Show info
+		 2. MAU Top Start
+		 3. MAU Top Destroy
+		 4. Change DM Setting
+		 5. Config Log Path
  6. MISC +
 	 1. BASE_REG +
 	 2. BASE_MEM +
