@@ -1,186 +1,886 @@
  1. APPLICATION +
 	 1. FPP_FACTORY +
-		 1. factory test FRC Dump  
-		 2. factory test FRC Write  
-		 3. factory test watchdog operate  
-		 4. factory test get ic version  
-		 5. Set FPP Trace Level  
+		 1. factory test FRC Dump
+		 2. factory test FRC Write
+		 3. factory test watchdog operate
+		 4. factory test get ic version
+		 5. Set FPP Trace Level
 	 2. FPP_PARSER +
-		 1. Start Filter Test  
-		 2. Close Filter Test  
-		 3. Restat Filter Test  
-		 4. Sectfilter_ Status Test   
-		 5. PidFitter Stop Test   
-		 6. PidFitter Close Test   
-		 7. PidFitter start Test   
-		 8. Get_Section_Data  
+		 1. Start Filter Test
+		 2. Close Filter Test
+		 3. Restat Filter Test
+		 4. Sectfilter_ Status Test
+		 5. PidFitter Stop Test
+		 6. PidFitter Close Test
+		 7. PidFitter start Test
+		 8. Get_Section_Data
 	 3. FPP_VIDEO +
 		 1. MGR_PQ +
-		 2. fpp_video Show Message   
-		 3. fpp_video(PQ) set_brightness  
-		 4. fpp_video(PQ) set_contrast  
-		 5. fpp_video(PQ) set_saturation  
-		 6. fpp_video(PQ) set_hue  
-		 7. fpp_video(PQ) set_sharpness  
-		 8. fpp_video(PQ) set_color_warmth  
-		 9. fpp_video(PQ) set_noise_reduction  
-		10. fpp_video(PQ) set_black_strech  
-		11. fpp_video(PQ) set_gamma  
-		12. fpp_video(PQ) enable_film_mode  
-		13. fpp_video(PQ) enable_dynamic_contrast  
-		14. fpp_video(PQ) video_mute  
-		15. fpp_video(PQ) set_mute_color  
-		16. fpp_video(PQ) set_freeze  
-		17. fpp_video(PQ) video_out_mute_output  
-		18. fpp_video(PQ) set_mpeg_nr  
-		19. fpp_video(PQ) turn on/off backlight  
-		20. fpp_video(PQ) video_out_set_macrovision_mode  
-		21. fpp_video(PQ) video_out_setcgms_a_mode  
-		22. fpp_video(PQ) set_flesh_tone  
-		23. fpp_video(PQ) set_game_mode  
-		24. fpp_video(PQ) set_colorspace  
-		25. fpp_video(PQ) set_gamma_10p  
+		 2. fpp_video Show Message
+		 3. fpp_video(PQ) set_brightness
+		 4. fpp_video(PQ) set_contrast
+		 5. fpp_video(PQ) set_saturation
+		 6. fpp_video(PQ) set_hue
+		 7. fpp_video(PQ) set_sharpness
+		 8. fpp_video(PQ) set_color_warmth
+		 9. fpp_video(PQ) set_noise_reduction
+		10. fpp_video(PQ) set_black_strech
+		11. fpp_video(PQ) set_gamma
+		12. fpp_video(PQ) enable_film_mode
+		13. fpp_video(PQ) enable_dynamic_contrast
+		14. fpp_video(PQ) video_mute
+		15. fpp_video(PQ) set_mute_color
+		16. fpp_video(PQ) set_freeze
+		17. fpp_video(PQ) video_out_mute_output
+		18. fpp_video(PQ) set_mpeg_nr
+		19. fpp_video(PQ) turn on/off backlight
+		20. fpp_video(PQ) video_out_set_macrovision_mode
+		21. fpp_video(PQ) video_out_setcgms_a_mode
+		22. fpp_video(PQ) set_flesh_tone
+		23. fpp_video(PQ) set_game_mode
+		24. fpp_video(PQ) set_colorspace
+		25. fpp_video(PQ) set_gamma_10p
 	 4. FPP_SYSTEM +
-		 1. fpp_system get_panel_resolution  
-		 2. fpp_system_get_pixel_info  
-		 3. fpp_system_panel_set_video_mirror  
-		 4. fpp_system_get_average_luma  
-		 5. fpp_system_get_luma_level_distribution  
-		 6. fpp_system_set_pq_demo_mode  
-		 7. fpp_system_set_panel_file_name  
-		 8. fpp_system_fast_create_file  
-		 9. fpp_system_usb_format  
-		10. fpp_system_debug_key_set  
-		11. fpp_system_set_config_path_and_name  
-		12. fpp_system_set_localdimming  
-		13. fpp_system_get_localdimming  
+		 1. fpp_system get_panel_resolution
+		 2. fpp_system_get_pixel_info
+		 3. fpp_system_panel_set_video_mirror
+		 4. fpp_system_get_average_luma
+		 5. fpp_system_get_luma_level_distribution
+		 6. fpp_system_set_pq_demo_mode
+		 7. fpp_system_set_panel_file_name
+		 8. fpp_system_fast_create_file
+		 9. fpp_system_usb_format
+		10. fpp_system_debug_key_set
+		11. fpp_system_set_config_path_and_name
+		12. fpp_system_set_localdimming
+		13. fpp_system_get_localdimming
 	 5. FPP_CEC +
-		 1. CEC_set_arca_tmos_status  
-		 2. CEC_Chip_Init  
-		 3. CEC_Show_Message  
-		 4. CEC_get_msg_count  
-		 5. CEC_tx_msg  
-		 6. CEC_get_rx_data  
-		 7. CEC_setting  
-		 8. CEC_ARC_setting  
-		 9. CEC_clear_buffer  
-		10. CEC_config_wake_up  
+		 1. CEC_set_arca_tmos_status
+		 2. CEC_Chip_Init
+		 3. CEC_Show_Message
+		 4. CEC_get_msg_count
+		 5. CEC_tx_msg
+		 6. CEC_get_rx_data
+		 7. CEC_setting
+		 8. CEC_ARC_setting
+		 9. CEC_clear_buffer
+		10. CEC_config_wake_up
 	 6. FPP_LINEIN +
-		 1. fpp_linein open  
-		 2. fpp_linein_get_source_id  
-		 3. fpp_linein_src_insert_check  
+		 1. fpp_linein open
+		 2. fpp_linein_get_source_id
+		 3. fpp_linein_src_insert_check
 	 7. FPP_3D +
-		 1. Init 3D  
-		 2. Set 3D Mode  
-		 3. Get 3D Mode  
-		 4. Set 3D LRswap  
-		 5. Get 3D LRswap  
-		 6. Set 3D to 2D Mode  
-		 7. Get 3D to 2D Mode  
-		 8. Set 2D to 3D Depth level  
-		 9. Get 2D to 3D Depth level  
-		10. Set 3D Aspect Mode  
-		11. Get 3D Aspect Mode  
-		12. Set 3D IR-sync  
+		 1. Init 3D
+		 2. Set 3D Mode
+		 3. Get 3D Mode
+		 4. Set 3D LRswap
+		 5. Get 3D LRswap
+		 6. Set 3D to 2D Mode
+		 7. Get 3D to 2D Mode
+		 8. Set 2D to 3D Depth level
+		 9. Get 2D to 3D Depth level
+		10. Set 3D Aspect Mode
+		11. Get 3D Aspect Mode
+		12. Set 3D IR-sync
 	 8. FPP_GPIO +
-		 1. Set GPIO  
-		 2. Get GPIO  
+		 1. Set GPIO
+		 2. Get GPIO
 	 9. FPP_SCART +
-		 1. fpp_scart get_port_enable_status  
-		 2. fpp_scart get_pin8_level  
-		 3. fpp_scart get_pin16_level  
-		 4. fpp_scart get_wss  
-		 5. fpp_scart out_set_source  
-		 6. fpp_scart set_mute  
-		 7. fpp_scart set_pin8_level  
-		 8. fpp_scart set_wss  
-		 9. fpp_scart out_set_video_type  
+		 1. fpp_scart get_port_enable_status
+		 2. fpp_scart get_pin8_level
+		 3. fpp_scart get_pin16_level
+		 4. fpp_scart get_wss
+		 5. fpp_scart out_set_source
+		 6. fpp_scart set_mute
+		 7. fpp_scart set_pin8_level
+		 8. fpp_scart set_wss
+		 9. fpp_scart out_set_video_type
 	10. FPP_ZOOM +
-		 1. fpp_zoom crop_window  
-		 2. fpp_zoom display_window  
-		 3. fpp_zoom set_vga_clock  
-		 4. fpp_zoom set_vga_phase  
-		 5. fpp_zoom vga_autoadjust  
-		 6. fpp_zoom set_vga_hpos  
-		 7. fpp_zoom set_vga_vpos  
-		 8. fpp_zoom get_vga_para  
-		 9. fpp_zoom get_afd_info  
+		 1. fpp_zoom crop_window
+		 2. fpp_zoom display_window
+		 3. fpp_zoom set_vga_clock
+		 4. fpp_zoom set_vga_phase
+		 5. fpp_zoom vga_autoadjust
+		 6. fpp_zoom set_vga_hpos
+		 7. fpp_zoom set_vga_vpos
+		 8. fpp_zoom get_vga_para
+		 9. fpp_zoom get_afd_info
 	11. FPP_VBI_TTX +
-		 1. VBI_TTX_Init  
-		 2. VBI_TTX_Start  
-		 3. VBI_TTX_Stop  
-		 4. VBI_TTX_Register  
-		 5. VBI_TTX_UnRegister  
-		 6. VBI_TTX_CleanUp 
+		 1. VBI_TTX_Init
+		 2. VBI_TTX_Start
+		 3. VBI_TTX_Stop
+		 4. VBI_TTX_Register
+		 5. VBI_TTX_UnRegister
+		 6. VBI_TTX_CleanUp
 	12. FPP_media +
-		 1. Set Debug Level  
-		 2. Dump Control Block  
-		 3. Initialize  
-		 4. Deinitialize  
-		 5. Set Video Info  
-		 6. Get Video Info  
-		 7. Get Video PTS  
-		 8. Set Audio Info  
-		 9. Get Audio Info  
-		10. Get Audio PTS  
-		11. Flush decoder  
-		12. Pause decoder  
-		13. Resume decoder  
-		14. Set display  
-		15. Push eos  
-		16. Set decode mode(a/v)  
-		17. Set decode mode(i/b/p)  
-		18. Set slowforward mode  
-		19. Dump ES Data  
-		20. Fpp_media Self Test  
-		21. Set max buffing frame Num  
-		22. FPP set media high  
-		23. FPP set media log  
-		24. FPP get media para 
+		 1. Set Debug Level
+		 2. Dump Control Block
+		 3. Initialize
+		 4. Deinitialize
+		 5. Set Video Info
+		 6. Get Video Info
+		 7. Get Video PTS
+		 8. Set Audio Info
+		 9. Get Audio Info
+		10. Get Audio PTS
+		11. Flush decoder
+		12. Pause decoder
+		13. Resume decoder
+		14. Set display
+		15. Push eos
+		16. Set decode mode(a/v)
+		17. Set decode mode(i/b/p)
+		18. Set slowforward mode
+		19. Dump ES Data
+		20. Fpp_media Self Test
+		21. Set max buffing frame Num
+		22. FPP set media high
+		23. FPP set media log
+		24. FPP get media para
 	13. FPP_GRAPHICS +
-		 1. GRAPHICS_Mute  
+		 1. GRAPHICS_Mute
 	14. FPP_CAPTURE +
 		 1. capture picture
  2. MIDWARE (Invalid)
 	(nothing)
  3. PLATFORM +
 	 1. PLAT_VLIB +
+		 1. Show Revision
+		 2. Show VidSetting Params
+		 3. Show LBM Layout
+		 4. Alloc OverDriver
 	 2. PLAT_DRV_INIT +
+		 1. ShowRevision
+		 2. ModuleIniStatus
+		 3. ModuleDeIniStatus
+		 4. WriteDetectiontest
+		 5. Memory Layout Information
+		 6. WD Test
 	 3. PLAT_MEM +
+		 1. Show Revision
+		 2. Test Memory
 	 4. PLAT_NVM +
+		 1. Show Revision
+		 2. NVM Set MaxSize
+		 3. NVM Get MaxSize
+		 4. Write Value
+		 5. Read Value
+		 6. NVM Status
 	 5. PLAT_OS +
+		 1. [Common] Show Revision
+		 2. [Common] Get OUI
+		 3. [Common] Get Hardware ID
+		 4. [Common] Get Customer ID
+		 5. [Common] Get Box Serial Number
+		 6. [Common] Get Platform Revision Code
+		 7. [Clock] Get Time(ms)
+		 8. [Clock] Get Clock RTC
+		 9. [Clock] Set Clock RTC
+		10. [Clock] Get Clock Date String
+		11. [Clock] Get Clock Date
+		12. [Clock] Set Clock Date
+		13. [Clock] Sync Clock Date To STBC
+		14. [Task] Create Test Task
+		15. [Task] Sleep Test Task
+		16. [Task] Wake Up Test Task
+		17. [Task] Test Task Suicide
+		18. [Task] Destroy Test Task
+		19. [Task] Get Task Handle
+		20. [Queue] Create Test Message Queue
+		21. [Queue] Write Test Message Queue
+		22. [Queue] Write Test Message Queue to Head
+		23. [Queue] Read Test Message Queue
+		24. [Queue] Reset Test Message Queue
+		25. [Queue] Delete Specific Message in Test Message Queue
+		26. [Queue] Check Test Message Queue Full
+		27. [Queue] Get Message Count in Test Message Queue
+		28. [Queue] Destroy Test Message Queue
+		29. [Timer] Show Timers
+		30. [Timer] Create an Interval Timer
+		31. [Timer] Create an Once Timer
+		32. [Timer] Modify Timer Time
+		33. [Timer] Modify Timer Property
+		34. [Timer] Enable Timer
+		35. [Timer] Remove Timer
+		36. [Timer] Get Reamining Time of a Timer
+		37. [CoreDump] Core dump test
 	 6. PLAT_FS +
+		 1. Show Revision
+		 2. open file
+		 3. reopen file
+		 4. read file
+		 5. get file character
+		 6. get file string (length<=256)
+		 7. write file
+		 8. sync file
+		 9. write file character
+		10. write file string
+		11. file seek
+		12. file get current position
+		13. file check EOF indicator
+		14. close file
+		15. remove file
+		16. rename file
+		17. access file
+		18. get dir list
+		19. open dir
+		20. read dir
+		21. rewind dir
+		22. dir seek
+		23. dir get position
+		24. close dir
 	 7. PLAT_SP +
+		 1. Show Revision
+		 2. DebugWrite
+		 3. DebugNoCnWrite
+		 4. DebugStrToNum
+		 5. DebugRegisterMenu
+		 6. DebugGetEnterKey
+		 7. Get Print Status
+		 8. Set Print Config
+		 9. Get Trace Sattus
+		10. Set Trace config
+		11. Get PrintLog Status
+		12. Set PrintLog Config
+		13. Get TraceLog Sattus
+		14. Set TraceLog config
 	 8. PLAT_SYS +
+		 1. Show Revision
+		 2. System Call
+		 3. Get Date
+		 4. Set Date
+		 5. Get Wake Up Time
+		 6. Set Wake Up Time
+		 7. Clear Wake Up Time
+		 8. Get Power Off Time
+		 9. Set Power Off Time
+		10. Clear Power Off Time
+		11. Get Sleep Time
+		12. Set Sleep Time
+		13. Power Off Now
+		14. Reset
+		15. Power Saving Now
+		16. Save Backlight Level
+		17. Get Backlight Level
+		18. Save Active Remote
+		19. Get Active Remote
+		20. Get Power On Event
+		21. Get Power On Mode
+		22. Set Power On Mode
+		23. Get Factory Flag
+		24. Set Factory Flag
+		25. Get BootStrap STBC Mode
+		26. Get Power Down Table
+		27. DRAM_Dump
+		28. Show Message
 	 9. PLAT_FP +
+		 1. [Common] Show Revision
+		 2. [IR] Enable/Disable
+		 3. [IR] Dsplay Key Code
+		 4. [IR] Simulator
+		 5. [IR] Set Protocol
+		 6. [Keypad] Enable/Disable
+		 7. [Keypad] Display Key Code
+		 8. [Keypad] Simulator
+		 9. [Led] Set Led State
+		10. [IR Test] Display Key Code
+		11. [IR Test]IR test enable
+		12. [IR Test]IR test disable
 	10. PLAT_CRYPT +
+		 1. Show Revision
+		 2. Debug Enable
+		 3. CRYPTO Init
+		 4. Get PRNG
+		 5. CRYPTO Encrypt
+		 6. CRYPTO Decrypt
 	11. PLAT_OSD +
+		 1. OSD - PlaneEnable
+		 2. OSD - SetAllVFlip
 	12. PLAT_VIN_AUTO +
+		 1. Show Revision
+		 2. Self Test Mode(step by step)
+		 3. Self Test Mode(COMP)
+		 4. Self Test Mode(CVBS)
+		 5. Set AutoGO
+		 6. Set Initial Efuse
 	13. PLAT_VIN +
+		 1. Show Revision
+		 2. Show Message
+		 3. Print Sync Info
+		 4. Print Mode Info
+		 5. Print Mode Param
+		 6. Show currect path status
+		 7. Reset VD
+		 8. Get HDMI Info Frame Data
+		 9. Get MHL CBUS Data
+		10. Send MHL CBUS Cmd
+		11. Show Task Info
+		12. Play Control
+		13. Change Scart source mode
+		14. Enable Sync Ident Task Pause
+		15. Enable Sync Ident Task Debug
+		16. Set Sync Ident Interval
+		17. Set Sync Ident Source For YPBPR
+		18. Set Sync Ident Source For VGA
+		19. Set Sync Ident Source For SCART_G
+		20. Set Sync Ident Source For CVBS
+		21. Set Sync Ident Source For CVBS2
+		22. Set Sync Ident Source For SVIDEO
+		23. Set Sync Ident Source For SCART_CVBS
+		24. Set Sync Ident Sequence
+		25. Polling Sync Ident Status
 	14. PLAT_VIN_NDAL +
+		 1. Change Source
+		 2. ADC Gain Burn Efuse
+		 3. H/W Auto Gain
 	15. PLAT_VPU +
+		 1. Show Revision
+		 2. Show Debugging message
+		 3. [Scaler] Change Mode
+		 4. [Scaler] Scaling parameters testing
+		 5. [Scaler] Adjust CurScalingWin
+		 6. Move scaled image testing
+		 7. Scaling Zoom tuning
+		 8. Scaling Zoom Mode Adjust
+		 9. [PIP] Change Mode
+		10. [PIP] Change Size
+		11. [PIP] Change Pos
+		12. [PIP] Set Window paramters
+		13. [PIP] Set Demo Window
+		14. Demo Zoom Mode Adjust
+		15. Show DisplayInfo structure
+		16. Show PLAT_VPU Info
+		17. Change overscan rate
+		18. Ignore/ Restore Overscan setting
+		19. Adjust VEP start position
+		20. Adjust Video position on screen
 	16. PLAT_VOUT +
+		 1. Show Revision
+		 2. Show Panel Description
+		 3. Flip Display
+		 4. Enable/Disable Backlight
+		 5. Set Backlight Level
+		 6. Set Backlight Freq
+		 7. Frame Mute
+		 8. Frame Color
+		 9. Window Mute
+		10. Window Color
+		11. Frame Sync Freq Offset
+		12. TVout
+		13. MIX output
+		14. TTX output
+		15. WSS output
+		16. CGMSA output
+		17. LVDS Driving
+		18. Show TVE info
 	17. PLAT_VC +
+		 1. Query Sclr Remainder Memory Size
+		 2. Sclr Update Queue Debug
 	18. PLAT_VIU +
+		 1. Show Revision
+		 2. Set Capture Window
+		 3. Force VD Capture Window
+		 4. Force VD ScartMode
+		 5. YCDelay On/Off
+		 6. Auto Fine Tune
+		 7. Set IP2
+		 8. Display TestPattern
+		 9. Switch 3D
+		10. NR Enable
+		11. Set Seamless Type
+		12. Set Seamless Resume
+		13. Get Seamless status
+		14. Get I3 Source Bridge Info
+		15. Show panel parameter Info
+		16. Get panel resolution Info
 	19. PLAT_VIU_TESTCASE +
+		 1. ATV platform init
+		 2. Source change
+		 3. mode detect
+		 4. out mode
+		 5. Capture Path test
+		 6. Video Texturing Start/Stop
 	20. PLAT_IPC +
+		 1. Capture DP Pre Start
+		 2. Capture DP Start
+		 3. Capture DP End
+		 4. Capture DP After End
+		 5. Print current Capture DP Info
 	21. PLAT_FRC +
+		 1. Check FRC Exist
+		 2. Print Current FRC Status
+		 3. Check is SperateMode
+		 4. Mute FRC
+		 5. 4K2K/FullHD Change mode
+		 6. set 3D Separate OSD
+		 7. get pixel info
+		 8. Open FRC Debug MSG
+		 9. Print Panel Extra Parameters
 	22. PLAT_AIN +
+		 1. Show Revision
+		 2. [API] +
+			 1. IN : Set Path Config
+			 2. IN : Connect
+			 3. IN : Disconnect
+			 4. IN : Enable
+			 5. IN : Disable
+			 6. IN : Get Source
+			 7. IN : Set HDMI Mux
+		 3. [SIF] +
+			 1. Set SIF standard
+			 2. Get SIF standard
+			 3. Set SIF standard detect
+			 4. Get SIF Signal status
+			 5. Get SIF A2 status
+			 6. Get SIF NICAM status
+			 7. Set SIF High Deviation Enable
+			 8. Set SIF Carrier Mute
+			 9. Get SIF AQ Table
+			10. Set SIF AQ Table
+			11. Get Audio sound mode
+			12. Set Audio sound mode
+			13. Get Audio sound mode detection
+		 4. [MISC] +
+			 1. Change Source
+			 2. Show Play Step
+			 3. Play Enable
+			 4. Play Select
 	23. PLAT_AOUT +
+		 1. Show Revision
+		 2. [API] +
+			 1. Get Constant
+			 2. OUT: Connect
+			 3. OUT: Disconnect
+			 4. SPK: Set Path Config
+			 5. SPK: Connect
+			 6. SPK: Disconnect
+			 7. SPK: Set
+			 8. OUT: Set Mute
+			 9. OUT: Get Mute
+			10. SPK: Set Mute
+			11. SPK: Get Mute
+			12. SPK: Set Delay
+			13. SPK: Set Volume
+			14. SPK: Get Volume
+			15. OUT: Set Foreground
+			16. OUT: Set Background
+			17. OUT: Set/Get PostParam
+			18. OUT: Get PostSpectrum
+			19. OUT: Sound Out PCM
+			20. OUT: Mix Sound Out
+			21. OUT: Mix Flush
+			22. OUT: Set Data Type
 	24. PLAT_NIM +
+		 1. Show Revision
+		 2. Display Channel info
+		 3. Debug Enable
+		 4. Set auto relock
+		 5. Start tuner
+		 6. Stop tuner
+		 7. Restart tuner
+		 8. Get Actual ATV Color
+		 9. Get Actual ATV Audio
+		10. Get Tuner Freq
+		11. ATV Autosan Init
+		12. ATV Autosan End
+		13. DTV Get Actual Params
+		14. DTV Get Terr Param
+		15. DTV Sat Test
+		16. Power Down
+		17. ATV VideoSystemOp
+		18. Set DTV Abort Scan Flag
+		19. Get DTV PLP status
+		20. Get Lock status
+		21. Set DTV TS output
+		22. SetTone
+		23. SetPolar
+		24. DiSEqCTest
+		25. Satellite BlindScan Control Test
 	25. PLAT_DATA +
+		 1. Show Revision
+		 2. DB List All
+		 3. DB Open -DBTest
+		 4. DB Close
+		 5. DB write record
+		 6. DB append record
+		 7. DB read record
+		 8. DB restore -DBTest
+		 9. DB Save as Default
+		10. DB Backup
+		11. DB Flush all
 	26. PLAT_PARSER +
+		 1. MM SelFile
+		 2. PARSER Initialize
+		 3. PARSER Terminate
+		 4. PARSER Open
+		 5. PARSER Close
+		 6. PARSER Start
+		 7. PARSER Stop
+		 8. PARSER Prescan
+		 9. PARSER Seek
+		10. PARSER SetESBuffer
+		11. PARSER ResetBuffer
+		12. PARSER SelectStream
+		13. PARSER DeselectStream
+		14. PARSER SetStream
+		15. PARSER Dump ES
+		16. PARSER Show PTS
+		17. PARSER Open+Prescan
+		18. PARSER SetESBuffer+SelectStream
+		19. PARSER Re-select Stream
+		20. PARSER Stop+Seek+Start
+		21. PARSER Open+Prescan+SetESBuffer+Select+Stream
+		22. PARSER show remainder
+		23. PARSER show Info
+		24. PARSER Debug
 	27. PLAT_AVES +
+		 1. Show Revision
+		 2. Initialize
+		 3. start
+		 4. STOP
+		 5. Close
+		 6. SetBuffer
+		 7. GetBuffer
+		 8. ChangeAvPid
 	28. PLAT_TSPU +
+		 1. Show Revision
+		 2.
+		 3. Show All PID info
+		 4. Show All Section info
+		 5. Show AV PID info
+		 6. Show AV Buffer info (oneshot)
+		 7. Monitor AV Buffer info (repeating)
+		 8. Show Demux Buffer info
+		 9. Show Each filter Buffer info
+		10. Show TSPU Counting State
+		11. Set DP Config
 	29. PLAT_DEC +
+		 1. Show Revision
+		 2. Init Test
+		 3. Term Test
+		 4. Get Audio Bit Rate
+		 5. Get Music Time Tag
+		 6. Start Vod Decoding
+		 7. Stop Vod Decoding
+		 8. Pause Vod Decoding
+		 9. Resume Vod Decoding
+		10. Start Aud Decoding
+		11. Stop Aud Decoding
+		12. Pause Aud Decoding
+		13. Resume Aud Decoding
+		14. Set Play Speed
+		15. Step
+		16. Get Pic Size
+		17. Get Pic Frame Rate
+		18. Get User Data
+		19. Get Pic Ratio
+		20. Get STC
+		21. Get Dec Capability
+		22. Flush Vod Buff
+		23. Flush Aud Buff
+		24. Set STC Mode
+		25. Set Audio Source
+		26. Set Video Source
+		27. Set Audio Type
+		28. Set Video Type
+		29. Pause Decoding
+		30. Resume Decoding
+		31. Stop Decoding
+		32. Start Decoding
+		33. Get AFD
+		34. Dump Ctrl
+		35. Show Interface Msg
+		36. Calculate Capture buffer Size
+		37. CaptureFrame
+		38. SetAudGainValue (db*100)
+		39. GetPTS
+		40. Test DecOnly
+		41. Get String Buff
+		42. Cfg AinID
+		43. SetSyncMaster
+		44. GetDectype
+		45. GetDecSource
+		46. GetSync
+		47. CaptureDebugMsg
+		48. SetAudCompreMode
+		49. GetAudStatus ( Channel info etc)
+		50. Get Pic info (inc. dimension)
 	30. PLAT_IMG +
+		 1. Show Revision
+		 2. Set Canvas
+		 3. Get Canvas
+		 4. Set Effect Mode
+		 5. Stop Effect Mode
+		 6. Flip Rotate
+		 7. Set Zoom
+		 8. Move Zoom
+		 9. Get Color type
+		10. Set Disp Frame
+		11. Show Disp Status
+		12. Dump Img Cfg Status
+		13. Set and Action PostProc
+		14. Fill Screen
+		15. Dump buffer
 	31. PLAT_PQ_DBG +
+		 1. Show All PQ Revision
+		 2. [PLAT_PQ]+ +
+			 1. Show Message
+			 2. DRV PQ Bypass
+			 3. Set CM3 Brightness
+			 4. Set CM3 Contrast
+			 5. Set CM3 Hue
+			 6. Set CM3 Saturation
+			 7. Set AutoFilm Mode
+			 8. Set AutoContrast Mode
+			 9. Set AutoNR Mode
+			10. Set AutoMpegNR Mode
+			11. Set AutoComb Mode
+			12. Set AutoSD2HD Mode
+			13. Set AutoBL Mode
+			14. Set AutoSS Mode
+			15. Set AutoDEI Mode
+			16. Set VDLuma GO
+			17. Set Contrast
+			18. Set WBParam
+			19. Set ColorSpace Custom
+			20. Set Bypass All
+			21. Set Comp Phase
+			22. Set Black Adjust
+			23. Set EdgeEnhancement
+			24. Set xvYCC
+			25. Set HDMIBlackLevel
+			26. Set PictureEnhance
+			27. Set WCE
+			28. Set Contrast Dimming
+			29. Set Brightness
+			30. Set Sharpness
+			31. Set Post Sharpness
+			32. Set VideoDecoder
+			33. Set LnaPlus
+			34. Get GlobalColor Default
+			35. Get Black Detect
+			36. Get APL
+			37. Get NR Noise Level
+			38. Get VD Noise Level
+			39. Get Motion Value
+			40. Set HLPF
+			41. Set ScartUltraBlack
+			42. Set Secam Luma Filter
+			43. Set Secam Chroma Filter
+			44. Set IFComp Filter Table
+			45. Set VEP Test Pattern
+			46. Set Temp Backlight
+			47. Set CeSeed
+			48. Set ReadHistogram
+			49. Get BlockPixelValue
+			50. Set ForceSCARTCVBS
+			51. Set PCCalibration
+			52. Set 2ndCalibration
+			53. Set Bypass Dither
+			54. Set DP Gamma
+			55. Next page + +
+				 1. Set ColorCompenstion
+				 2. Set BLE
+				 3. Set BLEStartPoint Min
+				 4. Show TimeDiff
+				 5. Show Revision
+				 6. Get Ambient Light Value
+				 7. Get IP Pixel Report
+				 8. Get DP Pixel Report
+				 9. Set IP Digital Gain Offset
+				10. Set SR Picture mode
+				11. Set SW Version Parser
+				12. Set 3D AutoDetection
+				13. Set DP CallBack Enable
+				14. Set IP LPF Enable
+				15. Set NR Driver + +
+				16. Set IGamma Mode
+				17. Set IGamma Sub Mode
+		 3. [PLAT_PQSHELL]+ +
+			 1. Set PQ Shell Dbg Msg Off/On
+			 2. Set Dump Shell API Info
+			 3. Set bypass PQ Shell API
+			 4. Set Contrast
+			 5. Set Brightness
+			 6. Set PIP Mode
+			 7. Set Sharpness
+			 8. Set Saturation
+			 9. Set Hue
+			10. Set BlackAdjust
+			11. Set DynamicContrast
+			12. Set Gamma
+			13. Set WBParam
+			14. Set EdgeEnhancement
+			15. Set xvYCC
+			16. Set DigitalNR
+			17. Set MpegNR
+			18. Set HDMIBlackLevel
+			19. Set AutoFilmMode
+			20. Set GameMode
+			21. Set LnaPlus
+			22. Get BlackDetect
+			23. Get APL
+			24. Get Front APL
+			25. Get Front APL Enhanced
+			26. Set HDMIPC
+			27. Get PixelData
+			28. Set PCCalibration
+			29. Set 2ndCalibration
+			30. Set OffsetGain
+			31. Set ContrastDimming
+			32. Set WCE
+			33. Set VideoDecoder
+			34. Set PostSharpness
+			35. Set PictureEnhance
+			36. Set VEP YCDelay
+			37. Set TestPattern
+			38. Get NoiseLevel
+			39. Set CompPhase
+			40. Get Histogram
+			41. Set BLE
+			42. Set BLEStartPointMin
+			43. Set SmartNRDemo
+			44. Set ColorSpaceCustom
+			45. Set SaturationSub
+			46. Set BypassDither
+			47. Set RGBOnlyMode
+			48. Set NRDemoModeOnOff
+			49. Set AutoContrastDemoModeOnOff
+			50. Set VEP PQ DemoModeOnOff
+			51. Set VEP Post PQ DemoModeOnOff
+			52. Set Micro Dimming DemoModeOnOff
+			53. Set Digital Crystal Clear DemoModeOnOff
+			54. Set Digital Artifact Reduction DemoModeOnOff
+			55. Set CustomerPQ DemoModeOnOff
+			56. Set GetMotionValue
+			57. Set TempBackLight
+			58. Set ColorEnhanceBypass
+			59. Set CeSeed
+			60. Set ColorCompenstion
+			61. Set WhiteTone
+			62. Set HLPF
+			63. Set ScartUltraBlack
+			64. Run ADC Calibration
+			65. Set SD2HD Mode
+			66. Set 3D PQ For PR Panel
+			67. Set Ambl APL Ctrl
+			68. Get Ambl APL Value
+			69. Set AutoBacklight
+			70. Set TNR FC
+			71. Set SNR FC
+			72. Select MNR control mode
+			73. Set Factory NR
+			74. Set G Limit
+			75. Set Adaptive Chroma
+			76. Set Adaptive Luma
+			77. Set SR Picture mode
+			78. Set DP Gamma Ctrl
+			79. Set MGA Pattern Ctrl
+			80. Set MAD Motion IIR Reset
+			81. Set Skin Tone
+			82. Get APL Percentage Info
+			83. Get Active Control Value
+			84. Get DP RGB APL
+			85. Get 3D Format Detection
+			86. Set PostPostSharpness
+			87. Set IGammaRectifier
+			88. Set SelectiveColor8
+			89. Set SkinData
+			90. Set ForceCSCMatrix
+			91. Set Picture Quality
+			92. Set Force Bypass All
+			93. Read Register Value
+			94. Write Register Value
+		 4. [PLAT_PQIF]+ +
+			 1. Set PQ IF Dbg Msg Off/On
+			 2. Set Fake Panel Size By Scaler
 	32. PLAT_CUSTOM_AQ +
+		 1. [Dump AQ table] +
+			 1. Dump Header
+			 2. Dump DSP data
+			 3. Dump AMP register
+			 4. Dump AMP coefficient
+		 2. Copy AQ table
 	33. PLAT_SBM +
+		 1. Initial SBM
+		 2. Terminate SBM
+		 3. Show SBM handles
+		 4. Create handle
+		 5. Destory handle
+		 6. Add Frame
+		 7. Flush SBM
+		 8. Show SBM Status
 	34. PLAT_DVIF +
+		 1. Enable PLAT_DVIF_DBG Message Function
+		 2. Show Revision
+		 3. Get Standard and CLK status
+		 4. Set CLK domain and Standard
+		 5. Set MPLL Test Mode CLK and dVIF Standard together
+		 6. Get Customer information
+		 7. Set Monitor SSIF Mute
+		 8. Set Monitor VPLL compensates SSIF
+		 9. Set IF-AGC Polarity Normal/Opposite
+		10. Get Sal Tuner Type
+		11. Get Table Tuner Define
+		12. Get Initial Table Tuner Index
+		13. Get Table Tuner Index
+		14. Set Table Tuner Index
+		15. Set PLAT_DVIF_GetAFCStatus MSG
+		16. Set StandardCLK and Logic Reset En/Dis Able +
+		17. Set SONY Tuner TAGC Control +
+		18. Load NXP-NYQ test script
+		19. Set Table NYQ with Standard
+		20. Set Table Group Delay with Standard
+		21. Set/Get Threshold of VPLL Counter Lock When Scanning
+		22. Get I&Q Info of VPLL
+		23. Set C-AFC Reset Switch After Loading STD-TBL
+		24. Force Setting Standard While Loading STD-TBL
+		25. Set All REGs Reset Switch While Loading STD-TBL
+		26. Set IF-AGC Manual Ctrl Switch After Loading STD-TBL
+		27. Set QAGC CVBS Ovmod Switch
+		28. Set Nyquist EQ Switch
+		29. Set Group Delay EQ Switch
+		30. Set QAGC PID Crtl Switch
+		31. Set SECAM Black Bar Switch while Scanning for Sony Tuner
+		32. Set QAGC WinMinPeak Detection Switch
+		33. Set IF-AGC Maxium Value When in Auto Ctrl
+		34. Set Gain or DC Value of CVBS Output
+		35. Set VPLL Over-Modulation THD
+		36. Set AFC Freq. Offset THD
 	35. PLAT_VBI +
+		 1. Show Revision
+		 2. DB List All
+		 3. DB Open -DBTest
+		 4. DB Close
+		 5. DB write record
+		 6. DB append record
+		 7. DB read record
+		 8. DB restore -DBTest
+		 9. DB Save as Default
+		10. DB Backup
+		11. DB Flush all
 	36. PLAT_NETIF_CTRL +
+		 1. [Common] Show interface information
+		 2. [Common] Enable interface
+		 3. [Common] Disable interface
+		 4. [Common] Static setup interface
+		 5. [Common] DHCP setup interface
 	37. PLAT_INI +
+		 1. Show Revision
+		 2. Module Ini Status
+		 3. Module DeIni Status
+		 4. Separate 4K2K
+		 5. Separate 4K2K OSD+ HD Video
+		 6. Blending 4K2K
+		 7. Blending HD
+		 8. Video Source
+		 9. Panel Setting
+		10. Separate OSD Setting
+		11. Separate OSD TIME GEN
+		12. Separate OSD LVDS PATH
+		13. Separate OSD Clock select
+		14. change Separate mode
+		15. change Blending mode
  4. DEVICE +
 	 1. DEV_PANEL +
 	 2. DEV_NIM +
