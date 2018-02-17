@@ -1022,16 +1022,668 @@
 		 3. Module DeIni Status
  5. DRIVER +
 	 1. DRV_OS +
+		 1. Show Revision
+		 2. TASK::List
 	 2. DRV_DBG +
+		 1. Show Revision
+		 2. Message Configure
+		 3. Go to uart util thread
+		 4. Go to net util thread
+		 5. Set Prinkt Level
 	 3. DRV_FR2IP +
+		 1. [Debug Info]
+		 2. Force 3D->2D Display(MAIN PATH)
+		 3. Force 3D->2D Display(SUB PATH)
+		 4. FR2IP driver test function
 	 4. DRV_AUD +
+		 1. [DBG] +
+			 1. Unit Enable
+			 2. Unit Disable
+			 3. Zone Toggle
+			 4. Dump Procfs
+		 2. [IPU] +
+			 1. Set HDMI Codec
+			 2. Get Status
+			 3. Get Buf Control
+			90. Set Self Diag API
+			91. Get Self Diag Result
+			92. Set Self Diag Volume
+			10. Suspend Unit
+			11. Resume Unit
+			20. Set ADC Mux
+			21. Set ADC Gain
+		 3. [APU] +
+			 1. Get Dec Info
+			 2. Set Dec Gain
+			 3. Start
+			 4. Stop
+			 5. Transcode On/Off
+			 6. Compress mode
+			 7. DownMix mode
+			 8. SoundMode
+			 9. Bypass capability
+			10. SRC Comp Profile
+			11. SRC Leveler
+			12. AD Action On/Off
+			13. Single PID On/Off
+			14. Flush Stream
+			15. Sound Out
+			16. Throw Off
+		 4. [PPU] +
+			 1. Set Config
+			 2. Set PP
+			 3. Get PP
+			 4. Run SndOut Test Case
+			 5. Set SndOut Force Cfg
+			 6. Set Zero detection
+		 5. [OPU] +
+			 1. Set Hold
+			 2. Set Dev Volume
+			 3. Get Dev Volume
+			 4. Set Dev Mute
+			 5. Set Dev Head Phone Driver
+			 6. Set Dev Delay
+			 7. Get Dev PTS
+			 8. Set Dev MIX
+			 9. Tsk Dev MIX
+			10. Set Dev Conn
+			11. Tsk Dev Conn
+			12. Set CIC Gain
+			13. Set DSM Gain
+			14. Set SPDIF Gain
+			15. Set SPDIF CP
+			16. Set SPDIF CP/L
+			17. Set Dev GPIO
+			18. Get Config
+			19. Set Config
+			20. Set Sync Mode
+			21. Flush Output
+			22. Flush Device
+			23. Capture PCM
+			24. Tst Strm Mode
+			25. Init OPU
+			26. Term OPU
+			27. Get Buf Info
+			28. Connect Encoder
+			29. Show OPU config
+		 6. [SIF] +
+			 1. Carrie Muter On/Off
+			 2. High Deviation On/Off
+			 3. Set Engine
+			 4. Get AQ Table
+			 5. Set AQ Table
+			 6. Store AQ Table to Usb
+			 7. Set AQ Table From Usb
+			 8. Get Standard
+			 9. Set Standard Trigger
+			10. Set Standard
+			11. Get Scanned Standard
+			12. Get Signal Status
+			13. Set Stannard Prefer
+			14. Get Sound Mode
+			15. Set Sound Mode
+			16. Get Register
+			17. Get RegisterEx
+			18. Set SIF MPLL&ADC
+			19. Set SWAGC Gain
+			20. Set SIF Input
+			21. Dump SIF Data
+		 8. [PLL] +
+			 1. Force PLL ClkSrc
+			 2. PLL : Set Freq
+			 3. PLL : Get MN
+			 4. PLL : Set MN
+			 5. PLL : Toggle MN
+			 6. PLL : Get Reg
+			 7. PLL : Set Reg
+		 9. [OMX] +
+			 1. Gain Unit
+			 2. Free Unit
+			 3. Send Command
+			 4. Get State
+			 5. Set Config
+			 6. Get Config
+			 7. Setup Tunnel
+			 8. Get Connnected Port
+			20. Capture Unit Start
+			21. Capture Unit Stop
+		10. [ENC] +
+			 1. Start
+			 2. Stop
+			 3. Pause
+			 4. Option
+		11. Show Context
+		12. Set Enable
+		13. Set DTV System
+		14. Set Foreground
+		15. Set Background
+		16. Set ECHO
+		99. Show Revision
 	 5. DRV_KADC +
+		 1. Show Revision
+		 2. Show Message
+		 3. Get MT ADC Efuse Data
+		 4. Set Suspend/Resume
 	 6. DRV_TVADC +
+		 1. Show Revision
+		 2. Enable Message
+		 3. Dump Write
+		 4. DRV_TVADC_GetShareMemInfo
+		 5. DRV_TVADC_Suspend/Resume
+		 6. DRV_TVADC_Sleep/WakeUp
+		 7. DRV_TVADC_GetParam
+		 8. DRV_TVADC_SetGain
+		 9. DRV_TVADC_SetOffset
+		10. DRV_TVADC_SetFastBlankingThreshold
+		11. DRV_TVADC_SetSOGThreshold
+		12. DRV_TVADC_SetIdentSOGMux
+		13. DRV_TVADC_SetIdentSOGThreshold
+		14. DRV_TVADC_SetHPLLSource
+		15. DRV_TVADC_SetHPLLDivisor
+		16. DRV_TVADC_SetHPLLPhase
+		17. DRV_TVADC_SetMixoutSource
+		18. DRV_TVADC_SetADC0Clock
+		19. DRV_TVADC_SetDVIFVDClock
+		20. DRV_TVADC_SetDVIFVDClockFreeRun
+		21. DRV_TVADC_SetLPF
+		22. DRV_TVADC_SetADC0Bias
+		23. DRV_TVADC_SetATVChannelScanMode
+		24. TVADC_SetSOGMuxThreshold
+		25. TVADC_SetFastBlankingMuxThreshold
 	 7. DRV_HDMI +
+		 1. Show HDMI/MHL Driver Ver
+		 2. [HDMI Dbg Menu] +
+			 1. HDMI Reset
+			 2. HDMI Video Mute
+			 3. HDMI Audio Mute
+			 4. HDMI Auto EQ
+			 5. HDMI FastSwitch Ctrl
+			 6. HDMI Timer Task Ctrl
+			 7. HDMI RX Clock Ctrl
+			 8. HDMI TMDS Pwr Ctrl
+			 9. HDMI ARC Ctrl
+			10. HDMI Suspend/Resume
+			11. HDMI Info
+			12. HDMI Debug Msg On/Off
+			13. HDMI User Msg On/Off
+			14. HDMI Driver Status
+			15. HDMI EQ Test
+			16. Set EDID ATMOS On/Off
+		 3. [MHL Dbg Menu] +
+			 1. MHL CTS
+			 2. MHL CTS RCP
+			 3. MHL CTS RAP
+			 4. MHL CTS UCP
+			 5. MHL CTS 3D Video Debug Info
+			 6. MHL Debug Info
+			 7. MHL RCP Ctrl Function On/Off
+			 8. MHL STBC Workaround On/Off
+			 9. MHL CBUS Force HDMI Mode
+			10. MHL CBUS DCap PP Mode On/Off
+			11. MHL Debug Msg On/Off
+		 4. [SelfTest Dbg Menu] +
+			 1. HDMI Self Test
+			 2. HDMI Self Test Set MPLL
+			 3. HDMI Self Test Read MPLL
+			 4. HDMI PCB Test
+			 5. Inupt Value for HDMI PCB Test
+			 6. HDMI ARC Loopback Test
+			 7. HDMI/MHL Ident Loopback Test
+		 5. [HDCP22 Dbg Menu] +
+			 1. Show RSA Key
+			 2. Show Auth Key
+			 3. Show FSM
+			 4. Show Auth Time
+			 5. Calc N=PxQ
+			 6. Init Test RSA Key
+			 7. Check Test Key Used
+		 6. [Misc Dbg Menu] +
+			 1. Check ARC Status
 	 8. DRV_VD +
+		 1. Open Drv VD Debug Mode +
+		 2. Show Drv VD Global Status & Flag
+		 3. Show Drv VD Revision
+		 4. DrvVD AutoScan Flag
+		 5. gb8DrvVDTaskStatus Flag
+		 6. Show SCART RGB/CVBS/SV mode change
+		 7. Show Mode Change flow
+		 8. Show All VD message
 	 9. DRV_XDMA +
+		 1. Show Revision
 	10. DRV_SCALER +
+		 1. Show Revision
+		 2. [Drv Scaler] +
+			 1. DRV_SCLR_EnableMessage
+			 2. DRV_SCLR_GetShareMemInfo
+			 3. DRV_SCLR_GetCapability
+			 4. DRV_SCLR_GetBootConfig
+			 5. DRV_SCLR_GetParams
+			 6. DRV_SCLR_OpenPath/ClosePath
+			 7. DRV_SCLR_SetInput
+			 8. DRV_SCLR_SetInputIPMode
+			 9. DRV_SCLR_SetInputFieldType
+			10. DRV_SCLR_SetInputHdmi420ModeOn
+			11. DRV_SCLR_SetInputDualPortOn
+			12. DRV_SCLR_GetStatus
+			13. DRV_SCLR_GetIdentStatus
+			14. DRV_SCLR_InstallStatusCallback
+			15. DRV_SCLR_InstallNewCaptureCallback
+			16. DRV_SCLR_InstallNewDisplayCallback
+			17. DRV_SCLR_SetClampPulse
+			18. DRV_SCLR_SetSyncType
+			19. DRV_SCLR_SetIdentSyncType
+			20. DRV_SCLR_SetInputVFreqDownRatio
+			21. DRV_SCLR_SetColorFormat
+			22. DRV_SCLR_SetColorConversion
+			23. DRV_SCLR_SetWindowMuteOn/Color
+			24. DRV_SCLR_SetUserVideoMuteOn
+			25. DRV_SCLR_SetVideoPauseOn
+			26. DRV_SCLR_SetVideoRepeatOn
+			27. DRV_SCLR_SetVideoDeinterlace
+			28. DRV_SCLR_SetVideoGameMode
+			29. DRV_SCLR_SetVideoProgressiveToInterlace
+			30. DRV_SCLR_SetVideoNrOn
+			31. DRV_SCLR_SetVideoMemcOn
+			32. DRV_SCLR_SetVideoCarsMode
+			33. DRV_SCLR_SetVideoVCRMode
+			34. DRV_SCLR_SetVideoDeframeTear
+			35. DRV_SCLR_SetWindowOn
+			36. DRV_SCLR_SetDPFrameSyncType
+			37. DRV_SCLR_SetDPTimingRange
+			38. DRV_SCLR_SetDPFreeRun
+			39. DRV_SCLR_SetPanelFrameWindowStartPosition
+			40. DRV_SCLR_SetPanelSyncPulseWidth
+			41. DRV_SCLR_SetPanelOutputSyncEnable
+			42. DRV_SCLR_SetDPClock
+			43. DRV_SCLR_SetDPClockSpreadSpecOn
+			44. DRV_SCLR_SetPanelPivot
+			45. DRV_SCLR_SetDPFrameSyncOn
+			46. DRV_SCLR_SetPanelMuteOn/Color
+			47. DRV_SCLR_SetBackgroundColor
+			48. DRV_SCLR_SetTopWindow
+			49. DRV_SCLR_SetVideoDemoOn
+			50. DRV_SCLR_SetVideoOutputDither
+			51. DRV_SCLR_SetVideoOutputDitherSetting
+			52. DRV_SCLR_SetOsdBlending
+			53. DRV_SCLR_SetSubVideoOnScreen
+			54. DRV_SCLR_SetPipMergeAtPostOn
+			55. DRV_SCLR_SetPostDpToPanelOn
+			56. DRV_SCLR_SetVideoUD444On
+			57. DRV_SCLR_SetIMVQ2FbOn
+			58. [Scaling&Framebuf&3D] +
+			59. [LVDS] +
+				 1. DRV_SCLR_SetLvdsOn
+				 2. DRV_SCLR_SetLvdsOverDrivingOn
+				 3. DRV_SCLR_SetLvdsOverDrivingBufAddr
+				 4. DRV_SCLR_FreeLvdsOverDrivingBuf
+				 5. DRV_SCLR_SetLvdsFormat
+				 6. DRV_SCLR_SetLvdsOutput
+				 7. DRV_SCLR_SetLvdsABSwap
+				 8. DRV_SCLR_SetPanelRBSwap
+				 9. DRV_SCLR_SetLvdsSinglePortSwap
+				10. DRV_SCLR_SetLvdsClockDataDelay
+				11. DRV_SCLR_SetLvdsDriving
+				12. DRV_SCLR_SetLvdsPreEmphasis
+				13. DRV_SCLR_LvdsSelfTest
+			60. [Measure] +
+				 1. DRV_SCLR_MeasurePhaseSod
+				 2. DRV_SCLR_MeasurePositionSize
+				 3. DRV_SCLR_MeasurePixelValue
+				 4. DRV_SCLR_MeasureHistogram
+				 5. DRV_SCLR_MeasurePixelValueMaxMin
+				 6. DRV_SCLR_MeasureSyncPulseWidth
+			61. [Test Pattern] +
+				 1. DRV_SCLR_SetTestPatternOn
+				 2. DRV_SCLR_SetTestPatternTiming
+				 3. DRV_SCLR_SetTestPatternID
+				 4. DRV_SCLR_SetTestPatternMoving
+			62. [Debug Info] +
+				 1. DRV_SCLR_DBG_GetDebugInfo
+				 2. DRV_SCLR_DBG_AutoFrameSyncPause
+				 3. DRV_SCLR_DBG_ImpulseNoisePause
+				 4. DRV_SCLR_DBG_InternalVideoMutePause
+				 5. DRV_SCLR_DBG_UserStatusChangeVideoMutePause
+				 6. DRV_SCLR_DBG_AutoClampPause
+				 7. DRV_SCLR_DBG_Polling2Dto3DPause
+				 8. DRV_SCLR_DBG_InternalVideoMuteDebugWithBlueColor
+				 9. DRV_SCLR_DBG_WindowMuteDebugWithGreenColor
+				10. DRV_SCLR_DBG_PanelMuteDebugWithRedColor
+				11. DRV_SCLR_DBG_KeepVideoOn
+				12. DRV_SCLR_DBG_CheckDisplayInput422Even
+				13. DRV_SCLR_DBG_CheckDisplayOutput422Even
+				14. DRV_SCLR_DBG_ImpulseNoiseMethod
+			63. [System] +
+				 1. DRV_SCLR_Init/Term
+				 2. DRV_SCLR_Open/Close
+				 3. DRV_SCLR_Suspend/Resume
+				 4. DRV_SCLR_Sleep/WakeUp
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 3. [Scaler Shell] +
+			 1. SCLR_SHL_EnableMessage
+			 2. SCLR_SHL_Open/Close
+			 3. Scaling Transient Debug
+			 4. Auto Frame Sync Status Report
+			 5. Mode Detect Status Report
+			 6. Auto Frame Sync Pause
+			 7. Impulse Noise Pause
+			 8. Impulse Noise Method
+			 9. Impulse Noise Debug
+			10. Vsync Async Fifo Reset Pause
+			11. Async Fifo Reset Pause
+			12. Sync Proc Reset Pause
+			13. Auto Clamp Pause
+			14. Check 3D Field State Pause
+			15. Check UDSW444 Field State Pause
+			16. Vx1 ESD Solution Pause
+			17. Polling Status Pause
+			18. Polling 2Dto3D Pause
+			19. Scaling Update Time Report
+			20. Compose Update
+			21. Enable Self EnQueue
+			22. Show Queue Status
+			23. Show Seamless Status
+			24. New Seamless Ready,
+			25. Check Display Input 422 Even
+			26. Check Display Output 422 Even
+			27. IP Vsync Time Report
+			28. DP Vsync Time Report
+			29. Show IMVQ2Fb Status
+			30. Show H Line Count Status
+			31. Show Deframe Tear Status
+			32. [Edit Condition] +
+				 1. Edit Mode Detect Condition
+				 2. Edit User Status Change Video Mute Condition
+				 3. Edit Status Change Video Mute Condition
+				 4. Edit Scaling Change Video Mute Condition
+				 5. Edit Impulse Noise Condition
+				 6. Edit Nx Times Monitor Condition
+				 7. Edit Delay Window On Condition
+				 8. Edit Filter H Sync Change Irq Condition
+				 9. Edit Frame Sync VTotal Tolerance Condition
+				10. Edit ATV Free Run Fade Out Counter Condition
+				11. Edit Vspll On Condition
+			33. [Video Mute] +
+				 1. Internal Video Mute Debug With Blue Color
+				 2. Window Mute Debug With Green Color
+				 3. Panel Mute Debug With Red Color
+				 4. Keep Video On
+				 5. Internal Video Mute Pause
+				 6. Frame Buf Change Video Mute Pause
+				 7. Scaling Change Video Mute Pause
+				 8. Pip Merge Point Change Video Mute Pause
+				 9. Impulse Noise Video Mute Pause
+				10. Frame Buf Reset Video Mute Pause
+				11. (Scaler) Status Change Video Mute Pause
+				12. (Other user drivers) User Status Change Video Mute Pause
+				13. (Other kernel drivers) Low Level User Status Change Video Mute Pause
+				14. Video Mute Time Report
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 4. [Scaler Custom] +
+			 1. SCLR_CUSTOM_EnableMessage
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 5. [PQ Shell] +
+			 1. PQ_SHL_EnableMessage
+			 2. PQ_SHL_SkipFunc
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 6. [Frame Buffer Proc] +
+			 1. Framebuf_P_EnableMessage
+			 2. Framebuf_P_QueryFrameBufferSize
+			 3. Framebuf_P_FrameBufferupdate
+			 4. Framebuf_P_Free
+			 5. Framebuf_P_WriteFrameBuffer
+			 6. Framebuf_P_ReadFrameBuffer
+			 7. Framebuf_P_DumpBasicInfo
+			 8. Framebuf_P_DumpErrorInfo
+			 9. Framebuf_P_DumpFIFOInfo
+			10. Framebuf_P_DumpShareFIFOInfo
+			11. Framebuf_P_DumpFreezInfo
+			12. Framebuf_P_DumpPathInfo
+			13. Framebuf_P_StressTest
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 7. [Image Proc] +
+			 1. IMG_P_EnableMessage
+			 2. IMG_P_SetDitherMode
+			 3. IMG_P_SetColorFormat
+			 4. IMG_P_SetCSCTestPattern
+			 5. IMG_P_SetColorConversion
+			 6. IMG_P_SetVideoPauseOn
+			 7. IMG_P_SetVideoRepeatOn
+			 8. IMG_P_SetVideoDeinterlace
+			 9. IMG_P_SetVideoGameMode
+			10. IMG_P_SetVideoProgressiveToInterlace
+			11. IMG_P_SetVideoNrOn
+			12. IMG_P_SetVideoMemcOn
+			13. IMG_P_SetDPPivot
+			14. IMG_P_SetVideoMuteOn
+			15. IMG_P_SetFrameBufInputVideoMuteOn
+			16. IMG_P_SetFrameBufOutputVideoMuteOn
+			17. IMG_P_StartMeasurePixelValue
+			18. IMG_P_StartMeasurePhaseSod
+			19. IMG_P_StartMeasurePositionSize
+			20. IMG_P_StartMeasureHistogram
+			21. IMG_P_StartMeasurePixelValueMaxMin
+			22. IMG_P_StartMeasureSyncPulseWidth
+			23. IMG_P_SetTestPatternOn
+			24. IMG_P_SetTestPatternTiming
+			25. IMG_P_SetTestPatternID
+			26. IMG_P_SetTestPatternMoving
+			27. IMG_P_SetVEPTestPatternOn
+			28. IMG_P_SetVEPTestPatternID
+			29. IMG_P_SetIPTestPatternOn
+			30. IMG_P_SetIPTestPatternID
+			31. IMG_P_SetDPOutputDither
+			32. IMG_P_SetIPVideoPauseOn
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 8. [Input Proc] +
+			 1. IN_P_EnableMessage
+			 2. IN_P_SetInput
+			 3. IN_P_SetInputIPMode
+			 4. IN_P_SetInputFieldType
+			 5. IN_P_SetInputHdmi420ModeOn
+			 6. IN_P_SetInputDualPortOn
+			 7. IN_P_SetClampPulse
+			 8. IN_P_SetSyncType
+			 9. IN_P_SetIdentSyncType
+			10. IN_P_SetVsyncAsyncFifoResetOn
+			11. IN_P_SetAsyncFifoResetOn
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		 9. [Output Proc] +
+			 1. OUT_P_EnableMessage
+			 2. OUT_P_SetLvdsFormat
+			 3. OUT_P_SetLvdsOutput
+			 4. OUT_P_SetLvdsSinglePortSwap
+			 5. OUT_P_SetLvdsABSwap
+			 6. OUT_P_SetPanelRBSwap
+			 7. OUT_P_SetLvdsClockDataDelay
+			 8. OUT_P_SetLvdsDriving
+			 9. OUT_P_SetLvdsPreEmphasis
+			10. OUT_P_SetDPClock
+			11. OUT_P_SetLvdsOn
+			12. OUT_P_SetDPClockSpreadSpecOn
+			13. OUT_P_SetLvdsOverDrivingOn
+			14. OUT_P_SetLvdsOverDrivingMute
+			15. OUT_P_SetLvdsOverDrivingBufAddr
+			16. OUT_P_FreeLvdsOverDrivingBuf
+			17. OUT_P_SetLvdsOverDrivingPowerOn
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		10. [Sync Proc] +
+			 1. SYNC_P_EnableMessage
+			 2. SYNC_P_GetStatus
+			 3. SYNC_P_SetDPFrameSyncType
+			 4. SYNC_P_SetDPTiming
+			 5. SYNC_P_SetDPFrameSyncVTotalMin
+			 6. SYNC_P_SetDPFrameWindowSize
+			 7. SYNC_P_SetVideo3dShopModeOn
+			 8. SYNC_P_SetDPFrameSyncOn
+			 9. SYNC_P_SetDPFrameSyncPath
+			10. SYNC_P_GetInVFreqInDpClk
+			11. SYNC_P_SetDPInsertVsyncOn
+			12. SYNC_P_SetDPVsgenOn
+			13. SYNC_P_SetDPVspllOn
+			14. SYNC_P_GetFieldState
+			15. SYNC_P_ToggleFieldStateReset
+			16. SYNC_P_GetIdentStatus
+			17. SYNC_P_GetIpWriteLineCount
+			18. SYNC_P_SetQFHDOn
+			19. SYNC_P_SetDPFrameWindowStartPosition
+			20. SYNC_P_SetDPSyncPulseWidth
+			21. SYNC_P_SetInputVFreqDownRatio
+			22. SYNC_P_SetDPPixelShiftOn
+			23. SYNC_P_SetDPOutputSyncEnable
+			24. SYNC_P_SetIPOutSyncDelay
+			25. SYNC_P_GetIP0OutSyncStatus
+			26. SYNC_P_SetOsdBlending
+			27. SYNC_P_SetSubVideoOnScreen
+			28. SYNC_P_SetSubVideoOnScreen
+			29. SYNC_P_SetPipMergeAtPostOn
+			30. SYNC_P_GetDPFrameSyncPhaseDiff
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		11. [Window Proc] +
+			 1. WIN_P_EnableMessage
+			 2. WIN_P_SetWindowMuteOn
+			 3. WIN_P_SetWindowMuteColor
+			 4. WIN_P_SetWindowOn
+			 5. WIN_P_SetDPBackgroundColor
+			 6. WIN_P_SetDPTopWindow
+			 7. WIN_P_SetWindowPivot
+			 8. WIN_P_SetWinBorderOn
+			 9. WIN_P_SetWinBorderRegion
+			10. WIN_P_SetWinBorderColor
+			11. WIN_P_SetWinBorderThickness
+			12. WIN_P_SetUpdateOn
+			13. WIN_P_UpdateTrigger
+			14. WIN_P_CheckUpdateReady
+			15. WIN_P_SetSourcePivot
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		12. [Utility Shell] +
+			 1. Enable Dump Register Write
+			 2. Set Trap to Catch Register Write
+			 3. Enable Log
+			 4. Dump Log
+			 5. Flush Log
+			 6. Disable Register Write
+			 7. Show Msg On Screen
+			 8. Write Msg To File
+			 9. Flush Msg To File
+			10. Warning Treat As Error
+			11. Record Register Value
+			12. Dump Diff Register Value
+			90. Disable all message
+			91. Disable all trace
+			92. Disable all print
+			93. Disable all warning
+			94. Disable all task
+			80. Disable show message on screen
+			81. Disable write message to file
+		13. [Test Case] +
+			 1. SelectPanel
+			 2. ConfigFb0
+			 3. ConfigFb1
+			 4. ConfigFb2
+			 5. ConfigFb3
+			 6. ConfigFb4
+			 7. Config3dFb
+			 8. Config4K2KFb
+			 9. ConfigVdFb
+			10. ConfigPostFb
+			11. ConfigPost3dFb
+			12. ConfigPostUDFb
+			13. ConfigPostUD444Fb
+			14. ConfigPostUD3dFb
+			15. Test001_16_9_TO_4_3
+			16. Test002_VEP_ZoomMode
+			17. Test003_IP_ZoomMode
+			18. Test004_PixelShift
+			19. Test005_LoadODTable
+			20. Test006_FbUpdateToggle
+			21. Test007_ScalingTest
+			22. Test008_AuxVideoOnSubWindow
+			23. Test009_ComplexScalingTest
+		14. [Trouble Shooting] +
+			 1. Item001 NoVideo
+			 2. Item002 StillVideo
+			 3. Item003 DumpVideo
+			 4. Item004 DumpDP
+			 5. Item005 CPUWriteTestVideo
+			 6. Item006 DumpRegisterInfo
+			 7. Item007 EnableScalingTracePrintMessage
+			 8. Item008 EnableTestPattern
+			 9. Item009 HistogramFromFrameBuf
+			10. Item010 HistogramFromInput
+		15. [Cov2Dto3D] +
+			 1. Show Cov 2Dto3D Revision
+			 2. Show Cov 2Dto3D Dbg Msg
+		90. Disable all message
+		91. Disable all trace
+		92. Disable all print
+		93. Disable all warning
+		94. Disable all task
+		80. Disable show message on screen
+		81. Disable write message to file
 	11. DRV_CRYPTO +
+		 1. Crypto Trace ON
+		 2. Crypto Trace OFF
+		 3. Crypto AES test
 	12. DRV_SB +
 	13. DRV_STC +
 	14. DRV_VOD +
