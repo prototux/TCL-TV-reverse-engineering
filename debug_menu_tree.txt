@@ -1990,15 +1990,180 @@
 		 5. Config Log Path
  6. MISC +
 	 1. BASE_REG +
+		 1. Show ChipInfo
+		 2. Read Register
+		 3. Write Register
+		 4. Addr:Phys2Virt
+		 5. Addr:Virt2Phys
 	 2. BASE_MEM +
+		 1. Show Mem Info
+		 2. Translate Addr
+		 3. Memory Set Test
 	 3. BASE_IRQ +
+		 1. Register Irq Info
+		 2. Unregister Irq Info
+		 3. Show Irq Funclist
+		 4. FlushIrq Funclist
+		 5. Debug Irq Info
 	 4. UTILI_MEM_CHECK +
+		 1. Show Revision
+		 2. Start
+		 3. List[Alloc without Free]
+		 4. Memory Leak Check
+		 5. Portect[Invalid Free] On/Off
+		 6. Stop
 	 5. UTILI_CUS_CHECK +
+		 1. Show Revision
+		 2. MutexLock: Start Print (Sensitive!!!Segment fault)
+		 3. MutexLock: Info Show Stop
+		 4. Mutex Lock/Unlock Info Show Start
+		 5. Mutex: Show all status
+		 6. Semaphore: Show all values
 	 6. UTILI_TSREC_CHECK +
+		 1. Start Record
+		 2. Stop Record
 	 7. Application Print  Setting +
+		 1. Show Revision
+		 2. Start
+		 3. List[Alloc without Free]
+		 4. Memory Leak Check
+		 5. Portect[Invalid Free] On/Off
+		 6. Stop
 	 8. Midware Print  Setting +
+		1. MID_AFD Print Level
+		2. MID_CC Print Level
+		3. MID_CI Print Level
+		4. MID_CIPLUS Print Level
+		5. MID_CONTROL Print Level
+		6. MID_PES Print Level
+		7. MID_DB Print Level
+		8. MID_M5_OB Print Level
+		9. MID_SI Print Level
+		10. MID_SI_ISDB_T Print Level
+		11. MID_SUBTITLE Print Level
+		12. MID_TSRECORDER Print Level
+		13. MID_DDC Print Level
+		14. MID_ATV Print Level
+		15. MID_CHECKSUM Print Level
+		16. MID_EVENT Print Level
+		17. MID_HEAP Print Level
+		18. MID_INI Print Level
+		19. MID_LINKLIST Print Level
+		20. MID_NVM Print Level
+		21. MID_PVR Print Level
+		22. MID_SYS Print Level
+		23. MID_TIMER Print Level
+		24. MID_PBC Print Level
+		25. MID_PBI Print Level
+		26. MID_SCHEDMGR Print Level
+		27. MID_SUP Print Level
+		28. MID_TTX Print Level
+		29. MID_M5_ICS Print Level
+		30. MID_M5_OSD Print Level
+		31. MID_M5_AV Print Level
+		32. MID_M5_TEST Print Level
+		33. MID_PM Print Level
+		34. PM_NVM Print Level
+		35. M5_MISC Print Level
+		36. MID_SI_COMMON Print Level
+		37. MID_SI Table Print Level
+		38. MID_SI Filter Print Level
+		39. MID_SI EIT Print Level
+		40. MID_SI EIT_MEM Print Level
+		41. MID_M5_SI Print Level
+		42. MID_M5_REMOTE Print Level
+		43. MID_SI EIT_DBG Print Level
+		44. MID_SectionDB Print Level
+		45. MID_SIBK Print Level
+		46. MID_Descriptor Print Level
+		47. MID_EIT_Parser Print Level
+		48. PM_TUNE Print Level
+		49. MID_Parser Print Level
+		50. MID_SI Monitor Print Level
+		51. MID_SI SCAN Print Level
+		52. MID_DDC_DATA Print Level
+		53. MID_DDC_DEC Print Level
+		54. MID_DDC_DEMUX Print Level
+		55. MID_DDC_NIM Print Level
+		56. PM_M5_VIDEO Print Level
+		57. PM_M5_AUDIO Print Level
+		58. MID_CIPLUS_FS Print Level
+		59. MID_M5_VIDEO Print Level
+		60. MID_M5_AUDIO Print Level
+		61. MID_PREDEFINELIST Print Level
+		62. MID_CIPLUS_OP Print Level
+		63. PM_M5_OSD Print Level
+		64. PM_M5_SSF Print Level
+		65. PM_M5_MEM Print Level
+		66. MID_CIPLUS_PVR Print Level
+		67. MID_SI SCAN SBTVD Print Level
+		68. MID_SI SCAN COMMON Print Level
+		69. MID_SI SCAN DVBS Print Level
+		70. MID_SI SCAN MINDIG Print Level
+		71. MID_SI SCAN NORDIG Print Level
+		72. MID_SI SCAN RIKS Print Level
+		73. MID_OTA Print Level
+		74. MID_SCHEDMGR_SERVICE Print Level
+		75. MID_GINGA_PIC Print Level
+		76. MID_GINGA_ZAPPER Print Level
+		77. PRINT_LEVEL_ERR ALL ON
+		78. PRINT_LEVEL_WARN ALL ON
+		79. PRINT_LEVEL_DBG ALL ON
+		80. PRINT_LEVEL_TRACE ALL ON
+		81. PRINT_LEVEL_DETAIL ALL ON
+		82. ALL_OFF
 	 9. Platform Print  Setting +
+		1. PLAT_FRC Print Level
+		2. PLAT_MM Print Level
+		3. PLAT_NTFC Print Level
+		4. PARSER_SBM Print Level
+		5. PLAT_PARSER Print Level
+		6. PLAT_PVR Print Level
+		7. PLAT_AIN Print Level
+		8. PLAT_AOUT Print Level
+		9. PLAT_AVES Print Level
+		10. PLAT_BIOS Print Level
+		11. PLAT_CI Print Level
+		12. PLAT_CRYPT_AES Print Level
+		13. PLAT_CRYPTO Print Level
+		14. PLAT_DATA Print Level
+		15. PLAT_DEC Print Level
+		16. PLAT_DECSA Print Level
+		17. PLAT_FAC Print Level
+		18. PLAT_FLASH Print Level
+		19. PLAT_FP Print Level
+		20. PLAT_FS Print Level
+		21. PLAT_IMG Print Level
+		22. PLAT_INI Print Level
+		23. PLAT_MEM Print Level
+		24. PLAT_NIM Print Level
+		25. PLAT_NVM Print Level
+		26. PLAT_OS Print Level
+		27. PLAT_OSD Print Level
+		28. PLAT_PQ Print Level
+		29. PLAT_SBM Print Level
+		30. PLAT_SP Print Level
+		31. PLAT_SRCIN Print Level
+		32. PLAT_SYS Print Level
+		33. PLAT_TSPU Print Level
+		34. PLAT_VBI Print Level
+		35. PLAT_VIN Print Level
+		36. PLAT_VIN_AUTO Print Level
+		37. PLAT_VIU Print Level
+		38. PLAT_VOUT Print Level
+		39. PLAT_VPU Print Level
+		40. UTILI_INI Print Level
+		41. UTILI_MEM_CHECK Print Level
+		42. UTILI_TRACE_POINT Print Level
+		43.
+		44. PRINT_LEVEL_ERR ALL ON
+		45. PRINT_LEVEL_WARN ALL ON
+		46. PRINT_LEVEL_DBG ALL ON
+		47. PRINT_LEVEL_TRACE ALL ON
+		48. PRINT_LEVEL_DETAIL ALL ON
+		49. ALL_OFF
 	10. Show Trace Point +
+		1. PLAT_TSPU
 	11. Open a Console
 	12. Open Blast Recorder
 	13. Open Blast Player
@@ -2010,3 +2175,10 @@
 	19. Get UBoot Logo
 	20. Update NVM Data
 	21. Memory Statistic +
+		 1. Show Revision
+		 2. Start
+		 3. Stop
+		 4. Show Configure
+		 5. Set Sort Mode
+		 6. Set Output Mode
+		 7. Set Sample Mode
