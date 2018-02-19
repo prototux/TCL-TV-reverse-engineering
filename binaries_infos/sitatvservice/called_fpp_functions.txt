@@ -1,4 +1,4 @@
-        U fpp_3d_auto_detect_3d
+         U fpp_3d_auto_detect_3d
          U fpp_3d_get_2d_to_3d_depth
          U fpp_3d_get_3d_aspect_mode
          U fpp_3d_get_3d_lr_switch
