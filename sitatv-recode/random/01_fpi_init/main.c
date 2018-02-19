@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
 
 	// Activate debug switch for all
 	// correction: it is a debug menu?!?
-	fpp_system_fpp_debug_switch(1, 1);
+	//fpp_system_fpp_debug_switch(1, 1);
 
 	// Doesn't work, send error with
 	// "Do not support recently!"
