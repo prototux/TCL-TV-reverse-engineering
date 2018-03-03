@@ -16,6 +16,8 @@
 		 8. Get_Section_Data
 	 3. FPP_VIDEO +
 		 1. MGR_PQ +
+			 1. Show MGR PQ Message
+			 2. Show MGR CSV Version
 		 2. fpp_video Show Message
 		 3. fpp_video(PQ) set_brightness
 		 4. fpp_video(PQ) set_contrast
