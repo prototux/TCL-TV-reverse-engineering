@@ -1,0 +1,73 @@
+REG_SDC_CLK_CTRL = c043
+REG_SDC_CLK_CTRL = 201
+
+boot0 start: IPC mode....................
+AC ON......
+bdJump boot1...
+
+Onboot eMMC mode
+part is 1
+_emmc_simple_load to buf 0xfc150000 from device sector 104, count 96
+part is 0
+cid:3
+POWER ON COLD
+	_emmc_simple_load to buf 0x1500000 from device sector 202750, count 1
+_emmc_simple_load to buf 0x1600000 from device sector 202751, count 1
+run uboot
+_emmc_simple_load to buf 0x27ffefc from device sector 4097, count 1280
+Vertify OK !
+
+
+U-Boot 2013.01.01-svn5501 (Jul 22 2016 - 15:45:54)
+
+DRAM:  512 MiB
+MMC:   wait for sdc sw reset stable...wait for emmc internal clk stable...
+nt72668 emmc: 0
+wait for emmc internal clk stable...
+In:    serial
+Out:   serial
+Err:   serial
+Power on IR!
+
+STBC clock is 12MHz
+2 bytes read in 3 ms (0 Bytes/s)
+Power on IR!
+8 bytes read in 1 ms (7.8 KiB/s)
+20 bytes read in 2 ms (9.8 KiB/s)
+8 bytes read in 2 ms (3.9 KiB/s)
+
+DDRF: EnableVref_NT72668B_TCL_20141208_1500M_NR.txt
+DDRS: 512 MB
+DDR CHID REG: 0XFE007FE0
+DDR CHID VAL: 0X3
+DDR GPIO REG: 0XFC040428
+DDR GPIO VAL: 0X40
+DDR GPIO MSK: 0X1C0
+
+CPU:  1000 MHz x 4 COREs
+AXI:  250 MHz
+AHB:  100 MHz
+DDR:  1500 MHz
+EMMC: 720 MHz
+
+ NVTFW_UPDATE_FLAG_BLK_ID:317fe 
+MMC read: dev # 0, block # 202750, count 1 ... 1 blocks read: OK
+
+ panel gPanelpartition = 1 
+
+ panel partition 6666888   
+oooooooooooooooooooooo222222222222222
+PWM defult last 400ms
+ 777777777777777777777777
+
+ 508  : TCON  Panel 
+set u16ADIMFreq2D50Hz 18000
+uuuuuuuuuuuuuuuuuuuuttttttttttttt22222222
+8 bytes read in 2 ms (3.9 KiB/s)
+do_tcleu_boot_cmd flag = 0, argc = 1, tcleu_boot
+hotkey_update:0
+
+MMC read: dev # 0, block # 202751, count 1 ... 1 blocks read: OK
+
+ NVTFW_UPDATE_FLAG_BLK_ID:317fe 
+MMC read: dev # 0, block # 202750, count 1 ... 1 blocks read: OK�

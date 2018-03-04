@@ -1,0 +1,463 @@
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 3.8.0-svn3571 (root@novatek) (gcc version 4.7.3 20130328 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.04-20130415 - Linaro GCC 2013.04) ) #1 SMP PREEMPT Mon Apr 27 18:18:41 CST 2015
+[    0.000000] CPU: ARMv7 Processor [414fc091] revision 1 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: Novatek-Cortex A9, model: nvt-72668
+[    0.000000] Memory policy: ECC disabled, Data cache writealloc
+[    0.000000] On node 0 totalpages: 133120
+[    0.000000] free_area_init_node: node 0, pgdat c0870860, node_mem_map c0983000
+[    0.000000]   Normal zone: 488 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 61976 pages, LIFO batch:15
+[    0.000000]   HighMem zone: 4496 pages used for memmap
+[    0.000000]   HighMem zone: 66160 pages, LIFO batch:15
+[    0.000000] PERCPU: Embedded 8 pages/cpu @c1d0c000 s11136 r8192 d13440 u32768
+[    0.000000] pcpu-alloc: s11136 r8192 d13440 u32768 alloc=8*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 128136
+[    0.000000] Kernel command line: console=ttyS0,115200 mem=244M@68M mem=276M@2284M mali.mali_active_cores=4 mali.mali_dedicated_mem_start=0 mali.mali_dedicated_mem_size=0 mali.mali_shared_mem_size=0x28000000 ump.ump_memory_address=0x98000000 ump.ump_memory_size=0x08000000 mali.mali_fb_start=0x14600000 mali.mali_fb_size=0x03100000 ethaddr=3c:59:1e:b1:38:16 root=/dev/mmcblk0p13 ro rootfstype=ext4 quiet vmalloc=560M maxcpus=4 init=/init rootwait
+[    0.000000] get_ethernet_addr: 3c:59:1e:b1:38:16:
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] __ex_table already sorted, skipping sort
+[    0.000000] Memory: 244MB 276MB = 520MB total
+[    0.000000] Memory: 518168k/518168k available, 14312k reserved, 282624K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffdf000   ( 892 kB)
+[    0.000000]     vmalloc : 0xcf800000 - 0xff000000   ( 760 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xcf400000   ( 244 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc07db04c   (8013 kB)
+[    0.000000]       .init : 0xc07dc000 - 0xc0820b80   ( 275 kB)
+[    0.000000]       .data : 0xc0822000 - 0xc0874248   ( 329 kB)
+[    0.000000]        .bss : 0xc0874248 - 0xc0982edc   (1084 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] NR_IRQS:256
+[    0.000000] 	Select local PLL
+[    0.000000] cpu clk = 1000MHz
+[    0.000000] ahb clk =  100MHz
+[    0.000000] axi clk =  250MHz
+[    0.000000] mmc clk =  720MHz
+[    0.000000] sched_clock: 32 bits at 125MHz, resolution 8ns, wraps every 34359ms
+[    0.000000] Console: colour dummy device 80x30
+[    0.000190] Calibrating delay loop... 1987.37 BogoMIPS (lpj=9936896)
+[    0.060098] pid_max: default: 32768 minimum: 301
+[    0.060219] Security Framework initialized
+[    0.060236] SELinux:  Initializing.
+[    0.060267] SELinux:  Starting in permissive mode
+[    0.060278] AppArmor: AppArmor disabled by boot time parameter
+[    0.060335] Mount-cache hash table entries: 512
+[    0.061089] Initializing cgroup subsys cpuacct
+[    0.061106] Initializing cgroup subsys devices
+[    0.061116] Initializing cgroup subsys freezer
+[    0.061154] CPU: Testing write buffer coherency: ok
+[    0.061190] ftrace: allocating 19998 entries in 59 pages
+[    0.103528] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.103636] Setting up static identity map for 0x49d2a10 - 0x49d2a68
+[    0.183752] remap L2 page sucess
+[    0.184044] CPU1: Booted secondary processor
+[    0.243606] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.263755] pen_release: -1
+[    0.263755] 	remap L2 page sucess
+[    0.264014] CPU2: Booted secondary processor
+[    0.323605] CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+[    0.343736] pen_release: -1
+[    0.343736] 	remap L2 page sucess
+[    0.343992] CPU3: Booted secondary processor
+[    0.403605] CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+[    0.403653] pen_release: -1
+[    0.403653] 	
+[    0.403654] Brought up 4 CPUs
+[    0.403672] SMP: Total of 4 processors activated (7969.17 BogoMIPS).
+[    0.404430] devtmpfs: initialized
+[    0.410607] NET: Registered protocol family 16
+[    0.411424] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.412550] L310 cache controller enabled
+[    0.412563] l2x0: 16 ways, CACHE_ID 0x410000c9, AUX_CTRL 0x72270000, Cache size: 1048576 B
+[    0.414375] *** [AHB] ctrl base = 0xfc0f0088, irq=100
+[    0.414470] *** [MMC] src_clk = 720000000, max bus clk = 200000000, irq=95
+[    0.417564] hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+[    0.417575] hw-breakpoint: maximum watchpoint size is 4 bytes.
+[    0.421332] bio: create slab <bio-0> at 0
+[    0.421720] SCSI subsystem initialized
+[    0.421798] Linux video capture interface: v2.00
+[    0.421919] Advanced Linux Sound Architecture Driver Initialized.
+[    0.422524] cfg80211: Calling CRDA to update world regulatory domain
+[    0.423070] Switching to clocksource global_timer
+[    0.452878] NET: Registered protocol family 2
+[    0.453355] TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.453396] TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.453434] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.453487] TCP: reno registered
+[    0.453503] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.453529] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.453710] NET: Registered protocol family 1
+[    0.454356] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 7 counters available
+[    0.454959] audit: initializing netlink socket (disabled)
+[    0.455001] type=2000 audit(0.420:1): initialized
+[    0.516906]  Creating worker thread
+[    0.516971]  Succsesfuly Created
+[    0.517661] bounce pool size: 64 pages
+[    0.521908] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.522356] NTFS driver 2.1.30 [Flags: R/W].
+[    0.522519] fuse init (API version 7.20)
+[    0.522873] msgmni has been set to 460
+[    0.522916] SELinux:  Registering netfilter hooks
+[    0.525673] alg: No test for stdrng (krng)
+[    0.525718] io scheduler noop registered
+[    0.525729] io scheduler deadline registered
+[    0.525862] io scheduler cfq registered (default)
+[    0.528947] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.549952] serial8250.0: ttyS0 at MMIO 0xfd091000 (irq = 61) is a 16550A
+[    0.550250] console [ttyS0] enabled
+[    0.570652] serial8250.0: ttyS1 at MMIO 0xfd090000 (irq = 83) is a 16550A
+[    0.591035] serial8250.0: ttyS2 at MMIO 0xfd092000 (irq = 77) is a 16550A
+[    0.591359] [drm] Initialized drm 1.1.0 20060810
+[    0.596754] brd: module loaded
+[    0.599535] loop: module loaded
+[    0.600225] tun: Universal TUN/TAP device driver, 1.6
+[    0.600236] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    0.615579] [NTKETHMAC] : Now Registering the netdevice
+[    0.615926] PPP generic driver version 2.4.2
+[    0.616103] PPP BSD Compression module registered
+[    0.616113] PPP Deflate Compression module registered
+[    0.616132] PPP MPPE Compression module registered
+[    0.616142] NET: Registered protocol family 24
+[    0.616400] mousedev: PS/2 mouse device common for all mice
+[    0.616895] nt72668_rtc nt72668_rtc.0: rtc core: registered nt72668 as rtc0
+[    0.617192] device-mapper: uevent: version 1.0.3
+[    0.617413] device-mapper: ioctl: 4.23.1-ioctl (2012-12-18) initialised: dm-devel@redhat.com
+[    0.617588] sdhci: Secure Digital Host Controller Interface driver
+[    0.617598] sdhci: Copyright(c) Pierre Ossman
+[    0.617606] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.663138] mmc0: SDHCI controller on sdhci_nvt.0 [sdhci_nvt.0] using ADMA
+[    0.663521] ashmem: initialized
+[    0.665699] logger: created 256K log 'log_main'
+[    0.665845] logger: created 256K log 'log_events'
+[    0.667999] logger: created 256K log 'log_radio'
+[    0.668145] logger: created 256K log 'log_system'
+[    0.669332] oprofile: using arm/armv7-ca9
+[    0.669358] AOP:Oprofile Driver init done
+[    0.669591] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    0.669736] arp_tables: (C) 2002 David S. Miller
+[    0.669788] TCP: cubic registered
+[    0.670194] NET: Registered protocol family 10
+[    0.670852] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    0.670983] sit: IPv6 over IPv4 tunneling driver
+[    0.671428] NET: Registered protocol family 17
+[    0.671450] lib80211: common routines for IEEE802.11 drivers
+[    0.671461] lib80211_crypt: registered algorithm 'NULL'
+[    0.671469] lib80211_crypt: registered algorithm 'WEP'
+[    0.671477] lib80211_crypt: registered algorithm 'CCMP'
+[    0.671485] lib80211_crypt: registered algorithm 'TKIP'
+[    0.671875] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+[    0.671898] [nt72668_pm_syscore_init]
+[    0.671958] Registering SWP/SWPB emulation handler
+[    0.672598] nt72668_rtc nt72668_rtc.0: setting system clock to 2088-05-20 21:55:30 UTC (3735928530)
+[    0.672672] ALSA device list:
+[    0.672681]   No soundcards found.
+[    0.672695] ============================================================
+[    0.672705] Kernel range1 [RO sections]: 0x04408000 ~ 0x04bd9ffc
+[    0.672714] Range0 [kernel memory]: 0x04400000 ~ 0x13800000
+[    0.672722] Range1 [kernel memory]: 0x8ec00000 ~ 0xa0000000
+[    0.672729] ============================================================
+[    0.672848] [SERIAL INPUT MANAGE] Managed tty_struct(.name:ttyS0) Setup!!!
+[    0.672900] [KDEBUGD] enter : kdebugd
+[    0.672900] 
+[    0.678364] Waiting for root device /dev/mmcblk0p13...
+[    0.758772] mmc0: BKOPS_EN bit is not set
+[    0.771215] HS200 CLOCKING SETTING
+[    0.779604] HS200 CLOCKING SETTING
+[    0.784552] mmc0: new HS200 MMC card at address 0001
+[    0.784922] mmcblk0: mmc0:0001 004G60 3.68 GiB 
+[    0.785110] mmcblk0boot0: mmc0:0001 004G60 partition 1 2.00 MiB
+[    0.785268] mmcblk0boot1: mmc0:0001 004G60 partition 2 2.00 MiB
+[    0.785419] mmcblk0rpmb: mmc0:0001 004G60 partition 3 512 KiB
+[    0.788761]  mmcblk0: p1 p2 p3 p4 < p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 >
+[    0.792264]  mmcblk0boot1: unknown partition table
+[    0.793548]  mmcblk0boot0: unknown partition table
+[    0.907186] EXT4-fs (mmcblk0p13): mounted filesystem with ordered data mode. Opts: (null)
+[    0.907233] VFS: Mounted root (ext4 filesystem) readonly on device 179:13.
+[    0.908104] devtmpfs: mounted
+[    0.908365] Freeing init memory: 272K
+[    1.163065] EXT4-fs (mmcblk0p8): recovery complete
+[    1.163566] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: (null)
+[    1.250376] EXT4-fs (mmcblk0p7): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.275534] EXT4-fs (mmcblk0p7): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.281085] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+[    1.299459] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+[    1.305143] EXT4-fs (mmcblk0p9): recovery complete
+[    1.305166] EXT4-fs (mmcblk0p9): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+[    1.323986] EXT4-fs (mmcblk0p9): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+[    1.329974] EXT4-fs (mmcblk0p10): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.348364] EXT4-fs (mmcblk0p10): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.354007] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.373490] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.384084] EXT4-fs (mmcblk0p12): ext4_orphan_cleanup: deleting unreferenced inode 32
+[    1.384427] EXT4-fs (mmcblk0p12): 1 orphan inode deleted
+[    1.384438] EXT4-fs (mmcblk0p12): recovery complete
+[    1.387903] EXT4-fs (mmcblk0p12): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.406587] EXT4-fs (mmcblk0p12): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum
+[    1.414047] EXT4-fs (mmcblk0p14): recovery complete
+[    1.414070] EXT4-fs (mmcblk0p14): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+[    1.436557] EXT4-fs (mmcblk0p14): mounted filesystem with ordered data mode. Opts: noblock_validity,nodiscard,data=ordered,journal_checksum,nodelalloc,noauto_da_alloc
+[    1.448682] [NTKETHMAC] : NVT Internal PHY Ethernet PHY ready
+[    1.472726] usbcore: registered new interface driver usbfs
+[    1.472786] usbcore: registered new interface driver hub
+[    1.472941] usbcore: registered new device driver usb
+[    1.480801] NT72668-xhci NT72668-xhci.0: Novatek NT72668 u3
+[    1.480833] NT72668-xhci NT72668-xhci.0: new USB bus registered, assigned bus number 1
+[    1.481086] NT72668-xhci NT72668-xhci.0: irq 85, io mem 0xfc200000 mapped cfa80000
+[    1.481141] usb usb1: default language 0x0409
+[    1.481171] usb usb1: udev 1, busnum 1, minor = 0
+[    1.481183] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.481195] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.481206] usb usb1: Product: Novatek NT72668 u3
+[    1.481216] usb usb1: Manufacturer: Linux 3.8.0-svn3571 xhci-hcd
+[    1.481225] usb usb1: SerialNumber: NT72668-xhci
+[    1.481590] usb usb1: usb_probe_device
+[    1.481606] usb usb1: configuration #1 chosen from 1 choice
+[    1.481618] xHCI xhci_add_endpoint called for root hub
+[    1.481627] xHCI xhci_check_bandwidth called for root hub
+[    1.481653] usb usb1: adding 1-0:1.0 (config #1, interface 0)
+[    1.481744] hub 1-0:1.0: usb_probe_interface
+[    1.481756] hub 1-0:1.0: usb_probe_interface - got id
+[    1.481768] hub 1-0:1.0: USB hub found
+[    1.481789] hub 1-0:1.0: 1 port detected
+[    1.481799] hub 1-0:1.0: standalone hub
+[    1.481809] hub 1-0:1.0: individual port power switching
+[    1.481818] hub 1-0:1.0: individual port over-current protection
+[    1.481827] hub 1-0:1.0: Single TT
+[    1.481836] hub 1-0:1.0: TT requires at most 8 FS bit times (666 ns)
+[    1.481846] hub 1-0:1.0: power on to power good time: 20ms
+[    1.481865] hub 1-0:1.0: local power source is good
+[    1.481922] hub 1-0:1.0: enabling power on all ports
+[    1.482099] NT72668-xhci NT72668-xhci.0: Novatek NT72668 u3
+[    1.482125] NT72668-xhci NT72668-xhci.0: new USB bus registered, assigned bus number 2
+[    1.482175] usb usb2: skipped 1 descriptor after endpoint
+[    1.482195] usb usb2: default language 0x0409
+[    1.482221] usb usb2: udev 1, busnum 2, minor = 128
+[    1.482233] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003
+[    1.482244] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.482255] usb usb2: Product: Novatek NT72668 u3
+[    1.482264] usb usb2: Manufacturer: Linux 3.8.0-svn3571 xhci-hcd
+[    1.482274] usb usb2: SerialNumber: NT72668-xhci.0
+[    1.482561] usb usb2: usb_probe_device
+[    1.482575] usb usb2: configuration #1 chosen from 1 choice
+[    1.482586] xHCI xhci_add_endpoint called for root hub
+[    1.482594] xHCI xhci_check_bandwidth called for root hub
+[    1.482621] usb usb2: adding 2-0:1.0 (config #1, interface 0)
+[    1.482709] hub 2-0:1.0: usb_probe_interface
+[    1.482721] hub 2-0:1.0: usb_probe_interface - got id
+[    1.482733] hub 2-0:1.0: USB hub found
+[    1.482759] hub 2-0:1.0: 1 port detected
+[    1.482770] hub 2-0:1.0: standalone hub
+[    1.482779] hub 2-0:1.0: individual port power switching
+[    1.482788] hub 2-0:1.0: individual port over-current protection
+[    1.482798] hub 2-0:1.0: TT requires at most 8 FS bit times (666 ns)
+[    1.482808] hub 2-0:1.0: power on to power good time: 20ms
+[    1.482826] hub 2-0:1.0: local power source is good
+[    1.482868] hub 2-0:1.0: enabling power on all ports
+[    1.489796] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.489813] ehci_hcd: block sizes: qh 60 qtd 96 itd 192 sitd 96
+[    1.489873] In ehci_hcd_NT72668_drv_probe
+[    1.489924] NT72668-ehci NT72668-ehci.0: APB cfac0000
+[    1.495476] NT72668-ehci NT72668-ehci.0: Novatek NT72668
+[    1.495506] NT72668-ehci NT72668-ehci.0: new USB bus registered, assigned bus number 3
+[    1.495619] NT72668-ehci NT72668-ehci.0: irq 108, io mem 0xfc1f0000 mapped cfabe000
+[    1.495640] NT72668-ehci NT72668-ehci.0: init command 0010005 (park)=0 ithresh=1 period=512 RUN
+[    1.513130] NT72668-ehci NT72668-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+[    1.513221] usb usb3: default language 0x0409
+[    1.513251] usb usb3: udev 1, busnum 3, minor = 256
+[    1.513263] usb usb3: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.513274] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.513285] usb usb3: Product: Novatek NT72668
+[    1.513295] usb usb3: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    1.513304] usb usb3: SerialNumber: NT72668
+[    1.513625] usb usb3: usb_probe_device
+[    1.513640] usb usb3: configuration #1 chosen from 1 choice
+[    1.513668] usb usb3: adding 3-0:1.0 (config #1, interface 0)
+[    1.513760] hub 3-0:1.0: usb_probe_interface
+[    1.513772] hub 3-0:1.0: usb_probe_interface - got id
+[    1.513786] hub 3-0:1.0: USB hub found
+[    1.513804] hub 3-0:1.0: 1 port detected
+[    1.513814] hub 3-0:1.0: standalone hub
+[    1.513823] hub 3-0:1.0: individual port power switching
+[    1.513833] hub 3-0:1.0: individual port over-current protection
+[    1.513842] hub 3-0:1.0: Single TT
+[    1.513852] hub 3-0:1.0: TT requires at most 8 FS bit times (666 ns)
+[    1.513862] hub 3-0:1.0: power on to power good time: 20ms
+[    1.513880] hub 3-0:1.0: local power source is good
+[    1.513926] hub 3-0:1.0: enabling power on all ports
+[    1.514187] NT726681-ehci NT726681-ehci.0: APB cfaca000
+[    1.519726] NT726681-ehci NT726681-ehci.0: Novatek NT726681
+[    1.519758] NT726681-ehci NT726681-ehci.0: new USB bus registered, assigned bus number 4
+[    1.519866] NT726681-ehci NT726681-ehci.0: irq 86, io mem 0xfc000000 mapped cfac8000
+[    1.519887] NT726681-ehci NT726681-ehci.0: init command 0010005 (park)=0 ithresh=1 period=512 RUN
+[    1.533196] NT726681-ehci NT726681-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+[    1.533277] usb usb4: default language 0x0409
+[    1.533305] usb usb4: udev 1, busnum 4, minor = 384
+[    1.533318] usb usb4: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.533330] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.533341] usb usb4: Product: Novatek NT726681
+[    1.533351] usb usb4: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    1.533360] usb usb4: SerialNumber: NT726681
+[    1.533633] usb usb4: usb_probe_device
+[    1.533648] usb usb4: configuration #1 chosen from 1 choice
+[    1.533676] usb usb4: adding 4-0:1.0 (config #1, interface 0)
+[    1.533760] hub 4-0:1.0: usb_probe_interface
+[    1.533772] hub 4-0:1.0: usb_probe_interface - got id
+[    1.533783] hub 4-0:1.0: USB hub found
+[    1.533801] hub 4-0:1.0: 1 port detected
+[    1.533811] hub 4-0:1.0: standalone hub
+[    1.533820] hub 4-0:1.0: individual port power switching
+[    1.533829] hub 4-0:1.0: individual port over-current protection
+[    1.533838] hub 4-0:1.0: Single TT
+[    1.533848] hub 4-0:1.0: TT requires at most 8 FS bit times (666 ns)
+[    1.533858] hub 4-0:1.0: power on to power good time: 20ms
+[    1.533875] hub 4-0:1.0: local power source is good
+[    1.533927] hub 4-0:1.0: enabling power on all ports
+[    1.534150] In ehci_hcd_NT726682_drv_probe
+[    1.534182] NT726682-ehci NT726682-ehci.0: APB cfad2000
+[    1.539806] NT726682-ehci NT726682-ehci.0: Novatek NT726682
+[    1.539830] NT726682-ehci NT726682-ehci.0: new USB bus registered, assigned bus number 5
+[    1.539932] NT726682-ehci NT726682-ehci.0: irq 87, io mem 0xfc140000 mapped cfad0000
+[    1.539952] NT726682-ehci NT726682-ehci.0: init command 0010005 (park)=0 ithresh=1 period=512 RUN
+[    1.553154] NT726682-ehci NT726682-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+[    1.553230] usb usb5: default language 0x0409
+[    1.553257] usb usb5: udev 1, busnum 5, minor = 512
+[    1.553269] usb usb5: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.553281] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.553291] usb usb5: Product: Novatek NT726682
+[    1.553301] usb usb5: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    1.553311] usb usb5: SerialNumber: NT726682
+[    1.553577] usb usb5: usb_probe_device
+[    1.553591] usb usb5: configuration #1 chosen from 1 choice
+[    1.553619] usb usb5: adding 5-0:1.0 (config #1, interface 0)
+[    1.553712] hub 5-0:1.0: usb_probe_interface
+[    1.553723] hub 5-0:1.0: usb_probe_interface - got id
+[    1.553735] hub 5-0:1.0: USB hub found
+[    1.553752] hub 5-0:1.0: 1 port detected
+[    1.553762] hub 5-0:1.0: standalone hub
+[    1.553771] hub 5-0:1.0: individual port power switching
+[    1.553781] hub 5-0:1.0: individual port over-current protection
+[    1.553790] hub 5-0:1.0: Single TT
+[    1.553799] hub 5-0:1.0: TT requires at most 8 FS bit times (666 ns)
+[    1.553809] hub 5-0:1.0: power on to power good time: 20ms
+[    1.553826] hub 5-0:1.0: local power source is good
+[    1.553871] hub 5-0:1.0: enabling power on all ports
+[    1.554090] In ehci_hcd_NT726683_drv_probe
+[    1.554128] NT726683-ehci NT726683-ehci.0: APB cfadc000
+[    1.559744] NT726683-ehci NT726683-ehci.0: Novatek NT726683
+[    1.559767] NT726683-ehci NT726683-ehci.0: new USB bus registered, assigned bus number 6
+[    1.559869] NT726683-ehci NT726683-ehci.0: irq 88, io mem 0xfc1a0000 mapped cfada000
+[    1.559889] NT726683-ehci NT726683-ehci.0: init command 0010005 (park)=0 ithresh=1 period=512 RUN
+[    1.573152] NT726683-ehci NT726683-ehci.0: USB 2.0 started, EHCI 1.00, overcurrent ignored
+[    1.573182] hub 1-0:1.0: state 7 ports 1 chg 0000 evt 0000
+[    1.573198] hub 2-0:1.0: state 7 ports 1 chg 0000 evt 0000
+[    1.573225] usb usb6: default language 0x0409
+[    1.573253] usb usb6: udev 1, busnum 6, minor = 640
+[    1.573265] usb usb6: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.573276] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.573288] usb usb6: Product: Novatek NT726683
+[    1.573297] usb usb6: Manufacturer: Linux 3.8.0-svn3571 ehci_hcd
+[    1.573307] usb usb6: SerialNumber: NT726683
+[    1.573572] usb usb6: usb_probe_device
+[    1.573585] usb usb6: configuration #1 chosen from 1 choice
+[    1.573611] usb usb6: adding 6-0:1.0 (config #1, interface 0)
+[    1.573697] hub 6-0:1.0: usb_probe_interface
+[    1.573708] hub 6-0:1.0: usb_probe_interface - got id
+[    1.573720] hub 6-0:1.0: USB hub found
+[    1.573745] hub 6-0:1.0: 1 port detected
+[    1.573756] hub 6-0:1.0: standalone hub
+[    1.573765] hub 6-0:1.0: individual port power switching
+[    1.573774] hub 6-0:1.0: individual port over-current protection
+[    1.573783] hub 6-0:1.0: Single TT
+[    1.573792] hub 6-0:1.0: TT requires at most 8 FS bit times (666 ns)
+[    1.573801] hub 6-0:1.0: power on to power good time: 20ms
+[    1.573819] hub 6-0:1.0: local power source is good
+[    1.573866] hub 6-0:1.0: enabling power on all ports
+[    1.581031] Initializing USB Mass Storage driver...
+[    1.581165] usbcore: registered new interface driver usb-storage
+[    1.581174] USB Mass Storage support registered.
+[    1.598117] usbcore: registered new interface driver usbhid
+[    1.598131] usbhid: USB HID core driver
+[    1.607434] gspca_main: v2.14.0 registered
+[    1.613233] hub 3-0:1.0: state 7 ports 1 chg 0000 evt 0000
+[    1.615166] hub 3-0:1.0: state 7 ports 1 chg 0000 evt 0002
+[    1.615195] NT72668-ehci NT72668-ehci.0: GetStatus port:1 status 000803 0  ACK sig=j CSC CONNECT
+[    1.615220] hub 3-0:1.0: port 1, status 0001, change 0001, 12 Mb/s
+[    1.627085] usbcore: registered new interface driver uvcvideo
+[    1.627100] USB Video Class driver (1.1.1)
+[    1.634280] ===get USB MAGIC KEY===
+[    1.640542] usbcore: registered new interface driver btusb
+[    1.645780] BTHID bthid_init: ++
+[    1.646546] BTHID bthid_init: --
+[    1.693745] RTL871X: module init start
+[    1.693765] RTL871X: rtl8812au v4.3.8_12175.20140902
+[    1.693773] RTL871X: build time: Dec 20 2016 09:43:52
+[    1.783174] hub 3-0:1.0: debounce: port 1: total 100ms stable 100ms status 0x1
+[    1.843395] NT72668-ehci NT72668-ehci.0: port 1 reset complete, port enabled
+[    1.843441] NT72668-ehci NT72668-ehci.0: GetStatus port:1 status 00000d 0  ACK sig=se0 PEC PE CONNECT
+[    1.893152] usb 3-1: new high-speed USB device number 2 using NT72668-ehci
+[    1.953368] NT72668-ehci NT72668-ehci.0: port 1 reset complete, port enabled
+[    1.953391] NT72668-ehci NT72668-ehci.0: GetStatus port:1 status 00000d 0  ACK sig=se0 PEC PE CONNECT
+[    2.043729] usb 3-1: default language 0x0409
+[    2.044236] usb 3-1: udev 2, busnum 3, minor = 257
+[    2.044250] usb 3-1: New USB device found, idVendor=058f, idProduct=6366
+[    2.044263] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    2.044274] usb 3-1: Product: Flash Card Reader/Writer
+[    2.044284] usb 3-1: Manufacturer: Generic
+[    2.044293] usb 3-1: SerialNumber: 058F63666438
+[    2.044908] usb 3-1: usb_probe_device
+[    2.044929] usb 3-1: configuration #1 chosen from 1 choice
+[    2.045068] usb 3-1: adding 3-1:1.0 (config #1, interface 0)
+[    2.045493] usb-storage 3-1:1.0: usb_probe_interface
+[    2.045520] usb-storage 3-1:1.0: usb_probe_interface - got id
+[    2.045783] scsi0 : usb-storage 3-1:1.0
+[    2.049621] hub 4-0:1.0: state 7 ports 1 chg 0000 evt 0000
+[    2.049646] hub 5-0:1.0: state 7 ports 1 chg 0000 evt 0002
+[    2.049683] NT726682-ehci NT726682-ehci.0: GetStatus port:1 status 000803 0  ACK sig=j CSC CONNECT
+[    2.049714] hub 5-0:1.0: port 1, status 0001, change 0001, 12 Mb/s
+[    2.203138] hub 5-0:1.0: debounce: port 1: total 100ms stable 100ms status 0x1
+[    2.263373] NT726682-ehci NT726682-ehci.0: port 1 reset complete, port enabled
+[    2.263393] NT726682-ehci NT726682-ehci.0: GetStatus port:1 status 00000d 0  ACK sig=se0 PEC PE CONNECT
+[    2.312649] [NTKETHMAC] Autonegotiation Complete
+[    2.313707] [NTKETHMAC] Link UP
+[    2.313756] [NTKETHMAC] Auto-nego result = 0x3500
+[    2.313763] [NTKETHMAC] PHY 100M
+[    2.313769] [NTKETHMAC] PHY FULLDUPLEX
+[    2.313816] [NTKETHMAC] PHY reg 0x4 data = 0x01e1
+[    2.313863] [NTKETHMAC] PHY reg 0x5 data = 0xc5e1
+[    2.313910] [NTKETHMAC] PHY reg 0x6 data = 0x000b
+[    2.313917] [NTKETHMAC] : Set PHY into rising edge output
+[    2.314133] [NTKETHMAC] MAC init duplex=2, speed=2
+[    2.323147] usb 5-1: new high-speed USB device number 2 using NT726682-ehci
+[    2.383367] NT726682-ehci NT726682-ehci.0: port 1 reset complete, port enabled
+[    2.383387] NT726682-ehci NT726682-ehci.0: GetStatus port:1 status 00080d 0  ACK sig=j PEC PE CONNECT
+[    2.473490] usb 5-1: default language 0x0409
+[    2.473644] usb 5-1: udev 2, busnum 5, minor = 513
+[    2.473657] usb 5-1: New USB device found, idVendor=0bda, idProduct=818b
+[    2.473669] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    2.473680] usb 5-1: Product: 802.11n NIC
+[    2.473689] usb 5-1: Manufacturer: Realtek
+[    2.473699] usb 5-1: SerialNumber: 1C1EE306BF1D
+[    2.474274] usb 5-1: usb_probe_device
+[    2.474293] usb 5-1: configuration #1 chosen from 1 choice
+[    2.474408] usb 5-1: adding 5-1:1.0 (config #1, interface 0)
+[    2.475300] hub 6-0:1.0: state 7 ports 1 chg 0000 evt 0000
+[    2.475318] hub 3-0:1.0: state 7 ports 1 chg 0000 evt 0002
+[    2.475349] NT72668-ehci NT72668-ehci.0: GetStatus port:1 status 00000d 0  ACK sig=se0 PEC PE CONNECT
+[    2.475369] hub 3-0:1.0: port 1 enable change, status 00000403
+[    2.475390] hub 5-0:1.0: state 7 ports 1 chg 0000 evt 0002
+[    2.475412] NT726682-ehci NT726682-ehci.0: GetStatus port:1 status 00000d 0  ACK sig=se0 PEC PE CONNECT
+[    2.475430] hub 5-0:1.0: port 1 enable change, status 00000403
+[    2.815793] usbcore: registered new interface driver rtl8812au
+[    2.815813] RTL871X: module init ret=0
+

@@ -1,0 +1,25 @@
+# This is the NFSK header found in boot.img/recovery.img
+# This is before the uimage header and then the gzipped data
+# This is a custom format that google doesn't know about, wtf?
+
+00000800  4e 46 53 4b 01 00 00 00  00 86 f8 00 00 00 00 08  |NFSK............|
+00000810  df 4f 74 4e b5 34 b1 45  95 6a 7e 0d af 54 51 80  |.OtN.4.E.j~..TQ.|
+00000820  7a e5 6a 06 73 d9 27 c3  90 2f be 9e 41 45 9a fc  |z.j.s.'../..AE..|
+00000830  3b cf 55 d9 5e 63 0c 32  5d 0e fc bd ce 5e 9c e9  |;.U.^c.2]....^..|
+00000840  a9 36 d4 89 3f de d4 94  7b 98 99 d6 22 1d f4 08  |.6..?...{..."...|
+00000850  a8 d4 83 70 4e be 14 c2  fc 5f 20 e5 69 92 05 0b  |...pN...._ .i...|
+00000860  06 e4 cc 64 78 fe ba 31  5d 0c d3 eb 99 a9 88 6c  |...dx..1]......l|
+00000870  70 d0 61 12 00 c7 8f 3d  b8 7d 48 27 8d 50 cc 51  |p.a....=.}H'.P.Q|
+00000880  43 61 cf 6a a8 8f 39 d5  e3 4a b0 1e 63 e1 34 c7  |Ca.j..9..J..c.4.|
+00000890  85 8e 52 45 b5 26 cd 53  98 b9 d3 79 50 16 c4 13  |..RE.&.S...yP...|
+000008a0  48 bb fd 47 05 e6 83 15  e5 8b 69 de 51 aa 95 ee  |H..G......i.Q...|
+000008b0  aa 92 62 9c d9 c5 87 f6  da 76 cc 06 f7 ad d6 01  |..b......v......|
+000008c0  c3 03 56 1a 88 50 9e 8a  a4 2c 8e 76 29 b4 7b fa  |..V..P...,.v).{.|
+000008d0  61 d9 82 b2 8c c1 fa 8a  3a c9 49 24 33 22 44 aa  |a.......:.I$3"D.|
+000008e0  8b ec df ca 7a d4 73 74  7a f1 de e4 95 ad 5b 71  |....z.stz.....[q|
+000008f0  19 ba 31 d2 00 e5 f8 d1  b5 ef b5 db 79 28 52 24  |..1.........y(R$|
+00000900  18 59 73 17 2d df 57 6f  df cf d6 a7 32 a4 f1 b0  |.Ys.-.Wo....2...|
+00000910  a4 68 57 84 12 9b 4a c2  75 56 d9 42 6e 15 b6 89  |.hW...J.uV.Bn...|
+00000920  f7 9c 78 76 23 bb d9 2a  91 80 d1 f2 ee 28 55 71  |..xv#..*.....(Uq|
+00000930  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+

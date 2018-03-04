@@ -1,0 +1,41 @@
+# Some terms used by TCL engineers in their binaries
+
+NFLX, NFX -> Netflix
+
+DTV -> DigitalTV (?)
+ATV -> AnalogTV (?)
+
+CEC -> HDMI-CEC, an extension of HDMI to control devices over hdmi links
+
+MHEG, MHEG5 -> An interactive TV standard
+HBBTV -> Another interactive TV standard
+
+PVR -> ???
+
+DBC -> ???
+
+Factory -> ??? (doesn't seems to be "factory settings")
+
+TVH -> ??? (maybe "TV Hardware"?)
+
+FPI -> ??? used in sitatvservice fuctions names
+FPP -> ??? used in libfpp.so function names
+
+GPIO -> General Purpose IO, as usual
+IIC -> Seems to be I2C
+
+Linein -> apparently they use this word for the video in ports
+
+CI -> Common Interface, the extension card port
+
+OSD -> The main menu and other menu interfaces
+
+PSI -> ??? (apparently related to regional cable operators)
+
+sipsi -> ??? (seems also related to networks/operators)
+
+TEEC, tz, secos -> Apparently the trustzone, a secure-os loaded before linux that holds the netflix (and maybe hdcp?) keys
+HDCP2 -> The DRM over hdmi that encrypt video/audio signals
+esnkey -> apparently stored in the trustzone
+
+4k1k, 4k2k -> ???
