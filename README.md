@@ -73,7 +73,7 @@ For the "can the CIA do weeping angel on my TV" question, the answer is definiti
 Basically, i wouldn't call this TV "secure" if you're using the OperaTV browser (quite old) or didn't replaced the sitatvservice binary that listen to the network (and possibly other binaries as well) with a custom binary. and this TV is defintiively not secure against physical tampering given the console port is accessible even without opening the TV.
 
 ## Thanks and credits
-Thanks to KailoKyra and gab for their help about reverse engineering and embedded ARM platforms.
+Thanks to KailoKyra, Jean Thomas and Gab for their help about reverse engineering and embedded ARM platforms.
 
 Tools used in this effort: binwalk, dd, binary ninja, retdec, gdb, dropbear, picocom, strace, caffein, probably some i forgot.
 
