@@ -1,5 +1,0 @@
-/etc/postinit.sh &
-
-cd /applications/tv_bin
-source run.sh &
-

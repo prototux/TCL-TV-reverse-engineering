@@ -1,3 +1,0 @@
-File /home/zhouguoqiang/samba/TMER1.0/core/utils/systeminfo/sys_config.c:
-void load_ini_file(uint16_t, fpi_bool);
-

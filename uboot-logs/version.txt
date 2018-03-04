@@ -1,6 +1,0 @@
-NT72668>version
-
-U-Boot 2013.01.01-svn5501 (Jul 22 2016 - 15:45:54)
-arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.04-20130415 - Linaro GCC 2013.04) 4.7.3 20130328 (prerelease)
-GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.04-20130415 - Linaro GCC 2013.04) 2.23.1
-
