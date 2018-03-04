@@ -1,0 +1,114 @@
+#############################################
+#	Default Panel Parameters	    #
+#############################################
+u8PanelID	=	255
+b8Mode50Hz	=	1
+u8Panel	=	255
+au8Name	=	USER_DEFINE
+b8DualPixelOutput	=	1 	    #[Set Pixel Output format] 0: Single SD Panel, 1: Dual, General FHD/4K Panel 
+b8ABSwap	=	0		    #[Set Dual Port Even/Odd ]
+b8ChannelSwap	=	0		    #[Set SD Panel Output by PortA/B]
+b8FrameSyncEnable	=	1
+u8FrameSyncMode	=	0
+u8MISC	=	0
+enLvdsFormat	=	0    		    #[Lvds Format] 0:8BITS_JEIDA, 1:8BITS_VESA, 2:10BITS_JEIDA, 3:10BITS_VESA
+b8RBSwap	=	0		    #[Set Pixel Red/Blue Channel Swap] 
+u8DitheringBit	=	1						
+u16LVDSPhase	=	0
+u16LVDSPhase_PortA = 0
+u16LVDSPhase_PortB = 0
+u16VFreqDiff_Min = 500			    #[Used when FrameSyncEnable V-5Hz] 
+u16VFreqDiff_Max = 500			    #[Used when FrameSyncEnable V+5Hz] 
+u16VTotalDiff_Min = 10			    #[Used when FrameSyncEnable VTotal-10]
+u16VTotalDiff_Max = 50			    #[Used when FrameSyncEnable HTotal+50]
+stMode50Hz.u16Width	=	1920
+stMode50Hz.u16Height	=	1080
+stMode50Hz.u16TypHTotal	=	2176
+stMode50Hz.u8HSyncWidth	=	28
+stMode50Hz.u16HSyncBackPorch	=	64
+stMode50Hz.u16HSyncStart	=	80
+stMode50Hz.u16TypVTotal	=	1376
+stMode50Hz.u8VSyncWidth	=	5
+stMode50Hz.u16VSyncBackPorch	=	21
+stMode50Hz.u16VSyncStart	=	15
+stMode50Hz.u16PLL	=	14850
+stMode60Hz.u16Width	=	1920
+stMode60Hz.u16Height	=	1080
+stMode60Hz.u16TypHTotal	=	2176
+stMode60Hz.u8HSyncWidth	=	28
+stMode60Hz.u16HSyncBackPorch	=	64
+stMode60Hz.u16HSyncStart	=	80
+stMode60Hz.u16TypVTotal	=	1144
+stMode60Hz.u8VSyncWidth	=	5
+stMode60Hz.u16VSyncBackPorch	=	21
+stMode60Hz.u16VSyncStart	=	15
+stMode60Hz.u16PLL	=	14850	    #[Panel Display Clock]
+#############################################
+#    Extra Panel Settings       	    #
+#############################################
+u16PanelPowerOnDelay1 = 30		    #[delay from panel on to LVDS or VX1 enable] 		
+u16PanelPowerOnDelay2 = 580		    #[delay from Diming high to backlight on]
+u16PanelPowerOFFDelay1 = 3  		    #[delay from panel off to LVDS or VX1 disable] (Unused)
+u16PanelPowerOFFDelay2 = 4 		    #[delay from backlight off to Diming low] (Unused)
+u16BackLightLevel = 10	   		    #[PWM Duty setting for uboot step] Range: 0-100
+b8PWMDutyInv = 1			    #[Enable PWM Pulse Inverse for uboot step]
+b8HFlip = 0				    #[Enable Video/OSD Horizontal Flip]
+b8VFlip = 0				    #[Enable Video/OSD Vertical Flip]
+b8OutputPanelFHD = 0			    #[Enable OSD 2K out]0: 4K out, 1: 2K out
+VX1 = 1					    #[Data OutPut Interface] 0: LVDS, 1: VX1
+FRC = 1					    #[With FRC] 0: SOC only, 1: With FRC
+SEP = 1			   		    #[Video/OSD output mode with FRC] 1: Separate, 0: Blending
+b8Blinking = 1				    #[PDIM Blinking module] 0: Scanning, 1: Blinking (Unused)
+u8PanelType = 0 			    #[Current PanelType] 0: Scanning Normal, 1: CSOT Blinking, 2: Curve Panel
+b8ForcePanelTiming2D = 0 		    #[Flag for Force 50/60 2D Out Timing] 
+b8ForcePanelTiming2DSport = 0 		    #[Flag for Force 100/120 2D Sport Out Timing] 
+b8ForcePanelTiming3D = 0		    #[Flag for Force 200/240 3D Out Timing] 
+u16PanelTiming2D = 1			    #[Select 2D Panel Timing] 0: 4K2K50 1: 4K2K60 2: 4K2K100 3: 4K2K120
+u16PanelTiming2DSport = 2		    #[Select 2D Sport Panel Timing] 0: Not Support 1: 4K1K100 2: 4K1K120 
+u16PanelTiming3D = 5			    #[Select 3D Panel Timing] 0: 4K1K100 1: 4K1K120 2: 4K2K100 3: 4K2K120 4: 4K05K200 5: 4K05K240 
+#############################################
+# PWM Control Setting for Frequency/Delay   #
+#############################################
+u16PWM2DSync = 1			    #[PWM Select Sync/Free Run Mode in 2D] 
+u16PWM3DSync = 1 			    #[PWM Select Sync/Free Run Mode in 3D]
+u16PDIMFreq2D50Hz = 100			    #[PWM Freqency for 2D 50 (Hz)]
+u16PDIMFreq2D60Hz = 120
+u16PDIMFreq2DSport50Hz = 120		    #[PWM Freqency for 2D Sport 50 (Hz)]
+u16PDIMFreq2DSport60Hz = 120
+u16PDIMFreq3D50Hz  = 120                    #[PWM Freqency for 3D 50 (Hz)]
+u16PDIMFreq3D60Hz  = 120	 	           
+u16PDIMDelay2D50Hz = 0	 		    #[PWM Delay for 2D 50 (us)]
+u16PDIMDelay2D60Hz = 0
+u16PDIMDelay2DSport50Hz = 3800		    #[PWM Delay for 2D Sport 50 (Hz)]
+u16PDIMDelay2DSport60Hz = 3800
+u16PDIMDelay3D50Hz = 5500 		    #[PWM Delay for 3D 50 (Hz)]
+u16PDIMDelay3D60Hz = 5500 
+u16ADIMFreq2D50Hz = 0 		 	    #[ADIM Freq for 2D 50 (us)]
+u16ADIMFreq2D60Hz = 0
+u16ADIMFreq2DSport50Hz = 1 		
+u16ADIMFreq2DSport60Hz = 1
+u16ADIMFreq3D50Hz = 1 		
+u16ADIMFreq3D60Hz = 1
+b8LocalDIMControl = 0			    #[Local Dimming Control Enable Flag]
+u16LRDelay3D = 6250			    #[IR LR SYNC Delay (us)]
+u16BTDelay3D = 0			    #[**For TCL to adjust BT module delay]
+b8PDIMConByPanel3D = 0			    #[PDIM Control by Panel(Not by FRC)]
+#############################################
+#               Tcon Control		    #
+#############################################
+u8Tcon = 2				    #[Set Panel Tcon]
+u8FRCType = 0                               #[FRCType 0:324,1:333]
+#############################################
+#  FRC enhace VX1 output signal	            #
+#############################################
+u8TconType = 0				    #[u8TconType]0: Novatek Tcon, 1: Mstar8903, 2:Mstar8905, 3:Mstar8906
+u16VX1PreEmphasisG1 = 0			    #[Set Value for FRC to enhace VX1 output signal, Group 1]
+u16VX1PreEmphasisG2 = 0 		    #[Set Value for FRC to enhace VX1 output signal, Group 2]
+u16VX1PreEmphasisG3 = 0			    #[Set Value for FRC to enhace VX1 output signal, Group 3]
+u16VX1SwingG1 = 0 			    #[Set Value for FRC to enhace VX1 output signal, Group 1]
+u16VX1SwingG2 = 0 		            #[Set Value for FRC to enhace VX1 output signal, Group 2]
+u16VX1SwingG3 = 0 			    #[Set Value for FRC to enhace VX1 output signal, Group 3]
+u8AudioCurveType = 0       #[u8AudioCurveType]0:old audio curve,1:H8800 new audio curve
+u8FRCType = 0              #[u8FRCType]0:FRC 324 or no Frc,1:FRC 333
+u8IdentifyTunerType = 0    #[u8IdentifyTunerType]0:sony tuner（EU项目） ,1:TCL tuner(AU所有项目)
+u8PanelPartition  =0     #[u8PanelPartition]0:非直推屏 ,1:华星1分区屏PWM切换一分区,no NT324,2:AUO1分区屏IIC切换一分区
