@@ -5,7 +5,7 @@ Reverse engineering of a TCL TV firmware (NB: i'm reorganizing this repo, if som
 ## Context
 I bought a TCL U55S6908 to use as a monitor for my steambox/htpc, and wanted to add it to my home automation system, so i can start it and set some settings over the network.
 
-If this TV supports UPNP remote control (as shown here: https://github.com/Zigazou/opentclremote), the bootloader (uboot with secos) doesn't support WakeOnLan, also, the remote control is pretty basic, only repeating the remote control. i wanted something better.
+If this TV supports UPNP remote control, the bootloader (uboot with secos) doesn't support WakeOnLan, also, the remote control is pretty basic, only repeating the remote control. i wanted something better.
 
 Also, the "Smart TV 2" system is slow and useless, if i can get rid of it, that would be a nice thing, i don't need a minesweeper game on my TV.
 
@@ -74,4 +74,10 @@ Basically, i wouldn't call this TV "secure" if you're using the OperaTV browser 
 
 ## Thanks and credits
 Thanks to KailoKyra and gab for their help about reverse engineering and embedded ARM platforms.
+
 Tools used in this effort: binwalk, dd, binary ninja, retdec, gdb, dropbear, picocom, strace, caffein, probably some i forgot.
+
+References:
+* https://github.com/21sec/binder (contains a part of sitatvservice source code, namely the fpi_linein.c and the main())
+* https://github.com/jamesyan84/mt5507_android_4.4/tree/master/kk-4.x/vendor/tcl (contains sitatvservice/lbifpp references on android 4.4, on a mediatek SoC, hinting that the sitatvservice/libfpp tandem is used in most of their products)
+* https://github.com/Zigazou/opentclremote (a project that send keys using UPNP to a TCL TV with SmartTV2 OS)
