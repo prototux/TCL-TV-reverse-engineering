@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css" charset="gb2312">
+<script type="text/javascript" language="javascript" src="js/control.js" charset="utf-8"></script>
+</head>
+<body id="setting">
+<div id="content">
+<a class="favTidy" href="javaScript:getPage('favTidy');"></a>
+<a class="homeSet" href="javaScript:getPage('homeSet');"></a>
+<a class="help" href="javaScript:getPage('help');"></a>
+<div class="goBack"><a href="favorite.html">收藏夹</a> | <a href="javaScript:goHome();">主页</a></div>
+<div id="noticeArea" class="noticeSetHomeContent"></div>
+<div id="favRefer" class="favReferContent">
+<span id="favReferTitle"></span>
+<p>
+名称: <input id="favReferInput1" type=text size=20><br>
+地址: <input id="favReferInput2" type=text size=20>
+</p>
+<a id="favReferEnter" href="javaScript:favReferEnter();">确定</a> <a href="javaScript:favReferCancel();">取消</a>
+</div>
+<!--favoriteTidy-->
+<div id="settingInner" class="settingContent">
+<div class="favlist" id="favlistcontent">
+<table width=97%>
+<tr><td width=45></td><td width=55></td><td></td><td width=100 align="right"><a href="javaScript:favAdd();"><添加></a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</div>
+<!--help-->
+<div class="helplist" id="helplistcontent">
+<p>
+<h3>快捷菜单</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;请按遥控器"菜单"键打开快捷菜单。在快捷菜单开启的状态下，再次按"菜单"键可将其隐藏。其功能主要包括：后退、刷新、主页、收藏、收藏夹、打开、退出。其中"打开"为手动输入网址的位置</p>
+<p><h3>输入法</h3>
+1）输入法的开启和关闭
+<br>&nbsp;&nbsp;&nbsp;&nbsp;当用户将光标移动至页面中需要输入字符的地方并按下遥控器"OK"键，输入法将自动开启，否则输入法将自动关闭。</p>
+<p>2）输入法的相关按键<br>&nbsp;&nbsp;&nbsp;&nbsp;打开输入法即为虚拟键盘，默认为数字键盘，通过遥控器方向键选中您想输入的内容,按"ok"键确定输入，如输入错误则选择"<-"键来删除，或者选择"Reset"键重新输入，输入完成则选择"Enter"键完成输入，此时虚拟键盘将自动关闭</p>
+<p>3）输入法的不同状态<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果选中虚拟键盘中的"123"键，则键盘处于"数字"状态，直接选择选中想输入的内容按"ok/确定"键;<br>&nbsp;&nbsp;&nbsp;&nbsp;如果选中虚拟键盘中的"abc"键，则键盘处于英文状态，直接选择选中想输入的内容按"ok/确定"键;<br>&nbsp;&nbsp;&nbsp;&nbsp;如果选中虚拟键盘中的"中文"键，则键盘处于汉字状态，汉字输入为汉语拼音拼写，选择字符拼出您想输入的字，选择后按"ok/确定"键;<br>&nbsp;&nbsp;&nbsp;&nbsp;如果选中虚拟键盘中的"#+="键，则键盘处于特殊符号状态，直接选择选中想输入的内容按"ok/确定"键</p></div>
+<!--homepageSet-->
+<div class="homesetting" id="homecontent">
+<table width=96%>
+<tr><td align="center"><span>当前主页为:</span><span id="homepage_url">L</span></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td align="center">方法1:手动输入主页地址</td></tr>
+<tr><td align="center"><input id="homeinput" size=30 type=text></td></tr>
+<tr><td align="center"><a href="javaScript:setHomeInput();">确定</a><br></td></tr>
+</table><br>
+<table width=96%>
+<tr><td align="center">方法2:从收藏夹中选择一个地址作为主页</td></tr>
+</table><br>
+<table width=96%>
+<tr><td>&nbsp;</td></tr>
+</table>
+</div>
+</div>
+</body></html>

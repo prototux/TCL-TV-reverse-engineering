@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>channelOrganizer</title>
+<link rel="stylesheet" type="text/css" href="../../all.css">
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.list/* 设置 关于列表每项的属性*/
+{
+	position:relative;
+	width:680px;
+	height:60px;
+	background:#000;
+	color:white;
+	font-size:28px;
+	top:10px;
+	margin:10px 0px 10px 0px;
+}
+.listFirstPropertyWifi/* 设置 关于列表每行第一项属性*/
+{
+	position:absolute;
+	left:80px;
+	color:#FFF;
+	width:400px;
+	font-size:24px;
+	top:15px;
+	width:400px;
+	overflow:hidden;
+}
+.listSecondWifiProperty/* 设置 关于列表每行第二项属性*/
+{
+	position:absolute;
+	left:520px;
+	width:50px;
+	height:27px;
+	color:#FFF;
+	font-size:24px;
+	padding-top:3px;
+	text-align:center;
+	top:7px;
+}
+
+.listThirdProperty/* 设置 关于列表每行第三项属性*/
+{
+	position: absolute;
+	left: 580px;
+	width: 70px;
+	top: 7px;
+	color:#FFF;
+	font-size:24px;
+	padding-top:3px;
+	text-align:center;
+}
+#netConnectFlag
+{
+	position:absolute;
+	top:125px;
+	left:20px;
+	height:50px;
+	width:50px;
+	display:none;
+	margin:10px 0px 10px 0px;
+}
+.container
+{
+	position:absolute;
+	bottom:300px;
+	left:100px;
+	width:700px;
+	height:280px;
+	background-color:#FFF;
+}
+.passwordlist
+{
+	position:absolute;
+	width:800px;
+	height:70px;
+	color:white;
+	font-size:25px;
+}
+.smallBar
+{
+	position:absolute;
+	width:25px;
+	height:70px;
+	width:70px;
+	border:thin solid #FFFFFF;
+	background:#6FF;
+}
+.font3_small
+{
+	position:absolute;
+	top:10px;
+	color:#000;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:28px;
+	width:100%;
+	height:50px;
+	text-align:center;
+}
+#wirelessInputPassword
+{	
+    position:absolute;
+	left:660px;/*650px;*/
+	width:600px;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.8;
+	height:320px;
+	top:240px; 
+	background:#000; 
+	display:none;
+}
+#scanTitle/*设置对话框的title*/
+{
+	position:absolute;
+	width:530px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+	border-bottom:thin solid #FFF;
+	background:#000;
+}
+#dialogButtonFocus/*对话框中按钮样式的焦点*/
+{
+	position: absolute;
+	width: 170px;
+	height: 70px;
+	bottom: 0px;
+	left: 320px;
+	border-radius: 10px;
+	display:none;
+	pointer-events:none;
+}
+#scanInputFocus/*对话框中输入框焦点样式*/
+{
+	position:absolute;
+	width:366px; 
+	height:45px;
+	left:173px;
+	top:114px;
+	pointer-events:none;
+	background:url(../../images/Focus_Frame/Focus.png);
+	background-size:100% 100%;
+}
+#scanInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:500px; 
+	height:35px;
+	left:10px;
+	top:120px;
+	background:#000;
+}
+#scanButtonList
+{
+	position:absolute;
+	top:250px;
+	left:30px;
+	height:50px;
+	width:530px;
+	border-top:thin solid #FFF;
+}
+.scanButton/*对话框中的按钮样式*/
+{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	bottom: -10px;
+	padding-top:10px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	background: #333;
+	border-radius: 10px;
+}
+#scanPassRemind
+{
+	position: absolute;
+	top: 181px;
+	height: 70px;
+	color:#CCC;
+	font-size: 24px;
+	text-align: left;
+	left: 61px;
+	width: 480px;
+	display:none;
+}
+#ScrollBar
+{
+	position:absolute;
+	left:700px;
+	width:4px;
+	height:700px;
+	border:none;
+	background-color:#1b1b1b;
+	top:190px;
+}
+</style>
+<script type="text/javascript" src="wirelessScan.js"></script>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   	<div id="fourthMenuLeft"></div>
+    <div id="fourthMenuRight" style=" display:block">
+    	<ul id="menuList">
+            <li	class="titleName">
+                <span style="top:60px; position:absolute"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                <img id="netLock0" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                    <img id="netList0" />
+                </div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                 <img id="netLock1" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                    <img id="netList1"/>
+                </div>
+            </li>
+             <li class="list" >
+                 <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                 <img id="netLock2" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                    <img id="netList2"/>
+                </div>
+            </li>
+             <li class="list" >
+                 <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                 <img id="netLock3" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList3"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                 <img id="netLock4" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList4"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock5" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList5"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock6" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList6"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock7" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList7"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock8" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList8"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock9" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList9"/>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock10" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList10"/>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstPropertyWifi"></span>
+                <div class="listSecondWifiProperty">
+                	 <img id="netLock11" src="../../images/option/Lock.png" width="28" height="36" style="display:none"/>
+                </div>
+                <div class="listThirdProperty">
+                     <img id="netList11"/>
+                </div>
+            </li>
+            <div id="netConnectFlag"><img src="../../images/skip.png" /></div>
+        	<img id="thdListFocus" src="../../images/Focus_Frame/Focus-1.png" style="top:125px; width:700px;">
+            <div id="ScrollBar"></div>
+   		</ul>
+        
+        <!-------------------------------loading 等待------------------------------------------------->
+        <div id="loading">
+            <div id="remindWord" style="position:absolute; width:600px; left:65px; top:400px; color:#FFFFFF; font-size:30px; text-align:center">
+            </div>
+            <img id="loadingImg" src="../../images/Loading-01.png" style="position:absolute; top:500px; left:300px;"/>
+        </div>
+        <!--------------------------------提示无网络后跳转回上一级---------------------------------------->
+        <div id="remindNoDevice" style="position:absolute; width:600px; left:65px; top:400px; color:#FFFFFF; font-size:30px; text-align:center">
+        </div>
+   </div>
+   <!-------------------------------------加密网络输入密码框--------------------------------------------->
+  <div id="wirelessInputPassword">
+  		<span id="scanTitle" ></span>
+        <div id="scanInput">
+        	<span id="scanInputTitle" class="dialogInputName"></span>
+            <div id="scanInputContent" class="dialogInputContent" style="background:#000; width:350px; left:170px; border:thin solid #FFFFFF; height:31px; top:0px; border-radius:6px;">
+            </div>
+        </div>
+        <div id="scanPassRemind">
+        </div>
+        <div id="scanButtonList">
+          <div class="scanButton" style="left: 100px;"></div>
+            <div class="scanButton" style="left:300px;"></div>
+        </div>
+        <img id="dialogButtonFocus" src="../../images/Focus_Frame/Focus2.png" />
+      	<div id="scanInputFocus"/>
+   </div>
+</body>
+</html>

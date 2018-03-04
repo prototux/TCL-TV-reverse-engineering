@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="Pvr.js" ></script>
+<title>无标题文档</title>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#pvrPopwin
+{
+	position:absolute;
+	top:200px;
+	left:420px;
+	width:1080px;
+	height:680px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:url(../images/Time_shift-Bg_01.png);
+	color:#000000;
+}
+#pvrTitle
+{
+	position:absolute;
+	height:50px;
+	width:100%;
+	font-size:28px;
+	font-weight:bold;
+	color:#b0b0b0;
+}
+#pvrTitle span
+{
+	position:absolute;
+	top:30px;
+	left:60px;
+}
+#time
+{
+	position:absolute;
+	height:50px;
+	width:100%;
+	font-size:28px;
+	font-weight:bold;
+	color:#b0b0b0;
+	left:900px;
+	top:30px;
+}
+#currentRecTime
+{
+	position:absolute;
+	top:140px;
+	width:100px;
+	height:30px;
+	color:red;
+	left:130px;
+	line-height:30px;
+	font-size:24px;
+}
+#totalRecTime
+{
+	position:absolute;
+	top:140px;
+	width:250px;
+	height:30px;
+	color:red;
+	left:880px;
+	line-height:30px;
+	font-size:24px;
+}
+#totalRecName
+{
+	top:140px;
+	width:80px; 
+	position:absolute; 
+	left:760px;
+	color:red;
+	height:30px;
+	line-height:30px;
+	font-size:24px;
+}
+#pvrRemind
+{
+	position:absolute;
+	top:230px;
+	width:800px;
+	height:30px;
+	color:#F00;
+	left:130px;
+	line-height:30px;
+	font-size:28px;
+}
+#programInfo
+{
+	position:absolute;
+	top:300px;
+	width:300px;
+	height:30px;
+	color:#b0b0b0;
+	left:130px;
+	line-height:30px;
+	font-size:28px;
+}
+#programInfoCon
+{
+	position:absolute;
+	top:300px;
+	width:500px;
+	height:30px;
+	color:#b0b0b0;
+	left:430px;
+	line-height:30px;
+	font-size:28px;
+}
+#pvrNote
+{
+	position:absolute;
+	top:400px;
+	width:900px;
+	height:100px;
+	color:#b0b0b0;
+	left:130px;
+	font-size:28px;
+    word-wrap:break-word;
+}
+#pvrBottom
+{
+	position:absolute;
+	height:50px;
+	width:100%;
+	font-size:30px;
+	bottom:0px;
+}
+#pvrHourImgAdd
+{
+	position:absolute;
+	top:622px;
+	left:150px;
+}
+#pvrHourImgDel
+{
+	position:absolute;
+	top:622px;
+	left:350px;
+}
+#pvrHourAdd
+{
+	position:absolute;
+	top:610px;
+	height:50px;
+	line-height:50px;
+	left:250px;
+	width:90px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+#pvrHourDel
+{
+	position:absolute;
+	top:610px;
+	height:50px;
+	line-height:50px;
+	left:450px;
+	width:90px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+#pvrSecondImgAdd
+{
+	position:absolute;
+	top:622px;
+	left:610px;	
+}
+#pvrSecondImgDel
+{
+	position:absolute;
+	top:622px;
+	left:810px;	
+}
+#pvrSecondAdd
+{
+	position:absolute;
+	top:610px;
+	height:50px;
+	line-height:50px;
+	left:710px;
+	width:90px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+#pvrSecondDel
+{
+	position:absolute;
+	top:610px;
+	height:50px;
+	line-height:50px;
+	left:910px;
+	width:90px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+
+
+#picReset
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(../images/Bg-Pop_up_box-04.png);
+	display:none;
+}
+
+#dialogContent
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#dialogName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+.marquee
+{
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+	<div id="pvrPopwin"  style="display:none;">
+    	<div id="pvrTitle"><span></span></div>
+        <div id="time"></div>
+        <img src="../images/common_icon_rec.png" style="position:absolute;top:126px; left:60px; "/><div id="currentRecTime"><span id="currentRecHour">00</span>:<span id="currentRecMinute">00</span>:<span id="currentRecSecond">00</span></div><div id="totalRecName" ></div><div id="totalRecTime"><span id="totalRecHour">00</span>:<span id="totalRecMinute">02</span>:<span id="totalRecSecond">00</span></div>
+        <div id="pvrRemind"></div>
+        <div id="programInfo"></div><div id="programInfoCon"></div>
+        <div id="pvrNote"></div>
+        <!---------------------------------bottom   help------------------------------------------------>
+        <img src="../images/arrow/icon-Up.png" id="pvrHourImgAdd"/> <span id="pvrHourAdd" >Hour+</span>
+         <img src="../images/arrow/icon-Down.png" id="pvrHourImgDel"/> <span id="pvrHourDel" >Hour- </span>
+        <img src="../images/arrow/icon-Back.png" id="pvrSecondImgAdd"/> <span id="pvrSecondAdd" >Minute+</span>
+        <img src="../images/arrow/icon-Next.png" id="pvrSecondImgDel"/> <span id="pvrSecondDel" >Minute-</span>
+    </div>
+    <!------------------------------操作提醒---------------------------------------- -->
+   <div id="picReset">
+   		<span id="dialogName">Tips</span>
+        <span id="dialogContent" style=""></span>
+        <div class="dialogButton" style="left:155px; font-size:20px; width:200px;"></div>
+        <div class="dialogButton" style="left:455px; font-size:20px; width:200px;"></div>
+        <img id="picResetFocus" style=" position:absolute ;left:440px; bottom:20px; height:60px; width:230px;" src="../images/Focus_Frame/Focus2.png">
+   </div>
+</body>
+</html>

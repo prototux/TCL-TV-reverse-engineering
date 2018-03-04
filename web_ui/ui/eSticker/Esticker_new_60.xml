@@ -1,0 +1,352 @@
+<root>
+<path id = "firstImg">
+	<image>/applications/webkit-resource/ui/images/esticker/appearance_EU.png</image>
+</path>
+<path id = "thirdImg">
+	<image>../images/esticker/highLight_EU.png</image>
+</path>
+<static_icon id = "TCL">
+<img>../images/esticker/TCL.png</img>
+</static_icon>
+<static_icon id = "UHD">
+<img>../images/esticker/Esticker_01 UHD_new.png</img>
+</static_icon>
+<static_icon id = "TCL_right">
+	<img>../images/esticker/TCL_right.png</img>
+</static_icon>
+<icon id = "WCG">
+	<img_L>../images/esticker/Esticker_02 WCG_B.png</img_L>
+	<img_S>../images/esticker/Esticker_02 WCG.png</img_S>
+	<title>
+		<English>Color that come alive</English>
+		<Chinese>生动色彩</Chinese>
+		<ChineseTraditional>生動色彩</ChineseTraditional>
+		<Bulgarian>Живи цветове</Bulgarian>
+		<Croatian>Boja koja oživljava </Croatian>
+		<Czech>Barvy, které ožívají</Czech>
+		<Danish>Levende farver</Danish>
+		<Dutch>Kleur die tot leven komen</Dutch>
+		<Estonian>Värvid, mis ärkavad ellu</Estonian>
+		<Finnish>Värit heräävät eloon</Finnish>
+		<French>Couleurs qui s’animent</French>
+		<German>Die Farbe erweckt zum Leben</German>
+		<Greek>Ζωντανά χρώματα</Greek>
+		<Hungarian>Életre kelt színek</Hungarian>
+		<Italian>Colori che prendono vita</Italian>
+		<Latvian>Krāsa, kas ir dzīva</Latvian>
+		<Lithuanian>Gyvos spalvos</Lithuanian>
+		<Norwegian>Levende farger</Norwegian>
+		<Polish>Kolor, który ożywa</Polish>
+		<Portuguese>Cor que parece viva</Portuguese>
+		<Romanian>Culori care par să prindă viaţă</Romanian>
+		<Russian>Оживающие цвета</Russian>
+		<Serbian>Boja koja oživljava</Serbian>
+		<Slovak>Farby, ktoré ožívajú</Slovak>
+		<Slovenian>Barva, ki oživi</Slovenian>
+		<Spanish>Color  realmente vívido</Spanish>
+		<Swedish>Färg som vaknar till liv</Swedish>
+		<Turkish>Canlı renkler</Turkish>
+		<Ukrainian>Відтінки кольору, що виглядають живими</Ukrainian>
+	</title>
+	<description>
+		<English>Wide color gamut delivers emotion in every scene with vivid reds and emerald greens.</English>
+		<Chinese>广色域释放情感，在场景中释放出生动的红色域与翠绿色。</Chinese>
+		<ChineseTraditional>廣色域釋放情感，在場景中釋放出生動的紅色域與翠綠色。</ChineseTraditional>
+		<Bulgarian>Широката цветова гама поражда вълнение във всяка сцена с ярки червени и изумрудени зелени цветове.</Bulgarian>
+		<Croatian>Širok raspon boja omogućuje emocije u svakoj sceni s živim bojama crvene i smaragdno zelene. </Croatian>
+		<Czech>Široká škála barev přináší emoce v každé scéně s živě červenou barvou a smaragdově zelenou.</Czech>
+		<Danish>Bredt farveskale giver følelser i hver scene med levende røde og smaragdgrønne farver.</Danish>
+		<Dutch>Breed kleurengamma levert emotie in elke scène met levendige rood en smaragdgroen.</Dutch>
+		<Estonian>Lai värvispekter kasutab ära erepunaseid ja smaragdroheliseid, et edasi anda iga stseeni emotsioonid.</Estonian>
+		<Finnish>Laaja väriasteikko luo tunnetta joka esitykseen heleän punaisilla ja smaragdin vihreillä sävyillä. </Finnish>
+		<French>Une large gamme de couleurs offre l’émotion dans toutes les scènes avec les rouges vifs et les verts émeraudes.</French>
+		<German>Großer Farbbereich bietet Emotion in jeder Szene mit lebhaften Rot- und smaragdfarbenen Grüntönen.</German>
+		<Greek>Το ευρύ χρωματικό πεδίο δίνει ατμόσφαιρα στις σκηνές με ζωηρές κόκκινες και σμαραγδένιες πράσινες αποχρώσεις.</Greek>
+		<Hungarian>A széles színskála minden jelenetbe érzelmeket visz az élénk pirosakkal és a smaragd zöldekkel.</Hungarian>
+		<Italian>L'ampia gamma di colori dà emozione ad ogni scena con rossi vividi e verdi smeraldi.</Italian>
+		<Latvian>Plaša krāsu gamma nodrošina emocijas katrā skatījumā ar spilgtu sarkanu un smaragdzaļu krāsu.</Latvian>
+		<Lithuanian>Platus spalvų diapazonas išreiškia emocijas visose scenose su ryškia raudona ir sodria žalia spalva.</Lithuanian>
+		<Norwegian>Bredt fargespekter leverer følelser i hver eneste scene med levende rød og smaragdgrønn.</Norwegian>
+		<Polish>Szeroka gama kolorów zapewnia emocje w każdej scenie z jaskrawą czerwienią i szmaragdową zielenią.</Polish>
+		<Portuguese>Vasta gama de cores que oferece emoção em cada cena, com vermelhos vívidos e verdes esmeralda.</Portuguese>
+		<Romanian>Gama variată de culori asigură vivacitatea fiecărei scene, cu tonurile sale de roşu vibrant şi de verde smarald.</Romanian>
+		<Russian>Широкий спектр цветов гарантирует эмоции в каждой сцене благодаря живым оттенкам красного и изумрудным оттенкам зеленого.</Russian>
+		<Serbian>Širok spektar boja omogućava emocije u svakoj sceni sa živim bojama crvene i smaragdno zelene.</Serbian>
+		<Slovak>Široký škála farieb prináša emócie v každej scéne s živou červenou alebo smaragdovo zelenou.</Slovak>
+		<Slovenian>Širok barvni razpon omogoča čustva v vsakem prizoru z živahnimi rdečimi in smaragdno zelenimi. </Slovenian>
+		<Spanish>Amplia gama de colores que brinda emoción a cada escena con rojos vívidos y verdes esmeralda.</Spanish>
+		<Swedish>Brett färgspektra ger känslor i varje scen med livligt rött och smaragdgrönt.</Swedish>
+		<Turkish>Geniş renk yelpazesi canlı kırmızılar ve zümrüt yeşilleri ile her sahnede ayrı duygu yaşatır.</Turkish>
+		<Ukrainian>Широкий діапазон кольорів гарантує насолоду при перегляді кожного сюжету, насиченого червоними та смарагдовими відтінками.</Ukrainian>
+	</description>
+</icon>
+<icon id = "PPITCL1100">
+<img_L>../images/esticker/Esticker_PPI 1100_B_TCL.png</img_L>
+<img_S>../images/esticker/Esticker_PPI 1100_TCL.png</img_S>
+<title>
+		<English>Great lifelike motion</English>
+		<Chinese>栩栩如生的动作</Chinese>
+		<ChineseTraditional>栩栩如生的動作</ChineseTraditional>
+		<Bulgarian>Реализъм на движенията</Bulgarian>
+		<Croatian>Veliko, životno kretanje</Croatian>
+		<Czech>Velmi realistický pohyb</Czech>
+		<Danish>Meget livagtig bevægelse</Danish>
+		<Dutch>Geweldige levensechte beweging</Dutch>
+		<Estonian>Väga elutruu liikumine</Estonian>
+		<Finnish>Sulava ja luonnollinen liike</Finnish>
+		<French>Grand mouvement réaliste</French>
+		<German>Großartige lebensechte Bewegung</German>
+		<Greek>Ρεαλιστική αναπαράσταση κίνησης</Greek>
+		<Hungarian>Élethű mozgás</Hungarian>
+		<Italian>Movimenti realistici fantastici</Italian>
+		<Latvian>Lieliskas reālas kustības</Latvian>
+		<Lithuanian>Judesys lyg tikrame gyvenime</Lithuanian>
+		<Norwegian>Fantastiske naturtro bevegelser</Norwegian>
+		<Polish>Wspaniałe, naturalne ruchy</Polish>
+		<Portuguese>Extraordinário movimento realista</Portuguese>
+		<Romanian>Mişcare extraordinar de realistă</Romanian>
+		<Russian>Реалистичные движения</Russian>
+		<Serbian>Veliko, životno kretanje</Serbian>
+		<Slovak>Skvelý prirodzený pohyb</Slovak>
+		<Slovenian>Mogočno, realistično premikanje</Slovenian>
+		<Spanish>Grandioso movimiento realista</Spanish>
+		<Swedish>Stor naturtrogen rörelse</Swedish>
+		<Turkish>Üstün gerçek hareketler</Turkish>
+		<Ukrainian>Чудові природні рухи</Ukrainian>
+</title>
+<description>
+		<English>4K frame interpolation and backlight driving to combat motion blur problems.</English>
+		<Chinese>4K帧插值和背光补偿运动模糊。</Chinese>
+		<ChineseTraditional>4K幀插值和背光補償運動模糊。</ChineseTraditional>
+		<Bulgarian>4K интерполацията на кадрите и фоновото осветление се справят ефективно с размазването на движенията.</Bulgarian>
+		<Croatian>4K okvirna interpolacija i svijetlost u pozadini, pazeći da se eliminira zamućenje u pokretu. </Croatian>
+		<Czech>Interpolace rámu 4K a podsvícení proti problémům s rozostřením při pohybu.</Czech>
+		<Danish>4K indrammet interpolation og baggrundsbelysning til bekæmpelse af sløringsproblemer.</Danish>
+		<Dutch>4K frame interpolatie en achtergrondverlichting als bestrijding van het vervagen van beweging.</Dutch>
+		<Estonian>4K kaadri interpolatsioon ja taustvalgustus võitlevad liikumishägu probleemidega.</Estonian>
+		<Finnish>4K ruudun interpolointi ja takavalo sumennuksen estoon.</Finnish>
+		<French>Interpolation d’image 4K et rétro-éclairage pour combattre les problèmes du flou de mouvement.</French>
+		<German>4K Frame-Interpolation und Hintergrundbeleuchtung gegen Probleme mit der Bewegungsunschärfe.</German>
+		<Greek>Η λειτουργία παρεμβολής καρέ 4K και ο οπίσθιος φωτισμός εξαλείφει τη θαμπάδα από την κινούμενη εικόνα.</Greek>
+		<Hungarian>A 4K keret interpoláció és háttérvilágítás a képen jelentkező foltproblémák eltüntetéséhez.</Hungarian>
+		<Italian>Interpolazione con struttura a 4K e retroilluminazione portano a problemi di offuscamento durante le scene di combattimento.</Italian>
+		<Latvian>4K kadru interpolācija un aizmugurgaismojuma vadība, lai apkarotu kustības izraisītu defektu problēmas.</Latvian>
+		<Lithuanian>4K rėmelio interpoliacija ir apšvietimas išvengti išliejimo problemų.</Lithuanian>
+		<Norwegian>4K ramme-interpolering og bakgrunnsbelysning for å redusere problemer med bevegelsesuskarphet.</Norwegian>
+		<Polish>Interpolacja klatek 4K i podświetlenie eliminują problem rozmazanych ruchów.</Polish>
+		<Portuguese>Interpolação de imagem 4K e iluminação de fundo que combatem os problemas de esbatimento na imagem.</Portuguese>
+		<Romanian>Interpolare de cadru 4K şi redare în fundal pentru a combate neclaritatea de mişcare.</Romanian>
+		<Russian>Интерполяция кадров 4K и подсветка устраняют проблемы с размытыми движениями.</Russian>
+		<Serbian>4K okvirna interpolacija i svetlost u pozadini, pazeći da se eliminiše zamućenje u pokretu.</Serbian>
+		<Slovak>Interpolácia rámu 4K a podsvietenie proti problémom s rozostrením pri pohybu.</Slovak>
+		<Slovenian>4K interpolacija okvirja in ovetlitev v ozadju, ki skrbi za odpravljanje zamegljenosti pri gibanju.</Slovenian>
+		<Spanish>Interpolación de cuadro 4K y luz de fondo para reducir los problemas de desenfoque de por movimiento.</Spanish>
+		<Swedish>4K bild interpolation och bakgrundsbelysning för motverkande av problem med rörelseoskärpa. </Swedish>
+		<Turkish>4K çerçeve enterpolasyonu ve arka aydınlatma hareket bulanıklığı sorunlarıyla baş eder.</Turkish>
+		<Ukrainian>Кадрова інтерполяція 4К і драйвери заднього підсвічування допомагають боротися з розмиттям.</Ukrainian>
+
+</description>
+</icon>
+
+<icon id = "Sports mode">
+	<img_L>../images/esticker/Esticker_Sports mode_B.png</img_L>
+	<img_S>../images/esticker/Esticker_Sports mode.png</img_S>
+	<title>
+		<English>Enhance sports viewing experience</English>
+		<Chinese>增强运动观看体验</Chinese>
+		<ChineseTraditional>增強運動觀看體驗</ChineseTraditional>
+		<Bulgarian>Подобрява изживяването при гледане на спортни състезания</Bulgarian>
+		<Croatian>Unaprijedite sportski doživljaj gledanja</Croatian>
+		<Czech>Lepší zážitek ze sledování sportu</Czech>
+		<Danish>Forbedret visning af sportsprogrammer</Danish>
+		<Dutch>Verbeterde ervaring tijdens het kijken van sport</Dutch>
+		<Estonian>Parem spordisaadete vaatamine</Estonian>
+		<Finnish>Parantaa urheiluohjelmien katsomista</Finnish>
+		<French>Améliore l’expérience de visionnage du sport</French>
+		<German>Verbesserte Unterhaltung bei Sportsendungen</German>
+		<Greek>Βελτιωμένη εμπειρία θέασης αθλημάτων</Greek>
+		<Hungarian>Élménydúsabb sportközvetítés</Hungarian>
+		<Italian>Miglioramento dell'esperienza visiva dei programmi sportivi</Italian>
+		<Latvian>Uzlabojiet sporta skatīšanās pieredzi</Latvian>
+		<Lithuanian>Pagerinta sporto žiūrėjimo patirtis</Lithuanian>
+		<Norwegian>Forbedret opplevelse for sportsinnhold</Norwegian>
+		<Polish>Lepsze oglądanie sportu</Polish>
+		<Portuguese>Experiência otimizada de visualização de desporto</Portuguese>
+		<Romanian>Special pentru fanii sporturilor...</Romanian>
+		<Russian>Улучшенное изображение при просмотре спортивных программ</Russian>
+		<Serbian>Bolji doživljaj gledanja sporskih sadržaja</Serbian>
+		<Slovak>Vylepšenie zážitku zo sledovania športu</Slovak>
+		<Slovenian>Izboljšajte izkušnjo spremljanja športa</Slovenian>
+		<Spanish>Mejor experiencia deportiva</Spanish>
+		<Swedish>Bättre sportvisningsupplevelse</Swedish>
+		<Turkish>Spor izleme deneyiminizi geliştirin</Turkish>
+		<Ukrainian>Покращений перегляд спортивних передач</Ukrainian>
+	</title>
+	<description>
+		<English>Vivid green filed, sharpness optimized stadium color and powerful surroud sound effect.</English>
+		<Chinese>生动绿色色域，优化足球模式的色彩，和完美的环绕声。</Chinese>
+		<ChineseTraditional>生動綠色色域，優化足球模式的色彩，和完美的環繞聲。</ChineseTraditional>
+		<Bulgarian>Изпълнени с живот зелени поля, оптимизирани, отчетливи цветове на стадиони и мощен звуков съраунд ефект.</Bulgarian>
+		<Croatian>Živahno zeleno polje, boja terena za sport optimizirana oštrinom i snažan efekt surround zvuka. </Croatian>
+		<Czech>Svěže zelené hřiště, optimalizovaná ostrost barvy stadionu a výkonný prostorový zvukový efekt.</Czech>
+		<Danish>Levende, skarpe og optimerede stadiumfarver og kraftig surround-lydeffekt.</Danish>
+		<Dutch>Heldere groengevulde, voor scherpte geoptimaliseerde stadiumkleur en krachtig surround geluidseffect.</Dutch>
+		<Estonian>Erkroheline väljak, teravus, optimaalsetes värvides staadion ja võimas surround heli. </Estonian>
+		<Finnish>Vivahteikkaat vihreät kentät, optimoidut stadionien värit ja tehokkaat Surround-äänitehosteet.</Finnish>
+		<French>Couleurs de stade vives aux tons verts rehaussés, netteté optimisée et effet son surround puissant.</French>
+		<German>Lebendiges grünes Spielfeld, optimierte scharfe Stadionfarben und leistungsstarker Surround Sound.</German>
+		<Greek>Ζωντανό πράσινο στο γρασίδι, βελτιωμένη χρώματα γηπέδου και πανίσχυρα εφέ ήχου surround.</Greek>
+		<Hungarian>Élénkzöld pálya, a stadion színeihez igazított élesség és erőteljes surround hanghatás.</Hungarian>
+		<Italian>Campi di un verde vivido, colori dello stadio ottimizzati per una nitidezza insuperabile e incredibili effetti del suono surround. </Italian>
+		<Latvian>Spilgts zaļais laukums, optimizēts asums, stadiona krāsa un spēcīgs aptverošās skaņas efekts.</Latvian>
+		<Lithuanian>Ryškiai žalia optimizuoto kontrasto stadiono spalva ir galingas erdvinio garso efektas. </Lithuanian>
+		<Norwegian>Levende grønnfarger, optimaliserte fargestadier og skarphet og kraftig surroundlyd-effekt. </Norwegian>
+		<Polish>Wyrazista zieleń boiska, zoptymalizowana ostrość kolorów stadionu oraz potężny dźwięk surround. </Polish>
+		<Portuguese>Cor do estádio otimizada e nítida, com uma excelente reprodução do verde e um poderoso efeito de som surround.</Portuguese>
+		<Romanian>Câmpuri de un verde viu, culoare şi claritate a stadionului optimizate şi efect surround redutabil.</Romanian>
+		<Russian>Яркое зеленое поле, резкость, оптимизированная для цветовой гаммы стадиона, и мощный объемный звук.</Russian>
+		<Serbian>Živopisni zeleni tereni, boje sa stadiona optimizovane u pogledu oštrine i snažni efekti okružujućeg zvuka.</Serbian>
+		<Slovak>Živé ihrisko, ostrosť optimalizovaná pre farby štadiónov a silný efekt priestorového zvuku.</Slovak>
+		<Slovenian>Živo zeleno igrišče, optimizirana ostrina barve stadiona in zmogljiv prostorski zvočni učinek.</Slovenian>
+		<Spanish>El verde del campo es más vívido, la nitidez del color del estadio es óptima y el efecto de sonido ambiente es más potente.</Spanish>
+		<Swedish>Levande grön, arktiverad, optimerad stadium med skäpa och kraftfullt surroundljud.</Swedish>
+		<Turkish>Canlı yeşil saha, keskinliği optimize edilmiş stadyum rengi ve güçlü çevresel ses efekti.</Turkish>
+		<Ukrainian>Яскраве зелене поле, колір стадіону з оптимізованою різкістю та потужний ефект об’ємного звуку.</Ukrainian>
+
+	</description>
+</icon>
+
+<icon id = "smart tv 2">
+	<img_L>../images/esticker/Esticker_09 smart tv 2_B.png</img_L>
+	<img_S>../images/esticker/Esticker_09 smart tv 2.png</img_S>
+	<title>
+		<English>Enjoy online world</English>
+		<Chinese>享受上网的冲浪世界</Chinese>
+		<ChineseTraditional>享受上網的衝浪世界</ChineseTraditional>
+		<Bulgarian>Наслаждавайте се на света на интернет</Bulgarian>
+		<Croatian>Uživajte u svijetu na internetu</Croatian>
+		<Czech>Užijte si online svět</Czech>
+		<Danish>Nyd online-verdenen</Danish>
+		<Dutch>Geniet van de online wereld</Dutch>
+		<Estonian>Naudi internetimaailma</Estonian>
+		<Finnish>Nauti nettimaailmasta</Finnish>
+		<French>Appréciez le monde en ligne</French>
+		<German>Genießen Sie die Online-Welt</German>
+		<Greek>Απολαύστε την περιήγηση στο Ίντερνετ</Greek>
+		<Hungarian>Élvezze az online világot</Hungarian>
+		<Italian>Godere del mondo on line.</Italian>
+		<Latvian>Izbaudiet tiešsaistes pasauli</Latvian>
+		<Lithuanian>Mėgaukitės internetiniu pasauliu</Lithuanian>
+		<Norwegian>Opplev den elektroniske verden</Norwegian>
+		<Polish>Ciesz się światem online</Polish>
+		<Portuguese>Desfrute do mundo online</Portuguese>
+		<Romanian>Bucuraţi-vă de lumea on-line</Romanian>
+		<Russian>Онлайн-мир</Russian>
+		<Serbian>Uživajte u svetu na internetu</Serbian>
+		<Slovak>Vychutnajte si online svet</Slovak>
+		<Slovenian>Uživajte v svetu spletnih vsebin </Slovenian>
+		<Spanish>Disfrute del mundo en línea</Spanish>
+		<Swedish>Njut av online-världen</Swedish>
+		<Turkish>Çevrimiçi dünyanın keyfini çıkarın</Turkish>
+		<Ukrainian>Розважайтеся в Інтернеті</Ukrainian>
+	</title>
+	<description>
+		<English>Wealth of online applications, VOD services, catch-up TVs and Internet web browsing.</English>
+		<Chinese>丰富的网上应用，视频点播服务，最流行的电视节目和网页浏览。</Chinese>
+		<ChineseTraditional>豐富的網上應用，視頻點播服務，最流行的電視節目和網頁瀏覽。</ChineseTraditional>
+		<Bulgarian>Изобилие от онлайн приложения, услуги тип видео-при-поискване, телевизионно и интернет сърфиране.</Bulgarian>
+		<Croatian>Bogatstvo internetnih aplikacija, video na zahtjev, gledajte povijesne sadržaje i pregledavajte internet.</Croatian>
+		<Czech>Množství online aplikací, VOD služeb, sledování televize a brouzdání po Internetu.</Czech>
+		<Danish>Et væld af online-programmer, VOD-tjenester, catch-up tv og internet web browsing.</Danish>
+		<Dutch>Schat aan online applicaties, VOD-diensten, catch-up TV en Internet webbrowsen.</Dutch>
+		<Estonian>Veebirakenduste, VOD-teenuste, kordusTV-de ja Interneti veebisirvimise küllus. </Estonian>
+		<Finnish>Runsaasti verkkosovelluksia, VOD-palveluja, catch-up TV-palveluja ja internetselailua.</Finnish>
+		<French>Richesse d’applications en ligne, services VOD, télévision de rattrapage et de navigation web.</French>
+		<German>Fülle von Online-Apps, VOD-Dienste, Nachholsendungen und Web-Browsing im Internet.</German>
+		<Greek>Τεράστια γκάμα εφαρμογών, υπηρεσιών VOD, τηλεοπτικού προγράμματος και δυνατότητα περιήγησης στο Ίντερνετ. </Greek>
+		<Hungarian>Online applikációk, VOD-szolgáltatások, catch-up TV-k és internetes böngészések széles választéka.</Hungarian>
+		<Italian>Una marea di applicazioni on line, servizi VOD (a richiesta), recupero TV e navigazione internet.</Italian>
+		<Latvian>Tiešsaistes lietotņu bagātība, VOD pakalpojumi, TV uztveršanas pieaugums un interneta tīmekļa pārlūkošana.</Latvian>
+		<Lithuanian>Internetinių programų, VOD paslaugų, TV ir naršymo internete galimybė.</Lithuanian>
+		<Norwegian>En mengde applikasjoner på nett, VOD-tjenester, catch-up TV og Internett-surfing.</Norwegian>
+		<Polish>Bogactwo aplikacji internetowych, usług VOD i kanałów powtórkowych oraz możliwość przeglądania Internetu.</Polish>
+		<Portuguese>Vastidão de aplicações on-line, serviços VOD, acompanhe a transmissão televisiva e navegue pela Internet.</Portuguese>
+		<Romanian>O multitudine de aplicaţii on-line, servicii VOD, posibilităţi de urmărire a emisiunilor după data transmiterii acestora şi de navigare Internet.</Romanian>
+		<Russian>Разнообразные онлайн-приложения, службы видео по запросу, телепередачи и просмотр веб-сайтов.</Russian>
+		<Serbian>Bogatstvo internetnih aplikacija , video na zahtev , gledajte istorijske sadržaje i pregledajte internet.</Serbian>
+		<Slovak>Množstvo online aplikácií, VOD služieb, zachýtenie TV vysielaní a prezeranie webových stránok.</Slovak>
+		<Slovenian>Izobilje spletnih aplikacij, video na zahtevo, ogled preteklih vsebin in brskanje po spletu.</Slovenian>
+		<Spanish>Amplia gama de aplicaciones en línea, servicios VOD, TV entretenida y navegación web por Internet.</Spanish>
+		<Swedish>Rikedom av online-applikationer, VOD-tjänster, catch-up TV och Internet surfning.</Swedish>
+		<Turkish>Çevrimiçi uygulamalar, VOD hizmetleri, catch-up TV'ler ve internet web taraması zenginliği.</Turkish>
+		<Ukrainian>Різноманіття додатків у мережі Інтернет, сервіси «відео на замовлення» (VOD) і «услід за ефіром», перегляд веб-сторінок.</Ukrainian>
+
+	</description>
+</icon>
+<icon id = "dolby">
+	<img_L>../images/esticker/Esticker_Dolby Audio_B.png</img_L>
+	<img_S>../images/esticker/Esticker_Dolby Audio.png</img_S>
+	<title>
+		<English>Cinema experts sound</English>
+		<Chinese>专业的电影声效</Chinese>
+		<ChineseTraditional>專業的電影聲效</ChineseTraditional>
+		<Bulgarian>Звук от киноексперти</Bulgarian>
+		<Croatian>Zvuk poput onog u kinu</Croatian>
+		<Czech>Zvuk jako v kině</Czech>
+		<Danish>Toplydkvalitet som i biografen</Danish>
+		<Dutch>Expert bioscoopgeluid</Dutch>
+		<Estonian>Heli nagu päris kinos</Estonian>
+		<Finnish>Elokuvateattereiden ääni</Finnish>
+		<French>Son cinématique professionnel</French>
+		<German>Professioneller Kino-Sound</German>
+		<Greek>Κινηματογραφικός ήχος</Greek>
+		<Hungarian>Professzionális moziélmény</Hungarian>
+		<Italian>Sonorità per gli esperti del cinema</Italian>
+		<Latvian>Lieliska kino skaņa</Latvian>
+		<Lithuanian>Garsas kino ekspertams</Lithuanian>
+		<Norwegian>Lyd i kinokvalitet</Norwegian>
+		<Polish>Dźwięk od ekspertów kina</Polish>
+		<Portuguese>Som para os amantes do cinema</Portuguese>
+		<Romanian>Dar şi pentru cinefili</Romanian>
+		<Russian>Звук, способный удовлетворить даже искушенных киноманов</Russian>
+		<Serbian>Zvuk po tehnologiji stručnjaka za bioskopski zvuk</Serbian>
+		<Slovak>Zvuk ako v kine</Slovak>
+		<Slovenian>Zvok kot v kinu</Slovenian>
+		<Spanish>Sonido para cinéfilos</Spanish>
+		<Swedish>Bioexpertljud</Swedish>
+		<Turkish>Sinema tadında ses</Turkish>
+		<Ukrainian>Звук професійного кінотеатру</Ukrainian>
+	</title>
+	<description>
+		<English>Enjoy Dolby Audio sound with clear dialoges, content adapted sound settings and future proof Dolby Atmos.</English>
+		<Chinese>通过清晰的声效欣赏杜比声音。</Chinese>
+		<ChineseTraditional>通過清晰的聲效欣賞杜比聲音。</ChineseTraditional>
+		<Bulgarian>Наслаждавайте се на Dolby звук с ясни диалози, настройки за адаптиране на звука към съдържанието и Dolby Atmos.</Bulgarian>
+		<Croatian>Uživajte u Dolby Audio zvuku s čistim dijalozima i postavkama zvuka prilagođenog sadržaju i budućem zvučnom sustavu Dolby Atmos. </Croatian>
+		<Czech>Vychutnejte si zvuk Dolby Audio se zřetelnými dialogy, zvukovým nastavením přizpůsobeným obsahu a nejdokonalejším zvukovým formátem Dolby Atmos.</Czech>
+		<Danish>Nyd Dolby Audio-lyd med tydelige dialoger og lydindstillinger, som løbende tilpasses indholdet, samt fremtidssikret Dolby Atmos.</Danish>
+		<Dutch>Geniet van Dolby Surround-geluid met duidelijke dialogen, op de inhoud aangepaste geluidsinstellingen en volgende generatie Dolby Atmos. </Dutch>
+		<Estonian>Nautige Dolby Audio heli selgelt arusaadavate dialoogide, sisu järgi kohandatud heliseadete ning Dolby Atmos süsteemiga.</Estonian>
+		<Finnish>Saat nauttia Dolby-äänestä, joka mahdollistaa selkeät vuoropuhelut, sisältöön mukautetut ääniasetukset ja tulevaisuuden Dolby Atmos -järjestelmään varautumisen.</Finnish>
+		<French>Profitez d’un son Dolby Audio avec des dialogues clairs, des réglages audio adaptés au contenu et la technologie ultra moderne Dolby Atmos.</French>
+		<German>Dolby Audio Sound mit klaren Dialogen, inhaltlich angepassten Soundeinstellungen und zukunftssicherem Dolby Atoms.</German>
+		<Greek>Απολαύστε ήχο Dolby με καθαρούς διαλόγους και ρυθμίσεις ήχου που προσαρμόζονται στο περιεχόμενο, με πρόβλεψη για την επερχόμενη τεχνολογία Dolby Atmos.</Greek>
+		<Hungarian>Élvezze a Dolby hanghatást jól érthető párbeszédekkel és a tartalomhoz igazított hangbeállításokkal és a jövőálló Dolby Atmos technológiával.</Hungarian>
+		<Italian>VedereSuono Dolby Audio con dialoghi chiari, impostazioni Adapt Sound per sonorità personalizzate in base ai contenuti e Dolby Atmos a prova di compatibilità futura.</Italian>
+		<Latvian>Izbaudiet Dolby Audio skaņu ar skaidriem dialogiem, saturam pielāgotiem skaņas iestatījumiem un inovatīvo Dolby Atmos.</Latvian>
+		<Lithuanian>Mėgaukitės „Dolby Audio“ garsu, aiškiais dialogais, prie turinio pritaikytais garso nustatymais ir ateities technologijoms pritaikyta „Dolby Atmos“.</Lithuanian>
+		<Norwegian>Nyt Dolby Audio-lyden med krystallklare dialoger, innholdstilpassede lydinnstillinger og fremtidssikre Dolby Atmos.</Norwegian>
+		<Polish>Ciesz się dźwiękiem Dolby Audio, klarownymi dialogami i ustawieniami dźwięku dostosowanym do treści, a także przyszłościową technologią Dolby Atmos.</Polish>
+		<Portuguese>Desfrute de um som Dolby Audio com diálogos claros, definições sonoras adaptadas ao conteúdo e a tecnologia de futuro Dolby Atmos.</Portuguese>
+		<Romanian>Sunet Dolby Audio cu dialoguri clare, setări audio adaptate la conţinut şi Dolby Atmos compatibil cu dezvoltări ulterioare.</Romanian>
+		<Russian>Наслаждайтесь звуковым сопровождением с системой Dolby, с четким воспроизведением диалогов, с настройками, адаптированными к контенту, и с системой завтрашнего дня Dolby Atmos.</Russian>
+		<Serbian>Uživajte u zvuku sa tehnologijom Dolby Audio, jasnim dijalozima, zvuku prilagođenom tipu sadržaja i tehnologijom budućnosti Dolby Atmos.</Serbian>
+		<Slovak>Vychutnajte si zvuk Dolby so zreteľnými dialógmi, nastavenia zvuku prispôsobené obsahu a vylepšenie z budúcnosti Dolby Atmos.</Slovak>
+		<Slovenian>OUživajte v Dolby Audio zvoku z jasnimi dialogi, zvočne nastavitve prilagojene vsebini in Dolby Atmos prilagojen prihodnosti.</Slovenian>
+		<Spanish>Disfrute del sonido Dolby Audio con diálogos más claros, ajustes de sonido adaptados al contenido, y del Dolby Atmos orientado al futuro.</Spanish>
+		<Swedish>Lyssna på Dolby Audio-ljud med tydliga dialoger och framtida Dolby Atmos.</Swedish>
+		<Turkish>Net konuşmalara , içerik uyumlu ses ayarlarına ve gelecekteki değişikliklerden etkilenmeyen Dolby Atmos özelliğine sahip Dolby Audio ses.</Turkish>
+		<Ukrainian>Насолоджуйтесь звуком Dolby Audio з чіткими діалогами та налаштуваннями, адаптованими до вмісту, а також звуком Dolby Atmos.</Ukrainian>
+	</description>
+</icon>
+</root>

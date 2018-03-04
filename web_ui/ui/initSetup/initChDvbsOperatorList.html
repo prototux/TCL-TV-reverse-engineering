@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="init.css" rel="stylesheet" />
+
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var FirstTitle 				= top.initialTitle[1];
+var subTitle				= top.initialOptions[3];
+var remindWords				= top.initChPrompt[5];
+var initialSelectOption     = top.initialSelectOption;
+var hotkeyWords				= top.initialHotkeys;
+var satOther				= top.initChDvbSOther[0];
+var chOperator              = top.chOperator[2];
+var list_position_h 		= 0;			//当前语言在显示中的焦点的位置
+var offset 				= 0;			//offset = operatorIndex - list_position_h
+var operatorIndex= 0;
+var SELECT_STEP				= 70;			//单选列表框相邻两个选项之间的距离		
+
+//滚动条使用
+var SCROLL_START_TOP		= 250;			//滚动条起始的top位置
+var SCROLL_MAX_HEIGHT		= 400;			//滚动条可以滚动范围长度
+var DISPLAY_COUNT			= 5;			//每一次最多可以显示的行数
+var line_count				= 0;			//使用滚动条的内容最大行数
+
+var setting = top.g_setting;
+var channel = top.g_channel;
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+		case top.VK_RIGHT:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function toLeft()
+{
+	//document.location.href = "initChDvbcInstScanType.html";
+	if(setting.getProperty("ro.sita.model.LiveTV.DVB-C","TRUE") == "TRUE")
+	{
+		document.location.href = "initChDvbcInstScanType.html";
+	}
+	else if(setting.getProperty("ro.sita.model.LiveTV.DVB-T","TRUE") == "TRUE")
+	{
+		document.location.href = "initChDvbtInstScanType.html";
+	}
+	else
+	{
+		document.location.href = "initChannelInstallEntry.html";
+	}
+}
+
+function doEnter()
+{
+	operatorIndex = list_position_h + offset;
+	if(operatorIndex == 0)
+	{
+		/*
+		if(setting.networkStatus() != 0 || setting.wirelessNetworkConnectStatus != 0)//有网
+		{
+			document.location.href = "initClockEntry.html";
+		}
+		else
+		{
+			document.location.href = "initClockTimeSet.html";
+		}*/
+		document.location.href = "initClockSet.html";
+	}
+	else
+	{
+		top.g_channel.tunerMode = 2;
+		var operatorId = operatorList[operatorIndex - 1].operator_id;
+		var satelliteInfoList = channel.getSatelliteList(operatorId);
+		var satSum = satelliteInfoList.length;
+		channel.testLog("in initSatellite satSum = " + satSum);
+		if(satSum==1)
+		{
+			document.location.href = "initChDvbsScanInfoSelect.html?" + operatorId;
+		}
+		else
+		{
+			document.location.href = "initChDvbsSatelliteList.html?" + operatorId;
+		}
+	}
+}
+
+function toUp()
+{
+	if(operatorSum > 4)
+	{
+		if(list_position_h <= 0) 
+		{
+			if(offset > 0)
+			{
+				offset--;
+				showOperatorList(offset,operatorSum);
+			}
+			else
+			{
+				list_position_h = 4;
+				offset = (operatorSum + 1) - 5;//(operatorSum + 1)是因为多一个取消卫星手台的枚举
+				showOperatorList(offset,operatorSum);
+			}
+			showUpDownFlagImg(operatorSum + 1,offset);
+		}
+		else
+		{
+			list_position_h--;
+		}
+	}
+	else
+	{
+		if(list_position_h <= 0) 
+		{
+			list_position_h = operatorSum;
+		}
+		else
+		{
+			list_position_h--;
+		}
+	}	
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	doElementScroll();
+}
+function toDown()
+{
+	if(operatorSum > 4)
+	{
+		if(list_position_h >= 4) 
+		{
+			if((offset + list_position_h) >= (operatorSum))
+			{
+				offset = 0;
+				list_position_h =0;
+				showOperatorList(offset,operatorSum);
+			}
+			else
+			{
+				offset++;
+				showOperatorList(offset,operatorSum);
+			}
+			showUpDownFlagImg(operatorSum + 1,offset);
+		}
+		else
+		{
+			list_position_h++;
+		}
+	}
+	else 
+	{
+		if(list_position_h >= operatorSum) 
+		{
+			list_position_h = 0;
+		}
+		else
+		{
+			list_position_h++;
+		}
+	}
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	doElementScroll();
+}
+
+/*
+描述：根据offset和operatorSum来刷新运营商列表显示
+*/
+function showOperatorList(dis,opSum)
+{
+	//top.Log("in showOperatorList opSum = " + opSum);
+	if(opSum <= 4)
+	{
+		for(var i = 0; i < 5; i++)
+		{
+			if((i - 1) < 0)
+			{
+				containerSpanList[i].innerHTML = satOther;
+			}
+			else if(i <= opSum)
+			{
+				 if(operatorList[i - 1].operator_id==0)
+				{
+					containerSpanList[i].innerHTML = chOperator;
+				}
+				else
+				{
+					containerSpanList[i].innerHTML = operatorList[i - 1].operator_name;
+				}
+			}
+			else
+			{
+				containerLiList[i].style.display = "none";
+			}
+		}
+		$("ScrollBar").style.display = "none";
+	}
+	else
+	{
+		for(var i = 0; i < 5; i++)
+		{
+			if((dis + i - 1) < 0)
+			{
+				containerSpanList[i].innerHTML = satOther;
+			}
+			else if(i <= opSum)
+			{
+				
+				if(operatorList[dis + i - 1].operator_id==0)
+				{
+					containerSpanList[i].innerHTML = chOperator;
+				}
+				else
+				{
+					containerSpanList[i].innerHTML = operatorList[dis + i - 1].operator_name;
+				}
+			}
+		}
+		
+		line_count = opSum + 1;
+		$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*dis/line_count,10) + "px";
+		$("ScrollBar").style.height = parseInt(SCROLL_MAX_HEIGHT*DISPLAY_COUNT/line_count,10) + "px";
+		$("ScrollBar").style.display = "block";
+	}
+}
+
+
+var operatorList;
+var operatorSum;
+function initDvbsOperator()
+{
+    list_position_h = 0;
+	offset = 0;
+
+	
+	top.g_channel.testLog("init initDvbsOperator .operatorSum = " + operatorSum);
+	showOperatorList(offset,operatorSum);
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	$("container").style.display = "block";
+	
+	showUpDownFlagImg(operatorSum + 1,offset);
+	doElementScroll();
+}
+
+function showUpDownFlagImg(optionSum,positionOffset)
+{
+	//һ׶β꣬ء
+	$("initListUpImg").style.opacity = 0;
+	$("initListDownImg").style.opacity = 0;
+	return;
+	//һ׶β꣬ء
+	
+	if(optionSum <= 5)
+	{
+		$("initListUpImg").style.opacity = 0;
+		$("initListDownImg").style.opacity = 0;
+		return;
+	}
+	
+	if(positionOffset > 0)
+	{
+		$("initListUpImg").style.opacity = 1;
+	}
+	else
+	{
+		$("initListUpImg").style.opacity = 0;
+	}
+	
+	if((positionOffset + 4) >= (optionSum - 1))
+	{
+		$("initListDownImg").style.opacity = 0;
+	}
+	else
+	{
+		$("initListDownImg").style.opacity = 1;
+	}
+}
+
+
+
+function doElementScroll()
+{
+	setScrollAttribute(containerSpanList,(DISPLAY_COUNT>(operatorSum + 1))?(operatorSum + 1):DISPLAY_COUNT,list_position_h);
+	resetScrollHtmlInner(containerSpanList,(DISPLAY_COUNT>(operatorSum + 1))?(operatorSum + 1):DISPLAY_COUNT);//setTimeout(function(){resetScrollHtmlInner(containerSpanList,(DISPLAY_COUNT>(operatorSum + 1))?(operatorSum + 1):DISPLAY_COUNT);},1);
+}
+
+function isOverflowed(element)
+{
+    return element.scrollWidth > element.clientWidth;
+}
+
+/*
+把整个列表属性更改，如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数；focusPosition：当前焦点选项在内容标签上的位置
+*/
+function setScrollAttribute(htmlTagList,ListLength,focusPosition)
+{
+	for(var i = 0; i < ListLength; i++)
+	{
+		/*var tempText = htmlTagList[i].innerHTML;*/
+		htmlTagList[i].setAttribute("contentText",htmlTagList[i].innerHTML);
+		if(focusPosition == i && isOverflowed(htmlTagList[i]))//如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+		{
+			htmlTagList[i].style.overflowX = "-webkit-marquee";
+			htmlTagList[i].style.textOverflow = "clip";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		else
+		{
+			htmlTagList[i].style.overflowX = "hidden";
+			htmlTagList[i].style.textOverflow = "ellipsis";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		htmlTagList[i].innerHTML = "";
+	}
+}
+/*
+重新为整个列表属性更改完成的列表赋值
+htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数
+*/
+function resetScrollHtmlInner(htmlTagList,ListLength)
+{
+	for(var i = 0; i < ListLength; i++)
+	{
+		//top.Log("in resetScrollHtmlInner htmlTagList[i].contentText = " + htmlTagList[i].getAttribute("contentText"));
+		htmlTagList[i].innerHTML = htmlTagList[i].getAttribute("contentText");
+	}
+}
+
+var containerSpanList;
+var containerLiList;
+function init()
+{
+	operatorList = channel.getOperatorList(2/*tunerMode*/);
+	operatorSum = operatorList.length;
+	console.log("operatorSum=="+operatorSum);
+	containerLiList = $("container").getElementsByTagName("li");
+	containerSpanList = $('container').getElementsByTagName('span');
+	$('initTitle').innerHTML = FirstTitle;
+	$('subTitleTag').innerHTML = subTitle;
+	var menuLanguage = setting.menuLanguage;
+	if(operatorSum == 1&&operatorList[0].operator_id == 0)
+	{
+		$('selectTitleTag').innerHTML = initialSelectOption;
+	}
+	else
+	{
+		$('selectTitleTag').innerHTML = remindWords;
+	}
+	
+	$('back').getElementsByTagName('span')[0].innerHTML = hotkeyWords[0];
+	$('select').getElementsByTagName('span')[0].innerHTML = hotkeyWords[1];
+	$('next').getElementsByTagName('span')[0].innerHTML = hotkeyWords[2];
+	
+	initDvbsOperator();
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	for(var i = 0; i < 5; i++)
+	{
+		containerLiList[i].setAttribute("newAttr",i);
+		containerLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				list_position_h = parseInt(this.getAttribute("newAttr"));
+				$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+				doEnter();
+			}
+		}
+	}
+	$("initListUpImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if($("initListUpImg").style.opacity == 1)
+			{
+				list_position_h = 0;
+				$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+				toUp();
+			}
+		}
+	}
+	$("initListDownImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if($("initListDownImg").style.opacity == 1)
+			{
+				list_position_h = 4;
+				$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+				toDown();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#container
+{
+	width:600px;
+}
+.initSlectsFocus
+{
+	width:600px;
+}
+#initListUpImg
+{
+	margin:10px 280px 10px 280px; 
+}
+#initListDownImg
+{
+	margin:10px 280px 10px 280px; 
+}
+.initSelects li > span/*单选列表框的每一行中提示文字样式*/
+{
+	width:520px;
+}
+.marquee 
+{
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+     <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:880px;" /><img src="../images/Title_bloc-Bg.png" style="width:320px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px; width:660px;"></span>
+        
+        <img id="ScrollBar" src="../images/Scroll_bar-Vertical.png" style="	position:absolute;width:10px;left:1250px;top:240px;"/>
+    
+        <div id="initBigSelectForm">
+        	<img id="initListUpImg" src="../images/arrow/U-Focus.png"/>
+            <ul id="container" class="initSelects">
+              <div id="initListFormFocus">
+                <img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+                <img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+              </div>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span class="marquee"></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span class="marquee"></span>
+              </li>
+              <li>
+                <img src="../images/option/Radio_2.PNG"/>
+                <span class="marquee"></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span class="marquee"></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span class="marquee"></span>
+              </li>
+            </ul>
+            <img id="initListDownImg" src="../images/arrow/D-Focus.png"/>
+        </div>
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+    
+    
+    <img style="position:absolute; left:1090px; top:380px;"  src="../images/Pic-Satellite_TV.png"/>
+</body>
+</html>
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="autoUpdate.js"></script>
+<link rel="stylesheet" type="text/css" href="../all.css" />
+    <style type="text/css">
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+    </style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   <!----------------------auto update 使用---------------------->
+   <div id="scanForm" class="dialogForm">
+        <span id="scanTitle" class="dialogTitle" ></span>
+        
+        <div id="scanningInfo" style=" position:absolute; width:100%; height:240px; bottom:0px;">
+             <div id="scanProgress" class="dialogScanProgressContainer">
+                <div id="progressLeft" class="progressBarLeft" style="width:200px;"></div>
+                <div class="progressBarCenter"></div>
+                <div id="progressRight" class="progressBarRight" ></div>
+
+            </div>
+            <span id="progressValue" class="dialogScanProgressValue"></span>
+            
+            <span id="scanStatus" class="dialogScanPrompt" style="top:60px;"></span>
+            <span id="scanResult1" class="dialogScanPrompt" style="top:90px;"></span>
+            <span id="scanResult2" class="dialogScanPrompt" style="top:120px;"></span>
+            
+            <span id="search" class="dialogButton" style="left:324px;"></span>
+        </div>
+   </div>
+   
+</body>
+</html>

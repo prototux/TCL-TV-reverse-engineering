@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title> New Document </title>
+<style>
+body
+{
+    background:transparent;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#netConnectWin
+{
+    position:absolute;
+    left:100px;
+    width:800px;
+    border:4px  solid #1b1b1b;
+    opacity:0.8;
+    height:300px;
+    left:560px;
+    top:300px;
+    background:#000;
+    display:none;
+}
+.netConnectRemind
+{
+    position: absolute;
+    top: 180px;
+    height: 60px;
+    line-height:30px;
+    color:#FFFFFF;
+    font-size: 28px;
+    text-align: left;
+    width:750px;/*500px;*/
+    left:25px;
+    display:block;
+}
+#buttonList
+{
+    position:absolute;
+    top:350px;
+    height:50px;
+    width:600px;
+}
+.netButton
+{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top:10px;
+    padding-top: 7px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    background: #333;
+    border-radius: 10px;
+}
+#buttonFocus
+{
+    position: absolute;
+    width: 170px;
+    height: 70px;
+    top:200px;
+    left: 320px;
+    display:block;
+}
+</style>
+<script type="text/javascript">
+var positionPop=0;
+
+document.onkeydown = keyProcess;
+document.onnotify = notifyProcess;
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function notifyProcess(evt)
+{
+    top.systemEventProc(evt);
+}
+
+function keyProcess(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	switch(keycode)
+	{
+		case top.VK_BACK:
+		case top.VK_MENU:
+		case top.VK_EXIT:
+			toBack();
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+        case top.VK_POWER://power
+            top.keyDownProcess(e);
+            break;
+		default:
+			break;
+	}
+	return ret;
+}
+
+function toBack()
+{
+	top.$("otherPage").src = "";
+	top.main.focus();
+	top.setFrameFocusPage("main");
+    top.shopRemindFlag = 1;
+    top.$("main").contentWindow.notifyRefreshInfo();
+}
+
+function doEnter()
+{
+    top.g_setting.setProperty("persist.app.ui.netflixRemoteDialog","1");
+    if(0 == top.netflixDialogFlag && 0 == top.g_setting.getProperty("app.ui.netflixDialog","0") && 0 != top.g_setting.tvRunningMode)
+    {
+        top.$('otherPage').src = "netflixDialog.html";
+        top.otherPage.focus();
+        top.setFrameFocusPage("otherPage");
+        top.netflixDialogFlag = 1;
+    }
+    else
+    {
+        toBack();
+    }
+}
+
+function toLeft()
+{
+
+}
+
+function toRight()
+{
+
+}
+
+function init()
+{
+    top.$("main").contentWindow.hideRemind();
+    top.shopRemindFlag = 0;
+	$("buttonList").style.display = "block";
+	$("buttonFocus").style.display = "block";
+	$("netConnectWin").style.display="block";
+	$("popContent").innerHTML=top.netflixRemoteDialogContent;
+	positionPop = 0;
+	$("buttonFocus").style.left="320px";
+	var divs=$("buttonList").getElementsByTagName("div");
+	divs[0].innerHTML=top.netflixDialogOptions[0];//ok
+	setTimeout("toBack()",90*1000);
+}
+
+function uninit()
+{
+    top.shopRemindFlag = 1;
+    top.$("main").contentWindow.notifyRefreshInfo();
+}
+</script>
+</head>
+
+
+<!--******************************** net connect **************************************-->
+<body onLoad="init()" onunload="uninit()">
+     <div id="netConnectWin" style="left:560px; height:300px;">
+         <div id="popContent" class="netConnectRemind" style=" text-align:center; top:100px;">
+         </div>
+         <div id="buttonList" style="top:200px;">
+             <div class="netButton" style="left:330px;"></div>
+         </div>
+         <img id="buttonFocus" src="images/Focus_Frame/Focus2.png"/>
+     </div>
+</body>
+</html>

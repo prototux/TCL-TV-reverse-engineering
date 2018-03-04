@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#container
+{
+	position:absolute;
+	width:700px;
+	left:100px;
+	top:100px; 
+	height:30px;
+	overflow:hidden;
+}
+#scanForm/*搜台框*/
+{
+	position:absolute;
+	left:50px;
+	width:700px;
+	top:120px;
+	height:300px;
+	border:medium solid #999;
+}
+.scanFormRemind/*搜台提示*/
+{
+	position:absolute;
+	top:20px;
+	left:20px;
+	font-size:30px;
+	font-weight:bold;
+	color:#fff;
+	width:700px;
+	overflow:hidden;
+}
+.scanResult/*dtv搜索结果显示*/
+{
+	position:absolute; 
+	left:150px;
+	font-size:30px; 
+	font-weight:bold; 
+	color:#fff;
+}
+
+
+.initButton
+{
+	position:absolute;
+	width:220px;
+	height:80px;
+	line-height:80px;
+	font-size:30px;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	background-image:url(../images/Focus-02.png);
+	background-size:220px 80px;
+}
+</style>
+
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var initialTitleWords 		= top.initialTitle[1];
+var initStepWords			= top.initialOptions[3];
+var remindWords				= top.initChPrompt[2];
+var stopWords				= top.others[17];
+var chGenreWords			= top.initChDvbcs;
+var hotkeyWords				= [top.initialHotkeys[0],top.initialHotkeys[1],top.initialHotkeys[2],top.okCancel[0]];
+
+var channelType 			= 0;			//0:digital + analogue,1 digital,2 analogue
+var digitalScanCount 		= 0;
+var anologScanCount 		= 0;
+var dtvSearchChannelCount 	= -1;
+var atvSearchChannelCount	= -1;
+var progress				= 0;
+var progressFlag 			= 0;			//在analog+digital时使用，这时的进度条分为两段来处理，0 表示前半段dtv搜台，1表示后半段atv 搜台
+var isSearch 				= 0;			//0 没有搜台，1 搜台中	
+var PROGRESS_WIDTH			= 600;
+
+var setting = top.g_setting;
+var channel = top.g_channel;
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	var value = evt.modifiers;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_ATV_TUNE_PREQUENCY_CHANGE://atv
+	  	case top.E_DTV_TUNE_FREQUENCY_CHANGE://dtv
+			if(progress <= 100)
+			{
+				updateInfo(0);
+			}
+			break;
+	  	case top.E_ATV_SCAN_FINISHED://atv
+			updateInfo(1);
+		  	break;
+	  	case top.E_DTV_SCAN_FINISHED://dtv
+		  	updateInfo(2);
+		  	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_ENTER:
+		case top.VK_RIGHT:
+			toExit();
+			ret = false;
+			break;
+		case top.VK_RED:
+			if(isSearch != 1)
+			{
+				top.jumpPage();
+			}
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+var focusOn = "search";//search,
+function toExit()
+{
+	if(focusOn == "exit")//在退出的过程中再调用该函数不处理
+	{
+		return;
+	}
+	focusOn = "exit";
+	if(isSearch == 1)
+	{
+		isSearch = 0;
+		channel.stopScan();
+		/*在dtv+atv搜台过程中先搜完dtv有台，然后搜atv无台的时候停止获取的结果是dtv先前的结果,这是他们在atv没有搜到台时切信源到dtv的原因*/
+		scanningInfo = channel.getScanningInfo();
+		cutScanningInfo(scanningInfo);//将scanningInfo切分并保存到响应的变量中
+		
+		//channel.playCurrentTv();
+		//等待搜台完成消息来到后跳转
+	}
+	atvSearchChannelCount += anologScanCount;
+	dtvSearchChannelCount += digitalScanCount;
+	top.g_init_installations.CAtv = atvSearchChannelCount;
+	top.g_init_installations.CDtv = dtvSearchChannelCount;
+	top.Log("atvSearchChannelCount = " + atvSearchChannelCount + ",dtvSearchChannelCount = "  + dtvSearchChannelCount);
+	top.$("main").src = "initSetup/initChDvbcEnd.html?" + channelType;
+	
+}
+
+
+
+
+/*
+功能描述：将scanningInfo切分并保存到响应的变量中
+参数：id:0（atv或dtv进度更新的消息），1代表atv搜台结束，2代表dtv搜台结束
+全局变量：anologScanCount;digitalScanCount;progress;
+*/
+function cutScanningInfo(info)
+{
+	var str = info;
+	var data = str.split("/");
+	anologScanCount = parseInt(data[0],10);
+	var digital = parseInt(data[1],10);
+	var radio = parseInt(data[2],10);
+	digitalScanCount = digital + radio;
+	top.Log("anologScanCount = " + anologScanCount + ",digitalScanCount = "  + digitalScanCount);
+	//上传的freq是以kHz结尾的，这里装换城MHz
+	//freq = (parseInt(data[3],10)/1000);
+	progress = parseInt(data[4],10);
+}
+
+
+/*
+功能描述：搜台过程中的消息处理
+参数：id:0（atv或dtv进度更新的消息），1代表atv搜台结束，2代表dtv搜台结束
+全局变量：scanningInfo;focusOn;progress;digitalScanCount；
+*/
+var scanningInfo;
+function updateInfo(id)
+{
+	if(isSearch == 0)
+	{
+		return;
+	}
+    switch (id)
+    {
+		case 0:
+		{
+			scanningInfo = channel.getScanningInfo();
+			cutScanningInfo(scanningInfo);//将scanningInfo切分并保存到响应的变量中
+			
+			if(progress > 100)
+			{
+				channel.testLog("error in updateInfo  ------- progress = " + progress);
+				return;
+			}
+			
+			if(channelType == 0)//atv + dtv搜台
+			{
+				if(progressFlag == 0)//搜台前半部分：dtv 搜台
+				{
+					if(progress > 0)
+					{
+						$("scanResult2").innerHTML = chGenreWords[1] + digitalScanCount;
+						var mid = PROGRESS_WIDTH/2;
+						$("progressLeft").style.width = parseInt(progress*mid/100,10) + "px";
+						$("progressRight").style.width = parseInt(mid + (100 - progress)*mid/100,10) + "px";
+						$("progressValue").innerHTML = parseInt(progress/2,10) + "%";
+					}
+					if(progress == 100)
+					{
+						channel.stopScan();
+					}
+				}
+				else//progressFlag == 1，搜台后半部分：atv搜台
+				{
+					if (progress > 0 ) 
+					{
+						$("scanResult1").innerHTML = chGenreWords[0] + anologScanCount;
+						var mid = PROGRESS_WIDTH/2;
+						$("progressLeft").style.width = parseInt(mid + progress*mid/100,10) + "px";
+						$("progressRight").style.width = parseInt((100 - progress)*mid/100,10) + "px";
+						$("progressValue").innerHTML = parseInt(50 + progress/2,10) + "%";
+					}
+				}
+			}
+			else if(channelType == 1)//dtv搜台
+			{
+				if(progress > 0)
+				{
+					$("scanResult2").innerHTML = chGenreWords[1] + digitalScanCount;
+					$("progressLeft").style.width = parseInt(progress*PROGRESS_WIDTH/100,10) + "px";
+					$("progressRight").style.width = parseInt((100 - progress)*PROGRESS_WIDTH/100,10) + "px";
+					$("progressValue").innerHTML = progress + "%";
+				}
+				if(progress == 100)
+				{
+					channel.stopScan();
+				}
+			}
+			else if(channelType == 2)//atv 搜台
+			{
+				if(progress > 0)
+				{
+					$("scanResult1").innerHTML = chGenreWords[0] + anologScanCount;
+					$("progressLeft").style.width = parseInt(progress*PROGRESS_WIDTH/100,10) + "px";
+					$("progressRight").style.width = parseInt((100 - progress)*PROGRESS_WIDTH/100,10) + "px";
+					$("progressValue").innerHTML = progress + "%";
+				}
+			}
+			break;
+		}
+		case 1://atv finish,atv搜台停止不需要我们自己调用停止函数，底层自己调用
+		{
+			//channel.playCurrentTv();
+			isSearch = 0;
+			progressFlag = 0;
+			toExit();
+			break;
+		}
+		case 2://dtv scan finish
+		{
+			if(channelType == 0)//atv + dtv 搜台
+			{
+				//此处判断是用来显示手动中断搜索的时候不会再进入atv自动搜台
+				if(progressFlag == 0)//在analog+digital时使用，这时的进度条分为两段来处理，0 表示前半段，1表示后半断
+				{
+					dtvSearchChannelCount += digitalScanCount;
+					progressFlag = 1;
+					channel.startScanAtvAuto();
+				}
+			}
+			else//dtv 搜台
+			{
+				//channel.playCurrentTv();
+				isSearch = 0;
+				toExit();
+			}
+			break;
+		}
+		default:
+		{
+			break;
+		}
+    }
+}
+/*
+描述：刷新进度条
+参数：
+全局变量：
+*/
+function refreshProgress(prog)
+{
+	if(prog <= 100)
+	{
+		$("progressLeft").style.width = parseInt(prog*PROGRESS_WIDTH/100,10) + "px";
+		$("progressRight").style.width = parseInt((100 - prog)*PROGRESS_WIDTH/100,10) + "px";
+		$("progress").innerHTML = parseInt(prog,10) + "%";
+	}
+}
+
+/*
+功能描述：初始化搜台界面中的初始化搜台进度条和搜到的节目数量显示
+参数：chType:channelType		//0 digital + analogue,1 digital,2 analogue
+全局变量：
+*/
+function initScanInfo(chType)
+{
+	$("progressLeft").style.width = parseInt(progress*PROGRESS_WIDTH/100,10) + "px";
+	$("progressRight").style.width = parseInt((100 - progress)*PROGRESS_WIDTH/100,10) + "px";
+	$("progressValue").innerHTML = progress + "%";
+	if(chType == 0)
+	{
+		$("scanResult1").innerHTML = chGenreWords[0] + anologScanCount;
+		$("scanResult2").innerHTML = chGenreWords[1] + digitalScanCount;
+	}
+	else if(chType == 1)
+	{
+		$("scanResult1").innerHTML = "";
+		$("scanResult2").innerHTML = chGenreWords[1] + digitalScanCount;
+	}
+	else
+	{
+		$("scanResult1").innerHTML = chGenreWords[0] + anologScanCount;
+		$("scanResult2").innerHTML = "";
+	}
+}
+
+
+/*
+功能描述： 搜台界面初始化
+参数：chType:channelType		//0 digital + analogue,1 digital,2 analogue
+全局变量：
+*/
+function initAutoScan(chType)
+{
+	digitalScanCount = 0;
+	anologScanCount = 0;
+	progress = 0;
+	progressFlag = 0;
+	initScanInfo(chType);
+	
+	channel.stopTv();
+	isSearch = 1;
+	if(chType == 0)//digital + analogue
+	{
+		channel.startScanDtvAuto(scanMode,frequency,freqTo,modulation,symbol,network);
+	}
+	else if(chType == 1)//only digital search
+	{
+		channel.startScanDtvAuto(scanMode,frequency,freqTo,modulation,symbol,network);
+	}
+	else//only analogue search
+	{
+		channel.startScanAtvAuto();
+	}
+}
+
+var scanMode = 2;//0 others full,1 others advanced ;2 others Quick,3 UPC,4 Ziggo
+var frequency = -1;
+var freqTo	= -1;
+var modulation = -1;
+var symbol	= -1;
+var network = -1;
+var datas;
+function init()
+{
+	var str = window.location.search;
+	var s = str.substring(str.indexOf("?") + 1);
+	if(s == "")
+	{
+		document.location.href = "initChDvbcInstScanType.html";
+	}
+	else
+	{
+		datas = s.split("&");
+	}
+	
+	if(datas[0] == "analogue")
+	{
+		atvSearchChannelCount	= 0;
+		channelType = 2;
+	}
+	else
+	{
+		scanMode = parseInt(datas[1],10);
+		frequency = parseInt(datas[2],10);
+		freqTo = parseInt(datas[3],10);
+		modulation = parseInt(datas[4],10);
+		symbol = parseInt(datas[5],10);
+		network = parseInt(datas[6],10);
+		if(datas[0] == "analogue+digital")
+		{
+			dtvSearchChannelCount 	= 0;
+			atvSearchChannelCount	= 0;
+			channelType = 0;
+		}
+		else if(datas[0] == "digital")
+		{
+			dtvSearchChannelCount 	= 0;
+			channelType = 1;
+		}
+	}
+	
+	$('initTitle').innerHTML = initialTitleWords;
+	$('subTitleTag').innerHTML = initStepWords;
+	
+	$('selectTitleTag').innerHTML = remindWords;
+	$("firstButton").innerHTML = stopWords;
+	
+	initAutoScan(channelType);
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	$("firstButton").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			toExit();
+		}
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:720px;" /><img src="../images/Title_bloc-Bg.png" style="width:480px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        <div id="progressForm" style="top:300px;width:600px; left:150px;">
+            <span id="progressValue"></span>
+            <div id="progressBar">
+                <div id="progressLeft" class="progressBarLeft"></div>
+                <div id="progressRight" class="progressBarRight"></div>
+            </div>
+        </div>
+        <span id="scanResult1" class="scanResult" style="top:420px;"></span>
+        <span id="scanResult2" class="scanResult" style="top:500px;"></span>
+        <div id="firstButton" class="initButton" style="top:600px; left:150px;"></div>
+   
+    </div>
+    
+    <img style="position:absolute; left:1090px; top:380px;"  src="../images/Pic-Cable_TV.png"/>
+</body>
+</html>

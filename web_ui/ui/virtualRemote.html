@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>virtualRemote.html</title>
+
+    <meta name="keywords" content="virtualRemote">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+	<script  type="text/javascript" src = "virtualRemote/virtualRemoteForALL.js"></script>
+    <link rel="stylesheet" type="text/css" href="virtualRemote/virtualRemoteForDefault.css"></link>
+    
+    <script  type="text/javascript" src = ""></script>
+    <link rel="stylesheet" type="text/css" href=""></link>
+    <style type="text/css">
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+    </style>
+</head>
+
+
+
+
+
+
+<body >
+  
+  
+<div id = "virtualremoteId" class = "virtualremoteTest">
+ 
+  	<!-- 基础table，是数字和zoom的 -->
+	<table id = "table_basicKey" class = "table_basicKey"  >
+	
+	    <!-- 1、2、3 -->
+		<tr >
+			<td ><span id = "table_basicKey_span_1" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_1')"></span></td>
+			<td ><span id = "table_basicKey_span_2" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_2')"></span></td>
+			<td ><span id = "table_basicKey_span_3" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_3')"></span></td>
+		</tr>
+		
+		<!-- 4、5、6 -->
+		<tr >
+			<td ><span id = "table_basicKey_span_4" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_4')"></span></td>
+			<td ><span id = "table_basicKey_span_5" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_5')"></span></td>
+			<td ><span id = "table_basicKey_span_6" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_6')"></span></td>
+		</tr>
+		
+		<!-- 7、8、9 -->
+		<tr >
+			<td ><span id = "table_basicKey_span_7" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_7')"></span></td>
+			<td ><span id = "table_basicKey_span_8" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_8')"></span></td>
+			<td ><span id = "table_basicKey_span_9" class = "table_basicKey_span"  onmousedown="WhenClick('table_basicKey_span_9')"></span></td>
+		</tr>
+		
+		<!-- Zoom1、0、Zoom+ -->
+		<tr class = "table_baseicKey_tr_zoom">
+			<td ><span id = "table_basicKey_span_zoomLeft"     class = "table_basicKey_span_zoomLeft" onmousedown="WhenClick('table_basicKey_span_zoomLeft')"></span></td>
+			<td ><span id = "table_basicKey_span_0"            class = "table_basicKey_span"      onmousedown="WhenClick('table_basicKey_span_0')"></span></td>
+			<td ><span id = "table_basicKey_span_zoomRight"    class = "table_basicKey_span_zoomRight" onmousedown="WhenClick('table_basicKey_span_zoomRight')"></span></td>
+		</tr>
+		
+		
+	</table>
+	
+	
+	<!-- 是播放按键的 -->
+	<table class = "table_playKey"  >
+		<!-- Play、Stop、Pause -->
+		<tr >
+			<td id = "table_playKey_td_play"  class = "table_playKey_td_play"  onmousedown="WhenClick('table_playKey_td_play')"/> 
+			<td id = "table_playKey_td_stop"  class = "table_playKey_td_stop"  onmousedown="WhenClick('table_playKey_td_stop')"/>  
+			<td id = "table_playKey_td_pause" class = "table_playKey_td_pause" onmousedown="WhenClick('table_playKey_td_pause')"/> 
+		</tr>
+		
+		<!-- FB、 、FF -->
+		<tr >
+			<td id = "table_playKey_td_fb"  class = "table_playKey_td_fb"  /> 
+			<td id = "table_playKey_td_f"><span id = "table_playKey_span_exit"  class = "table_basicKey_span_text" >Exit</span></td>  
+			<td id = "table_playKey_td_ff" class = "table_playKey_td_ff"   /> 
+		</tr>
+		
+		
+	</table>
+	
+	
+	<!-- 是文字相关的 -->
+	<table id = "table_text" class = "table_text"  >
+	
+		<!-- List、0、text -->
+		<tr >
+			<td ><span id = "table_basicKey_span_list"      class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_list')"></span></td>
+			<td ><span id = "table_basicKey_span_0_0"       class = "table_basicKey_span"        onmousedown="WhenClick('table_basicKey_span_0_0')"></span></td>
+			<td ><span id = "table_basicKey_span_text"      class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_dot')"></span></td>
+		</tr>
+		
+		
+		<!-- Guide、Enter、Exit -->
+		<tr >
+			<td ><span id = "table_basicKey_span_guide"      class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_guide')"></span></td>
+			<td ><span id = "table_basicKey_span_enter"      class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_info')"></span></td>
+			<td ><span id = "table_basicKey_span_exit"       class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_ok')"></span></td>
+		</tr>
+		
+		<!-- Menu、Subtitle 、Info -->
+		<tr >
+			<td ><span id = "table_basicKey_span_menu"     	 class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_guide')"></span></td>
+			<td ><span id = "table_basicKey_span_subtitle"   class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_subtitle')"></span></td>
+			<td ><span id = "table_basicKey_span_info"       class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_ok')"></span></td>
+		</tr>
+		
+	</table>
+	
+	
+	<!-- 颜色快捷键的 -->
+	<table class = "table_shortcutKey">
+		
+		<!-- 红色、绿色、黄色、蓝色  -->
+		<tr >
+			
+			<td id = "table_shortcutKey_td_r"  class = "table_shortcutKey_td_r"  onmousedown="WhenClick('table_shortcutKey_td_r')"/>
+			<td id = "table_shortcutKey_td_g"  class = "table_shortcutKey_td_g"  onmousedown="WhenClick('table_shortcutKey_td_g')"/>
+			<td id = "table_shortcutKey_td_y"  class = "table_shortcutKey_td_y"  onmousedown="WhenClick('table_shortcutKey_td_y')"/>
+			<td id = "table_shortcutKey_td_b"  class = "table_shortcutKey_td_b"  onmousedown="WhenClick('table_shortcutKey_td_b')"/>
+		</tr>
+		
+	</table>
+	
+	<!-- PVR的 -->
+	<table id = "table_PVR" class = "table_PVR" >
+		
+		<!-- stop、 PVR、blue -->
+		<tr >
+			<td id = "table_pvr_td_stop" ><span id = "table_basicKey_span_stop"     class = "table_pvr_span"   onmousedown="WhenClick('table_basicKey_span_list')"></span></td>
+			<td id = "table_pvr_td_pvr"  class = "table_playKey_td_pvr"    onmousedown="WhenClick('table_playKey_td_f')"/>  
+			<td id = "table_pvr_td_blue"  class = "table_shortcutKey_td_blue"  onmousedown="WhenClick('table_shortcutKey_td_blue')"/>
+		</tr>
+		
+	</table>
+	
+	
+	<!-- 媒体中心的 -->
+	<table class = "table_Media" >
+		
+		<!-- FB、 、FF -->
+		<tr >
+			<td id = "table_Media_td_fb"    class = "table_Media_td_fb"      onmousedown="WhenClick('table_Media_td_fb')"/> 
+			<td id = "table_Media_td_stop"  class = "table_Media_td_stop"    onmousedown="WhenClick('table_Media_td_stop')"/>  
+			<td id = "table_Media_td_ff"    class = "table_Media_td_ff"      onmousedown="WhenClick('table_Media_td_ff')"/> 
+		</tr>
+		
+	</table>
+	
+	
+	<!-- 是文字相关的 -->
+	<table id = "table_hdmi_text" class = "table_hdmi_text"  >
+	
+		<!-- Info、Menu、Exit -->
+		<tr >
+			<td ><span id = "table_hdmi_span_info"     	class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_guide')">	  </span></td>
+			<td ><span id = "table_hdmi_span_menu"   	class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_subtitle')"> </span></td>
+			<td ><span id = "table_hdmi_span_exit"      class = "table_basicKey_span_text"   onmousedown="WhenClick('table_basicKey_span_ok')">		  </span></td>
+		</tr>
+		
+	</table>
+	
+	
+	
+	
+</div>
+
+<!-- 焦点的DIV，采用绝对布局 -->
+<div id = "focusForRemote" class = "focusForRemote" ></div>
+    
+</body>
+
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

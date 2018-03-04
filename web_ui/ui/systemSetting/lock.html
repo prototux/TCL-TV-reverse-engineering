@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="lock.js"></script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.progressContainer/* 设置 关于列表每行第二项属性*/
+{
+	position:absolute;
+	left:320px;
+	width:320px;
+	height:27px;
+	padding-top:3px;
+	top:14px;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  <div id="thdMenuLeft"></div>
+  <div id="thdMenuRight" >
+        <img id="thdListFocus" src="../images/Focus_Frame/Focus-1.png">
+		<ul>
+        	<li	class="titleName">
+                <span></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div  class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div  class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="parentRatingStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+           	<li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="panelLockStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="instLockStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+           	<li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="maxVolumePgreContainer" class="progressContainer">
+                	<div id="maxVolumePgreLeft" class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="maxVolumePgreRight" class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <lable id="maxVolumeValue" class="listThirdProperty"></lable>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+   		</ul>
+   </div>
+   
+    <!----------------------弹出列表框使用---------------------->
+     <div id="listForm" class="fourthPopUpBox">
+    	<img id="listUpImg" src="../images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+       	  <img id="listFormFocus" class="formFocus" src="../images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+        <img id="listDownImg" src="../images/arrow/D-Focus.png" />
+    </div>
+    <!----------------------change password弹出框使用---------------------->
+    <div id="passForm" class="dialogForm" style=" height:300px;top:300px; display:none;">
+        <span class="dialogTitle" ></span>
+        <div class="dialogInput" style="top:100px;">
+        	<span class="dialogInputName"></span>
+            <div id="newPassContent" class="dialogInputContent" style="background:#333; right:10px;"></div>
+        </div>
+        <div class="dialogInput" style="top:180px;">
+        	<span class="dialogInputName"></span>
+            <div id="confirmPassContent" class="dialogInputContent" style="background:#333; right:10px;"></div>
+        </div>
+        <span id="passRemind" class="dialogRemind" style="top:240px;"></span>
+        <div id="changePassFocus" class="dialogInputFocus"  style="top:160px;"></div>
+   </div>
+   
+   <!----------------------删除所有锁时使用------------------------->
+    <div id="cleanForm" class="dialogForm" style=" height:250px;top:300px; display:none;">
+        <span id="cleanTitle" class="dialogTitle" ></span>
+        <span id="cleanContent" class="dialogContent" style="top:100px;"></span>
+        <div class="dialogButton" style="left:200px;"></div>
+        <div class="dialogButton" style="left:450px;"></div>
+        <div id="cleanFocus" class="dialogButtonFocus" style="left:200px;"></div>
+   </div>
+   
+   <!----------------------进度条调整项--------------------------->
+   <div id="adjustProgressBox">
+       <div id="adjustProgMinorUp">
+        	<span class="adjustProgSpan"></span>
+        </div>
+        <div id="adjustProgMain">
+        	 <img src="../images/SS_1_02_3_Activation.png" style="position:absolute;left:10px;">
+        	 <div class="adjustName" style="width:280px;">
+        	 	<span class="adjustProgSpan" style="width:280px;"></span>
+             </div>
+             <div id="adjustProgBar" >
+                	<div class="progressBarLeft" style="width:250px; background:#00aadd;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:250px;"></div>
+             </div>
+             <div id="adjustProgValue">100</div>
+        </div>
+        <div id="adjustProgMinorDown">
+        	<span class="adjustProgSpan"></span>
+        </div>
+   </div>
+</body>
+</html>

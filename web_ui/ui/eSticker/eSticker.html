@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="eSticker.js"></script> 
+<style>
+
+body
+{
+	background:transparent;
+	width: 1920px;
+	height: 1080px;
+	margin: 0px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+
+.leftDiv
+{
+	position:absolute;
+	width: 248px;
+	height: 1080px;
+	left: 1px;
+	top:0px;
+	-webkit-animation-name: moveLeft;
+	-webkit-animation-duration: 0.8s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+
+}
+@-webkit-keyframes moveLeft
+{
+   0% {top:-1000px;opacity: 0;}
+   80% {opacity: 0.5;}
+   100% {top:0px;opacity: 1;}
+}
+
+.leftmoveDiv
+{
+	position:absolute;
+	left:34px;
+	top:0px;
+	width:180px;
+	height:1080px;
+	transition-duration:0.5s;
+	transition-property:top; 
+}
+
+.leftmoveDiv Div
+{
+	position:absolute;
+	width: 180px;
+	height: 126px;
+	
+}
+
+.iconDiv{}
+
+.iconDiv1
+{
+	top:580px;
+	-webkit-animation-name: moveDiv1;
+	-webkit-animation-duration: 1.2s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+}
+@-webkit-keyframes moveDiv1
+{
+   0% {top:-500px;visibility:hidden;}
+   50% {top:-500px;visibility:visible;}
+   100% {top:580px;visibility:visible;}
+}
+
+
+.iconDiv2
+{
+	top:450px;
+	-webkit-animation-name: moveDiv2;
+	-webkit-animation-duration: 1.3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	transition-duration:0.3s;
+	transition-property:top;
+}
+@-webkit-keyframes moveDiv2
+{
+   0% {top:-630px;visibility:hidden;}
+   50% {top:-630px;visibility:visible;}
+   100% {top:450px;visibility:visible;}
+}
+
+.iconDiv3
+{
+	top:320px;
+	-webkit-animation-name: moveDiv3;
+	-webkit-animation-duration: 1.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+	transition-duration:0.3s;
+	transition-property:top;
+}
+@-webkit-keyframes moveDiv3
+{
+   0% {top:-760px;visibility:hidden;}
+   50% {top:-760px;visibility:visible;}
+   100% {top:320px;visibility:visible;}
+}
+
+.iconDiv4
+{
+	top:190px;
+	-webkit-animation-name: moveDiv4;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+	transition-duration:0.3s;
+	transition-property:top;
+}
+@-webkit-keyframes moveDiv4
+{
+   0% {top:-890px;visibility:hidden;}
+   50% {top:-890px;visibility:visible;}
+   100% {top:190px;visibility:visible;}
+}
+
+.iconDiv5
+{
+	top:60px;
+	-webkit-animation-name: moveDiv5;
+	-webkit-animation-duration: 1.6s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+	transition-duration:0.3s;
+	transition-property:top;
+}
+@-webkit-keyframes moveDiv5
+{
+   0% {top:-1020px;visibility:hidden;}
+   50% {top:-1020px;visibility:visible;}
+   100% {top:60px;visibility:visible;}
+}
+
+.iconDiv6
+{
+	top:-70px;
+	-webkit-animation-name: moveDiv6;
+	-webkit-animation-duration: 1.7s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+	transition-duration:0.3s;
+	transition-property:top;
+}
+@-webkit-keyframes moveDiv6
+{
+   0% {top:-1150px;visibility:hidden;}
+   50% {top:-1150px;visibility:visible;}
+   100% {top:-70px;visibility:visible;}
+}
+
+.iconDiv7
+{
+	top:-200px;
+	opacity: 1;
+	transition-property:top;
+}
+
+
+.iconMoveto1
+{
+	top:580px;
+	-webkit-animation-name: moveto1;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay:0s;
+}
+@-webkit-keyframes moveto1
+{
+   0% {top:450px;}
+   35% {top:585px;}
+   65% {top:575px;}
+   100% {top:580px;}
+}
+
+.iconMoveto2
+{
+	top:450px;
+	-webkit-animation-name: moveto2;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay:0.05s;
+}
+@-webkit-keyframes moveto2
+{
+   0% {top:320px;}
+   35% {top:455px;}
+   65% {top:445px;}
+   100% {top:450px;}
+}
+
+.iconMoveto3
+{
+	top:320px;
+	-webkit-animation-name: moveto3;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay:0.1s;
+}
+@-webkit-keyframes moveto3
+{
+   0% {top:190px;}
+   35% {top:325px;}
+   65% {top:315px;}
+   100% {top:320px;}
+}
+
+.iconMoveto4
+{
+	top:190px;
+	-webkit-animation-name: moveto4;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay:0.15s;
+}
+@-webkit-keyframes moveto4
+{
+   0% {top:60px;}
+   35% {top:195px;}
+   65% {top:185px;}
+   100% {top:190px;}
+}
+
+.iconMoveto5
+{
+	top:60px;
+	-webkit-animation-name: moveto5;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay:0.2s;
+}
+@-webkit-keyframes moveto5
+{
+   0% {top:-70px;}
+   35% {top:65px;}
+   65% {top:55px;}
+   100% {top:60px;}
+}
+
+.iconMoveto6
+{
+	top:-70px;
+	-webkit-animation-name: moveto6;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay:0.25s;
+}
+@-webkit-keyframes moveto6
+{
+   0% {top:-200px;}
+   35% {top:-65px;}
+   65% {top:-75px;}
+   100% {top:-70px;}
+}
+.iconMoveto7
+{
+	top:-200px;
+}
+
+.iconFocus
+{
+	position:absolute;
+	top:855px;
+	-webkit-animation-name: moveFocus;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveFocus
+{
+   0% {top:580px;}
+   35% {top:860px;}
+   65% {top:850px;}
+   100% {top:855px;}
+}
+
+.iconFade
+{
+	top:1155px;
+	-webkit-animation-name: moveFade;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveFade
+{
+   0% {top:855px;opacity:1;}
+   30%{top:950px;opacity:0.5;}
+   100% {top:1155px;opacity:0;}
+}
+
+
+.contentDivHidden
+{
+	position:absolute;
+	width: 1596px;
+	height: 260px;
+	left: 0px;
+	top:0px;
+	visibility:hidden;
+}
+
+.contentDivShow
+{
+	position:absolute;
+	width: 1596px;
+	height: 260px;
+	left: 0px;
+	top:0px;
+	visibility:visible;
+}
+
+.mainDivInit
+{
+	position:absolute;
+	width: 1596px;
+	height: 260px;
+	left: 270px;
+	top:780px;
+	opacity:0;
+}
+
+.mainDivDisplay
+{
+	position:absolute;
+	width: 1596px;
+	height: 260px;
+	left: 270px;
+	top:780px;
+	opacity:1;
+	-webkit-animation-name: moveMainDivDisplay;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveMainDivDisplay
+{
+   0% {opacity:0;width: 1596px;}
+   30%{opacity:0.8;width: 1696px;}
+   100% {opacity:1;width: 1596px;}
+}
+
+.mainDivImgDisplay
+{
+	width: 1596px;
+	height: 260px;
+	opacity:1;
+	-webkit-animation-name: moveMainDivImgDisplay;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveMainDivImgDisplay
+{
+   0% {opacity:0;}
+   30%{opacity:0.8;width: 1610px;height: 260px;}
+   100% {opacity:1;width: 1596px;height: 260px;}
+}
+.mainDivImgDisplayTemp
+{
+	width: 1596px;
+	height: 260px;
+	opacity:1;
+}
+
+.mainDivDisappear
+{
+	position:absolute;
+	width: 1596px;
+	height: 260px;
+	left: 270px;
+	top:780px;
+	opacity:0;
+	visibility: hidden;
+}
+
+.contentTitle
+{
+	position:absolute;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium", Arial, Helvetica, sans-serif;
+	font-size:48px;
+	text-align:left;
+	color:#eeeeee;
+	top:34px;
+	left:285px;
+	width:1300px;
+}
+
+.contentDetail
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:36px;
+	text-align:left;
+	color:#eeeeee;
+	top:92px;
+	left:285px;
+	width:1300px;
+	line-height:48px;
+}
+
+.contentImg
+{
+	position:absolute;
+	left:64px;
+	top:57px;
+}
+
+.leftDivDisappear
+{
+	position:absolute;
+	width: 248px;
+	height: 1080px;
+	left: 1px;
+	top:0px;
+	opacity: 0;
+	-webkit-animation-name: moveLeftDivDisappear;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+
+}
+@-webkit-keyframes moveLeftDivDisappear
+{
+   0% {opacity: 1;}
+   100% {opacity: 0;}
+}
+
+.mainDivDisappear
+{
+	position:absolute;
+	width: 1596px;
+	height: 260px;
+	left: 303px;
+	top:820px;
+	opacity:0;
+	-webkit-animation-name: moveMainDivDisappear;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+}
+@-webkit-keyframes moveMainDivDisappear
+{
+   0% {opacity: 1;}
+   100% {opacity: 0;}
+}
+</style>
+
+
+</head>
+
+<body onload="init()">
+
+<div class = "leftDiv" id = "leftDivId">
+<img src = "../images/esticker/bar_background.png"/>
+
+<div id = "leftmove" class = "leftmoveDiv">
+
+<div class = "iconDiv1" id = "icon1">
+<img id = "iconimg1"/>
+</div>
+
+<div class = "iconDiv2" id = "icon2">
+<img id = "iconimg2"/>
+</div>
+
+<div class = "iconDiv3" id = "icon3">
+<img id = "iconimg3"/>
+</div>
+
+<div class = "iconDiv4" id = "icon4">
+<img id = "iconimg4"/>
+</div>
+
+<div class = "iconDiv5" id = "icon5">
+<img id = "iconimg5"/>
+</div>
+
+<div class = "iconDiv6" id = "icon6">
+<img id = "iconimg6"/>
+</div>
+
+<div class = "iconDiv7" id = "icon7">
+<img id = "iconimg7"/>
+</div>
+
+</div>
+
+</div>
+
+<div id = "mainDiv" class = "mainDivInit">
+<img src = "../images/esticker/bg_info.png" id="mainDivImg"/>
+
+<div id = "contentDiv" class = "contentDivHidden">
+	<img src = "../images/esticker/1-1.png"/ class = "contentImg" id = "contentImgId">
+<span class = "contentTitle" id = "contentTitleSpan"></span>
+<span class = "contentDetail" id = "contentDetailSpan"></span>
+</div>
+
+</div>
+
+</body>
+</html>

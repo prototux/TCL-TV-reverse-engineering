@@ -1,0 +1,1047 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body
+{
+	background:url("images/nScreen_background04.png");
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#midRemind
+{
+	position:absolute;
+	top:490px;
+	width:1920px;
+	height:100px;
+}
+#midRemindWord
+{
+	position:absolute;
+	top:0px;
+	height:100px;
+	right:1000px;
+	font-size:40px;
+	line-height:100px;
+	color:#fff;
+	font-weight:bold;
+}
+#phoneIconImg
+{
+	position:absolute;
+	left:950px;
+	height:100px;
+	width:60px;
+}
+#remindImg
+{
+	position:absolute;
+	left:1050px;
+	top:80px;
+	height:12px;
+	width:50px;
+}
+#buttomRemindWord
+{
+	position:absolute;
+	bottom:20px;
+	width:1920px;
+	text-align:center;
+	font-size:28px;
+	line-height:100px;
+	color:#fff;
+	font-weight:bold;
+}
+#controller
+{
+	position:absolute;
+	width:1920px;
+	height:1080px;
+	display:none;
+}
+#titleSpan
+{
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:70px;
+	line-height:70px;
+	font-size:40px;
+	color:#fff;
+	text-align:center;
+}
+#topLeftSpan
+{
+	position:absolute;
+	top:120px;
+	left:60px;
+	width:800px;
+	overflow:hidden;
+	font-size:36px;
+	color:#fff;
+}
+.controlButton
+{
+	position:absolute;
+	top:270px;
+	width:250px;
+	height:314px;
+}
+.controlButton > img
+{
+	position:absolute;
+	top:50px;
+	left:45px;
+	width:160px;
+	height:160px;
+}
+
+.tv_remote_span
+{
+	position:absolute;
+	top:240px;
+	width:250px;
+	font-size:28px;
+	color:#fff;
+	text-align:center;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+
+/***
+.controlButton > span
+{
+	position:absolute;
+	top:240px;
+	width:304px;
+	font-size:28px;
+	color:#fff;
+	text-align:center;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+**/
+#controlFocus
+{
+	position:absolute;
+	top:270px;
+	width:250px;
+	height:314px;
+}
+#buttomSpan
+{
+	position:absolute;
+	top:800px;
+	left:80px;
+	right:800px;
+	width:950px;
+	height:200px;
+	line-height:80px;
+	font-size:36px;
+	color:#fff;
+	text-align:left;
+}
+#rightFlag
+{
+	position:absolute;
+	left:1200px;
+	top:828px;
+	width:28px;
+	height:42px;
+}
+.TwoDimensional
+{
+	position:absolute;
+	top:750px;
+	width:200px;
+	height:200px;
+}
+.TwoDimensional > img
+{
+	position:absolute;
+	top:10px;
+	left:30px;
+	width:140px;
+	height:140px;
+}
+.TwoDimensional > span
+{
+	position:absolute;
+	top:160px;
+	left:10px;
+	width:180px;
+	font-size:36px;
+	color:#fff;
+	text-align:center;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.ipegImg
+{
+	position:absolute;
+	top:150px;
+	width:300px;
+	height:320px;
+}
+.ipegImg > img
+{
+	position:absolute;
+	top:5px;
+	left:25px;
+	width:250px;
+	height:250px;
+}
+.ipegImg > span
+{
+	position:absolute;
+	top:270px;
+	left:60px;
+	width:180px;
+	font-size:36px;
+	color:#fff;
+	text-align:center;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.phoneImg
+{
+	position:absolute;
+	top:200px;
+}
+	
+.tvImg
+{
+	position:absolute;
+	top:200px;
+	width:500px;
+	height:300px;
+}
+.descriptionContainer
+{
+	position:absolute;
+	left:50px;
+	width:1500px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.descriptionContainer span
+{
+	position:absolute;
+	left:50px;
+	width:1500px;
+	font-weight:bold;
+	line-height:150%;
+	font-size:36px;
+	color:#fff;
+	white-space:pre-wrap;
+	height:400px;
+}
+
+.firstLeftSpan
+{
+	left:0px;
+	width:1570px;
+	font-weight:bold;
+	line-height:150%;
+
+	font-size:36px;
+	color:#fff;
+	white-space:pre-wrap;
+	/*overflow:hidden;white-space:nowrap;text-overflow:ellipsis;*/
+}
+.secondLeftSpan
+{
+	left:30px;
+	width:1470px;
+	/*overflow:hidden;white-space:nowrap;text-overflow:ellipsis;*/
+}
+.thirdLeftSpan
+{
+	left:60px;
+	width:1440px;
+	/*overflow:hidden;white-space:nowrap;text-overflow:ellipsis;*/
+}
+#exit
+{
+	position:absolute;
+	bottom:24px;
+	left:855px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	font-size:36px;
+	color:#fff;
+	text-align:center;
+	background-size:210px 60px;
+	background-image:url(images/nScreen_button01.png);
+}
+#pageSpan
+{
+	position:absolute;
+	top:0px;
+	right:50px;
+	width:100px;
+	height:70px;
+	line-height:70px;
+	font-size:36px;
+	color:#fff;
+	text-align:right;
+}
+#helptopLeftSpan
+{
+	position:absolute;
+	top:120px;
+	left:60px;
+	width:800px;
+	overflow:hidden;
+	font-size:36px;
+	color:#fff;
+}
+#buttomRemindSpan
+{
+	position:absolute;
+	bottom:120px;
+	left:60px;
+	width:1550px;
+	font-size:36px;
+	color:#fff;
+}
+.bottomButton
+{
+	position:absolute;
+	bottom:24px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	font-size:36px;
+	color:#fff;
+	text-align:center;
+	background-size:210px 60px;
+	background-image:url(images/nScreen_button02.png);
+}
+#firstPageImg
+{
+	position:absolute;
+	top:170px;
+	left:288px;
+	width:1100px;
+	height:550px;
+}
+.aboutDescriptionContainer
+{
+	position:absolute;
+	left:50px;
+	width:1820px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	/*add for this page*/
+	top:380px;
+}
+.aboutDescriptionContainer li
+{
+	position:relative;
+	height:80px;
+	line-height:80px;
+	font-size:36px;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+}
+#smartImg
+{
+	position:absolute;
+	width:932px;
+	height:346px;
+	left:372px;
+	top:140px;	
+}
+.smartDescriptionContainer
+{
+	position:absolute;
+	left:50px;
+	width:1500px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	/*add for this page*/
+	top:800px;
+}
+.smartDescriptionContainer li
+{
+	position:relative;
+	font-size:36px;
+	color:#fff;
+	text-align:center;
+}
+
+</style>
+<script type="text/javascript">
+var remoteWords			= top.tvRemoteTitle;
+var waitingBottomReminds= top.tvRemoteDeveloper;
+var deviceWords			= top.tvRemoteDeviceTitle;
+var remoteOptionWords	= [top.remoteOption[0],top.remoteOption[1],"GuideOn",top.remoteOption[2],top.remoteOption[3],top.remoteOption[4]];
+var remotebottomWords	= top.remotebottom;
+var remoteStageWords	= top.remoteStage;
+var sharingRemindWords	= top.sharingReminds;
+var controlRemindWords	= top.controlReminds;
+var helpDeviceWords		= top.helpDeviceWords;
+var helpBottomWords		= top.helpBottom;
+var helpRemindWords		= top.helpReminds;
+var helpButtonWords		= top.helpButtons;
+var aboutRemindWords	= top.aboutReminds;
+var aboutExitWords		= top.aboutExit;
+var smartRemindWords	= top.smartReminds;
+var ipegRemindWords		= [top.nscreenTips,"",top.nscreenContent];
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+var channel = top.g_channel;
+var setting = top.g_setting;
+var focusOn 			= "waiting";//waiting,tvRemote,mediaSharing,remoteControl,help,about,smartConnect
+var list_position_h		= 0;
+var form_position_h		= 0;
+
+var CONTROL_FOCUS_START	= 210;
+var CONTROL_FOCUS_STEP	= 250;
+var waitingImg 			= ["images/nScreen_waiting01.png",
+							"images/nScreen_waiting02.png",
+							"images/nScreen_waiting03.png"];
+var backgroundImg		= ["images/nScreen_background01.png",
+							"images/nScreen_background02.png",
+							"images/nScreen_background03.png"];
+var buttonBackImgs		= ["images/nScreen_button02.png","images/nScreen_button01.png"];
+
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	switch(keycode)
+	{
+		case top.VK_BACK:
+			toBack();
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_MENU:
+		case top.VK_EXIT:
+		case top.VK_POWER:
+			top.keyDownProcess(e);
+			break;
+		default:
+			break;
+	}
+	return ret;
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function notifyProcess(evt)
+{
+	top.systemEventProc(evt);
+}
+
+
+function toBack()
+{
+	if(focusOn == "waiting" || focusOn == "tvRemote")
+	{
+		if(top.g_temp == "homePage")
+		{
+			top.$("main").style.display = "block";
+			top.$("operatePage").src = "";
+			top.main.focus();
+			setFrameFocusPage("main");
+		}
+		else
+		{
+			top.restartTimeout();
+			top.focusToIndexHtml(1);
+		}
+	}
+	else
+	{
+		initTvRemote();
+	}
+}
+
+function doEnter()
+{
+	if(focusOn == "tvRemote")
+	{
+		switch(list_position_h)
+		{
+			case 0:
+				initMediaSharing();
+				break;
+			case 1:
+				initRemoteControl();
+				break;
+			case 2:
+				initIpEpg();
+				break;				
+			case 3:
+				initHelp();
+				break;
+			case 4:
+				initAbout();
+				break;
+			case 5:
+				initSmart();
+				break;
+			
+			default:
+				break;
+		}
+	}
+	else if(focusOn == "help")
+	{
+		switch(form_position_h)
+		{
+			case 0:
+				form_position_h = 1;
+				initSecondPage();
+				break;
+			case 1:
+				form_position_h = 0;
+				initFirstPage();
+				break;
+			default:
+				break;
+		}
+	}
+	else if(focusOn == "about")
+	{
+		top.jumpPage();
+	}
+	
+}
+
+function toLeft()
+{
+	if(focusOn == "tvRemote")
+	{
+		setScroll($("tv_remote"+list_position_h),0);
+		list_position_h--;
+		if(list_position_h < 0)
+		{
+			list_position_h = 5;
+		}
+		$("controlFocus").style.left = CONTROL_FOCUS_START + list_position_h*CONTROL_FOCUS_STEP + "px";
+		setScroll($("tv_remote"+list_position_h),1);
+	}
+}
+
+function toRight()
+{
+	if(focusOn == "tvRemote")
+	{
+		setScroll($("tv_remote"+list_position_h),0);
+		list_position_h++;
+		if(list_position_h > 5)
+		{
+			list_position_h = 0;
+		}
+		$("controlFocus").style.left = CONTROL_FOCUS_START + list_position_h*CONTROL_FOCUS_STEP + "px";
+		setScroll($("tv_remote"+list_position_h),1);
+	}
+}
+function initSmart()
+{
+	$("controller").style.background = "url(" + backgroundImg[0] + ")";
+	$("titleSpan").innerText = remoteOptionWords[5];
+	
+	var list = $("smartDescription").getElementsByTagName("li");
+	for(var i = 0; i < 3; i++)
+	{
+		list[i].innerText = smartRemindWords[i];
+	}
+	
+	$("tv_remote").style.display = "none";
+	$("media_sharing").style.display = "none";
+	$("remote_control").style.display = "none";
+	$("help").style.display = "none";
+	$("about").style.display = "none";
+	$("smart").style.display = "block";
+	$("ipeg").style.display = "none";	
+	focusOn = "smart";
+}
+
+function initAbout()
+{
+	$("controller").style.background = "url(" + backgroundImg[1] + ")";
+	$("titleSpan").innerText = remoteOptionWords[4];
+	
+	$("exit").innerText = aboutExitWords;
+	
+	var aboutDescriptionLiList = $("aboutDescription").getElementsByTagName("li");
+	for(var i = 0; i < 2; i++)
+	{
+		aboutDescriptionLiList[i].innerText = aboutRemindWords[i];
+	}
+	
+	$("tv_remote").style.display = "none";
+	$("media_sharing").style.display = "none";
+	$("remote_control").style.display = "none";
+	$("help").style.display = "none";
+	$("about").style.display = "block";
+	$("smart").style.display = "none";
+	$("ipeg").style.display = "none";	
+	focusOn = "about";
+}
+
+function initFirstPage()
+{
+	$("pageSpan").innerText = "1/2";
+	$("helptopLeftSpan").innerText = helpDeviceWords;
+	$("buttomRemindSpan").innerText = helpBottomWords;
+	$("firstPageImg").style.display = "block";
+	
+	bottomButtonClassList[0].style.color = "#666";
+	bottomButtonClassList[1].style.color = "#fff";
+	bottomButtonClassList[0].style.background = "url(" + buttonBackImgs[0] + ")";
+	bottomButtonClassList[1].style.background = "url(" + buttonBackImgs[1] + ")";
+	$("helpDescription").style.display = "none";
+}
+
+function initSecondPage()
+{
+	$("pageSpan").innerText = "2/2";
+	$("helptopLeftSpan").innerText = "";
+	$("buttomRemindSpan").innerText = "";
+	$("firstPageImg").style.display = "none";
+	
+	var helpDescriptionLiList = $("helpDescription").getElementsByTagName("li");
+	for(var i = 0; i < 5; i++)
+	{
+		helpDescriptionLiList[i].innerText = helpRemindWords[i];
+	}
+	bottomButtonClassList[0].style.color = "#fff";
+	bottomButtonClassList[1].style.color = "#666";
+	bottomButtonClassList[0].style.background = "url(" + buttonBackImgs[1] + ")";
+	bottomButtonClassList[1].style.background = "url(" + buttonBackImgs[0] + ")";
+	$("helpDescription").style.display = "block";
+}
+var bottomButtonClassList;
+function initHelp()
+{
+	$("controller").style.background = "url(" + backgroundImg[1] + ")";
+	$("titleSpan").innerText = remoteOptionWords[3];
+	
+	bottomButtonClassList[0].style.left = "500px";
+	bottomButtonClassList[1].style.right = "500px";
+	bottomButtonClassList[0].innerText = helpButtonWords[0];
+	bottomButtonClassList[1].innerText = helpButtonWords[1];
+	
+	form_position_h = 0;
+	initFirstPage();
+	
+	$("tv_remote").style.display = "none";
+	$("media_sharing").style.display = "none";
+	$("remote_control").style.display = "none";
+	$("help").style.display = "block";
+	$("about").style.display = "none";
+	$("smart").style.display = "none";
+	$("ipeg").style.display = "none";	
+	focusOn = "help";
+}
+
+function initRemoteControl()
+{
+	$("controller").style.background = "url(" + backgroundImg[0] + ")";
+	$("titleSpan").innerHTML = remoteOptionWords[1];
+	var controlDescriptionLiList = $("controlDescription").getElementsByTagName("li");
+	for(var i = 0; i < 3; i++)
+	{
+		controlDescriptionLiList[i].innerText = controlRemindWords[i];
+	}
+	
+	$("phoneImg2").style.left = "300px";
+	//$("tvImg2").style.right = "300px";
+	
+	$("tv_remote").style.display = "none";
+	$("media_sharing").style.display = "none";
+	$("remote_control").style.display = "block";
+	$("help").style.display = "none";
+	$("about").style.display = "none";
+	$("smart").style.display = "none";
+	$("ipeg").style.display = "none";	
+	focusOn = "remoteControl";
+}
+
+function initMediaSharing()
+{
+	$("controller").style.background = "url(" + backgroundImg[0] + ")";
+	$("titleSpan").innerHTML = remoteOptionWords[0];
+	/**
+	var sharingDescriptionLiList = $("sharingDescription").getElementsByTagName("li");
+	for(var i = 0; i < 4; i++)
+	{
+		sharingDescriptionLiList[i].innerText = sharingRemindWords[i];
+	}
+	**/
+	
+	var stepsArray = sharingRemindWords[1].split("\n");
+	var step3Array = sharingRemindWords[2].split("\n");
+	var mediaContent = sharingRemindWords[0];
+	for (var i = 0; i < stepsArray.length; i++) {
+		mediaContent = mediaContent + "<br>"+stepsArray[i];
+	};
+	for (var i = 0; i < step3Array.length; i++) {
+		mediaContent = mediaContent + "<br>&nbsp;&nbsp;"+step3Array[i];
+	};
+	mediaContent = mediaContent +"<br>"+sharingRemindWords[3];
+	$("mediaSpan").innerHTML = mediaContent;
+	setTimeout(function (){
+		if ($("mediaSpan").scrollHeight > 588) {
+			$("mediaSpan").style.fontSize = 31 + "px";
+		}
+	},1);
+	
+
+	$("phoneImg1").style.left = "300px";
+	$("phoneImg1").style.top = "85px";
+	//$("tvImg1").style.right = "300px";
+	//$("tvImg1").style.top = "85px";
+	
+	$("tv_remote").style.display = "none";
+	$("media_sharing").style.display = "block";
+	$("remote_control").style.display = "none";
+	$("help").style.display = "none";
+	$("about").style.display = "none";
+	$("smart").style.display = "none";
+	$("ipeg").style.display = "none";	
+	focusOn = "mediaSharing";
+	
+}
+function initIpEpg()
+{
+	$("controller").style.background = "url(" + backgroundImg[0] + ")";
+	$("titleSpan").innerHTML = "GuideOn";
+	
+	var list = $("ipegDescription").getElementsByTagName("li");
+	for(var i = 0; i < 3; i++)
+	{
+		list[i].innerText = ipegRemindWords[i];
+	}	
+		
+	$("tv_remote").style.display = "none";
+	$("media_sharing").style.display = "none";
+	$("remote_control").style.display = "none";
+	$("help").style.display = "none";
+	$("about").style.display = "none";
+	$("smart").style.display = "none";
+	$("ipeg").style.display = "block";	
+	focusOn = "mediaSharing";
+	
+}
+function initTvRemote()
+{
+	$("controller").style.background = "url(" + backgroundImg[0] + ")";
+	$("titleSpan").innerHTML = remoteWords;
+	$("topLeftSpan").innerHTML = deviceWords + "&nbsp;" +setting.nScreenGetTvName();
+	var tv_remoteSpanList = $("tv_remote").getElementsByTagName("span");
+	for(var i = 0; i < 6; i++)
+	{
+		tv_remoteSpanList[i].innerText = remoteOptionWords[i];
+	}
+	tv_remoteSpanList[6].innerText = remoteStageWords[0];
+	tv_remoteSpanList[7].innerText = remoteStageWords[1];
+	
+	var ipegSpanList = $("ipeg").getElementsByTagName("span");
+	ipegSpanList[0].innerText = remoteStageWords[0];
+	ipegSpanList[1].innerText = remoteStageWords[1];	
+	
+	$("buttomSpan").innerText = remotebottomWords;
+	$("controlFocus").style.left = CONTROL_FOCUS_START + list_position_h*CONTROL_FOCUS_STEP + "px";
+	setTimeout(function (){
+		setScroll($("tv_remote"+list_position_h),1);
+	},1);
+	$("waiting").style.display = "none";
+	$("controller").style.display = "block";
+	$("tv_remote").style.display = "block";
+	$("media_sharing").style.display = "none";
+	$("remote_control").style.display = "none";
+	$("help").style.display = "none";
+	$("about").style.display = "none";
+	$("smart").style.display = "none";
+	$("ipeg").style.display = "none";
+	focusOn = "tvRemote";
+}
+
+function setScroll(spanTag, lastnum)
+{
+	if (lastnum == 1) {
+		if(isOverflowed(spanTag))
+		{
+			resetScrollHtmlInner(spanTag, "-webkit-marquee", "clip");
+		}
+		else
+		{
+			resetScrollHtmlInner(spanTag, "hidden", "ellipsis");
+		}
+	}
+	else if (lastnum == 0) 
+	{
+		resetScrollHtmlInner(spanTag, "hidden", "ellipsis");
+	}
+	
+}
+
+function isOverflowed(element)
+{
+    return element.scrollWidth > element.clientWidth;
+}
+
+function resetScrollHtmlInner(htmlTagList, displayStyle, overFlowStyle)
+{
+	htmlTagList.setAttribute("contentText", htmlTagList.innerHTML);
+	htmlTagList.style.overflowX = displayStyle;
+	htmlTagList.style.textOverflow = overFlowStyle;
+	setTimeout(function(){htmlTagList.innerHTML = htmlTagList.getAttribute("contentText");}, 1);
+}
+
+function doWaiting()
+{
+	$("remindImg").src = waitingImg[1];
+	setTimeout("doWaiting2()",700);
+}
+function doWaiting2()
+{
+	$("remindImg").src = waitingImg[2];
+	setTimeout(function(){$("content").style.backgroundColor = "none";initTvRemote();},500);
+}
+
+var tv_remoteDivList;
+function init()
+{
+	top.stopTimeout();
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	top.g_channel.testLog("in nsreen init");
+	tv_remoteDivList = $("tv_remote").getElementsByTagName("Div");
+	bottomButtonClassList = $("help").getElementsByClassName("bottomButton");
+	$("midRemindWord").innerHTML = remoteWords;
+	$("buttomRemindWord").innerHTML = waitingBottomReminds;
+	$("remindImg").src = waitingImg[0];
+	focusOn = "waiting";
+	setTimeout("doWaiting()",700);
+	addMouseListener()
+}
+
+function uninit()
+{
+	top.$("main").style.display = "block";
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		top.timeoutFuc.osdTimeoutEndFuc();
+		if(evt.button == 2) toBack();//right key
+		top.timeoutFuc.osdTimeoutStartFuc();
+	}
+	
+	for(var i = 0; i < 6; i++)
+	{
+		tv_remoteDivList[i].setAttribute("newAttr",i);
+		tv_remoteDivList[i].onmousedown = function(evt){
+			top.timeoutFuc.osdTimeoutEndFuc();
+			if(evt.button == 0){//left key
+				if(focusOn == "tvRemote")
+				{
+					list_position_h = parseInt(this.getAttribute("newAttr"));
+					$("controlFocus").style.left = CONTROL_FOCUS_START + list_position_h*CONTROL_FOCUS_STEP + "px";
+					doEnter();
+				}
+			}
+			top.timeoutFuc.osdTimeoutStartFuc();
+		}
+	}
+			
+	//help
+	for(var i = 0; i < 2; i++)
+	{
+		bottomButtonClassList[i].setAttribute("newAttr",i);
+		bottomButtonClassList[i].onmousedown = function(evt){
+			top.timeoutFuc.osdTimeoutEndFuc();
+			if(evt.button == 0){//left key
+				if(focusOn == "help")
+				{
+					if(form_position_h != parseInt(this.getAttribute("newAttr")))
+					{
+						doEnter();
+					}
+				}
+			}
+			top.timeoutFuc.osdTimeoutStartFuc();
+		}
+	}
+	
+	//about
+	$("exit").onmousedown = function(evt){
+		top.timeoutFuc.osdTimeoutEndFuc();
+		if(evt.button == 0){//left key
+			if(focusOn == "about")
+			{
+				doEnter();
+			}
+		}
+		top.timeoutFuc.osdTimeoutStartFuc();
+	}
+}
+
+
+</script>
+</head>
+
+<body onLoad="init()" id="content" onunload="uninit()">
+	<div id="waiting">
+        <div id="midRemind">
+            <span id="midRemindWord"></span>
+            <img id="phoneIconImg" src="images/nScreen_incon00.png" />
+            <img id="remindImg" src="images/nScreen_waiting01.png" />
+        </div>
+        <span id="buttomRemindWord"></span>
+    </div>
+    
+    
+    <div id="controller">
+    	<label id="titleSpan"></label>
+        
+        <!--tv remote-->
+        <div id="tv_remote" style="display:none;">
+            <label id="topLeftSpan"></label>
+            
+            <img id="controlFocus" src="images/nScreen_focus.png" />
+            <div class="controlButton" style="left:210px;">
+                <img src="images/nScreen_icon05.png">
+                <span id = "tv_remote0" class = "tv_remote_span"></span>
+            </div>
+            <div class="controlButton" style="left:460px;">
+                <img src="images/nScreen_icon04.png">
+                <span id = "tv_remote1" class = "tv_remote_span"></span>
+            </div>
+            <div class="controlButton" style="left:710px;">
+                <img src="images/nScreen_icon_guideon.png">
+                <span id = "tv_remote2" class = "tv_remote_span"></span>
+            </div>             
+            <div class="controlButton" style="left:960px;">
+                <img src="images/nScreen_icon03.png">
+                <span id = "tv_remote3" class = "tv_remote_span"></span>
+            </div>
+            <div class="controlButton" style="left:1210px;">
+                <img src="images/nScreen_icon02.png">
+                <span id = "tv_remote4" class = "tv_remote_span"></span>
+            </div>
+            <div class="controlButton" style="left:1460px;">
+                <img src="images/nScreen_icon01.png">
+                <span id = "tv_remote5" class = "tv_remote_span"></span>
+            </div>            
+            <label id="buttomSpan"></label>
+            <img id="rightFlag" src="images/nScreen_icon06.png" />
+            <div class="TwoDimensional" style=" left:1300px;">
+                <img src="images/nScreen_andriod_2D-code.png">
+                <span ></span>
+            </div>
+            <div class="TwoDimensional" style=" left:1500px;">
+                <img src="images/nScreen_IOS_2D-code.png">
+                <span ></span>
+            </div>
+        </div>
+        
+        <div id="media_sharing" style="display:none;">
+            <img id="phoneImg1" class="phoneImg" src="images/nScreen_icon08.png">
+           <!-- <img id="tvImg1" class="tvImg" src="images/nScreen_icon07.png">-->
+            
+            <div id="sharingDescription" class="descriptionContainer" style="top:385px;">
+                <span id = "mediaSpan"></span> 
+            </div>
+        </div> 
+               
+        <div id="remote_control" style="display:none;">
+            <img id="phoneImg2" class="phoneImg" src="images/nScreen_icon10.png"  />
+            <!--<img id="tvImg2" class="tvImg" src="images/nScreen_icon07.png"  />-->
+            
+            <ul id="controlDescription" class="descriptionContainer" style="top:500px;">
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+            </ul>
+        </div>
+        
+        <div id="help" style="display:none;">
+            <label id="pageSpan"></label>
+            
+            <label id="helptopLeftSpan"></label>
+            <img id="firstPageImg" src="images/nScreen_icon09.png" />
+            <label id="buttomRemindSpan"></label>
+            
+            
+            <ul id="helpDescription" class="descriptionContainer" style="top:120px;">
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+            </ul>
+            
+            <div class="bottomButton"></div>
+            <div class="bottomButton"></div>
+        </div>
+        
+        <div id="about" style="display:none;">
+             <ul id="aboutDescription" class="aboutDescriptionContainer">
+                <li></li>
+                <li></li>
+            </ul>
+            <div id="exit"></div>
+        </div>
+       
+       	 <div id="smart" style="display:none;" >
+            <img id="smartImg" src="images/nScreen_icon11.png" />
+            
+            <ul id="smartDescription" class="descriptionContainer" style="top:500px;">
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+            </ul>
+        </div>
+       	 <div id="ipeg" style="display:none;" >
+            <div class="ipegImg" style=" left:300px;">
+                <img src="images/ipepg_andriod_2D-code.png">
+                <span ></span>
+            </div>
+            <div class="ipegImg" style=" right:300px;">
+                <img src="images/ipepg_IOS_2D-code.png">
+                <span ></span>
+            </div>                        
+            <ul id="ipegDescription" class="descriptionContainer" style="top:500px;">
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+                <li class="firstLeftSpan"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+          

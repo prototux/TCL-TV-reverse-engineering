@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<script type="text/javascript" src="initWirelessAutoPBC.js"></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#wirelessAutoPIN
+{	
+    position:absolute;
+	left:100px;/*650px;*/
+	width:700px;
+	height:500px;
+	top:100px; 
+}
+#wirelessAutoPBC
+{	
+    position:absolute;
+	left:100px;/*650px;*/
+	width:1000px;
+	height:500px;
+	top:150px; 
+}
+.autoTitle/*设置密码对话框的title*/
+{
+	position:absolute;
+	width:630px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+	border-bottom:thin solid #FFF;
+	background:#000;
+}
+#PINButtonFocus/*密码框button 焦点*/
+{
+	position: absolute;
+	width: 170px;
+	height: 70px;
+	top:300px;
+	left: 240px;
+	display:block;
+}
+#PBCButtonFocus/*密码框button 焦点*/
+{
+	position: absolute;
+	width: 170px;
+	height: 70px;
+	top:300px;
+	left: 440px;
+	display:block;
+}
+#PINbuttonList
+{
+	position:absolute;
+	top:350px;
+	height:50px;
+	width:700px;
+}
+#PBCbuttonList
+{
+	position:absolute;
+	top:350px;
+	height:50px;
+	width:700px;
+}
+.SSIDButton/*对话框中的按钮样式*/
+{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	top:10px;
+	padding-top: 7px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	background: #333;
+	border-radius: 10px;
+}
+.autoRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#b0b0b0;
+	font-size: 28px;
+	text-align: left;
+	left: 20px;
+	width: 1000px;
+	display:block;
+}
+</style>
+</head>
+
+<body onload="init()">
+ 	<span id="initTitle">initial setup</span>
+<!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+ 	<div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepBigImg" src="../images/Step_big-02.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:800px;" /><img src="../images/Title_bloc-Bg.png" style="width:400px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <!-----------------------主页面内容---------------------------------->
+        <!-------------------------------------PBC操作框--------------------------------------------->
+       <div id="wirelessAutoPBC" style="left:150px; height:400px;">
+            <div id="PBCContent" class="autoRemind" style=" text-align:center; top:100px;">
+            </div>
+            <div id="PBCTime" class="autoRemind" style=" text-align:center; top:220px;">
+            </div>
+       </div>
+        
+        
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:1100px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

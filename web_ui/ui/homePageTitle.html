@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="homePageIndex.css">
+<title>home page main</title>
+<script type="text/javascript" src="homePageTitle.js"></script>
+<style>
+body
+{
+    width: 1920px;
+    height: 180px;
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()" onfocus="pageOnFocus()" onblur="pageLoseFocus()">
+    <div id="infoStatus"><!---用来显示一些消息 网络连接状态 天气等信息-->
+        <img id="usbImg" src="images/homePageNetwork/USB.png" />
+        <img id="networkImg" src="images/homePageNetwork/wifi-5.png" />
+        <div id="Date"></div>
+        <div id="Time"></div>
+    </div>
+	<div id="title"><!--用来显示标题栏 当前显示页面标题凸显-->
+        <div id="mainFocus" style="position:absolute;left:-60px;top:-60px;width:360px;height:100px;background:url(images/homePageNetwork/ICON_Focus.png);text-align:center;padding:40px 0px; line-height:100px;">
+            <span id="mainTitle"></span>
+        </div>
+        <img src="images/homePageNetwork/ICON-TV_AU.png"  style="position:absolute; left:65px; top:10px;display:none"/>
+        <img src="images/homePageNetwork/ICON-APP_AU.png"  style="position:absolute; left:310px; top:20px; "/>
+        <img src="images/homePageNetwork/LINE-PURPLE.png" style="position:absolute; top:98px;" />
+        <img src="images/homePageNetwork/LINE-YELLOW.png" style="position:absolute; top:98px;display:none;" />
+        <img src="images/homePageNetwork/Line-Purple_Slider.png" style="position:absolute; top:90px; left:125px;width:44px;height:8px;" />
+        <img src="images/homePageNetwork/Line-Yellow_Slider.png" style="position:absolute; top:90px; left:240px;width:44px;height:8px;display:none;" />
+    </div>
+</body>
+</html>
+

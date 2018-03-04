@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<link rel="stylesheet" type="text/css" href="all.css">
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+
+
+.infoProgress
+{
+	position:absolute;
+	left:350px;
+	width:200px;
+	height:10px;
+	margin:20px 0px 20px 0px;
+	border-radius:5px;
+	background-color:#fff;
+}
+.progressImg
+{
+	position:absolute;
+	left:0px;
+	width:0px;
+	height:100%;
+	background:#00aadd;
+}
+.progressValue
+{
+	position:absolute;
+	left:600px;
+	height:50px;
+	line-height:50px;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFF;
+}
+
+#smallPopWin
+{
+	position:absolute;
+	top:240px;
+	left:412px;
+	width:600px;
+	height:600px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:#000;
+	border:4px solid #1b1b1b;
+	display:block;
+}
+.dialogForm ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.dialogForm ul > li
+{
+	position:relative;
+	height:50px;
+	width:100%;
+}
+.infoName
+{
+	position:absolute;
+	left:50px;
+	width:300px;
+	height:50px;
+	line-height:50px;;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFF;
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis; 
+}
+.infoValue
+{
+	position:absolute;
+	left:350px;
+	width:400px;
+	height:50px;
+	line-height:50px;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFF;
+	text-align:center;
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.infoRowForm
+{
+	position:relative;
+	height:50px;
+	width:100%;
+}
+</style>
+<script type="text/javascript" src="channelSet.js"></script>
+</head>
+
+<body onload="init()">
+    <div id="sndMenuLeft" ></div>
+    <div id="sndMenuRight">
+        <div id="listUpRemind">
+            <div class="listSecondProperty"></div>
+        </div>
+        <ul style="top:80px; position:absolute">
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div  id="timeshiftEnableStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+            </li> 
+            <li class="list" id="channelListType" >
+                <span class="listFirstProperty"></span>
+                <div id="chListTypeStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+        	</li>    
+    	</ul>
+    	<img id="listFocus" src="images/Focus_Frame/Focus-1.png">
+    </div>
+   
+   	<!----------------------弹出列表框使用---------------------->
+    <div id="listForm" class="fourthPopUpBox">
+    	<img id="listUpImg" src="images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+       	  <img id="listFormFocus" class="formFocus" src="images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+        <img id="listDownImg" src="images/arrow/D-Focus.png" />
+     </div>
+     
+    <!----------------------password弹出框使用---------------------->
+    <div id="passForm" class="dialogForm" style=" height:300px;top:300px; display:none;">
+        <span class="dialogTitle" ></span>
+        <div class="dialogInput" style="top:120px;">
+            <span class="dialogInputName"></span>
+            <div id="passContent" class="dialogInputContent" style="background:#333;"></div>
+        </div>
+         <div class="dialogInputFocus"  style="top:120px;"></div>
+        <span id="passRemind" class="dialogRemind" style="top:190px;"></span>
+   </div>
+    
+    <div id="diagnosticsForm" class="dialogForm" style="height:520px; top:340px; display:none;">
+    	<ul>
+        	<li	id="diagnosticsTitle" class="titleName" style="width:800px;"></li>
+            <li>
+                <label class="infoName"></label>
+                <div class="infoProgress"><div id="strength" class="progressImg"></div></div>
+                <span class="progressValue"></span>
+            </li>
+            <li>
+                <label class="infoName"></label>
+                <div class="infoProgress"><div id="quality" class="progressImg"></div></div>
+                <span class="progressValue"></span>
+            </li>
+            <li>
+                <label class="infoName"></label>
+                <span class="infoValue"></span>
+            </li>
+            <li>
+                <label class="infoName"></label>
+                <span class="infoValue"></span>
+            </li>
+            <li>
+                <label class="infoName"></label>
+                <span class="infoValue"></span>
+            </li>
+            <li>
+                <label class="infoName"></label>
+                <span class="infoValue"></span>
+            </li>
+             <li id="tManuChIdOption">
+                <label class="infoName"></label>
+                <span class="infoValue"></span>
+            </li>
+            <label class="dialogButton" style="left:324px;"></label>
+            <div class="dialogButtonFocus" style="left:324px;"></div>
+        </ul>
+    </div>
+       <!------------------------说明提示框---------------------------------------->
+       <div id="promptWin" style="display:none;">
+            <img class="promptWinLeft" />
+            <div class="promptWinRight">
+                <span id="promptContent">
+                </span>
+            </div>
+       </div>
+</body>
+</html>

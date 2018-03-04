@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="autoSearch.js"></script>
+<link rel="stylesheet" type="text/css" href="../all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.dialogOption
+{
+	position:absolute;
+	width:500px; 
+	left:50px;
+	height:27px;
+	font-size:27px;
+	text-align:center;
+	padding:4px 0px 4px 0px;
+	background:#999;
+	border:thin solid #FFF;
+}
+.dialogOptions
+{
+	position:absolute;
+	top:80px;
+	width:100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.dialogOptions li
+{
+	position:relative;
+	width:100%;
+	height:40px;
+	padding:10px 0px 10px 0px;
+}
+.searchButton/*按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+
+#operatorForm
+{
+	height:300px;
+	display:none;
+}
+#chTypeForm
+{
+	height:300px;
+	display:none;
+}
+#scanForm
+{
+	display:none;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   <!--**********************auto search operater使用*************************-->
+   <div id="operatorForm" class="dialogForm" >
+        <span id="operatorTitle" class="dialogTitle" ></span>
+        <ul class="dialogEnum">
+        	<li></li>
+            <li></li>
+            <li></li>
+        </ul>
+      	<div id="operatorFocus" class="dialogInputFocus"></div>
+   </div>
+
+   
+   <!--*************************auto search ch type使用*************************-->
+   <div id="chTypeForm" class="dialogForm">
+        <span id="chTypeTitle" class="dialogTitle" ></span>
+        <ul class="dialogEnum">
+        	<li></li>
+            <li></li>
+            <li></li>
+        </ul>
+      	<div id="chTypeFocus" class="dialogInputFocus" ></div>
+   </div>
+   
+   <!--*************************auto search form使用*************************-->
+   <div id="scanForm" class="dialogForm">
+        <span id="scanTitle" class="dialogTitle" ></span>
+        
+        <ul id="scanOptions" class="dialogOptions" style="display:none">
+        	<li>
+                <div id="autoScanMode" class="dialogInput">
+                    <lable id="autoModeTitle" class="dialogInputName"></lable>
+                    <span id="autoModeContent" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <lable id="autoFreqTitle" class="dialogInputName"></lable>
+					
+                    <span id="autoFreqContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span>.<span></span><span></span><span></span>
+                    </span>
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <lable id="autoMoTitle" class="dialogInputName"></lable>
+                    <span id="autoMoContent" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <lable id="autoSybTitle" class="dialogInputName"></lable>
+                    <span id="autoSybContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span><span></span>
+                    </span>
+                </div>
+            </li>
+           	<li>
+            	<div class="dialogInput">
+                    <lable id="autoNetTitle" class="dialogInputName"></lable>
+                    <span id="autoNetContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </span>
+                </div>
+            </li>
+            <li>
+            	<hr  class="dialogLine" style="top:0px;"/>
+            </li>
+            <div id="scanInputFocus" class="dialogInputFocus"  style="top:10px;"></div>
+        </ul>
+        
+         <div id="scanningInfo" style=" position:absolute; width:100%; height:240px; bottom:0px;">
+            <div id="scanProgress" class="dialogScanProgressContainer">
+                <div id="progressLeft" class="progressBarLeft" style="width:300px;"></div>
+                <div class="progressBarCenter"></div>
+                <div id="progressRight" class="progressBarRight"></div>
+            </div>
+            <span id="progressValue" class="dialogScanProgressValue"></span>
+            
+            <span id="scanStatus" class="dialogScanPrompt" style="top:60px;"></span>
+            <span id="scanResult1" class="dialogScanPrompt" style="top:90px;"></span>
+            <span id="scanResult2" class="dialogScanPrompt" style="top:120px;"></span>
+            
+            <span id="search" class="dialogButton" style="left:324px;"></span>
+        </div>
+        
+   </div>
+   
+</body>
+</html>

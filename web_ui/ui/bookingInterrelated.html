@@ -1,0 +1,3145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#recForm
+{
+	position:absolute;
+	opacity:0.9;
+	left:460px;
+	top:210px;
+	width:1000px; 
+	height:660px;
+	background-color:#000;
+	border:4px solid #1b1b1b;/*设置边框颜色;*/
+	display:none;
+}
+.frameTitle
+{
+	position:absolute;
+	left:0px;
+	width:800px;
+	height:60px;
+	line-height:60px;
+	color:#FFF;
+	font-size:28px;
+	font-weight:bold;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#recUl
+{
+	position:absolute;
+	left:100px;
+	top:0px;
+	width:800px; 
+	height:660px;
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+}
+#recForm li
+{
+	position:relative;
+	left:0px;
+	width:100%;
+	height:60px;
+}
+#recordFocus
+{
+	position:absolute;
+	left:100px;
+	width:800px; 
+	height:60px;
+	pointer-events:none;
+}
+#leftRightArrow
+{
+	position:absolute; 
+	width:800px;
+	top:60px;
+	left:100px;
+}
+#operateFocus
+{
+	position:absolute;
+	top:540px;
+	width:200px;
+	height:60px;
+	pointer-events:none;
+}
+#scheduleFocus
+{
+	position:absolute;
+	width:1820px; 
+	height:40px;
+	display:none;
+}
+.smallImg
+{
+	position:absolute;
+	width:40px;
+	height:40px;
+	top:10px;
+}
+.recordName
+{
+	position:absolute;
+	top:0px;
+	left:60px;
+	height:60px;
+	width:275px;
+	line-height:60px;
+	color:#FFF;
+	font-size:28px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.recordValue
+{
+	position:absolute;
+	left:340px;
+	height:60px;
+	width:460px;
+	line-height:60px;
+	color:#FFF;
+	font-size:28px;
+	margin-top:0px;
+	text-align:center;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.recordButton
+{
+	position:absolute; 
+	top:540px;
+	height:60px;
+	line-height:60px;
+	width:200px;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	background-image:url(images/Input_box-1-Bg.png);
+	background-size:200px 60px;
+}
+.barImg
+{
+	position:absolute;
+	top:10px;
+	width:100px;
+	height:40px;
+}
+#warning
+{
+	position:absolute;
+	left:660px;
+	top:460px;
+	width:600px; 
+	height:160px; 
+	line-height:160px;
+	opacity:0.9;
+	background-color:#000;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	color:#FFF;
+	font-size:30px;
+	text-align:center;
+	z-index:1;
+}
+
+#scheForm
+{
+	position:absolute;
+	left:50px;
+	top:340px;
+	opacity:0.9;
+	height:420px; 
+	width:1820px;
+	background-color:#000;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	display:none;
+}
+#noSchedule
+{
+	position:absolute;
+	width:100%;
+	top:200px;
+	font-size:30px;
+	text-align:center;
+	color:#fff;
+	display:none;	
+}
+.scheList
+{
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:40px;
+}
+
+.programTitleListOther
+{
+	position:absolute;
+	height:40px;
+	width:260px;
+	line-height:40px;
+	color:#FFF;
+	font-size:24px;
+	text-align:center;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+	
+}
+.scheduleValue
+{
+	position:absolute;
+	height:60px;
+	line-height:60px;
+	color:#FFF;
+	font-size:28px;
+	width:300px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.weekdayCheck
+{
+	position:absolute;
+	height:60px;
+	width:190px;
+}
+.weekdayCheck img
+{
+	position:absolute;
+	left:10px;
+	top:14px;
+	width:30px;
+	height:30px;
+}
+.weekdayCheck span
+{
+	position:absolute;
+	left:44px;
+	height:60px;
+	width:146px;
+	line-height:60px;
+	color:#fff;
+	font-size:28px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+
+.dialogForm/*设置对话框主体框架，新的对话框只需要调整高度和top值*/
+{
+	position:absolute;
+	left:560px;/*650px;*/ 
+	width:800px;/*600px;*/
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.92;
+	background:#000;
+	overflow:hidden;
+}
+.dialogTitle/*设置对话框的title*/
+{
+	position: absolute;
+	width: 750px;/*550px;*/
+	height: 50px;
+	line-height: 50px;
+	left:25px;
+	font-size: 30px;
+	color: #FFF;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+.dialogContent/*普通对话框中提示*/
+{
+	position:absolute;
+	width:700px;/*500px;*/ 
+	left:50px;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFFFFF;
+	text-align:center;
+}
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	bottom:30px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+	overflow:hidden;
+}
+.dialogButtonImgFocus
+{
+	position:absolute;
+	bottom:20px; 
+	height:60px; 
+	width:170px;
+	pointer-events:none;
+}
+.programTitleList
+{
+	position:absolute;
+	height:40px;
+	width:260px;
+	line-height:40px;
+	color:#FFF;
+	font-size:24px;
+	text-align:center;
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+</style>
+<script type="text/javascript">
+top.keySetForUI(1);
+document.onnotify = notifyProcess;
+var channel = top.g_channel;
+var setting = top.g_setting;
+
+var program_guide_record_main	= top.chEpgBooking;
+var selectW						= top.initialHotkeys[1];
+var repeat_mode					= top.dateTimer;
+var schedule_mode 				= top.bookingModes;
+var record_warning 				= top.chEpgBookRemind;
+var program_guide_schedule_mian	= top.chSchePara;
+var weekdayWords				= top.weekday;
+var tipsRemindWords				= top.scheduleDeleteReminds;
+var cancelOk					= [top.okCancel[1],top.okCancel[0]];
+var noScheduleRemindWords		= top.scheduleNoLists;
+
+var focusOn 					= "addBooking";								//addBooking,scheduleList,errorRemind,scheduleEdit,deleteCheck
+var booking_interrelated 		= top.g_booking_interrelated;
+var num_position				= 0;								//焦点数字位置
+var record_position 			= 0;								//在record弹出框或者是预约修改编辑框中用来定位焦点
+var date_only					= [0,0,0,0,0,0,0,0];                //保存日期，每一位保存一个个位数字
+var start_time_only				= [0,0,0,0];						//保存节目预定开始时间，每一位保存一个
+var end_time_only				= [0,0,0,0];						//保存节目预定结束时间，每一位保存一个
+var schedule_add_replace_position = 0;								//预约编辑时时使用
+var list_position_h				= 0;								//主页面焦点按钮位置
+var form_position_h				= 0;								//弹出框焦点位置。
+var totalSchedule				= 0;								//计划总数,真实总数需要统计
+var difference					= 0;								//保存差值
+var isChangeScheduleInfo 		= 0;								//添加schedule时信息是否更改的标志，是为1，否为0，channelnum和时间日期等信息
+var scheduleId 					= 0;								//在编辑预约节目时使用
+var scheduleDuration ;												//在编辑预约节目时使用
+var repeat						= 0;								//重复模式
+var scheduleMode 				= 0;								//schedule mode，0 record，1 reminder
+var scheduleList;
+var record_position 			= 0;								//在record弹出框或者是预约修改编辑框中用来定位焦点
+var weekday_position 			= 0;								//weekday 的焦点位置
+var weekdayArray				= new Array(7);						//表示weekly周一到周日的选择情况
+
+var RECORD_FOCUS_START 			= 60;
+var RECORD_FOCUS_STEP			= 60;
+var RECORD_ENTER_LEFT_START		= 400;
+var RECORD_ENTER_LEFT_STEP		= 250;
+var SCHEDULE_START				= 80;
+var SCHEDULE_STEP				= 40;
+var WEEKDAY_STAR				= 100;
+var WEEKDAY_STEP				= 200;
+var spanScollList               ;
+document.onkeydown = keyproc;
+function timeoutInit()
+{
+	document.onkeydown = top.timeoutMyFuc;
+	top.timeoutFuc.osdTimeoutStartFuc();
+    top.timeoutFuc.keydownFuc = keyproc;
+}
+
+function keyproc(e)
+{
+	top.Log("key in bookingInterrelated");
+	var ret = true;
+	var keycode = e.which;
+
+	switch(keycode)
+	{
+	
+		case top.VK_VIRTUAL_REMOTE:
+			
+			//显示或者不显示--lqt---根据不同的focusOn选择不同的虚拟遥控器
+			if(top.virtualRemoteState == 0)
+			{
+				if(focusOn == "scheduleList")
+				{
+					top.document.getElementById("virtualRemote").contentWindow.showVirtualRemote("CH");
+				}
+				else if(focusOn == "addBooking"||focusOn == "scheduleEdit")
+				{
+					top.document.getElementById("virtualRemote").contentWindow.showVirtualRemote("TimeBox");
+				}
+				else if(focusOn == "deleteCheck")
+				{
+				}
+			}
+			else
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+			break;
+			//lqt--虚拟遥控器的上键
+		case top.VK_VIRTUAL_KEYBOARD_UP:
+		{
+			top.document.getElementById("virtualRemote").contentWindow.keyDownForUp();
+			
+			break;
+		}
+		//lqt--虚拟遥控器的下键
+		case top.VK_VIRTUAL_KEYBOARD_DOWN:
+		{
+			top.document.getElementById("virtualRemote").contentWindow.keyDownForDown();
+			
+			break;
+		}
+		//lqt--虚拟遥控器的左键
+		case top.VK_VIRTUAL_KEYBOARD_LEFT:
+		{
+			top.document.getElementById("virtualRemote").contentWindow.keyDownForLeft();
+			
+			break;
+		}
+		//lqt--虚拟遥控器的右键
+		case top.VK_VIRTUAL_KEYBOARD_RIGHT:
+		{
+			top.document.getElementById("virtualRemote").contentWindow.keyDownForRight(); 
+			
+			break;
+		}
+		//lqt--鼠标的左键
+		case top.VK_VIRTUAL_MOUSE_OK:
+		{
+			var clientX = top.g_setting.getProperty("memory.app.ui.virtualRemote.clientX", "0");
+			var clientY = top.g_setting.getProperty("memory.app.ui.virtualRemote.clientY", "0");
+			console.log("lqt---bookingInterrelated.html---clientX: "+clientX);
+			console.log("lqt---bookingInterrelated.html---clientY: "+clientY);
+			top.document.getElementById("virtualRemote").contentWindow.keyDownMouseClick(clientX,clientY); 
+			
+			break;
+		}
+		//lqt--虚拟遥控器的ok键
+		case top.VK_VIRTUAL_KEYBOARD_OK:
+		{
+			top.document.getElementById("virtualRemote").contentWindow.keyDownForOK(); 
+			
+			break;
+		}
+		//lqt--虚拟遥控器的返回键
+		case top.VK_VIRTUAL_KEYBOARD_BACK:
+		{
+			//如果是显示的话，就隐藏
+			if(top.virtualRemoteState == 1)
+			{
+				top.g_setting.setProperty("memory.app.ui.virtualRemote.state","off");
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+			
+			break;
+		}
+	
+	
+	
+		case top.VK_GREEN:
+			if(focusOn == "scheduleList")
+			{
+				scheduleDeleteCheck();
+			}
+			break;
+		case top.VK_YELLOW://schedule list
+			if(focusOn == "scheduleList")
+			{
+				toBack();
+			}
+			break;
+		case top.VK_RED://add shcedule in schedule list
+			if(focusOn == "addBooking")
+			{
+				toBack();
+			}
+			else if(focusOn == "scheduleList")
+			{
+				if(top.g_temp == "EPG")
+				{
+					//do nothing
+				}
+				else
+				{
+					booking_interrelated.bookingChannel = channel.getCurrentChannelInfo();
+					var programList  = booking_interrelated.bookingChannel.getProgramPlayList();
+					//预定节目从下一个节目开始
+					//top.Log("programList[1].id = " + programList[1].id);
+					if(programList[1].id == -1)//没有next事件
+					{
+						booking_interrelated.isHaveProgramMoreInfo = 0;//表示没有可以预定的事件
+					}
+					else
+					{
+						booking_interrelated.isHaveProgramMoreInfo = 1;
+						booking_interrelated.bookingEvent = programList[1];
+						//top.Log("Event = " + booking_interrelated.bookingEvent + " Event.id = " + booking_interrelated.bookingEvent.id + " Event.name = " + booking_interrelated.bookingEvent.name + " Event.date = " + booking_interrelated.bookingEvent.date);	
+					}
+				}
+				initRecord();
+			}
+			break;
+		case top.VK_BACK:
+			toBack();
+			break;
+		case top.VK_LEFT:
+			// left
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_UP:
+			// up
+			toUp();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			// right
+			toRight();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			//down
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_0://0
+		case top.VK_1://1
+		case top.VK_2://2
+		case top.VK_3:
+		case top.VK_4:
+		case top.VK_5:
+		case top.VK_6:
+		case top.VK_7:
+		case top.VK_8:
+		case top.VK_9://9
+			if(focusOn == "addBooking" || focusOn == "scheduleEdit")
+			{
+				if(record_position == 1)
+				{
+					doNumberInDateTime(keycode - 48,startDateContentSpanList,date_only,8,"-");
+				}
+				else if(record_position == 2)
+				{
+					doNumberInDateTime(keycode - 48,startTimeContentSpanList,start_time_only,4,":");
+				}
+				else if(record_position == 3)
+				{
+					doNumberInDateTime(keycode - 48,endTimeContentSpanList,end_time_only,4,":");
+				}
+			}
+			break;
+		case top.VK_MENU:
+		case top.VK_EXIT:
+			top.$("operatePage").src = "";
+			parent.frames["main"].window.keyproc(e);
+			top.$("main").style.display = "block";
+			top.setFrameFocusPage("main");
+			top.main.focus();
+			break;
+		default:
+			parent.frames["main"].window.keyproc(e);
+			break;
+	}
+	return ret;
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+function displayFocusBox(flag){}
+function notifyProcess(evt)
+{
+	if(top.g_temp == "EPG")
+	{
+		parent.frames["main"].window.notifyProcess(evt);
+	}
+	else
+	{
+		top.systemEventProc(evt);
+	}
+}
+
+
+function toBack()
+{
+	if((focusOn == "addBooking" && startFocusOn != "schedule") || focusOn == "scheduleList")
+	{
+		top.$("operatePage").src = "";
+		parent.frames["main"].window.backFromBookingOrSchedule();
+		parent.frames["main"].window.timeoutInit();
+		top.$("main").style.display = "block";
+		top.main.focus();
+		top.setFrameFocusPage("main");
+	}
+	else if((focusOn == "addBooking" && startFocusOn == "schedule") || focusOn == "scheduleEdit")
+	{
+		for(var i = 0; i < 3; i++)
+		{
+			startDateContentSpanList[i].style.color = "#fff";
+			startTimeContentSpanList[i].style.color = "#fff";
+			endTimeContentSpanList[i].style.color = "#fff";
+		}
+		//返回schedule时diffrence和form_postion_h是不变的，作为全局变量来使用
+		scheduleList = channel.showSchedule();
+		totalSchedule = scheduleList.length;
+		$("scheduleFocus").style.display = (totalSchedule > 0)?"block":"none";
+		if(list_position_h < 0) list_position_h = 0;
+		$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		
+		for(i=0;i<7;i++)
+		{
+			if((difference+i)<totalSchedule)
+			{
+				var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+				tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+				tSpanList[1].innerText=scheduleList[i+difference].startDate;
+				tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+				tSpanList[3].innerText=scheduleList[i+difference].channelName;
+				tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+				tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+				tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+			}
+			else
+			{
+				var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+				tSpanList[0].innerText="";
+				tSpanList[1].innerText="";
+				tSpanList[2].innerText="";
+				tSpanList[3].innerText="";
+				tSpanList[4].innerText="";
+				tSpanList[5].innerText="";
+				tSpanList[6].innerText="";
+			}
+		}
+		doElementScroll(spanScollList,list_position_h);
+		focusOn="scheduleList";
+		showFormFromFocus(focusOn);
+	}
+	else if(focusOn == "deleteCheck")
+	{
+		doElementScroll(spanScollList,list_position_h);
+		focusOn = "scheduleList";
+		showFormFromFocus(focusOn);
+	}
+}
+
+function doEnter()
+{
+	//channel.testLog("in booking doEnter focusOn = " + focusOn + ",record_position = " + record_position);
+	if(focusOn == "addBooking" || focusOn == "scheduleEdit")
+	{
+		if(record_position == 8)
+		{
+			judgeTime();//判断时间是否符合规则，如果符合还要保存该record
+		}
+		else if(record_position == 6 || record_position == 7)
+		{
+			if(weekdayArray[weekday_position] == 0)
+			{
+				weekdayArray[weekday_position] = 1;
+				weekdayCheckImgList[weekday_position].src = weekdayStatusImg[1];
+			}
+			else
+			{
+				weekdayArray[weekday_position] = 0;
+				weekdayCheckImgList[weekday_position].src = weekdayStatusImg[0];
+			}
+		}
+		
+	}
+	else if(focusOn == "scheduleList")
+	{
+		if(totalSchedule > 0 && list_position_h >= 0)
+		{
+			initEditBooking();//进入修改预约节目框
+		}
+	}
+	else if(focusOn == "deleteCheck")
+	{
+		if(form_position_h == 0)
+		{
+			toBack();
+		}
+		else
+		{
+			doDeleteSchedule();
+		}
+	}
+}
+
+function toLeft()
+{
+	//channel.testLog("in toLeft + focusOn = " + focusOn + ",record_position = " + record_position + ",schedule_add_replace_position = " + schedule_add_replace_position);
+	if(focusOn == "addBooking")
+	{
+		if(record_position == 0)
+		{
+			isChangeScheduleInfo = 1;
+			channelChange = 1;
+			bookingChannel = channel.getPreviousChannelInfo(bookingChannel.index);
+			recordPList[record_position].innerText = bookingChannel.number +" "+ bookingChannel.name;
+		}
+		else if(record_position == 4)
+		{
+			if(top.g_factory.pvrOpenStatus<=0)
+			{
+				scheduleMode = 1;
+			}
+			else
+			{
+				scheduleMode = (scheduleMode == 0)?1:0;
+			}
+			recordPList[record_position].innerText = schedule_mode[scheduleMode];
+		}
+		else if(record_position == 5)
+		{
+			if(repeat>0)
+			{
+				repeat--;
+				recordLiList[7].style.display = "none";
+				recordLiList[8].style.display = "none";
+			}
+			else if(repeat == 0) 
+			{
+				repeat = 2;
+				recordLiList[7].style.display = "block";
+				recordLiList[8].style.display = "block";
+			}
+			recordPList[record_position].innerText = repeat_mode[repeat];
+		}
+		else if(record_position == 1)
+		{
+			doLeftInTimes(startDateContentSpanList,date_only,"-");
+		}
+		else if(record_position == 2 )
+		{
+			doLeftInTimes(startTimeContentSpanList,start_time_only,":");
+		}
+		else if(record_position == 3)
+		{
+			doLeftInTimes(endTimeContentSpanList,end_time_only,":");
+		}
+		else if(record_position == 6)
+		{
+			weekday_position--;
+			if(weekday_position < 0)
+			{
+				record_position = 7;
+				weekday_position = 6;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+		else if(record_position == 7)
+		{
+			weekday_position--;
+			if(weekday_position < 4)
+			{
+				record_position = 6;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+	}
+	else if(focusOn == "scheduleEdit")
+	{
+		if(record_position == 0)
+		{
+			bookingChannel = channel.getPreviousChannelInfo(bookingChannel.index);
+			
+			recordPList[record_position].innerText = bookingChannel.number +" "+ bookingChannel.name;
+		}
+		else if(record_position == 4)
+		{
+			if(top.g_factory.pvrOpenStatus<=0)
+			{
+				scheduleMode = 1;
+			}
+			else
+			{
+				scheduleMode = (scheduleMode == 0)?1:0;
+			}
+			recordPList[record_position].innerText = schedule_mode[scheduleMode];
+		}
+		else if(record_position == 5)
+		{
+			if(repeat>0)
+			{
+				repeat--;
+				recordLiList[7].style.display = "none";
+				recordLiList[8].style.display = "none";
+			}
+			else if(repeat == 0) 
+			{
+				repeat=2;
+				recordLiList[7].style.display = "block";
+				recordLiList[8].style.display = "block";
+			}
+			recordPList[record_position].innerText = repeat_mode[repeat];
+		}
+		else if(record_position == 8)
+		{
+			schedule_add_replace_position = (schedule_add_replace_position == 0)?1:0;
+			$("operateFocus").style.left = RECORD_ENTER_LEFT_START + schedule_add_replace_position*RECORD_ENTER_LEFT_STEP + "px";
+		}
+		else if(record_position == 1)
+		{
+			doLeftInTimes(startDateContentSpanList,date_only,"-");
+		}
+		else if(record_position == 2 )
+		{
+			doLeftInTimes(startTimeContentSpanList,start_time_only,":");
+		}
+		else if(record_position == 3)
+		{
+			doLeftInTimes(endTimeContentSpanList,end_time_only,":");
+		}
+		else if(record_position == 6)
+		{
+			weekday_position--;
+			if(weekday_position < 0)
+			{
+				record_position = 7;
+				weekday_position = 6;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+		else if(record_position == 7)
+		{
+			weekday_position--;
+			if(weekday_position < 4)
+			{
+				record_position = 6;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+	}
+	else if(focusOn == "deleteCheck")
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+		}
+		else
+		{
+			form_position_h = 0;
+		}
+		$("tipsFocus").style.left = DIALOG_BUTTON_START + DIALOG_BUTTON_STEP*form_position_h + "px";
+	}
+}
+
+var channelChange = 0;//预约录制的时候用来判断频道number是否编辑过
+function toRight()
+{
+	if(focusOn == "addBooking")
+	{
+		if(record_position == 0)
+		{
+			isChangeScheduleInfo = 1;
+			channelChange = 1;
+			bookingChannel = channel.getNextChannelInfo(bookingChannel.index);
+			recordPList[record_position].innerText = bookingChannel.number + " " + bookingChannel.name;
+		}
+		else if(record_position == 4)
+		{
+			if(top.g_factory.pvrOpenStatus<=0)
+			{
+				scheduleMode = 1;
+			}
+			else
+			{
+				scheduleMode = (scheduleMode == 0)?1:0;
+			}
+			recordPList[record_position].innerText = schedule_mode[scheduleMode];
+		}
+		else if(record_position == 5)
+		{
+			if(repeat == 1)
+			{
+				repeat = 2;
+				recordLiList[7].style.display = "block";
+				recordLiList[8].style.display = "block";
+			}
+			else if(repeat == 2)
+			{
+				repeat = 0;
+				recordLiList[7].style.display = "none";
+				recordLiList[8].style.display = "none";
+			}
+			else
+			{
+				repeat++;
+			}
+			recordPList[record_position].innerText = repeat_mode[repeat];
+		}
+		else if(record_position == 1)
+		{
+			doRightInTimes(startDateContentSpanList,date_only,"-");
+		}
+		else if(record_position == 2 )
+		{
+			doRightInTimes(startTimeContentSpanList,start_time_only,":");
+		}
+		else if(record_position == 3)
+		{
+			doRightInTimes(endTimeContentSpanList,end_time_only,":");
+		}
+		else if(record_position == 6)
+		{
+			weekday_position++;
+			if(weekday_position >= 4)
+			{
+				record_position = 7;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+		else if(record_position == 7)
+		{
+			weekday_position++;
+			if(weekday_position > 6)
+			{
+				record_position = 6;
+				weekday_position = 0;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+	}
+	else if(focusOn == "scheduleEdit")
+	{
+		if(record_position == 0)
+		{
+			bookingChannel = channel.getNextChannelInfo(bookingChannel.index);
+			
+			recordPList[record_position].innerText = bookingChannel.number + " " + bookingChannel.name;
+		}
+		else if(record_position == 4)
+		{
+			if(top.g_factory.pvrOpenStatus<=0)
+			{
+				scheduleMode = 1;
+			}
+			else
+			{
+				scheduleMode = (scheduleMode == 0)?1:0;
+			}
+			recordPList[record_position].innerText = schedule_mode[scheduleMode];
+		}
+		else if(record_position == 5)
+		{
+			if(repeat == 1)
+			{
+				repeat = 2;
+				recordLiList[7].style.display = "block";
+				recordLiList[8].style.display = "block";
+			}
+			else if(repeat == 2)
+			{
+				repeat = 0;
+				recordLiList[7].style.display = "none";
+				recordLiList[8].style.display = "none";
+			}
+			else
+			{
+				repeat++;
+			}
+			recordPList[record_position].innerText = repeat_mode[repeat];
+		}
+		else if(record_position == 8)
+		{
+			schedule_add_replace_position = (schedule_add_replace_position == 0)?1:0;
+			$("operateFocus").style.left = RECORD_ENTER_LEFT_START + schedule_add_replace_position*RECORD_ENTER_LEFT_STEP + "px";
+		}
+		else if(record_position == 1)
+		{
+			doRightInTimes(startDateContentSpanList,date_only,"-");
+		}
+		else if(record_position == 2 )
+		{
+			doRightInTimes(startTimeContentSpanList,start_time_only,":");
+		}
+		else if(record_position == 3)
+		{
+			doRightInTimes(endTimeContentSpanList,end_time_only,":");
+		}
+		else if(record_position == 6)
+		{
+			weekday_position++;
+			if(weekday_position >= 4)
+			{
+				record_position = 7;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+		else if(record_position == 7)
+		{
+			weekday_position++;
+			if(weekday_position > 6)
+			{
+				record_position = 6;
+				weekday_position = 0;
+				$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			}
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+	}
+	else if(focusOn == "deleteCheck")
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+		}
+		else
+		{
+			form_position_h = 0;
+		}
+		$("tipsFocus").style.left = DIALOG_BUTTON_START + DIALOG_BUTTON_STEP*form_position_h + "px";
+	}
+}
+
+function toUp()
+{
+	if(focusOn == "addBooking" || focusOn == "scheduleEdit")//record弹出框
+	{
+		toRecFormUp();
+	}
+	else if(focusOn == "scheduleList")//scheForm弹出框
+	{
+		if(list_position_h<0) 
+		{
+			return;
+		}
+		else if(list_position_h == 0 && difference == 0) 
+		{
+			var tt=parseInt((totalSchedule-1)/7,10);
+			difference=tt*7;
+			if(difference>0)
+			{
+				var i=0;
+				for(i=0;i<7 ;i++)
+				{
+					if((i+difference)<totalSchedule)
+					{
+						var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+						tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+						tSpanList[1].innerText=scheduleList[i+difference].startDate;
+						tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+						tSpanList[3].innerText=scheduleList[i+difference].channelName;
+						tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+						tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+						tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+					}
+					else
+					{
+						var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+						tSpanList[0].innerText="";
+						tSpanList[1].innerText="";
+						tSpanList[2].innerText="";
+						tSpanList[3].innerText="";
+						tSpanList[4].innerText="";
+						tSpanList[5].innerText="";
+						tSpanList[6].innerText="";
+					}
+				}
+			}
+			list_position_h=totalSchedule-difference-1;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		else if(list_position_h == 0 && difference > 0)//这种情况下totalSchedule>7
+		{
+			difference -= 7;
+			var i=0;
+			for(i=0;i<7;i++)
+			{
+				var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+				tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+				tSpanList[1].innerText=scheduleList[i+difference].startDate;
+				tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+				tSpanList[3].innerText=scheduleList[i+difference].channelName;
+				tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+				tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+				tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+			}
+			list_position_h=6;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		else
+		{
+			list_position_h--;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		doElementScroll(spanScollList,list_position_h);
+	}
+}
+function toDown()
+{
+	if(focusOn == "addBooking" || focusOn == "scheduleEdit")
+	{
+		toRecFormDown();
+	}
+	else if(focusOn == "scheduleList")//scheForm弹出框
+	{
+		if(list_position_h<0) return;
+		else if(list_position_h>=0 && (list_position_h + difference) == (totalSchedule - 1)) 
+		{
+			if(difference>0)
+			{
+				difference=0;
+				var i=0;
+				for(i=0;i<7;i++)
+				{
+					var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+					tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+					tSpanList[1].innerText=scheduleList[i+difference].startDate;
+					tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+					tSpanList[3].innerText=scheduleList[i+difference].channelName;
+					tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+					tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+					tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+				}
+			}
+			list_position_h=0;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		else if(list_position_h == 6 && (list_position_h + difference) < (totalSchedule-1))
+		{
+			difference += 7;
+			var i=0;
+			for(i=0;i<7;i++)
+			{
+				if((difference+i)<totalSchedule)
+				{
+					var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+					tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+					tSpanList[1].innerText=scheduleList[i+difference].startDate;
+					tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+					tSpanList[3].innerText=scheduleList[i+difference].channelName;
+					tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+					tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+					tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+				}
+				else
+				{
+					var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+					tSpanList[0].innerText="";
+					tSpanList[1].innerText="";
+					tSpanList[2].innerText="";
+					tSpanList[3].innerText="";
+					tSpanList[4].innerText="";
+					tSpanList[5].innerText="";
+					tSpanList[6].innerText="";
+				}
+			}
+			list_position_h=0;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		else
+		{
+			list_position_h++;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		doElementScroll(spanScollList,list_position_h);
+	}
+}
+/*
+描述：在焦点在日期输入框上的时候按左键的操作过程,需要说明在这里处理的日期的默认格式是：两个数 + 间隔字符 +　两个数　＋　间隔字符　＋　其他。如01-01-2013
+参数：spanList:日期内容的span；dataList:保存日期的数组;linkChar:连接字符
+全局变量：num_position
+*/
+function doLeftInTimes(spanList,dataList,linkChar)
+{
+	var maxLength = dataList.length;
+	//channel.testLog("maxLength = " + maxLength);
+	if(num_position <= 0)
+	{
+		num_position = maxLength - 1;
+		spanList[0].innerText = "";
+		spanList[1].innerText = getPreTimeShowString(num_position - 1,dataList,maxLength,linkChar);
+		spanList[2].innerText = dataList[num_position];
+		spanList[0].style.color = "#fff";
+		spanList[2].style.color = "#f00";
+	}
+	else if(num_position == 1)
+	{
+		num_position--;
+		spanList[0].innerText = dataList[0];
+		spanList[1].innerText = getNextTimeShowString(num_position + 1,dataList,maxLength,linkChar);
+		spanList[2].innerText = "";
+		spanList[1].style.color = "#fff";
+		spanList[0].style.color = "#f00";
+		
+	}
+	else if(num_position >= (maxLength - 1))
+	{
+		num_position--;
+		spanList[0].innerText = getPreTimeShowString(num_position - 1,dataList,maxLength,linkChar);
+		spanList[1].innerText = dataList[num_position];
+		spanList[2].innerText = dataList[maxLength - 1];
+		spanList[2].style.color = "#fff";
+		spanList[1].style.color = "#f00";
+	}
+	else//num_position 1-6
+	{
+		num_position--;
+		spanList[0].innerText = getPreTimeShowString(num_position - 1,dataList,maxLength,linkChar);
+		spanList[1].innerText = dataList[num_position];
+		spanList[2].innerText = getNextTimeShowString(num_position + 1,dataList,maxLength,linkChar);
+	}
+}
+
+/*
+描述：在焦点在日期输入框上的时候按右键的操作过程,需要说明在这里处理的日期的默认格式是：两个数 + 间隔字符 +　两个数　＋　间隔字符　＋　其他。如01-01-2013
+参数：spanList:日期内容的span；dataList:保存日期的数组;linkChar:连接字符
+全局变量：num_position
+*/
+function doRightInTimes(spanList,dataList,linkChar)
+{
+	var maxLength = dataList.length;
+	//channel.testLog("maxLength = " + maxLength);
+	if(num_position <= 0)
+	{
+		num_position++;
+		spanList[0].innerText = dataList[0];
+		spanList[1].innerText = dataList[num_position];
+		spanList[2].innerText = getNextTimeShowString(num_position + 1,dataList,maxLength,linkChar);
+		spanList[0].style.color = "#fff";
+		spanList[1].style.color = "#f00";
+	}
+	else if(num_position == (maxLength - 2))
+	{
+		num_position++;
+		spanList[0].innerText = "";
+		spanList[1].innerText = getPreTimeShowString(num_position - 1,dataList,maxLength,linkChar);
+		spanList[2].innerText = dataList[num_position];
+		spanList[1].style.color = "#fff";
+		spanList[2].style.color = "#f00";
+		
+	}
+	else if(num_position >= (maxLength - 1))
+	{
+		num_position = 0;
+		spanList[0].innerText = dataList[num_position];
+		spanList[1].innerText = getNextTimeShowString(num_position + 1,dataList,maxLength,linkChar);
+		spanList[2].innerText = "";
+		spanList[2].style.color = "#fff";
+		spanList[0].style.color = "#f00";
+	}
+	else//num_position 1-6
+	{
+		num_position++;
+		spanList[0].innerText = getPreTimeShowString(num_position - 1,dataList,maxLength,linkChar);
+		spanList[1].innerText = dataList[num_position];
+		spanList[2].innerText = getNextTimeShowString(num_position + 1,dataList,maxLength,linkChar);
+	}
+}
+
+
+/*
+描述：获取日期或时间的前缀（前半部分）的string结果
+参数：endP：结束位置的num_postion位置;dataList: 保存日期数字的数组;maxLength:保存日期的数组的总长度;
+linkChar：用于连接的字符,比如11:23的连接字符时“：”，比如12-12-2013中的连接字是“-”；
+全局变量：
+返回：返回前缀字串
+*/
+function getPreTimeShowString(endP,dataList,maxLength,linkChar)
+{
+	var str = "";
+	for(var i = 0; i <= endP; i++)
+	{
+		if(i == 1)
+		{
+			str += dataList[i];
+			str += linkChar; 
+		}
+		else if(i == 3)
+		{
+			if((maxLength - 1) <= 3)//是time字串;形如11:12
+			{
+				str += dataList[i];
+			}
+			else//是date字串；形如01-01-2012
+			{
+				str += dataList[i];
+				str += linkChar; 
+			}
+		}
+		else
+		{
+			str += dataList[i];
+		}
+	}
+	return str;
+}
+
+/*
+描述：获取日期或时间的 后缀（后半部分）的string结果
+参数：startP：开始位置的num_postion位置;dataList: 保存日期数字的数组;maxLength:保存日期的数组的总长度;
+linkChar：用于连接的字符,比如11:23的连接字符时“：”，比如12-12-2013中的连接字是“-”；
+全局变量：
+返回：返回后缀字串
+*/
+function getNextTimeShowString(startP,dataList,maxLength,linkChar)
+{
+	var str = "";
+	for(var i = startP; i < maxLength; i++)
+	{
+		//特殊情况处理,如11:22在startP为2的时候最开始需要带上“：”
+		if(i == 2 && startP == 2)
+		{
+			str += linkChar;
+			str += dataList[i];
+			continue;
+		}
+		else if(i == 4 && startP == 4)
+		{
+			str += linkChar;
+			str += dataList[i];
+			continue;
+		}
+		
+		if(i == 1)
+		{
+			str += dataList[i];
+			str += linkChar; 
+		}
+		else if(i == 3)
+		{
+			if((maxLength - 1) <= 3)//是time字串;形如11:12
+			{
+				str += dataList[i];
+			}
+			else//是date字串；形如01-01-2012
+			{
+				str += dataList[i];
+				str += linkChar; 
+			}
+		}
+		else
+		{
+			str += dataList[i];
+		}
+	}
+	return str;
+}
+				
+
+function toRecFormUp()
+{
+	if(record_position == 8)
+	{
+		if(repeat == 2)//weekly
+		{
+			record_position--;
+			weekday_position = 6;
+			$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+		else
+		{
+			record_position = 5;
+			$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			$("leftRightArrow").style.display = "block";
+			$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+			$("recordFocus").style.display = "block";
+			$("operateFocus").style.display = "none";
+		}
+	}
+	else if(record_position == 7)
+	{
+		record_position--;
+		weekday_position -= 4;
+		$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+	}
+	else if(record_position == 6)
+	{
+		record_position--;
+		$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("leftRightArrow").style.display = "block";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("recordFocus").style.display = "block";
+		$("operateFocus").style.display = "none";
+	}
+	else if(record_position == 5)
+	{
+		record_position--;
+		$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("leftRightArrow").style.display = "block";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 4)
+	{
+		record_position--;
+		num_position = 0;
+		endTimeContentSpanList[0].innerText = end_time_only[num_position];
+		endTimeContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,end_time_only,4,":");
+		endTimeContentSpanList[2].innerText = "";
+		endTimeContentSpanList[0].style.color = "#f00";
+		$("leftRightArrow").style.display = "none";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 3)
+	{
+		endTimeContentSpanList[0].style.color = "#fff";
+		endTimeContentSpanList[1].style.color = "#fff";
+		endTimeContentSpanList[2].style.color = "#fff";
+		record_position--;
+		num_position = 0;
+		startTimeContentSpanList[0].innerText = start_time_only[num_position];
+		startTimeContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,start_time_only,4,":")
+		startTimeContentSpanList[2].innerText = "";
+		startTimeContentSpanList[0].style.color = "#f00";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 2)
+	{
+		startTimeContentSpanList[0].style.color = "#fff";
+		startTimeContentSpanList[1].style.color = "#fff";
+		startTimeContentSpanList[2].style.color = "#fff";
+		record_position--;
+		num_position = 0;
+		startDateContentSpanList[0].innerText = date_only[0];
+		startDateContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,date_only,8,"-");
+		startDateContentSpanList[2].innerText = "";
+		startDateContentSpanList[0].style.color = "#f00";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 1)
+	{
+		startDateContentSpanList[0].style.color = "#fff";
+		startDateContentSpanList[1].style.color = "#fff";
+		startDateContentSpanList[2].style.color = "#fff";
+		/*---------------最后更正不合法时间 add by chenhua 2014-1-26----------------------*/
+		var dt = new Date(date_only[4]*1000+date_only[5]*100+date_only[6]*10+date_only[7],date_only[2]*10+date_only[3] - 1,date_only[0]*10+date_only[1]);
+					
+		var y = dt.getFullYear();
+		var m = dt.getMonth() + 1;
+		var d = dt.getDate();
+		if(m < 10)
+		{
+			m = "0" + m;
+		}
+		if(d < 10)
+		{
+			d = "0" + d;
+		}
+		var dateString = "" + d + m + y;
+		var dates = dateString.split("");
+		for(var i = 0; i < 8; i++)
+		{
+			date_only[i] = parseInt(dates[i],10);
+		}
+		startDateContentSpanList[0].style.innerHTML = ""+ d + "-" + m + "-" + y;
+		startDateContentSpanList[1].style.innerHTML = "";
+		startDateContentSpanList[2].style.innerHTML = "";
+		/*---------------最后更正不合法时间----------------------*/
+		record_position--;
+		$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("leftRightArrow").style.display = "block";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 0 ) 
+	{
+		$("leftRightArrow").style.display = "none";
+		record_position = 8;
+		schedule_add_replace_position = 0;
+		$("recordFocus").style.display = "none";
+		$("operateFocus").style.left = RECORD_ENTER_LEFT_START + schedule_add_replace_position*RECORD_ENTER_LEFT_STEP + "px";
+		$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("operateFocus").style.display = "block";
+		
+	}
+}
+
+function toRecFormDown()
+{
+	if(record_position == 0)
+	{
+		record_position++;
+		num_position = 0;
+		startDateContentSpanList[0].innerText = date_only[num_position];
+		startDateContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,date_only,8,"-");
+		startDateContentSpanList[2].innerText = "";
+		startDateContentSpanList[0].style.color = "#f00";
+		
+		$("leftRightArrow").style.display = "none";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 1)
+	{
+		startDateContentSpanList[0].style.color = "#fff";
+		startDateContentSpanList[1].style.color = "#fff";
+		startDateContentSpanList[2].style.color = "#fff";
+		/*---------------最后更正不合法时间 add by chenhua 2014-1-26----------------------*/
+		var dt = new Date(date_only[4]*1000+date_only[5]*100+date_only[6]*10+date_only[7],date_only[2]*10+date_only[3] - 1,date_only[0]*10+date_only[1]);
+					
+		var y = dt.getFullYear();
+		var m = dt.getMonth() + 1;
+		var d = dt.getDate();
+		if(m < 10)
+		{
+			m = "0" + m;
+		}
+		if(d < 10)
+		{
+			d = "0" + d;
+		}
+		var dateString = "" + d + m + y;
+		var dates = dateString.split("");
+		for(var i = 0; i < 8; i++)
+		{
+			date_only[i] = parseInt(dates[i],10);
+		}
+		startDateContentSpanList[0].style.innerHTML = ""+ d + "-" + m + "-" + y;
+		startDateContentSpanList[1].style.innerHTML = "";
+		startDateContentSpanList[2].style.innerHTML = "";
+		/*---------------最后更正不合法时间----------------------*/
+		
+		record_position++;
+		num_position = 0;
+		startTimeContentSpanList[0].innerText = start_time_only[num_position];
+		startTimeContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,start_time_only,4,":");
+		startTimeContentSpanList[2].innerText = "";
+		startTimeContentSpanList[0].style.color = "#f00";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 2)
+	{
+		startTimeContentSpanList[0].style.color = "#fff";
+		startTimeContentSpanList[1].style.color = "#fff";
+		startTimeContentSpanList[2].style.color = "#fff";
+		record_position++;
+		num_position = 0;
+		endTimeContentSpanList[0].innerText = end_time_only[num_position];
+		endTimeContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,end_time_only,4,":");
+		endTimeContentSpanList[2].innerText = "";
+		endTimeContentSpanList[0].style.color = "#f00";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 3)
+	{
+		endTimeContentSpanList[0].style.color = "#fff";
+		endTimeContentSpanList[1].style.color = "#fff";
+		endTimeContentSpanList[2].style.color = "#fff";
+		record_position++;
+		$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("leftRightArrow").style.display = "block";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 4)
+	{
+		record_position++;
+		$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("leftRightArrow").style.display = "block";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	}
+	else if(record_position == 5)
+	{
+		if(repeat == 2)//weekly
+		{
+			record_position++;
+			weekday_position = 0;
+			$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+		}
+		else
+		{
+			record_position = 8;
+			$("leftRightArrow").style.display = "none";
+			schedule_add_replace_position = 0;
+			$("operateFocus").style.left = RECORD_ENTER_LEFT_START + schedule_add_replace_position*RECORD_ENTER_LEFT_STEP + "px";		
+		}
+		$("recordFocus").style.display = "none";
+		$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("operateFocus").style.display = "block";
+	}
+	else if(record_position == 6) 
+	{
+		record_position++;
+		weekday_position += 4;
+		if(weekday_position > 6)
+		{
+			weekday_position = 6;
+		}
+		$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+	}
+	else if(record_position == 7)
+	{
+		record_position++;
+		schedule_add_replace_position = 0;
+		$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("operateFocus").style.left = RECORD_ENTER_LEFT_START + schedule_add_replace_position*RECORD_ENTER_LEFT_STEP + "px";
+	}
+	else if(record_position == 8)
+	{
+		record_position = 0;
+		$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("leftRightArrow").style.display = "block";
+		$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+		$("recordFocus").style.display = "block";
+		$("operateFocus").style.display = "none";
+	}
+}
+
+var bookingStartTime = "";//形如：“20110908111250”表示2011年9月8日11点11分50秒
+var bookingChannel ;
+/*
+*判断要record的时间、日期是否符合要求
+*/
+function judgeTime()
+{
+	var currentTimeStr = "";
+	var date = setting.currentDate;
+	var nowYear = date.substring(6);
+	var nowMonth = date.substring(3,5);
+	var nowDate = date.substring(0,2);
+	var time = setting.currentTime;
+	var nowHours = time.substring(0,2);
+	var nowMinutes = time.substring(3,5);
+	var nowSeconds = time.substring(6);
+	currentTimeStr = nowYear + nowMonth + nowDate + nowHours + nowMinutes + nowSeconds;
+	
+	var startTimeStr = "";
+	var endTimeStr = "";
+	//////////////判断日期时间是否满足规则
+	var sDate = recordPList[1].innerText;
+	var sTime = recordPList[2].innerText;
+	var eTime = recordPList[3].innerText;
+	
+	var dayOfStartDate = sDate.substring(0,2);
+	var monthOfStartDate = sDate.substring(3,5);
+	var yearOfStartDate = sDate.substring(6);
+	
+	var hourOfStart = sTime.substring(0,2);
+	var minuteOfStart = sTime.substring(3,5);
+	startTimeStr = yearOfStartDate + monthOfStartDate + dayOfStartDate + hourOfStart + minuteOfStart + "00";
+	
+
+	var hourOfEnd = eTime.substring(0,2);
+	var minuteOfEnd = eTime.substring(3,5);
+	endTimeStr = yearOfStartDate + monthOfStartDate + dayOfStartDate + hourOfEnd + minuteOfEnd + "00";
+	
+	if(currentTimeStr >= startTimeStr && repeat == 0)//timer past(incorrect start time)
+	{
+		$("warning").innerText = record_warning[0];
+		focusOn = "errorRemind";
+		showFormFromFocus(focusOn);
+		setTimeout(function(){focusOn = "addBooking";showFormFromFocus(focusOn);},2000);
+	}
+	else if(endTimeStr == startTimeStr)//incorrect end time/*可以跨天录制,但是必须要结束时间小于开始时间*/
+	{
+		$("warning").innerText = record_warning[1];
+		focusOn = "errorRemind";
+		showFormFromFocus(focusOn);
+		setTimeout(function(){focusOn = "addBooking";showFormFromFocus(focusOn);},2000);
+	}
+	else
+	{
+		//判断时间是否冲突
+		var isConflict = 0;
+		var duration = calculateDuration(sTime,eTime) * 60;
+		var bookingProgramName = "";
+		
+		if(focusOn  == "addBooking")//recForm
+		{
+			//*******************提取节目event的名字 start************************/
+			if(isChangeScheduleInfo == 0)//没有更改过schedule关键信息，programName于实际匹配
+			{
+				var nowProgram = booking_interrelated.bookingEvent;
+				bookingProgramName = nowProgram.name;
+			}
+			else//更改过schedule关键信息，programName于实际不匹配
+			{
+				var nowd = new Date(nowYear,nowMonth - 1,nowDate);
+				var dired = new Date(yearOfStartDate,monthOfStartDate - 1,dayOfStartDate);
+				if(dired >= nowd)
+				{
+					var distance = parseInt((dired - nowd)/86400000);
+					var bookingProgramList = bookingChannel.getProgramMoreList(bookingChannel.index,distance);
+					var i = 0;
+					while(i < bookingProgramList.length)
+					{
+						if(bookingProgramList[i].startTime < bookingProgramList[i].endTime)
+						{
+							if(sTime >= bookingProgramList[i].startTime && sTime < bookingProgramList[i].endTime)
+							{
+								break;
+							}
+						}
+						else//节目跨天
+						{
+							//成立前提是跨天节目没有超过12个小时的节目
+							if(sTime < "12:00" && sTime < bookingProgramList[i].endTime)
+							{
+								break;
+							}
+							else if(sTime >= "12:00" && sTime > bookingProgramList[i].startTime)
+							{
+								break;
+							}
+						}
+						i++;
+					}
+					if(i < bookingProgramList.length)
+					{
+						bookingProgramName = bookingProgramList[i].name;
+					}
+				}
+			}
+			//*******************提取节目event的名字 end************************/
+			var weekdayNum = weekdayArray[0]*64 + weekdayArray[1]*32 + weekdayArray[2]*16 + weekdayArray[3]*8 + weekdayArray[4]*4 + weekdayArray[5]*2 + weekdayArray[6];
+			//channel.testLog("booking channel Index =" + bookingChannel.index + ",weekdayNum = " + weekdayNum);
+			isConflict = channel.addSchedule(channel.tunerMode,bookingChannel.index,bookingProgramName,sDate,sTime,duration,repeat,scheduleMode,weekdayNum);
+			if(isConflict)//冲突
+			{
+				$("warning").innerText = record_warning[2];
+				focusOn="errorRemind";
+				showFormFromFocus(focusOn);
+				setTimeout(function(){focusOn="addBooking";showFormFromFocus(focusOn);},2000);
+			}
+			else//没有冲突，添加成功
+			{
+				$("warning").innerText = record_warning[3];
+				focusOn="errorRemind";
+				showFormFromFocus(focusOn);
+				setTimeout(function(){
+					focusOn = "addBooking";
+					showFormFromFocus(focusOn);
+					toBack();
+				},2000);
+			}
+		}
+		else if(focusOn == "scheduleEdit")
+		{
+			//*******************提取节目event的名字 start************************/
+			var nowd = new Date(nowYear,nowMonth - 1,nowDate);
+			var dired = new Date(yearOfStartDate,monthOfStartDate - 1,dayOfStartDate);
+			if(dired >= nowd)
+			{
+				var distance = parseInt((dired - nowd)/86400000);
+				var bookingProgramList = bookingChannel.getProgramMoreList(bookingChannel.index,distance);
+				var i = 0;
+				while(i < bookingProgramList.length)
+				{
+					if(bookingProgramList[i].startTime < bookingProgramList[i].endTime)
+					{
+						if(sTime >= bookingProgramList[i].startTime && sTime < bookingProgramList[i].endTime)
+						{
+							break;
+						}
+					}
+					else//节目跨天
+					{
+						//成立前提是跨天节目没有超过12个小时的节目
+						if(sTime < "12:00" && sTime < bookingProgramList[i].endTime)
+						{
+							break;
+						}
+						else if(sTime >= "12:00" && sTime > bookingProgramList[i].startTime)
+						{
+							break;
+						}
+					}
+					i++;
+				}
+				if(i < bookingProgramList.length)
+				{
+					bookingProgramName = bookingProgramList[i].name;
+				}
+			}
+			//*******************提取节目event的名字 end************************/
+			
+			var weekdayNum = weekdayArray[0]*64 + weekdayArray[1]*32 + weekdayArray[2]*16 + weekdayArray[3]*8 + weekdayArray[4]*4 + weekdayArray[5]*2 + weekdayArray[6];
+			if(schedule_add_replace_position == 0)//添加新预约
+			{//channel.testLog("add schedule when edit booking index = " + bookingChannel.index);
+				isConflict = channel.addSchedule(channel.tunerMode,bookingChannel.index,bookingProgramName,sDate,sTime,duration,repeat,scheduleMode,weekdayNum);
+			}
+			else//replace schedule
+			{
+				isConflict = channel.changeSchedule(scheduleId,channel.tunerMode,bookingChannel.index,bookingProgramName,sDate,sTime,duration,repeat,scheduleMode,weekdayNum);
+			}
+			
+			if(isConflict)//冲突
+			{
+				$("warning").innerText = record_warning[2];
+				focusOn = "errorRemind";
+				showFormFromFocus(focusOn);
+				setTimeout(function(){focusOn="scheduleEdit";showFormFromFocus(focusOn);},2000);
+			}
+			else//没有冲突，添加成功
+			{
+				$("warning").innerText = record_warning[3];
+				focusOn = "errorRemind";
+				showFormFromFocus(focusOn);
+				setTimeout(function(){
+					focusOn = "scheduleEdit";
+					showFormFromFocus(focusOn);
+					toBack();
+				},2000);
+			}
+			
+		}
+	}
+}
+
+//计算duration，参数开始时间start，结束时间end,时间格式：hh:mm,返回duration，以分为单位
+function calculateDuration(start,end)
+{
+	if(end <= start)
+	{
+		var datas = start.split(":");
+		var s = parseInt(datas[0],10)*60 + parseInt(datas[1],10);
+		datas = end.split(":");
+		var e = parseInt(datas[0],10)*60 + parseInt(datas[1],10);
+		return (e - s + 24*60);
+	}
+	else
+	{
+		var datas = start.split(":");
+		var s = parseInt(datas[0],10)*60 + parseInt(datas[1],10);
+		datas = end.split(":");
+		var e = parseInt(datas[0],10)*60 + parseInt(datas[1],10);
+		return (e - s);
+	}
+}
+
+
+/*
+描述：在数字输入框中按数字键后的反应
+参数：number：输入数字；spanList：数字输入框对应的span列表；dataList：保存时间数字的数组；maxLength：保存时间的数组的长度；linkChar：时间之间使用到的连接字符
+全局变量：isChangeScheduleInfo；num_position;
+*/
+function doNumberInDateTime(number,spanList,dataList,maxLength,linkChar)
+{
+	isChangeScheduleInfo = 1;
+	if(maxLength == 8)//表示要输入date
+	{
+		//检查输入的日期是否符合格式和日期限制
+		dataList[num_position] = checkRightDate(num_position,number,dataList);
+		doRightInTimes(spanList,dataList,linkChar);
+	}
+	else if(maxLength == 4)// 表示要输入time(hh:mm)
+	{
+		dataList[num_position] = checkRightTime(num_position,number,dataList);
+		doRightInTimes(spanList,dataList,linkChar);
+	}
+}
+
+function initEditBooking()
+{
+	/////////////////设置record菜单页面面相关书属性//////////////////////////////////////////////////////////
+	$("replace").style.display = "block";
+	for(var i = 0; i < 9; i++)
+	{
+		if(i == 5)
+		{
+			recordLableList[i].innerText = program_guide_record_main[6];
+		}
+		else if(i == 6)
+		{
+			recordLableList[i].innerText = program_guide_record_main[5];
+		}
+		else
+		{
+			recordLableList[i].innerText = program_guide_record_main[i];
+		}
+	}
+	$("recordOperateRemind").innerText = selectW;
+	
+	num_position = 0;
+	startDateContentSpanList = $("startDateContent").getElementsByTagName("span");
+	startTimeContentSpanList = $("startTimeContent").getElementsByTagName("span");
+	endTimeContentSpanList = $("endTimeContent").getElementsByTagName("span");
+	
+	schedule_add_replace_position = 0;
+	
+	isChangeScheduleInfo = 0;
+	scheduleId = scheduleList[list_position_h + difference].scheduleId;
+	//channel.testLog("now index = " + scheduleList[list_position_h + difference].channelIndex);
+	bookingChannel = channel.getPreviousChannelInfo(scheduleList[list_position_h + difference].channelIndex);
+	//channel.testLog("prev index = " + bookingChannel.index);
+	bookingChannel = channel.getNextChannelInfo(bookingChannel.index);
+	//channel.testLog("next index = " + bookingChannel.index);
+	
+	var startTimeSeconds = scheduleList[list_position_h + difference].startTime;
+	repeat = scheduleList[list_position_h + difference].repeatMode;
+	scheduleMode = scheduleList[list_position_h + difference].scheduleMode;
+	
+	recordPList[0].innerText = bookingChannel.number + " " + bookingChannel.name;
+	startDateContentSpanList[0].innerText = scheduleList[list_position_h + difference].startDate;
+	str =  doTime(startTimeSeconds);
+	startTimeContentSpanList[0].innerText = str.substring(0,str.lastIndexOf(":"));
+	str =  doTime(scheduleList[list_position_h + difference].durationTime + startTimeSeconds);
+	endTimeContentSpanList[0].innerText = str.substring(0,str.lastIndexOf(":"));
+	startDateContentSpanList[1].innerText = "";
+	startDateContentSpanList[2].innerText = "";
+	startTimeContentSpanList[1].innerText = "";
+	startTimeContentSpanList[2].innerText = "";
+	endTimeContentSpanList[1].innerText = "";
+	endTimeContentSpanList[2].innerText = "";
+		
+	var tts = startDateContentSpanList[0].innerText.replace(/-/g,"");
+	var das = tts.split("");
+	for(var i = 0; i < 8; i++)
+	{
+		date_only[i] = parseInt(das[i],10);
+	}
+	tts = startTimeContentSpanList[0].innerText.replace(/:/g,"");
+	das = tts.split("");
+	for(var i = 0; i < 4; i++)
+	{
+		start_time_only[i] = parseInt(das[i],10);
+	}
+	tts = endTimeContentSpanList[0].innerText.replace(/:/g,"");
+	das = tts.split("");
+	for(var i = 0; i < 4; i++)
+	{
+		end_time_only[i] = parseInt(das[i],10);
+	}
+	
+	recordPList[4].innerText = schedule_mode[scheduleMode];
+	recordPList[5].innerText = repeat_mode[repeat];
+	
+	showWeekdayUI(scheduleList[list_position_h + difference].weekdayStr);
+	
+	record_position = 0;
+	$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	$("leftRightArrow").style.display = "block";
+	$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	$("recordFocus").style.display = "block";
+	$("operateFocus").style.display = "none";
+	
+	focusOn = "scheduleEdit";
+	showFormFromFocus(focusOn);
+}
+
+/*
+*描述：根据当前输入的数字判断日期是否符合规则从而纠正日期。合法年是在1900-2099之间
+*参数：position当前输入的数字要放在数组date_only的位置；number：输入的数字；dataList:日期存储的数组
+*返回值：number:返回纠正后的输入数字
+全局变量:
+*/
+function checkRightDate(position,number,dataList)
+{
+	if(position == 0)//日期在01-31之间
+	{
+		if((number*10+dataList[1])>31)
+		{
+			number=3; 
+			dataList[1]=1;
+		}
+		else if((number*10+dataList[1])<=0)
+		{
+			number=0; 
+			dataList[1]=1;
+		}
+	}
+	else if(position == 1)//日期在01-31之间
+	{
+		if(((dataList[0]*10)+number)>31) 
+		{
+			dataList[0]=3;
+			number=1;
+		}
+		else if(((dataList[0]*10)+number)<=0) 
+		{
+			dataList[0]=0;
+			number=1;
+		}
+	}
+	else if(position == 2)//月份在01-12之间，但是二月份的日期不能超过29天
+	{
+		if((number*10+dataList[3])>12)
+		{
+			number=1; 
+			dataList[3]=2;
+		}
+		else if((number*10+dataList[3])<=0)
+		{
+			number=0; 
+			dataList[3]=1;
+		}
+	}
+	else if(position == 3)//月份在01-12之间，但是二月份的日期不能超过29天
+	{
+		if((number+dataList[2]*10)>12)
+		{
+			dataList[2]=1;
+			number=2; 
+		}
+		else if((number+dataList[2]*10)<=0)
+		{
+			dataList[2]=0;
+			number=1; 
+		}
+		else if((number+dataList[2]*10) == 2)//二月份的日期不能超过29天
+		{
+			if((dataList[0]*10 + dataList[1]) > 29)//如果日期超过29，则将月份改为3月份
+			{
+				number = 3;
+			}
+		}
+	}
+	else if(position == 4)//年份在1970-2037之间，但是2月份的天数需要特别的注意
+	{
+		if((number*10+dataList[5])>20)
+		{
+			
+			number=2; 
+			dataList[5]=0;
+		}
+		else if((number*10+dataList[5])<19)
+		{
+			number=1; 
+			dataList[5]=9;
+		}
+	}
+	else if(position == 5)//年份在1970-2037之间，但是2月份的天数需要特别的注意
+	{
+		if((number+dataList[4]*10)>20)
+		{
+			dataList[4]=2;
+			number=0; 
+		}
+		else if((number+dataList[4]*10)<19)
+		{
+			
+			dataList[4]=1;
+			number=9; 
+		}
+	}
+	else if(position == 6)
+	{
+		if(dataList[4]*10 + dataList[5] == 19)//年份在1970-2037之间
+		{
+			if(number < 7)
+			{
+				number = 7;
+			}
+		}
+		else if(dataList[4]*10 + dataList[5] == 20)//年份在1970-2037之间
+		{
+			if(number > 3)
+			{
+				number = 3;
+			}
+		}
+		
+	}
+	else if(position == 7)//年份在1970-2037之间，但是2月份的天数需要特别的注意
+	{
+		var nowYear = dataList[4]*1000 + dataList[5]*100 + dataList[6]*10 +  number;
+		if(nowYear < 1970)//年份在1970-2037之间
+		{
+			dataList[4] = 1;
+			dataList[5] = 9;
+			dataList[6] = 7;
+		}
+		else if( nowYear > 2037)//年份在1970-2037之间
+		{
+			dataList[4] = 2;
+			dataList[5] = 0;
+			dataList[6] = 3;
+			if(number > 7)
+			{
+				number = 7;
+			}
+		}
+		
+		if((dataList[2]*10 + dataList[3]) == 2)//调整闰年闰月时间
+		{
+			//var nowYear = dataList[4]*1000+dataList[5]*100+dataList[6]*10+dataList[7];
+			var flag = 0;//0 平年，1 闰年
+			if((nowYear%100) == 0)
+			{
+				if((nowYear%400) == 0) flag=1;
+			}
+			else
+			{
+				if((nowYear%4) == 0) flag=1;
+			}
+			
+			if(flag == 0)//平年时，可能这个你那份是不能输入的。
+			{ 
+				var nowDate = dataList[0]*10 + dataList[1];
+				if(nowDate > 28)
+				{
+					nowYear = dataList[4]*1000+dataList[5]*100+dataList[6]*10;
+					while(1)
+					{
+						if((nowYear%100) == 0)
+						{
+							if((nowYear%400) == 0) break;
+						}
+						else
+						{
+							if((nowYear%4) == 0) break;
+						}
+						nowYear += 1;
+					}
+					number = nowYear%10;
+				}
+			}
+		}
+	}
+	return parseInt(number,10);
+}
+
+/*
+*描述：根据当前输入的数字判断时间是否符合规则从而纠正时间。时间格式是hh:mm
+*参数：position当前输入的数字要放在保存时间数组的位置；number：输入的数字；timeList:保存时间的数组
+*返回值：number:返回纠正后的输入数字
+全局变量：
+*/
+function checkRightTime(position,number,timeList)
+{
+	//检查输入的时间是否符合格式和日期限制
+	if(position == 0)
+	{
+		if((number*10+timeList[1])>23)
+		{
+			number=2; 
+			timeList[1]=3;
+		}
+	}
+	else if(position == 1)
+	{
+		if(((timeList[0]*10)+number)>23) 
+		{
+			timeList[0]=2;
+			number=3;
+		}
+	}
+	else if(position == 2)
+	{
+		if((number*10+timeList[3])>59)
+		{
+			number=5; 
+			timeList[3]=9;
+		}
+	}
+	else if(position == 3)
+	{
+		if((number+timeList[2]*10)>59)
+		{
+			timeList[2]=5;
+			number=9; 
+		}
+	}
+	return parseInt(number,10);
+}
+/*
+*切分时间，将以秒为单位的时间切分出时，分，秒的字符串
+*/
+function doTime(time)
+{
+	var hour = parseInt(time/3600,10);
+	var minute =  parseInt((time - hour*3600)/60,10);
+	var second = time%60;
+	
+	
+	if(hour > 23)
+	{
+		hour -= 24;
+	}
+	
+	if(hour < 10)
+	{
+		hour = "0" + hour;
+	}
+	if(minute < 10)
+	{
+		minute = "0" + minute;
+	}
+	if(second < 10)
+	{
+		second = "0" + second;
+	}
+	return (hour + ":" + minute + ":" + second);
+}
+
+/*
+功能描述：初始化recForm数据
+参数：
+全局变量：;bookingChannel;focusOn;;record_position;nowDate;nowTime;
+*/
+var startDateContentSpanList;
+var startTimeContentSpanList;
+var endTimeContentSpanList;
+function initRecord()
+{
+	for(var i = 0; i < 9; i++)
+	{
+		if(i == 5)
+		{
+			recordLableList[i].innerText = program_guide_record_main[6];
+		}
+		else if(i == 6)
+		{
+			recordLableList[i].innerText = program_guide_record_main[5];
+		}
+		else
+		{
+			recordLableList[i].innerText = program_guide_record_main[i];
+		}
+	}
+	$("recordOperateRemind").innerText = selectW;
+	
+	num_position = 0;
+	startDateContentSpanList = $("startDateContent").getElementsByTagName("span");
+	startTimeContentSpanList = $("startTimeContent").getElementsByTagName("span");
+	endTimeContentSpanList = $("endTimeContent").getElementsByTagName("span");
+	//初始化
+	bookingChannel = booking_interrelated.bookingChannel;
+	recordPList[0].innerText = bookingChannel.number + " " + bookingChannel.name;
+	//top.Log("in number = " + bookingChannel.number + ",isHaveProgramMoreInfo = " + booking_interrelated.isHaveProgramMoreInfo);
+	if(booking_interrelated.isHaveProgramMoreInfo == 1)//有节目
+	{
+		var nowProgram = booking_interrelated.bookingEvent;
+		if(top.g_temp == "EPG")
+		{
+			var date = nowProgram.date;
+			var dates = date.split("/");
+			startDateContentSpanList[0].innerText = dates[0] + "-" + dates[1] + "-" + dates[2];
+		}
+		else
+		{
+			startDateContentSpanList[0].innerText = nowDate;
+		}
+		startTimeContentSpanList[0].innerText = nowProgram.startTime;
+		endTimeContentSpanList[0].innerText = nowProgram.endTime;
+	}
+	else//无节目
+	{
+		startDateContentSpanList[0].innerText = nowDate;
+		startTimeContentSpanList[0].innerText = nowTime.substring(0,nowTime.lastIndexOf(":"));
+		endTimeContentSpanList[0].innerText = nowTime.substring(0,nowTime.lastIndexOf(":"));
+	}
+	
+	startDateContentSpanList[1].innerText = "";
+	startDateContentSpanList[2].innerText = "";
+	startTimeContentSpanList[1].innerText = "";
+	startTimeContentSpanList[2].innerText = "";
+	endTimeContentSpanList[1].innerText = "";
+	endTimeContentSpanList[2].innerText = "";
+	
+	var tts = startDateContentSpanList[0].innerText.replace(/-/g,"");
+	var das = tts.split("");
+	for(var i = 0; i < 8; i++)
+	{
+		date_only[i] = parseInt(das[i],10);
+	}
+	tts = startTimeContentSpanList[0].innerText.replace(/:/g,"");
+	das = tts.split("");
+	for(var i = 0; i < 4; i++)
+	{
+		start_time_only[i] = parseInt(das[i],10);
+	}
+	tts = endTimeContentSpanList[0].innerText.replace(/:/g,"");
+	das = tts.split("");
+	for(var i = 0; i < 4; i++)
+	{
+		end_time_only[i] = parseInt(das[i],10);
+	}
+	
+	repeat = 0;
+	scheduleMode = 1;
+	recordPList[4].innerText = schedule_mode[scheduleMode];
+	recordPList[5].innerText = repeat_mode[0];
+	record_position = 0;
+	
+	showWeekdayUI(1);
+	
+	$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	$("leftRightArrow").style.display = "block";
+	$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+	$("recordFocus").style.display = "block";
+	$("operateFocus").style.display = "none";
+	
+	$("replace").style.display = "none";
+	//top.Log("operateFocus.src" + $("operateFocus").src);
+	//top.Log("recordFocus.src" + $("recordFocus").src);
+	
+	focusOn = "addBooking";
+	showFormFromFocus(focusOn);
+}
+
+var scheFormDivList;
+function initScheduleList()
+{
+	//top.Log("in initScheduleList start");
+	$("S-title").innerText=program_guide_schedule_mian[0];
+	var scheTitleSpanList = scheFormDivList[0].getElementsByTagName("span");
+	for(var i = 0; i < 7; i++)
+	{
+		scheTitleSpanList[i].innerText = program_guide_schedule_mian[i + 1];
+	}
+	$("edit").innerText=program_guide_schedule_mian[8];
+	$("delete").innerText=program_guide_schedule_mian[9];
+	$("add").innerText = program_guide_record_main[7];
+	$("noSchedule").innerText = noScheduleRemindWords;
+	scheduleList = channel.showSchedule();
+	totalSchedule = scheduleList.length;
+	difference=0;
+	if(totalSchedule>0)
+	{
+		var i=0;
+		for(i=0;i<totalSchedule && i<7;i++)
+		{
+			var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+			tSpanList[0].innerText=doTime(scheduleList[i].startTime);
+			tSpanList[1].innerText=scheduleList[i].startDate;
+			tSpanList[2].innerHTML=scheduleList[i].programTitle;
+			tSpanList[3].innerText=scheduleList[i].channelName;
+			tSpanList[4].innerText=doTime(scheduleList[i].durationTime);
+			tSpanList[5].innerText = repeat_mode[scheduleList[i].repeatMode];
+			tSpanList[6].innerText = schedule_mode[scheduleList[i].scheduleMode];
+		}
+		list_position_h=0;
+		$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		$("scheduleFocus").style.display = "block";
+		
+	}
+	else 
+	{
+		list_position_h=-1;
+		$("scheduleFocus").style.display = "none";
+	}
+	setTimeout(function(){doElementScroll(spanScollList,list_position_h)},2);
+	focusOn = "scheduleList";
+	showFormFromFocus(focusOn);
+}
+
+var DIALOG_BUTTON_START		= 190;					//对话框中按钮焦点起始位置
+var DIALOG_BUTTON_STEP		= 250;					//对话框焦点移动的step		
+function scheduleDeleteCheck()
+{
+	//top.Log("in doDeleteSchedule totalSchedule = " + totalSchedule);
+	if(totalSchedule <= 0)//没有有可以删除的数据
+	{
+		return;
+	}
+	
+	var tipsFormSpanList = $("tipsForm").getElementsByTagName("span");
+	tipsFormSpanList[0].innerHTML = program_guide_schedule_mian[9];
+	tipsFormSpanList[1].innerHTML = tipsRemindWords;
+	tipsFormSpanList[2].innerHTML = cancelOk[0];
+	tipsFormSpanList[3].innerHTML = cancelOk[1];
+	
+	form_position_h = 1;
+	$("tipsFocus").style.left = DIALOG_BUTTON_START + DIALOG_BUTTON_STEP*form_position_h + "px";
+		
+	top.showDialogPosition($("tipsForm"),800,300,1920,1080,0,0);
+	
+	focusOn = "deleteCheck";
+	showFormFromFocus(focusOn);
+}
+
+function doDeleteSchedule()
+{
+	channel.deleteSchedule(scheduleList[list_position_h + difference].scheduleId);
+	scheduleList = channel.showSchedule();
+	totalSchedule--;
+	///////////更新页面显示////////////
+	if((list_position_h + difference) < totalSchedule)//删除的scheduleList不是在最末尾
+	{
+		var i=0;
+		for(i=list_position_h;i<7;i++)
+		{
+			if((difference+i)<totalSchedule)
+			{
+				var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+				tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+				tSpanList[1].innerText=scheduleList[i+difference].startDate;
+				tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+				tSpanList[3].innerText=scheduleList[i+difference].channelName;
+				tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+				tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+				tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+			}
+			else
+			{
+				var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+				tSpanList[0].innerText="";
+				tSpanList[1].innerText="";
+				tSpanList[2].innerText="";
+				tSpanList[3].innerText="";
+				tSpanList[4].innerText="";
+				tSpanList[5].innerText="";
+				tSpanList[6].innerText="";
+			}
+		}
+	}
+	else//删除的schedule在最末位
+	{
+		if(list_position_h>0)//删除的schedule在最末位，但该页不止有一个数据
+		{
+			var tSpanList = scheFormDivList[list_position_h+1].getElementsByTagName("span");
+			tSpanList[0].innerText="";
+			tSpanList[1].innerText="";
+			tSpanList[2].innerText="";
+			tSpanList[3].innerText="";
+			tSpanList[4].innerText="";
+			tSpanList[5].innerText="";
+			tSpanList[6].innerText="";
+			list_position_h--;
+			$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+		}
+		else//删除的schedule在最末未，并且该页就只有一个数据
+		{
+			if(difference == 0)
+			{
+				var tSpanList = scheFormDivList[1].getElementsByTagName("span");
+				tSpanList[0].innerText="";
+				tSpanList[1].innerText="";
+				tSpanList[2].innerText="";
+				tSpanList[3].innerText="";
+				tSpanList[4].innerText="";
+				tSpanList[5].innerText="";
+				tSpanList[6].innerText="";
+				list_position_h--;
+				$("scheduleFocus").style.display = "none";//获取新的焦点ID
+			}
+			else
+			{
+				difference -= 7;
+				var i=0;
+				for(i=0;i<7;i++)
+				{
+					var tSpanList = scheFormDivList[i + 1].getElementsByTagName("span");
+					tSpanList[0].innerText=doTime(scheduleList[i+difference].startTime);
+					tSpanList[1].innerText=scheduleList[i+difference].startDate;
+					tSpanList[2].innerText=scheduleList[i+difference].programTitle;
+					tSpanList[3].innerText=scheduleList[i+difference].channelName;
+					tSpanList[4].innerText=doTime(scheduleList[i+difference].durationTime);
+					tSpanList[5].innerText = repeat_mode[scheduleList[i+difference].repeatMode];
+					tSpanList[6].innerText = schedule_mode[scheduleList[i+difference].scheduleMode];
+				}
+				list_position_h=6;
+				$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+			}
+		}
+	}
+	doElementScroll(spanScollList,list_position_h);	
+	focusOn = "scheduleList";
+	showFormFromFocus(focusOn);	
+}
+
+/*
+描述：将weekday用二进制表示的形式转化成输入组
+*/
+var weekdayStatusImg = ["images/option/Radio_1.PNG","images/option/Radio_3.PNG"];
+var weekdayCheckImgList;
+function showWeekdayUI(week)
+{
+	weekdayCheckImgList = $("recForm").getElementsByTagName("img");
+	for(var i = 0; i < 7; i++)
+	{
+		weekdayCheckClassList[i].getElementsByTagName("span")[0].innerText = weekdayWords[i];
+	}
+	
+	//week二进制表示，低7位分别表示周一到周日预约情况，比如1001101表示周日、三、四、六添加预约
+	var we = week&127;//去除低7位前面所有数据
+	for(var i = 6; i >= 0; i--)
+	{
+		weekdayArray[i] = we&1;
+		we = we>>1;
+	}
+	
+	for(var i = 0; i < 7; i ++)
+	{
+		weekdayCheckImgList[i].src = weekdayStatusImg[weekdayArray[i]];
+	}
+	
+	if(repeat == 2)
+	{
+		recordLiList[7].style.display = "block";
+		recordLiList[8].style.display = "block";
+	}
+	else
+	{
+		recordLiList[7].style.display = "none";
+		recordLiList[8].style.display = "none";
+	}
+}
+
+function showFormFromFocus(nowFocusForm)
+{
+	switch(nowFocusForm)
+	{
+		case "addBooking":
+			$("tipsForm").style.display = "none";
+			$("recForm").style.display = "block";
+			$("warning").style.display = "none";	
+			$("scheForm").style.display = "none";
+			break;
+		case "scheduleList":
+			top.Log("in showFormFromFocus totalSchedule = "  + totalSchedule)
+			if(totalSchedule > 0)
+			{
+				$("delete").style.display = "block";
+				$("deleteImg").style.display = "block";
+				$("edit").style.display = "block";
+				$("editImg").style.display = "block";
+				$("noSchedule").style.display = "none";
+				$("scheduleOptionTitle").style.display = "block";
+			}
+			else
+			{
+				$("delete").style.display = "none";
+				$("deleteImg").style.display = "none";
+				$("edit").style.display = "none";
+				$("editImg").style.display = "none";
+				$("noSchedule").style.display = "block";
+				$("scheduleOptionTitle").style.display = "none";
+			}
+			
+			$("tipsForm").style.display = "none";
+			$("recForm").style.display = "none";
+			$("warning").style.display = "none";	
+			$("scheForm").style.display = "block";
+			break;
+		case "scheduleEdit":
+			$("tipsForm").style.display = "none";
+			$("recForm").style.display = "block";
+			$("warning").style.display = "none";	
+			$("scheForm").style.display = "none";
+			break;
+		case "deleteCheck":
+			$("tipsForm").style.display = "block";
+			$("recForm").style.display = "none";
+			$("warning").style.display = "none";	
+			$("scheForm").style.display = "none";
+			break;
+		case "errorRemind":
+			$("tipsForm").style.display = "none";
+			//此状态不修改$("recForm").style.display = "none";
+			$("warning").style.display = "block";	
+			//此状态不修改$("scheForm").style.display = "none";
+			break;
+		default:
+			break;			
+	}
+}
+var recordLableList;
+var recordPList;
+var recordLiList;
+var curIndex = 0;
+var nowDate;
+var nowTime;
+var startFocusOn;//进入的时候是在那个页面
+var weekdayCheckClassList;
+var recordButtonClassList;
+function init()
+{
+	top.stopTimeout();
+	weekdayCheckClassList = $("recForm").getElementsByClassName("weekdayCheck");
+	recordButtonClassList = $("recForm").getElementsByClassName("recordButton");
+	spanScollList = $("scheForm").getElementsByClassName("programTitleList");
+	scheFormDivList = $("scheForm").getElementsByTagName("div");
+	nowTime = setting.currentTime;
+	nowDate = setting.currentDate;
+	recordLableList = $("recForm").getElementsByTagName("label");
+	recordPList = $("recForm").getElementsByTagName("p");
+	recordLiList = $("recForm").getElementsByTagName("li");
+	var datas = window.location.search;
+	startFocusOn = datas.substring(1);
+	if(startFocusOn == "booking")
+	{
+		initRecord();
+	}
+	else if(startFocusOn == "schedule")
+	{
+		initScheduleList();
+	}
+	addMouseListener();
+}
+function uninit()
+{
+	top.timeoutFuc.timeoutEnable=1;
+}
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2) toBack();//right key
+	}
+	
+	//record list
+	for(var i = 1; i < 7; i++)
+	{
+		recordLiList[i].setAttribute("newAttr",i);
+		recordLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "addBooking" || focusOn == "scheduleEdit")//record弹出框
+				{
+					//clean focus and data
+					$("operateFocus").style.display = "none";
+					$("leftRightArrow").style.display = "none";
+					$("recordFocus").style.display = "none";
+				
+					if(record_position == 3)//end time
+					{
+						endTimeContentSpanList[0].style.color = "#fff";
+						endTimeContentSpanList[1].style.color = "#fff";
+						endTimeContentSpanList[2].style.color = "#fff";
+					}
+					else if(record_position == 2)//start time
+					{
+						startTimeContentSpanList[0].style.color = "#fff";
+						startTimeContentSpanList[1].style.color = "#fff";
+						startTimeContentSpanList[2].style.color = "#fff";
+					}
+					else if(record_position == 1)//start date
+					{
+						startDateContentSpanList[0].style.color = "#fff";
+						startDateContentSpanList[1].style.color = "#fff";
+						startDateContentSpanList[2].style.color = "#fff";
+						/*---------------最后更正不合法时间 add by chenhua 2014-1-26----------------------*/
+						var dt = new Date(date_only[4]*1000+date_only[5]*100+date_only[6]*10+date_only[7],date_only[2]*10+date_only[3] - 1,date_only[0]*10+date_only[1]);
+									
+						var y = dt.getFullYear();
+						var m = dt.getMonth() + 1;
+						var d = dt.getDate();
+						if(m < 10)
+						{
+							m = "0" + m;
+						}
+						if(d < 10)
+						{
+							d = "0" + d;
+						}
+						var dateString = "" + d + m + y;
+						var dates = dateString.split("");
+						for(var i = 0; i < 8; i++)
+						{
+							date_only[i] = parseInt(dates[i],10);
+						}
+						startDateContentSpanList[0].style.innerHTML = ""+ d + "-" + m + "-" + y;
+						startDateContentSpanList[1].style.innerHTML = "";
+						startDateContentSpanList[2].style.innerHTML = "";
+					}
+					
+					//show new focus and data
+					record_position = parseInt(this.getAttribute("newAttr")) - 1;
+					if(record_position == 5)//repeat
+					{
+						$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+						$("leftRightArrow").style.display = "block";
+					}
+					else if(record_position == 4)//schedule type
+					{
+						$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+						$("leftRightArrow").style.display = "block";
+					}
+					else if(record_position == 3)//end time
+					{
+						num_position = 0;
+						endTimeContentSpanList[0].innerText = end_time_only[num_position];
+						endTimeContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,end_time_only,4,":");
+						endTimeContentSpanList[2].innerText = "";
+						endTimeContentSpanList[0].style.color = "#f00";
+						$("leftRightArrow").style.display = "none";
+					}
+					else if(record_position == 2)//start time
+					{
+						num_position = 0;
+						startTimeContentSpanList[0].innerText = start_time_only[num_position];
+						startTimeContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,start_time_only,4,":")
+						startTimeContentSpanList[2].innerText = "";
+						startTimeContentSpanList[0].style.color = "#f00";
+					}
+					else if(record_position == 1)//start date
+					{
+						num_position = 0;
+						startDateContentSpanList[0].innerText = date_only[0];
+						startDateContentSpanList[1].innerText = getNextTimeShowString(num_position + 1,date_only,8,"-");
+						startDateContentSpanList[2].innerText = "";
+						startDateContentSpanList[0].style.color = "#f00";
+					}
+					else if(record_position == 0)//channel number
+					{
+						$("leftRightArrow").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+						$("leftRightArrow").style.display = "block";
+					}
+					$("recordFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+					$("recordFocus").style.display = "block";
+					//doEnter();此处没有作用
+				}
+			}
+		}
+	}
+	
+	//weekday slect
+	for(var i = 0; i < 7; i++)
+	{
+		weekdayCheckClassList[i].setAttribute("newAttr",i);
+		weekdayCheckClassList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "addBooking" || focusOn == "scheduleEdit")//record弹出框
+				{
+					//clean focus and data
+					$("operateFocus").style.display = "none";
+					$("leftRightArrow").style.display = "none";
+					$("recordFocus").style.display = "none";
+				
+					if(record_position == 3)//end time
+					{
+						endTimeContentSpanList[0].style.color = "#fff";
+						endTimeContentSpanList[1].style.color = "#fff";
+						endTimeContentSpanList[2].style.color = "#fff";
+					}
+					else if(record_position == 2)//start time
+					{
+						startTimeContentSpanList[0].style.color = "#fff";
+						startTimeContentSpanList[1].style.color = "#fff";
+						startTimeContentSpanList[2].style.color = "#fff";
+					}
+					else if(record_position == 1)//start date
+					{
+						startDateContentSpanList[0].style.color = "#fff";
+						startDateContentSpanList[1].style.color = "#fff";
+						startDateContentSpanList[2].style.color = "#fff";
+						/*---------------最后更正不合法时间 add by chenhua 2014-1-26----------------------*/
+						var dt = new Date(date_only[4]*1000+date_only[5]*100+date_only[6]*10+date_only[7],date_only[2]*10+date_only[3] - 1,date_only[0]*10+date_only[1]);
+									
+						var y = dt.getFullYear();
+						var m = dt.getMonth() + 1;
+						var d = dt.getDate();
+						if(m < 10)
+						{
+							m = "0" + m;
+						}
+						if(d < 10)
+						{
+							d = "0" + d;
+						}
+						var dateString = "" + d + m + y;
+						var dates = dateString.split("");
+						for(var i = 0; i < 8; i++)
+						{
+							date_only[i] = parseInt(dates[i],10);
+						}
+						startDateContentSpanList[0].style.innerHTML = ""+ d + "-" + m + "-" + y;
+						startDateContentSpanList[1].style.innerHTML = "";
+						startDateContentSpanList[2].style.innerHTML = "";
+					}
+					
+					//show new focus and data
+					if(parseInt(this.getAttribute("newAttr")) < 4)
+					{
+						record_position = 6;
+					}
+					else
+					{
+						record_position = 7;
+					}
+					weekday_position = parseInt(this.getAttribute("newAttr"));
+					$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+					$("operateFocus").style.left = WEEKDAY_STAR + (weekday_position%4)*WEEKDAY_STEP + "px";
+					$("operateFocus").style.display = "block";
+					doEnter();
+				}
+			}
+		}
+	}
+	
+	//add or replace button slect
+	for(var i = 0; i < 2; i++)
+	{
+		recordButtonClassList[i].setAttribute("newAttr",i);
+		recordButtonClassList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "addBooking" || focusOn == "scheduleEdit")//record弹出框
+				{
+					//clean focus and data
+					$("operateFocus").style.display = "none";
+					$("leftRightArrow").style.display = "none";
+					$("recordFocus").style.display = "none";
+				
+					if(record_position == 3)//end time
+					{
+						endTimeContentSpanList[0].style.color = "#fff";
+						endTimeContentSpanList[1].style.color = "#fff";
+						endTimeContentSpanList[2].style.color = "#fff";
+					}
+					else if(record_position == 2)//start time
+					{
+						startTimeContentSpanList[0].style.color = "#fff";
+						startTimeContentSpanList[1].style.color = "#fff";
+						startTimeContentSpanList[2].style.color = "#fff";
+					}
+					else if(record_position == 1)//start date
+					{
+						startDateContentSpanList[0].style.color = "#fff";
+						startDateContentSpanList[1].style.color = "#fff";
+						startDateContentSpanList[2].style.color = "#fff";
+						/*---------------最后更正不合法时间 add by chenhua 2014-1-26----------------------*/
+						var dt = new Date(date_only[4]*1000+date_only[5]*100+date_only[6]*10+date_only[7],date_only[2]*10+date_only[3] - 1,date_only[0]*10+date_only[1]);
+									
+						var y = dt.getFullYear();
+						var m = dt.getMonth() + 1;
+						var d = dt.getDate();
+						if(m < 10)
+						{
+							m = "0" + m;
+						}
+						if(d < 10)
+						{
+							d = "0" + d;
+						}
+						var dateString = "" + d + m + y;
+						var dates = dateString.split("");
+						for(var i = 0; i < 8; i++)
+						{
+							date_only[i] = parseInt(dates[i],10);
+						}
+						startDateContentSpanList[0].style.innerHTML = ""+ d + "-" + m + "-" + y;
+						startDateContentSpanList[1].style.innerHTML = "";
+						startDateContentSpanList[2].style.innerHTML = "";
+					}
+					
+					//show new focus and data
+					record_position = 8;
+					schedule_add_replace_position = parseInt(this.getAttribute("newAttr"));
+					$("operateFocus").style.left = RECORD_ENTER_LEFT_START + schedule_add_replace_position*RECORD_ENTER_LEFT_STEP + "px";
+					$("operateFocus").style.top = RECORD_FOCUS_START + record_position*RECORD_FOCUS_STEP + "px";
+					$("operateFocus").style.display = "block";
+					doEnter();
+				}
+			}
+		}
+	}
+	
+	//schedule list
+	for(var i = 1; i < 8; i++)
+	{
+		scheFormDivList[i].setAttribute("newAttr",i);
+		scheFormDivList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "scheduleList")//scheForm弹出框
+				{
+					if(list_position_h<0)//没有预定节目
+					{
+						return;
+					}
+					else if((parseInt(this.getAttribute("newAttr")) + difference) > totalSchedule)//超出数量
+					{
+						return;
+					}
+					else
+					{
+						list_position_h = parseInt(this.getAttribute("newAttr")) - 1;
+						$("scheduleFocus").style.top = (SCHEDULE_START + SCHEDULE_STEP*list_position_h) + "px";//获取新的焦点ID
+						doEnter();	
+					}
+				}
+			}
+		}
+	}
+	
+	$("redImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "scheduleList")
+			{
+				if(top.g_temp == "EPG")
+				{
+					//do nothing
+				}
+				else
+				{
+					booking_interrelated.bookingChannel = channel.getCurrentChannelInfo();
+					var programList  = booking_interrelated.bookingChannel.getProgramPlayList();
+					//预定节目从下一个节目开始
+					//top.Log("programList[1].id = " + programList[1].id);
+					if(programList[1].id == -1)//没有next事件
+					{
+						booking_interrelated.isHaveProgramMoreInfo = 0;//表示没有可以预定的事件
+					}
+					else
+					{
+						booking_interrelated.isHaveProgramMoreInfo = 1;
+						booking_interrelated.bookingEvent = programList[1];
+					}
+				}
+				$("scheForm").style.display = "none";
+				initRecord();
+			}
+		}
+	}
+}
+
+function doElementScroll(spanScollList,position)
+{
+	setScrollAttribute(spanScollList,position);
+	setTimeout(function(){resetScrollHtmlInner(spanScollList)},1);
+}
+function isOverflowed(element)
+{
+	//console.log("setScrollAttribute: element.scrollWidth="+element.scrollWidth+" element.clientWidth="+ element.clientWidth);
+    return element.scrollWidth > element.clientWidth;
+}
+function setScrollAttribute(spanScollList,focusPosition)
+{
+	for(var i = 0; i < spanScollList.length; i++)
+	{
+		//console.log("setScrollAttribute: htmlTagList.length="+spanScollList.length+"focusPosition="+focusPosition+"htmlTagList[i].innerHTML="+spanScollList[i].innerHTML);
+		spanScollList[i].setAttribute("contentText",spanScollList[i].innerHTML);
+		if(focusPosition==i&&isOverflowed(spanScollList[i]))//如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+		{
+			spanScollList[i].style.overflowX = "-webkit-marquee";
+			spanScollList[i].style.textOverflow = "clip";
+			spanScollList[i].style.webkitMarqueeDirection = "backwards";
+			spanScollList[i].style.webkitMarqueeStyle = "scroll";
+			spanScollList[i].style.webkitMarqueeSpeed = "fast";
+			spanScollList[i].style.webkitMarqueeIncrement = "small";
+			spanScollList[i].style.webkitMarqueeRepetition = "infinite";
+			/*htmlTagList[i].innerHTML = tempText;*/
+			
+		}
+		else
+		{
+			spanScollList[i].style.overflowX = "hidden";
+			spanScollList[i].style.textOverflow = "ellipsis";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		spanScollList[i].innerHTML = "";
+	}
+}
+function resetScrollHtmlInner(spanScollList)
+{
+	for(var i = 0; i < spanScollList.length; i++)
+	{
+		//spanScollList[i].innerHTML = "";
+		spanScollList[i].innerHTML = spanScollList[i].getAttribute("contentText");
+	}
+}
+</script>
+</head>
+
+<body onload="init()" onunload="uninit()">
+ <!-----------------------节目预定添加和修改对话框-------------------->
+    <div id="recForm">
+        <ul id="recUl">
+            <li>
+                <label class="frameTitle"></label>
+            </li>
+            <li>
+                <label class="recordName"></label>
+                <p class="recordValue" ></p>
+            </li>
+            <li>
+                <label class="recordName" ></label>
+                <p id="startDateContent" class="recordValue" >
+                    <span></span><span></span><span></span>
+                </p>
+            </li>
+            <li>
+                <label class="recordName" ></label>
+                <p id="startTimeContent" class="recordValue" >
+                    <span></span><span></span><span></span>
+                </p>
+            </li>
+            <li>
+                <label class="recordName" ></label>
+                 <p id="endTimeContent" class="recordValue" >
+                    <span></span><span></span><span></span>
+                </p>
+            </li>
+            <li>
+                <label class="recordName" style="width:310px;"></label>
+                <p class="recordValue" ></p>
+            </li>
+            <li>
+                <label class="recordName"></label>
+                <p class="recordValue" ></p>
+            </li>
+            <li>
+                <div class="weekdayCheck" style="left:0px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+                <div class="weekdayCheck" style="left:200px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+                <div class="weekdayCheck" style="left:400px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+                <div class="weekdayCheck" style="left:600px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+            </li>
+            <li>
+                <div class="weekdayCheck" style="left:0px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+                <div class="weekdayCheck" style="left:200px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+                <div class="weekdayCheck" style="left:400px;">
+                    <img src="images/option/Radio_1.PNG" />
+                    <span></span>
+                </div>
+            </li>
+            
+            <label id="change" class="recordButton" style="left:300px;"></label>
+            <label id="replace" class="recordButton" style="left:550px;"></label>
+          </ul>
+          
+  		<img id="operateFocus" src="images/Focus-02.png">
+        <div id="leftRightArrow">
+            <img  class="smallImg" style="left:10px;"  src="images/arrow/L-Focus.png">
+            <img  class="smallImg" style="right:10px;" src="images/arrow/R-Focus.png">
+        </div>
+        <img id="recordFocus" style="top:60px;" src="images/Focus-03.png" />
+          
+          <div style="position:absolute;top:600px;">
+                <img class="barImg" style="left:150px;" src="images/icon-Select_2.png">
+                <label id="recordOperateRemind"  class="recordName" style="left:254px;"></label>
+                <!--
+                <img class="barImg" style="left:500px;" src="images/icon-Ok.png">
+                <label  class="recordName" style="left:590px;"></label>
+                -->
+            </div>
+      </div>
+      
+     <!-----------------------节目预定时间错误提示框-------------------->
+    <div id="warning" style="display:none;"></div>
+    
+     <!-----------------------预定节目列表展示框-------------------->
+    <div id="scheForm">
+        <img id="scheduleFocus" src="images/Focus-05.png"/>
+        <label id="S-title" class="frameTitle" ></label>
+        <div id="scheduleOptionTitle" class="scheList" style="top:40px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleListOther"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:80px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:120px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:160px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:200px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:240px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:280px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;" class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;" class="programTitleListOther"></span>
+        </div>
+        <div class="scheList" style="top:320px;">
+            <span style="left:0px;" class="programTitleListOther"></span>
+            <span style="left:260px;"class="programTitleListOther"></span>
+            <span style="left:520px;" class="programTitleList"></span>
+            <span style="left:780px;" class="programTitleListOther"></span>
+            <span style="left:1040px;" class="programTitleListOther"></span>
+            <span style="left:1300px;" class="programTitleListOther"></span>
+            <span style="left:1560px;"class="programTitleListOther"></span>
+        </div>
+        
+    	<span id="noSchedule"></span>
+    
+        <div  class="scheList" style="top:360px;"> 
+        	<img id="redImg" class="barImg" style="left:410px;" src="images/icon-Color_key_R.png">
+            <div id="add"  class="scheduleValue" style=" left:514px;"></div>
+            <img id="deleteImg" class="barImg" style="left:810px;" src="images/icon-Color_key_G.png">
+            <div id="delete"  class="scheduleValue" style=" left:914px;"></div>
+            <img id= "editImg" class="barImg" style="left:1210px;" src="images/icon-Ok.png">
+            <div id="edit"  class="scheduleValue" style=" left:1314px;"></div>
+        </div>
+    </div>
+    
+    
+    <!----------------------重置确认弹出框使用---------------------->
+    <div id="tipsForm" class="dialogForm" style="height:300px;display:none;">
+        <span class="dialogTitle" ></span>
+        <span class="dialogContent" style="top:120px;"></span>
+        <span class="dialogButton" style="left:200px;"></span>
+        <span class="dialogButton" style="left:450px;"></span>
+        <img id="tipsFocus" class="dialogButtonImgFocus" src="images/Focus_Frame/Focus2.png">
+   </div>
+</body>
+</html>

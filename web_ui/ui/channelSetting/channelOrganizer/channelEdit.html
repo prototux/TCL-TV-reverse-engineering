@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>channelOrganizer</title>
+<link rel="stylesheet" type="text/css" href="../../all.css">
+<script type="text/javascript" src="channelEdit.js"></script>
+<style>
+    body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#channelEditBox
+{
+	position:absolute;
+	left:595px;
+	width:730px;
+	height:750px;
+	top:200px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	background:#000000;
+	display:none;
+}
+#channelEditBoxTitle
+{
+	position:absolute;
+	width:670px;
+	height:60px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	color:#FFFFFF;
+	font-size:28px;
+	padding:10px 10px;
+	left:20px;
+	border-bottom:2px solid #1b1b1b;
+}
+#channelEditList
+{
+	position:absolute;
+	top:100px;
+	left:60px;
+	width:600px;
+	height:400px;
+}
+#channelEditList ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#channelEditList li
+{
+	position:relative;
+	width:600px;
+	height:60px;
+	top:10px;
+	color:#FFFFFF;
+	margin:10px 0px 10px 0px;
+}
+.liName
+{
+	position:absolute;
+	top:10px;
+	left:5px;
+	font-size:24px;
+}
+.liValue
+{
+	position:absolute;
+	left:250px;
+	width:200px;
+	top:10px;
+	font-size:24px;
+	height:30px;
+	text-align:center;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.liInputValue
+{
+	position:absolute;
+	left:250px;
+	width:300px;
+	height:30px;
+	top:10px;
+	font-size:24px;
+	text-align:center;
+	border-radius: 10px;
+	border:2px solid #1b1b1b;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#channelEditValueFocus
+{
+	position:absolute;
+	left:245px;
+	width:312px;
+	height:42px;
+	top:95px;
+	pointer-events:none;
+}
+.channelEditButton
+{
+	position:absolute;
+	top:70px;
+	width:204px;
+	height:64px;
+	line-height:64px;
+	font-size:28px;
+	border-radius: 10px;
+	text-align:center;
+	background:url(../../images/Focus-02-no.png);
+}
+#channelEditButtonFocus
+{
+	position:absolute;
+	top:70px;
+	left:400px;
+	width:204px;
+	height:64px;
+	font-size:28px;
+	background:url(../../images/Focus-02.png);
+	text-align:center;
+	display:none;
+	pointer-events:none;
+}
+#channelEditRemind
+{
+	position:absolute;
+	top:0px;
+	left:100px;
+	width:500px;
+	height:60px;
+	font-size:28px;
+	text-align:center;
+	color:#F00;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   	<div id="fourthMenuLeft"></div>
+    <div id="fourthMenuRight">
+    	 <div id="editId" class="titleName">
+                <span style="top:60px; position:absolute">delete</span>
+         </div>
+        <div id="listUpRemind" style="top:120px;">
+           <img src="../../images/arrow/U-Focus.png"/>
+        </div>
+    	<ul style="top:160px; position:absolute;">
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+   		</ul>
+         <div id="listDownRemind" style="top:1030px">
+           <img src="../../images/arrow/D-Focus.png" />
+        </div>
+        <img id="fourthListFocus" src="../../images/Focus_Frame/Focus-1.png">
+   </div>
+   <!-----------------------节目编辑对话框---------------------------------------->
+        <div id="channelEditBox">
+        	<div id="channelEditBoxTitle">
+            	<span style=" position:absolute; top:20px"></span>
+            </div>
+            <div id="channelEditList">
+            	<ul>
+                	<li>
+                    	<span class="liName"></span>
+                        <span class="liValue" style="width:300px;"></span>
+                    </li>
+                    <li>
+                    	<span class="liName"></span>
+                        <div class="liInputValue"><span id="numSpan0"></span><span id="numSpan1"></span><span id="numSpan2"></span><span id="numSpan3"></span></div>
+                    </li>
+                    <li >
+                        <span class="liName"></span>
+                        <div class="liInputValue"><span id="nameSpan0"></span><span id="nameSpan1"></span><span id="nameSpan2"></span></div>
+                    </li>
+                    <li>
+                        <span class="liName"></span>
+                        <span class="liInputValue" ></span>
+                    </li>
+                    <li>
+                    	<span class="liName"></span>
+                        <span class="liInputValue" ></span>
+                    </li>
+                    <li>
+                    	<span class="liName"></span>
+                        <span class="liInputValue"></span>
+                    </li>
+                </ul>
+                <img id="channelEditValueFocus" src="../../images/Focus_Frame/Focus.png" />
+            </div>
+            <div id="channelButton" style="position:absolute; top:560px;">
+                <div class="channelEditButton" style="left:100px;"></div>
+                <div class="channelEditButton" style="left:400px;"></div>
+                <div id="channelEditButtonFocus"></div>
+            	<span id="channelEditRemind"></span>
+            </div>
+            
+        </div>
+     <!----------------------弹出列表框使用---------------------->
+    <div id="listForm" class="fourthPopUpBox">
+    	<img id="listUpImg" src="../../images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+       	  <img id="listFormFocus" class="formFocus" src="../../images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+        <img id="listDownImg" src="../../images/arrow/D-Focus.png" />
+     </div>
+   
+</body>
+</html>

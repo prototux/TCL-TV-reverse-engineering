@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="init.css" rel="stylesheet" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#welcome
+{
+	position:absolute;
+	width:1920px;
+	font-size:
+}
+.centerRemind
+{
+	position:absolute;
+	margin:0px 460px 0px 460px;
+	width:1000px;
+	font-size:28px;
+	font-weight:bold;
+	color:#ccc;
+	text-align:center;
+}
+.centerLoadingImg
+{
+	 position:absolute;
+	 margin:0px 894px 0px 896px;
+	 width:130px;
+	 height:130px;
+}
+</style>
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var FirstTitle				= top.initialTitle[0];
+var welcomeRminds			= top.initialPrompt[0];
+var loadingImgs				= ["../images/Loading-01.png",
+								"../images/Loading-02.png",
+								"../images/Loading-03.png",
+								"../images/Loading-04.png",
+								"../images/Loading-05.png",
+								"../images/Loading-06.png",
+								"../images/Loading-07.png",
+								"../images/Loading-08.png"];
+									
+document.onnotify = notifyProcess;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_RESET_READY:
+			document.location.href = "initEnvironmentSet.html";
+			break;
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+			break;
+		}
+	    default:
+	        break;
+    }
+}
+
+document.onkeydown = keyproc;
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		default:
+			break;
+	}
+}
+var setting = top.g_setting;
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+/*
+描述：开始加载等待
+*/
+var loadingTimer = 0;
+var loadingCount = 0;
+function startloading()
+{
+	$('loadingImg').src = loadingImgs[loadingCount%8];
+	loadingCount++;
+	loadingTimer=setTimeout("startloading()",300);
+}
+
+
+function init()
+{
+	$("initTitle").innerHTML = FirstTitle;
+	$("initRemind1").innerHTML = welcomeRminds;
+	
+	startloading();
+
+
+    if (typeof(middleware) != "undefined")
+    {
+        middleware.setUIContext(1);
+    }
+	
+	if(top.isFirstInitNotifyThread)//初始化消息接收线程
+	{
+		setting.createNotifyThread();
+		setting.browserIsStart();
+		top.isFirstInitNotifyThread = 0;
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+	<span id="initTitle" style="top:430px;"></span>
+    
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:922px;">
+    	<img class="initStepBigImg" src="../images/Step_big-00.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:628px;" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <span id="initRemind1" class="centerRemind" style="top:514px;"></span>
+  
+   	<img id="loadingImg" class="centerLoadingImg" src="../images/Loading-01.png" style="top:640px;">
+        
+</body>
+</html>

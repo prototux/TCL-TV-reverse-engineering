@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="all.css">
+<script type="text/javascript" src="menu.js"></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.menuname 
+{
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:hidden;/*-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: hidden;/*marquee-line;*/
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+</style>
+</head>
+
+<body onLoad="init()" onunload="uninit()">
+	<div id="menu" >
+    	<ul style="position:absolute;top:40px;">
+              <li class="menulist">
+                    <div class="menupicture" >
+                    	<img src="images/SS_icon/Cross_UI_SS_icon-1-1.png"  />
+                    </div>
+                    <div class="menuname"></div>
+              </li>
+              <li class="menulist">
+                    <div class="menupicture" >
+                    	<img src="images/SS_icon/Cross_UI_SS_icon-2-1.png" />
+                    </div>
+                    <div class="menuname" ></div>
+              </li>
+              <li class="menulist">
+                   <div class="menupicture" >
+                    	<img src="images/SS_icon/Cross_UI_SS_icon-3-1.png"  />
+                    </div>
+                    <div class="menuname"  ></div>
+              </li>
+              <li class="menulist">
+                    <div class="menupicture" >
+                    	<img src="images/SS_icon/Cross_UI_SS_icon-4-1.png"  />
+                    </div>
+                    <div class="menuname"  ></div>
+              </li>
+              <li class="menulist">
+                   <div class="menupicture" >
+                    	<img src="images/SS_icon/Cross_UI_SS_icon-5-1.png"  />
+                    </div>
+                    <div class="menuname"  ></div>
+             </li>
+            
+  		</ul>
+        
+         <img src="images/SS_icon/focus.png"  id="menuFocus" style="position:absolute; top:140px; left:0px;"/>
+  </div>
+
+</body>
+</html>

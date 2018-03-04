@@ -1,0 +1,469 @@
+body
+{
+	background:transparent;
+	cellspacing= 0;
+	cellpadding= 0;
+	width:1920px;
+	height:1080px;
+	/* background-image: url("../images/virtualRemote/virtual-3.jpg"); */
+}
+
+.hello1
+{
+	font-size: 39px;
+	color: fuchsia;
+}
+
+.virtualremote
+{
+	position: absolute;
+	left: 1700px;
+	top: 750px;
+}
+
+.point-left_top
+{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
+.point-right_top
+{
+	position: absolute;
+	left: 1910px;
+	top: 10px;
+}
+
+.point-left_bottom
+{
+	position: absolute;
+	left: 10px;
+	top: 1070px;
+}
+
+.virtualRemoteForTV
+{
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------  */
+
+.virtualremoteTest
+{
+	position: absolute;
+	
+	left: 1430px;
+	top: 720px;
+	width: 440px;
+	height: 310px;
+	background-image:url("../images/virtualRemote/Vkey_bg_3.png"); 
+	display: inline-table;
+}
+
+/* div{ border-left:2px dashed #0F0;border-right:2px dashed #0F0}  */
+
+
+
+.table_basicKey
+{
+	width:420px;
+	height:360px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	
+	border-collapse:collapse;
+	border-spacing:0;
+	
+	display: none;
+	
+}
+
+.table_basicKey td
+{
+	padding:0px;
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+
+.table_playKey
+{
+	width:420px;
+	height:180px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	
+	border-collapse:collapse;
+	border-spacing:0;
+	
+	display: inline-table;
+}
+
+.table_playKey td
+{
+	padding:0px;
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+
+
+.table_shortcutKey
+{
+	width:440px;
+	height:90px;
+	margin-top: 0px;
+	padding-top:0px;
+	
+	border-collapse:collapse;
+	border-spacing:0;
+	
+	display: inline-table;
+	
+}
+
+.table_shortcutKey td
+{
+	padding:0px;
+	text-align: center; 
+	width: 110px; 
+	height: 90px;
+}
+
+
+.tr_span
+{
+	font-size: 36px;
+	color: #aaaaaa;
+	visibility:hidden;
+}
+
+
+
+.focusForRemote
+{
+	position:absolute;  
+	top:380px; 
+	left:1420px; 
+	display: inline;
+}
+
+
+
+
+
+
+
+.focusForRemote
+{
+	position:absolute;  
+	top:560px; 
+	left:1560px; 
+	width: 180px; 
+	height: 90px; 
+	background-image: url("../images/virtualRemote/Vkey_Focus_1.png");
+	display: inline-table;
+}
+
+.focusForRemote_Focus2
+{
+	position:absolute;  
+	top:560px; 
+	left:1560px; 
+	width: 130px; 
+	height: 90px; 
+	background-image: url("../images/virtualRemote/Vkey_Focus_2.png");
+	display: inline-table;
+}
+
+
+/* ---------------------------- */
+
+/* ���ּ�ķ�ѡ��ʱ����ʽ */
+.table_basicKey_span
+{
+	font-size: 40px;
+	color: #aaaaaa;
+}
+
+/* ���ּ��ѡ��ʱ����ʽ */
+.table_basicKey_span_focus
+{
+	font-size: 40px;
+	color: #ffffff;
+}
+/* zoom+,zoom-的非选中时的样式 */
+.table_basicKey_span_zoomLeft
+{
+	visibility:hidden;
+}
+
+
+/* zoom+,zoom-的非选中时的样式 */
+.table_basicKey_span_zoomRight
+{
+	visibility:hidden;
+}
+
+/* play�����ѡ��ʱ����ʽ */
+.table_playKey_td_play
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Play.png");
+}
+
+/* play����ѡ��ʱ����ʽ */
+.table_playKey_td_play_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Play_Hi.png");
+}
+
+
+
+
+/* stop�����ѡ��ʱ����ʽ */
+.table_playKey_td_stop
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Stop.png");
+	visibility:visible;
+}
+
+/* stop����ѡ��ʱ����ʽ */
+.table_playKey_td_stop_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Stop_Hi.png");
+}
+
+
+
+
+
+
+/* pause�����ѡ��ʱ����ʽ */
+.table_playKey_td_pause
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Pause.png");
+}
+
+
+/* pause����ѡ��ʱ����ʽ */
+.table_playKey_td_pause_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Pause_Hi.png");
+}
+
+
+
+
+/* FB�����ѡ��ʱ����ʽ */
+.table_playKey_td_fb
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FB.png");
+}
+
+
+/* FB����ѡ��ʱ����ʽ */
+.table_playKey_td_fb_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FB_Hi.png");
+}
+
+
+/* FF�����ѡ��ʱ����ʽ */
+.table_playKey_td_ff
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FF.png");
+}
+
+
+/* FF����ѡ��ʱ����ʽ */
+.table_playKey_td_ff_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FF_Hi.png");
+}
+
+
+
+
+/* ��ɫ�����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_r
+{
+	background-image:url("../images/virtualRemote/Vkey_K_R.png");
+}
+
+/* ��ɫ����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_r_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_R_Hi.png");
+}
+
+
+
+/* ��ɫ�����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_g
+{
+	background-image:url("../images/virtualRemote/Vkey_K_G.png");
+}
+
+/* ��ɫ����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_g_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_G_Hi.png");
+}
+
+
+
+
+
+
+/* ��ɫ�����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_y
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Y.png");
+}
+
+/* ��ɫ����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_y_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Y_Hi.png");
+}
+
+
+
+
+
+
+
+
+
+
+/* ��ɫ�����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_b
+{
+	background-image:url("../images/virtualRemote/Vkey_K_B.png");
+}
+
+/* ��ɫ����ѡ��ʱ����ʽ */
+.table_shortcutKey_td_b_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_B_Hi.png");
+}
+
+.table_basicKey_span_text
+{
+	font-size: 36px;
+	color: #aaaaaa;
+	width:140px;
+	visibility:visible;
+	display:none;/*内联对象需加*/  
+    word-break:keep-all;/* 不换行 */  
+    white-space:nowrap;/* 不换行 */  
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */  
+    text-overflow:ellipsis;
+}
+.table_basicKey_span_text_focus
+{
+	font-size: 36px;
+	color: #ffffff;
+	width:140px;
+	visibility:visible;
+	display:none;/*内联对象需加*/  
+    word-break:keep-all;/* 不换行 */  
+    white-space:nowrap;/* 不换行 */  
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */  
+    text-overflow:ellipsis;
+	
+}
+
+/* --------------- */
+
+.table_text
+{
+	display: none;
+}
+
+
+
+.table_PVR
+{
+	display: none;
+}
+
+.table_Media
+{
+	display: none;
+}
+
+
+.table_hdmi_text
+{
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="soundPreset.js"></script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.progressContainer/* 设置 关于列表每行第二项属性*/
+{
+	position:absolute;
+	left:120px;
+	width:520px;
+	height:40px;/*27px;*/
+	top:16px;/*10px;*/
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  <div id="thdMenuLeft"></div>
+  <div id="thdMenuRight">
+		<ul>
+        	<li	class="titleName">
+                <span></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="soundPresetStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="100PgreContainer" class="progressContainer" >
+                	<div id="100PgreLeft" class="progressBarLeft" style="width:500px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="100PgreRight" class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <lable id="100Value" class="listThirdProperty"></lable>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="300PgreContainer" class="progressContainer">
+                	<div id="300PgreLeft" class="progressBarLeft" style="width:100px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="300PgreRight" class="progressBarRight" style="width:180px;"></div>
+                </div>
+                <lable id="300Value" class="listThirdProperty"></lable>
+            </li>
+           <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="1KPgreContainer" class="progressContainer">
+                	<div id="1KPgreLeft" class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="1KPgreRight" class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <lable id="1KValue" class="listThirdProperty"></lable>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="3KPgreContainer" class="progressContainer">
+                	<div id="3KPgreLeft" class="progressBarLeft" style="width:100px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="3KPgreRight" class="progressBarRight" style="width:180px;"></div>
+                </div>
+                <lable id="3KValue" class="listThirdProperty"></lable>
+            </li>
+             <li class="list">
+                <span class="listFirstProperty"></span>
+                <div id="10KPgreContainer" class="progressContainer">
+                	<div id="10KPgreLeft" class="progressBarLeft" style="width:100px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="10KPgreRight" class="progressBarRight" style="width:180px;"></div>
+                </div>
+                <lable id="10KValue" class="listThirdProperty"></lable>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="surroundVirStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="dialogEnhanceStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="bassEnhanceStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li> 
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="intelligentStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="mediaStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="inteligentEQ" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>            
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="graphicStatus" class="listSecondProperty"></div>
+                <img  class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>                                                   
+   		</ul>
+        <img id="thdListFocus" src="../images/Focus_Frame/Focus-1.png">
+   </div>
+   
+     <!----------------------弹出列表框使用---------------------->
+    <div id="listForm" class="fourthPopUpBox">
+        <img id="listUpImg" src="../images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+          <img id="listFormFocus" class="formFocus" src="../images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>          
+        </ul>
+        <img id="listDownImg" src="../images/arrow/D-Focus.png" />
+    </div>
+</body>
+</html>

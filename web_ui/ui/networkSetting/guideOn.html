@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="guideOn.js"></script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#guideDescription
+{
+	position:absolute;
+  top:236px;	
+	width:90%;
+	height:60px;
+	line-height:60px;
+	font-size:28px;
+	color:#a6a6a6;
+	text-align:center;
+}
+
+.guideImg
+{
+	position:absolute;
+	top:400px;
+	width:200px;
+	height:240px;
+}
+.guideImg > img
+{
+	position:absolute;
+	top:10px;
+	left:15px;
+	width:170px;
+	height:170px;
+	background:#FFFFFF;
+}
+.guideImg > span
+{
+	position:absolute;
+	top:205px;
+	left:10px;
+	width:180px;
+	font-size:28px;
+	color:#a6a6a6;
+	text-align:center;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  <div id="thdMenuLeft"></div>
+  <div id="thdMenuRight">
+		<ul style = "top:80px;position:absolute">
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="guideOnStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+   		</ul>
+        <img id="thdListFocus" src="../images/Focus_Frame/Focus-1.png">
+      <div style=" top:236px;left:73px; width:584">
+				<label id="guideDescription"></label> 	    			
+      <div id="guideImgRemind">				
+        <div class="guideImg" style=" left:130px;">
+                <img src="../images/ipepg_andriod_2D-code.png">
+             <span ></span>
+        </div>
+        <div class="guideImg" style=" right:130px;">
+                <img src="../images/ipepg_IOS_2D-code.png">
+             <span ></span>
+        </div>	
+      </div>	       			      
+   </div>
+   
+    <div id="listForm" class="fourthPopUpBox">
+    	  <img id="listUpImg" src="../images/arrow/U-Focus.png">
+        <ul id="listBox">
+          <img id="listFormFocus" class="formFocus" src="../images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+    	  <img id="listDownImg" src="../images/arrow/D-Focus.png">
+     </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="homePageEditApp.js"></script>
+<title>App edit</title>
+</head>
+<style>
+body
+{
+	background:url(images/BG_60.jpg);
+	width:1920px;
+	height:1080px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#titleName
+{
+	position:absolute;
+	top:50px;
+	left:50px;
+	height:30px;
+	color:white;
+	font-size:30px;
+	width:350px;
+}
+
+
+
+
+.appList
+{
+	position:absolute;
+	top:60px;
+	left:20px;
+	float:left;
+	width:1442px;
+}
+.appList li
+{
+	position:relative;
+	margin:40px 40px;
+	width:200px;
+	height:200px;
+	float:left;
+	color:white;
+	text-align:center;
+	line-height:200px;
+	border:thin solid #00aadd;
+	list-style-type:none;
+	z-index:50;
+}
+#appListFocus
+{
+	position:absolute;
+	top:60px;
+	left:20px;
+	margin:38px 38px;
+	width:200px;
+	height:200px;
+	border:4px solid #591616;
+}
+#favPage
+{
+	position:absolute;
+	width:1442px;
+	left:50px;
+	height:680px;
+	border:thin solid #00aadd;
+	top:200px;
+	float:left;
+	overflow:hidden;
+}
+#allAppPage
+{
+	position:absolute;
+	left:1500px;
+	width:300px;
+	height:1000px;
+	top:50px;
+	float:left;
+	border:thin solid #00aadd;
+}
+#allAppPage ul
+{
+	position:absolute;
+	top:80px;
+	list-style-type:none;
+	padding:0px;
+	margin: 0;
+}
+#allAppPage ul > li
+{
+	position:relative;
+	width:300px;
+	height:100px;
+	color:#FFFFFF;
+	line-height:100px;
+}
+.appImg
+{
+	position:absolute;
+	top:36px;
+	left:80px;
+}
+.appNum
+{
+	position:absolute;
+	left:20px;
+	font-size:28px;
+	color:#000000;
+	height:100px;
+	line-height:100px;
+}
+.appName
+{
+	position:absolute;
+	left:180px;
+	font-size:28px;
+	color:#000000;
+	height:100px;
+	width:100px;
+	overflow:hidden;
+	line-height:100px;
+}
+#allAppTitle
+{
+	position:absolute;
+	color:white;
+	top:10px;
+	width:300px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	font-size:28px;
+}
+#allAppFocus
+{
+	position:absolute;
+	top:80px;
+	left:4px;
+	width:284px;
+	height:100px;
+	border:4px solid #591616;
+	display:none;
+}
+</style>
+<body onload="init()">
+	<div id="topList">
+    <span id="titleName">Edit Favorite Apps</span>
+    </div>
+    
+    <div id="favPage">
+            <div id="appListFocus"></div>
+            <div id="pageFlag" style="position:absolute;top:80px; height:500px; width:4px;left:1438px; background-color:#F00; border:0px;"/></div>
+    </div>
+    <!--------------------底层分页面表示-------------------------------->
+    
+    <div id="allAppPage">
+    		 <span id="allAppTitle">
+             	All App
+             </span>
+             <ul>
+             	<li><span class="appNum">1</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App1</span></li>
+                <li><span class="appNum">2</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App2</span></li>
+                <li><span class="appNum">3</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App3</span></li>
+                <li><span class="appNum">4</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App4</span></li>
+                <li><span class="appNum">5</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App5</span></li>
+                <li><span class="appNum">6</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App6</span></li>
+                <li><span class="appNum">7</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App7</span></li>
+                <li><span class="appNum">8</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App8</span></li>
+                <li><span class="appNum">9</span><img src="images/Help-0_9.png"  class="appImg"/><span class="appName">App9</span></li>
+             </ul>
+             <div id="allAppFocus"></div>
+             <div id="allpPageFlag" style="position:absolute; height:500px; width:4px;left:296px; top:200px;background-color:#F00; border:0px;"/></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="homePageIndex.css">
+<script type="text/javascript" src="homePageIndex.js"></script>
+<title>无标题文档</title>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#homePageTitle
+{
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	height:180px;	
+	width:1920px;
+	z-index:200;
+	overflow:hidden;
+}
+#homePageApp
+{
+	position:absolute;
+	top:0px;
+	height:900px;
+	left:1920px;
+	width:1920px;
+	z-index:100;
+}
+#homePageTv
+{
+	position:absolute;
+	top:0px;
+	height:900px;
+	left:0px;
+	width:1920px;
+	z-index:100;
+}
+#homePageVideo
+{
+	position:absolute;
+	top:0px;
+	height:900px;
+	left:3840px;
+	width:1920px;
+	z-index:100;
+}
+#iframeDiv
+{
+	position: absolute;
+	top:180px;
+	left:-1920px;
+	width:5760px;
+	height:900px;
+	z-index:100;
+	overflow:hidden;
+	/*-webkit-transition-duration:400ms;*/
+}
+#mainFrameBG
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:3840px;
+	height:1080px;
+	z-index:1;
+	/*background:url(images/BG_TV_2.png) no-repeat;*/
+}
+.bgStyle
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:1920px;
+	height:1080px;
+	z-index:1;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+	<div id="mainFrameBG">
+		<img class="bgStyle" src="images/BG_TV_2.png"/>
+		<img class="bgStyle" style="left:1920px" src="images/BG_60.jpg"/>
+	</div>
+    <iframe id="homePageTitle" name="homePageTitle" scrolling=no frameborder="0" marginheight="0" marginwidth="0" src=""></iframe>
+    <div id="iframeDiv">
+		<iframe id="homePageApp" name="homePageApp" scrolling=no frameborder="0" marginheight="0" marginwidth="0" src=""></iframe>
+		<iframe id="homePageTv" name="homePageTv" scrolling=no frameborder="0"  marginheight="0" marginwidth="0" src=""></iframe>
+	    <iframe id="homePageVideo" name="homePageVideo"  frameborder="0"  marginheight="0" marginwidth="0" src=""></iframe>
+    </div>
+   	
+   	<!----------------------操作提示 如连网  搜台http://192.168.0.101:8866/docs/------------------------------>
+	<div id="homePageTips">
+   		<span id="dialogName"></span>
+        <span id="dialogContent" style=""></span>
+        <div class="dialogButton" style="left:100px; font-size:20px;"></div>
+        <div class="dialogButton" style="left:500px; font-size:20px;"></div>
+		<div class="dialogButton" style="left:20px; font-size:20px;display:none"></div>
+        <img id="picResetFocus" style="position:absolute; left:490px; bottom:20px; height:60px; width:270px; pointer-events:none;" src="images/Focus4_1.png" />
+	</div>
+</body>
+</html>

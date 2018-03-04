@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="satAutoSearch.js"></script>
+<link rel="stylesheet" type="text/css" href="../all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+/*.dialogOption
+{
+	position:absolute;
+	width:500px; 
+	left:50px;
+	height:27px;
+	font-size:27px;
+	text-align:center;
+	padding:4px 0px 4px 0px;
+	background:#999;
+	border:thin solid #FFF;
+}*/
+.dialogOptions
+{
+	position:absolute;
+	top:80px;
+	width:100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.dialogOptions li
+{
+	position:relative;
+	width:100%;
+	height:40px;
+	padding:10px 0px 10px 0px;
+}
+.searchButton/*按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+
+/*页面左下角显示的热键样式*/
+.hotkey
+{
+	position:absolute;
+	height:50px;
+	bottom:10px;
+}
+.hotkey img/*热键图片样式*/
+{
+	position:absolute;
+	width:50px;
+	height:20px;
+	margin:15px 0px 15px 0px;
+}
+.hotkey span/*热键文字样式*/
+{
+	position:absolute;
+	left:60px;
+	height:50px;
+	line-height:50px;
+	font-size:30px;
+	font-weight:bold;
+	color:#fff;
+}
+.popRemind
+{
+	position:absolute;
+	top:460px;
+	left:560px;/*650px;*/ 
+	height:160px;
+	line-height:160px;
+	padding:50px 0px 50px 0px;
+	width:700px;/*500px;*/ 
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.92;
+	background:#000;
+	overflow:hidden;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFFFFF;
+	text-align:center;
+	display:none;
+}
+.dialogInputProgressContainer
+{
+	right:70px;
+	width:354px;
+}
+#operatorForm
+{
+	display:none;
+}
+#scanForm
+{
+	display:none;
+}
+#satelliteForm
+{
+	height:750px;
+	display:none;
+}
+#satInfoForm
+{
+	height:860px;
+	display:none;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   <!----------------------auto search operater使用---------------------->
+   <div id="operatorForm" class="dialogForm">
+        <span id="operatorTitle" class="dialogTitle" ></span>
+        <ul class="dialogEnum">
+        	<li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+      	<div id="operatorFocus" class="dialogInputFocus"  style="top:110px;"></div>
+   </div>
+   
+   <!----------------------auto search form使用---------------------->
+   <div id="scanForm" class="dialogForm">
+        <span id="scanTitle" class="dialogTitle" ></span>
+        
+        <ul class="dialogOptions">
+        	<li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="satSelect" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="satScanMode" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="satChannels" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li> 
+            <li>
+            	<hr  class="dialogLine" style="top:0px;"/>
+            </li>
+            <div id="scanInputFocus" class="dialogInputFocus"  style="top:10px;"></div>
+        </ul>
+        
+         <div id="scanningInfo" style=" position:absolute; width:100%; height:240px; bottom:0px;">
+            <div id="scanProgress" class="dialogScanProgressContainer">
+                <div id="progressLeft" class="progressBarLeft" style="width:300px;"></div>
+                <div class="progressBarCenter"></div>
+                <div id="progressRight" class="progressBarRight"></div>
+            </div>
+            <span id="progressValue" class="dialogScanProgressValue"></span>
+            
+            <span id="scanStatus" class="dialogScanPrompt" style="top:60px;"></span>
+            <span id="scanResult1" class="dialogScanPrompt" style="top:90px;"></span>
+            <span id="scanResult2" class="dialogScanPrompt" style="top:120px;"></span>
+            
+            <span id="search" class="dialogButton" style="left:325px;"></span>
+        </div>
+   </div>
+   
+   <!----------------------satelite form使用---------------------->
+   <div id="satelliteForm" class="dialogForm" style="display:block;">
+        <span id="satTitle" class="dialogTitle" ></span>
+        <img id="upFlag" src="../images/arrow/U-Focus.png" style=" position:absolute; height:20px; width:40px; top:60px; left:380px; display:none;" />
+        <img id="downFlag" src="../images/arrow/D-Focus.png" style=" position:absolute; height:20px; width:40px; top:680px; left:380px; display:none;" />
+        <ul id="satelliteContent" class="dialogOptions">
+        	<li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_5.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <img class="dialogInputTag" src="../images/option/check_7.png">
+                </div>
+            </li>
+            <div id="satFocus" class="dialogInputFocus"  style="top:10px;"></div>
+        </ul>
+        
+         <div id="edit" class="hotkey" style="left:50px;" >
+          	<img src="../images/icon-Color_key_R.png"/>
+            <span></span>
+        </div>
+   </div>
+   
+   <!----------------------satelite edit form使用---------------------->
+   <div id="satInfoForm" class="dialogForm" >
+        <span id="satInfoTitle" class="dialogTitle" ></span>
+        <ul id="satInfoContent" class="dialogOptions">
+        	<li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="nameContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="positionSpan" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="lNBPowerSpan" class="dialogInputContent"></span>
+                   <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="lNBFreqSpan" class="dialogInputContent"></span>
+                   <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="diSEqCInputSpan" class="dialogInputContent"></span>
+                   <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="tone22KHzSpan" class="dialogInputContent"></span>
+                   <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="tonBurstSpan" class="dialogInputContent"></span>
+                   <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="freqContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="sybContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="polarizationSpan" class="dialogInputContent"></span>
+                   <img class="dialogInputTag" src="../images/arrow/R-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="sigStrength" class="dialogInputProgressContainer" >
+                        <div class="progressBarLeft"></div>
+                        <div class="progressBarCenter"></div>
+                        <div class="progressBarRight"></div>
+                    </div>
+                    <span id="sigStrengthValue" class="dialogInputTag" ></span>
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="sigQuality" class="dialogInputProgressContainer" >
+                        <div class="progressBarLeft"></div>
+                        <div class="progressBarCenter"></div>
+                        <div class="progressBarRight"></div>
+                    </div>
+                    <span id="sigQualityValue" class="dialogInputTag" ></span>
+                </div>
+            </li>
+            <div id="satInfoFocus" class="dialogInputFocus"  style="top:10px;"></div>
+        </ul>
+        
+        <div id="delete" class="hotkey" style="left:50px;" >
+          	<img src="../images/icon-Color_key_R.png"/>
+            <span></span>
+        </div>
+        <div id="insert" class="hotkey" style="left:400px;" >
+          	<img src="../images/icon-Color_key_G.png"/>
+            <span></span>
+        </div>
+   </div>
+   
+   <!----------------------------------------------->
+    <div id="pleaseSelectSat" class="popRemind"></div>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<root>
+<static_icon id = "TCL">
+	<img>../images/esticker/TCL.png</img>
+</static_icon>
+<static_icon id = "UHD">
+<img>../images/esticker/Esticker_01 UHD_new.png</img>
+</static_icon>
+<static_icon id = "TCL_right">
+	<img>../images/esticker/TCL_right.png</img>
+</static_icon>
+<!--netflix-->
+<icon id = "netflix">
+	<img_L>../images/esticker/Esticker_Netflix_B.png</img_L>
+	<img_S>../images/esticker/Esticker_Netflix.png</img_S>
+	<title>
+		<English>NETFLIX</English>
+		<Chinese>NETFLIX</Chinese>
+		<ChineseTraditional>NETFLIX</ChineseTraditional>
+		<Bulgarian>NETFLIX</Bulgarian>
+		<Croatian>NETFLIX</Croatian>
+		<Czech>NETFLIX</Czech>
+		<Danish>NETFLIX</Danish>
+		<Dutch>NETFLIX</Dutch>
+		<Estonian>NETFLIX</Estonian>
+		<Finnish>DNETFLIX</Finnish>
+		<French>NETFLIX</French>
+		<German>NETFLIX</German>
+		<Greek>NETFLIX</Greek>
+		<Hungarian>NETFLIX</Hungarian>
+		<Italian>NETFLIX</Italian>
+		<Latvian>NETFLIX</Latvian>
+		<Lithuanian>NETFLIX</Lithuanian>
+		<Norwegian>NETFLIX</Norwegian>
+		<Polish>NETFLIX</Polish>
+		<Portuguese>NETFLIX</Portuguese>
+		<Romanian>NETFLIX</Romanian>
+		<Russian>NETFLIX</Russian>
+		<Serbian>NETFLIX</Serbian>
+		<Slovak>NETFLIX</Slovak>
+		<Slovenian>NETFLIX</Slovenian>
+		<Spanish>NETFLIX</Spanish>
+		<Swedish>NETFLIX</Swedish>
+		<Turkish>NETFLIX</Turkish>
+		<Ukrainian>NETFLIX</Ukrainian>
+	</title>
+	<description>
+		<English>Subscribe to watch thousands of new, old and classic TV shows and movies at your fingertips.</English>
+		<Chinese>手指轻轻一点，即可观看海量电视剧和电影。</Chinese>
+		<ChineseTraditional>手指輕輕一點，即可觀看海量電視劇和電影。</ChineseTraditional>
+		<Bulgarian>Абонирайте се да гледате хиляди нови, стари и класически телевизионни предавания и филми с натискане на един бутон.</Bulgarian>
+		<Croatian>Pretplatite se i gledajte na tisuće novih, starih i klasičnih TV emisija i filmova na dohvat ruke.</Croatian>
+		<Czech>Přihlaste se a na dosah ruky budete mít sledování tisíců nových, starých i klasických televizních show a filmů.</Czech>
+		<Danish>Registrer dig for at se tusinder af nye, gamle og klassiske tv-shows og film, lige når du har lyst.</Danish>
+		<Dutch>Neem een abonnement en bekijk duizenden nieuwe, oude en klassieke TV-shows en films wanneer u maar wilt.</Dutch>
+		<Estonian>Registreeru tuhandete uute, vanade ja klassikaks saanud telesaadete ning filmide vaatamiseks.</Estonian>
+		<Finnish>Tilaa katseluoikeus tuhansiin uusiin, vanhoihin ja perinteisiin TV-ohjelmiin ja elokuviin, jotka ovat käden ulottuvilla.</Finnish>
+		<French>Abonnez-vous et bénéficiez immédiatement de milliers d’émissions et films télé nouveaux, anciens et classiques.</French>
+		<German>Abonnieren Sie Tausende neuer, alter und klassischer Fernsehsendungen und Filme mit den Fingerspitzen.</German>
+		<Greek>Εγγραφείτε για να παρακολουθείτε εύκολα και γρήγορα χιλιάδες καινούργιες, παλιές και κλασικές τηλεοπτικές εκπομπές και ταινίες.</Greek>
+		<Hungarian>Előfizetve több ezer új, régi és klasszikus, Önnek csak karnyújtásnyira lévő TV-műsort és filmet tekinthet meg.</Hungarian>
+		<Italian>Iscriviti per avere sempre a portata di mano migliaia di film e programmi TV nuovi, vecchi e i classici.</Italian>
+		<Latvian>Abonējiet un skatieties tūkstošiem jaunu, vecu un klasisku TV šovu un filmu, kas pieejami nekavējoties.</Latvian>
+		<Lithuanian>Užsiprenumeruokite ir žiūrėkite tūkstančius naujų, senų ir klasikinių TV laidų ir filmų – tai ranka pasiekiama.</Lithuanian>
+		<Norwegian>Abonner for å se tusenvis av nye, gamle og klassiske TV-show og filmer der du er.</Norwegian>
+		<Polish>Zasubskrybuj, aby uzyskać dostęp do tysięcy nowych, starych i klasycznych seriali i filmów.</Polish>
+		<Portuguese>Subscrever para ver milhares de espetáculos e filmes de TV, novos, antigos e clássicos que estão sempre disponíveis.</Portuguese>
+		<Romanian>Abonaţi-vă şi urmăriţi mii de seriale şi filme TV vechi şi clasice, toate la îndemâna dvs.</Romanian>
+		<Russian>Подпишитесь, чтобы получить быстрый доступ к тысячам новых и старых классических сериалов и других фильмов.</Russian>
+		<Serbian>Prijavite se i moći ćete da gledate hiljade novih, starih i klasičnih TV emisija, serija i filmova – sve će vam biti nadohvat ruke.</Serbian>
+		<Slovak>Odoberanie tisícok nových, starých a klasických TV relácií a filmov na dosah rúk.</Slovak>
+		<Slovenian>Prijavite se za gledanje novih, starih in klasičnih TV oddaj in filmov, ki so vam na dosegu roke.</Slovenian>
+		<Spanish>Suscríbase para ver miles de películas y programas de TV nuevos, antiguos y clásicos en cualquier momento.</Spanish>
+		<Swedish>Prenumerera för att visa tusentals nya, gamla och klassiska TV-program och filmer genom bara en fingertoppstryckning.</Swedish>
+		<Turkish>İyi bildiğiniz binlerce yeni, eski ve klasik TV gösterilerini ve filmlerini izlemek için abone olun.</Turkish>
+		<Ukrainian>Здійсніть передплату для простого перегляду тисяч нових, старих та класичних телешоу і кінофільмів.</Ukrainian>
+	</description>
+</icon>
+<!--golive-->
+<icon id = "golive">
+	<img_L>../images/esticker/Esticker_GoLive_B.png</img_L>
+	<img_S>../images/esticker/Esticker_GoLive.png</img_S>
+	<title>
+		<English>GOLIVE</English>
+		<Chinese>全球播</Chinese>
+		<ChineseTraditional>全球播</ChineseTraditional>
+		<Bulgarian>GOLIVE</Bulgarian>
+		<Croatian>GOLIVE</Croatian>
+		<Czech>GOLIVE</Czech>
+		<Danish>GOLIVE</Danish>
+		<Dutch>GOLIVE</Dutch>
+		<Estonian>GOLIVE</Estonian>
+		<Finnish>GOLIVE</Finnish>
+		<French>GOLIVE</French>
+		<German>GOLIVE</German>
+		<Greek>GOLIVE</Greek>
+		<Hungarian>GOLIVE</Hungarian>
+		<Italian>GOLIVE</Italian>
+		<Latvian>GOLIVE</Latvian>
+		<Lithuanian>GOLIVE</Lithuanian>
+		<Norwegian>GOLIVE</Norwegian>
+		<Polish>GOLIVE</Polish>
+		<Portuguese>GOLIVE</Portuguese>
+		<Romanian>GOLIVE</Romanian>
+		<Russian>GOLIVE</Russian>
+		<Serbian>GOLIVE</Serbian>
+		<Slovak>GOLIVE</Slovak>
+		<Slovenian>GOLIVE</Slovenian>
+		<Spanish>GOLIVE</Spanish>
+		<Swedish>GOLIVE</Swedish>
+		<Turkish>GOLIVE</Turkish>
+		<Ukrainian>GOLIVE</Ukrainian>
+	</title>
+	<description>
+		<English>Watch popular Free to Air TV channels from around the world with short buffering times and real-time updates.</English>
+		<Chinese>免费观看来自世界各地的电视频道。</Chinese>
+		<ChineseTraditional>免費觀看來自世界各地的電視頻道。</ChineseTraditional>
+		<Bulgarian>Гледайте безплатно “Free to air” телевизионни канали от целия свят с кратки времена за буфериране и актуализации в реално време.</Bulgarian>
+		<Croatian>Gledajte popularne Free to Air TV kanale iz cijelog svijeta s kratkim vremenima bafera i ažuriranjima u stvarnom vremenu.</Croatian>
+		<Czech>Sledujte oblíbené volně vysílané televizní programy z celého světa s krátkou dobou načítání a aktualizacemi v reálném čase.</Czech>
+		<Danish>Se populære Free-to-Air tv-kanaler fra hele verden med kort buffertid og opdateringer i real-time.</Danish>
+		<Dutch>Bekijk populaire Free-to-Air TV-kanalen wereldwijd, met korte buffertijden en real-time updates.</Dutch>
+		<Estonian>Vaata populaarseid tasuta telekanaleid kogu maailmast lühikese puhverdusaja ja reaalajas värskendustega.</Estonian>
+		<Finnish>Katso suosittuja ilmaisia TV-kanavia ympäri maailmaa, lyhyet puskurointiajat ja reaaliaikaiset päivitykset.</Finnish>
+		<French>Regarder de bonnes chaînes télé claires du monde entier avec de délais de mise en tampon extrêmement courts et mises à jour en temps réel.</French>
+		<German>Sehen Sie frei empfangbare Fernsehkanäle aus aller Welt mit kurzen Pufferzeiten und Updates in Echtzeit.</German>
+		<Greek>Παρακολουθήστε δημοφιλή δωρεάν τηλεοπτικά κανάλια από ολόκληρο τον κόσμο με σύντομους χρόνους προσωρινής αποθήκευσης και ενημερώσεις πραγματικού χρόνου.</Greek>
+		<Hungarian>Népszerű szabadon fogható (Free-to-Air) csatornákat nézhet a világ minden részéről, rövid pufferelési idők és valós idejű frissítések mellett.</Hungarian>
+		<Italian>Guarda i famosi canali TV Free to Air in tutto il mondo, con brevissimi tempi di attesa e aggiornamenti in tempo reale.</Italian>
+		<Latvian>Skatieties populārus brīvi uztveramus TV kanālus no visas pasaules ar īsiem buferizācijas laikiem un reāllaika atjauninājumiem.</Latvian>
+		<Lithuanian>Žiūrėkite populiarius nemokamai transliuojamus TV kanalus iš viso pasaulio – trumpas buferizacijos laikas ir tikralaikiai naujiniai.</Lithuanian>
+		<Norwegian>Se populære gratis TV-kanaler fra hele verden med korte buffertider og oppdateringer i sanntid.</Norwegian>
+		<Polish>Oglądaj popularne kanały telewizyjne FTA z całego świata z krótkim czasem buforowania i aktualizacjami w czasie rzeczywistym.</Polish>
+		<Portuguese>Ver canais populares de TV em sinal aberto de todo o mundo com tempos de memória intermédios e atualizações em tempo real.</Portuguese>
+		<Romanian>Urmăriţi canale TV cu acces liber din toată lumea, cu timpi de buffering reduşi şi actualizări în timp real.</Romanian>
+		<Russian>Смотрите бесплатные популярные телеканалы всего мира с коротким временем буферизации и обновлениями в реальном времени.</Russian>
+		<Serbian>Gledajte popularne otključane TV kanale iz svih krajeva sveta, koji se kratko baferuju i ažuriraju u realnom vremenu.</Serbian>
+		<Slovak>Sledujte populárne TV kanály Free to Air z celého sveta s krátkymi dobami ukladania do medzipamäte a aktualizáciami v reálnom čase.</Slovak>
+		<Slovenian>Predvajajte popularne brezplačne TV kanale iz celega sveta s kratkim časom nalaganja in posodobitvami v realnem času.</Slovenian>
+		<Spanish>Disfrute de los canales de emisión en abierto de todo el mundo, con poco tiempo de almacenamiento en búfer y actualizaciones en tiempo real.</Spanish>
+		<Swedish>Se populära, gratis TV-kanaler från hela världen med korta bufferttider och realtidsuppdateringar.</Swedish>
+		<Turkish>Dünyanın her yerinden popüler Ücretsiz Yayın Yapan TV kanallarını, kısa ara belleğe alma süreleri ve gerçek zamanlı güncellemeler ile izleyin.</Turkish>
+		<Ukrainian>Переглядайте популярні телеканали Free-to-Air з усього світу з коротким часом буферизації та оновленнями в реальному часі.</Ukrainian>
+	</description>
+</icon>
+
+<icon id = "Sports mode">
+	<img_L>../images/esticker/Esticker_Sports mode_B.png</img_L>
+	<img_S>../images/esticker/Esticker_Sports mode.png</img_S>
+	<title>
+		<English>Enhance sports viewing experience</English>
+		<Chinese>增强运动观看体验</Chinese>
+		<ChineseTraditional>增強運動觀看體驗</ChineseTraditional>
+		<Bulgarian>Подобрява изживяването при гледане на спортни състезания</Bulgarian>
+		<Croatian>Unaprijedite sportski doživljaj gledanja</Croatian>
+		<Czech>Lepší zážitek ze sledování sportu</Czech>
+		<Danish>Forbedret visning af sportsprogrammer</Danish>
+		<Dutch>Verbeterde ervaring tijdens het kijken van sport</Dutch>
+		<Estonian>Parem spordisaadete vaatamine</Estonian>
+		<Finnish>Parantaa urheiluohjelmien katsomista</Finnish>
+		<French>Améliore l’expérience de visionnage du sport</French>
+		<German>Verbesserte Unterhaltung bei Sportsendungen</German>
+		<Greek>Βελτιωμένη εμπειρία θέασης αθλημάτων</Greek>
+		<Hungarian>Élménydúsabb sportközvetítés</Hungarian>
+		<Italian>Miglioramento dell'esperienza visiva dei programmi sportivi</Italian>
+		<Latvian>Uzlabojiet sporta skatīšanās pieredzi</Latvian>
+		<Lithuanian>Pagerinta sporto žiūrėjimo patirtis</Lithuanian>
+		<Norwegian>Forbedret opplevelse for sportsinnhold</Norwegian>
+		<Polish>Lepsze oglądanie sportu</Polish>
+		<Portuguese>Experiência otimizada de visualização de desporto</Portuguese>
+		<Romanian>Special pentru fanii sporturilor...</Romanian>
+		<Russian>Улучшенное изображение при просмотре спортивных программ</Russian>
+		<Serbian>Bolji doživljaj gledanja sporskih sadržaja</Serbian>
+		<Slovak>Vylepšenie zážitku zo sledovania športu</Slovak>
+		<Slovenian>Izboljšajte izkušnjo spremljanja športa</Slovenian>
+		<Spanish>Mejor experiencia deportiva</Spanish>
+		<Swedish>Bättre sportvisningsupplevelse</Swedish>
+		<Turkish>Spor izleme deneyiminizi geliştirin</Turkish>
+		<Ukrainian>Покращений перегляд спортивних передач</Ukrainian>
+	</title>
+	<description>
+		<English>Vivid green filed, sharpness optimized stadium color and powerful surroud sound effect.</English>
+		<Chinese>生动绿色色域，优化足球模式的色彩，和完美的环绕声。</Chinese>
+		<ChineseTraditional>生動綠色色域，優化足球模式的色彩，和完美的環繞聲。</ChineseTraditional>
+		<Bulgarian>Изпълнени с живот зелени поля, оптимизирани, отчетливи цветове на стадиони и мощен звуков съраунд ефект.</Bulgarian>
+		<Croatian>Živahno zeleno polje, boja terena za sport optimizirana oštrinom i snažan efekt surround zvuka. </Croatian>
+		<Czech>Svěže zelené hřiště, optimalizovaná ostrost barvy stadionu a výkonný prostorový zvukový efekt.</Czech>
+		<Danish>Levende, skarpe og optimerede stadiumfarver og kraftig surround-lydeffekt.</Danish>
+		<Dutch>Heldere groengevulde, voor scherpte geoptimaliseerde stadiumkleur en krachtig surround geluidseffect.</Dutch>
+		<Estonian>Erkroheline väljak, teravus, optimaalsetes värvides staadion ja võimas surround heli. </Estonian>
+		<Finnish>Vivahteikkaat vihreät kentät, optimoidut stadionien värit ja tehokkaat Surround-äänitehosteet.</Finnish>
+		<French>Couleurs de stade vives aux tons verts rehaussés, netteté optimisée et effet son surround puissant.</French>
+		<German>Lebendiges grünes Spielfeld, optimierte scharfe Stadionfarben und leistungsstarker Surround Sound.</German>
+		<Greek>Ζωντανό πράσινο στο γρασίδι, βελτιωμένη χρώματα γηπέδου και πανίσχυρα εφέ ήχου surround.</Greek>
+		<Hungarian>Élénkzöld pálya, a stadion színeihez igazított élesség és erőteljes surround hanghatás.</Hungarian>
+		<Italian>Campi di un verde vivido, colori dello stadio ottimizzati per una nitidezza insuperabile e incredibili effetti del suono surround. </Italian>
+		<Latvian>Spilgts zaļais laukums, optimizēts asums, stadiona krāsa un spēcīgs aptverošās skaņas efekts.</Latvian>
+		<Lithuanian>Ryškiai žalia optimizuoto kontrasto stadiono spalva ir galingas erdvinio garso efektas. </Lithuanian>
+		<Norwegian>Levende grønnfarger, optimaliserte fargestadier og skarphet og kraftig surroundlyd-effekt. </Norwegian>
+		<Polish>Wyrazista zieleń boiska, zoptymalizowana ostrość kolorów stadionu oraz potężny dźwięk surround. </Polish>
+		<Portuguese>Cor do estádio otimizada e nítida, com uma excelente reprodução do verde e um poderoso efeito de som surround.</Portuguese>
+		<Romanian>Câmpuri de un verde viu, culoare şi claritate a stadionului optimizate şi efect surround redutabil.</Romanian>
+		<Russian>Яркое зеленое поле, резкость, оптимизированная для цветовой гаммы стадиона, и мощный объемный звук.</Russian>
+		<Serbian>Živopisni zeleni tereni, boje sa stadiona optimizovane u pogledu oštrine i snažni efekti okružujućeg zvuka.</Serbian>
+		<Slovak>Živé ihrisko, ostrosť optimalizovaná pre farby štadiónov a silný efekt priestorového zvuku.</Slovak>
+		<Slovenian>Živo zeleno igrišče, optimizirana ostrina barve stadiona in zmogljiv prostorski zvočni učinek.</Slovenian>
+		<Spanish>El verde del campo es más vívido, la nitidez del color del estadio es óptima y el efecto de sonido ambiente es más potente.</Spanish>
+		<Swedish>Levande grön, arktiverad, optimerad stadium med skäpa och kraftfullt surroundljud.</Swedish>
+		<Turkish>Canlı yeşil saha, keskinliği optimize edilmiş stadyum rengi ve güçlü çevresel ses efekti.</Turkish>
+		<Ukrainian>Яскраве зелене поле, колір стадіону з оптимізованою різкістю та потужний ефект об’ємного звуку.</Ukrainian>
+
+	</description>
+</icon>
+
+<icon id = "400hz cmi">
+	<img_L>../images/esticker/Esticker_03 400hz cmi_B.png</img_L>
+	<img_S>../images/esticker/Esticker_03 400hz cmi.png</img_S>
+	<title>
+		<English>Great lifelike motion</English>
+		<Chinese>栩栩如生的动作</Chinese>
+		<ChineseTraditional>栩栩如生的動作</ChineseTraditional>
+		<Bulgarian>Реализъм на движенията</Bulgarian>
+		<Croatian>Veliko, životno kretanje</Croatian>
+		<Czech>Velmi realistický pohyb</Czech>
+		<Danish>Meget livagtig bevægelse</Danish>
+		<Dutch>Geweldige levensechte beweging</Dutch>
+		<Estonian>Väga elutruu liikumine</Estonian>
+		<Finnish>Sulava ja luonnollinen liike</Finnish>
+		<French>Grand mouvement réaliste</French>
+		<German>Großartige lebensechte Bewegung</German>
+		<Greek>Ρεαλιστική αναπαράσταση κίνησης</Greek>
+		<Hungarian>Élethű mozgás</Hungarian>
+		<Italian>Movimenti realistici fantastici</Italian>
+		<Latvian>Lieliskas reālas kustības</Latvian>
+		<Lithuanian>Judesys lyg tikrame gyvenime</Lithuanian>
+		<Norwegian>Fantastiske naturtro bevegelser</Norwegian>
+		<Polish>Wspaniałe, naturalne ruchy</Polish>
+		<Portuguese>Extraordinário movimento realista</Portuguese>
+		<Romanian>Mişcare extraordinar de realistă</Romanian>
+		<Russian>Реалистичные движения</Russian>
+		<Serbian>Veliko, životno kretanje</Serbian>
+		<Slovak>Skvelý prirodzený pohyb</Slovak>
+		<Slovenian>Mogočno, realistično premikanje</Slovenian>
+		<Spanish>Grandioso movimiento realista</Spanish>
+		<Swedish>Stor naturtrogen rörelse</Swedish>
+		<Turkish>Üstün gerçek hareketler</Turkish>
+		<Ukrainian>Чудові природні рухи</Ukrainian>
+	</title>
+	<description>
+		<English>4K frame interpolation and backlight driving to combat motion blur problems.</English>
+		<Chinese>4K帧插值和背光补偿运动模糊。</Chinese>
+		<ChineseTraditional>4K幀插值和背光補償運動模糊。</ChineseTraditional>
+		<Bulgarian>4K интерполацията на кадрите и фоновото осветление се справят ефективно с размазването на движенията.</Bulgarian>
+		<Croatian>4K okvirna interpolacija i svijetlost u pozadini, pazeći da se eliminira zamućenje u pokretu. </Croatian>
+		<Czech>Interpolace rámu 4K a podsvícení proti problémům s rozostřením při pohybu.</Czech>
+		<Danish>4K indrammet interpolation og baggrundsbelysning til bekæmpelse af sløringsproblemer.</Danish>
+		<Dutch>4K frame interpolatie en achtergrondverlichting als bestrijding van het vervagen van beweging.</Dutch>
+		<Estonian>4K kaadri interpolatsioon ja taustvalgustus võitlevad liikumishägu probleemidega.</Estonian>
+		<Finnish>4K ruudun interpolointi ja takavalo sumennuksen estoon.</Finnish>
+		<French>Interpolation d’image 4K et rétro-éclairage pour combattre les problèmes du flou de mouvement.</French>
+		<German>4K Frame-Interpolation und Hintergrundbeleuchtung gegen Probleme mit der Bewegungsunschärfe.</German>
+		<Greek>Η λειτουργία παρεμβολής καρέ 4K και ο οπίσθιος φωτισμός εξαλείφει τη θαμπάδα από την κινούμενη εικόνα.</Greek>
+		<Hungarian>A 4K keret interpoláció és háttérvilágítás a képen jelentkező foltproblémák eltüntetéséhez.</Hungarian>
+		<Italian>Interpolazione con struttura a 4K e retroilluminazione portano a problemi di offuscamento durante le scene di combattimento.</Italian>
+		<Latvian>4K kadru interpolācija un aizmugurgaismojuma vadība, lai apkarotu kustības izraisītu defektu problēmas.</Latvian>
+		<Lithuanian>4K rėmelio interpoliacija ir apšvietimas išvengti išliejimo problemų.</Lithuanian>
+		<Norwegian>4K ramme-interpolering og bakgrunnsbelysning for å redusere problemer med bevegelsesuskarphet.</Norwegian>
+		<Polish>Interpolacja klatek 4K i podświetlenie eliminują problem rozmazanych ruchów.</Polish>
+		<Portuguese>Interpolação de imagem 4K e iluminação de fundo que combatem os problemas de esbatimento na imagem.</Portuguese>
+		<Romanian>Interpolare de cadru 4K şi redare în fundal pentru a combate neclaritatea de mişcare.</Romanian>
+		<Russian>Интерполяция кадров 4K и подсветка устраняют проблемы с размытыми движениями.</Russian>
+		<Serbian>4K okvirna interpolacija i svetlost u pozadini, pazeći da se eliminiše zamućenje u pokretu.</Serbian>
+		<Slovak>Interpolácia rámu 4K a podsvietenie proti problémom s rozostrením pri pohybu.</Slovak>
+		<Slovenian>4K interpolacija okvirja in ovetlitev v ozadju, ki skrbi za odpravljanje zamegljenosti pri gibanju.</Slovenian>
+		<Spanish>Interpolación de cuadro 4K y luz de fondo para reducir los problemas de desenfoque de por movimiento.</Spanish>
+		<Swedish>4K bild interpolation och bakgrundsbelysning för motverkande av problem med rörelseoskärpa. </Swedish>
+		<Turkish>4K çerçeve enterpolasyonu ve arka aydınlatma hareket bulanıklığı sorunlarıyla baş eder.</Turkish>
+		<Ukrainian>Кадрова інтерполяція 4К і драйвери заднього підсвічування допомагають боротися з розмиттям.</Ukrainian>
+
+	</description>
+</icon>
+
+<icon id = "quad core">
+	<img_L>../images/esticker/Esticker_Quad CPU+Quad GPU_B.png</img_L>
+	<img_S>../images/esticker/Esticker_Quad CPU+Quad GPU.png</img_S>
+	<title>
+		<English>Faster performance</English>
+		<Chinese>专业的电影声效</Chinese>
+		<ChineseTraditional>專業的電影聲效</ChineseTraditional>
+		<Bulgarian>По-бързо функциониране</Bulgarian>
+		<Croatian>Brže performanse </Croatian>
+		<Czech>Rychlejší výkon</Czech>
+		<Danish>Hurtigere ydeevne</Danish>
+		<Dutch>Snellere prestaties</Dutch>
+		<Estonian>Parem jõudlus</Estonian>
+		<Finnish>Nopeampi suorituskyky</Finnish>
+		<French>Performances plus rapides</French>
+		<German>Schnellere Leistung</German>
+		<Greek>Μεγαλύτερη απόδοση</Greek>
+		<Hungarian>Gyorsabb teljesítmény</Hungarian>
+		<Italian>Performance più veloce</Italian>
+		<Latvian>Ātrāka veiktspēja</Latvian>
+		<Lithuanian>Greitesnis veikimas</Lithuanian>
+		<Norwegian>Raskere ytelse</Norwegian>
+		<Polish>Szybsze działanie</Polish>
+		<Portuguese>Desempenho mais rápido</Portuguese>
+		<Romanian>Performanţe mai rapide</Romanian>
+		<Russian>Высокая производительность</Russian>
+		<Serbian>brže performanse</Serbian>
+		<Slovak>Rýchlejší výkon</Slovak>
+		<Slovenian>Hitrejše delovanje </Slovenian>
+		<Spanish>Rendimiento más rápido</Spanish>
+		<Swedish>Snabbare prestanda</Swedish>
+		<Turkish>Daha hızlı performans</Turkish>
+		<Ukrainian>Збільшена продуктивність</Ukrainian>
+	</title>
+	<description>
+		<English>More enjoyable entertainment experience with Quad Core for smooth interaction, enhanced performance.</English>
+		<Chinese>通过清晰的声效欣赏杜比声音。</Chinese>
+		<ChineseTraditional>通過清晰的聲效欣賞杜比聲音。</ChineseTraditional>
+		<Bulgarian>Приятни изживявания с Quad Core за плавно взаимодействие и подобрена ефективност.</Bulgarian>
+		<Croatian>Više ugodno iskustvo zabave sa procesorom sa četiri jedra za glatke interakcije, bolje performanse. </Croatian>
+		<Czech>Příjemnější zábava díky Quad Core pro hladkou interakce, zvýšený výkon.</Czech>
+		<Danish>Opleve mere behagelig underholdning med Quad Core for problemfri interaktion og forbedret ydeevne.</Danish>
+		<Dutch>Meer plezierig amusementervaring met Quad Core voor soepele interactie, verbeterde prestaties.</Dutch>
+		<Estonian>Quad Core tagab sujuva koostoime ja suurema jõudluse abil veelgi nauditavama meelelahutuskogemuse.</Estonian>
+		<Finnish>Quad Core tarjoaa entistä nautittavampia viihdekokemuksia joustavan vuorovaikutuksen ja parantuneen suorituskyvyn ansiosta.</Finnish>
+		<French>Expérience de divertissement plus agréable avec Quad Core pour une interaction lisse et des performances accrues.</French>
+		<German>Angenehmere Unterhaltung mit Quad Core für ein gleichmäßiges Zusammenspiel und verbesserte Leistung.</German>
+		<Greek>Ο επεξεργαστής τετραπλού πυρήνα προσφέρει ομαλές διαδραστικές λειτουργίες, ενισχυμένη απόδοση για μια μοναδική εμπειρία ψυχαγωγίας.</Greek>
+		<Hungarian>További élvezetes szórakozás a Quad Core-ral a sima kapcsolatért, a fokozott teljesítményéért.</Hungarian>
+		<Italian>Esperienza di intrattenimento più godibile con il Quad Core per interazioni scorrevoli e una performance esaltata.</Italian>
+		<Latvian>Papildu patīkamas izklaides pieredze, izmantojot Quad Core, vienmērīgai mijiedarbībai, uzlabojot sniegumu.</Latvian>
+		<Lithuanian>Dar įdomiau žiūrėti su Quad Core, skirtu sklandžiam rodymui ir išplėstiniam veiksmui.</Lithuanian>
+		<Norwegian>En morsommere underholdningsopplevelse med Quad Core-interaksjon, med forbedret ytelse.</Norwegian>
+		<Polish>Jeszcze lepsza rozrywka dzięki rdzeniowi Quad Core, który zapewnia płynną interakcję i większą wydajność.</Polish>
+		<Portuguese>Uma experiência de entretenimento mais prazerosa, com Quad Core para interação perfeita e desempenho melhorado.</Portuguese>
+		<Romanian>O şi mai plăcută experienţă de divertisment, cu Quad Core pentru o interacţiune lină şi o performanţă îmbunătăţită.</Romanian>
+		<Russian>Quad Core обеспечивает быстрое взаимодействие и повышенную производительность.</Russian>
+		<Serbian>Više prijatno iskustvo zabave sa procesorom sa četiri jedra za glatke interakcije, bolje performanse.</Serbian>
+		<Slovak>Viac zábavy a skúsenosti s Quad Core pre plynulú interakciu, zvýšenie výkonu.</Slovak>
+		<Slovenian>Bolj prijetna zabavna izkušnja s štirijedrnim procesorjem za nemoteno interakcijo, izboljšano delovanje. </Slovenian>
+		<Spanish>Experiencia de entretenimiento más divertida con Quad Core para tener una interacción perfecta y rendimiento mejorado.</Spanish>
+		<Swedish>Mer njutbar underhållning med Quad Core för smidigt samspel, förbättrat resultat.</Swedish>
+		<Turkish>Sorunsuz etkileşim, gelişmiş performans içn Dört Çekirdek ile daha keyifli eğlence deneyimi.</Turkish>
+		<Ukrainian>Найкращий розважальний досвід завдяки процесору Quad Core, що забезпечує ідеальну взаємодію та покращену продуктивність.</Ukrainian>
+	</description>
+</icon>
+</root>

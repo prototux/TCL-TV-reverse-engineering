@@ -1,0 +1,1579 @@
+<html>
+<head>
+<title> New Document </title>
+<link href="all.css" type="text/css" rel="stylesheet">
+<style>
+body
+{
+    background:transparent;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+
+
+#volumeForm
+{
+	position: absolute;
+    left: 250px;
+    bottom: 50px;
+    width: 1420px;
+    height: 100px;
+	background:#000000;
+	opacity:0.92;
+    border:solid 4px #1b1b1b;
+	display:none;
+}
+#volumeName
+{
+	position:absolute;
+	color:#cccccc;
+	font-size:32px;
+	font-weight:bold;
+	width:280px;
+	height:100px;
+	line-height:100px;
+	text-align:center;
+	border-right:4px solid #1b1b1b;
+}
+#currentRecTime
+{
+	position:absolute;
+	top:40px;
+	width:100px;
+	height:40px;
+	color:white;
+	left:210px;
+	line-height:30px;
+	font-size:36px;
+}
+#record
+{
+	position:absolute;
+	top:860px;
+	left:40px;
+	height:180px;
+	width:470px;
+	background:url(images/Time_shift-Bg_03.png) no-repeat;
+}
+#offsetTimeOnly
+{
+	position:absolute;
+	left:40px;
+	top:960px;
+	width:470px;
+	height:80px;
+	line-height:80px;
+	text-align:center;
+	font-size:36px;
+	color:#fff;
+	background:url(images/Time_shift-Bg_04.png) no-repeat;
+}
+#menu5In1
+{
+	position: absolute;
+	bottom:67px;
+	right:91px;
+	width:425px;
+	height:372px;
+	z-index:100;
+	opacity:0;
+	background:url(images/bg_menu_5in1.png) no-repeat;
+	-webkit-transition-duration:300ms;
+}
+.menu5In1_cell
+{
+	position:absolute;
+	width:97px;
+	height:97px;
+}
+#cell_5in1_focus
+{
+	position: absolute;
+	width:97px;
+	height:97px;
+	-webkit-transition-duration:200ms;
+}
+#stopName
+{
+	position:absolute; 
+	left:140px; 
+	top:125px;
+	font-size:24px; 
+	color:white;
+	width:100px;
+	text-align:left;
+	
+}
+#settingName
+{
+	position:absolute;
+	left:335px; 
+	top:125px;
+	font-size:24px; 
+	color:white;
+	width:100px;
+	text-align:left;
+
+}
+.marquee
+{
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+/*add for 5n1 animation*/
+#menu_5n1_main
+{
+	/*
+	bottom:67px;
+	right:91px;
+	width:425px;
+	height:372px;
+	*/
+	position: absolute;
+	bottom:67px;
+	right:91px;
+	width:350px;
+	height:300px;
+	opacity: 0;
+	display: none;
+	z-index:110;
+	-webkit-animation-name: "menu_5n1_main"; 
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: 1;
+}
+@-webkit-keyframes 'menu_5n1_main' {
+	from{
+		display: block;
+		opacity: 0;
+	}
+	10%{
+		opacity: 1;
+
+	}
+	90%{
+		opacity: 1;
+	}
+	to{
+		display: none;
+		opacity: 0;
+	}
+}
+#menu_bg
+{
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:287px;
+	height:302px;
+	opacity: 1;
+	display: block;
+	background-image:url(images/menu_5n1_bg.png);
+	z-index: 10;
+}
+#menu_point
+{
+	position: absolute;
+	top:50px;
+	right:0px;
+	width: 76px;
+	height: 98px;
+	opacity: 0;
+	background-image:url(images/menu_hand_icon.png);
+	z-index: 12;
+	-webkit-animation-name: "menu_5n1_point"; 
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: 1;
+}
+@-webkit-keyframes 'menu_5n1_point' {
+	from{
+		
+		top:50px;
+		right:0px;
+	}
+	10%{
+		opacity: 0;
+		top:50px;
+		right:0px;
+	}
+	25%{
+		opacity:1;
+		top:127px;
+		right:158px;
+	}
+	to{
+		opacity:1;
+		top:127px;
+		right:158px;
+	}
+}
+#menu_light
+{
+    position: absolute;
+    top:63px;
+    left:68px;
+    width: 148px;
+    height: 148px;
+    background-image:url(images/menu_light.png);
+    z-index: 11;
+    opacity:0;
+    display: block;
+	-webkit-animation-name: "menu_5n1_light"; 
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: 1;
+}
+@-webkit-keyframes 'menu_5n1_light' {
+	from{
+		opacity: 0;
+	}
+	30%{
+		opacity: 0;
+	}
+	50%{
+		opacity: 1;
+	}
+	60%{
+		opacity: 1;
+	}
+	70%{
+		opacity: 1;
+	}
+	80%{
+		opacity: 1;
+	}
+	to{
+		opacity: 1;
+	}
+}
+</style>
+<script type="text/javascript">
+	var factoryMode = top.factoryOpenPromt[0];
+	var ciAndKey = top.factoryOpenPromt[1];
+	var nid = top.factoryOpenPromt[2];
+	var erg = top.offOn;
+	var pvrHelp           = [top.others[17],top.others[18]];
+	var glassRemind       = top.glassRemind;
+	var pvrRemind         = top.pvrRemind
+	var phoneConnectRemind= top.remotePhoneConnecte;
+	
+	var factory = top.g_factory;
+	var factoryInfo = factory.getProductInfo();
+	var span_list;
+	var warnUptimer=0;
+	var warnUptime=0;
+	var interval = 0;//window.interval的返回值
+	
+	//volume paremeter
+	var volumeName = top.others[0];
+	var volume = 0;
+	var continuousKey = 0;
+	var timer;
+	var recordingTimer=0;
+	var focusOn = "volume"
+	var selectFlag =0;
+	var clearPvrPromatTimer = 0;
+	var pvr              = top.g_pvr;
+	var channel          = top.g_channel;
+	var setting          = top.g_setting;
+	var bluetooth  		 = top.bluetooth;//add yums
+	var NidString = "NULL";
+
+	var bluetoothVolume = 0;//蓝牙音箱音量//add yums
+	var volumeIndex     = 0;//add yums
+	var speakerstatus 	= 0;
+	var headphonestatus = 0;
+	var bluetoothstatus = 0;
+	//5in1 menu
+	var focusIndexX = 0;
+	var focusIndexY = 0;
+	var FOCUS_INDEX_MAX = 3;
+	var FOCUS_TOP_DISTANCE = 34;
+	var FOCUS_LEFT_DISTANCE = 63;
+	var FOCUS_INNER_DISTANCE = 4;
+	var FOCUS_WIDTH = 97;
+	var menu5In1Visiable = 0;
+	var menu5In1Timer = 0;
+	var PROGRESS_START_LEFT_OFFSET = 400+250;
+	var PROGRESS_MAX_VALUE = 100;
+	var EXTRA_PROGRESS_WIDTH = 900;
+    var headphoneVolumeValue = 20;
+	var curVolumeType = 0;
+	var volumeCount = 0;
+	var volumeName = [top.audioDescriptionName[1], top.audioDescriptionName[3],top.audioDescriptionName[6],"ARC"];//["Speaker","Headphone","BT Device","ARC"];
+	var OUT_PUT_NAME_FOR_DB = top.OUT_PUT_NAME_FOR_DB; 
+	var volumeOptions=
+	[
+		{name:volumeName[0], showFlag:1},
+		{name:volumeName[1], showFlag:1},
+		{name:volumeName[2], showFlag:1},
+		{name:volumeName[3], showFlag:1},
+	]
+	function refreshMultiLanguage()
+	{
+		factoryMode = top.factoryOpenPromt[0];
+		ciAndKey = top.factoryOpenPromt[1];
+		nid = top.factoryOpenPromt[2];
+		erg = top.offOn;
+		pvrHelp           = [top.others[17],top.others[18]];
+		glassRemind       = top.glassRemind;
+		pvrRemind         = top.pvrRemind
+		phoneConnectRemind= top.remotePhoneConnecte;
+    //volumeName = top.others[0];
+	volumeName = [top.audioDescriptionName[1], top.audioDescriptionName[3],top.audioDescriptionName[6],"ARC"];
+	volumeOptions[0].name = volumeName[0];
+	volumeOptions[1].name = volumeName[1];
+	volumeOptions[2].name = volumeName[2];
+	volumeOptions[3].name = volumeName[3];
+}
+
+    function testLog(tmp)
+	{
+		var str = "             => Areos: " + tmp;
+		top.g_channel.testLog(str);
+	}
+
+	function showHotkey()
+	{
+		refreshMultiLanguage();
+		
+		if(factory.designModeHotkey == 1 || factory.factoryHotkey == 1)
+		{
+			span_list = top.$('factoryHotkeyForm').getElementsByTagName('span');
+			var showMode="";
+			if(factory.designModeHotkey==1)
+			{
+				showMode=showMode+"D";
+			}
+			if(factory.factoryHotkey==1)
+			{
+				showMode=showMode+"P";
+				if(factory.getSerialPortStatus() == 0)
+					factory.setSerialPortStatus(1);
+			}
+			if(factory.psHotkeyStatus==1)
+			{
+				showMode=showMode+"S";
+			}
+			if(factory.warnUpStatus==1)
+			{
+				showMode=showMode+"W";
+				if(warnUptimer==0)//matengfei: the second time to switch warmup on,the time is refreshing quickly
+				{
+					warnUptimer=setInterval("refreshWarnUpTime()",1000);
+				}
+				top.$("warnUptime").style.display="block";
+			}
+			else
+			{
+				top.$("warnUptime").style.display="none";
+				if(warnUptimer!=0)
+				{
+					clearInterval(warnUptimer);
+					warnUptimer=0;
+				}
+				warnUptime=0;
+			}
+			span_list[1].innerText = "Factory Mode: " + showMode;
+			span_list[2].innerText = "CI+Key: " + ciAndKey[factory.getCIUpgradeStatus()];
+			doCheckNid();
+			span_list[3].innerText = "NID: " +  NidString;
+			span_list[4].innerText = "Project ID: " +  factory.projectId;
+			span_list[5].innerText = "ERG: " +  erg[factory.pvrOpenStatus];
+			span_list[6].innerText = "MainSW Ver: " +  factoryInfo.swName;
+			span_list[7].innerText = "FRC Ver: " +  factory.getFrcVersion(18);
+			
+			//$('globleShow').contentWindow.showHotkey();用这种方法在往页面中写文字的时候会出现没法写入（或写入但是不显示）的状况，举例
+			if(interval != 0)
+			{
+				return;
+			}
+			else
+			{
+				interval = setInterval(function ()
+					{
+						if(top.$("factoryHotkeyForm").style.display == "block")
+						{
+							top.$("factoryHotkeyForm").style.display = "none";
+						}
+						else
+						{
+							top.$("factoryHotkeyForm").style.display = "block";
+						}
+					},1000);
+			}
+		}
+		else
+		{
+			if(interval!=0)
+			{
+				clearInterval(interval);
+				interval = 0;
+			}
+			top.$("factoryHotkeyForm").style.display = "none";
+			//top.main.focus();
+			//top.document.getElementById('main').src = "channelPlay.html";
+		}
+	}
+	function doTime(time)
+	{
+		var day =parseInt(time/86400);//parseInt(time/3600*24,10)
+		var hour = parseInt((time%86400)/3600);//parseInt((time-day*3600*24)/3600,10);
+		var minute = parseInt((time%3600)/60);// parseInt((time -day*3600*24- hour*3600)/60,10);
+		var second = time%60;
+		
+		if(hour < 10)
+		{
+			hour = "0" + hour;
+		}
+		if(minute < 10)
+		{
+			minute = "0" + minute;
+		}
+		if(second < 10)
+		{
+			second = "0" + second;
+		}
+		return (day+"Day:"+hour + "hour:" + minute + "minute:" + second);
+	}
+	function refreshWarnUpTime()
+	{
+		warnUptime++;
+		span_list[0].innerHTML = "WarnUp: " + doTime(warnUptime);
+	}
+	function doCheckNid()
+	{
+		var Mac = factory.getMacUartFlag();
+		var Did = factory.getDidUartFlag();
+		var Esn =  factory.getEsnUartFlag();
+		if((Mac == 1)&&(Did == 1)&&(Esn == 1))
+		{
+			NidString = "ALL OK";
+		}
+		else if((Mac == 0)&&(Did == 0)&&(Esn == 0))
+		{
+			NidString = "NULL";
+		}
+		else if((Mac == 1)&&(Did == 0)&&(Esn == 0))
+		{
+			NidString = "MAC OK";
+		}
+		else if(((Mac == 0)&&(Did == 1)&&(Esn == 0)))
+		{
+			NidString = "DID OK";
+		}
+		else if(((Mac == 0) &&(Did == 0)&&(Esn == 1)))
+		{
+			NidString = "ESN OK";
+		}
+		else if(((Mac == 1) &&(Did == 1)&&(Esn == 0)))
+		{
+			NidString = "M&D OK";
+		}
+		else if(((Mac == 1) &&(Did == 0)&&(Esn == 1)))
+		{
+			NidString = "M&E OK";
+		}
+		else if(((Mac == 0) &&(Did == 1)&&(Esn == 1)))
+		{
+			NidString = "D&E OK";
+		}
+		else
+		{
+			NidString = "ERROR";
+		}
+	}
+	function $(id)
+	{
+		return document.getElementById(id);
+	}
+	
+	
+	//声音相关处理
+	function cleanContinuousKey()
+	{
+		continuousKey = 0;
+		if(timer)
+		{
+			clearTimeout(timer);
+		}
+		timer = 0;
+	}
+	
+	var keyStillTimer = 0;
+	function setVolume()
+	{
+		top.g_channel.volume = volume;
+	}
+	
+	document.onkeydown = keyProc;
+	
+	function keyProc(evt)
+	{
+		var keycode = evt.which;
+		if(!top.g_volume_timer && !menu5In1Visiable && keycode != top.VK_PANEL_LONG_OK)//当前不在声音处理中
+		{
+			return;
+		}
+		if(menu5In1Visiable && keycode != top.VK_PANEL_OK && keycode != top.VK_PANEL_UP
+			&& keycode != top.VK_PANEL_DOWN && keycode != top.VK_PANEL_LEFT
+			&& keycode != top.VK_PANEL_RIGHT && keycode != top.VK_PANEL_LONG_OK)
+		{
+			clearTimeout(menu5In1Timer);
+			hideMenu5In1();
+			return;
+		}
+		switch (keycode)
+		{
+			case top.VK_PANEL_LONG_OK:
+				if(menu5In1Visiable)
+				{
+					clearTimeout(menu5In1Timer);
+					hideMenu5In1();
+				}
+				else
+				{
+					initMenu5In1();
+				}
+				break;
+			case top.VK_PANEL_OK:
+				toOK();
+				break;
+			case top.VK_PANEL_UP:
+				toUp();
+				startMenu5In1Timer();
+				break;
+			case top.VK_PANEL_DOWN:
+				toDown();
+				startMenu5In1Timer();
+				break;
+			case top.VK_PANEL_LEFT:
+				toLeft();
+				startMenu5In1Timer();
+				break;
+			case top.VK_PANEL_RIGHT:
+				toRight();
+				startMenu5In1Timer();
+				break;
+			case top.VK_POWER://power
+				top.keyDownProcess(evt);
+				break;
+			case top.VK_MUTE://mute
+				top.clearVolumeTimer();
+				$('adjustProgressBox').style.display = "none";
+                top.keySetForUI(0);
+				top.globleShow.blur();
+				if(top.g_EnterVolumn == 1)
+				{
+					top.$("main").contentWindow.resetFocus();
+					top.g_EnterVolumn = 0;
+				}
+				else
+				{
+					top.main.focus();
+					top.setFrameFocusPage("main");
+				}
+
+				top.keyDownProcess(evt);
+				break;
+			case top.VK_LEFT:
+			case top.VK_VOLUME_DOWN://volume down
+				/*陈桦修改：为了是声音线性变化，至于连续按键加速的问题UI没法修改，打给黄高波*/
+				/*if(timer)
+				{
+					clearTimeout(timer);
+					continuousKey++;
+				}
+				timer = setTimeout("cleanContinuousKey()",200);
+				
+				if(continuousKey >= 5)//连续按键每次案后跨度变大
+				{
+					showVolume(-3);
+				}
+				else
+				{*/
+				
+				/*}
+				
+				if(keyStillTimer)
+				{
+					clearTimeout(keyStillTimer);
+				}
+				keyStillTimer = setTimeout("setVolume()",50);*/
+				//add chenhua for 声音线性变化
+				if(1)//(top.g_setting.getCecARCStatus()==0)
+				{
+					if(1 == getOutputStatusByType(curVolumeType))
+					{
+						if(curVolumeType != 3)
+						{
+							showVolume(-1);
+							setVolumeByType(curVolumeType,volume);
+						}
+						else
+						{
+							top.g_setting.sendCecKeyValue(keycode);
+							showVolumeContent(curVolumeType);
+						}
+
+					}
+					else
+					{
+						top.clearVolumeTimer();
+						showVolumeOffRemind();
+						top.startVolumeTimer();
+					}
+				}
+				else
+				{
+					top.g_setting.sendCecKeyValue(keycode);
+					//top.clearVolumeTimer();
+					//initVolume();
+					showVolumeContent(curVolumeType);
+					//top.startVolumeTimer();
+				}
+				break;
+			case top.VK_RIGHT:
+			case top.VK_VOLUME_UP://volume up
+				/*陈桦修改：为了是声音线性变化，至于连续按键加速的问题UI没法修改，打给黄高波*/
+				/*if(timer)
+				{
+					clearTimeout(timer);
+					continuousKey++;
+				}
+				timer = setTimeout("cleanContinuousKey()",200);
+				if(continuousKey >= 5)//连续按键每次案后跨度变大
+				{
+					showVolume(3);
+				}
+				else
+				{*/
+				
+				/*}
+				
+				if(keyStillTimer)
+				{
+					clearTimeout(keyStillTimer);
+				}
+				keyStillTimer = setTimeout("setVolume()",50);*/
+				//add chenhua for 声音线性变化
+				if(1)//(top.g_setting.getCecARCStatus()==0)
+				{
+					
+					if(1 == getOutputStatusByType(curVolumeType))
+					{
+						if(curVolumeType != 3)
+						{
+							showVolume(1);
+							setVolumeByType(curVolumeType,volume);
+						}
+						else
+						{
+							top.g_setting.sendCecKeyValue(keycode);
+							showVolumeContent(curVolumeType);
+						}
+					}
+					else
+					{
+						top.clearVolumeTimer();
+						showVolumeOffRemind();
+						top.startVolumeTimer();
+					}
+				}
+				else
+				{
+					top.g_setting.sendCecKeyValue(keycode);
+					//top.clearVolumeTimer();
+					//initVolume();
+					showVolumeContent(curVolumeType);
+					//top.startVolumeTimer();
+				}
+				break;
+			case top.VK_UP:
+				curVolumeType = findNextVolumeType(curVolumeType,1);
+				setting.setProperty("app.ui.VolumeType",curVolumeType.toString())
+				showVolumeContent(curVolumeType);
+				break;
+			case top.VK_DOWN:
+				curVolumeType = findNextVolumeType(curVolumeType,0);
+				setting.setProperty("app.ui.VolumeType",curVolumeType.toString())
+				showVolumeContent(curVolumeType);
+				break;
+			default:
+				top.clearVolumeTimer();
+				top.hideVolume();
+				if(top.g_previousHtmlPage == "channelPlay.html")
+				{
+					if(parent.frames["main"].window.keyproc!=undefined)
+					parent.frames["main"].window.keyproc(evt);
+				}
+				break;
+		}
+	}
+	
+	document.onnotify = notifyProcess;
+	function notifyProcess(evt)
+	{
+		var msg = evt.which;
+		//全局消息
+		switch(msg)
+		{
+			//做页面跳转的几个消息处理时要先把otherPage也给隐掉
+			case top.E_DLNA_DMR_PUSH_MOVIE://dmr push player
+			case top.E_DLNA_DMR_PUSH_MUSIC://dmr push player
+			case top.E_DLNA_DMR_PUSH_PICTURE://dmr push player
+			case top.E_CIPLUS_PROGRAM_CHANGE://ci 主动换台发出换台刷新节目信息
+			case top.E_BOOKING_PLAY_START://booking play start开机时节目预定的时间已过，但是依然要提醒用户做一些切台等操作
+			case top.E_BOOKING_RECORD_START://booking record start开机时录制预定已经过期，但是依然要提醒用户切台录制
+			case top.E_BOOKING_AHEAD_PLAY_START://booking ahead play start,正常情况下切台提醒，一分钟前提醒
+			case top.E_BOOKING_AHEAD_RECORD_START://booking ahead record start正常情况下录制提醒,，一分钟前提醒
+			case top.E_CI_DATA_READY://ci data ready
+			case top.E_CI_OP_UPDATE_CHANNEL://CMD_UI_NOTIFY_OP_UPDATE_CHANNEL
+			case top.E_CI_OP_UPDATE_NIT://CMD_UI_NOTIFY_OP_UPDATE_NIT
+			case top.E_CHANNEL_PLAY_END://channel change success end
+			case top.E_SCART_CHANGE_INPUT_SRC://scart change start:CMD_UI_NOTIFY_SCART_CHANGE_INPUT_SRC
+			case top.E_CI_MHEG_OPEN://MMH打开，需要进入channel_play页面并
+			case top.E_DTV_NIT_VERSION_CHANGED://nit refresh notify
+				if(top.g_volume_timer)//当前在声音处理中
+				{
+					top.keySetForUI(0);
+					$('adjustProgressBox').style.visibility = "none";
+					top.main.focus();
+					top.setFrameFocusPage("main");
+				}
+				if(top.appOpenFlag ==1)
+				{
+					return;
+				}
+				top.systemEventProc(evt);
+				break;
+			case top.E_DTV_SERVICE_PLAY://播放流数据更新播放
+				if(top.g_volume_timer)//当前在声音处理中
+				{
+					top.keySetForUI(0);
+					$('adjustProgressBox').style.display = "none";
+					top.g_isShowInfoBar = 1;
+					top.main.focus();
+					top.setFrameFocusPage("main");
+					top.document.getElementById('main').src = "channelPlay.html";
+				}
+				break;
+			case top.E_PVR_PLAYBACK_END://播放已经到最末尾了,返回实时播放页面,底层已经做了放回实时播放的处理
+				if(top.g_volume_timer)//当前在声音处理中
+				{
+					top.keySetForUI(0);
+					$('adjustProgressBox').style.display = "none";
+					top.main.focus();
+					top.setFrameFocusPage("main");
+					e = evt;
+					//parent.frames["main"].window.notifyProcess(evt);
+					setTimeout("doMainNotify()",500);
+				}
+				break;
+			case top.E_CEC_ARC_AUDIO_STATUS_CHANGE:
+			{
+				//initVolume();
+				top.systemEventProc(evt);
+			}
+			default:
+				parent.frames["main"].window.notifyProcess(evt);
+				break;
+		}
+	}
+	
+	var e;
+	function doMainNotify()
+	{
+		parent.frames["main"].window.notifyProcess(e);
+	}
+	function getOutputStatusByType(type)
+	{
+		var ret = 1;
+		switch(type)
+		{
+			case 0:
+				if(0 == speakerstatus)
+				{
+					ret = 0;
+				}
+				break;
+			case 1:
+				if(0 == headphonestatus)
+				{
+					ret = 0;
+				}
+				break;
+			case 2:
+				if(0 == bluetoothstatus)
+				{
+					ret = 0;
+				}
+				break
+			case 3: //arc default OK
+			default:
+				break;
+		}
+		return ret;
+	}
+function getArcStatus()
+{
+	var devicenum= setting.devTotalNum;
+	var deviceinfo;
+	var tsdevtype;
+	var tsdevnum;
+	if(setting.tlinkStatus == 0)
+	{
+		return false;	
+	}
+	for(var i = 0; i<devicenum; i++)
+	{
+		deviceinfo = setting.getDeviceInfo();
+		tsdevtype = parseInt(deviceinfo.substring(9,12));
+		tsdevnum = parseInt(deviceinfo.substring(6,9));
+		if(tsdevtype == 5 && setting.getCecARCStatus() == 1)
+			return true;
+	}
+	return false;
+}
+	function prepareVolumeShow()
+	{
+		volumeCount = 0;
+		//check if headphone is plugged in
+		speakerstatus = setting.speakerStatus;
+		if("input" == setting.getProperty("app.ui.hpstatus","output"))
+		{
+			volumeOptions[1].showFlag = 1;
+			headphonestatus = setting.headphoneStatus;
+		}
+		else
+		{
+			volumeOptions[1].showFlag = 0;
+		}
+		//check if bluetooth device is connected
+		if(top.bt_soundOutputShowFlag == true)
+		{
+			volumeOptions[2].showFlag = 1;
+			bluetoothstatus = parseInt(setting.getProperty(OUT_PUT_NAME_FOR_DB,"1"));
+		}
+		else
+		{
+			volumeOptions[2].showFlag = 0;
+		}
+	//check if ARC device connected
+	 if(true == getArcStatus())
+	 {
+		 volumeOptions[3].showFlag = 1;
+	 }
+	 else
+	 {
+		 volumeOptions[3].showFlag = 0;
+	 }
+		//arc must always can been seen
+		//if(top.g_setting.getCecARCStatus()==1){}
+
+		for(var i = 0; i < volumeOptions.length; i++)
+		{
+			if(volumeOptions[i].showFlag == 1)
+			{
+				volumeCount++;
+				top.g_channel.testLog("zenglm total volumeCount is "+volumeCount);
+			}
+		}
+		
+		if(volumeCount == 1)
+		{
+			$("adjustProgMain").style.borderTop = "4px solid #1b1b1b";
+			$("adjustProgMain").style.borderBottom = "4px solid #1b1b1b";
+			$("adjustProgMinorUp").style.display = "none";
+			$("adjustProgMinorDown").style.display = "none";
+		$("adjustProgMain").getElementsByTagName("img")[0].style.display = "none";		
+		}
+		else if(volumeCount == 2)
+		{
+			$("adjustProgMinorUp").style.display = "none";
+			$("adjustProgMain").style.borderTop = "4px solid #1b1b1b";
+			$("adjustProgMain").style.borderBottom = "0px";
+			$("adjustProgMinorDown").style.display = "block";
+		}
+		else if(volumeCount >= 3)
+		{
+			$("adjustProgMain").style.borderTop = "0px";
+			$("adjustProgMain").style.borderBottom = "0px";
+			$("adjustProgMinorUp").style.display = "block";
+			$("adjustProgMinorDown").style.display = "block";
+		}
+		else
+		{
+			top.g_channel.testLog("error condition total volumeCount is "+volumeCount);
+		}
+	}
+	function findNextVolumeType(volumeType,dir) //dir:0 next, 1 pre 
+	{
+		if(volumeCount == 1)
+		{
+			return volumeType;
+		}
+		switch(dir)
+		{
+			case 1:
+				for(var i = volumeType + 1; i < volumeOptions.length; i++)
+				{
+					if(volumeOptions[i].showFlag == 1)
+						return i;
+				}
+				for(i = 0; i < volumeType; i++)
+				{
+					if(volumeOptions[i].showFlag == 1)
+						return i;
+				}
+				break;
+			case 0:	
+				for(var i = volumeType - 1; i >= 0; i--)
+				{
+					if(volumeOptions[i].showFlag == 1)
+						return i;
+				}
+				for(i = volumeOptions.length - 1; i > volumeType; i--)
+				{
+					if(volumeOptions[i].showFlag == 1)
+						return i;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	function showVolumeContent(focusVolumeType)
+	{
+		var volumeDown = -1;
+		var volumeUp = -1;
+		top.clearVolumeTimer();
+		volume = getVolumeByType(focusVolumeType);
+		$("adjustProgMain").getElementsByTagName("span")[0].innerHTML = volumeOptions[focusVolumeType].name;
+		//$("volumeName").innerHTML =  volumeName;
+		$("adjustProgBar").getElementsByTagName("div")[0].style.width = parseInt(volume*9) + "px";
+		$("adjustProgBar").getElementsByTagName("div")[2].style.width = parseInt((100-volume)*9) + "px";
+		$("adjustProgValue").innerHTML = volume;
+		if(volumeCount == 2)
+		{
+			volumeDown = findNextVolumeType(focusVolumeType,0);
+			$("adjustProgMinorDown").getElementsByTagName("span")[0].innerHTML = volumeOptions[volumeDown].name;
+			
+			
+		}
+		else if(volumeCount >= 3)
+		{
+			volumeDown = findNextVolumeType(focusVolumeType,0);
+			$("adjustProgMinorDown").getElementsByTagName("span")[0].innerHTML = volumeOptions[volumeDown].name;
+			volumeUp = findNextVolumeType(focusVolumeType,1);
+			$("adjustProgMinorUp").getElementsByTagName("span")[0].innerHTML = volumeOptions[volumeUp].name
+		}
+		top.startVolumeTimer();
+	}
+	function getVolumeByType(volumeType)
+	{
+		var volumeVal = 0;
+		switch(volumeType)
+		{				
+			case 1://headPhone
+				volumeVal = setting.headphoneVolume;
+				break;
+			case 2://Bluetooth Device
+				volumeVal =  bluetooth.getBluetoothVolume();
+				break;
+			case 3://arc 
+				volumeVal = top.g_setting.getCecVolumeValue();
+				break;
+			case 0:
+			default:
+				volumeVal = top.g_channel.volume;
+				break;
+		}
+		return volumeVal;
+	}
+	function setVolumeByType(volumeType,volumeVal)
+	{
+		volume = volumeVal;
+		switch(volumeType)
+		{				
+			case 1://headPhone	
+				setting.headphoneVolume	= volume;	
+				break;
+			case 2://Bluetooth Device
+				bluetooth.setBluetoothVolume(volume);
+				break;
+			case 3://arc pass key to middleware
+				break;
+			case 0:
+			default:
+				top.g_channel.volume = volume;
+				break;
+		}
+	}
+	function initVolume()
+	{
+    	top.keySetForUI(1);
+		refreshMultiLanguage();
+		prepareVolumeShow();
+		focusOn = "volume";
+		curVolumeType = parseInt(setting.getProperty("app.ui.VolumeType","0"));//fix me setting.getProperty();
+		if(volumeOptions[curVolumeType].showFlag != 1)
+		{
+			curVolumeType = 0;
+			setting.setProperty("app.ui.VolumeType","0");
+		}
+		maxVolume = top.g_setting.maxVolume;
+		/*if(top.g_setting.getCecARCStatus()==1)
+		{
+			volume = top.g_setting.getCecVolumeValue();
+		}
+		else
+		{
+			volume = top.g_channel.volume;
+		}*/
+		showVolumeContent(curVolumeType);
+		
+		//$("valumeProgressValue").innerHTML = volume;
+		//$("volumeLeft").style.width = parseInt(volume*9) + "px";
+		//$("volumeRight").style.width = parseInt((100-volume)*9) + "px";
+	}
+	var maxVolume = 0;
+	function showVolume(distance)
+	{
+		if(distance>0&&top.mute_status>0)
+		{
+			top.showMute(0);
+		}
+		top.clearVolumeTimer();
+		if (top.g_volume_visible)
+		{
+			volume += distance;
+			if(volume < 0)
+			{
+				volume = 0;
+			}
+			else if(volume > maxVolume)
+			{
+				volume = maxVolume;
+			}
+			
+			$("adjustProgBar").getElementsByTagName("div")[0].style.width = parseInt(volume*9) + "px";
+			$("adjustProgBar").getElementsByTagName("div")[2].style.width = parseInt((100-volume)*9) + "px";
+		}
+		else
+		{
+			$("adjustProgBar").getElementsByTagName("div")[0].style.width = parseInt(volume*9) + "px";
+			$("adjustProgBar").getElementsByTagName("div")[2].style.width = parseInt((100-volume)*9) + "px";
+			$("adjustProgressBox").style.display = "block";
+			top.g_volume_visible = 1;
+		}
+		
+		$("adjustProgValue").innerHTML = volume;
+		top.startVolumeTimer();
+	}
+	/*
+	function hideVolume()
+	{
+		top.document.getElementById("volume").style.visibility= "hidden";
+		top.g_volume_visible = 0;
+		top.main.focus();
+	}*/
+    function isOverflowed(element)
+	{
+		return element.scrollWidth > element.clientWidth;
+	}
+	
+	/*
+	把整个列表属性更改，如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+	htmlTag:内容标签；scrollEnable：1 当前选项为焦点，可能需要做动画，0 当前项为非焦点，一定不会做滚动动画
+	*/
+	function setScrollAttribute(htmlTag)
+	{
+		htmlTag.setAttribute("contentText",htmlTag.innerHTML);
+		if(isOverflowed(htmlTag))//如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+		{
+			htmlTag.style.overflowX = "-webkit-marquee";
+			htmlTag.style.textOverflow = "clip";
+		}
+		else
+		{
+			htmlTag.style.overflowX = "hidden";
+			htmlTag.style.textOverflow = "ellipsis";
+		}
+		resetScrollHtmlInner(htmlTag);
+	}
+	/*
+	重新为整个列表属性更改完成的列表赋值
+	htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数
+	*/
+	function resetScrollHtmlInner(htmlTag)
+	{
+		htmlTag.innerHTML = htmlTag.getAttribute("contentText");
+	}
+	function showPvrCurrentTime()
+	{
+		refreshMultiLanguage();
+		$("record").style.display="block";
+		$("stopName").innerHTML = pvrHelp[0];
+		$("settingName").innerHTML = pvrHelp[1];
+		setScrollAttribute($("stopName"));
+		setScrollAttribute($("settingName"));
+		$("promptContent").innerHTML = pvrRemind[0];
+		top.pvrCurrentTime = pvr.recordingTimeLength();
+		if(top.pvrCurrentTime>top.pvrTotalTime)
+		{
+			pvr.recordStop();
+			$("record").style.display="none";
+			top.$('main').src = "pvr/Pvr.html?saveFile";
+			return;
+		}
+		var hour = parseInt(top.pvrCurrentTime /3600,10);
+		var minute =  parseInt((top.pvrCurrentTime  - hour*3600)/60,10);
+		var second = top.pvrCurrentTime %60;
+		if(hour < 10)
+		{
+			hour = "0" + hour;
+		}
+		if(minute < 10)
+		{
+			minute = "0" + minute;
+		}
+		if(second < 10)
+		{
+			second = "0" + second;
+		}
+		$("currentRecHour").innerHTML=hour;
+		$("currentRecMinute").innerHTML=minute;
+		$("currentRecSecond").innerHTML=second;
+		$("promptWin").style.display="block"
+		recordingTimer = setInterval("doCurrentTime()",1000);
+		clearPvrPromatTimer = setTimeout(function(){$("promptWin").style.display="none";},5000);
+	}
+	function doCurrentTime()
+	{
+		top.g_channel.testLog("********doCurrentTime start**********************");
+		top.pvrCurrentTime = pvr.recordingTimeLength();
+		if(top.pvrCurrentTime>top.pvrTotalTime)
+		{
+			pvr.recordStop();
+			clearInterval(recordingTimer);
+			$("record").style.display="none";
+			top.$('main').src = "pvr/Pvr.html?saveFile";
+			return;
+		}
+		var hour = parseInt(top.pvrCurrentTime /3600,10);
+		var minute =  parseInt((top.pvrCurrentTime  - hour*3600)/60,10);
+		var second = top.pvrCurrentTime %60;
+		if(hour < 10)
+		{
+			hour = "0" + hour;
+		}
+		if(minute < 10)
+		{
+			minute = "0" + minute;
+		}
+		if(second < 10)
+		{
+			second = "0" + second;
+		}
+		$("currentRecHour").innerHTML=hour;
+		$("currentRecMinute").innerHTML=minute;
+		$("currentRecSecond").innerHTML=second;
+		top.g_channel.testLog("********doCurrentTime end**********************");
+	}
+	function hiddenRecord()
+	{
+		clearInterval(recordingTimer);
+		clearTimeout(clearPvrPromatTimer);
+		clearPvrPromatTimer = 0;
+		recordingTimer = 0;
+		$("record").style.display="none";
+	}
+	
+	var timeshiftTimer 		= 0; 					//timeshift 进行时实时更新状态的计时器
+	var playBackOffsetTime	= 0;					//当前回放的时间
+	var recordedDuration	= 0;					//已经录制的时长
+	/*
+	description:when timeshift menu bar hidden,time shift run in backstage
+	*/
+	function showTimeShiftOffsetTime()
+	{
+		if(timeshiftTimer)
+		{
+			clearInterval(timeshiftTimer);
+		}
+		timeshiftTimer = setInterval("showTimeShiftOffsetTime()",900);
+		//startTimeshiftTime = pvr.startTimeshiftTime();
+		playBackOffsetTime = pvr.timeshiftCurrentShiftOffset();
+		recordedDuration = pvr.recordingTimeLength();
+		
+		channel.testLog("in showTimeShiftOffsetTime playBackOffsetTime = " + playBackOffsetTime + ",recordedDuration = " + recordedDuration );
+		
+		$("offsetTimeOnly").innerHTML = "-" + doTimeshiftTime(recordedDuration -　playBackOffsetTime);
+		$("offsetTimeOnly").style.display="block";
+	}
+	function hiddenTimeShift()
+	{
+		clearInterval(timeshiftTimer);
+		timeshiftTimer=0;
+		$("offsetTimeOnly").style.display="none";
+	}
+	/*
+	*切分时间，将以秒为单位的时间切分出时，分，秒的字符串
+	*/
+	function doTimeshiftTime(time)
+	{
+		channel.testLog("in doTimeshiftTime time = " + time);
+		var hour = parseInt(time/3600,10);
+		var minute =  parseInt((time - hour*3600)/60,10);
+		var second = time%60;
+		if(hour < 10)
+		{
+			hour = "0" + hour;
+		}
+		if(minute < 10)
+		{
+			minute = "0" + minute;
+		}
+		if(second < 10)
+		{
+			second = "0" + second;
+		}
+		return (hour + ":" + minute + ":" + second);
+	}
+	var volumRemindTimer = -1;
+	function showVolumeOffRemind()
+	{
+		refreshMultiLanguage();
+    top.$("volumeOffRemind").innerHTML = top.volumeOffRemind.replace(/XXX/,volumeOptions[curVolumeType].name);
+		top.$("volumeOffRemind").style.display="block";
+		clearTimeout(volumRemindTimer);
+		volumRemindTimer = 0;
+		volumRemindTimer = setTimeout("hideVolumeOffRemind()",2000);
+	}
+	
+	function hideVolumeOffRemind()
+	{
+		clearTimeout(volumRemindTimer);
+		volumRemindTimer = 0;
+		top.$("volumeOffRemind").style.display="none";
+	}
+
+	var showGlassRemindTimer = 0;
+	function showGlassRemind(flag)
+	{
+		refreshMultiLanguage();
+		//先制空此函数等眼镜适配功能做完后添加
+		if(1)//top.glassConnectFlag==0)
+		{
+			if(flag)
+			{
+				top.$("glassRemind").innerHTML=glassRemind[flag];
+				top.glassConnectFlag=1;
+				setTimeout("hiddenGlassRemind()",2000);
+			}
+			else
+			{
+				top.$("glassRemind").innerHTML=glassRemind[flag];
+				clearTimeout(showGlassRemindTimer);
+				showGlassRemindTimer = 0;
+				showGlassRemindTimer = setTimeout(function(){top.$("glassRemind").style.display="none"},10*1000);
+			}
+			top.$("glassRemind").style.display="block";
+		}
+	}
+	function hiddenGlassRemind()
+	{
+		clearTimeout(showGlassRemindTimer);
+		showGlassRemindTimer = 0;
+		top.$("glassRemind").innerHTML="";
+		top.$("glassRemind").style.display="none";
+	}
+	function hiddenFactoryHotkey()
+	{
+			if(interval!=0)
+			{
+				clearInterval(interval);
+				interval = 0;
+			}
+
+			top.$("factoryHotkeyForm").style.display = "none";
+			//showHotkey();
+	}
+	var json4 =
+"{\"action\":\"ReportChannelList\",\"developer\": {\"apikey\":\"1234\",\"name\":\"tclrpc_1\"},\"device\": {\"deviceId\": \"40:8B:F6:F4:FB:E8\"},\"param\": {\"version\": \"1232131xxx23149\",\"channelList\":[\"channelList\"]}}"
+    var reportLocationFlag  = 0;
+	function repocrLocationInit()
+	{
+		json4=json4.replace("40:8B:F6:F4:FB:E8",top.g_setting.tvDeviceID);
+		if(top.checkNetStatus())
+		{
+			//reportLocationFlag=1;
+			var list=channel.getAllList();
+			var channelListStr="";
+			if(list.length)
+			{
+				var i=0;
+				for(i=0;i<list.length-1;i++)
+				{
+					channelListStr=channelListStr+"{\"name\":\""+list[i].name+"\",\"logicnumber\":"+list[i].number+",\"sid\":\""+list[i].serviceId+"\",\"tsid\":\""+list[i].tsId+"\",\"onid\":\""+list[i].onId+"\",\"channelid\":"+list[i].index+",\"channeltype\":"+list[i].channelType+"},";
+				}
+				channelListStr=channelListStr+"{\"name\":\""+list[i].name+"\",\"logicnumber\":"+list[i].number+",\"sid\":\""+list[i].serviceId+"\",\"tsid\":\""+list[i].tsId+"\",\"onid\":\""+list[i].onId+"\",\"channelid\":"+list[i].index+",\"channeltype\":"+list[i].channelType+"}";
+				var jsonReport=json4.replace("1232131xxx23149",parseInt(top.g_channel.channelListVersion));
+				jsonReport=jsonReport.replace("[\"channelList\"]","["+channelListStr+"]");
+				//top.g_channel.testLog(jsonReport);
+				top.reportLocationList(jsonReport);
+			}
+		}
+	}
+	
+	function showPhoneConnectToTV()
+	{
+		refreshMultiLanguage();
+		var phoneName = setting.nScreenGetPhoneName();
+		top.$("nScreenPhoneConnectToTvRemind").getElementsByTagName("span")[0].innerHTML = phoneConnectRemind.replace(/XXXX/,phoneName);
+		top.$("nScreenPhoneConnectToTvRemind").style.display = "block";
+		setTimeout(function(){
+			top.$("nScreenPhoneConnectToTvRemind").style.display = "none";
+			},3000);
+	}
+	
+	function showBluetoothDisconnectToTV()//为蓝牙添加
+	{
+		refreshMultiLanguage();
+		top.$("nScreenPhoneConnectToTvRemind").getElementsByTagName("span")[0].innerHTML = top.bt_deviceList_Disconncect_Success;//"Disconnected to bluetooth device.";
+		top.$("nScreenPhoneConnectToTvRemind").style.display = "block";
+		setTimeout(function(){
+			top.$("nScreenPhoneConnectToTvRemind").style.display = "none";
+			},3000);
+	}
+	
+	function showBluetoothConnectToTV()//为蓝牙添加
+	{
+		refreshMultiLanguage();
+		top.$("nScreenPhoneConnectToTvRemind").getElementsByTagName("span")[0].innerHTML = top.bt_deviceList_Conncect_Success;//"Connected to bluetooth device.";
+		top.$("nScreenPhoneConnectToTvRemind").style.display = "block";
+		setTimeout(function(){
+			top.$("nScreenPhoneConnectToTvRemind").style.display = "none";
+			},3000);
+	}
+	
+	function showBluetoothModuleError() //蓝牙模块初始化失败
+	{
+		refreshMultiLanguage();
+		top.$("nScreenPhoneConnectToTvRemind").getElementsByTagName("span")[0].innerHTML = top.bt_bluetooth_module_error;
+		top.$("nScreenPhoneConnectToTvRemind").style.display = "block";
+		setTimeout(function(){
+			top.$("nScreenPhoneConnectToTvRemind").style.display = "none";
+			},3000);
+	}
+	
+	function moveFocus5In1()
+	{
+		$('cell_5in1_focus').style.top = focusIndexY * (FOCUS_WIDTH + FOCUS_INNER_DISTANCE) + FOCUS_TOP_DISTANCE + "px";
+		$('cell_5in1_focus').style.left = focusIndexX * (FOCUS_WIDTH + FOCUS_INNER_DISTANCE) + FOCUS_LEFT_DISTANCE + "px";
+	}
+
+	function initMenu5In1()
+	{
+		top.contentBackup = top.g_setting.contextOf5in1;
+		top.setContext5In1Type(top.CONTEXT_PANEL_OPERATION);
+		//top.g_setting.contextOf5in1 = top.CONTEXT_PANEL_OPERATION;
+		focusIndexX = 1;
+		focusIndexY = 1;
+		moveFocus5In1();
+		menu5In1Visiable = 1;
+		$("menu5In1").style.display = 'block';
+		setTimeout(function(){$("menu5In1").style.opacity = 1;}, 50);
+		startMenu5In1Timer();
+	}
+
+	function startMenu5In1Timer()
+	{
+		clearTimeout(menu5In1Timer);
+		menu5In1Timer = setTimeout("hideMenu5In1()", 10000);
+	}
+
+	function hideMenu5In1()
+	{
+		top.g_setting.contextOf5in1 = top.contentBackup;
+		menu5In1Visiable = 0;
+		$("menu5In1").style.opacity = 0;
+		setTimeout(function(){
+			$("menu5In1").style.display = 'none';
+			focusIndexX = 1;
+			focusIndexY = 1;
+			moveFocus5In1();
+			menu5In1Visiable = 0;
+			}, 300);
+		//setTimeout(function(){$("menu5In1").style.display = 'none';}, 600);    
+		//top.main.focus();
+		//setFrameFocusPage("main");
+	}
+
+	function toUp()
+	{
+		focusIndexX = 1;
+		focusIndexY = parseInt((focusIndexY - 1 + FOCUS_INDEX_MAX) % FOCUS_INDEX_MAX);
+		moveFocus5In1();
+	}
+
+	function toDown()
+	{
+		focusIndexX = 1;
+		focusIndexY = parseInt((focusIndexY + 1) % FOCUS_INDEX_MAX);
+		moveFocus5In1();
+	}
+
+	function toLeft()
+	{
+		focusIndexY = 1;
+		focusIndexX = parseInt((focusIndexX - 1 + FOCUS_INDEX_MAX) % FOCUS_INDEX_MAX);
+		moveFocus5In1();
+	}
+
+	function toRight()
+	{
+		focusIndexY = 1;
+		focusIndexX = parseInt((focusIndexX + 1) % FOCUS_INDEX_MAX);
+		moveFocus5In1();
+	}
+
+	function toOK()
+	{
+		if(focusIndexX == 1 && focusIndexY == 0)//up -- go back
+		{
+			top.panelGoback();
+		}
+		else if(focusIndexX == 0 && focusIndexY == 1)//left -- menu
+		{
+			top.panelMenu();
+		}
+		else if(focusIndexX == 1 && focusIndexY == 1)//center -- home
+		{
+			top.panelHomePage();
+		}
+		else if(focusIndexX == 2 && focusIndexY == 1)//right -- source
+		{
+			top.panelSource();
+		}
+		else if(focusIndexX == 1 && focusIndexY == 2)//down -- power
+		{
+			top.panelPowerOff();
+		}
+		clearTimeout(menu5In1Timer);
+		hideMenu5In1();
+	}
+
+	function display5n1Logo()
+	{
+		$('menu_5n1_main').style.display = 'block';
+	}
+	function addMouseListener()
+	{
+		document.body.onmousedown = function(evt){evt.preventDefault();
+			if(evt.button == 2)
+			{ 
+				top.clearVolumeTimer();
+				top.hideVolume();//right key
+			}
+		}
+		$("adjustProgressBox").onmousedown = function(evt){
+			if(evt.button == 0){//left key
+					
+					top.clearVolumeTimer();
+					var value = parseInt((evt.clientX - PROGRESS_START_LEFT_OFFSET)*PROGRESS_MAX_VALUE/EXTRA_PROGRESS_WIDTH,10);
+					if(value>volume&&top.mute_status>0)
+					{
+						top.showMute(0);
+					}
+					volume=value;
+					if(volume>100)
+					{
+						volume=100;
+					}
+					else if(volume<0)
+					{
+						volume=0;
+					}
+					$("adjustProgBar").getElementsByTagName("div")[0].style.width = parseInt(volume*9) + "px";
+					$("adjustProgBar").getElementsByTagName("div")[2].style.width = parseInt((100-volume)*9) + "px";
+					$("adjustProgValue").innerHTML=volume;
+					setVolume();
+					top.startVolumeTimer();
+				}
+		}
+	}
+	</script>
+</head>
+
+ <body onLoad="addMouseListener()">
+	
+     <!--********************************record图标********************************-->
+    <div id="record" style="display:none">
+    	<img src="images/common_icon_rec.png" style="position:absolute;top:25px; left:140px;"/><div id="currentRecTime"><span id="currentRecHour">00</span>:<span id="currentRecMinute">00</span>:<span id="currentRecSecond">00</span></div>
+    	<img src="images/icon-Stop.png" style="position:absolute; top:122px; left:50px;"/> <span id="stopName" class="marquee"></span><img src="images/icon-Color_key_B.png" style="position:absolute; left:245px; top:122px;"/><span id="settingName" class="marquee"></span>
+          <!------------------------说明提示框---------------------------------------->
+       <div id="promptWin" style="display:block; left:500px; top:35px;">
+            <img class="promptWinLeft" src="images/info-1_2.png"/>
+            <div class="promptWinRight" style="position:absolute; height:102px;">
+                <span id="promptContent" style="top:12px; width:400px;">
+                </span>
+            </div>
+       </div>
+    </div>
+    <!--********************************record图标********************************-->
+    
+    <!--********************************time shift图标**************************************-->
+    <span id="offsetTimeOnly" style="display:none;"></span>
+    <!--********************************time shift图标**************************************-->
+    <div id="adjustProgressBox">
+   		<div id="adjustProgMinorUp">
+        	<span class="adjustProgSpan"></span>
+        </div>
+        <div id="adjustProgMain">
+        	 <img src="images/SS_1_02_3_Activation.png" style="position:absolute;left:10px;">
+        	 <div class="adjustName">
+        	 	<span class="adjustProgSpan" style="width:195px;"></span>
+             </div>
+             <div id="adjustProgBar" >
+                	<div class="progressBarLeft" style="width:450px;background:#00aadd;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:450px;"></div>
+             </div>
+             <div id="adjustProgValue"></div>
+        </div>
+        <div id="adjustProgMinorDown">
+        	<span class="adjustProgSpan"></span>
+        </div>
+   </div>
+
+    <div id="menu5In1" style="display:none">
+    	<img id="cell_5in1_up" class="menu5In1_cell" style="top:34px;left:164px" src="images/return_normal_5in1.png"></img>
+    	<img id="cell_5in1_left" class="menu5In1_cell" style="top:135px;left:63px" src="images/setting_normal_5in1.png"></img>
+    	<img id="cell_5in1_center" class="menu5In1_cell" style="top:135px;left:164px" src="images/home_normal_5in1.png"></img>
+    	<img id="cell_5in1_right" class="menu5In1_cell" style="top:135px;left:265px" src="images/source_normal_5in1.png"></img>
+    	<img id="cell_5in1_down" class="menu5In1_cell" style="top:236px;left:164px" src="images/power_normal_5in1.png"></img>
+    	<img id="cell_5in1_focus" style="top:135px;left:164px" src="images/focus_5in1.png"></div>
+    </div>
+
+    <div id="menu_5n1_main">
+		<div id="menu_bg"></div>
+		<div id="menu_light"></div>
+		<div id="menu_point"></div>
+	</div>
+ </body>
+</html>

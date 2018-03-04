@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+#form
+{
+	position:absolute;
+	background-color:#000;
+	opacity:0.9;
+	border-radius:10px;
+	border:solid #00aadd 2px;
+	width:600px;
+	height:300px;
+	top:95px;
+	left:600px;
+}
+#remind
+{
+	position:absolute;
+	top:100px;
+	width:100%;
+	font:xx-large bold;
+	color:#fff;
+	text-align:center;
+}
+#keyRemind
+{
+	position:absolute;
+	top:180px;
+	width:100%;
+	font:24px bold;
+	color:#fff;
+	text-align:center;
+	
+}
+</style>
+
+<script type="text/javascript">
+top.keySetForUI(1);
+var remind = ["Portal check:","Pclink check:","Switch Color temp:","USB to TV : ","OOB:","Reset :","Audio test mode has been set!"];
+var keyRemind = ["Done","Failed",];
+var timer = 0;
+var setting = top.g_setting;
+var picAdvColorTemp     = top.picColorTemp;
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function init()
+{
+	switch(top.g_factory_IR_msg)
+	{
+		case 2:
+			$("remind").innerHTML = remind[top.g_factory_IR_msg];
+			$("keyRemind").innerHTML = picAdvColorTemp[setting.colorTemparature];
+			break;
+		case 4:
+			$("remind").innerHTML = remind[top.g_factory_IR_msg];
+			$("keyRemind").innerHTML ="Doing" ;//keyRemind[top.g_factory_IR_status];
+			break;
+/*			
+		case 3:
+		case 4:
+		case 5:
+		{
+			  if(top.g_factory_IR_status == 0)
+			  {
+				$("remind").innerHTML = remind[top.g_factory_IR_msg];
+				$("keyRemind").innerHTML = "Doing";
+				return;
+			  }
+			  else
+			  {
+				$("remind").innerHTML = remind[top.g_factory_IR_msg];
+				$("keyRemind").innerHTML = keyRemind[top.g_factory_IR_status - 1];
+				break;
+			  }
+			
+		}  	
+*/		
+		default:
+			$("remind").innerHTML = remind[top.g_factory_IR_msg];
+			$("keyRemind").innerHTML = keyRemind[top.g_factory_IR_status];
+			break;
+	}
+	timer = setInterval("hideNotifytimer()",5000);
+}
+function hideNotifytimer()
+{
+	top.document.getElementById('otherPage').src = "";
+	if(top.g_factory_IR_msg == 3||top.g_factory_IR_msg == 5)
+		top.jumpPage();
+	else	
+		top.main.focus();
+}
+document.onkeydown = keyproc;
+
+function keyproc(evt)
+{
+    //clearInterval(timer);
+	//top.g_lastTime = -1;
+	//setting.cancelPowerOff();
+	top.document.getElementById('otherPage').src = "";
+	top.main.focus();
+}
+
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;//alert("msg = " + msg)
+	var value = evt.modifiers;
+	//全局消息
+	switch(msg)
+	{
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+<div id="form">
+<span id="remind"></span>
+<span id="keyRemind"></span>
+</div>
+</body>
+
+</html>

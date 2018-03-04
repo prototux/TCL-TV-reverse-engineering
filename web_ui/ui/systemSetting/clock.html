@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="clock.js"></script>
+    <style type="text/css">
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+    </style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  <div id="fourthMenuLeft"></div>
+  <div id="fourthMenuRight" >
+        <img id="fourthListFocus" src="../images/Focus_Frame/Focus.png">
+		<ul>
+        	<li	class="titleName">
+                <lable style="position:absolute;top:60px;"></lable>
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+                <div id="autoSyncStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+                <div id="dateContent" class="listSecondProperty">
+                	<span></span><span></span><span></span>
+                </div>
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+                <div id="timeContent" class="listSecondProperty">
+                	<span></span><span></span><span></span>
+                </div>
+            </li>
+           	<li class="list" >
+                <lable class="listFirstProperty"></lable>
+                <div id="powerOnStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+                <div id="powerOnContent" class="listSecondProperty">
+                	<span></span><span></span><span></span>
+                </div>
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+                <div id="powerOffStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <lable class="listFirstProperty"></lable>
+                 <div id="powerOffContent" class="listSecondProperty">
+                	<span></span><span></span><span></span>
+                </div>
+            </li>
+   		</ul>
+   </div>
+   
+     <!----------------------弹出列表框使用---------------------->
+     <div id="listForm" class="fourthPopUpBox">
+    	<img id="listUpImg" src="../images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+       	  <img id="listFormFocus" class="formFocus" src="../images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+        <img id="listDownImg" src="../images/arrow/D-Focus.png" />
+    </div>
+</body>
+</html>

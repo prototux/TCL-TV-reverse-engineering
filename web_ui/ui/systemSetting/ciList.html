@@ -1,0 +1,365 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+document.onnotify = notifyProcess;
+document.onkeydown = keyproc;
+
+var ciListWords			= [top.sysOptions[9],top.sysCiDes[0]];
+
+var SUB_MENU_START 		= 130;				//三四级菜单焦点移动起始位置
+var SUB_MENU_STEP 		= 70;				//三四级主菜单焦点移动的step
+var list_position_h 	= 0;				//焦点序号
+var STEP 				= 50;
+var cardState 			= 0;				//ci card状态，0：无卡；1：有卡
+var ciCount 			= 0;				//ci card count
+var setting 			= top.g_setting;
+var channel				= top.g_channel;
+var osdTimer 			= 0;
+var vedioMode 			= 0;
+var liList;									//
+var spanList;								//内容列表
+
+function notifyProcess(evt)
+{
+	channel.testLog("in ciList notifyProcess");
+	var msg = evt.which;
+	var value = evt.modifiers;
+	switch(msg)
+	{
+		case top.E_SIGNAL_UNLOCK://unlock signal
+		case top.E_PVR_NO_SIGNAL:
+			top.jumpPage();
+			break;
+		case top.E_CI_CARD_INSERTED://CI insert
+			init();
+			break;
+		case top.E_CI_CARD_REMOVE://CI remove
+			top.jumpPage();
+			break;
+		case top.E_CI_DATA_READY:// CI data ready
+			top.systemEventProc(evt);
+			break;
+		case top.E_CI_CAM_NAME_READY://ci card name ready
+			showCiCardList();
+			break;
+		case top.E_CI_EXIT_CI:
+			top.jumpPage();
+			break;
+		case top.E_SS_COMMON_VIDEO:
+			if(vedioMode == 3)//scramble
+			{
+				top.jumpPage();
+			}
+			break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+	if(osdTimer)
+	{
+		clearTimeout(osdTimer);
+		osdTimer = setTimeout(function(){top.jumpPage();},10*1000);
+	}
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;top.g_channel.testLog("in ciList keyproc g_ciUpdateStatus = " + top.g_ciUpdateStatus + ",g_isUsedNotifyIntoPage = " + top.g_isUsedNotifyIntoPage);
+	//快捷键处理
+	if(top.g_ciUpdateStatus == 0 || top.g_isUsedNotifyIntoPage != 1)//没有在ci 升级中,非消息进入cilist
+	{
+		switch(keycode)
+		{
+			case top.VK_UP:// up
+				toUp();
+				ret = false;
+				break;
+			case top.VK_DOWN://down
+				toDown();
+				ret = false;
+				break;
+			case top.VK_ENTER:
+				doEnter();
+				ret = false;
+				break;
+			case top.VK_LEFT:
+			case top.VK_BACK:
+				toBack();
+				ret = false;
+				break;
+			case top.VK_EXIT://exit
+			case top.VK_MENU:
+				doExit();
+				break;
+			default:
+				top.keyDownProcess(e);
+				ret = true;
+				break;
+		}
+		return ret;
+	}
+	else
+	{
+		switch (keycode)
+		{
+			case top.VK_POWER://power
+			{
+				top.keyDownProcess(e);
+				break;
+			}
+			default:
+				break;
+		}
+	}
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function toUp()
+{
+	if(cardState != 0)
+	{
+		if(list_position_h > 0)
+		{
+			list_position_h--;
+		}
+		else
+		{
+			list_position_h = ciCount - 1;
+		}
+		$("thdListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	}
+}
+
+function toDown()
+{
+	if(cardState != 0)
+	{
+		if(list_position_h  < (ciCount - 1))
+		{
+			list_position_h++;
+		}
+		else
+		{
+			list_position_h = 0;
+		}
+		$("thdListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	}
+}
+
+function doEnter()
+{
+	if(cardState != 0)//有ＣＩ卡
+	{
+		setting.selectNameListItem(list_position_h);//从0开始
+		//等待data ready的消息。。
+	}
+}
+
+function doExit()
+{
+	top.jumpPage();
+	//setting.exitCI();
+}
+
+function toBack()
+{
+	if(isDirectToPage == 1)
+	{
+		parent.$("subMenu1").src = "systemSet.html?backFromCiList";
+	}
+	else
+	{
+		parent.returnPage(2);
+	}
+}
+
+/*
+功能描述：刷新Ci card name列表
+参数：ciCount：ci card name数量；list_position_h:当前焦点ci card的位置
+全局变量：
+*/
+function showCiCardList()
+{
+	ciCount = setting.getCICount();
+	//channel.testLog("ciCount = " + ciCount);
+	for(var i = 0; i < 10; i++)
+	{
+		if(i >= ciCount)
+		{
+			liList[i + 1].style.display = "none";
+		}
+		else
+		{
+			spanList[i].innerHTML = setting.getCIName(i);
+			//channel.testLog("name = " + spanList[i].innerHTML);
+		}
+	}
+	$("thdListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	$('thdListFocus').style.display = "block";
+}
+function timeoutInit()
+{
+}
+var isDirectToPage = 0;//是否是ci卡消息直接进入此页面，0 否，1是
+function init()
+{
+	liList = $("thdMenuRight").getElementsByTagName("li");
+	spanList = $("thdMenuRight").getElementsByTagName("span");
+	if(osdTimer)
+	{
+		clearTimeout(osdTimer);
+	}
+	osdTimer = setTimeout(function(){top.jumpPage();},10*1000);
+	top.stopTimeout();
+	//面板按键处理场景设置
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	
+	if(top.g_nextHtmlPage == "ciList.html")
+	{
+		$("sndMenuLeft").style.display = "block";
+		isDirectToPage = 1;
+		/*必须在此处消除掉，不能再uninit中消除。不然的话再该页面来data ready 消息将g_nextHtmlPage置为common_interface.html，
+		但是当跳转页面的时候g_nextHtmlPage在uninit中又置为空了，这样会出错*/
+		top.g_nextHtmlPage = "";
+		parent.subMenu1.focus();
+	}
+	else
+	{
+		$("sndMenuLeft").style.display = "none";
+		isDirectToPage = 0;
+	}
+	
+	vedioMode = channel.currentScreenSaverMode;//保存当前屏保状态，在收到视频正常播放的消息的时候需要用它来判断是否是解密出来的结果
+	$("title").innerHTML = ciListWords[0];
+	cardState = setting.getCardState();
+	channel.testLog("cardState = " + cardState);
+	if(cardState != 2)//ci card not available
+	{
+		spanList[0].innerHTML = ciListWords[1];
+		$('thdListFocus').style.display = "none";
+		//liList[1].style.backgroundColor = "#000";
+		for(var i = 2; i < 11; i++)
+		{
+			liList[i].style.display = "none";
+		}
+	}
+	else
+	{/*
+		if(top.g_isUsedNotifyIntoPage == 1)
+		{
+			osdTimer = setTimeout(function(){top.jumpPage();},10*1000);
+		}*/
+		list_position_h = 0;		
+		showCiCardList();
+	}
+	top.g_isUsedNotifyIntoPage = 0;
+	addMouseListener();
+}
+
+function uninit()
+{
+	top.timeoutFuc.timeoutEnable=1;
+	top.clearMyTimeout();
+}
+var PROGRESS_START_LEFT_OFFSET = 480 + 310;//进度条容器开始位置相对于framework的左偏移，480是进度条的父容器的相对framwork的左偏移，310是进度条容器相对于进度条父容器的左偏移
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(osdTimer)
+		{
+			clearTimeout(osdTimer);
+			osdTimer = setTimeout(function(){top.jumpPage();},10*1000);
+		}
+		if(evt.button == 2){
+			if(top.g_ciUpdateStatus == 0 || top.g_isUsedNotifyIntoPage != 1)//没有在ci 升级中,非消息进入cilist
+			{
+				toBack();//right key
+			}
+		}
+	}
+	
+	//menu
+	for(var i = 1; i < 11; i++)
+	{
+		liList[i].setAttribute("newAttr",i);
+		liList[i].onmousedown = function(evt){
+			if(osdTimer)
+			{
+				clearTimeout(osdTimer);
+				osdTimer = setTimeout(function(){top.jumpPage();},10*1000);
+			}
+			if(evt.button == 0){//left key
+				if(cardState != 0)
+				{
+					list_position_h = parseInt(this.getAttribute("newAttr")) - 1;
+					$("thdListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+					doEnter();
+				}
+			}
+		}
+	}
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href="../all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#title
+{
+	position:absolute;
+	top:60px; 
+}
+</style>
+</head>
+
+<body onLoad="init()" onUnload="uninit()">
+	<div id="sndMenuLeft" style="display:none"></div>
+    <div id="thdMenuLeft"></div>
+    <div id="thdMenuRight">
+    	<ul>
+            <img id="thdListFocus" src="../images/Focus_Frame/Focus.png">
+            <li class="titleName">
+            	<lable  id="title"></lable>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+   		</ul>
+   </div>
+</body>
+</html>

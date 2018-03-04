@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#form
+{
+	position:absolute;
+	background-color:#000;
+	opacity:0.9;
+	border-radius:10px;
+	border:solid #1b1b1b 2px;
+	width:600px;
+	height:300px;
+	top:390px;
+	left:660px;
+}
+#timer
+{
+	position:absolute;
+	top:50px;
+	width:100%;
+	font: xx-large bold;
+	color:#fff;
+	text-align:center;
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+
+#remind
+{
+	position:absolute;
+	top:120px;
+	width:100%;
+	font:28px bold;
+	color:#fff;
+	text-align:center;
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+</style>
+
+<script type="text/javascript">
+var preKeySet=top.keySetForUI(1);
+var remind = top.powerPromt;
+var sec = " " + top.timeUnit[0];
+var timer = 0;
+var setting = top.g_setting;
+var MainURL;
+
+
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+function powerOffTimer()
+{
+	top.g_lastTime = top.g_lastTime - 1;
+	if(top.g_lastTime <= 0)
+	{
+		clearInterval(timer);
+		top.g_lastTime = -1;
+		if(top.recordStatusFlag == 1)
+		{
+			setting.powerBacklightState = 0;
+			top.$("main").src = "channelPlay.html";
+		}
+		else
+		{
+			setting.powerOff();
+		}
+	}
+	else
+	{
+		$("timer").innerHTML = top.g_lastTime + sec;
+	}
+}
+
+
+function keyproc(evt)
+{
+	cancelPowerOff();
+}
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;//alert("msg = " + msg)
+	var value = evt.modifiers;
+	//全局消息
+	switch(msg)
+	{
+		case top.E_DLNA_DMR_PUSH_MOVIE://dmr push player
+		case top.E_DLNA_DMR_PUSH_MUSIC://dmr push player
+		case top.E_DLNA_DMR_PUSH_PICTURE://dmr push player
+		case top.E_CIPLUS_PROGRAM_CHANGE://ci 主动换台发出换台刷新节目信息
+		case top.E_BOOKING_PLAY_START://booking play start开机时节目预定的时间已过，但是依然要提醒用户做一些切台等操作
+		case top.E_BOOKING_RECORD_START://booking record start开机时录制预定已经过期，但是依然要提醒用户切台录制
+		case top.E_BOOKING_AHEAD_PLAY_START://booking ahead play start,正常情况下切台提醒，一分钟前提醒
+		case top.E_BOOKING_AHEAD_RECORD_START://booking ahead record start正常情况下录制提醒,，一分钟前提醒
+		case top.E_CI_DATA_READY://ci data ready
+		case top.E_CI_OP_UPDATE_CHANNEL://CMD_UI_NOTIFY_OP_UPDATE_CHANNEL
+		case top.E_CI_OP_UPDATE_NIT://CMD_UI_NOTIFY_OP_UPDATE_NIT
+		case top.E_CHANNEL_PLAY_END://channel change success end
+		case top.E_CI_MHEG_OPEN://MMH打开，需要进入channel_play页面并
+		case top.E_DTV_NIT_VERSION_CHANGED://nit refresh notify
+			break;
+		case top.E_READY_TO_CHANGE_CEC:
+		case top.E_READY_TO_CHANGE_SCART:
+			cancelPowerOff();
+			top.systemEventProc(evt);
+			break;
+		case top.E_SIGNAL_LOCK:
+		if(top.powerOffAsNosignal == 1)
+		{
+			top.powerOffAsNosignal = 0;
+			cancelPowerOff();
+		}
+		top.systemEventProc(evt);
+		break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function cancelPowerOff()
+{
+	clearInterval(timer);
+	top.g_lastTime = -1;
+	setting.cancelPowerOff();	
+	
+	if(top.g_temp == "media" || top.g_temp == "pvr" || top.g_temp == "homepage")
+	{
+		top.$("otherPage").src = "";
+	}
+	else
+	{
+		top.$("main").src = "channelPlay.html";
+	}
+	top.main.focus();
+}
+function init()
+{
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	top.stopTimeout();
+	$("remind").innerText = remind;
+	$("timer").innerHTML = top.g_lastTime + sec;
+	timer = setInterval("powerOffTimer()",1000);
+	addMouseListener();
+}
+function uninit()
+{
+	clearInterval(timer);
+	top.g_lastTime = -1;
+	setting.cancelPowerOff();
+	top.powerOffAsNosignal = 0;
+	top.timeoutFuc.timeoutEnable=1;
+}
+
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		cancelPowerOff();
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+<div id="form">
+<span id="timer">xx Sec</span>
+<span id="remind"></span>
+</div>
+</body>
+
+</html>

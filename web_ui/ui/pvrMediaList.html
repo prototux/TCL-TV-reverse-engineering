@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title>无标题文档</title>
+<script type="text/javascript" src="pvrMediaList.js"></script>
+
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#title
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:1920px;
+	height:108px;
+	line-height:108px;
+	font-size:28px;
+	color:#aaaaaa;
+	float:left;
+	opacity:1;
+	font-weight:bold;
+	background:#000;
+	border:1px solid #1b1b1b;
+	border-style:none none solid none;
+	z-index:30;
+}
+#emptyTips
+{
+	position:absolute;
+	top:113px;
+	left:0px;
+	width:1920px;
+	height:972px;
+	opacity:1;
+	background:#000;
+	text-align:center;
+	line-height:967px;
+	font-size:48px;
+	color:#aaaaaa;
+	display:none;
+	z-index:50;
+}
+#focus
+{
+	position:absolute;
+	top:138px;
+	left:75px;
+	width:316px;
+	height:228px;
+	display:none;
+	pointer-events:none;
+	z-index:40;
+	background-image:url(images/Focus-picture.png);
+	-webkit-transition-duration:200ms;
+}
+
+/* scrollBar */
+.scrollBG
+{
+	position:absolute;
+	top:30px;
+	left:798px;
+	width:7px;
+	height:912px;
+	background:#333;
+	opacity:1;
+}
+.scrollBar
+{
+	position:absolute;
+	top:30px;
+	left:798px;
+	width:7px;
+	height:0px;
+}
+
+.iconArrowIcon
+{
+	position:absolute;
+	left:31px;
+	width:1820px;
+	height:24px;
+	display:block;
+	background-image:url(images/Bg-pvr-TB.png);
+	/*background-repeat: no-repeat;*/
+}
+.iconArrowIcon img
+{
+	position:absolute;
+	left:880px;
+	width:30px;
+	height:30px;
+}
+
+/*-- pvr video list */
+.iconColumn
+{
+	position:absolute;
+	left:0px;
+	top:108px;
+	width:1800px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	display:block;
+	border:0px solid #1b1b1b;	
+	z-index:26;
+}
+.iconColumn ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+	z-index:26;
+}
+.iconColumn ul li
+{
+	position:absolute;
+	width:1850px;
+	height:228px;
+	left:20px;
+	float:left;	
+	z-index:26;
+	border:1px solid #1b1b1b;
+	border-style:solid none none none;	
+	color:#D6D6D6;
+}
+
+.iconColumn ul li div
+{
+	position:absolute;
+	top:10px;
+	width:210px;
+	height:210px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.iconColumn ul li div img
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:210px;
+	height:150px;
+	text-align:center;
+}
+.iconColumn ul li div span
+{
+	position:absolute;
+	top:160px;
+	left:0px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.iconColumnInfoStyle_marquee
+{
+	position:absolute;
+	top:160px;
+	left:0px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+
+.iconColumnInfoStyle_animate
+{
+	position:absolute;
+	top:160px;
+	left: 0px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move_i;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move_i
+{
+   from{left: 0px}
+   to{left: -210px}
+}
+
+
+/*-- option menu */
+#optionInfoFocus
+{
+	position:absolute;
+	top:60px;
+	left:0px;
+	width:540px;
+	height:80px;
+	display:none;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+.optionList
+{
+	position:absolute;
+	top:100px;
+	left:0px;
+	width:344px;
+	font-size:28px;
+	display:none;
+	color:#aaaaaa;
+}
+#optionInfo
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:540px;
+	height:1080px;
+	border:3px solid #1b1b1b;	
+	border-style:none solid none none;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index: 50;
+}
+#optionInfo ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+}
+#optionInfo ul li
+{
+	position:absolute;
+	top:0px;
+	width:540px;
+	height:60px;
+	line-height:60px;
+	color:#D6D6D6;
+}
+#optionInfo ul li span
+{
+	position:absolute;
+	top:0px;
+	height:60px;
+	width:150px;
+	line-height:60px;
+}
+#optionInfo ul li img
+{
+	position:absolute;
+	top:-10px;
+	right:20px;
+	width:20px;
+	height:80px;
+	text-align:center;
+}
+#optionInfoList
+{
+	position:absolute;
+	top:0px;
+	left:545px;
+	width:300px;
+	height:300px;
+	border:3px solid #1b1b1b;	
+	border-style:none solid none none;
+	display:none;
+	background:#000;
+}
+#optionInfoListFocus
+{
+	position:absolute;
+	left:0px;
+	top:60px;
+	width:300px;
+	height:80px;
+	pointer-events:none;
+	display:block;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+
+
+</style>
+</head>
+
+<body onload="init()">
+	<div style="position:absolute;left:0px;top:0px;width:1920px;height:1080px;background:#000;overflow:hidden;border:0px solid #1b1b1b;z-index:10;">
+    
+	<div id="emptyTips">
+    <img style="position:absolute;top:280px;left:886px;width:148px;height:140px;display:block" src="images/icon-Oops.png" />
+    <span id="emptyTipsInfo"></span>
+	</div>
+    
+	<div id="focus"></div>
+	
+	<div id="title">
+    <span id="titleContent" style="position:absolute;top:0px;left:72px;height:100%,width:1800px;line-height:112px;"></span>
+	</div>
+    
+  <!-- pvr media list -->
+	<div id="iconColumn0" class="iconColumn">
+		<div id="arrowUpPvrList"   class="iconArrowIcon" style="top:3px;border:0px solid red;">
+			<img id="arrowUpIcon"   style="top:-5px;" src="images/Icon-T.png"/>
+		</div>
+		<div id="arrowDownPvrList" class="iconArrowIcon" style="bottom:5px;border:0px solid red;">
+			<img id="arrowDownIcon" style="top:-3px;" src="images/Icon-B.png"/>
+		</div>
+		<ul id="iconColumnUL0">
+      <li style="top:30px;border:0px solid red;">
+      	<div style="left:65px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:435px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:805px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1175px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1545px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+      </li>
+      
+      <li style="top:258px;border:0px solid red;">
+      	<div style="left:65px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:435px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:805px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1175px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1545px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+      </li>
+      
+      <li style="top:486px;border:0px solid red;">
+      	<div style="left:65px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:435px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:805px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1175px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1545px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+      </li>
+      
+      <li style="top:714px;border:0px solid red;">
+      	<div style="left:65px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:435px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:805px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1175px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+        <div style="left:1545px;"><img /><span class = "iconColumnInfoStyle_marquee"></span></div>
+      </li>
+		</ul>
+        
+    <div id="scrollAreaI0" style="display:none">
+      <div class="scrollBG" style="left:1880px"></div>
+      <img id="scrollBarI0" src="images/Scroll_bar-Vertical.png" class="scrollBar" style="left:1880px"/>
+    </div>
+  </div>
+  
+  <!-- option menu -->
+	<div id="option" style="position:absolute;top:0px;left:0px;width:1920px;height:1080px;display:none;z-index:40;">
+		<div style="position:absolute;top:0px;left:0px;width:540px;height:1080px;background:#000;opacity:0.85;z-index:40;"></div> 
+		<img id="optionInfoFocus" src="images/Focus_USB_1.png" />
+		<div id="optionInfo">
+			<ul>
+		    <li style="top:100px">
+	        <span id="sortName" style="left:30px;float:left;"></span>
+	        <span id="sortType" style="width:150px;right:50px;text-align:right;"></span>
+	        <img src="images/Icon-R-Disable.png" />
+		    </li>
+			</ul>
+    </div>
+    
+    <div id="optionInfoList">
+    	<img id="optionInfoListFocus" src="images/Focus_USB_2.png" />
+      <div id="sort" class="optionList">
+        <span id="sortTypeName" style="position:absolute;top:0px;width:270px;height:60px;line-height:60px;text-align:center"></span>
+        <span id="sortTypeDate" style="position:absolute;top:100px;width:270px;height:60px;line-height:60px;text-align:center"></span>
+      </div>
+    </div>  
+  </div>
+  </div>
+</body>
+</html>

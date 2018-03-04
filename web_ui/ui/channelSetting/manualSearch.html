@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="manualSearch.js"></script>
+<link rel="stylesheet" type="text/css" href="../all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#listBox
+{
+	position:absolute;
+	width:100%;
+	color:white;
+	font-size:24px;
+	text-align:center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+}
+#listBox li/*设置二级和三级菜单弹出框的属性*/
+{
+	height:70px;
+	line-height:70px;
+	margin:10px 0px 10px 0px;
+}
+.dialogOptions
+{
+	position:absolute;
+	top:80px;
+	width:100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.dialogOptions li
+{
+	position:relative;
+	width:100%;
+	height:40px;
+	padding:10px 0px 10px 0px;
+}
+#remind
+{
+	position: absolute;
+    left: 660px;
+    top: 400px;
+    width: 600px;
+    height: 150px;
+    padding-top:80px;
+    background: #000000;
+    border:solid 4px #1b1b1b;
+    color:#fff;
+    font-size:30px;
+    font-weight:bold;
+    text-align: center;
+	opacity:0.9;
+    display: none;
+}
+.dialogInputProgressContainer
+{
+	right:70px;
+	width:354px;
+}
+#tManuForm
+{
+	display:none;
+}
+#atvManualForm
+{
+	display:none;
+}
+#cManuForm
+{
+	display:none;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   	
+   <!--*************************antenna manual installation使用*************************-->
+   <div id="tManuForm" class="dialogForm">
+        <span id="tManuTitle" class="dialogTitle" ></span>
+        
+         <ul id="tManuOptions" class="dialogOptions" >
+         	<li id="tManuChIdOption">
+                <div class="dialogInput">
+                    <span id="tManuChIdTitle" class="dialogInputName"></span>
+                    <span id="tManuChIdContent" class="dialogInputContent"></span>
+                    <div id="tManuChIdTag" class="dialogInputTag"><></div>
+                </div>
+            </li>
+        	<li >
+                <div class="dialogInput">
+                    <span id="tManuInputTitle" class="dialogInputName"></span>
+                    <div id="tManuFreqContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span>.<span></span><span></span><span></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <span id="tManuStrenTitle" class="dialogInputName"></span>
+                    <div class="dialogInputProgressContainer" >
+                        <div id="tManuStrenLeft" class="progressBarLeft"></div>
+                        <div class="progressBarCenter"></div>
+                        <div id="tManuStrenRight" class="progressBarRight"></div>
+                    </div>
+                    <div id="tManuStrenValue" class="dialogInputProgressValue">0%</div>
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <span id="tManuQuaTitle" class="dialogInputName"></span>
+                    <div class="dialogInputProgressContainer" >
+                        <div id="tManuQuaLeft" class="progressBarLeft"></div>
+                        <div class="progressBarCenter"></div>
+                        <div id="tManuQuaRight" class="progressBarRight"></div>
+                    </div>
+                    <div id="tManuQuaValue" class="dialogInputProgressValue">0%</div>
+                </div>
+            </li>
+            <li>
+            	<hr  class="dialogLine" style="top:0px;"/>
+            </li>
+            <div id="tManuInputFocus" class="dialogInputFocus"  style="top:10px;"></div>
+        </ul>
+        
+        <div style=" position:absolute; width:100%; height:240px; bottom:0px;">
+             <div id="tManuProgress" class="dialogScanProgressContainer">
+                <div id="tManuProgressLeft" class="progressBarLeft" style="width:200px;"></div>
+                <div class="progressBarCenter"></div>
+                <div id="tManuProgressRight" class="progressBarRight" ></div>
+            </div>
+            <span id="tManuProgressValue" class="dialogScanProgressValue"></span>
+            
+            <span id="tManuStatus" class="dialogScanPrompt" style="top:60px;"></span>
+            <span id="tManuResult1" class="dialogScanPrompt" style="top:90px;"></span>
+            <span id="tManuResult2" class="dialogScanPrompt" style="top:120px;"></span>
+            
+            <span id="tManuSearch" class="dialogButton" style="left:324px;"></span>
+        </div>
+   </div>
+   
+   <!--*************************analogue manual scan使用*************************-->
+   <div id="atvManualForm" class="dialogForm">
+        <span id="atvManualTitle" class="dialogTitle" ></span>
+        
+        <div id="atvTitle" class="dialogInput" style="top:80px;">
+        	<span id="atvSysTitle" class="dialogInputName"></span>
+            <span id="atvSysContent" class="dialogInputContent"></span>
+            <div id="atvSysTag" class="dialogInputTag"><></div>
+        </div>
+        <div id="atvSearch" class="dialogInput" style="top:130px;">
+        	<span id="avtSearchTitle" class="dialogInputName"></span>
+            <div id="atvSearchContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+            	<span></span><span></span><span></span>.<span></span><span></span><span></span>
+            </div>
+        </div>
+        <div id="fineTune" class="dialogInput" style="top:180px;">
+        	<span id="atvTuneTitle" class="dialogInputName"></span>
+            <div class="dialogInputProgressContainer" >
+            	<div id="atvTuneLeft" class="progressBarLeft"></div>
+                <div class="progressBarCenter"></div>
+                <div id="atvTuneRight" class="progressBarRight"></div>
+            </div>
+            <div id="atvTuneValue" class="dialogInputProgressValue"></div>
+        </div>
+        <div id="atvManualInputFocus" class="dialogInputFocus"></div>
+        
+        <div id="atvSave" class="dialogButton" style="left:200px;"></div>
+        <div id="atvReplace" class="dialogButton" style="left:450px;"></div>
+        <div id="atvManualButtonFocus" class="dialogButtonFocus" style="display:none;"></div>
+   </div>
+   
+   <!--*************************cable manual installation使用*************************-->
+   <div id="cManuForm" class="dialogForm" >
+        <span id="cManuTitle" class="dialogTitle" ></span>
+        
+        <ul id="cManuOptions" class="dialogOptions">
+        	<li>
+            	<div class="dialogInput">
+                    <span id="cManuFreqTitle" class="dialogInputName"></span>
+                    <div id="cManuFreqContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span>.<span></span><span></span><span></span>
+                    </div>
+                </div>
+       	 	</li>
+        	<li >
+                <div class="dialogInput">
+                    <span id="cManuMoTitle" class="dialogInputName"></span>
+                    <span id="cManuMoContent" class="dialogInputContent"></span>
+                    <div id="cManuMoTag" class="dialogInputTag"><></div>
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <span id="cManuSybTitle" class="dialogInputName"></span>
+                    <div id="cManuSybContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <span id="cManuStrenTitle" class="dialogInputName"></span>
+                    <div class="dialogInputProgressContainer" >
+                        <div id="cManuStrenLeft" class="progressBarLeft"></div>
+                        <div class="progressBarCenter"></div>
+                        <div id="cManuStrenRight" class="progressBarRight"></div>
+                    </div>
+                    <div id="cManuStrenValue" class="dialogInputProgressValue">0%</div>
+                </div>
+            </li>
+            <li>
+            	<div class="dialogInput">
+                    <span id="cManuQuaTitle" class="dialogInputName"></span>
+                    <div class="dialogInputProgressContainer" >
+                        <div id="cManuQuaLeft" class="progressBarLeft"></div>
+                        <div class="progressBarCenter"></div>
+                        <div id="cManuQuaRight" class="progressBarRight"></div>
+                    </div>
+                    <div id="cManuQuaValue" class="dialogInputProgressValue">0%</div>
+                </div>
+            </li>
+            <li>
+            	<hr  class="dialogLine" style="top:0px;"/>
+            </li>
+            <div id="cManuInputFocus" class="dialogInputFocus"  style="top:10px;"></div>
+        </ul>
+        
+        <div style=" position:absolute; width:100%; height:240px; bottom:0px;">
+             <div id="cManuProgress" class="dialogScanProgressContainer">
+                <div id="cManuProgressLeft" class="progressBarLeft"></div>
+                <div class="progressBarCenter"></div>
+                <div id="cManuProgressRight" class="progressBarRight"></div>
+            </div>
+            <span id="cManuProgressValue" class="dialogScanProgressValue"></span>
+            
+            <span id="cManuStatus" class="dialogScanPrompt" style="top:60px;"></span>
+            <span id="cManuResult1" class="dialogScanPrompt" style="top:90px;"></span>
+            <span id="cManuResult2" class="dialogScanPrompt" style="top:120px;"></span>
+            
+            <span id="cManuSearch" class="dialogButton" style="left:324px;"></span>
+        </div>
+   </div>
+   
+   <div id="remind"></div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.dialogOption
+{
+	position:absolute;
+	width:500px; 
+	left:50px;
+	height:27px;
+	font-size:27px;
+	text-align:center;
+	padding:4px 0px 4px 0px;
+	background:#999;
+	border:thin solid #FFF;
+}
+#scanOptions
+{
+	position:absolute;
+	top:0px;
+	width:100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#scanOptions li
+{
+	position:relative;
+	width:100%;
+	height:80px;
+}
+.searchButton/*按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+
+/***************弹出对话框通用样式************************/
+.scanOptionForm/*设置对话框主体框架，新的对话框只需要调整高度和top值*/
+{
+	position:absolute;
+	top:280px;
+	left:150px;
+	width:1060px;
+	overflow:hidden;
+}
+.dialogInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:1060px;
+	height:80px;
+	line-height:80px;
+}
+
+.dialogInputName/*对话框中输入框输入选项名称提示*/
+{
+	position:absolute;
+	left:5px;
+	font-size:32px;
+	font-weight:bold;
+	color:#fff;
+}
+.dialogValueContent/*对话框中输入框和选项框样式*/
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:524px;
+	text-align:center;
+	color:#FFF;
+	font-size:32px;
+	font-weight:bold;
+	overflow:hidden;
+	z-index:10;
+}
+.dialogOptionContentImg
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:524px;
+	height:80px;
+	z-index:5;
+}
+.initButton
+{
+	position:absolute;
+	width:220px;
+	height:80px;
+	line-height:80px;
+	font-size:30px;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	background-image:url(../images/Input_box-1-Bg.png);
+	background-size:220px 80px;
+}
+</style>
+<script type="text/javascript" src="initChDvbcScanInfoSelect.js"></script>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog" style="height:800px;">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:640px;" /><img src="../images/Title_bloc-Bg.png" style="width:560px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        <div id="scanForm" class="scanOptionForm" style="top:250px;">
+       		<ul id="scanOptions" >
+               	<img id="scanInputFocus" class="dialogOptionContentImg" src="../images/Input_box-3-Focus.png"  />
+                <li>
+                    <div id="autoScanMode" class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Icon-LR-Focus.png"  />
+                        <label id="autoModeTitle" class="dialogInputName"></label>
+                        <span id="autoModeContent" class="dialogValueContent"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Input_box-3-Bg.png" />
+                        <label id="autoFreqTitle" class="dialogInputName"></label>
+                        <span id="autoFreqContent" class="dialogValueContent" >
+                            <span></span><span></span><span></span>.<span></span><span></span><span></span>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Icon-LR-Focus.png"  />
+                        <label id="autoMoTitle" class="dialogInputName"></label>
+                        <span id="autoMoContent" class="dialogValueContent"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Input_box-3-Bg.png" />
+                        <label id="autoSybTitle" class="dialogInputName"></label>
+                        <span id="autoSybContent" class="dialogValueContent">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Input_box-3-Bg.png" />
+                        <label id="autoNetTitle" class="dialogInputName"></label>
+                        <span id="autoNetContent" class="dialogValueContent">
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+       </div>
+       
+       <div id="firstButton" class="initButton" style="top:650px; left:570px;"></div>
+        
+       <div id="number" class="hotkey" style="left:150px;" >
+          	<img src="../images/Help-0_9.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="search" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Ok.png"/> 
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>channelListNT</title>
+<script type="text/javascript" src="channelList.js"></script>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+body
+{
+	background:transparent;
+}
+#channelListbg
+{
+	position: absolute;
+	width: 680px;
+	height: 1080px;
+	background:url(images/Channel_list-Bg.png);
+	opacity:0.92;
+	left:0px;/*-600px;*/
+}
+#channelListName
+{
+	position: absolute;
+	top: 60px;
+	font-size: 28px;
+	color: #b0b0b0;
+	text-align: left;
+	font-weight: bold;
+	left:55px;
+	height: 55px;
+	width: 580px;
+}
+#channelList
+{
+	position: absolute;
+	top: 155px;
+	font-size: 22px;
+	color: white;
+	text-align: left;
+	height: 650px;
+	width: 680px;
+	left: 0px;
+}
+#channelListOp
+{
+	position:absolute;
+	top:942px;
+	height:120px;
+	width:680px;
+}
+#channelTunerMode
+{
+	position:absolute;
+	top:155px;
+	font-size:22px;
+	color:white;
+	text-align:left;
+	height:150px;
+	width:680px;
+}
+#channelTunerMode ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+.listProperty
+{
+  width:680px;
+  height: 80px;
+}
+
+
+.channel_type
+{
+	position: absolute;
+	left: 55px;
+	top: 20px;
+	height:40px;
+}
+.channel_num
+{
+	position: absolute;
+	left: 125px;
+	top: 20px;
+	width:70px;
+	height:40px;
+	line-height:40px;
+	font-size:24px;
+}
+.channel_fav
+{
+	position:absolute;
+	left:560px;
+	top:20px;
+	display:none;
+}
+
+.channel_name
+{
+	position: absolute;
+	left: 195px;
+	top: 20px;
+	width: 350px;
+	font-size: 24px;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+#channelList ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+#channelList li
+{
+	position: relative;
+}
+.channelListOpPosition
+{
+	position:relative;
+	height:50px;
+	width:340px;
+	margin: 0;
+	padding: 0;
+	float:left;
+}
+.channelListOpImg
+{
+	position:absolute;
+	top:12px;
+	left:30px;
+	height:25px;
+	width:80px;
+}
+.channelListOpName
+{
+	position: absolute;
+	top: 10px;
+	left: 120px;
+	height: 30px;
+	width: 200px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#focus
+{
+	position:absolute;
+	width:620px;
+	left:30px;
+	top:148px;
+	height:94px;
+	display:block;
+	pointer-events:none;
+}
+#channelSelectList
+{
+	position:absolute;
+	top:155px;
+	font-size:22px;
+	color:white;
+	height:450px;
+	width:680px;
+	left:0px;
+	display:none;
+}
+#channelSelectList ul
+{
+	list-style-type: none;
+    margin: 0;
+	padding: 0;
+}
+#channelSelectList li
+{
+	position: relative;
+}
+.selectListType
+{
+	position:absolute;
+	width: 510px;
+	left:55px;
+	text-align: left;
+	font-size: 28px;
+	font-weight: bold;
+	color: white;
+	height: 80px;
+	line-height:80px;
+}
+#promptWin
+{
+	position:absolute;
+	left:878px;
+	top:100px;
+	height:110px;
+	width:700px;
+	display:block;
+}
+.promptWinRight
+{
+	position:absolute;
+	width:600px;
+	left:22px;
+	background:#000;
+	border-top:4px solid #1b1b1b;
+	border-bottom:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	opacity:0.92;
+}
+
+.promptWinLeft
+{
+	position:absolute;
+	width:22px;
+}
+.channel_info_font
+{
+	position:absolute; 
+	font-size:24px;
+	color:#FFF;
+	font-weight:bold;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#noChannelRemind
+{
+	position:absolute;
+	top:300px;
+	height:300px;
+	width:500px;
+	left:50px;
+	display:none;
+}
+#noChannelRemind span
+{
+	position:absolute;
+	color:#ffffff;
+	font-size:28px;
+	text-align:center;
+}
+#noChannelRemind div
+{
+	position:absolute;
+	top:200px;
+	background-image:url(images/Focus_ME-2-4_1.png);
+	background-size:400px 80px;
+	color:#ffffff;
+	font-size:28px;
+	width:400px;
+	height:80px;
+	text-align:center;
+	left:100px;
+	line-height:80px;
+}
+#listUpRemind
+{
+	position:absolute;
+	width:680px;
+	height:40px;
+	top:115px;
+	text-align:center;
+}
+#listDownRemind
+{
+	position:absolute;
+	width:680px;
+	height:40px;
+	top:875px;
+	text-align:center;
+}
+#listLeftRemind
+{
+	position:absolute;
+	top:490px;
+    left:0px;
+}
+#listRightRemind
+{
+	position:absolute;
+	top:490px;
+    right:0px;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+	<div id="channelListbg">
+    	<div id="channelListName"></div>
+        <div id="listUpRemind">
+           <img src="images/arrow/U-Focus.png"/>
+        </div>
+        <div id="listDownRemind">
+           <img src="images/arrow/D-Focus.png" />
+        </div>
+        <div id="listLeftRemind">
+           <img src="images/arrow/Icon-L.png"/>
+        </div>
+        <div id="listRightRemind">
+           <img src="images/arrow/Icon-R.png"/>
+        </div>
+        <div id="channelList" style="display:block">
+        	<ul>
+                <li class="listProperty">
+                   <img class="channel_fav" id="channelFav0" src=""/>
+                   <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav1" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav2" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav3" src=""/>
+                    <img class="channel_type"/>                 
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav4" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav"id="channelFav5" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav6" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav7" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+                <li class="listProperty">
+                	<img class="channel_fav" id="channelFav8" src=""/>
+                    <img class="channel_type"/>
+                   <div class="channel_num"></div>
+                   <div class="channel_name"></div>
+                </li>
+            </ul>
+        </div>
+        <div id="channelSelectList">
+        	<ul>
+            	<li	class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                 <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                <li	class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+                 <li class="listProperty">
+                	<span class="selectListType"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="channelTunerMode" style="display:none">
+            <ul>
+                <li class="listProperty">
+                	<img src="images/icon_Cable.png" style="position:absolute; left:55px; top:20px; height:40px;"/>
+                	<span class="selectListType" style="left:125px;"></span>
+                </li>
+            	<li	class="listProperty">
+                	<img src="images/icon_Antenna.png" style="position:absolute; left:55px; top:100px; height:40px;"/>
+                	<span class="selectListType" style="left:125px;"></span>
+                </li>
+                <li	class="listProperty">
+                	<img src="images/icon_Satellite.png" style="position:absolute; left:55px; top:180px; height:40px;"/>
+                	<span class="selectListType" style="left:125px;"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="channelListOp">
+        	<div class="channelListOpPosition">
+            	<img src="images/icon-Color_key_R.png" class="channelListOpImg"/>
+                <span class="channelListOpName"></span>
+            </div>
+
+            <div class="channelListOpPosition">
+            	<img src="images/icon-Color_key_G.png" class="channelListOpImg"/>
+                <span class="channelListOpName" style="width:175px;"></span>
+            </div>
+            <div class="channelListOpPosition">
+            	<img src="images/icon-Color_key_Y.png" class="channelListOpImg"/>
+                <span class="channelListOpName"></span>
+            </div>
+            <div class="channelListOpPosition">
+            	<img src="images/icon-Color_key_B.png" class="channelListOpImg"/>
+                <span class="channelListOpName" style="width:175px;"></span>
+            </div>
+        </div>
+        <img id="focus" src="images/Channel_list-Focus_02.png" />
+      </div>
+       <div id="promptWin" style="display:none; left:700px; top:145px;">
+   		<img class="promptWinLeft" src="images/info-1_2.png"/>
+        <div class="promptWinRight" style="position:absolute; height:102px;">
+        	 <span id="program_time_1" class="channel_info_font" style=" top:10px; left:15px; color:red;"></span>
+            <span id="program_name_1" class="channel_info_font" style=" top:10px; left:200px; width:300px; overflow:hidden;white-space:nowrap;text-overflow:ellipsis; color:red;"></span>
+            <span id="program_parentRate_1" class="channel_info_font" style="top:10px; left:550px;color:red;"></span>
+            <span id="program_time_2" class="channel_info_font" style=" top:50px; left:15px;"></span>
+            <span id="program_name_2" class="channel_info_font" style=" top:50px; left:200px;width:300px; overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"></span>
+            <span id="program_parentRate_2" class="channel_info_font" style="top:50px; left:550px;"></span>
+        </div>
+       </div>
+       <div id="noChannelRemind">
+       	<span></span>
+        <div></div>       
+        </div>
+</body>
+</html>

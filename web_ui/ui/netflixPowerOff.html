@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title> New Document </title>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+</style>
+<script type="text/javascript">
+var positionPop=0;
+
+document.onkeydown = keyProcess;
+document.onnotify = notifyProcess;
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function notifyProcess(evt)
+{
+    top.systemEventProc(evt);
+}
+
+function keyProcess(e)
+{
+	var keycode = e.which;
+	switch(keycode)
+	{
+		case top.VK_POWER:
+        case top.VK_0:
+        case top.VK_1:
+        case top.VK_2:
+        case top.VK_3:
+        case top.VK_4:
+        case top.VK_5:
+        case top.VK_6:
+        case top.VK_7:
+        case top.VK_8:
+        case top.VK_9:
+        case top.VK_CHANNEL_UP:
+        case top.VK_CHANNEL_DOWN:
+        case top.VK_PANEL_DOWN:
+        case top.VK_PANEL_UP:
+        case top.VK_PANEL_OK:
+            clearTimeout(top.netflixPowerOffTimeOut);
+            if (top.g_setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "off");
+                top.g_setting.setProperty("sita.bootup.led.standby", "breathing");
+            }
+            else
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "off");
+                top.g_setting.setProperty("sita.bootup.led.standby", "on");
+            }
+            setTimeout(function(){
+                top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_BY_POWER_OFF);},10);
+            setTimeout(function(){
+                top.g_factory.systemReboot(1);},3000);
+			break;
+        case top.VK_NETFLIX:
+            clearTimeout(top.netflixPowerOffTimeOut);
+            top.g_setting.setNetflixReboot();
+            top.g_setting.setProperty("app.ui.netflix.boot", "reboot");
+            if (top.g_setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "off");
+                top.g_setting.setProperty("sita.bootup.led.standby", "breathing");
+            }
+            else
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "off");
+                top.g_setting.setProperty("sita.bootup.led.standby", "on");
+            }
+            setTimeout(function(){
+                top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_BY_POWER_OFF);},10);
+            setTimeout(function(){
+                top.g_factory.systemReboot(1);},3000);
+            break;
+		default:
+            if (top.g_setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "breathing");
+                top.g_setting.setProperty("sita.bootup.led.standby", "breathing");
+            }
+            else
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "on");
+                top.g_setting.setProperty("sita.bootup.led.standby", "on");
+            }
+			break;
+	}
+}
+
+function init()
+{
+    top.g_setting.contextOf5in1 = top.CONTEXT_PANEL_OPERATION;
+    openNetflix();
+    setTimeout(function(){
+        top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_KEY_EVENT);},1000);   //停止netflix按键接收
+    setTimeout(function(){
+        top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_KEY_EVENT);},2000);   //停止netflix按键接收
+    setTimeout(function(){
+        top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_KEY_EVENT);},3000);   //停止netflix按键接收
+    setTimeout(function(){
+        top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_KEY_EVENT);},4000);   //停止netflix按键接收
+    if (top.g_setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+    {
+        top.g_setting.setProperty("sita.bootup.led.work", "breathing");
+        top.g_setting.setProperty("sita.bootup.led.standby", "breathing");
+    }
+    else
+    {
+        top.g_setting.setProperty("sita.bootup.led.work", "on");
+        top.g_setting.setProperty("sita.bootup.led.standby", "on");
+    }
+}
+
+function uninit()
+{
+
+}
+
+function openNetflix()
+{
+    if(top.recordStatusFlag == 1)
+    {
+        top.g_pvr.recordStop();
+        top.g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+        top.$("globleShow").contentWindow.hiddenRecord();
+        top.pvrCurrentTime=0;
+        top.recordStatusFlag =0;
+        top.pvrTotalTime=2*60*60;
+    }
+    else if(top.timeShiftStatusFlag == 1)
+    {
+        //现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+        top.g_pvr.timeshiftStop();
+        top.g_pvr.returnToLive();//返回实时播放页面
+        //现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+        top.$("globleShow").contentWindow.hiddenTimeShift();
+    }
+    if(top.appOpenFlag == 1)
+    {
+        top.g_ulits.closeOperaApplication();
+        top.scheduleNetflix = 1;
+    }
+    top.appOpenFlag = 1;
+    top.lastInputSource = top.g_channel.inputSource;
+    setTimeout(function(){
+            top.$("operatePage").style.display="none";
+            top.$("otherPage").style.display="none";
+            top.$("globleShow").style.display="none";
+            top.g_channel.inputSource=10;
+            top.g_ulits.sendMsgToApplication("vod.netflix", top.START_NETFLIX_BY_HOTKEY);},10);
+    return;
+}
+</script>
+</head>
+
+
+<!--******************************** net connect **************************************-->
+<body onLoad="init()" onunload="uninit()">
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#container
+{
+	top:250px;
+	left:100px;
+	width:600px;
+}
+.initSlectsFocus
+{
+	width:620px;
+}
+#showRemind
+{
+	position:absolute;
+	width:800px;
+	left:280px;
+	opacity:0.92;
+	border:4px solid #1b1b1b;
+	height:300px;
+	top:200px;
+	background:#000000;
+	display:none;
+	pointer-events:none;
+}
+#showRemind span
+{
+	position:absolute;
+	width:500px;
+	left:150px;
+	font-size:30px;
+	color:#FFFFFF;
+	top:100px;
+	height:100px;	
+}
+</style>
+</head>
+
+<body onload="init()">
+<span id="initTitle">initial setup</span>
+    
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepBigImg" src="../images/Step_big-02.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:200px;" /><img src="../images/Title_bloc-Bg.png" style="width:1000px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        <ul id="container" class="initSelects">
+          <div id="initListFormFocus">
+          	<img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+          	<img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png" />
+          </div>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span></span>
+          </li>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span ></span>
+          </li>
+          <li>
+          	<img src="../images/option/Radio_2.PNG"/>
+            <span></span>
+          </li>
+        </ul>
+        
+        
+        <img id="wireTypePic" src="../images/Pic-Network_Wired.png" />
+        	
+         <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+        <div id="showRemind">
+        	<span></span>
+        </div>
+    </div>
+<script type="text/javascript" src="initNetCondition.js"></script>
+</body>
+</html>

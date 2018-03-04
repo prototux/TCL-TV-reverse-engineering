@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<style type="text/css">
+#registContent
+{
+	position:absolute;
+	width:1000px; 
+	height:563px;
+	left:460px;
+}
+#registContent p
+{
+	position:absolute;
+	width:100%; 
+	font-size:50px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	word-break:normal;
+	margin:10px 0px 10px 0px;
+}
+</style>
+<script type="text/javascript">
+var factory = top.g_factory;
+var powerLogo = [top.initialTitle[0]];
+var powerLogoLine ;
+var firstLineString = "";
+var firstLineEdit = [];
+var firstLength = 0;
+
+var secondLineString = "";
+var secondLineEdit = [];
+var secondLength = 0;
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function init()
+{
+	if(top.timeoutFuc.timeoutEnable == 1)
+		top.stopTimeout();
+	powerLogoLine = $("registContent").getElementsByTagName("p");
+	powerLogoLine[0].innerHTML = powerLogo[0];
+	firstLineString = factory.displayMessage;
+	secondLineString = factory.displaySecondMessage;
+	firstLength = firstLineString.length;
+	secondLength = secondLineString.length;
+	for(var i = 0;i < firstLength;i++)
+	{
+		firstLineEdit[i] = firstLineString[i];
+		if(firstLineEdit[i] == ' ')
+		{
+			powerLogoLine[1].innerHTML += "&nbsp;";
+		}
+		else
+		{
+			powerLogoLine[1].innerHTML += firstLineEdit[i];
+		}
+	}
+	for(var i = 0; i< secondLength;i++)
+	{
+		secondLineEdit[i] = secondLineString[i];
+		if(secondLineEdit[i] == ' ')
+		{
+			powerLogoLine[2].innerHTML += "&nbsp;";
+		}
+		else
+		{
+			powerLogoLine[2].innerHTML += secondLineEdit[i];
+		}
+	}
+	
+	//powerLogoLine[1].innerHTML = factory.displayMessage;
+	//powerLogoLine[2].innerHTML = factory.displaySecondMessage;
+}
+function uninit()
+{
+	top.timeoutFuc.timeoutEnable=1;
+}
+</script>
+</head>
+<body onload="init()" onunload="uninit()">
+    <div id="registForm" class="dialogForm" style=" height: 1080px;width: 1920px;left:0px;display:block;border:0px;">
+        <div id="registContent"  style="top:212px;">
+            <p style="font-size:70px;"></p>
+            <p style="top:250px"></p> 
+            <p style="top:350px"></p>
+        </div>
+    </div>
+</body>
+</html>

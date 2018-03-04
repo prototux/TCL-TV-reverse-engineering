@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.scanResult/*dtv搜索结果显示*/
+{
+	position:absolute; 
+	left:150px;
+	font-size:30px; 
+	font-weight:bold; 
+	color:#fff;
+}
+</style>
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var initialTitleWords 		= top.initialTitle[1];
+var initStepWords			= top.initialOptions[3];
+var remindWords				= top.initChPrompt[3];
+var chGenreWords			= top.initChDvbts;
+var tips					= top.initialPrompt[20];
+var hotkeyWords				= top.initialHotkeys;
+
+var list_position_h 		= 0;
+var SELECT_STEP				= 50;			//单选列表框相邻两个选项之间的距离
+var channelType				= 0;			//0 digital + analogue,1 digital,2 analogue
+
+var setting = top.g_setting;
+document.onnotify = notifyProcess;
+document.onkeydown = keyproc;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_UP:		
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+function toLeft()
+{
+	document.location.href = "initChDvbtInstScanType.html";
+}
+
+function toUp()
+{
+}
+function toDown()
+{
+}
+
+function doEnter()
+{
+	//document.location.href = "initChDvbcInstScanType.html";
+	//根据配置文件中配置的搜台方式显示。显示顺序为DVB-T，DVB-C，DVB-S
+	if(setting.getProperty("ro.sita.model.LiveTV.DVB-C","TRUE") == "TRUE")
+	{
+		document.location.href = "initChDvbcInstScanType.html";
+	}
+	else if(setting.getProperty("ro.sita.model.LiveTV.DVB-S","TRUE") == "TRUE")
+	{
+		document.location.href = "initChDvbsOperatorList.html";
+	}
+	else
+	{
+		document.location.href = "initClockSet.html";
+	}
+}
+function init()
+{
+	$('initTitle').innerHTML = initialTitleWords;
+	$('subTitleTag').innerHTML = initStepWords;
+	
+	$('selectTitleTag').innerHTML = remindWords;
+	$("tips").innerHTML = tips;
+	
+	var str = window.location.search;
+	var data = str.substring(str.indexOf("?") + 1);
+	if(data == "")
+	{
+		top.$("main").src = "initSetup/initChDvbtInstScanType.html";
+	}
+	else
+	{
+		if(data == 0)//digital+analog
+		{
+			$("scanResult1").innerHTML = chGenreWords[0] + top.g_init_installations.TAtv;
+			$("scanResult2").innerHTML = chGenreWords[1] + top.g_init_installations.TDtv;
+		}
+		else if(data == 1)//digital
+		{
+			$("scanResult1").innerHTML = "";
+			$("scanResult2").innerHTML = chGenreWords[1] + top.g_init_installations.TDtv;
+		}
+		else if(data == 2)//analog
+		{
+			$("scanResult1").innerHTML = chGenreWords[0] + top.g_init_installations.TAtv;
+			$("scanResult2").innerHTML = "";
+		}
+	}
+	
+	
+	$('back').getElementsByTagName('span')[0].innerHTML = hotkeyWords[0];
+	$('select').style.display = "none";
+	$('next').getElementsByTagName('span')[0].innerHTML = hotkeyWords[2];
+	addMouseListener();
+	
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 0){//left key
+			doEnter();
+		}
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:400px;" /><img src="../images/Title_bloc-Bg.png" style="width:800px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        <span id="scanResult1" class="scanResult" style="top:280px;"></span>
+        <span id="scanResult2" class="scanResult" style="top:360px;"></span>
+        <span id="tips" class="leftRemind" style="top:440px; width:680px;"></span>        
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+    
+    <img style="position:absolute; left:1090px; top:380px;"  src="../images/Pic-Antenna_TV.png"/>
+</body>
+</html>

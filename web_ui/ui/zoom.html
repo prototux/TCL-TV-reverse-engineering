@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<script type="text/javascript">
+top.keySetForUI(1);
+var zoom_setting = top.picSize;
+var remind = "Not Available"
+var other_timer = 0;
+var setting = top.g_setting;
+var zoomTimer =0;
+var zoom =0;
+var presetFocusWidth=70;
+var positionH = 0;
+var zoomInit  = 0;
+var zoomPreviewImg = ["images/Screen_mode_169_format.png","images/Screen_mode_43_format.png","images/Screen_mode_149_Zoom.png","images/Screen_mode_Cinerama.png","images/Screen_mode_169_Zoom.png","images/Screen_mode_169_Zoomup.png","images/Screen_mode_149_Zoom.png","images/Screen_mode_Stretch_Zoom.png","images/Screen_mode_Wide_Zoom2.png","images/Screen_mode_Zoom2.png","images/Screen_mode_Wide_Zoom2.png","images/Screen_mode_169_format.png","images/Screen_mode_169_format.png","images/Screen_mode_169_format.png","images/Screen_mode_169_format.png"];
+function hiddenOther()
+{
+	
+	//add chenhua 2014.5.14
+	clearTimeout(other_timer);
+	top.jumpPage();
+	if(picShowSize[positionH] !=zoomInit)
+	setting.previewScreenMode(zoomInit);
+}
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+document.onkeydown = keyproc;
+
+function keyproc(evt)
+{
+	top.g_previousHtmlPage = "channelPlay.html";
+    var keycode = evt.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+		case top.VK_3D://3d
+		case top.VK_TV://tv
+		case top.VK_SOURCE://source
+		case top.VK_ECO://eco
+        case top.VK_SOURCE_CMP1:
+        case top.VK_SOURCE_VGA:
+        case top.VK_SOURCE_AV1:
+        case top.VK_SOURCE_HDMI1:
+        case top.VK_SOURCE_HDMI2:
+        case top.VK_SOURCE_HDMI3:
+        case top.VK_SOURCE_HDMI4:
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_VOLUME_UP://volume up
+		case top.VK_VOLUME_DOWN://volume down
+			top.jumpPage();
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_MUTE://mute
+		case top.VK_INFO://info
+		case top.VK_CHANNEL_UP://channel up
+		case top.VK_CHANNEL_DOWN://channel down
+		case top.VK_OPTION://option
+		case top.VK_SMARTTV://smart tv
+		case top.VK_YOUTUBE://youtube
+		case top.VK_GUIDE://guide
+		case 36://home
+		case top.VK_SLEEP://sleep
+		case top.VK_PRE_CH://pre-ch
+		case top.VK_FAV://fav
+		case top.VK_LIST://list
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_LANG://language
+		case top.VK_SUBTITLE://subtitle
+		case top.VK_TELETEXT://text
+		case top.VK_RECORD://record
+		case top.VK_PLAY_PAUSE://pause/play timeshift
+		case top.VK_PAUSE:
+		case top.VK_PLAY:
+			top.specialKeyDownProcess(evt);
+			return;
+	    case top.VK_ENTER:
+		{
+			//OK 键
+			toOK();
+			ret = false;
+			break;
+		}
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;  
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ZOOM_DOWN://zoom-
+		zoomUP();
+		break;
+		case top.VK_ZOOM_UP://zoom+
+		zoomDown();
+		break;
+		case top.VK_BACK: //back
+		case top.VK_MENU://menu
+		case top.VK_EXIT://exit
+			top.jumpPage();
+			break;
+		default:
+			break;
+	}
+}
+var picShowSize =new Array(15);
+var sizeCount = 0;
+function init()
+{
+	try
+	{
+		top.stopTimeout();
+		setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+		if(top.timeShiftStatusFlag == 1)
+		{
+		}
+		else
+		{
+			setting.freeze = 0;
+		}
+		$("preSetOptionZoom").innerHTML=top.picOptions[8];
+		zoom = setting.pictureSize;
+		zoomInit = zoom;
+		var spans=$("preSetBarZoom").getElementsByTagName("span");
+		var previewImg  = $("preSetBarZoom").getElementsByTagName("img");
+		for(var i = 0; i<15;i++)
+		{
+			if(setting.checkPictureSizeEnable(i))
+			{
+				
+				picShowSize[sizeCount]=i;
+				spans[sizeCount+1].innerHTML=zoom_setting[i];
+				previewImg[sizeCount].src = zoomPreviewImg[i];
+				previewImg[sizeCount].style.display = "block";
+				if(i==zoom)
+				{
+					positionH=sizeCount;
+				}
+				sizeCount++;
+			}
+		}
+		$("preSetSelectFocusZoom").style.top = 105+positionH*presetFocusWidth+"px";
+		$("currentOption").style.top = 115+positionH*presetFocusWidth+"px";
+		other_timer = setTimeout("hiddenOther()",5000);
+		addMouseListener();
+	}
+	catch(er)
+	{
+		top.g_channel.testLog(er)
+	}
+}
+function uninit()
+{
+	if(picShowSize[positionH] !=zoomInit)
+	setting.previewScreenMode(zoomInit);
+	
+	top.timeoutFuc.timeoutEnable=1;
+}
+function toUp()
+{
+	try
+	{
+		positionH--;
+		if(positionH<0)
+		{
+			positionH=sizeCount-1;
+		}
+		$("preSetSelectFocusZoom").style.top = 105+positionH*presetFocusWidth+"px";
+		clearTimeout(other_timer);
+		toChangeZoom();
+		other_timer = setTimeout("hiddenOther()",5000);
+	}
+	catch(er)
+	{
+		top.g_channel.testLog(er)
+	}
+}
+function zoomUP()
+{
+		positionH--;
+		if(positionH<0)
+		{
+			positionH=sizeCount-1;
+		}
+		$("preSetSelectFocusZoom").style.top = 105+positionH*presetFocusWidth+"px";
+		clearTimeout(other_timer);
+		setting.pictureSize = picShowSize[positionH];
+		zoomInit = picShowSize[positionH];
+		other_timer = setTimeout("hiddenOther()",5000);
+		$("currentOption").style.top = 115+positionH*presetFocusWidth+"px";
+}
+function toDown()
+{
+	try
+	{
+		positionH++;
+		if(positionH>=sizeCount)
+		{
+			positionH=0;
+		}
+		$("preSetSelectFocusZoom").style.top = 105+positionH*presetFocusWidth+"px";
+		clearTimeout(other_timer);
+		toChangeZoom();
+	    other_timer = setTimeout("hiddenOther()",5000);
+	}
+	catch(er)
+	{
+		top.g_channel.testLog(er)
+	}
+}
+function zoomDown()
+{
+	try
+	{
+		positionH++;
+		if(positionH>=sizeCount)
+		{
+			positionH=0;
+		}
+		$("preSetSelectFocusZoom").style.top = 105+positionH*presetFocusWidth+"px";
+		clearTimeout(other_timer);
+		setting.pictureSize = picShowSize[positionH];
+		zoomInit = picShowSize[positionH];
+	    other_timer = setTimeout("hiddenOther()",5000);
+		$("currentOption").style.top = 115+positionH*presetFocusWidth+"px";
+	}
+	catch(er)
+	{
+		top.g_channel.testLog(er)
+	}
+}
+function toChangeZoom()
+{
+	setting.previewScreenMode(picShowSize[positionH]);
+}
+function toOK()
+{
+	clearTimeout(other_timer);
+	if(picShowSize[positionH] !=zoomInit)
+	{
+    	setting.pictureSize = picShowSize[positionH];
+		zoomInit = picShowSize[positionH];
+	}
+	top.jumpPage();
+}
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	//全局消息
+	switch(msg)
+	{
+		case top.E_DTV_SERVICE_PLAY://播放流数据更新,只在
+			top.g_isShowInfoBar = 1;
+			window.location.href = "channelPlay.html";
+			break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2)
+		{
+			setting.pictureSize = zoomInit;
+			top.jumpPage();
+		};//right key
+	}
+	var spans=$("preSetBarZoom").getElementsByTagName("span");
+	for(var i = 0; i < 14; i++)
+	{
+		spans[i+1].setAttribute("newAttr",i);
+		spans[i+1].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+					positionH = parseInt(this.getAttribute("newAttr"));
+					setting.pictureSize = picShowSize[positionH];
+					$("preSetSelectFocusZoom").style.top = 105+positionH*presetFocusWidth+"px";
+					toOK();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#preSetBarZoom
+{
+	position:absolute;
+	background:#000;
+	/*bottom:100px;*/
+	overflow:hidden;
+	opacity:0.92;
+	background:url(images/History_bg.png);
+	width:360px;
+	height:1080px;
+	left:0px;
+	display:block;
+}
+#preSetOptionZoom
+{
+	position:absolute;
+	top:55px;
+	left:20px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+</style>
+
+</head>
+
+<body onload="init()" onunload="uninit()">
+      <div id="preSetBarZoom">
+            <span id="preSetOptionZoom" >Zoom</span>
+
+            <span class="preSetValue" style="width:180px;left:75px; top:100px; height:70px; line-height:70px;"></span>
+           				 <img src="" style="position:absolute; top:106px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:170px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:176px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:240px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:246px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:310px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:316px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:380px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:386px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:450px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:456px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:520px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:526px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:590px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:596px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:660px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:666px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:730px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:736px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:800px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:806px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:870px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:876px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:940px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:946px; left:260px; display:none;"/>
+            <span class="preSetValue" style="width:180px;left:75px;top:1010px; height:70px; line-height:70px;"></span>
+                        <img src="" style="position:absolute; top:1016px; left:260px; display:none;"/>
+            <img id="currentOption" src="images/Check-36.png" style="position:absolute; top:115px; left:20px; display:block;" />
+            <img id="preSetSelectFocusZoom" src="images/focus-Tuner_mode.png" style=" position:absolute;display:block; top:105px; left:5px; pointer-events:none; width:350px; height:64px;"/>
+            
+       </div>
+</body>
+</html>

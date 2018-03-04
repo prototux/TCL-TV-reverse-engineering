@@ -1,0 +1,997 @@
+/*
+*writer:chenhua
+*/
+/***************一级菜单样式************************/
+body
+{
+	width:1920px;
+	height:1080px;
+}
+#menu /* 设置一级菜单主体*/
+{
+	position:absolute;
+	width:302px;
+	height:1072px;
+	list-style-type:none;
+	padding:0px;
+	opacity:0.92;
+	background:#000;
+	border:4px solid #1b1b1b;
+}
+#menu ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;	
+	z-index:100;
+}
+.menulist/* 设置一级菜单每一个子选项属性*/
+{
+	position: relative;
+	width: 302px;
+	height: 120px;
+	float: left;
+	z-index: 100;
+	color: #D6D6D6;
+}
+.menupicture/* 设置一级菜单每一个子选项中图片的属性*/
+{
+	position: absolute;
+	width: 128px;
+	height: 120px;
+	text-align: center;
+	left: 2px;
+}
+.menuname/* 设置一级菜单每一个子选项中名称的属性*/
+{
+	position: absolute;
+	width: 150px;
+	height: 80px;
+	text-align: left;
+	font-size: 32px;
+	color: white;
+	left: 132px;
+	top:50px;
+}
+/***************一级菜单样式************************/
+
+/***************二级菜单样式************************/
+#sndMenuLeft/* set snd menu left property*/
+{
+	position:absolute;
+	left:-770px;
+	width:40px;
+	height:1072px;
+	opacity:0.92;
+	background:#000;
+	border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+}
+#sndMenuRight/* set snd menu right property*/
+{
+	position:absolute;
+	left:-730px;
+	width:730px;
+	height:1072px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:#000;
+	border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+}
+#sndMenuRight ul/* 设置二级菜单右半部分 的UL属性*/
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+/***************二级菜单样式************************/
+
+/***************三级菜单样式************************/
+#thdMenuLeft/* set thd menu left property*/
+{
+	position:absolute;
+	left:-774px;
+	width:40px;
+	height:1072px;
+	opacity:0.92;
+	background:#000;
+    border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-left:4px solid #1b1b1b;
+}
+#thdMenuRight/* set thd menu right property*/
+{
+	position:absolute;
+	left:-730px;
+	width:730px;
+	height:1072px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:#000;
+	border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+}
+#thdMenuRight ul/* 设置三级菜单右半部分 的UL属性*/
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.titleName/* 设置 关于列表标题的属性*/
+{
+	position:relative;
+	top:10px;
+	height:100px;
+	width:670px;
+	font-size:30px;
+	text-align:left;
+	color:#FFF;
+	font-weight:bold;
+	left:30px;
+	margin-bottom:20px;
+	border-bottom:thin solid #FFF;
+}
+.titleName span/* 设置 关于列表标题的属性*/
+{
+	position:absolute;
+	top:60px; 
+}
+/***************三级菜单样式************************/
+
+/***************四级菜单样式************************/
+#fourthMenuLeft/* set thd menu left property*/
+{
+	position:absolute;
+	left:-774px;
+	width:40px;
+	height:1072px;
+	opacity:0.92;
+	background:#000;
+    border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-left:4px solid #1b1b1b;
+}
+#fourthMenuRight/* set thd menu right property*/
+{
+	position:absolute;
+	left:-730px;
+	width:730px;
+	height:1072px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:#000;
+	border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+}
+#fourthMenuRight ul/* 设置三级菜单右半部分 的UL属性*/
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+/***************四级菜单样式************************/
+
+/***************五级级菜单样式************************/
+#fifthMenuLeft/* set thd menu left property*/
+{
+	position:absolute;
+	left:-774px;
+	width:40px;
+	height:1072px;
+	opacity:0.92;
+	background:#000;
+    border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-left:4px solid #1b1b1b;
+}
+#fifthMenuRight/* set thd menu right property*/
+{
+	position:absolute;
+	left:-730px;
+	width:730px;
+	height:1072px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:#000;
+	border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+}
+#fifthMenuRight ul/* 设置三级菜单右半部分 的UL属性*/
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+/***************四级菜单样式************************/
+
+/***************多级菜单通用样式************************/
+.list/* 设置 关于列表每项的属性*/
+{
+	position:relative;
+	width:730px;
+	height:70px;
+	color:#FFFFFF;
+	top:10px;
+}
+.listFirstProperty/* 设置 关于列表每行第一项属性*/
+{
+	position:absolute;
+	/*top:10px;*/
+	left:20px;
+	width:280px;
+	height:70px;/*40px;*/
+	line-height:70px;/*40px;*/
+	font-size:28px;
+	white-space:nowrap;
+}
+.listSecondProperty/* 设置 关于列表每行第二项属性*/
+{
+	position:absolute;
+	left:305px;
+	width:320px;
+	height:70px;/*40px;*/
+	line-height:70px;/*40px;*/
+	font-size:28px;
+	text-align:center;
+	/*top:10px;*/
+	text-align:right;
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.listSecondProgress/* 设置 关于列表每行第二项进度条属性*/
+{
+	position:absolute;
+	top:16px;
+	left:325px;
+	width:320px;
+	height:40px;
+}
+.listSecondInput/* 设置 关于列表每行第二项属性是一个输入框，而且有边框或背景*/
+{
+	position:absolute;
+	left:305px;
+	width:320px;
+	height:40px;
+	line-height:40px;
+	font-size:28px;
+	text-align:center;
+	top:14px;
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.listThirdProperty/* 设置 关于列表每行第三项属性*/
+{
+	position: absolute;
+	left: 640px;
+	width: 70px;
+	/*top: 20px;*/
+	height:70px;
+	line-height:70px;
+	font-size:28px;
+	/*padding-top:3px;*/
+	text-align:center;
+}
+.listThirdPropertyImg/* 设置 关于列表每行第三项属性*/
+{
+	position: absolute;
+	left: 640px;
+	width: 34px;
+	height:34px;
+	margin:18px 0px 18px 0px;
+}
+
+/*///////////多级菜单中进度条通用样式//////////*/
+.progressBarLeft/*设置进度条左边的进度*/
+{
+	position:relative;
+	height:6px;
+	margin:18px 0px 16px 0px;
+	background:#FFF;
+	float:left;
+}
+.progressBarCenter/*设置进度条当前进度位置的原点*/
+{
+	position:relative;
+	height:16px;
+	margin:12px 0px 12px 0px;
+	width:6px;
+	float:left;
+	background:#FFFFFF;
+}
+.progressBarRight/*设置进度条右边的空白*/
+{
+	position:relative;
+	height:6px;
+	margin:18px 0px 16px 0px;
+	background:#383838;
+	float:left;
+}
+
+.volumeArrow
+{
+	position:absolute;
+	left:125px;
+	width:30px;
+	height:25px;
+}
+
+#volumeTypeIcon
+{
+	position:absolute;
+	left:15px;
+	top:10px;
+	width:52px;
+	height:80px;
+}
+/*///////////多级菜单中进度条通用样式//////////*/
+
+
+/*///////////多级菜单中级菜单弹出框通用样式//////////*/
+.fourthPopUpBox/*设置菜单弹出框边框样式*/
+{
+	position: absolute;
+	background: #000;
+	width: 250px;
+	/*height: 1072px;*/
+	border-bottom:4px solid #1b1b1b;
+	border-top:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	color: white;
+	font-size: 24px;
+	text-align: center;
+	padding: 0px;
+	list-style-type: none;
+	opacity: 0.92;
+	overflow: hidden;
+	display:none;
+}
+#listUpImg/*设置菜单弹出框边框上箭头样式*/
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	margin:0px 104px 0px 104px; 
+}
+#listDownImg/*设置菜单弹出框边框下箭头样式*/
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	margin:0px 104px 0px 104px; 
+}
+#listBox/*设置菜单弹出框内容列表容器样式*/
+{
+	position:relative;
+	width:250px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#listBox li/*设置菜单弹出框内容列表每一个元素样式*/
+{
+	position:relative;
+	height:70px;
+	width:200px;
+	left:25px;
+	line-height:70px;
+	margin:10px 0px 10px 0px;
+	color:white;
+	font-size:24px;
+	text-align:center;
+	/*overflow:hidden;*/
+	white-space:nowrap;
+}
+/*///////////多级菜单中级菜单弹出框通用样式//////////*/
+/*
+#popUpBoxSel
+{
+	position:absolute;
+	list-style-type: none;
+	padding: 0px;
+	top:80px;
+}
+.popBoxList
+{
+	position:relative;
+	width:240px;
+	height:70px;
+	left:0px;
+	color:white;
+	font-size:24px;
+	text-align:center;
+}
+.popBoxList span
+{
+	position: absolute;
+	top: 17px;
+	left: 93px;
+}*/
+#listFocus/*设置二级菜单中焦点属性*/
+{
+	position:absolute;
+	width:725px;
+	height:70px;
+	top:90px;
+	display:none;
+	z-index:100;
+	pointer-events:none;
+}
+#thdListFocus/*设三级菜单中焦点属性*/
+{
+	position:absolute;
+	width:725px;
+	height:70px;
+	top:130px;
+	z-index:100;
+	pointer-events:none;
+}
+#fourthListFocus/*设四级菜单中焦点属性*/
+{
+	position:absolute;
+	width:725px;
+	height:70px;
+	top:130px;
+	z-index:100;
+	pointer-events:none;
+}
+#fifthListFocus
+{
+	position:absolute;
+	width:725px;
+	height:70px;
+	top:120px;
+	z-index:100;
+	pointer-events:none;
+}
+.formFocus/*下拉选项弹出框的焦点样式*/
+{
+	position: absolute;
+	/*top:80px;*/
+	height: 70px;
+	left: 5px;
+	width: 240px;
+	pointer-events:none;
+}
+#listUpRemind
+{
+	position:absolute;
+	width:730px;
+	height:60px;
+	top:10px;
+	text-align:center;
+}
+#listDownRemind
+{
+	position:absolute;
+	width:730px;
+	height:60px;
+	top:1000px;
+	text-align:center;
+}
+
+/***************多级菜单通用样式************************/
+
+/***************弹出对话框通用样式************************/
+.dialogForm/*设置对话框主体框架，新的对话框只需要调整高度和top值*/
+{
+	position:absolute;
+	left:560px;/*650px;*/ 
+	width:800px;/*600px;*/
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.92;
+	background:#000;
+	overflow:hidden;
+}
+.dialogTitle/*设置对话框的title*/
+{
+	position: absolute;
+	width: 750px;/*550px;*/
+	height: 50px;
+	line-height: 50px;
+	left:25px;
+	font-size: 30px;
+	color: #FFF;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+	white-space:nowrap;
+	overflow:hidden;
+}
+.dialogLine/*设置对话框的分割线*/
+{
+	position:absolute;
+	width:750px;/*550px;*/
+	left:20px;
+	margin-top:20px;
+}
+.dialogScanProgressContainer/*搜台对话框中搜索进度条的容器*/
+{
+	position:absolute;
+	width:670px;/*470px;*/
+	top:20px;
+	left:90px;
+}
+.dialogScanProgressValue/*搜台对话框中搜索进度条的值显示“x%”*/
+{
+	position:absolute;
+	top:30px;
+	left:700px;/*500px;*/
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+	margin-top:-5px;
+}
+.dialogScanPrompt/*搜台对话框中搜台过程中数据变化的的显示框*/
+{
+	position:absolute;
+	font-size:24px;
+	font-weight:bold;
+	color:#fff;
+	left:300px;/*200px;*/
+}
+.dialogInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:700px;/*500px;*/ 
+	height:40px;
+	line-height:40px;
+	left:50px;
+}
+.dialogInputFocus/*对话框中输入框焦点样式*/
+{
+	position:absolute;
+	width:700px;/*500px;*/ 
+	height:40px;
+	left:50px;
+	border:solid #00aadd;
+	border-width:4px;
+	margin-top:-4px;
+	border-radius:10px;
+	pointer-events:none;
+}
+.dialogInputName/*对话框中输入框输入选项名称提示*/
+{
+	position:absolute;
+	left:5px;
+	font-size:26px;
+	font-weight:bold;
+	color:#fff;
+}
+.dialogInputContent/*对话框中输入框输入部分样式*/
+{
+	position:absolute;
+	right:50px;
+	width:350px;/*250px;*/
+	top:5px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#FFF;
+	font-size:26px;
+	font-weight:bold;
+	overflow:hidden;
+}
+.dialogInputTag/*对话框中特殊输入框最右边的小图标提示*/
+{
+	position: absolute;
+	right:10px;
+	height:30px;
+	line-height:30px;
+	margin:5px 0px 5px 0px;
+	color:#FFF;
+	font-size:24px;
+}
+.dialogInputProgressContainer/*对话框中输入框中使用的进度条容器*/
+{
+	position:absolute;
+	right:100px;
+	width:464px;/*264px;*/ 
+	height:40px;
+}
+.dialogInputProgressValue/*对话框中输入框中使用的进度条对应的值显示*/
+{
+	position: absolute;
+	right:10px;
+	height:40px;
+	line-height:40px;
+	color:#FFF;
+	font-size:20px;
+	font-weight:bold;
+}
+.dialogRemind/*密码对话框中输入框输入出错提示*/
+{
+	position:absolute;
+	width:700px;/*500px;*/ 
+	left:50px;
+	font-size:20px;
+	font-weight:bold;
+	color:#f00;
+	text-align:center;
+	word-break:break-all;
+}
+.dialogContent/*普通对话框中提示*/
+{
+	position:absolute;
+	width:700px;/*500px;*/ 
+	left:50px;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFFFFF;
+	text-align:center;
+}
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	bottom:30px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+	overflow:hidden;
+}
+.dialogButtonFocus/*对话框中按钮样式的焦点*/
+{
+	position:absolute;
+	width:148px;
+	height:38px;
+	bottom:30px;
+	border-radius:14px;
+	border:solid medium #00aadd;
+	pointer-events:none;
+}
+
+.dialogButtonImgFocus
+{
+	position:absolute;
+	bottom:20px; 
+	height:60px; 
+	width:170px;
+	pointer-events:none;
+}
+.dialogEnum/*对话框内容只是一列选项的时候选项列表内容框ul*/
+{
+	position:absolute;
+	top:100px;
+	width:700px;/*500px;*/ 
+	left:50px;
+	margin: 0;
+	padding: 0;
+}
+.dialogEnum li/*对话框内容只是一列选项的时候选项列表内容框中的元素li*/
+{
+	list-style-type:none;
+	color:#fff;
+	height:40px;
+	line-height:40px;
+	padding:10px 0px 10px 0px;
+	font-size:30px;
+	font-weight:bold;
+	text-align:center;
+}
+/***************弹出对话框通用样式************************/
+
+/************搜台进度框样式******************************************************************/
+#scanFrom
+{
+	position:absolute;
+	width:750px; 
+	height:260px; 
+	top:390px;
+	left:300px;
+	opacity:0.92;
+	border-radius: 10px;
+	background-color:#000;
+	border:thin  solid #FFF;
+}
+#scanFirstChannelInfoText
+{
+	position:absolute;
+	top:10px;
+	right:350px;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+}
+#scanSecondChannelInfoText
+{
+	position:absolute;
+	top:50px;
+	right:350px;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+}
+#scanFirstChannelInfoValue
+{
+	position:absolute;
+	top:10px;
+	left:450px;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+}
+#scanSecondChannelInfoValue
+{
+	position:absolute;
+	top:50px;
+	left:450px;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+}
+#scanProgressBackground
+{
+	position:absolute;
+	left:50px;
+	top:120px;
+	width:600px;
+	height:10px;
+	border:thin solid #FFF;
+	border-radius: 5px;
+}
+#scanProgressContainer
+{
+	position:absolute;
+	left:50px;
+	top:121px;
+	width:600px;
+	height:10px;
+	border:thin solid #FFF;
+	border-radius: 5px;
+	overflow:hidden;
+}
+#scanProgressValue
+{
+	position:absolute;
+	top:115px;
+	left:660px; 
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+.scanBottomRemindImg
+{
+	position:absolute;
+	top:200px;
+	height:50px;
+	width:50px;
+}
+.scanBottomRemindText
+{
+	position:absolute;
+	top:200px;
+	width:50px;
+	height:37px;
+	padding-top:13px;
+	color:#FFF;
+	font-size:20px;
+	font-weight:bold;
+}
+/************搜台进度框样式******************************************************************/
+
+/************设置选择多选项样式*************************************************************************/
+#preSetBar
+{
+	position:absolute;
+	height:100px;
+	background:#000;
+	opacity:0.92;
+	border:4px solid #1b1b1b;
+	display:none;
+}
+#preSetOption
+{
+	position:absolute;
+	width:300px;
+	color:white;
+	font-size:26px;
+	height:100px;
+	line-height:100px;
+	border-right:4px solid #1b1b1b;
+	text-align:center;	
+	white-space:nowrap;
+}
+.preSetValue
+{
+	position:absolute;
+	left:300px;
+	color:white;
+	font-size:22px;
+	height:100px;
+	line-height:100px;
+	text-align:center;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.preSetValueMarquee 
+{
+    position:absolute;
+	left:300px;
+	color:white;
+	font-size:22px;
+	height:100px;
+	line-height:100px;
+	text-align:center;
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+#preSetBox
+{
+	position: absolute;
+	width: 280px;
+	left: 350px;
+	color: white;
+	font-size: 28px;
+	text-align: left;
+	bottom:100px;
+	/*top:400px;*/
+	background: #999;
+	display: none;
+}
+#preSetBox ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#preSetBox li
+{
+	height:50px;
+	text-align:center;
+	margin:10px 0px 10px 0px;
+}
+#preSetSelectFocus
+{
+	position: absolute;
+	width: 200px;
+	left:300px;
+	height: 48px;
+	top:26px;
+	pointer-events:none;
+}
+/************设置选项样式*************************************************************************/
+/*************调整进度条样式****************************************************************************/
+#adjustProgressBox
+{
+	position:absolute;
+	top:770px;
+	height:194px;
+	width:1380px;
+	/*left:400px;*/
+	left:270px;
+	display:none;
+}
+#adjustProgMain
+{
+	position:absolute;
+	height:94px;
+	top:54px;
+	left:0px;
+	width:1380px;
+	opacity:0.92;
+	color:#FFFFFF;
+	line-height:94px;
+	border-left:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	background:#000;
+}
+#adjustProgMinorUp
+{
+	position:absolute;
+	height:50px;
+	left:0px;
+	width:1380px;
+	opacity:0.92;
+	color:#888888;
+	line-height:50px;
+	border-top:4px solid #1b1b1b;
+	border-left:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	background:#000;
+}
+#adjustProgMinorDown
+{
+	position:absolute;
+	height:50px;
+	left:0px;
+	width:1380px;
+	opacity:0.92;
+	top:148px;
+	color:#888888;
+	line-height:50px;
+	border-bottom:4px solid #1b1b1b;
+	border-left:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	background:#000;
+}
+#adjustProgBar
+{
+	position:absolute;
+	left:310px;
+	top:24px;
+	height:94px;
+	width:1100px;
+}
+#adjustProgValue
+{
+	position:absolute;
+	left:1250px;
+	height:94px;
+	width:100px;
+	font-size:24px;
+}
+.adjustProgSpan
+{
+	position:absolute;
+	left:40px;
+	font-size:24px;
+}
+.adjustName
+{
+	position:absolute;
+	height:94px; 
+	width:240px
+}
+/*************调整进度条样式****************************************************************************/
+/*************主页面提示语样式*************************************************************************/
+#promptWin
+{
+	position:absolute;
+	left:778px;
+	top:80px;
+	height:110px;
+	width:420px;
+	display:none;
+}
+.promptWinRight
+{
+	position:absolute;
+	width:420px;
+	left:22px;
+	background:#000;
+	border-top:4px solid #1b1b1b;
+	border-bottom:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	opacity:0.92;
+}
+#promptContent
+{
+	position:absolute;
+	font-size:24px;
+	color:#FFFFFF;
+	text-align:left;
+	left:30px;
+	width:360px;
+	line-height:40px;
+	word-wrap:break-word;
+}
+.promptWinLeft
+{
+	position:absolute;
+	width:22px;
+}

@@ -1,0 +1,256 @@
+/*--------------------------add by chenhua -----------------------------------*/
+body
+{
+	background:url(../images/BG_60.jpg);
+	width:1920px;
+	height:1080px;
+}
+#initTitle/*初始化对话框上面的标题样式*/
+{
+	position:absolute;
+	top:56px;
+	width:1920px;
+	font-size:48px;
+	color:#CCC;
+	font-weight:bold;
+	text-align:center;
+}
+
+/*****生命线容器和相关标签样式start******/
+#initStep
+{
+	position:absolute;
+	width:1920px;
+	height:82px;
+	top:120px;
+}
+.initStepBigImg
+{
+	position:relative;
+	width:82px;
+	height:82px;
+}
+.initStepSmallImg
+{
+	position:relative;
+	width:48px;
+	height:82px;
+}
+.initStepLine
+{
+	position:relative;
+	height:82px;
+}
+/*****生命线容器和相关标签样式 end******/
+
+
+#initDialog/*初始化对话框样式*/
+{
+	position:absolute;
+	width:1360px;
+	height:816px;
+	background:url(../images/Bg-Card-1.png);
+	top:200px;
+	left:280px;
+	/*margin:0px 280px 0px 280px;*/
+}
+
+/*************初始化对话框中表示当前步骤的标题框样式 start*****/
+#subTitleForm
+{
+	position:absolute;
+	left:80px;
+	width:1200px;
+	height:60px;
+	top:60px;
+}
+#subTitleForm img/*当前步骤标题框背景切图*/
+{
+	position:relative;
+	height:60px;
+}
+#subTitleForm span/*当前步骤标题框里边文字样式*/
+{
+	position:absolute;
+	top:0px;
+	height:60px;
+	line-height:60px;
+	font-size:30px;
+	font-weight:bold;
+	color:#fff;
+}
+/*************初始化对话框中表示当前步骤的标题框样式 end*****/
+
+
+.leftRemind/*initReminds 一般文字提示样式*/
+{
+	position:absolute;
+	left:80px;
+	width:1060px;
+	color:#bbb;
+	font-size:32px;
+}
+.midRemind/*init remind文字居中显示的提示*/
+{
+	position:absolute;
+	left:150px;
+	width:1060px;
+	text-align:center;
+	color:#FFF;
+	font-size:32px;
+}
+
+/*************单选列表样式*****************/
+#initBigSelectForm/*单选列表框中选项多于5个元素的容器框样式*/
+{
+	position:absolute;
+	top:250px;
+	left:150px;
+}
+#initListUpImg
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	margin:10px 180px 10px 180px;
+	opacity:0;
+}
+#initListDownImg
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	margin:10px 180px 10px 180px;
+	opacity:0;
+}
+.initSelects/*单选列表框列表容器样式*/
+{
+	position:relative;
+	width:400px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	/*overflow:hidden;*/
+}
+.initSelects li/*单选列表框的每一行样式*/
+{
+	position:relative;
+	height:70px;
+}
+.initSelects li > img/*单选列表框的每一行中标记图片样式*/
+{
+	position:absolute;
+	margin:20px 0px 20px 0px;
+	left:20px;
+	width:30px;
+	height:30px;
+}
+.initSelects li > span/*单选列表框的每一行中提示文字样式*/
+{
+	position:absolute;
+	left:70px;
+	height:70px;
+	line-height:70px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+#initListFormFocus/*单选列表框的焦点容器*/
+{
+	 position:absolute; 
+	 height:70px; 
+	 top:0px;
+	 pointer-events:none;
+}
+.initSlectsFocus/*单选列表框的焦点样式*/
+{
+	position: absolute;
+	top:0px;
+	height: 70px;
+	left: 5px;
+	width: 400px;
+}
+.initSlectsFocus2/*单选列表框的焦点样式中原点样式*/
+{
+	position:absolute;
+	margin:20px 0px 20px 0px;
+	left:20px;
+	width:30px;
+	height:30px;
+}
+
+/*页面左下角显示的热键样式*/
+.hotkey
+{
+	position:absolute;
+	height:50px;
+	bottom:10px;
+}
+.hotkey img/*热键图片样式*/
+{
+	position:absolute;
+	width:76px;
+	height:30px;
+	margin:10px 0px 10px 0px;
+}
+.hotkey span/*热键文字样式*/
+{
+	position:absolute;
+	left:80px;
+	height:50px;
+	line-height:50px;
+	font-size:28px;
+	color:#b0b0b0;
+	width:300px;
+}
+
+
+/*进度条整体样式，包括进度条和进度值*/
+#progressForm
+{
+	position:absolute; 
+	height:100px; 
+	overflow:hidden; 
+	left:150px; 
+}
+#progressValue
+{
+	position:absolute;
+	width:100%;
+	left:0px;
+	top:0px;
+	font-size:30px;
+	font-weight:bold;
+	text-align:center;
+	color:#fff;
+}
+#progressBar/*进度条样式*/
+{
+	position:absolute;
+	width:100%;
+	left:0px;
+	top:50px; 
+	height:30px;
+	overflow:hidden;
+}
+.progressBarLeft/*设置进度条左边的进度*/
+{
+	position:relative;
+	top:15px;
+	height:10px;
+	background:#FFFFFF;
+	float:left;
+}
+.progressBarRight/*设置进度条右边的空白*/
+{
+	position:relative;
+	top:15px;
+	height:10px;
+	background:#383838;
+	float:left;
+}
+#wireTypePic
+{
+	position:absolute;
+	top:200px;
+	left:800px;
+}

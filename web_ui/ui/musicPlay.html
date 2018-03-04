@@ -1,0 +1,1043 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="musicPlay.js"></script>
+<style type="text/css">
+body
+{
+	width:1920px;
+	height:1080px;
+	overflow:hidden;
+	background-image:url(images/USB-Music-Bg-Default.png);
+	background-repeat:no-repeat;
+	background-position:top:0px left:0px;
+	background-origin:padding-box;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#focus
+{
+	position:absolute;
+	left:0px;
+	width:298px;
+	height:120px;
+	display:none;
+	pointer-events:none;
+	z-index:40;
+	background-image:url(images/Focus2.png);
+	-webkit-transition-duration:200ms;
+}
+#musicCover
+{
+	position:absolute;
+	top:200px;
+	left:160px;
+	width:480px;
+	height:480px;
+	z-index:20;
+	display:block;
+}
+#musicInfo
+{
+	position:absolute;
+	top:220px;
+	left:660px;
+	width:500px;
+	height:480px;
+	z-index:20;
+	display:block;
+	overflow:hidden;
+}
+#musicInfo span
+{
+	position:absolute;
+	top:0px;
+	left:00px;
+	width:500px;
+	height:60px;
+	float:left;
+	line-height:60px;
+	font-size:32px;
+	color:#aaaaaa;
+	z-index:20;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	display:block;
+}
+#lyricList
+{
+	position:absolute;
+	top:200px;
+	left:1200px;
+	width:600px;
+	height:490px;
+	z-index:10;
+	display:block;
+	overflow:hidden;
+}
+.lyricStyle
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:600px;
+	height:490px;
+	line-height:70px;
+	font-size:32px;
+	color:#aaaaaa;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	z-index:11;
+	white-space:nowrap;
+	
+	-webkit-mask: -webkit-gradient(linear,0% 0%,0% 100%, 
+        from(rgba(255,255,255,0.2)),
+        color-stop(0.45, rgba(255,255,255,0.8)),
+        color-stop(0.5, rgba(255,255,255,1)),
+        color-stop(0.55, rgba(255,255,255,0.8)),
+        to(rgba(255,255,255,0.2)));
+	/*
+	background: -webkit-gradient(linear, 0% 45%, 0% 55%, 
+        from(#b0b0b0),  
+        color-stop(0.1, #f13434),
+        color-stop(0.9, #f13434), 
+        to(#b0b0b0));
+    color: transparent;
+    -webkit-background-clip: text;
+	*/
+}
+#fileInfoBox
+{
+	/*position: absolute;
+	bottom:50px;
+	right:45px;
+	height:380px;
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+	z-index: 50;
+	*/
+	position: absolute;
+	bottom:50px;
+	right:50px;
+	width:640px;
+	height:350px;
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	z-index: 50;
+}
+#fileInfoBox li
+{
+	/*margin-left:40px;
+	margin-right:40px;
+	height:60px;
+	font-size:28px;
+	color:#FFFFFF;
+	line-height:60px;
+	white-space:nowrap;*/
+	position: absolute;
+	top:0px;
+	left:45px;
+	width:550px;
+	height:50px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:left;
+	line-height:50px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#playListFocus
+{
+	position:absolute;
+	top:60px;
+	left:5px;
+	width:660px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+#arrowUpPlayList
+{
+	position:absolute;
+	top:30px;
+	left:0px;
+	width:700px;
+	height:30px;
+	display:none;
+	background-image:url(images/Bg_list_arrow.png);
+}
+#arrowDownPlayList
+{
+	position:absolute;
+	bottom:30px;
+	left:0px;
+	width:700px;
+	height:30px;
+	display:none;
+	background-image:url(images/Bg_list_arrow.png);
+}
+#playlistScrollBar
+{
+	position:absolute;
+	top:60px;
+	right:10px;
+	width:7px;
+	height:960px;
+	background:#444;
+	opacity:1;
+}
+#scrollBar
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:7px;
+	height:0px;
+}
+#playList
+{
+	position:absolute;
+	top:0px;
+	left:1920px;
+	width:700px;
+	height:1080px;
+	display:none;
+	background-image:url(images/USB-Music-Playlist-Bg.png);
+	z-index:30;
+	-webkit-transition-duration:200ms;
+}
+#playList ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+	z-index:30;
+}
+#playList ul li
+{
+	position:absolute;
+	left:70px;
+	width:565px;
+	height:80px;
+	overflow:hidden;
+}
+.playListStyle_marquee
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:580px;
+	height:106px;
+	float:right;
+	font-size:32px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.playListStyle_static
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:580px;
+	height:106px;
+	float:right;
+	font-size:32px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.playListStyle_animate
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:580px;
+	height:106px;
+	font-size:32px;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move
+{
+   from{left: 0px}
+   to{left: -650px}
+}
+/*
+#playList ul li span
+{
+	position:absolute;
+	top:0px;
+	left:80px;
+	width:700px;
+	height:106px;
+	float:right;
+	font-size:28px;
+	color:#b0b0b0;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+*/
+#currentPlay
+{
+	position:absolute;
+	top:60px;
+	left:25px;
+	width:40px;
+	height:80px;
+	display:block;
+}
+#menuList
+{
+	position:absolute;
+	top:875px;
+	left:160px;
+	width:1020px;
+	height:170px;
+	display:block;
+	z-index:20;
+}
+#menuList img
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100px;
+	height:170px;
+	z-index: 20;
+	display:none;
+}
+#progressArea
+{
+	position:absolute;
+	top:780px;
+	left:160px;
+	width:1600px;
+	height:100px;
+	display:block;
+	z-index:20;
+}
+.timeArea
+{
+	position:absolute;
+	top:20px;
+	left:0px;
+	width:120px;
+	height:60px;
+	color:#aaaaaa;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+}
+#progressBarUse
+{
+	position:absolute;
+	top:20px;
+	left:135px;
+	width:1500px;
+	height:60px;
+}
+#focusOption
+{
+	position:absolute;
+	left:4px;
+	width:492px;
+	height:120px;
+	border-radius:18px;
+	border:5px solid #00aadd;
+	display:block;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+.optionList
+{
+	position:absolute;
+	top:103px;
+	left:10px;
+	width:414px;
+	font-size:28px;
+	color:#aaaaaa;
+}
+.optionList span
+{
+	position:absolute;
+	top:0px;
+	left:10px;
+	width:414px;
+	height:60px;
+	line-height:60px;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#optionFirstList
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:540px;
+	height:1080px;
+	background:#000;
+	opacity:0.85;
+	border:4px solid #1b1b1b;	
+	border-style:none solid none none;
+	font-size:28px;
+	color:#aaaaaa;
+}
+#optionFirstList ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+}
+#optionFirstList ul li
+{
+	position:absolute;
+	top:0px;
+	left:50px;
+	width:440px;
+	height:80px;
+	line-height:80px;
+	color:#aaaaaa;
+}
+#optionFirstList ul li div
+{
+	position:absolute;
+	top:0px;
+	right:20px;
+	height:80px;
+	width:195px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+}
+#optionFirstList ul li img
+{
+	position:absolute;
+	top:0px;
+	right:-10px;
+	width:20px;
+	height:80px;
+	text-align:center;
+}
+.optionFirstListSpan_1
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:240px;
+	line-height:80px;
+	overflow:hidden;
+	float:left;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.optionFirstListSpan_marquee
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	height:80px;
+	width:130px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.optionFirstListSpan_static
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:195px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.optionFirstListSpan_animate
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:195px;
+	line-height:80px;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move_option;
+	-webkit-animation-duration: 10s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move_option
+{
+   from{left: 0px}
+   to{left: -500px}
+}
+#optionInfoDetails
+{
+	position:absolute;
+	top:30px;
+	left:543px;
+	width:450px;
+	height:546px;
+	background:#000;
+	opacity:0.85;
+	z-index:30;
+	display: none;
+	border: 4px solid #1b1b1b;
+	border-style:solid solid solid none;
+}
+.optionInfoDetails_marquee
+{
+	position:absolute;
+	top:0px;
+	left:50px;
+	width:350px;
+	height:80px;
+	line-height:80px;	
+	font-size:28px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#optionSecondList
+{
+	position:absolute;
+	top:30px;
+	left:543px;
+	height:566px;
+	width:303px;
+	display:none;
+	overflow:hidden;
+	z-index:30;
+}
+#optionFocus_1
+{
+	position:absolute;
+	top:60px;
+	left:0px;
+	width:540px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+#optionFocus_2
+{
+	position:absolute;
+	left:0px;
+	top:30px;
+	width:300px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+#optionSecDiv
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:560px;
+	width:300px;
+	display:block;
+	z-index:30;
+	overflow:hidden;
+	border: 4px solid #1b1b1b;
+	border-style:solid solid solid none;
+}
+.optionUpArrow
+{
+	position:absolute;
+	top:0px;
+	left:45px;
+	height:30px;
+	width:210px;
+	z-index:31;
+	display:none;
+}
+.optionDownArrow
+{
+	position:absolute;
+	bottom:0px;
+	left:45px;
+	height:30px;
+	width:210px;
+	z-index: 31;
+	display:none;
+}
+.optionInfoUl
+{
+	position:absolute;
+	top:30px;
+	left:35px;
+	width:235px;
+	font-size:28px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow: hidden;
+	display:block;
+	color:#aaaaaa;
+	z-index:30;
+}
+.optionInfoUl li
+{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:240px;
+	line-height:80px;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.optionInfoUl li img
+{
+	position:absolute;
+	top:0px;
+	right:5px;
+	width:20px;
+	height:80px;
+	text-align:center;
+	display:none;
+}
+.optionSecondListSpan_marquee
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:210px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:left;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#optionSecBg
+{
+	position:absolute;
+	top:30px;
+	left:0px;
+	width:300px;
+	height:543px;
+	background:#000;
+	opacity:0.85;
+}
+#playTips
+{
+	position:absolute;
+	top:50px;
+	left:610px;
+	width:700px;
+	height:80px;
+	color:white;
+	font-size:33px;
+	text-align:center;
+	line-height:80px;
+	border-radius:40px;
+	border:4px solid #aaa;
+	background:#000;
+	opacity:0.85;
+}
+#tipsBox
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+.button
+{
+	position:absolute;
+	top:350px;
+	width:204px;
+	height:64px;
+	color:#aaaaaa;
+	text-align:center;
+	line-height:64px;
+	z-index:100;
+}
+</style>
+</head>
+
+<body onLoad="init()">
+	<div id="focus" style="display:none"></div>
+    <span id="playTips" style="display:none"></span>
+    <img id="musicCover" src="images/USB-Music-Default-icon.png" />
+    <div id="musicInfo">
+    	<span id="musicName" style="top:0px;height:110px;line-height:110px;font-size:40px;"></span>
+        <span id="musicArtist" style="top:170px;font-size:28px;"></span>
+        <span id="musicAlbum" style="top:240px;font-size:28px;"></span>
+        <span id="musicGene" style="top:310px;font-size:28px;"></span>
+        <span id="musicYear" style="top:380px;font-size:28px;"></span>
+    </div>
+
+    <img id="statusIcon" style="position:absolute;top:440px;left:860px;width:200px;height:200px;z-index:50;display:none" />
+
+    <div id="tipsBox" style="display:none">
+    	<span id="eb_tips" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+        <span id="eb_info" style="position:absolute;top:80px;left:40px;width:750px;height:220px;line-height:160px;"></span>
+        <span id="okButton" class="button" style="left:313px"></span>
+        <span id="focusButton" class="button" style="left:313px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+    
+    <div id="progressArea" style="display:block"> 
+		<span id="elspased" class="timeArea" style="left:0px">00:00:00</span>
+		<span id="duration" class="timeArea" style="left:1480px">00:00:00</span>
+        <span id="seekTime" class="timeArea" style="top:-10px;left:80px;display:none">00:00:00</span>
+        
+        <div id="progressBarUse" style="display:block">
+        	<img src="images/USB-Video-Progress-bar-bg.png" style="position:absolute;left:0px;top:25px;width:1330px;height:10px;"/>
+            <img id="startBar" src="images/USB-Video-Progress-bar.png" style="position:absolute;top:25px;left:0px;width:0px;height:10px;-webkit-transition-duration:100ms;" />
+            <img id="endBar" src="images/USB-Video-Progress-bar-Slider-01_.png" style="position:absolute;top:10px;left:-15px;width:40px;height:40px;-webkit-transition-duration:100ms;" />
+        </div>
+	</div>
+    
+    <div id="menuList">
+        <img id="menuListInfo0" style="left:0px" src="images/USB-Music-Control-icon-FB-B.png" />
+    	<img id="menuListInfo1" style="left:135px" src="images/USB-Music-Control-icon-Previous-B.png" />
+        <img id="menuListInfo2" style="left:290px;width:170px;" src="images/USB-Music-Control-icon-Pause-B.png" />
+        <img id="menuListInfo3" style="left:515px" src="images/USB-Music-Control-icon-Next-B.png" />
+        <img id="menuListInfo4" style="left:650px" src="images/USB-Music-Control-icon-FF-B.png" />
+        <img id="menuListInfo5" style="left:785px" src="images/USB-Music-Control-icon-Repeat1-B.png" />
+        <img id="menuListInfo6" style="left:920px" src="images/USB-Music-Control-icon-Playlist-B.png" />
+    </div>
+
+    <ul id="fileInfoBox" style="display:none">
+		<li style="top:25px;"></li>
+		<li style="top:75px"></li>
+		<li style="top:125px"></li>
+		<li style="top:175px"></li>
+		<li style="top:225px"></li>
+		<li style="top:275px"></li>
+	</ul>
+    
+    <div id="lyricList" style="display:block">
+    	<div id="lyricInfo" class="lyricStyle"></div>
+    </div>
+    
+    <!-- new play list -->
+    <div id="playList" style="display:none">
+    	<img id="currentPlay" src="images/USB-Music-Playlist-Play.png" />
+    	<img id="playListFocus" src="images/USB-Music_Playlist_Focus.png" />
+        <div id="arrowUpPlayList">
+    		<img style="position:absolute;left:335px;" src="images/Icon-Top.png" />
+    	</div>
+    	<div id="arrowDownPlayList">
+    		<img style="position:absolute;left:335px;" src="images/Icon-Bottom.png" />
+    	</div>
+    	<div id="playlistScrollBar" style="display:none">
+            <img id="scrollBar" src="images/Scroll_bar-Vertical.png"/>
+    	</div>
+        <ul>
+            <li style="top:60px">
+                <span id="name0" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration0" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:140px">
+                <span id="name1" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration1" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:220px">
+                <span id="name2" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration2" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:300px">
+                <span id="name3" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration3" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:380px">
+                <span id="name4" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration4" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:460px">
+                <span id="name5" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration5" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:540px">
+                <span id="name6" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration6" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:620px">
+                <span id="name7" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration7" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:700px">
+                <span id="name8" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration8" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:780px">
+            	<span id="name9" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration9" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:860px">
+                <span id="name10" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration8" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:940px">
+            	<span id="name11" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration9" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+        </ul>
+    </div>
+    <!-- old play list
+    <div id="playList" style="display:none">
+    	<img id="currentPlay" src="images/USB-Music-Playlist-Play.png" />
+        <ul>
+            <li style="top:10px">
+                <span id="name0" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist0" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration0" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:116px">
+                <span id="name1" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist1" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration1" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:222px">
+                <span id="name2" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist2" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration2" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:328px">
+                <span id="name3" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist3" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration3" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:434px">
+                <span id="name4" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist4" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration4" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:540px">
+                <span id="name5" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist5" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <<span id="duration5" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:646px">
+                <span id="name6" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist6" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration6" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:752px">
+                <span id="name7" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist7" style="top:70px;height:36px;width:75%;line-height:16px;font-size:18px;"></span>
+                <span id="duration7" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:859px">
+                <span id="name8" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist8" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration8" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+            <li  style="top:965px">
+                <span id="name9" style="height:70px;width:75%;line-height:70px;"></span>
+                <span id="artist9" style="top:70px;height:36px;width:75%;line-height:36px;font-size:18px;"></span>
+                <span id="duration9" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>
+            </li>
+        </ul>
+    </div>
+    -->
+    
+	<div id="option" style="position:absolute;top:0px;left:0px;display:none;z-index:40;">
+		<div style="position:absolute;top:0px;left:0px;width:540px;height:1080px;background:#000;opacity:0.85;"></div> 
+    	<img id="optionFocus_1" src="images/Focus_USB_1.png" />
+        <div id="optionFirstList">
+            <ul id="optionFirstUl">
+            	<li style="top:60px">
+                    <span id="optionInfo0" class="optionFirstListSpan_1"></span>
+                    <div><span id="optionInfoContent0" class="optionFirstListSpan_marquee"></span></div>
+                    <img src="images/Icon-R-Disable.png" />
+                </li>
+                <!--
+                <li  style="top:140px">
+                    <span id="optionBGMContent" style="left:30px;width:350px;float:left;"></span>
+                    <span id="BGMContent" style="right:50px;text-align:right;"></span>
+                    <img src="images/Icon-R-Disable.png" />
+                </li>
+                -->
+                <li style="top:140px">
+                    <span id="optionInfo1" class="optionFirstListSpan_1" style="width:420px;"></span>
+                    <div style="display:none"><span id="optionInfoContent1" class="optionFirstListSpan_marquee"></span></div>
+                    <img src="images/Icon-R-Disable.png" />
+                </li>
+                <li  style="top:220px">
+                    <span id="optionInfo2" class="optionFirstListSpan_1" style="width:420px;"></span>
+                    <div style="display:none"><span id="optionInfoContent2" class="optionFirstListSpan_marquee"></span></div>
+                    <img src="images/Icon-R-Disable.png" />
+                </li>
+            </ul>
+        </div>
+        <div id="optionInfoDetails" style="display:none">
+        	<span id="infoDetail0" class="optionInfoDetails_marquee" style="top:30px"></span>
+        	<span id="infoDetail1" class="optionInfoDetails_marquee" style="top:110px"></span>
+        	<span id="infoDetail2" class="optionInfoDetails_marquee" style="top:190px"></span>
+        	<span id="infoDetail3" class="optionInfoDetails_marquee" style="top:270px"></span>
+        	<span id="infoDetail4" class="optionInfoDetails_marquee" style="top:350px"></span>
+        	<span id="infoDetail5" class="optionInfoDetails_marquee" style="top:430px"></span>
+        </div>
+        <div id="optionSecondList" style="display:none;width:340px">
+        	<img id="optionFocus_2" style="left:0px" src="images/Focus_USB_2.png" />
+        	<div id="optionSecDiv" style="left:0px;display:block">
+        		<div style="position:absolute;width:300px;height:560px;background:#000;opacity:0.85;"></div>
+	        	<div id="optionUpArrow_1" class="optionUpArrow">
+	        		<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Top.png" />
+	        	</div>
+	            <ul id="optionSecondUl" class="optionInfoUl">
+	            	<li>
+		            	<!--<div><span id="optionSecLi_0" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_0" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	                <li>
+		            	<!--<div><span id="optionSecLi_1" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_1" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_2" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_2" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_3" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_3" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_4" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_4" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_4" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_5" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>	            	
+	            </ul>
+	            <div id="optionDownArrow_1" class="optionDownArrow">
+	            	<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Bottom.png" />
+	            </div>
+            </div>
+        </div>  
+        <!-- 
+        <div id="optionSecondList" style="display:none">
+        	<div id="optionSecBg"></div>
+        	<img id="optionFocus_2" src="images/Focus_USB_2.png" />
+            <ul id="optionSecondUl">
+            	<li style="height:30px"></li>
+            	<li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li style="height:30px"></li>
+            </ul>
+        </div>
+        -->
+    </div>
+</body>
+</html>

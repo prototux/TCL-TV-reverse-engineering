@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title> New Document </title>
+<style>
+body
+{
+    background:transparent;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#netConnectWin
+{
+    position:absolute;
+    left:100px;
+    width:800px;
+    border:4px  solid #1b1b1b;
+    opacity:0.8;
+    height:300px;
+    left:560px;
+    top:300px;
+    background:#000;
+    display:none;
+}
+.netConnectRemind
+{
+    position: absolute;
+    top: 180px;
+    height: 60px;
+    line-height:30px;
+    color:#FFFFFF;
+    font-size: 28px;
+    text-align: left;
+    width:750px;/*500px;*/
+    left:25px;
+    display:block;
+}
+#buttonList
+{
+    position:absolute;
+    top:350px;
+    height:50px;
+    width:600px;
+}
+.netButton
+{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top:10px;
+    padding-top: 7px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    background: #333;
+    border-radius: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#buttonFocus
+{
+    position: absolute;
+    width: 170px;
+    height: 70px;
+    top:200px;
+    left: 70px;
+    display:block;
+}
+</style>
+<script type="text/javascript">
+var positionPop=0;
+
+document.onkeydown = keyProcess;
+document.onnotify = notifyProcess;
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function notifyProcess(evt)
+{
+    top.systemEventProc(evt);
+}
+
+function keyProcess(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	switch(keycode)
+	{
+		case top.VK_BACK:
+		case top.VK_MENU:
+		case top.VK_EXIT:
+			toBack();
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+        case top.VK_POWER://power
+            top.keyDownProcess(e);
+            break;
+		default:
+			break;
+	}
+	return ret;
+}
+
+function toBack()
+{
+	top.$("otherPage").src = "";
+	top.main.focus();
+	top.setFrameFocusPage("main");
+    top.shopRemindFlag = 1;
+    top.$("main").contentWindow.notifyRefreshInfo();
+}
+
+function doEnter()
+{
+	if(positionPop==0)
+	{
+        openNetflix();
+		toBack();
+	}
+	else if(positionPop==1)
+	{
+		toBack();
+	}
+	else if(positionPop==2)
+	{
+        top.g_setting.setProperty("app.ui.netflixDialog","1");
+		toBack();
+	}
+
+}
+
+function toLeft()
+{
+	if(positionPop==0)
+	{
+		positionPop=2;
+		$("buttonFocus").style.left=570+"px";
+	}
+	else if(positionPop==1)
+	{
+		positionPop=0;
+		$("buttonFocus").style.left=70+"px";
+	}
+	else if(positionPop==2)
+	{
+		positionPop=1;
+		$("buttonFocus").style.left=320+"px";
+	}
+}
+
+function toRight()
+{
+	if(positionPop==0)
+	{
+		positionPop=1;
+		$("buttonFocus").style.left=320+"px";
+	}
+	else if(positionPop==1)
+	{
+		positionPop=2;
+		$("buttonFocus").style.left=570+"px";
+	}
+	else if(positionPop==2)
+	{
+		positionPop=0;
+		$("buttonFocus").style.left=70+"px";
+	}
+}
+
+function init()
+{
+    setInterval("checkHbbtv()",1000);
+    if("channelPlay.html"==top.$("main").src)
+    {
+        top.$("main").contentWindow.hideRemind();
+        top.shopRemindFlag = 0;
+    }
+	$("buttonList").style.display = "block";
+	$("buttonFocus").style.display = "block";
+	$("netConnectWin").style.display="block";
+	$("popContent").innerHTML=top.netflixDialogContent;
+	positionPop = 0;
+	$("buttonFocus").style.left="70px";
+	var divs=$("buttonList").getElementsByTagName("div");
+	divs[0].innerHTML=top.netflixDialogOptions[0];//ok
+	divs[1].innerHTML=top.netflixDialogOptions[1];
+	divs[2].innerHTML=top.netflixDialogOptions[2];
+    top.doEleScrForNoOption(divs,0, 0);
+    top.doEleScrForNoOption(divs,1, 0);
+    top.doEleScrForNoOption(divs,2, 0);
+	setTimeout("toBack()",90*1000);
+}
+
+function uninit()
+{
+    top.shopRemindFlag = 1;
+    top.$("main").contentWindow.notifyRefreshInfo();
+}
+
+function openNetflix()
+{
+    if(top.checkNetStatus()==false)
+    {
+        top.$("operatePage").src = "";
+        top.$("otherPage").src ="";
+        top.$("main").src="connectNetworkRemind.html";
+        top.main.focus();
+        top.setFrameFocusPage("main");
+        return;
+    }
+    if(top.recordStatusFlag == 1)
+    {
+        top.g_pvr.recordStop();
+        top.g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+        top.$("globleShow").contentWindow.hiddenRecord();
+        top.pvrCurrentTime=0;
+        top.recordStatusFlag =0;
+        top.pvrTotalTime=2*60*60;
+    }
+    else if(top.timeShiftStatusFlag == 1)
+    {
+        //现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+        top.g_pvr.timeshiftStop();
+        top.g_pvr.returnToLive();//返回实时播放页面
+        //现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+        top.$("globleShow").contentWindow.hiddenTimeShift();
+    }
+    if(top.appOpenFlag == 1)
+    {
+        top.g_ulits.closeOperaApplication();
+        top.scheduleNetflix = 1;
+        return;
+    }
+    top.appOpenFlag = 1;
+    top.$("operatePage").src = "";
+    top.$("otherPage").src ="";
+    top.$("main").onload = function(){
+        top.$("main").style.display="none";
+        top.$("operatePage").style.display="none";
+        top.$("otherPage").style.display="none";
+        top.$("main").onload =  function(){};
+        setTimeout(function(){
+            top.g_channel.inputSource=10;
+            top.g_ulits.sendMsgToApplication("vod.netflix", top.START_NETFLIX_BY_HOTKEY);},10);
+    }
+    top.$("main").src="channelPlay.html";
+    top.main.focus();
+    top.setFrameFocusPage("main");
+    top.menu_visible_status = 0;
+    top.lastInputSource = top.g_channel.inputSource;
+    //top.g_channel.inputSource=10;
+    //top.g_ulits.sendMsgToApplication("vod.netflix", START_NETFLIX);//启动netflix，可以自己加个宏定义该
+    return;
+}
+
+function checkHbbtv()
+{
+    if(top.g_channel.checkhbbtvStatus() > 0)
+    {
+        toBack();
+    }
+}
+</script>
+</head>
+
+
+<!--******************************** net connect **************************************-->
+<body onLoad="init()" onunload="uninit()">
+     <div id="netConnectWin" style="left:560px; height:300px;">
+         <div id="popContent" class="netConnectRemind" style=" text-align:center; top:100px;">
+         </div>
+         <div id="buttonList" style="top:200px;">
+             <div class="netButton" style="left:80px;"></div>
+             <div class="netButton" style="left:330px;"></div>
+             <div class="netButton" style="left:580px;"></div>
+         </div>
+         <img id="buttonFocus" src="images/Focus_Frame/Focus2.png"/>
+     </div>
+</body>
+</html>

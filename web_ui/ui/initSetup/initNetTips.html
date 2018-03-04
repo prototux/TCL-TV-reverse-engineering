@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript" src="initNetTips.js"></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#tips
+{	
+    position:absolute;
+	left:100px;/*650px;*/
+	width:830px;
+	height:770px;
+	top:155px; 
+}
+
+.autoTitle/*设置密码对话框的title*/
+{
+	position:absolute;
+	width:630px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+	background:#000;
+}
+#TipsButtonFocus/*密码框button 焦点*/
+{
+	position: absolute;
+	top:680px;
+	left: 520px;
+	pointer-events:none;
+}
+
+#TipsButtonList
+{
+	position:absolute;
+	height:50px;
+	width:700px;
+}
+
+.TipsButton/*对话框中的按钮样式*/
+{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	top:10px;
+	padding-top: 7px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	background: #333;
+	border-radius: 10px;
+}
+.autoRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#CCC;
+	font-size: 28px;
+	left: 30px;
+	width: 770px;
+	display:block;
+}
+#leftButton
+{
+	position:absolute;
+	left:105px; 
+	top:30px;
+	background:url(../images/Focus-02-no.png);
+	width:204px;
+	height:64px;
+	line-height:64px;
+	text-align:center;
+	color:#FFFFFF;
+	font-size:24px;
+	font-weight:bold;
+}
+#rightButton
+{
+	position:absolute;
+	left:520px;
+	top:30px;
+	background:url(../images/Focus-02-no.png);
+	width:204px;
+	height:64px;
+	line-height:64px;
+	text-align:center;
+	color:#FFFFFF;
+	font-size:24px;
+	font-weight:bold;
+}
+</style>
+</head>
+
+<body onload="init()">
+
+        <!-----------------------主页面内容---------------------------------->
+        <div id="tips" style="left:545px; height:770px; display:block; background:url(../images/Bg-Pop_up_box-01.png) no-repeat">
+        	<div id="TipsTitle" class="autoTitle">Tips</div>
+            <div id="TipsContent" class="autoRemind" style=" text-align:center; top:120px;">
+            	You can’t obtain the following contents without network connection. Do you want to skip Network Setup?
+            </div>
+            <div id="TipsButtonList" style="top:650px;">
+                 <div id="leftButton" ></div>
+        		<div id="rightButton"></div>
+            </div>
+         <img id="TipsButtonFocus" src="../images/Focus-02.png" />
+        <img id = "CenterImage"src="../images/opera_dump-1111.png" style="position:absolute; top:230px; left:60px;"/>
+         </div>
+</body>
+</html>

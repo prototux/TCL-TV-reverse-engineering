@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>picture 3D</title>
+<link rel="stylesheet" type="text/css" href="../../all.css">
+<script type="text/javascript" src="whiteBalance.js"></script>
+    <style type="text/css">
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+    </style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  	<div id="fourthMenuLeft"></div>
+    <div id="fourthMenuRight">
+    	<ul>
+            <li	class="titleName">
+                <span style="top:60px; position:absolute"></span>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="RGain">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="GGain">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li> 
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="BGain">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li>  
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="Roffset">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="Goffset">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li> 
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="Boffset">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li>   
+   		</ul>
+        <img id="fourthListFocus" src="../../images/Focus_Frame/Focus-1.png">
+   </div>
+    <!----------------------进度条调整项--------------------------->
+    <div id="adjustProgressBox">
+   		<div id="adjustProgMinorUp">
+        	<span class="adjustProgSpan"></span>
+        </div>
+        <div id="adjustProgMain">
+        	  <img src="../../images/SS_1_02_3_Activation.png" style="position:absolute;left:10px;">
+        	 <div class="adjustName">
+        	 	<span class="adjustProgSpan"></span>
+             </div>
+             <div id="adjustProgBar">
+                	<div class="progressBarLeft" style="width:250px;background:#00aadd;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:250px;"></div>
+             </div>
+             <div id="adjustProgValue"></div>
+        </div>
+        <div id="adjustProgMinorDown">
+        	<span class="adjustProgSpan"></span>
+        </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../all.css">
+    <script type="text/javascript" src="audioDescription.js"></script>
+    <style type="text/css">
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+        .progressContainer/* 设置 关于列表每行第二项属性*/
+ {
+            position: absolute;
+            left: 370px;
+            width: 270px;
+            height: 27px;
+            top: 16px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+<div id="fourthMenuLeft"></div>
+<div id="fourthMenuRight">
+    <ul>
+        <li class="titleName">
+            <span></span>
+        </li>
+        <li class="list">
+            <span class="listFirstProperty"></span>
+
+            <div id="speakerStatus" class="listSecondProperty"></div>
+            <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png"/>
+        </li>
+        <li class="list">
+            <span class="listFirstProperty"></span>
+
+            <div id="HeadphoneStatus" class="listSecondProperty"></div>
+            <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png"/>
+        </li>
+         <li class="list">
+            <span class="listFirstProperty"></span>
+
+            <div id="BTDeviceStatus" class="listSecondProperty"></div>
+            <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png"/>
+        </li>
+        <li class="list">
+            <span class="listFirstProperty"></span>
+
+            <div id="ADVolumePgreContainer" class="progressContainer">
+                <div id="ADVolumePgreLeft" class="progressBarLeft" style="width:250px;"></div>
+                <div class="progressBarCenter"></div>
+                <div id="ADVolumePgreRight" class="progressBarRight" style="width:0px;"></div>
+            </div>
+            <div id="ADVolumeValue" class="listThirdProperty"></div>
+        </li>
+    </ul>
+    <img id="fourthListFocus" src="../images/Focus_Frame/Focus-1.png">
+</div>
+
+<!----------------------弹出列表框使用---------------------->
+<div id="listForm" class="fourthPopUpBox">
+    <img id="listUpImg" src="../images/arrow/U-Focus.png"/>
+    <ul id="listBox">
+        <img id="listFormFocus" class="formFocus" src="../images/Focus_Frame/Focus2.png">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <img id="listDownImg" src="../images/arrow/D-Focus.png"/>
+</div>
+<!----------------------预置选择列表--------------------------->
+<div style="position:absolute; width:1920px; height:108px; top:900px; text-align:center;">
+    <div id="preSetBar" style="display:none;">
+        <span id="preSetOption" ></span>
+        <img id="currentOption" src="../images/Check-36.png" style="position:absolute; top:34px; left:320px; display:none;" />
+        <span class="preSetValue" style="left:350px; width:140px;"></span>
+        <span class="preSetValue" style="left:580px; width:140px;"></span>
+        <span class="preSetValue" style="left:810px; width:140px;"></span>
+        <img id="preSetSelectFocus" src="../images/OP-01-1_Focus.png" style=" width:230px; left:305px; height:90px; top:7px;"/>
+    </div>
+</div>
+<!----------------------进度条调整项--------------------------->
+<div id="adjustProgressBox">
+    <div id="adjustProgMinorUp">
+        <span class="adjustProgSpan"></span>
+    </div>
+    <div id="adjustProgMain">
+        <img src="../images/SS_1_02_3_Activation.png" style="position:absolute;left:10px;">
+
+        <div class="adjustName" style="width:280px;">
+            <span class="adjustProgSpan" style="width:280px;"></span>
+        </div>
+        <div id="adjustProgBar">
+            <div class="progressBarLeft" style="width:250px; background:#00aadd"></div>
+            <div class="progressBarCenter"></div>
+            <div class="progressBarRight" style="width:250px;"></div>
+        </div>
+        <div id="adjustProgValue">100</div>
+    </div>
+    <div id="adjustProgMinorDown">
+        <span class="adjustProgSpan"></span>
+    </div>
+</div>
+</body>
+</html>

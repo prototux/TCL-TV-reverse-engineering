@@ -1,0 +1,544 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript">
+document.onnotify 			= notifyProcess;
+document.onkeydown 			= keyproc;
+
+var comIfaceWords			= [top.sysOptions[9],top.sysCiDes[0]];
+var passwordWords 			= [top.others[2],top.passError];
+
+
+var setting 				= top.g_setting;
+var channel					= top.g_channel;
+var mimiType 				= 0;				//2 需要输入密码，其他 正常显示
+var itemLength 				= 0;				//CI 项的条数
+var list_position_h 		= 0;				//焦点序号
+var nowItemNum 				= 0;				//当前item序号
+var distance 				= 0;				//当前item序号和当前item位置的差值：nowItemNum - list_position_h
+
+var SUB_MENU_START 			= 340;				//三四级菜单焦点移动起始位置
+var SUB_MENU_STEP 			= 70;				//三四级主菜单焦点移动的step
+var spanList;
+var LIST_SHOW_SUM 			= 7;
+/////////密码框使用
+var passStringLength 		= 0;
+var passString				= "";				//当 mimiType == 2时使用
+function notifyProcess(evt)
+{
+	channel.testLog("in common interface notifyProcess");
+	var msg = evt.which;
+	switch(msg)
+	{
+		case top.E_SIGNAL_UNLOCK://unlock signal
+		case top.E_PVR_NO_SIGNAL:
+			top.jumpPage();
+			break;
+		case top.E_CI_CARD_REMOVE://CI remove
+			top.jumpPage();
+			break;
+		case top.E_CI_DATA_READY:// CI data ready
+			doCI();
+			break;
+		case top.E_CI_EXIT_CI:
+			top.jumpPage();
+			break;
+		case top.E_CIPLUS_PROGRAM_CHANGE:
+			break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	top.g_channel.testLog("in common keyproc g_ciUpdateStatus = " + top.g_ciUpdateStatus);
+	//快捷键处理
+	if(top.g_ciUpdateStatus==0)
+	{
+		switch(keycode)
+		{
+			case top.VK_LEFT:// left
+				toLeft();
+				ret = false;
+				break;
+			case top.VK_UP:// up
+				toUp();
+				ret = false;
+				break;
+			case top.VK_DOWN://down
+				toDown();
+				ret = false;
+				break;
+			case top.VK_ENTER:
+				doEnter();
+				ret = false;
+				break;
+			case top.VK_BACK:
+				toBack();
+				ret = false;
+				break;
+			case top.VK_MENU:
+				top.jumpPage();
+				break;
+			case top.VK_EXIT://exit
+				doExit();
+				break;
+			case top.VK_0:
+			case top.VK_1:
+			case top.VK_2:
+			case top.VK_3:
+			case top.VK_4:
+			case top.VK_5:
+			case top.VK_6:
+			case top.VK_7:
+			case top.VK_8:
+			case top.VK_9:
+				if(mimiType == 2)
+				{
+					doPassNum(e.which - 48);
+				}
+				break;
+			case top.VK_POWER://power
+			case top.VK_MUTE://power
+				top.keyDownProcess(e);
+				break;
+			default:
+				top.keyDownProcess(e);
+				ret = true;
+				break;
+		}
+		return ret;
+	}
+	else
+	{
+		switch (keycode)
+		{
+			case top.VK_POWER://power
+				top.keyDownProcess(e);
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function toLeft()
+{
+	if(mimiType == 2)
+	{
+		if(passStringLength > 0)
+		{
+			passStringLength--;
+			passString = passString.substring(0,passStringLength);
+			$('passInputContent').innerHTML = $('passInputContent').innerHTML.substring(1);
+		}
+		else
+		{
+			return;
+		}
+	}
+	else
+	{
+		toBack();
+	}
+}
+
+function toUp()
+{
+	if(mimiType != 2)
+	{
+		if(nowItemNum > 0 && list_position_h == 0)
+		{
+			distance -= LIST_SHOW_SUM;
+			for(var i = 0; i < LIST_SHOW_SUM; i++)
+			{
+				spanList[i].innerHTML = setting.getListItem(i + distance);
+				fourthMenuRightLiList[i + 4].style.display = "block";
+			}
+			nowItemNum--;
+			list_position_h = LIST_SHOW_SUM - 1;
+		}
+		else if(nowItemNum > 0 && list_position_h > 0)
+		{
+			nowItemNum--;
+			list_position_h--;
+		}
+		$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	}
+}
+
+function toDown()
+{
+	if(mimiType != 2)
+	{
+		if(list_position_h < (LIST_SHOW_SUM - 1) && nowItemNum < (itemLength - 1))
+		{
+			nowItemNum++;
+			list_position_h++;
+		}
+		else if(list_position_h == (LIST_SHOW_SUM - 1) && nowItemNum < (itemLength - 1))
+		{
+			distance += LIST_SHOW_SUM;
+			for(var i = 0; i < LIST_SHOW_SUM; i++)
+			{
+				spanList[i].innerHTML = setting.getListItem(i + distance);
+				fourthMenuRightLiList[i + 4].style.display = "block";
+			}
+			nowItemNum++;
+			list_position_h = 0;
+		}
+		$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	}
+}
+
+function doEnter()
+{
+	if(mimiType == 2)
+	{
+		return;
+	}
+	else
+	{
+		setting.selectListItem(list_position_h + distance);//参数从0开始
+		//清除痕迹
+        /*
+		$('ciTitle').innerHTML = "";
+		$('subtitle').innerHTML = "";
+		$('keyRemind').innerHTML = "";
+		for(var i = 0; i < LIST_SHOW_SUM; i++)
+		{
+			spanList[i].innerHTML = "";
+			fourthMenuRightLiList[i + 4].style.display = "none";
+		}
+		$("fourthListFocus").style.display = "none";
+        */
+	}
+}
+
+function doExit()
+{
+	setting.exitCI();
+}
+
+function toBack()
+{
+	if(mimiType == 2)
+	{
+		//清除痕迹
+		$('passForm').style.display = "none";
+		$('passInputContent').innerHTML = "_";
+		passString = "";
+		passStringLength = 0;
+	}
+	setting.backMenu();
+}
+/*
+功能描述：密码输入框中输入数字时的处理
+参数：
+全局变量：passString;passStringLength
+*/
+function doPassNum(num)
+{
+	passString += num;
+	passStringLength++;
+	if(passStringLength == 4)
+	{
+		setting.sendPassword(passString);
+		//清除痕迹
+		$('passForm').style.display = "none";
+		$('passInputContent').innerHTML = "_";
+		passString = "";
+		passStringLength = 0;
+	}
+	else
+	{
+		$('passInputContent').innerHTML = "*" + $('passInputContent').innerHTML;
+	}
+}
+
+/*
+功能描述： 刷新CI界面,需要对一些全局变量初始化
+参数：
+全局变量：mimiType;list_position_h；distance；nowItemNum
+*/
+function doCI()
+{
+	mimiType = setting.getMimiType();
+	if(mimiType == 2)//显示密码框
+	{
+		$("fourthListFocus").style.display = "none";
+		initPass();
+	}
+	else
+	{
+        $('ciTitle').innerHTML = "";
+		$('subtitle').innerHTML = "";
+		$('keyRemind').innerHTML = "";
+		for(var i = 0; i < LIST_SHOW_SUM; i++)
+		{
+			spanList[i].innerHTML = "";
+			fourthMenuRightLiList[i + 4].style.display = "none";
+		}
+		$("fourthListFocus").style.display = "none";
+        
+		$("fourthListFocus").style.display = "block";
+		list_position_h = 0;
+		nowItemNum = 0;
+		distance = 0;
+		showNormalCI();
+	}
+}
+
+/*
+功能描述：显示正常状态（即非需要输入密码）的ci界面
+参数：
+全局变量：itemLength;passStringLength
+*/
+function showNormalCI()
+{
+	$('ciTitle').innerHTML = setting.getTitleString();
+	$('subtitle').innerHTML = setting.getSubtitleString();
+	var bottomString=setting.getBottomString();
+	bottomString = replaceT(bottomString);
+	$('keyRemind').innerHTML = bottomString;
+	itemLength = setting.getListItemCount();
+	for(var i = 0; i < LIST_SHOW_SUM; i++)
+	{
+		if( i < itemLength)//注意：item是从1开始的
+		{
+			var listItem=setting.getListItem(i);
+			listItem=Trim(listItem,"g");
+			spanList[i].innerHTML = listItem;
+			fourthMenuRightLiList[i + 4].style.display = "block";
+		}
+		else
+		{
+			spanList[i].innerHTML = "";
+			fourthMenuRightLiList[i + 4].style.display = "none";
+		}
+	}
+	if(itemLength > 0)
+	{
+		$("fourthListFocus").style.display = "block";
+		$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	}
+	else
+	{
+		$("fourthListFocus").style.display = "none";
+	}
+}
+
+
+/*
+功能描述：初始化密码框
+参数：
+全局变量：passString；passStringLength；
+*/
+function initPass()
+{	
+	$("passForm").style.display = "block";
+	$('passTitle').innerHTML = setting.getPasswordTitle();
+	$("passInputTitle").innerHTML = "";//passwordWords[0];
+	passString="";
+	passStringLength = 0;
+	$('passInputContent').innerHTML="_";
+}
+
+/*
+功能描述：将字串中所有“<”和“>”符号替换成html能识别的标志
+参数：s：要进行替换的字串
+全局变量：
+*/
+function replaceT(s)
+{
+	s=s.replace(/</g,"&lt;");
+	s=s.replace(/>/g,"&gt;");
+	return s;
+}
+
+/*
+功能描述：将字串中所有过长的空格、tab、回车、换行符号替换成空格
+参数：str：要进行替换的字串；is_global：“g”表示要全部替换,保证最终替换成的字串不会有两个空格挨着的情况
+全局变量：
+*/
+function Trim(str,is_global)
+{
+	 var result; 
+	 result = str.replace(/(^\s+)|(\s+$)/g,"&nbsp;");
+	 if(is_global.toLowerCase()=="g")
+		result = result.replace(/\s/g,"&nbsp;");
+	 return result;
+}
+function timeoutInit()
+{
+}
+
+var isDirectToPage = 0;//是否是ci卡消息直接进入此页面，0 否，1是
+var fourthMenuRightLiList;
+function init()
+{
+	fourthMenuRightLiList = $("fourthMenuRight").getElementsByTagName("li");
+	//面板按键处理场景设置
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	
+	if(top.g_nextHtmlPage == "common_interface.html")
+	{
+		$("sndMenuLeft").style.display = "block";
+		$("thdMenuLeft").style.display = "block";
+		$("fourthMenuLeft").style.left = "80px";
+		$("fourthMenuRight").style.left = "124px";
+		isDirectToPage = 1;
+		/*必须在此处消除掉，不能再uninit中消除。不然的话再该页面来data ready 消息将g_nextHtmlPage置为common_interface.html，
+		但是当跳转页面的时候g_nextHtmlPage在uninit中又置为空了，这样会出错*/
+		top.g_nextHtmlPage = "";
+	}
+	else
+	{
+		$("sndMenuLeft").style.display = "none";
+		$("thdMenuLeft").style.display = "none";
+		isDirectToPage = 0;
+	}
+	
+	
+	top.stopTimeout();
+	$('title').innerHTML = comIfaceWords[0];
+	$("ciCardName").innerHTML = top.g_ciCurrentCardName;
+	spanList = $("fourthMenuRight").getElementsByTagName("span");
+	doCI();
+	addMouseListener();
+}
+
+function uninit()
+{
+	top.clearMyTimeout();
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2) toBack();//right key
+	}
+	
+	//menu
+	for(var i = 4; i < 11; i++)
+	{
+		fourthMenuRightLiList[i].setAttribute("newAttr",i);
+		fourthMenuRightLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(mimiType != 2)
+				{
+					list_position_h = parseInt(this.getAttribute("newAttr")) - 4;
+					$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+					doEnter();
+				}
+			}
+		}
+	}
+}
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="../all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#title
+{
+	position:absolute;
+	top:60px; 
+}
+#keyRemind
+{
+	position:absolute;
+	left:380px;
+	top:30px;
+	width:550px;
+	color:#FFF;
+	font-size:22px;
+	font-weight:bold;
+}
+.list/* 设置 关于列表每项的属性*/
+{
+	position:relative;
+	width:900px;
+	height:70px;
+	color:#FFFFFF;
+	top:10px;
+}
+#fourthListFocus/*设四级菜单中焦点属性*/
+{
+	position:absolute;
+	width:896px;
+	height:70px;
+	top:130px;
+	z-index:100;
+}
+</style>
+</head>
+
+<body onLoad="init()" onUnload="uninit()" >
+	<div id="sndMenuLeft" style="left:0px; display:none;"></div>
+  	<div id="thdMenuLeft" style="left:40px; display:none;"></div>
+	<div id="fourthMenuLeft"></div>
+    <div id="fourthMenuRight" style="width:900px;">
+    	<ul>
+            <img id="fourthListFocus" src="../images/Focus_Frame/Focus.png" style="top:340px;">
+            <li	class="titleName">
+            	<label  id="title"></label>
+            </li>
+            <li class="list">
+                <div id="ciCardName" class="listFirstProperty"></div>
+            </li>
+            <li class="list" >
+                <div id="ciTitle" class="listFirstProperty" style="left:30px;"></div>
+            </li>
+             <li class="list" >
+                <div id="subtitle" class="listFirstProperty" style="left:30px;"></div>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty" style="left:50px;"></span>
+            </li>
+   		</ul>
+   </div>
+   
+   <!----------------------country passString使用---------------------->
+   <div id="passForm" class="dialogForm" style=" height:350px;top:300px;  left:65px;display:none;">
+        <span id="passTitle" class="dialogTitle" ></span>
+        <div class="dialogInput" style="top:130px;border:thin solid #FFF;background:#999;">
+        	<span id="passInputTitle" class="dialogInputName"></span>
+            <div id="passInputContent" class="dialogInputContent" style="width:600px;"></div>
+        </div>
+   </div>
+   
+   <div id="keyRemind"></div>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="miracast.js" ></script>
+<title>无标题文档</title>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#miraPopwin
+{
+	position:absolute;
+	top:200px;
+	left:420px;
+	width:1080px;
+	height:680px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	background:url(../images/Time_shift-Bg_01.png);
+	color:#000000;
+}
+#miraTitle
+{
+	position:absolute;
+	height:50px;
+	width:100%;
+	font-size:28px;
+	font-weight:bold;
+	color:#b0b0b0;
+}
+#miraTitle span
+{
+	position:absolute;
+	top:30px;
+	left:500px;
+}
+
+#currentRecTime
+{
+	position:absolute;
+	top:140px;
+	width:100px;
+	height:30px;
+	color:red;
+	left:130px;
+	line-height:30px;
+	font-size:24px;
+}
+#totalRecTime
+{
+	position:absolute;
+	top:140px;
+	width:250px;
+	height:30px;
+	color:red;
+	left:880px;
+	line-height:30px;
+	font-size:24px;
+}
+#totalRecName
+{
+	top:140px;
+	width:80px; 
+	position:absolute; 
+	left:760px;
+	color:red;
+	height:30px;
+	line-height:30px;
+	font-size:24px;
+}
+#miraRemind
+{
+	position:absolute;
+	top:500px;
+	width:800px;
+	height:30px;
+	color:#F00;
+	left:130px;
+	line-height:30px;
+	font-size:28px;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Tahoma, Geneva, sans-serif;
+}
+#programInfo
+{
+	position:absolute;
+	top:300px;
+	width:300px;
+	height:30px;
+	color:#b0b0b0;
+	left:130px;
+	line-height:30px;
+	font-size:28px;
+}
+#programInfoCon
+{
+	position:absolute;
+	top:300px;
+	width:500px;
+	height:30px;
+	color:#b0b0b0;
+	left:430px;
+	line-height:30px;
+	font-size:28px;
+}
+#pvrNote
+{
+	position:absolute;
+	top:400px;
+	width:900px;
+	height:100px;
+	color:#b0b0b0;
+	left:130px;
+	font-size:28px;
+}
+#miraBottom
+{
+	position:absolute;
+	height:50px;
+	width:100%;
+	font-size:30px;
+	bottom:0px;
+	font-size:28px;
+	font-weight:bold;
+	color:#b0b0b0;
+	left:500px;
+}
+#pvrHourImg
+{
+	position:absolute;
+	top:622px;
+	left:90px;
+}
+#pvrHour
+{
+	position:absolute;
+	top:610px;
+	height:50px;
+	line-height:50px;
+	left:180px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+#pvrSecondImg
+{
+	position:absolute;
+	top:622px;
+	left:810px;	
+}
+#pvrSecond
+{
+	position:absolute;
+	top:610px;
+	height:50px;
+	line-height:50px;
+	left:900px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+
+
+
+#picReset
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(../images/Bg-Pop_up_box-04.png);
+	display:none;
+}
+
+#dialogContent
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#dialogName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+#miraImg
+{
+	position:absolute;
+	left:650px;
+	top:180px;
+}
+#miraContent
+{
+	position:absolute;
+	left:80px;
+	width:550px;
+	height:400px;
+	color:#fff;
+	font-size:24px;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Tahoma, Geneva, sans-serif;
+	top:120px;
+	word-wrap:break-word;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+	<div id="miraPopwin"  style="display:block">
+    	<div id="miraTitle"><span></span></div>
+        <div id="miraContent"></div>
+        <img id="miraImg"src="../images/miracast.png"/>
+        <div id="miraRemind"></div>
+        <div id="miraBottom"></div>
+    </div>
+</body>
+</html>

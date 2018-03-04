@@ -1,0 +1,777 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#filterForm
+{
+	position:absolute;
+	left:474px;
+	top:86px;
+	width:970px;
+	height:890px;
+	z-index:10;
+	background:url(images/EPG-Bg-Filter.png);
+	background-size:100% 100%;
+}
+.filterTitle
+{
+	position:absolute;
+	width:100%;
+	top:25px;
+	text-align:center;
+	font-size:36px;
+	font-weight:bold;
+	color:#fff;
+}
+.firstType
+{
+	position:absolute;
+	top:100px;
+	width:400px;
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+}
+#filterSubType
+{
+	position:absolute;
+	top:100px;
+	width:400px;
+	left:400px;
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+}
+.firstLevel
+{
+	position:absolute;
+	left:0px;
+	top:144px;
+	width:380px;
+	height:490px;
+}
+.filterItem/*filter选项样式*/
+{
+	position:absolute;
+	width:340px;
+	height:50px;
+	left:40px;
+}
+.filterItem img/*filter选项中选中与否的图标*/
+{
+	position:absolute;
+	left:0px;
+	width:40px;
+	height:50px;
+	z-index:5;
+	display:none;
+}
+.firstLevel .filterItem span/*filter选项内容*/
+{
+	position:absolute;
+	left:40px;
+	height:40px;
+	width:300px;
+	line-height:50px;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+	z-index:5;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+#secondLevel .filterItem span/*filter选项内容*/
+{
+	position:absolute;
+	left:40px;
+	height:40px;
+	width:460px;
+	line-height:50px;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+	z-index:5;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+#secondLevel
+{
+	position:absolute;
+	left:380px;
+	top:144px;
+	width:400px;
+	height:490px;
+}
+
+.firstLevelFocus
+{
+	position:absolute;
+	width:340px;
+	height:50px;
+	left:40px;
+	z-index:0;
+	pointer-events:none;
+}
+#secondLevelFocus
+{
+	position:absolute;
+	width:510px;
+	height:50px;
+	left:40px;
+	z-index:0;
+	pointer-events:none;
+}
+#filterForm2
+{
+	position:absolute;
+	left:750px;
+	top:86px;
+	width:420px;
+	height:890px;
+	z-index:10;
+	background:url(images/EPG-Bg-Filter-noSub.png);
+	background-size:100% 100%;
+}
+</style>
+<script type="text/javascript">
+/***************************** created by chenhua *********************************************/
+var filter_word 				= top.filter;
+var genre_first_level_other		= top.chEpgFirstGenre;
+var genre_second_level 			= top.chEpgSecondGenre;
+var genre_first_level_UK		= top.chEpgFirstGenreUK;
+
+document.onkeydown = keyproc;
+var channel = top.g_channel;
+
+//all used
+var list_position_h 			= 0;
+var FILTER_FOCUS_STEP			= 60;
+
+
+//genre used
+var genre_first_level			= "";								//待定，在UK时为genre_first_level_UK，其他国家为genre_first_level_other
+var second_level_length 		= [9,5,4,12,6,7,12,4,8,8,4];		//每一项一级分类的第二级分类的长度
+var first_level_length 			= 11;
+
+function keyproc(e)
+{
+	channel.testLog("key in filter");
+	var ret = true;
+	var keycode = e.which;
+
+	switch(keycode)
+	{
+		//虚拟遥控器的快捷键---为此界面无响应--lqt
+		case top.VK_VIRTUAL_REMOTE:
+			break;
+		case top.VK_OPTION://option
+		case top.VK_BACK:
+			toBack();
+			break;
+		case top.VK_LEFT:
+			// left
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_UP:
+			// up
+			toUp();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			// right
+			toRight();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			//down
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_MENU:
+		case top.VK_EXIT:
+		case top.VK_GUIDE://guide
+			saveGenre();
+			top.$("operatePage").src = "";
+			top.main.focus();
+			top.$("main").contentWindow.keyproc(e);
+			break;
+		default:
+			top.$("main").contentWindow.keyproc(e);
+			break;
+	}
+	return ret;
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+var passwordValue = "";
+var passwordInput = "";
+
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+	top.$("main").contentWindow.notifyProcess(evt);
+}
+
+function toLeft()
+{
+	if(country != 25)
+	{
+		if(nowLevel == 1)
+		{
+			nowLevel = 0;
+			$("secondLevelFocus").style.display = "none";
+			top.clearCurrentSroll(secondLevelSpan,secondPosition);
+		}
+	}
+}
+
+function toRight()
+{
+	if(country != 25)
+	{
+		if(nowLevel == 0)
+		{
+			nowLevel = 1;
+			secondPosition = 0;
+			$("secondLevelFocus").style.top = secondPosition*FILTER_FOCUS_STEP + "px";
+			$("secondLevelFocus").style.display = "block";
+			top.doEleScrForNoOption(secondLevelSpan,secondPosition, 0);
+		}
+	}
+}
+
+function toUp()
+{
+	if(country == 25)
+	{
+		firstPosition--;
+		if(firstPosition < 0)
+		{
+			firstPosition = first_level_length - 1;
+		}
+		$("firstLevelFocus2").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+		top.doEleScrForNoOption(first2LevelSpan,firstPosition, -1);
+	}
+	else
+	{
+		if(nowLevel == 0)
+		{
+			firstPosition--;
+			if(firstPosition < 0)
+			{
+				firstPosition = first_level_length - 1;
+			}
+			$("firstLevelFocus").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+			top.doEleScrForNoOption(firstLevelSpan,firstPosition, -1);
+			showSecondLevel();
+		}
+		else//nowLevel == 1
+		{
+			secondPosition--;
+			if(secondPosition < 0)
+			{
+				secondPosition = second_level_length[firstPosition] - 1;
+			}
+			$("secondLevelFocus").style.top = secondPosition*FILTER_FOCUS_STEP + "px";
+			top.doEleScrForNoOption(secondLevelSpan,secondPosition, 1);
+		}
+	}
+}
+function toDown()
+{
+	if(country == 25)
+	{
+		firstPosition++;
+		if(firstPosition >= first_level_length)
+		{
+			firstPosition = 0;
+		}
+		$("firstLevelFocus2").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+		top.doEleScrForNoOption(first2LevelSpan,firstPosition, 1);
+	}
+	else
+	{
+		if(nowLevel == 0)
+		{
+			firstPosition++;
+			if(firstPosition >= first_level_length)
+			{
+				firstPosition = 0;
+			}
+			$("firstLevelFocus").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+			top.doEleScrForNoOption(firstLevelSpan,firstPosition, 1);
+			showSecondLevel();
+		}
+		else//nowLevel == 1
+		{
+			secondPosition++;
+			if(secondPosition >= second_level_length[firstPosition])
+			{
+				secondPosition = 0;
+			}
+			$("secondLevelFocus").style.top = secondPosition*FILTER_FOCUS_STEP + "px";
+			top.doEleScrForNoOption(secondLevelSpan,secondPosition, 1);
+		}
+	}
+}
+
+function doEnter()
+{
+	if(country == 25)//UK
+	{
+		if("1" == genreStatus[firstPosition].substring(0,genreStatus[firstPosition].indexOf(":")))//当前是被选中的
+		{
+			genreStatus[firstPosition] = "0:0000000000000000";
+			firstLevelImg[firstPosition].style.display = "none";
+		}
+		else
+		{
+			genreStatus[firstPosition] = "1" + genreStatus[firstPosition].substring(genreStatus[firstPosition].indexOf(":"));
+			firstLevelImg[firstPosition].style.display = "block";
+		}
+	}
+	else
+	{
+		if(nowLevel == 0)
+		{
+			if("1" == genreStatus[firstPosition].substring(0,genreStatus[firstPosition].indexOf(":")))//当前是被选中的
+			{
+				genreStatus[firstPosition] = "0:0000000000000000";
+				firstLevelImg[firstPosition].style.display = "none";
+				
+				for(var i = 0; i < 12; i++)
+				{
+					secondLevelImg[i].style.display = "none";
+				}
+			}
+			else
+			{
+				genreStatus[firstPosition] = "1" + genreStatus[firstPosition].substring(genreStatus[firstPosition].indexOf(":"));
+				firstLevelImg[firstPosition].style.display = "block";
+			}
+		}
+		else
+		{
+			var str = genreStatus[firstPosition].substring(genreStatus[firstPosition].indexOf(":") + 1);
+			if("1" == str.substring(secondPosition,secondPosition + 1))//被选中
+			{
+				str = str.substring(0,secondPosition) + "0" + str.substring(secondPosition + 1);
+				genreStatus[firstPosition] = genreStatus[firstPosition].substring(0,2) + str;
+				secondLevelImg[secondPosition].style.display = "none";
+			}
+			else
+			{
+				str = str.substring(0,secondPosition) + "1" + str.substring(secondPosition + 1);
+				genreStatus[firstPosition] = "1:" + str;
+				firstLevelImg[firstPosition].style.display = "block";
+				secondLevelImg[secondPosition].style.display = "block";
+			}
+		}
+	}
+}
+
+function toBack()
+{
+	saveGenre();
+	$("filterForm").style.display = "none";
+	$("filterForm2").style.display = "none";
+	top.$("main").contentWindow.showBoldFav();
+	top.$("main").contentWindow.backFromBookingOrSchedule();
+	top.$("operatePage").src = "";
+	top.main.focus();
+	top.setFrameFocusPage("main");
+}
+
+function saveGenre()
+{
+	var str = "";
+	if(country == 25)//UK
+	{
+		for(var i = 0; i < 8; i++)
+		{
+			str += genreStatus[i];
+			str += "/";
+		}
+		for(var i = 8; i < 11; i++)
+		{
+			str += "0:0000000000000000";
+			if(i < 10)
+			{
+				str += "/";
+			}
+		}
+	}
+	else
+	{
+		for(var i = 0; i < 11; i++)
+		{
+			str += genreStatus[i];
+			if(i < 10)
+			{
+				str += "/";
+			}
+		}
+	}
+	channel.favGenre = str;
+}
+
+var firstPosition = 0;//第一级分类喜好选择的焦点
+var secondPosition =  0;//第二级分类喜好选择的焦点
+var nowLevel = 0;//当前焦点所停在的分类等级，0 第一级，1 第二级
+var genreStatus = new Array(11);//其中每一个元素都形如：“0:1111010101000000”,“0”表示没有选中，“1”表示选中，其中“：”前表示第一级分类选中情况，“：”后面的数据表示第二级分类选中情况
+//个人爱好选择
+var firstLevelImg;
+var secondLevelImg;
+function showFirstLevel()
+{
+	if(country == 25)//UK
+	{
+		var spanList = $("firstLevel2").getElementsByTagName("span"); 
+		firstLevelImg = $("firstLevel2").getElementsByTagName("img");
+		$("firstLevelFocus2").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+		$("firstLevelFocus2").style.display = "block";
+		for(var i = 0; i < 8; i++)
+		{
+			spanList[i].innerText  = genre_first_level_UK[i];
+			//显示第一级分类选中情况
+			if("1" == genreStatus[i].substring(0,genreStatus[i].indexOf(":")))//被选中
+			{
+				firstLevelImg[i].style.display = "block";
+			}
+			else
+			{
+				firstLevelImg[i].style.display = "none";
+			}
+		}
+	}
+	else
+	{
+		var spanList = $("firstLevel").getElementsByTagName("span"); 
+		firstLevelImg = $("firstLevel").getElementsByTagName("img");
+		$("firstLevelFocus").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+		$("firstLevelFocus").style.display = "block";
+		for(var i = 0; i < 11; i++)
+		{
+			spanList[i].innerText  = genre_first_level_other[i];
+			//显示第一级分类选中情况
+			if("1" == genreStatus[i].substring(0,genreStatus[i].indexOf(":")))//被选中
+			{
+				firstLevelImg[i].style.display = "block";
+			}
+			else
+			{
+				firstLevelImg[i].style.display = "none";
+			}
+		}
+	}
+	
+	
+}
+
+function showSecondLevel()
+{
+	var spanList = $("secondLevel").getElementsByTagName("span"); 
+	secondLevelImg = $("secondLevel").getElementsByTagName("img");
+	var datas = genreStatus[firstPosition].substring(genreStatus[firstPosition].indexOf(":") + 1).split("");
+	for(var i = 0; i < 12; i++)
+	{
+		//channel.testLog("in showSecondLevel genre_second_level[" + firstPosition + "][" + i + "] = " + genre_second_level[firstPosition][i]);
+		spanList[i].innerText  = genre_second_level[firstPosition][i];
+		//显示第一级分类选中情况
+		if("1" == datas[i])//被选中
+		{
+			secondLevelImg[i].style.display = "block";
+		}
+		else
+		{
+			secondLevelImg[i].style.display = "none";
+		}
+	}
+	
+	if(nowLevel == 1)//焦点在第二级分类上
+	{
+		$("secondLevelFocus").style.top = secondPosition*FILTER_FOCUS_STEP + "px";
+		$("secondLevelFocus").style.display = "block";
+	}
+	else
+	{
+		$("secondLevelFocus").style.display = "none";
+	}
+}
+
+var country = 0;
+var firstLevelDivList;
+var secondLevelDivList;
+var firstLevel2DivList;
+var firstLevelSpan;
+var secondLevelSpan;
+var first2LevelSpan;
+function init()
+{
+	firstLevelDivList = $("firstLevel").getElementsByTagName("div");
+	secondLevelDivList = $("secondLevel").getElementsByTagName("div");
+	firstLevel2DivList = $("firstLevel2").getElementsByTagName("div");
+	firstLevelSpan = $("firstLevel").getElementsByTagName("span");
+	secondLevelSpan = $("secondLevel").getElementsByTagName("span");
+	first2LevelSpan = $("firstLevel2").getElementsByTagName("span");
+	country = channel.systemCountry;
+	if(country == 25)//UK
+	{
+		firstPosition = 0;
+		first_level_length = 8;
+		$("filter2").innerText = filter_word[0];
+		$("filterType2").innerText = filter_word[1];
+		genreStatus = channel.favGenre.split("/");
+		showFirstLevel();
+		$("filterForm2").style.display = "block";
+		$("filterForm").style.display = "none";
+		top.doEleScrForNoOption(first2LevelSpan,firstPosition, 0);
+	}
+	else
+	{
+		nowLevel = 0;
+		firstPosition = 0;
+		secondPosition = 0;
+		first_level_length = 11;
+		$("filter").innerText = filter_word[0];
+		$("filterType").innerText = filter_word[1];
+		$("filterSubType").innerText = filter_word[2];
+		genreStatus = channel.favGenre.split("/");
+		showFirstLevel();
+		showSecondLevel();
+		$("filterForm").style.display = "block";
+		$("filterForm2").style.display = "none";
+		top.doEleScrForNoOption(firstLevelSpan,firstPosition, 0);
+	}
+	addMouseListener();		
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2) toBack();//right key
+	}
+	
+	if(country == 25)//UK
+	{
+		//firstLevel2 list
+		for(var i = 0; i < 8; i++)
+		{
+			firstLevel2DivList[i].setAttribute("newAttr",i);
+			firstLevel2DivList[i].onmousedown = function(evt){
+				if(evt.button == 0){//left key
+					firstPosition = parseInt(this.getAttribute("newAttr"));
+					$("firstLevelFocus2").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+					doEnter();
+				}
+			}
+		}
+	}
+	else
+	{
+		//firstLevel list
+		for(var i = 0; i < 11; i++)
+		{
+			firstLevelDivList[i].setAttribute("newAttr",i);
+			firstLevelDivList[i].onmousedown = function(evt){
+				if(evt.button == 0){//left key
+					nowLevel = 0;
+					$("secondLevelFocus").style.display = "none";
+					
+					firstPosition = parseInt(this.getAttribute("newAttr"));
+					$("firstLevelFocus").style.top = firstPosition*FILTER_FOCUS_STEP + "px";
+					showSecondLevel();
+					doEnter();
+				}
+			}
+		}
+		
+		//secondLevel list
+		for(var i = 0; i < 12; i++)
+		{
+			secondLevelDivList[i].setAttribute("newAttr",i);
+			secondLevelDivList[i].onmousedown = function(evt){
+				if(evt.button == 0){//left key
+					if(parseInt(this.getAttribute("newAttr")) > (second_level_length[firstPosition] - 1))
+					{
+						return;
+					}
+					else
+					{
+						nowLevel = 1;
+						secondPosition = parseInt(this.getAttribute("newAttr"));
+						$("secondLevelFocus").style.top = secondPosition*FILTER_FOCUS_STEP + "px";
+						$("secondLevelFocus").style.display = "block";
+						doEnter();
+					}
+				}
+			}
+		}
+	}
+	
+}
+</script>
+</head>
+<body onload="init()">
+    <!-----------------------个人爱好选择框-------------------->
+    <div id="filterForm" style="display:block;">
+        <span id="filter" class="filterTitle"></span>
+        <span id="filterType" class="firstType"></span>
+        <span id="filterSubType"></span>
+        
+        <div id="firstLevel" class="firstLevel">
+            <div class="filterItem" style="top:0px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:60px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:120px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:180px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:240px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:300px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:360px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:420px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:480px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:540px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:600px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <img id="firstLevelFocus" class="firstLevelFocus" src="images/EPG-Filter-Focus.png" />
+        </div>
+        
+        <div id="secondLevel">
+            <div class="filterItem" style="top:0px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:60px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:120px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:180px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:240px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:300px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:360px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:420px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:480px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:540px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:600px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:660px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <img id="secondLevelFocus" src="images/EPG-Filter-Focus_2.png" />
+        </div>
+    </div>
+    
+    <!-----------------------个人爱好选择框(英国专用）-------------------->
+    <div id="filterForm2" style="display:none;">
+        <span id="filter2" class="filterTitle"></span>
+        <span id="filterType2" class="firstType"></span>
+        
+        <div id="firstLevel2" class="firstLevel">
+            <div class="filterItem" style="top:0px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:60px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:120px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:180px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:240px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:300px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:360px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <div class="filterItem" style="top:420px;">
+                <img src="images/skip.png">
+                <span></span>
+            </div>
+            <img id="firstLevelFocus2" class="firstLevelFocus" src="images/EPG-Filter-Focus_4.png" />
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="initWireManual.js"></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.inputBox
+{
+	position:absolute;
+	width:220px;
+	height:80px;
+	color:#FFFFFF;
+	font-size:28px;
+	line-height:80px;
+	background-image:url(../images/Input_box-1-Bg.png);
+}
+#inputFocus
+{
+	position: absolute;
+	width:220px;
+	height:80px;
+	left: 279px;
+	top: 44px;
+	background-image:url(../images/Input_box-1-Focus.png);
+	display:block;
+	pointer-events:none;
+}
+#remindList
+{
+    position:relative;
+	width:930px;
+	height:60px;
+	top:10px;
+	color:red;
+	font-size:24px;
+	text-align:center;
+	margin:10px 0px 10px 0px;
+}
+#buttonList
+{
+    position:relative;
+	width:670px;
+	height:80px;
+	left:30px;
+	top:-50px;
+	margin:10px 0px 10px 0px;
+}
+#menuBox
+{
+	position:absolute;
+	top:180px;
+	left:100px;
+	width:730px;
+	height:500px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+}
+#menuBox ul
+{
+	list-style-type:none;
+	padding:0px;
+}
+#menuListFocus
+{
+	position:absolute;
+	width:725px;
+	height:70px;
+	top:150px;
+	z-index:100;
+}
+.list
+{
+	position:relative;
+	width:730px;
+	height:80px;
+	color:#FFFFFF;
+}
+
+.listIpSecond/* 设置 关于列表每行第二项属性*/
+{
+	position:absolute;
+	left:205px;
+	width:320px;
+	height:27px;
+	font-size:24px;
+	padding-top:3px;
+	text-align:center;
+	top:15px;
+}
+.listFirstProperty
+{
+	top:26px;
+	left:-50px;
+	text-align:left;
+	font-size:28px;
+	width:300px;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle">initial setup</span>
+<!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+ <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepBigImg" src="../images/Step_big-02.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:600px;" /><img src="../images/Title_bloc-Bg.png" style="width:600px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+       <div id="menuBox">
+    	<ul>
+        <div id="inputFocus" ></div>
+            <li class="list" >
+                <span class="listFirstProperty" ></span>
+                <div class="listIpSecond" style="width:400px; left:280px;" id="ipAddress">
+                	<div class="inputBox" style="left:0px"></div>
+                    <div class="inputBox" style="left:220px"></div>
+                    <div class="inputBox" style="left:440px"></div>
+                    <div class="inputBox" style="left:660px"></div>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty" ></span>
+                <div class="listIpSecond" style="width:400px; left:280px;" id="subnetMask">
+                	<div class="inputBox" style="left:0px"></div>
+                    <div class="inputBox" style="left:220px"></div>
+                    <div class="inputBox" style="left:440px"></div>
+                    <div class="inputBox" style="left:660px"></div>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty "></span>
+                <div class="listIpSecond" style="width:400px; left:280px;" id="defaultGateway">
+                	<div class="inputBox" style="left:0px"></div>
+                    <div class="inputBox" style="left:220px"></div>
+                    <div class="inputBox" style="left:440px"></div>
+                    <div class="inputBox" style="left:660px"></div>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listIpSecond" style="width:400px; left:280px;" id="primaryDNS">
+                	<div class="inputBox" style="left:0px"></div>
+                    <div class="inputBox" style="left:220px"></div>
+                    <div class="inputBox" style="left:440px"></div>
+                    <div class="inputBox" style="left:660px"></div>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                 <div class="listIpSecond" style="width:400px; left:280px;" id="secondDNS">
+                	<div class="inputBox" style="left:0px"></div>
+                    <div class="inputBox" style="left:220px"></div>
+                    <div class="inputBox" style="left:440px"></div>
+                    <div class="inputBox" style="left:660px"></div>
+                </div>
+            </li>
+            <li id="remindList" >
+                <span id="remindWord"></span>
+            </li>
+   			<li id="buttonList" >
+                <div style="position:absolute;left:300px; top:30px; background:url(../images/Focus-02-no.png); width:204px; height:64px; line-height:64px; text-align:center; color:#FFFFFF; font-size:24px; font-weight:bold;"></div>
+        		<div style="position:absolute;left:600px; top:30px; background:url(../images/Focus-02-no.png); width:204px; height:64px; line-height:64px; text-align:center; color:#FFFFFF; font-size:24px; font-weight:bold;"></div>
+                <img  style=" position:absolute;left: 600px;  top:30px; display: none; pointer-events:none;" id="buttonFocus" src="../images/Focus-02.png">
+            </li>
+   		</ul>
+   </div>
+        
+         <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/Help-0_9.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Color_key_R.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Ok.png"/>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

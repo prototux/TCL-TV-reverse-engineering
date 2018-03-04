@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="homePageGuess.js" ></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#main
+{
+	position:absolute;
+	width:440px;
+	height:1074px;
+	border:4px solid #591616;
+	background:#000000;
+	opacity:0.92;
+}
+.Title
+{
+	position:absolute;
+	top:35px;
+	left:39px;
+	font-size:44px;
+	color:#aaaaaa;
+}
+
+#historyList
+{
+	position:absolute;
+	top:113px;
+	left:34px;
+	overflow:hidden;
+	height:960px;
+	width:336px;
+	float:left;
+}
+.list
+{
+	position:relative;
+	width:336px;
+	height:188px;
+	margin:24px 0px;
+}
+.bgPic
+{
+	position:absolute;
+	width:336px;
+	height:188px;
+}
+.playPic
+{
+	position:absolute;
+	top:44px;
+	left:156px;
+}
+.name
+{
+	position:absolute;
+	top:134px;
+	font-size:31px;
+	color:#eeeeee;
+	width:336px;
+	text-align:center;
+	overflow:hidden;
+}
+#listFocus
+{
+	position:absolute;
+	top:123px;
+	left:22px;
+	width:364px;
+	height:218px;
+}
+</style>
+<title> home Page History</title>
+
+</head>
+
+<body onload="init()">
+<div id="main">
+	<span class="Title">Guess You Like </span>
+    <div id="historyList">
+    </div>
+    <div id="pageFlag" style="position:absolute;top:130px; height:800px; width:4px;left:400px; background-color:#aaaaaa; border:0px;"/></div>
+    <img id="listFocus" src="images/history/likeFocus.png">
+</div>
+</body>
+</html>

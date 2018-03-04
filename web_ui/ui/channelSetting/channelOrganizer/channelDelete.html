@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>channelOrganizer</title>
+<link rel="stylesheet" type="text/css" href="../../all.css">
+<script type="text/javascript" src="channelDelete.js"></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#channelDeleteBox
+{
+	position:absolute;
+	top:300px;
+	left:660px;
+	width:600px;
+	height:350px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.8;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	background:#000000;
+	display:none;
+}
+#channelDeleteBoxTitle
+{
+	position:absolute;
+	width:560px;
+	height:60px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	color:#FFFFFF;
+	font-size:28px;
+	left:10px;
+	border-bottom:thin solid #FFFFFF;
+	padding:10px 10px;
+}
+#channelDeleteRemind
+{
+	position:absolute;
+	top:150px;
+	left:100px;
+	width:600px;
+	color:#FFFFFF;
+	font-size:24px;
+	padding:10px 10px;
+}
+.channelDeleteButton
+{
+	position:absolute;
+	top:260px;
+	width:150px;
+	height:40px;
+	line-height:40px;
+	font-size:28px;
+	border-radius: 10px;
+	text-align:center;
+	background:#666;
+}
+#channelDeleteButtonFocus
+{
+	position:absolute;
+	top:250px;
+	left:340px;
+	width:170px;
+	height:60px;
+	pointer-events:none;
+}
+
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   	<div id="fourthMenuLeft"></div>
+    <div id="fourthMenuRight">
+    	 <div id="deleteId" class="titleName">
+                <span style="top:60px; position:absolute">delete</span>
+         </div>
+        <div id="listUpRemind" style="top:120px;">
+           <img src="../../images/arrow/U-Focus.png"/>
+        </div>
+    	<ul style="top:160px; position:absolute;">
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+            </li>
+   		</ul>
+        <div id="listDownRemind" style="top:1030px">
+           <img src="../../images/arrow/D-Focus.png" />
+        </div>
+        <img id="fourthListFocus" src="../../images/Focus_Frame/Focus-1.png" style="display:none;">
+   </div>
+   <div id="channelDeleteBox">
+        <div id="channelDeleteBoxTitle">
+            <span style=" position:absolute; top:20px"></span>
+        </div>
+        <span id="channelDeleteRemind"></span>
+        <div id="channelDeleteYes" class="channelDeleteButton" style="left:100px;"></div>
+        <div id="channelDeleteNo" class="channelDeleteButton" style=" right:100px;"></div>
+        <img id="channelDeleteButtonFocus" src="../../images/Focus_Frame/Focus2.png">
+    </div>
+   
+</body>
+</html>

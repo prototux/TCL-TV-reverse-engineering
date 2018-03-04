@@ -1,0 +1,1230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="init.css" rel="stylesheet" />
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#passwordContainer
+{
+	display:none;
+}
+.initInputs
+{
+	position:absolute;
+	top:280px;
+	width:1060px;
+	left:150px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+}
+.initInputs li
+{
+	position:relative;
+	width:100%;
+	height:80px;
+}
+.dialogInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:1060px;
+	height:80px;
+	line-height:80px;
+}
+.dialogInputName/*对话框中输入框输入选项名称提示*/
+{
+	position:absolute;
+	left:5px;
+	font-size:32px;
+	font-weight:bold;
+	color:#fff;
+}
+.dialogValueContent/*对话框中输入框和选项框样式*/
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:524px;
+	text-align:center;
+	color:#FFF;
+	font-size:32px;
+	font-weight:bold;
+	overflow:hidden;
+	z-index:10;
+}
+.dialogOptionContentImg
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:524px;
+	height:80px;
+	z-index:5;
+}
+#locationTips
+{
+	position:absolute;
+	left:544px;
+	top:334px;
+	width:830px;
+	height:410px;
+	background-image:url(../images/Bg-Pop_up_box-03.png);
+	background-size:100% 100%;
+	display:none;
+}
+#tipsTitle
+{
+	position:absolute;
+	left:60px;
+	top:30px;
+	font-size:32px;
+	color:#fff;
+}
+#tipsContent
+{
+	position:absolute;
+	left:60px;
+	top:126px;
+	width:710px;
+	font-size:28px;
+	color:#bbb;
+}
+.tipsButton
+{
+	position:absolute;
+	top:328px;
+	background:url(../images/Focus-02-no.png) no-repeat; 
+	width:204px; 
+	height:64px; 
+	line-height:64px; 
+	text-align:center; 
+	color:#FFF; 
+	font-size:28px; 
+	font-weight:bold;
+}
+#tipsButtonFocus
+{
+	position:absolute;
+	top:328px;
+}
+</style>
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var FirstTitle;
+var subTitle;
+var remindWords;
+var hotkeyWords;
+var langWords				= top.sysMenuLang;
+//这部分变量是为初始化变量countrys做准备，用到全局多语言词句top.all_country
+var country_localCountry_index	=[1,83,2,3,4,5,6,28,7,8,9,
+								10,11,82,33,12,30,85,13,14,15,16,
+								17,18,19,20,31,21,22,23,24,32,
+								59,25];				//其中>=58的是国家枚举中没有的东西
+	
+var STTLEnableCtryPstionInCtryIndex= [8/*Finland*/,20/*Norway*/,6/*Denmark*/,29/*Sweden*/,14/*Ireland*/,
+										33/*United Kingdom*/,7/*Estonia*/];//STTL enable的国家在country_localCountry_index数组中的位置。
+var countrySum				= 34;
+var countrys				= new Array(countrySum);
+var password_items_words;
+var changePassRemindWords;
+var locationSelectWords;
+var tipsT;
+var tips;
+var auTips = 0;
+var yesNoWords;
+
+var setting = top.g_setting;
+var channel = top.g_channel;
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+
+
+var list_position_h 		= 0;			//当前语言在显示中的焦点的位置
+var offset 					= 0;			//offset = position_on_languageList - list_position_h
+var SELECT_STEP				= 70;			//单选列表框相邻两个选项之间的距离
+var line_count				= 0;			//使用滚动条的内容最大行数
+var focusOn					= "language";	//language/country/password/location/locationTips
+//language 下使用
+var position_on_languageList= 0;			//当前语言在语言列表中的绝对位置
+var language 				= 0;
+var languageSum 			= 27;			
+var language_language_index = top.mlmLangIndex;
+var language_country_index 	= top.mlmCountryIndex;//其中>=58的是国家枚举中没有的东西,在页面上添加的枚举
+//country下使用
+var country_localLanguage_index = [5,18,9,24,10,0,2,36,22,9,5,
+								8,13,6,6,12,33,279,5,14,15,16,
+								17,19,18,21,25,20,7,23,5,35,
+								468,6];		//同语言对应(选择国家后audiolang，Subtitle，teletext对应的语言在语言数组中的位置)
+
+
+								
+								
+var position_on_localCountryList = 0;
+//password 下使用
+var passNumCount 			= 0;
+var password 				= "";
+var rePassword 				= "";
+var SCAN_FOCUS_START		= 0;			//搜台框输入框焦点起始位置
+var SCAN_FORM_AND_FOCUS_STEP=80;			//当搜台框中每增加一个参数控制项需要增加的高度
+//locationTips下使用
+var form_position_h			= 0;			//locationTips时使用
+
+//滚动条使用
+var SCROLL_START_TOP		= 250;			//滚动条起始的top位置
+var SCROLL_MAX_HEIGHT		= 400;			//滚动条可以滚动范围长度
+var DISPLAY_COUNT			= 5;			//每一次最多可以显示的行数
+var E_LOCATION_HOME         = 0;
+
+var initNetImg  = new Image();
+initNetImg.src = "../images/Pic-Network_Wireless.png";
+
+//从配置文件中获取要显示的国家(ini文件)
+function getShowCountryFromProfiles()
+{
+	var num = 0;//要显示的国家的个数
+	for(var i=0;i<top.all_country_ini_name.length;i++)
+	{
+		//console.log("YM" + top.all_country_ini_name[i] + ":" + setting.getProperty("ro.sita.model.ShowCountry." + top.all_country_ini_name[i],"0"))
+		if(setting.getProperty("ro.sita.model.ShowCountry." + top.all_country_ini_name[i],"0") == "1")
+		{
+			country_localCountry_index[num] = i;
+			countrys[num] = top.all_country[i];
+		}
+	}
+}
+
+function refreshMultiLanguage()
+{
+	
+	FirstTitle 				= top.initialTitle[1];
+	subTitle				= top.initialOptions[0];
+	remindWords				= [top.initialPrompt[1],top.initialPrompt[2],top.initialPrompt[25],top.initialPrompt[3]];
+	hotkeyWords				= top.initialHotkeys;
+	
+	for(var i = 0;i < countrySum; i++)
+	{
+		countrys[i] = top.all_country[country_localCountry_index[i]];
+	}
+	password_items_words 	= [top.changePass[1],top.changePass[2]];
+	changePassRemindWords	= top.changePassDes;
+	locationSelectWords		= top.initLocations;
+	tipsT					= top.others[28];
+	tips					= top.eRPRemind;
+	auTips					= top.mEPSRemind;
+	yesNoWords				= top.yesNo;
+}
+
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    case top.E_MUTE_OFF:
+	    	top.showMute(0);
+	       break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		case top.VK_0:
+		case top.VK_1:
+		case top.VK_2:
+		case top.VK_3:
+		case top.VK_4:
+		case top.VK_5:
+		case top.VK_6:
+		case top.VK_7:
+		case top.VK_8:
+		case top.VK_9:
+			if(focusOn == "password")
+			{
+				doCheck(e.which - 48);
+			}
+			else
+			{
+				top.keyDownProcess(e);
+			}
+			break;
+		case top.VK_MENU:
+			//check pwd for changing Prject Id
+			//if(top.changeProjIdPwd == "062598")
+			//	top.enterProjIdPwd(keycode);
+			break;	
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function toLeft()
+{
+	if(focusOn == "country")
+	{
+		initLanguageSet();
+	}
+	else if(focusOn == "password")
+	{
+		initCountrySet();
+	}
+	else if(focusOn == "location")
+	{
+		initCountrySet();
+	}
+	else if(focusOn == "locationTips")
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+			$("tipsButtonFocus").style.left = "476px";
+		}
+		else 
+		{
+			form_position_h = 0;
+			$("tipsButtonFocus").style.left = "150px";
+		}
+	}
+}
+
+
+function toRight()
+{
+	if(focusOn == "language")
+	{
+		doEnter();
+	}
+	else if(focusOn == "country")
+	{
+		doEnter();
+	}
+	else if(focusOn == "location")
+	{
+		doEnter();
+	}
+	else if(focusOn == "locationTips")
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+			$("tipsButtonFocus").style.left = "476px";
+		}
+		else 
+		{
+			form_position_h = 0;
+			$("tipsButtonFocus").style.left = "150px";
+		}
+	}
+}
+
+function doEnter()
+{
+	if(focusOn == "language")
+	{
+		position_on_languageList = list_position_h + offset;
+		top.g_country = language_country_index[position_on_languageList];
+		top.g_language = language_language_index[position_on_languageList];
+		setting.menuLanguage = top.g_language;
+		top.doChangeMultilanguage(top.g_language);
+		initCountrySet();
+	}
+	else if(focusOn == "country")
+	{
+		position_on_localCountryList = list_position_h + offset;
+		top.g_country = country_localCountry_index[position_on_localCountryList];
+		channel.systemCountry = top.g_country;
+		setting.firstAudioLanguage = country_localLanguage_index[position_on_localCountryList];
+		setting.firstSubtitleLanguage = country_localLanguage_index[position_on_localCountryList];
+		setting.teletextLanguage = country_localLanguage_index[position_on_localCountryList];
+		var i = 0;
+		for(i = 0; i < STTLEnableCtryPstionInCtryIndex.length; i++)
+		{
+			if(position_on_localCountryList == STTLEnableCtryPstionInCtryIndex[i])
+			{
+				setting.enableSubtitle=1;
+				break;
+			}
+		}
+		if(i == STTLEnableCtryPstionInCtryIndex.length)
+		{
+			setting.enableSubtitle=0;
+			if(28 == position_on_localCountryList)/*spain*/
+			{
+				setting.hbbTVMode = 1;
+			}
+		}
+	
+		
+		if(9 == position_on_localCountryList)//france
+		{
+			setting.parentalRating = 18;
+			initPasswordSet();
+		}
+		else if(15 == position_on_localCountryList)//意大利
+		{
+			initPasswordSet();
+		}
+		else
+		{
+			initLocationSet();
+		}
+	}
+	else if(focusOn == "location")
+	{
+		if(list_position_h == 0)
+		{
+			setting.location = list_position_h;
+            /*
+            if (setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+            {
+                if (setting.location == E_LOCATION_HOME)
+                {
+                    setting.setProperty("sita.bootup.led.work", "off");
+                    setting.setProperty("sita.bootup.led.standby", "on");
+                }
+                else
+                {
+                    setting.setProperty("sita.bootup.led.work", "on");
+                    setting.setProperty("sita.bootup.led.standby", "breathing");
+                }
+            }
+            */
+			window.location.href = "initNetCondition.html";
+		}
+		else
+		{
+			initShopModeTips();
+		}
+	}
+	else if(focusOn == "locationTips")
+	{
+		if(form_position_h == 0)
+		{
+			setting.location = list_position_h;
+            /*
+            if (setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+            {
+                if (setting.location == E_LOCATION_HOME)
+                {
+                    setting.setProperty("sita.bootup.led.work", "off");
+                    setting.setProperty("sita.bootup.led.standby", "on");
+                }
+                else
+                {
+                    setting.setProperty("sita.bootup.led.work", "on");
+                    setting.setProperty("sita.bootup.led.standby", "breathing");
+                }
+            }
+            */
+			window.location.href = "initNetCondition.html";
+		}
+		else
+		{
+			$("locationTips").style.display = "none";
+			focusOn = "location";
+		}
+	}
+}
+
+function toUp()
+{
+	if(focusOn == "language")
+	{
+		if(list_position_h <= 0) 
+		{
+			if(offset > 0)
+			{
+				offset--;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = langWords[offset + i];
+				}
+			}
+			else
+			{
+				list_position_h = 4;
+				offset = languageSum - 5;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = langWords[offset + i];
+				}
+			}
+			$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*offset/line_count,10) + "px";
+		}
+		else
+		{
+			list_position_h--;
+		}	
+		changeShow();
+		$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+		showUpDownFlagImg(languageSum,offset);
+	}
+	else if(focusOn == "country")
+	{
+		if(list_position_h <= 0) 
+		{
+			if(offset > 0)
+			{
+				offset--;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = countrys[offset + i];
+				}
+			}
+			else
+			{
+				list_position_h = 4;
+				offset = countrySum - 5;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = countrys[offset + i];
+				}
+			}
+			$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*offset/line_count,10) + "px";
+		}
+		else
+		{
+			list_position_h--;
+		}	
+		$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+		showUpDownFlagImg(countrySum,offset);
+	}
+	else if(focusOn == "location")
+	{
+		if(list_position_h <= 0) 
+		{
+			list_position_h = 2;
+		}
+		else
+		{
+			list_position_h--;
+		}	
+		$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	}
+}
+function toDown()
+{
+	if(focusOn == "language")
+	{
+		if(list_position_h >= 4) 
+		{
+			if((offset + list_position_h) >= (languageSum - 1))
+			{
+				offset = 0;
+				list_position_h =0;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = langWords[offset + i];
+				}
+			}
+			else
+			{
+				offset++;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = langWords[offset + i];
+				}
+			}
+			$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*offset/line_count,10) + "px";
+		}
+		else
+		{
+			list_position_h++;
+		}	
+		changeShow();
+		$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+		showUpDownFlagImg(languageSum,offset);
+	}
+	else if(focusOn == "country")
+	{
+		if(list_position_h >= 4) 
+		{
+			if((offset + list_position_h) >= (countrySum - 1))
+			{
+				offset = 0;
+				list_position_h =0;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = countrys[offset + i];
+				}
+			}
+			else
+			{
+				offset++;
+				for(var i = 0; i < 5; i++)
+				{
+					selectSpanList[i].innerHTML = countrys[offset + i];
+				}
+			}
+			$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*offset/line_count,10) + "px";
+		}
+		else
+		{
+			list_position_h++;
+		}	
+		$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+		showUpDownFlagImg(countrySum,offset);
+	}
+	else if(focusOn == "location")
+	{
+		if(list_position_h >= 2) 
+		{
+			list_position_h=0;
+			
+		}
+		else
+		{
+			list_position_h++;
+		}	
+		$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	}
+}
+
+
+
+function showUpDownFlagImg(optionSum,positionOffset)
+{
+	//第一阶段不做鼠标，所以隐藏。
+	$("initListUpImg").style.opacity = 0;
+	$("initListDownImg").style.opacity = 0;
+	return;
+	//第一阶段不做鼠标，所以隐藏。
+	
+
+	if(optionSum <= 5)
+	{
+		$("initListUpImg").style.opacity = 0;
+		$("initListDownImg").style.opacity = 0;
+		return;
+	}
+	
+	if(positionOffset > 0)
+	{
+		$("initListUpImg").style.opacity = 1;
+	}
+	else
+	{
+		$("initListUpImg").style.opacity = 0;
+	}
+	
+	if((positionOffset + 4) >= (optionSum - 1))
+	{
+		$("initListDownImg").style.opacity = 0;
+	}
+	else
+	{
+		$("initListDownImg").style.opacity = 1;
+	}
+}
+
+function initLocationSet()
+{
+	$('selectTitleTag').innerHTML = remindWords[3];
+	list_position_h = 0;
+	selectSpanList[0].innerHTML = locationSelectWords[0];
+	selectSpanList[1].innerHTML = locationSelectWords[1];
+	selectSpanList[2].innerHTML = locationSelectWords[2];
+	containerLiList[3].style.display = "none";
+	containerLiList[4].style.display = "none";
+	showUpDownFlagImg(3,0);
+	
+	stepImgList[0].style.width = "1200px";
+	stepImgList[1].style.width = "0px";
+	$("back").style.display = "block";
+	$("select").style.display = "block";
+	$("next").style.display = "block";
+	focusOn = "location";
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	
+	$("ScrollBar").style.display = "none";
+	$("initBigSelectForm").style.display = "block";
+	$("passwordContainer").style.display = "none";
+}
+function initShopModeTips()
+{
+	form_position_h = 0;
+	$("tipsTitle").innerHTML = tipsT;
+	var buttons = $("locationTips").getElementsByTagName("div");
+	focusOn = "locationTips";
+	if(setting.getProperty("ro.sita.model.MODEL_REGION_NAME_CFG.REGION_NAME", "EU") == "AU")
+	{//澳洲平台 重新初始化变量
+		$("tipsContent").innerHTML = auTips;
+	}
+	else
+	{
+		$("tipsContent").innerHTML = tips;
+	}
+	buttons[0].innerHTML = yesNoWords[0];
+	buttons[1].innerHTML = yesNoWords[1];
+	$("tipsButtonFocus").style.left = "150px";
+	$("locationTips").style.display = "block";
+}
+
+
+function initPasswordSet()
+{
+	$("selectTitleTag").innerText = remindWords[2];
+	list_position_h = 0;
+	password = "";
+    rePassword = "";
+	passNumCount = 0;
+	
+	var containerLableList = $("passwordContainer").getElementsByTagName("label");
+	containerLableList[0].innerText=password_items_words[0];
+	containerLableList[1].innerText=password_items_words[1];
+	
+	$("pass").innerText = "_";
+	$("rePass").innerText = "";
+	$("passError").innerText = "";
+	$("scanInputFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_FORM_AND_FOCUS_STEP + "px";
+	$("back").style.display = "block";
+	$("select").style.display = "none";
+	$("next").style.display = "none";
+	focusOn = "password";
+	
+	$("ScrollBar").style.display = "none";
+	$("initBigSelectForm").style.display = "none";
+	$("passwordContainer").style.display = "block";
+}
+function doCheck(which)
+{
+	//需要说明的是String.fromCharCode(which)的值总是大写的，因为onkeyup和onkeydown事件不能主动判断键盘的大小写，onkeypress可以判断大小写。其中只有onkeyup事件能获取键盘按下去后的结果值，因为此处需用到要清除键盘按下去后的值，所以只能用onkeyup事件，考虑到遥控器只有数字键，没有大小写之分，所以够用了
+	
+	if(list_position_h == 0)
+	{
+		password = password + which;
+		$("pass").innerText = $("pass").innerText.substring(0,passNumCount)+"*"+"_";
+		passNumCount++;
+		var length = password.length;
+		if(length == 4)
+		{
+			list_position_h = 1;
+			$("scanInputFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_FORM_AND_FOCUS_STEP + "px";
+			$("pass").innerText = $("pass").innerText.substring(0,passNumCount);
+			$("rePass").innerText = "_";
+			passNumCount = 0;
+		}
+	}
+	else
+	{
+		rePassword = rePassword + which;
+		$("rePass").innerText = $("rePass").innerText.substring(0,passNumCount)+"*"+"_";
+		passNumCount++;
+		var length = rePassword.length;
+		if(length == 4)
+		{
+			if(rePassword == password)
+			{
+				if(password == "0000")
+				{
+					$("passError").innerText=changePassRemindWords[3];
+					password = "";
+					rePassword = "";
+					passNumCount = 0;
+					$("pass").innerText = "_";
+					$("rePass").innerText = "";
+					list_position_h = 0;
+					$("scanInputFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_FORM_AND_FOCUS_STEP + "px";
+				}
+				else
+				{
+					setting.password = password;
+					initLocationSet();
+				}
+			}
+			else
+			{
+				$("passError").innerText=changePassRemindWords[1];
+				password = "";
+				rePassword = "";
+				passNumCount = 0;
+				$("pass").innerText = "_";
+				$("rePass").innerText = "";
+				list_position_h = 0;
+				$("scanInputFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_FORM_AND_FOCUS_STEP + "px";
+			}
+		}
+	}
+}
+
+
+function initCountrySet()
+{
+	refreshMultiLanguage();
+	$("selectTitleTag").innerHTML = remindWords[1];
+	offset = 0;
+	list_position_h = 0;
+	fixCountryFocus();
+	
+	for(var i = 0; i < 5; i++)
+	{
+		containerLiList[i].style.display = "block";
+	}
+	
+	stepImgList[0].style.width = "800px";
+	stepImgList[1].style.width = "400px";
+	$("back").style.display = "block";
+	$("select").style.display = "block";
+	$("next").style.display = "block";
+	focusOn = "country";
+	
+	$("ScrollBar").style.display = "block";
+	$("initBigSelectForm").style.display = "block";
+	$("passwordContainer").style.display = "none";
+}
+function fixCountryFocus()
+{
+	var index = top.g_country;
+	var len = country_localCountry_index.length;
+	for(var i=0; i < len;i++)
+	{
+		if(country_localCountry_index[i]==index)
+		{
+			position_on_localCountryList = i;
+			break;
+		}
+	}
+	
+	if(position_on_localCountryList >= (countrySum - 5))//当前语言位置排在尾端
+	{
+		offset = countrySum - 5;
+		list_position_h = position_on_localCountryList - offset;
+		for(var i = 0; i < 5; i++)
+		{
+			selectSpanList[i].innerHTML = countrys[offset + i];
+		}
+	}
+	else
+	{
+		list_position_h = 0;
+		offset = position_on_localCountryList;
+		for(var i = 0; i < 5; i++)
+		{
+			selectSpanList[i].innerHTML = countrys[offset + i];
+		}
+	}
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*offset/line_count,10) + "px";
+	$("ScrollBar").style.height = parseInt(SCROLL_MAX_HEIGHT*DISPLAY_COUNT/line_count,10) + "px";
+	showUpDownFlagImg(countrySum,offset)
+}
+
+
+function initLanguageSet()
+{
+	$("selectTitleTag").innerHTML = remindWords[0];
+	language = top.g_language;
+	offset = 0;
+	list_position_h = 0;
+	line_count = languageSum
+	fixLanguageFocus();
+	
+	stepImgList[0].style.width = "400px";
+	stepImgList[1].style.width = "800px";
+	$("back").style.display = "none";
+	$("select").style.display = "block";
+	$("next").style.display = "block";
+	focusOn = "language";
+	
+	$("ScrollBar").style.display = "block";
+	$("initBigSelectForm").style.display = "block";
+	$("passwordContainer").style.display = "none";
+}
+//多语言变换
+var timer = 0;
+function changeShow()
+{
+	position_on_languageList = list_position_h + offset;
+	top.g_language = language_language_index[position_on_languageList];
+	if(timer)
+	{
+		clearTimeout(timer);
+	}
+	timer = setTimeout(function(){
+		top.doChangeMultilanguage(top.g_language);
+		setTimeout(function(){
+			FirstTitle 				= top.initialTitle[1];
+			subTitle				= top.initialOptions[0];
+			remindWords				= [top.initialPrompt[1],top.initialPrompt[2],top.initialPrompt[25],top.initialPrompt[3]];
+			hotkeyWords				= top.initialHotkeys;
+			$("initTitle").innerHTML = FirstTitle;
+			$("subTitleTag").innerHTML = subTitle;
+			$("selectTitleTag").innerHTML = remindWords[0];
+			
+			$("back").getElementsByTagName("span")[0].innerHTML = hotkeyWords[0];
+			$("select").getElementsByTagName("span")[0].innerHTML = hotkeyWords[1];
+			$("next").getElementsByTagName("span")[0].innerHTML = hotkeyWords[2];
+		},100);
+	},200);
+}
+function fixLanguageFocus()
+{
+    var index = language;
+	console.log("YM index:" + index);
+	var len = language_language_index.length;
+    for (var i=0; i < len; i++)
+    {
+        if (language_language_index[i] == index)
+        {
+            position_on_languageList = i;
+            break;
+        }
+    }
+	
+	if(position_on_languageList >= (languageSum - 5))//当前语言位置排在尾端
+	{
+		offset = languageSum - 5;
+		list_position_h = position_on_languageList - offset;
+		for(var i = 0; i < 5; i++)
+		{
+			selectSpanList[i].innerHTML = langWords[offset + i];
+		}
+	}
+	else
+	{
+		list_position_h = 0;
+		offset = position_on_languageList;
+		for(var i = 0; i < 5; i++)
+		{
+			selectSpanList[i].innerHTML = langWords[offset + i];
+		}
+	}
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	showUpDownFlagImg(languageSum,offset);
+		
+	
+	$("ScrollBar").style.top = SCROLL_START_TOP + parseInt(SCROLL_MAX_HEIGHT*offset/line_count,10) + "px";
+	$("ScrollBar").style.height = parseInt(SCROLL_MAX_HEIGHT*DISPLAY_COUNT/line_count,10) + "px";
+}
+var selectSpanList;
+var containerLiList;
+var stepImgList;
+var urlAttribute;
+var tipsButtonClassList;
+
+//初始化AU配置，主要是语言和国家
+function initAuData()
+{
+	country_localCountry_index	=[0,1,83,2,3,4,5,6,28,7,8,9,//au增加两个国家--澳大利亚,新西兰(0,26)
+								10,11,82,33,12,30,85,13,14,26,15,16,
+								17,18,19,20,31,21,22,23,24,32,
+								59,25];				//要显示的国家在国家数组中对应的位置，例如UK 对应的是25
+	country_localLanguage_index =[6,5,18,9,24,10,0,2,36,22,9,5,
+								8,13,6,6,12,33,279,5,14,6,15,16,
+								17,19,18,21,25,20,7,23,5,35,
+								468,6];		//同语言对应(选择国家后audiolang，Subtitle，teletext对应的语言在语言数组中的位置);选择澳大利亚和新西兰跟UK情况一样
+	countrySum	= 36;
+	countrys	= new Array(countrySum);
+	languageSum = langWords.length;
+}
+
+function init()
+{
+	if(setting.getProperty("ro.sita.model.MODEL_REGION_NAME_CFG.REGION_NAME", "EU") == "AU")//澳洲平台 重新初始化变量
+	{
+		initAuData();
+	}
+
+	refreshMultiLanguage();
+	top.stopTimeout();
+	setting.sendMsgToDBC(7);
+	urlAttribute = window.location.search.substring(1);//除去？
+	stepImgList = $("subTitleForm").getElementsByTagName("img");
+	containerLiList = $("container").getElementsByTagName("li");
+	selectSpanList = $("container").getElementsByTagName("span");
+	tipsButtonClassList = $("locationTips").getElementsByClassName("tipsButton");
+	//面板按键处理场景设置
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	
+	//top.g_channel.testLog("setting.tvRunningMode =" + top.g_setting.tvRunningMode);
+	
+	$("initTitle").innerHTML = FirstTitle;
+	$("subTitleTag").innerHTML = subTitle;
+	
+	$("back").getElementsByTagName("span")[0].innerHTML = hotkeyWords[0];
+	$("select").getElementsByTagName("span")[0].innerHTML = hotkeyWords[1];
+	$("next").getElementsByTagName("span")[0].innerHTML = hotkeyWords[2];
+	
+	
+    if (typeof(middleware) != "undefined")
+    {
+        middleware.setUIContext(1);
+    }
+	
+	if(top.isFirstInitNotifyThread)//初始化消息接收线程
+	{
+		setting.createNotifyThread();
+		setting.browserIsStart();
+		top.isFirstInitNotifyThread = 0;
+	}
+	
+	if(urlAttribute == "network")
+	{
+		initLocationSet();
+	}
+	else
+	{
+		initLanguageSet();
+	}
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2 && focusOn != "locationTips") toLeft();//right key
+	}
+	
+	for(var i = 0; i < 5; i++)
+	{
+		containerLiList[i].setAttribute("newAttr",i);
+		containerLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "language")
+				{
+					list_position_h = parseInt(this.getAttribute("newAttr"));
+					changeShow();
+					$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+					doEnter();
+				}
+				else if(focusOn == "country")
+				{
+					list_position_h = parseInt(this.getAttribute("newAttr"));
+					$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+					doEnter();
+				}
+				else if(focusOn == "location")
+				{
+					if(parseInt(this.getAttribute("newAttr")) < 3)
+					{
+						list_position_h = parseInt(this.getAttribute("newAttr"));
+						$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+						doEnter();
+					}
+				}
+			}
+		}
+	}
+	$("initListUpImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "language")
+			{
+				if($("initListUpImg").style.opacity == 1)
+				{
+					list_position_h = 0;
+					changeShow();
+					$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+					toUp();
+				}
+			}
+			else if(focusOn == "country")
+			{
+					if($("initListUpImg").style.opacity == 1)
+					{
+						list_position_h = 0;
+						$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+						toUp();
+					}
+			}
+		}
+	}
+	$("initListDownImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "language")
+			{
+				if($("initListDownImg").style.opacity == 1)
+				{
+					list_position_h = 4;
+					changeShow();
+					$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+					toDown();
+				}
+			}
+			else if(focusOn == "country")
+			{
+				if($("initListDownImg").style.opacity == 1)
+				{
+					list_position_h = 4;
+					$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+					toDown();
+				}
+			}
+		}
+	}
+	
+	for(var i = 0; i < 2; i++)
+	{
+		tipsButtonClassList[i].setAttribute("newAttr",i);
+		tipsButtonClassList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "locationTips")
+				{
+					form_position_h = parseInt(this.getAttribute("newAttr"));
+					if(form_position_h == 1)
+					{
+						$("tipsButtonFocus").style.left = "476px";
+					}
+					else 
+					{
+						$("tipsButtonFocus").style.left = "150px";
+					}
+					doEnter();
+				}
+			}
+		}
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:872px;" /><img class="initStepBigImg" src="../images/Step_big-01.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:678px;" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:400px;" /><img src="../images/Title_bloc-Bg.png" style="width:800px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        
+        <img id="ScrollBar" src="../images/Scroll_bar-Vertical.png" style="	position:absolute;width:10px;left:1250px;top:250px;"/>
+        
+        <div id="initBigSelectForm">
+        	<img id="initListUpImg" src="../images/arrow/U-Focus.png"/>
+            <ul id="container" class="initSelects">
+              <div id="initListFormFocus">
+                <img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+                <img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+              </div>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span ></span>
+              </li>
+              <li>
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+            </ul>
+            <img id="initListDownImg" src="../images/arrow/D-Focus.png"/>
+        </div>
+        
+        <div id="passwordContainer">
+            <ul class="initInputs">
+                <img id="scanInputFocus" class="dialogOptionContentImg" src="../images/Input_box-3-Focus.png"  />
+                <li>
+                    <div class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Input_box-3-Bg.png" />
+                        <label class="dialogInputName"></label>
+                        <span id="pass" class="dialogValueContent" ></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <img class="dialogOptionContentImg" src="../images/Input_box-3-Bg.png" />
+                        <label class="dialogInputName"></label>
+                        <span id="rePass" class="dialogValueContent" ></span>
+                    </div>
+                </li>
+             </ul>
+             
+            <span id="passError" class="midRemind" style="top:470px;color:#f00;"></span>
+        </div>
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+    
+    <div id="locationTips">
+        <img id="tipsButtonFocus" src="../images/Focus-02.png"/>
+    	<span id="tipsTitle"></span>
+        <span id="tipsContent"></span>
+        <div class="tipsButton" style="left:150px;"></div>
+        <div class="tipsButton" style="left:476px;"></div>
+    </div>
+</body>
+</html>

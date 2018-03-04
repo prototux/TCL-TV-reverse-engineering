@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="initWirelessList.js"></script>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+.inputBox
+{
+	position:absolute;
+	width:80px;
+	height:30px;
+	color:#FFFFFF;
+	font-size:24px;
+	border:thin solid #FFFFFF;
+	border-radius:15px;
+}
+#inputFocus
+{
+	position: absolute;
+	width: 76px;
+	height:30px;
+	color: black;
+	font-size: 24px;
+	border-radius: 15px;
+	border: 4px solid #00aadd;
+	left: 279px;
+	top: 41px;
+	display:block;
+}
+#remindList
+{
+    position:relative;
+	width:730px;
+	height:60px;
+	top:10px;
+	color:red;
+	font-size:24px;
+	text-align:center;
+	margin:10px 0px 10px 0px;
+}
+#buttonList
+{
+    position:relative;
+	width:670px;
+	height:80px;
+	left:30px;
+	top:10px;
+	margin:10px 0px 10px 0px;
+}
+#menuBox
+{
+	position:absolute;
+	top:130px;
+	left:10px;
+	width:1200px;
+	height:500px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	display:block;
+}
+#menuBox ul
+{
+	list-style-type:none;
+	padding:0px;
+}
+#menuListFocus
+{
+	position:absolute;
+	width:1200px;
+	height:70px;
+	top:150px;
+	z-index:100;
+}
+.list/* 设置 关于列表每项的属性*/
+{
+	position:relative;
+	width:1200px;
+	height:90px;
+	color:white;
+	font-size:28px;
+	margin:10px 0px 10px 0px;
+}
+.listFirstPropertyList/* 设置 关于列表每行第一项属性*/
+{
+	position: absolute;
+	left: 80px;
+	color: #b0b0b0;
+	font-size: 28px;
+	top: 18px;
+	width: 700px;
+	height:30px;
+	overflow: hidden;
+}
+.listSecondPropertyList/* 设置 关于列表每行第二项属性*/
+{
+	position: absolute;
+	left: 784px;
+	width: 200px;
+	height: 50px;
+	color: #b0b0b0;
+	font-size: 28px;
+	text-align:center;
+	top: 13px;
+}
+.listThirdPropertyList
+{
+	position: absolute;
+	left: 1100px;
+	width: 70px;
+	height: 50px;
+	color: #b0b0b0;
+	font-size: 28px;
+	text-align:center;
+	top: 13px;
+}
+.listThirdProperty/* 设置 关于列表每行第三项属性*/
+{
+	position: absolute;
+	left: 1100px;
+	width: 70px;
+	top: 13px;
+	padding-top:3px;
+	text-align:center;
+	color:#b0b0b0;
+}
+.listThirdProperty img
+{
+	position:absolute;
+	top:-20px;
+	left:0px;
+}
+.titleName/* 设置 关于列表标题的属性*/
+{
+	position:relative;
+	height:50px;
+	width:670px;
+	font-size:30px;
+	text-align:left;
+	color:#FFF;
+	font-weight:bold;
+	left:30px;
+}
+.container
+{
+	position:absolute;
+	bottom:300px;
+	left:100px;
+	width:700px;
+	height:280px;
+	background-color:#FFF;
+}
+.passwordlist
+{
+	position:absolute;
+	width:800px;
+	height:70px;
+	color:white;
+	font-size:25px;
+}
+.smallBar
+{
+	position:absolute;
+	width:25px;
+	height:70px;
+	width:70px;
+	border:thin solid #FFFFFF;
+	background:#6FF;
+}
+.font3_small
+{
+	position:absolute;
+	top:10px;
+	color:#000;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:28px;
+	width:100%;
+	height:50px;
+	text-align:center;
+}
+
+#wirelessInputPassword
+{	
+   position:absolute;
+	left:50px;/*650px;*/
+	width:600px;
+	opacity:0.8;
+	height:320px;
+	top:180px; 
+	display:none;
+}
+#scanTitle/*设置对话框的title*/
+{
+	position:absolute;
+	width:530px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+}
+#dialogButtonFocus/*对话框中按钮样式的焦点*/
+{
+	position: absolute;
+	top:30px;
+	left: 650px;
+	display:none;
+	pointer-events:none;
+}
+#scanInputFocus/*对话框中输入框焦点样式*/
+{
+	position:absolute;
+	left:330px;
+	top:120px;
+	display:block;
+	pointer-events:none;
+}
+#scanInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:500px; 
+	height:35px;
+	left:50px;
+	top:120px;
+}
+#scanButtonList
+{
+	position:absolute;
+	top:250px;
+	left:30px;
+	height:50px;
+	width:530px;
+}
+.scanButton/*对话框中的按钮样式*/
+{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	bottom: -10px;
+	padding-top:10px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	background: #333;
+	border-radius: 10px;
+}
+#scanPassRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#ccc;
+	font-size: 24px;
+	text-align: left;
+	left: 61px;
+	width: 480px;
+	display:block;
+}
+#thdListFocusList/*设三级菜单中焦点属性*/
+{
+	position:absolute;
+	top:80px;
+	left:30px;
+	width:1234px;
+	height:100px;
+	z-index:100;
+	pointer-events:none;
+}
+#ScrollBar
+{
+	position:absolute;
+	left:1300px;
+	border:none;
+	top:100px;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+	<span id="initTitle">initial setup</span>
+<!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+ 	<div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepBigImg" src="../images/Step_big-02.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:600px;" /><img src="../images/Title_bloc-Bg.png" style="width:600px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <!--------------------------中间内容部分-------------------------------------->
+         <div id="menuBox">
+       		<img id="thdListFocusList" src="../images/Focus-SSID.png">
+            <ul>
+            <li	class="list" style="height:60px;">
+                <span class="listFirstPropertyList"></span>
+                <span class="listSecondPropertyList"></span>
+                <span class="listThirdPropertyList"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyList"></span>
+                <div id="encrypt0" class="listSecondPropertyList"></div>
+                <div class="listThirdProperty">
+                    <img id="netList0" src="../images/Icon-WiFi-0.png"/>
+                    <img id="netLock0" src="../images/option/Lock.png" width="28" height="36" style="display:none;position:absolute; left:80px; top:5px;"/>
+                </div>
+            </li>
+            <li class="list" >
+                <span class="listFirstPropertyList"></span>
+                <div id="encrypt1" class="listSecondPropertyList"></div>
+                <div class="listThirdProperty">
+                    <img id="netList1" src="../images/Icon-WiFi-1.png"/>
+                    <img id="netLock1" src="../images/option/Lock.png" width="28" height="36" style="display:none;position:absolute; left:80px; top:5px;"/>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstPropertyList"></span>
+                <div id="encrypt2" class="listSecondPropertyList"></div>
+                <div class="listThirdProperty">
+                    <img id="netList2" src="../images/Icon-WiFi-2.png"/>
+                    <img id="netLock2" src="../images/option/Lock.png" width="28" height="36" style="display:none;position:absolute; left:80px; top:5px;"/>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstPropertyList"></span>
+                <div id="encrypt3" class="listSecondPropertyList"></div>
+                <div class="listThirdProperty">
+                    <img id="netList3" src="../images/Icon-WiFi-3.png"/>
+                    <img id="netLock3" src="../images/option/Lock.png" width="28" height="36" style="display:none;position:absolute; left:80px; top:5px;"/>
+                </div>
+            </li>
+             <li class="list" >
+                <span class="listFirstPropertyList"></span>
+                <div id="encrypt4" class="listSecondPropertyList"></div>
+                <div class="listThirdProperty">
+                    <img id="netList4" src="../images/Icon-WiFi-4.png"/>
+                    <img id="netLock4" src="../images/option/Lock.png" width="28" height="36" style="display:none;position:absolute; left:80px; top:5px;"/>
+                </div>
+            </li>
+   		</ul>
+        <img id="ScrollBar" src="../images/Scroll_bar-Vertical.png" style="	position:absolute;width:10px;left:1300px;"/>
+       </div>
+   <!-------------------------------------加密网络输入密码框--------------------------------------------->
+      <div id="wirelessInputPassword">
+      		<span id="scanTitle" ></span>
+          
+            <img id="scanInputFocus" src="../images/Input_box-2-Focus.png" />
+            <div id="scanInput">
+                <span id="scanInputTitle" class="dialogInputName" style="top:20px; font-size:28px; color:#b0b0b0;"></span>
+                <div id="scanInputContent" style="background:url(../images/Input_box-2-Bg.png); position:absolute; left:280px; width:884px; height:80px; font-size:28px; color:#b0b0b0; line-height:80px; text-align:center;">
+                </div>
+            </div>
+            <div id="scanPassRemind" style="top:220px; display:none"></div>
+            <div id="scanButtonList" style="top:250px;">
+              <div style="position:absolute;left:350px; top:30px; background:url(../images/Focus-02-no.png); width:204px; height:64px; line-height:64px; text-align:center; color:#FFFFFF; font-size:24px; font-weight:bold;"></div>
+        	  <div style="position:absolute;left:650px; top:30px; background:url(../images/Focus-02-no.png); width:204px; height:64px; line-height:64px; text-align:center; color:#FFFFFF; font-size:24px; font-weight:bold;"></div>
+               <img id="dialogButtonFocus" src="../images/Focus-02.png" />
+            </div>
+       </div>
+    
+         <!--------------------------底部操作提示-------------------------------------->
+        
+         <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img id="selctImg" src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

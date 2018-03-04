@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="init.css" rel="stylesheet" />
+
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var FirstTitle 				= top.initialTitle[1];
+var subTitle				= top.initialOptions[3];
+var remindWords				= top.initChPrompt[6];
+var hotkeyWords				= top.initialHotkeys;
+var scanOptions				= top.chSatAutoScanOptions;
+var satScanModeWords		= top.chSatAutoPromt[0];
+var satChannelsWords		= top.chSatAutoPromt[1];
+var searchWord				= top.others[8];
+var ok						= top.okCancel[0];
+
+var list_position_h 		= 0;			//当前语言在显示中的焦点的位置	
+var SCAN_FOCUS_START 		= 0;
+var SCAN_SAT_LIST_FOCUS_STEP= 80;
+var scanMode 				= 0;
+var channels 				= 0;
+
+var setting 				= top.g_setting;
+var channel 				= top.g_channel;
+document.onkeydown 			= keyproc;
+document.onnotify	 		= notifyProcess;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function toLeft()
+{
+	if(list_position_h == 0)
+	{
+		if(scanMode == 0)
+		{
+			scanMode = 1;
+		}
+		else
+		{
+			scanMode = 0;
+		}
+		$("satScanMode").innerHTML = satScanModeWords[scanMode];
+	}
+	else if(list_position_h == 1)
+	{
+		if(channels == 0)
+		{
+			channels = 1;
+		}
+		else
+		{
+			channels = 0;
+		}
+		$("satChannels").innerHTML = satChannelsWords[channels];
+	}
+}
+
+function toRight()
+{
+	if(list_position_h == 0)
+	{
+		if(scanMode == 0)
+		{
+			scanMode = 1;
+		}
+		else
+		{
+			scanMode = 0;
+		}
+		$("satScanMode").innerHTML = satScanModeWords[scanMode];
+	}
+	else if(list_position_h == 1)
+	{
+		if(channels == 0)
+		{
+			channels = 1;
+		}
+		else
+		{
+			channels = 0;
+		}
+		$("satChannels").innerHTML = satChannelsWords[channels];
+	}
+}
+
+function doEnter()
+{
+	if(list_position_h == 2)
+	{
+		document.location.href = "initChDvbsScan.html?" + operatorId + "&" + scanMode + "&" + channels;
+	}
+}
+
+function toUp()
+{
+	if(list_position_h <= 0)
+	{
+		list_position_h = 2;
+	}
+	else
+	{
+		list_position_h--;
+	}
+	showAutoScanFocus(list_position_h);
+}
+function toDown()
+{
+	if(list_position_h >= 2)
+	{
+		list_position_h = 0;
+	}
+	else
+	{
+		list_position_h++;
+	}
+	showAutoScanFocus(list_position_h);
+}
+/*
+描述：当focusOn为autoScan时，根据焦点位置显示焦点
+参数：value:list_position_h
+*/
+function showAutoScanFocus(value)
+{
+	if(value < 0 && value > 3)
+	{
+		return;
+	}
+	
+	if(value <= 1)
+	{
+		$("satButtton").style.border = "none";
+		$("satInfoFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+		$("satInfoFocus").style.display = "block";
+	}
+	else
+	{
+		$("satInfoFocus").style.display = "none";
+		$("satButtton").style.border = "medium solid #00aadd";
+	}
+	
+}
+
+function initAutoScan()
+{
+	scanMode = 0;
+	channels = 0;
+	
+	var scanFormLableList = $("scanForm").getElementsByTagName("label");
+	scanFormLableList[0].innerHTML = scanOptions[1];
+	scanFormLableList[1].innerHTML = scanOptions[2];
+	
+	$("satScanMode").innerHTML = satScanModeWords[scanMode];
+	$("satChannels").innerHTML = satChannelsWords[channels];
+	$("satButtton").innerHTML = searchWord;
+	
+	list_position_h = 0;
+	showAutoScanFocus(list_position_h);
+}
+
+var operatorId = 0;
+var scanFormLiList;
+function init()
+{
+	scanFormLiList = $("scanForm").getElementsByTagName("li");
+	var datas = window.location.search;
+	operatorId = datas.substring(1);
+	top.g_channel.testLog("in satellite operatorId = " + operatorId);
+	
+	$("initTitle").innerHTML = FirstTitle;
+	$("subTitleTag").innerHTML = subTitle;
+	$("selectTitleTag").innerHTML = remindWords;
+	
+	$("back").style.display = "none";
+	$("select").getElementsByTagName("span")[0].innerHTML = hotkeyWords[1];
+	$("ok").getElementsByTagName("span")[0].innerHTML = ok;
+	
+	initAutoScan();
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	for(var i = 0; i < 2; i++)
+	{
+		scanFormLiList[i].setAttribute("newAttr",i);
+		scanFormLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				list_position_h = parseInt(this.getAttribute("newAttr"));
+				showAutoScanFocus(list_position_h);
+				doEnter();
+			}
+		}
+	}
+	
+	$("satButtton").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			list_position_h = 2;
+			showAutoScanFocus(list_position_h);
+			doEnter();
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.dialogOptions/*设置对话框主体框架，新的对话框只需要调整高度和top值*/
+{
+	position:absolute;
+	left:150px;
+	top:240px;
+	width:1060px;
+	height:860px;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+.dialogOptions li
+{
+	position:relative;
+	width:100%;
+	height:60px;
+	padding:10px 0px 10px 0px;
+}
+
+.dialogInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	right:50px;
+	width:100%;
+	height:60px;
+	line-height:60px;
+	left:10px;
+	top:10px;
+}
+.dialogInputFocus/*对话框中输入框焦点样式*/
+{
+	position:absolute;
+	width:530px;
+	height:80px;
+	right:0px;
+}
+.dialogInputName/*对话框中输入框输入选项名称提示*/
+{
+	position:absolute;
+	left:5px;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+}
+.dialogInputContent/*对话框中输入框输入部分样式*/
+{
+	position:absolute;
+	right:50px;
+	width:400px;/*250px;*/
+	top:5px;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	color:#FFF;
+	font-size:28px;
+	font-weight:bold;
+	overflow:hidden;
+}
+.dialogInputTag/*对话框中特殊输入框最右边的小图标提示*/
+{
+	position: absolute;
+	width: 530px;
+	height:60px;
+	right:0px;
+}
+
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	left:600px;
+	top:640px;
+	padding-top:7px;
+	font-size:26px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+
+
+/***************弹出对话框通用样式************************/
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+     <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:1040px;" /><img src="../images/Title_bloc-Bg.png" style="width:160px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:180px;"></span>
+        
+         <!----------------------satelite edit form使用---------------------->
+        <ul id="scanForm" class="dialogOptions">
+        	<img id="satInfoFocus" class="dialogInputFocus" src="../images/Input_box-3-Focus.png" />
+            <li>
+                 <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="satScanMode" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <span id="satChannels" class="dialogInputContent"></span>
+                    <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                </div>
+            </li>
+        </ul>
+        
+        <span id="satButtton" class="dialogButton"></span>
+        
+         <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_2.png"/>
+            <span></span>
+        </div>
+        <div id="ok" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Ok.png"/>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>
+
+

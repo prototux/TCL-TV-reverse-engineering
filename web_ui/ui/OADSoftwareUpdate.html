@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自动检测到有新的升级文件的时候弹出</title>
+<link rel="stylesheet" type="text/css" href="all.css">
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.scanProgressValue
+{
+	position:absolute;
+	top:0px;
+	height:50px;
+	line-height:50px;
+	left:620px;
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+	margin-top:-5px;
+}
+</style>
+<script type="text/javascript">
+top.keySetForUI(1); 
+/******************** created by chenhua ***********************/
+var softUpdateTitleWords 		= top.netUpdateTitle;
+var okCancelWords				= top.okCancel;
+var updateRemindWords			= top.sysUpdateDes;
+var buttonWords					= [top.netUpdateButtonText[0],top.netUpdateButtonText[2],top.netUpdateButtonText[1]];
+
+document.onnotify 				= notifyProcess;
+document.onkeydown 				= keyDownProcess;
+var setting 					= top.g_setting;
+var channel			 			= top.g_channel;
+
+
+var form_position_h				= 0;					//副菜单或弹出框位置下标
+var FORM_START					= 198;					//弹出框焦点移动的开始位置
+var FORM_STEP					= 250;					//弹出框焦点移动的step
+var PROGRESS_WIDTH				= 600;					//进度条的总宽度
+var remindOption				= -1;					//对应在updateRemindWords中的提示
+var downloadUpdateTimer = 1;
+var signalBrokenTips =top.singalBrokenoffTips;
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	var value = evt.modifiers;
+	switch(msg)
+	{
+		case top.E_UPDATE_ETHERNET_CABLE_NOT_INSERT:
+		case top.E_WIRE_CONNECT_FAILURE:
+		case top.E_UPDATE_LOGIN_FAILED_POTAL:
+		case top.E_NETWORK_UPDATE_GET_UPDATED_INFORMATION:
+			//网络消息不处理
+	        break;
+		case top.E_UPDATE_NOT_GET_TO_UPDATE_INFORMATION:
+			remindOption=3;
+			showWarn(remindOption,value);
+	        break;
+		case top.E_UPDATE_CHANNEL_GET_UPDATED_INFORMATION:
+			remindOption = 9;
+			showWarn(remindOption,value);
+			break;
+		case top.E_PVR_DISK_UNPLUG://by usb 
+			//remindOption=5;
+			//showWarn(remindOption,value);
+	        break;
+		case top.E_UPDATE_FILE_NOT_FOUND://by usb
+			//remindOption=6;
+			//showWarn(remindOption,value);
+			break;
+		case top.E_UPDATE_USB_GET_UPDATE_INFO://by usb
+			//remindOption=4;
+			//showWarn(remindOption,value);
+			break;
+		case top.E_UPDATE_UPDATING_PROGRESS:
+			if (value >=0 && value <= 100) 
+			{
+				var left = parseInt((value*PROGRESS_WIDTH)/100,10);
+				$("progressLeft").style.width = left + "px";
+				$("progressRight").style.width = (PROGRESS_WIDTH - left) +　"px";
+				$("progressValue").innerHTML = value+"%";
+			}
+			break;
+		case top.E_UPDATE_VERIFIED_SUCESSFUL:
+			remindOption = 8;
+			showWarn(remindOption,value);
+			break;
+		case top.E_UPDATE_DOWNLOAD_PROGRESS:
+			if(downloadUpdateTimer)
+			{
+				clearTimeout(downloadUpdateTimer);
+				downloadUpdateTimer = setTimeout("showWarn(13, 0);setTimeout('top.gotoChannelPlay();return ;', 6000);", 1000*60*2);
+			};
+	   		if (value >=0 && value <= 100) 
+			{
+				var left = parseInt((value*PROGRESS_WIDTH)/100,10);
+				$("progressLeft").style.width = left + "px";
+				$("progressRight").style.width = (PROGRESS_WIDTH - left) +　"px";
+				$("progressValue").innerHTML = value+"%";
+			}
+	        break;
+		case top.E_UPDATE_DOWNLOAD_COMPLETE:
+			remindOption = 11;
+			showWarn(remindOption,value);
+			break;
+		case top.E_UPDATE_DOWNLOAD_FAILED://没有必要发该消息，download失败后自动再次download
+			break;
+		case top.E_UPDATE_VERIFIED_FAILED:
+			remindOption = 12;
+			showWarn(remindOption,value);
+			break;
+		case top.E_UPDATE_RESULT:
+			if(value == 1)
+			{
+				remindOption = 8;
+				showWarn(remindOption,value);
+			}
+			else if(value == 0)
+			{
+				remindOption = 12;
+				showWarn(remindOption,value);
+			}
+			break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+			top.systemEventProc(evt);
+		default:
+			//top.systemEventProc(evt);
+			break;
+	}
+}
+function keyDownProcess(evt)
+{
+	var ret = true;
+	var keycode = evt.which;
+	
+	switch (keycode)
+	{
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;  
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_BACK:
+		case top.VK_EXIT:
+			//toBack();
+			break;
+		case top.VK_MENU:
+			//top.jumpPage();
+			break;
+		default:
+			break;
+	}
+	return ret;
+}
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function toDown()
+{
+}
+
+function toUp()
+{
+}
+
+function doEnter()
+{
+	switch(remindOption)
+	{
+		case 0://by network:Ethernet Cable Not Insert
+		case 1://by network:No Access to the IP
+		case 2://by network:Login Failed Potal
+		case 3://by channel or by network:Not Get to Update Information
+		case 4:
+		case 5://by usb（暂时by channel升级也是靠USB的，所以当前by chanenl也会用到，更改以后应该不会了）:Please insert the usb flash drive
+		case 6://by usb:Update file not found
+			break;
+		case 9://by channel or network find infomation,download it or not 
+			if(form_position_h == 0)
+			{
+				remindOption = 10;//downloading
+				showWarn(remindOption,0);
+				clearTimeout(showWarnTimer);
+				setTimeout(function(){setting.startDownloadUpdateFile(2)},1000);//by channel
+			}
+			else
+			{
+				channel.testLog("LZY PRINT TEST\n");
+				setting.cancelOadUpdate();
+				toBack();
+			}
+			break;
+		case 10://downloading
+			//setting.stopDownloadUpdateFile(2);
+			setting.cancelOadUpdate();
+			toBack();
+			break;
+		case 11://downloaded
+			if(form_position_h == 0)
+			{
+				remindOption = 7;//updating start
+				showWarn(remindOption,0);
+				setTimeout(function(){setting.startUpdating(2)},1000);
+			}
+			else
+			{
+				toBack();
+			}
+			break;
+		default:
+			break;
+	}
+}
+function toBack()
+{
+	top.$("otherPage").src = "";
+	top.main.focus();
+}
+function toLeft()
+{
+	if(remindOption == 9)
+	{
+		clearTimeout(showWarnTimer);
+		showWarnTimer = setTimeout("toBack()",1000*60);
+	}
+	if(remindOption == 4 || remindOption == 9 || remindOption == 11)
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+		}
+		else
+		{
+			form_position_h = 0;
+		}
+		$("remindFocus").style.left = FORM_START + form_position_h*FORM_STEP + "px";
+	}
+}
+function toRight()
+{
+	if(remindOption == 9)
+	{
+		clearTimeout(showWarnTimer);
+		showWarnTimer = setTimeout("toBack()",1000*60);
+	}
+	if(remindOption == 4 || remindOption == 9 || remindOption == 11)
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+		}
+		else
+		{
+			form_position_h = 0;
+		}
+		$("remindFocus").style.left = FORM_START + form_position_h*FORM_STEP + "px";
+	}
+}
+
+
+/*
+描述：根据remind flag显示不同的提示
+参数：remindFlag：0 Ethernet cable not insert;1 net connecting fail;2 login fiald potal;
+3  not get update infomation;4 usb get update infomation;5 usb not insert;
+6 usb update file not found;7 updating,don't power off tv; 8 updating success;
+9 channel or network get update infomation;10 downloading...;11 download complete
+12 updating failed
+softVersion:software version
+*/
+function showWarn(remindFlag,softVersion)
+{
+	channel.testLog("remindOption = " + remindOption);
+	
+	var divList = $("buttons").getElementsByTagName("div");
+	clearTimeout(showWarnTimer);
+	if(remindFlag == 4)
+	{
+		divList[0].innerHTML = buttonWords[2];
+		divList[1].innerHTML = buttonWords[1];
+		divList[0].style.left = "200px";
+		divList[1].style.left = "450px";
+		divList[1].style.display = "block";
+		form_position_h = 0;
+		$("remindFocus").style.left = FORM_START + form_position_h*FORM_STEP + "px";
+
+		$("remindContent").innerHTML = updateRemindWords[remindFlag].replace(/XXXX/,setting.newSoftwareName());
+		$("buttons").style.display = "block";
+		$("progress").style.display  = "none";
+	}
+	else if(remindFlag == 9)
+	{
+		divList[0].innerHTML = buttonWords[0];
+		divList[1].innerHTML = buttonWords[1];
+		divList[0].style.left = "200px";
+		divList[1].style.left = "450px";
+		divList[1].style.display = "block";
+		form_position_h = 0;
+		$("remindFocus").style.left = FORM_START + form_position_h*FORM_STEP + "px";
+		
+		$("remindContent").innerHTML = updateRemindWords[remindFlag].replace(/XXXX/,softVersion);
+		$("buttons").style.display = "block";
+		$("progress").style.display  = "none";
+		showWarnTimer = setTimeout("toBack()",1000*60);
+	}
+	else if(remindFlag == 11)
+	{
+		divList[0].innerHTML = buttonWords[2];
+		divList[1].innerHTML = buttonWords[1];
+		divList[0].style.left = "200px";
+		divList[1].style.left = "450px";
+		divList[1].style.display = "block";
+		form_position_h = 0;
+		$("remindFocus").style.left = FORM_START + form_position_h*FORM_STEP + "px";
+		
+		$("remindContent").innerHTML = updateRemindWords[remindFlag];
+		$("buttons").style.display = "block";
+		$("progress").style.display  = "none";
+	}
+	else if(remindFlag == 3 || remindFlag == 5 || remindFlag == 6)
+	{
+		divList[0].innerHTML = okCancelWords[0];
+		divList[0].style.left = "324px";
+		divList[1].style.display = "none";
+		form_position_h = 0;
+		$("remindFocus").style.left = "324px";
+		
+		$("remindContent").innerHTML = updateRemindWords[remindFlag];
+		$("buttons").style.display = "block";
+		$("progress").style.display  = "none";
+	}
+	else if(remindFlag == 7)
+	{
+		$("remindContent").innerHTML = updateRemindWords[remindFlag];
+		$("buttons").style.display = "none";
+		/*$("progressLeft").style.width = "0px";
+		$("progressRight").style.width = PROGRESS_WIDTH + "px";
+		$("progressValue").innerHTML = "0%";
+		$("progress").style.display  = "block";*/
+	}
+	else if(remindFlag == 8 || remindFlag == 12)
+	{
+		$("remindContent").innerHTML = updateRemindWords[remindFlag];
+		$("buttons").style.display = "none";
+		$("progress").style.display  = "none";
+		//setTimeout("toBack()",3000);
+	}
+	else if(remindFlag == 10)
+	{
+		divList[0].innerHTML = okCancelWords[1];
+		divList[0].style.left = "324px";
+		divList[1].style.display = "none";
+		form_position_h = 0;
+		$("remindFocus").style.left = "324px";
+		
+		$("remindContent").innerHTML = updateRemindWords[remindFlag];
+		$("progressLeft").style.width = "0px";
+		$("progressRight").style.width = PROGRESS_WIDTH + "px";
+		$("progressValue").innerHTML = "0%";
+		
+		$("buttons").style.display = "block";
+		$("progress").style.display  = "block";
+	}
+	else if(remindFlag == 13)
+	{
+		form_position_h = 0;
+		//$("remindFocus").style.left = "324px";
+		$("remindContent").innerHTML = signalBrokenTips;
+		$("buttons").style.display = "none";
+		$("progress").style.display  = "none";
+	}
+	$("remindTitle").innerHTML = softUpdateTitleWords;
+	
+	top.showDialogPosition($("remindForm"),800,300,1920,1080,0,0);
+	$("remindForm").style.display="block";
+}
+var dialogButtonClassList;
+var showWarnTimer = 0;
+function init()
+{
+	//面板按键处理场景设置
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	dialogButtonClassList = $("buttons").getElementsByClassName("dialogButton");
+	var datas = window.location.search;
+	var value = datas.substring(1);
+	remindOption = 9;
+	showWarn(remindOption,value);
+	addMouseListener();
+}
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2){}; //do nothing;
+	}
+	
+	for(var i = 0; i < 2; i++) //3
+	{
+		dialogButtonClassList[i].setAttribute("newAttr",i);
+		dialogButtonClassList[i].onmousedown = function(evt){
+			if(evt.button == 0){
+				if(remindOption == 4 || remindOption == 9 || remindOption == 11)
+				{
+					form_position_h = parseInt(this.getAttribute("newAttr"));
+					$("remindFocus").style.left = FORM_START + form_position_h*FORM_STEP + "px";
+					doEnter();
+				}
+			}
+		}
+	}
+	
+}
+</script>
+</head>
+
+<body  onload="init()">
+ <!----------------------remind 弹出框使用---------------------->
+    <div id="remindForm" class="dialogForm" style=" height:300px;top:300px; display:none;">
+        <span id="remindTitle" class="dialogTitle" ></span>
+        <span id="remindContent" class="dialogContent" style="top:100px;"></span>
+        
+        
+        <div id="progress" class="dialogScanProgressContainer" style="top:174px;">
+            <div id="progressLeft" class="progressBarLeft"></div>
+            <!--<div class="progressBarCenter"></div>-->
+            <div id="progressRight" class="progressBarRight" ></div>
+            <span id="progressValue" class="scanProgressValue"></span>
+        </div>
+        
+        <div id="buttons">
+            <div id="yes" class="dialogButton" style="left:200px;"></div>
+            <div id="no" class="dialogButton" style="left:450px;"></div>
+            <span id="remindFocus" class="dialogButtonFocus" style="left:198px;"></span>
+        </div>
+   </div>
+</body>
+</html>

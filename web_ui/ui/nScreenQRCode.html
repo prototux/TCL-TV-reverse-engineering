@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#controller
+{
+	position:absolute;
+	width:1920px;
+	height:1080px;
+	background:url(images/nScreen_background03.png);
+}
+
+.descriptionContainer
+{
+	position:absolute;
+	left:50px;
+	width:1500px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.descriptionContainer li
+{
+	position:relative;
+	height:40px;
+	line-height:40px;
+	font-size:36px;
+	color:#fff;
+}
+
+#smart2DImg
+{
+	position:absolute;
+	width:450px;
+	height:450px;
+	left:735px;
+	top:140px;	
+}
+.smartDescriptionContainer
+{
+	position:absolute;
+	left:50px;
+	width:1800px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	/*add for this page*/
+	top:800px;
+}
+.smartDescriptionContainer li
+{
+	position:relative;
+	font-size:36px;
+	color:#fff;
+	text-align:center;
+}
+</style>
+<script type="text/javascript">
+var smartRemindWords	= top.smartQRReminds;
+
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+var channel = top.g_channel;
+var setting = top.g_setting;
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	switch(keycode)
+	{
+		case top.VK_BACK:
+		case top.VK_MENU:
+		case top.VK_EXIT:
+			toBack();
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		default:
+			break;
+	}
+	return ret;
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function notifyProcess(evt)
+{
+	top.systemEventProc(evt);
+}
+
+
+function toBack()
+{
+	top.$("otherPage").src = "";
+	top.main.focus();
+	top.setFrameFocusPage("main");
+}
+
+function doEnter()
+{	
+}
+
+function toLeft()
+{
+}
+
+function toRight()
+{
+}
+function initSmart()
+{	
+	var list = $("smartDescription").getElementsByTagName("li");
+	list[0].innerText = smartRemindWords[0];
+	list[1].innerText = smartRemindWords[1];
+}
+
+function init()
+{
+	top.stopTimeout();
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	$("smart2DImg").src = "/data/qrcode/qrencodeNscreen.png?" + new Date().getTime();
+	initSmart()
+	setTimeout("toBack()",90*1000);
+	addMouseListener();
+}
+
+function uninit()
+{
+	top.timeoutFuc.timeoutEnable=1;
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2) toBack();//right key
+	}
+	
+}
+
+
+</script>
+</head>
+
+<body onLoad="init()" onunload="uninit()">
+    <div id="controller">
+       	 <div id="smart" >
+         	<img id="smart2DImg"/>
+            <img  src="images/screen_QR_Code01.png" style="position:absolute;top:65px;left:660px; width:75px; height:75px;"/>
+            <img  src="images/screen_QR_Code02.png" style="position:absolute;top:65px;left:1185px; width:75px; height:75px;"/>
+            <img  src="images/screen_QR_Code04.png" style="position:absolute;top:590px;left:660px; width:75px; height:75px;"/>
+            <img  src="images/screen_QR_Code03.png" style="position:absolute;top:590px;left:1185px; width:75px; height:75px;"/>
+             <ul id="smartDescription" class="smartDescriptionContainer">
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

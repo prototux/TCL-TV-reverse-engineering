@@ -1,0 +1,1221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="eManualSecond.js"></script> 
+<style>
+
+body
+{
+	background:url('../images/home-page-TV/bg0.png');
+	background-repeat:repeat;
+    margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	width: 1920px;
+	height: 1080px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+
+}
+
+#titleDiv
+{
+	position:absolute;
+	top:96px;
+	left:290px;
+	width:1500px;
+	height:84px;
+	z-index:12;
+	/***
+	-webkit-animation-name: moveTitle;
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+	**/
+}
+/***
+@-webkit-keyframes moveTitle
+{
+   from {top:56px;opacity: 0.5;}
+   to {top:96px;opacity: 1;}
+}
+**/
+
+#titleSpan
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:40px;
+	text-align:left;
+	width:1100px;
+	color:#ffffff;
+	opacity: 0.7;
+	top:20px;
+}
+
+#mainDiv
+{
+	position:absolute;
+	top:100px;
+	left:0px;
+	width:1920px;
+	height:910px;
+}
+
+.plateDiv1FadeOutTemp
+{
+	position:absolute;
+	left:236px;
+	top:0px;
+	z-index:20;
+	/**
+	-webkit-animation-name: move1FadeOutTemp;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+	**/
+}
+/**
+@-webkit-keyframes move1FadeOutTemp
+{
+   0% {left:236px;}
+   100% {left:-1536px;}
+}
+**/
+
+.plateDiv1FadeOut
+{
+	position:absolute;
+	left:-1536px;
+	top:0px;
+	z-index:20;
+	/**
+	-webkit-transition-duration:1000ms;
+	**/
+	/****/
+	-webkit-animation-name: move1FadeOut;
+	-webkit-animation-duration: 0.8s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+	
+}
+/****/
+@-webkit-keyframes move1FadeOut
+{
+   0% {left:236px;}
+   100% {left:-1536px;}
+}
+
+.plateDivInit
+{
+	position:absolute;
+	top:0px;
+	left:236px;
+	width:1500px;
+	height:910px;
+	z-index:10;
+	-webkit-animation-name: move1;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes move1
+{
+   from {top:40px;opacity: 0.8;}
+   to {top:0px;opacity: 1;}
+}
+
+.plateDiv1ShakeLeft
+{
+	position:absolute;
+	top:0px;
+	left:236px;
+	z-index:10;
+	-webkit-animation-name: moveShakeLeft;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes moveShakeLeft
+{
+	0% {left:236px;}
+	35% {left:206px;}
+	65% {left:246px;}
+    100% {left:236px;}
+}
+.plateDiv1ShakeLeftTemp
+{
+	position:absolute;
+	top:0px;
+	left:236px;
+	z-index:10;
+}
+
+.plateDiv1ShakeRight
+{
+	position:absolute;
+	top:0px;
+	left:236px;
+	z-index:10;
+	-webkit-animation-name: moveShakeRight;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes moveShakeRight
+{
+	0% {left:236px;}
+	35% {left:266px;}
+	65% {left:226px;}
+    100% {left:236px;}
+}
+.plateDiv1ShakeRightTemp
+{
+	position:absolute;
+	top:0px;
+	left:236px;
+	z-index:10;
+}
+
+.plateDiv2FadeIn
+{
+	position:absolute;
+	top:72px;
+	left:510px;
+	opacity: 0;
+	transition-property:opacity; 
+	transition-duration:1s;
+}
+
+
+
+.plateDiv2
+{
+	position:absolute;
+	top:72px;
+	left:510px;
+	width:1270px;
+	height:762px;
+	z-index:9;
+	-webkit-animation-name: move2;
+	-webkit-animation-duration: 0.9s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+
+@-webkit-keyframes move2
+{
+   from {top:172px;left:300px;opacity: 0.1;visibility:hidden;}
+   to {top:72px;left:510px;opacity: 1;visibility:visible;}
+}
+
+.plateDiv3
+{
+	position:absolute;
+	top:136px;
+	left:754px;
+	width:1060px;
+	height:636px;
+	z-index:8;
+	-webkit-animation-name: move3;
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+
+@-webkit-keyframes move3
+{
+   from {top:236px;left:550px;opacity: 0.1;visibility:hidden;}
+   to {top:136px;left:754px;opacity: 1;visibility:visible;}
+}
+
+.plateDiv3FadeIn
+{
+	position:absolute;
+	top:136px;
+	left:754px;
+	opacity: 0;
+
+	-webkit-transform: scale(1.2);
+	transition-duration:1s;
+	
+	-webkit-animation-name: move3FadeIn;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes move3FadeIn
+{
+   from {left:610px;opacity:1;}
+   to {left:410px;opacity: 0;}
+}
+
+.plateDiv4
+{
+	position:absolute;
+	top:240px;
+	left:1010px;
+	width:772px;
+	height:434px;
+	z-index:7;
+	-webkit-animation-name: move4;
+	-webkit-animation-duration: 1.1s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes move4
+{
+   from {top:340px;left:810px;opacity: 0.1;visibility:hidden;}
+   to {top:240px;left:1010px;opacity: 1;visibility:visible;}
+}
+
+
+.plateDiv4FadeIn
+{
+	position:absolute;
+	top:240px;
+	left:410px;
+	opacity: 0;
+	-webkit-transform: scale(1.6, 1.6);
+	-webkit-transition-duration:200ms;
+	-webkit-animation-name: move4FadeIn;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes move4FadeIn
+{
+   from {left:690px;opacity:1;}
+   to {left:410px;opacity: 0;}
+}
+
+.pagenum
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	color:#ffffff;
+}
+
+#plateDivPagenum1
+{
+	font-size:72px;
+	text-align:right;
+	width:1370px;
+	top:730px;
+}
+
+#plateDivPagenum2
+{
+	font-size:58px;
+	text-align:right;
+	width:1165px;
+	top:630px;
+	opacity: 0.5;
+}
+
+#plateDivPagenum3
+{
+	font-size:48px;
+	text-align:right;
+	width:975px;
+	top:530px;
+	opacity: 0.35;
+}
+
+#plateDivPagenum4
+{
+	font-size:38px;
+	text-align:right;
+	width:765px;
+	top:390px;
+	opacity: 0.2;
+}
+
+#contentsDiv
+{
+	position:absolute;
+	top:80px;
+	left:54px;
+	width:1340px;
+	height:750px;
+	z-index:20;
+}
+
+.contentDiv
+{
+	position:absolute;
+	z-index:20;
+	width:1340px;
+	height:750px;
+	visibility:hidden;
+}
+
+#contentDiv1-1
+{
+	visibility:hidden;
+	
+}
+
+#contentDiv1-2
+{
+	visibility:hidden;
+}
+
+#contentDiv1-3
+{
+	visibility:hidden;
+}
+
+#contentDiv1-4
+{
+	visibility:hidden;
+}
+
+#contentDiv1-5
+{
+	visibility:hidden;
+}
+
+#plateDivLeft
+{
+	position:absolute;
+	top:260px;
+	left:0px;
+	width:160px;
+	height:460px;
+}
+
+
+.plateDivLeftMoveVisible
+{
+	visibility:visible;
+	-webkit-animation-name: moveLeftVisible;
+	-webkit-animation-duration: 0.2s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes moveLeftVisible
+{
+   from {left:10px;opacity: 0.1;visibility:hidden;}
+   to {left:0px;opacity: 1;visibility:visible;}
+}
+
+.plateDivLeftMoveHidden
+{
+	opacity: 0;
+	-webkit-animation-name: moveLeftHidden;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+}
+@-webkit-keyframes moveLeftHidden
+{
+   from {left:0px;opacity: 1;}
+   to {left:10px;opacity: 0;}
+}
+
+.plateDiv1FadeIn
+{
+	position:absolute;
+	left:236px;
+	top:0px;
+	z-index:10;
+	-webkit-animation-name: moveFadeIn;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+	
+	-webkit-transform:scale(1);
+}
+@-webkit-keyframes moveFadeIn
+{
+   from {opacity: 1;}
+   to {opacity: 1;}
+}
+
+.plateDivVisible3_2
+{
+	position:absolute;
+	left:605px;
+	top:130px;
+	-webkit-transform: scale(1.2);
+	-webkit-transition-duration:0.4s;
+	-webkit-animation-name: move3_2;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move3_2
+{
+   0% {left:734px;top:100px;}
+   100% {left:605px;top:130px;}
+}
+
+.plateDivVisible4_3
+{
+	position:absolute;
+	left:880px;
+	top:230px;
+	-webkit-transform: scale(1.24, 1.23);
+	-webkit-transition-duration:0.4s;
+	
+	-webkit-animation-name: move4_3;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move4_3
+{
+   0% {left:1010px;top:240px;}
+   100% {left:880px;top:230px;}
+}
+
+.plateDivVisible4_2
+{
+	position:absolute;
+	left:605px;
+	top:230px;
+	transition: all 0.4s linear;
+	-webkit-transform: scale(1.5, 1.5);
+}
+
+.plateDiv1Transparent
+{
+	opacity: 0;
+	transition-property:opacity; 
+	transition-duration:1s;
+}
+
+.plateDiv1TranslateTemp
+{
+	position:absolute;
+	left:-1536px;
+	top:0px;
+	opacity: 1;
+	z-index:10;
+	opacity: 0;
+}
+
+.plateDiv1TranslateR
+{
+	position:absolute;
+	left:236px;
+	top:0px;
+	opacity: 1;
+	z-index:10;
+	-webkit-animation-name: moveTranslateR;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveTranslateR
+{
+   0% {left:-1236px;opacity: 0.8;}
+   100% {left:236px;opacity: 1;}
+}
+
+
+
+
+
+
+.contentSpanTitle
+{
+	position:absolute;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium", Arial;
+	color:#ffffff;
+	font-size:60px;
+	text-align:left;
+	top:43px;
+	left:53px;
+}
+
+.contentSpanLetterSpacing
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:27px;
+	letter-spacing:-2px;
+}
+
+.contentSpanNormal
+{
+	position:absolute;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium", Arial;
+	color:#ffffff;
+	font-size:27px;
+    word-wrap:break-word;
+}
+
+.contentSpanNormalRight
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:27px;
+	text-align: right;
+    word-wrap:break-word;
+}
+
+.contentSpanSmall
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:22px;
+	text-align: center;
+    word-wrap:break-word;
+}
+
+.contentSpanSmallRight
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:22px;
+	text-align: right;
+    word-wrap:break-word;
+}
+
+.contentSpanBold
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:27px;
+	font-weight:bold;
+}
+
+.contentSpanFAQ1
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:27px;
+	font-weight:bold;
+    word-wrap:break-word;
+}
+
+.contentSpanFAQ1LetterSpacing
+{
+	position:absolute;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium", Arial;
+	color:#ffffff;
+	font-size:27px;
+	font-weight:bold;
+	letter-spacing:-2px;
+}
+
+.contentSpanFAQ2
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:25px;
+    word-wrap:break-word;
+}
+
+.contentSpanFAQ2LetterSpacing
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial;
+	color:#ffffff;
+	font-size:25px;
+	letter-spacing:-2px;
+}
+
+.contentSpanTerms
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Helvetica;
+    width:1180px;
+	color:#ffffff;
+	font-size:25px;
+	text-justify:auto; 
+	text-align:justify;
+	white-space:pre-line;
+    word-wrap:break-word;
+}
+
+.termsDiv
+{
+	position:absolute;
+	top:135px;
+	left:50px;
+	width:1180px;
+	height:510px;
+	overflow:hidden;
+}
+
+#leftArrowDiv
+{
+	position:fixed;
+	top:400px;
+	left:20px;
+	width:150px;
+	height:230px;
+	z-index: 25;
+}
+
+#rightArrowDiv
+{
+	position:fixed;
+	top:400px;
+	left:1780px;
+	width:150px;
+	height:230px;
+	z-index: 25;
+}
+
+</style>
+
+
+</head>
+
+<body onload="init()">
+
+<div id="titleDiv">
+<img id = "titleImg" src = "../images/emanual/Icon_Control&Connection_S.png"/>
+<span id = "titleSpan"></span>
+</div>
+
+<div id = "mainDiv">
+
+<div id = "plateDiv1" class = "plateDivInit">
+<img id = "plateDivBg1" src = "../images/emanual/Bg_Plate_1.png"/>
+<span id = "plateDivPagenum1" class = "pagenum">1</span>
+
+<div id = "contentsDiv">
+
+<!---Control Connection---->
+<div id = "contentDiv1-1" class = "contentDiv">
+<img style = "position:absolute;top:107px;left:460px;" id="contentDiv1-1Img"/>
+<span id = "contentSpan1-1Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-1-1" class = "contentSpanNormalRight" style = "top:210px;left:15px;width:430px;"></span>
+<span id = "contentSpan1-1-2" class = "contentSpanNormalRight" style = "top:305px;left:15px;width:430px;"></span>
+<span id = "contentSpan1-1-3" class = "contentSpanNormalRight" style = "top:425px;left:15px;width:430px;"></span>
+<span id = "contentSpan1-1-4" class = "contentSpanNormal" style = "top:138px;left:800px;width:530px;"></span>
+<span id = "contentSpan1-1-5" class = "contentSpanNormal" style = "top:252px;left:800px;width:530px;"></span>
+<span id = "contentSpan1-1-6" class = "contentSpanNormal" style = "top:354px;left:800px;width:530px"></span>
+<span id = "contentSpan1-1-7" class = "contentSpanNormal" style = "top:478px;left:800px;width:530px;"></span>
+<span id = "contentSpan1-1-8" class = "contentSpanNormal" style = "top:540px;left:729px;width:530px;"></span>
+</div>
+
+<div id = "contentDiv1-2" class = "contentDiv">
+<img style = "position:absolute;top:142px;left:125px;" id="contentDiv1-2Img"/>
+<span id = "contentSpan1-2Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-2-1" class = "contentSpanNormal" style = "top:148px;left:305px;width:345px;"></span>
+<span id = "contentSpan1-2-2" class = "contentSpanNormal" style = "top:223px;left:305px;width:345px;"></span>
+<span id = "contentSpan1-2-3" class = "contentSpanNormal" style = "top:303px;left:305px;width:345px;"></span>
+<span id = "contentSpan1-2-4" class = "contentSpanNormal" style = "top:383px;left:305px;width:345px;"></span>
+<span id = "contentSpan1-2-5" class = "contentSpanNormal" style = "top:462px;left:305px;width:345px;"></span>
+<span id = "contentSpan1-2-6" class = "contentSpanNormal" style = "top:538px;left:305px;width:345px;"></span>
+<span id = "contentSpan1-2-7" class = "contentSpanNormal" style = "top:615px;left:305px;width:345px;"></span>
+</div>
+
+<div id = "contentDiv1-3" class = "contentDiv">
+<img style = "position:absolute;top:142px;left:110px;" id="contentDiv1-3Img"/>
+<span id = "contentSpan1-3Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-3-1" class = "contentSpanNormal" style = "top:163px;left:235px;width:345px;"></span>
+<span id = "contentSpan1-3-2" class = "contentSpanNormal" style = "top:258px;left:235px;width:345px;"></span>
+<span id = "contentSpan1-3-3" class = "contentSpanNormal" style = "top:355px;left:235px;width:345px;"></span>
+<span id = "contentSpan1-3-4" class = "contentSpanNormal" style = "top:448px;left:235px;width:325px;"></span>
+<span id = "contentSpan1-3-5" class = "contentSpanNormal" style = "top:543px;left:235px;width:345px;"></span>
+<span id = "contentSpan1-3-6" class = "contentSpanNormal" style = "top:648px;left:120px;width:955px;"></span>
+</div>
+
+<div id = "contentDiv1-4" class = "contentDiv">
+<img style = "position:absolute;top:175px;left:125px;" id="contentDiv1-4Img"/>
+<span id = "contentSpan1-4Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-4-1" class = "contentSpanSmall" style = "top:120px;left:125px;width:88px;"></span>
+<span id = "contentSpan1-4-2" class = "contentSpanSmall" style = "top:120px;left:255px;width:178px;"></span>
+<span id = "contentSpan1-4-3" class = "contentSpanSmall" style = "top:120px;left:457px;width:212px;"></span>
+<span id = "contentSpan1-4-4" class = "contentSpanSmall" style = "top:120px;left:735px;width:197px;"></span>
+<span id = "contentSpan1-4-5" class = "contentSpanSmall" style = "top:120px;left:970px;width:280px;"></span>
+<span id = "contentSpan1-4-6" class = "contentSpanSmall" style = "top:650px;left:100px;width:130px;"></span>
+<span id = "contentSpan1-4-7" class = "contentSpanSmall" style = "top:650px;left:255px;width:170px;"></span>
+<span id = "contentSpan1-4-8" class = "contentSpanSmall" style = "top:650px;left:468px;width:212px;"></span>
+<span id = "contentSpan1-4-9" class = "contentSpanSmall" style = "top:650px;left:730px;width:197px;"></span>
+<span id = "contentSpan1-4-10" class = "contentSpanSmall" style = "top:650px;left:975px;width:280px;"></span>
+<span id = "contentSpan1-4-11" class = "contentSpanSmallRight" style = "top:710px;left:500px;width:750px;"></span>
+</div>
+
+<div id = "contentDiv1-5" class = "contentDiv">
+<img style = "position:absolute;top:175px;left:105px;" id="contentDiv1-5Img"/>
+<span id = "contentSpan1-5Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-5-1" class = "contentSpanSmall" style = "top:120px;left:90px;width:131px;"></span>
+<span id = "contentSpan1-5-2" class = "contentSpanSmall" style = "top:120px;left:228px;width:133px;"></span>
+<span id = "contentSpan1-5-3" class = "contentSpanSmall" style = "top:120px;left:370px;width:166px;"></span>
+<span id = "contentSpan1-5-4" class = "contentSpanSmall" style = "top:120px;left:545px;width:238px;"></span>
+<span id = "contentSpan1-5-5" class = "contentSpanSmall" style = "top:120px;left:810px;width:160px;"></span>
+<span id = "contentSpan1-5-6" class = "contentSpanSmall" style = "top:120px;left:980px;width:130px;font-size:18px;"></span>
+<span id = "contentSpan1-5-7" class = "contentSpanSmall" style = "top:120px;left:1120px;width:160px;font-size:18px;"></span>
+<span id = "contentSpan1-5-8" class = "contentSpanSmall" style = "top:650px;left:90px;width:131px;"></span>
+<span id = "contentSpan1-5-9" class = "contentSpanSmall" style = "top:650px;left:225px;width:131px;"></span>
+<span id = "contentSpan1-5-10" class = "contentSpanSmall" style = "top:650px;left:370px;width:166px;"></span>
+<span id = "contentSpan1-5-11" class = "contentSpanSmall" style = "top:650px;left:550px;width:248px;font-size:18px;"></span>
+<span id = "contentSpan1-5-12" class = "contentSpanSmall" style = "top:650px;left:810px;width:160px;"></span>
+<span id = "contentSpan1-5-13" class = "contentSpanSmall" style = "top:650px;left:995px;width:255px;font-size:18px;"></span>
+<span id = "contentSpan1-5-14" class = "contentSpanSmallRight" style = "top:710px;left:500px;width:750px;"></span>
+</div>
+
+<div id = "contentDiv1-6" class = "contentDiv">
+<img style = "position:absolute;top:175px;left:105px;" id="contentDiv1-6Img"/>
+<span id = "contentSpan1-6Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-6-1" class = "contentSpanSmall" style = "top:120px;left:90px;width:190px;"></span>
+<span id = "contentSpan1-6-2" class = "contentSpanSmall" style = "top:120px;left:288px;width:131px;"></span>
+<span id = "contentSpan1-6-3" class = "contentSpanSmall" style = "top:120px;left:435px;width:167px;"></span>
+<span id = "contentSpan1-6-4" class = "contentSpanSmall" style = "top:120px;left:625px;width:95px;"></span>
+<span id = "contentSpan1-6-5" class = "contentSpanSmall" style = "top:120px;left:720px;width:130px;"></span>
+<span id = "contentSpan1-6-6" class = "contentSpanSmall" style = "top:120px;left:980px;width:250px;"></span>
+<span id = "contentSpan1-6-7" class = "contentSpanSmall" style = "top:650px;left:100px;width:170px;"></span>
+<span id = "contentSpan1-6-8" class = "contentSpanSmall" style = "top:650px;left:285px;width:131px;"></span>
+<span id = "contentSpan1-6-9" class = "contentSpanSmall" style = "top:650px;left:440px;width:155px;"></span>
+<span id = "contentSpan1-6-10" class = "contentSpanSmall" style = "top:650px;left:625px;width:230px;"></span>
+<span id = "contentSpan1-6-11" class = "contentSpanSmall" style = "top:650px;left:890px;width:328px;"></span>
+<span id = "contentSpan1-6-12" class = "contentSpanSmallRight" style = "top:710px;left:500px;width:750px;"></span>
+</div>
+
+<div id = "contentDiv1-7" class = "contentDiv">
+<img style = "position:absolute;top:175px;left:75px;" id="contentDiv1-7Img"/>
+<span id = "contentSpan1-7Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan1-7-1" class = "contentSpanSmall" style = "top:332px;left:210px;width:190px;"></span>
+<span id = "contentSpan1-7-2" class = "contentSpanSmall" style = "top:592px;left:130px;width:190px;"></span>
+<span id = "contentSpan1-7-3" class = "contentSpanSmall" style = "top:490px;left:576px;width:167px;"></span>
+<span id = "contentSpan1-7-4" class = "contentSpanSmall" style = "top:306px;left:865px;width:190px;"></span>
+<span id = "contentSpan1-7-5" class = "contentSpanSmall" style = "top:592px;left:1037px;width:130px;"></span>
+</div>
+<!---Control Connection end---->
+
+<!---Basic Operations---->
+<div id = "contentDiv2-1" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv2-1-1Img" />
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv2-1-2Img"/>
+<span id = "contentSpan2-1Title" class = "contentSpanTitle"></span>
+
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv2-1-3Img"/>
+<span id = "contentSpan2-1-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+
+<img style = "position:absolute;top:247px;left:53px;" id="contentDiv2-1-4Img"/>
+<span id = "contentSpan2-1-2" class = "contentSpanNormal" style = "top:235px;left:75px;width:500px;"></span>
+
+</div>
+<div id = "contentDiv2-2" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv2-2-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;" id="contentDiv2-2-2Img"/>
+<span id = "contentSpan2-2Title" class = "contentSpanTitle"></span>
+
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv2-2-3Img"/>
+<span id = "contentSpan2-2-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv2-3" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv2-3-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv2-3-2Img"/>
+<span id = "contentSpan2-3Title" class = "contentSpanTitle"></span>
+
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv2-3-3Img"/>
+<span id = "contentSpan2-3-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+
+<!---Basic Operations end---->
+
+<!---Apps---->
+
+<div id = "contentDiv3-1" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv3-1-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv3-1-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv3-1-3Img"/>
+<span id = "contentSpan3-1Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan3-1-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv3-2" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv3-2-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;" id="contentDiv3-2-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv3-2-3Img"/>
+<span id = "contentSpan3-2Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan3-2-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv3-3" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv3-3-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv3-3-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv3-3-3Img"/>
+<img style = "position:absolute;top:282px;left:53px;" id="contentDiv3-3-4Img"/>
+<img style = "position:absolute;top:387px;left:53px;" id="contentDiv3-3-5Img"/>
+<span id = "contentSpan3-3Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan3-3-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+<span id = "contentSpan3-3-2" class = "contentSpanNormal" style = "top:270px;left:75px;width:500px;"></span>
+<span id = "contentSpan3-3-3" class = "contentSpanNormal" style = "top:375px;left:75px;width:500px;"></span>
+</div>
+<!--------
+<div id = "contentDiv3-4" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:205px;left:53px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:275px;left:53px;"/>
+<span id = "contentSpan3-4Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan3-4-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+<span id = "contentSpan3-4-2" class = "contentSpanNormal" style = "top:195px;left:75px;width:426px;"></span>
+<span id = "contentSpan3-4-3" class = "contentSpanNormal" style = "top:265px;left:75px;width:426px;"></span>
+</div>
+
+<div id = "contentDiv3-5" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/screen3-3.png" style = "position:absolute;top:135px;left:615px;width:614px;height:345px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan3-5Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan3-5-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+------>
+<!---Apps end---->
+
+<!---TV---->
+<div id = "contentDiv4-1" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv4-1-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;" id="contentDiv4-1-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv4-1-3Img"/>
+<span id = "contentSpan4-1Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan4-1-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+
+<img style = "position:absolute;top:283px;left:53px;" id="contentDiv4-1-4Img"/>
+<span id = "contentSpan4-1-2" class = "contentSpanNormal" style = "top:275px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv4-2" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv4-2-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv4-2-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv4-2-3Img"/>
+<span id = "contentSpan4-2Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan4-2-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+
+<img style = "position:absolute;top:283px;left:53px;" id="contentDiv4-2-4Img"/>
+<span id = "contentSpan4-2-2" class = "contentSpanNormal" style = "top:275px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv4-3" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv4-3-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv4-3-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv4-3-3Img"/>
+<span id = "contentSpan4-3Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan4-3-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv4-4" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv4-4-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv4-4-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv4-4-3Img"/>
+<span id = "contentSpan4-4Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan4-4-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv4-5" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv4-5-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv4-5-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv4-5-3Img"/>
+<span id = "contentSpan4-5Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan4-5-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+<!---TV end---->
+
+<!---Videos---->
+<!--
+<div id = "contentDiv5-1" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan5-1Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-1-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+
+<div id = "contentDiv5-2" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan5-2Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-2-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+
+<div id = "contentDiv5-3" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan5-3Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-3-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+
+<div id = "contentDiv5-4" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan5-4Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-4-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+
+<div id = "contentDiv5-5" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan5-5Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-5-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+
+<div id = "contentDiv5-6" class = "contentDiv">
+<img src = "../images/emanual/TV.png" style = "position:absolute;top:121px;left:601px;"/>
+<img src = "../images/emanual/e2-favorite.jpg" style = "position:absolute;top:135px;left:615px;"/>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:137px;left:53px;"/>
+<span id = "contentSpan5-6Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-6-1" class = "contentSpanNormal" style = "top:125px;left:75px;width:426px;"></span>
+</div>
+-->
+<!---Videos end---->
+
+<!---Settings---->
+<div id = "contentDiv5-1" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv5-1-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv5-1-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv5-1-3Img"/>
+<span id = "contentSpan5-1Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-1-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+
+<img style = "position:absolute;top:287px;left:53px;" id="contentDiv5-1-4Img"/>
+<span id = "contentSpan5-1-2" class = "contentSpanNormal" style = "top:275px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv5-2" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv5-2-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv5-2-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv5-2-3Img"/>
+<span id = "contentSpan5-2Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-2-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+
+<img style = "position:absolute;top:287px;left:53px;" id="contentDiv5-2-4Img"/>
+<span id = "contentSpan5-2-2" class = "contentSpanNormal" style = "top:275px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv5-3" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv5-3-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv5-3-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv5-3-3Img"/>
+<span id = "contentSpan5-3Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-3-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+
+<img style = "position:absolute;top:277px;left:53px;" id="contentDiv5-3-4Img"/>
+<span id = "contentSpan5-3-2" class = "contentSpanNormal" style = "top:275px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv5-4" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv5-4-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv5-4-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv5-4-3Img"/>
+<span id = "contentSpan5-4Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-4-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv5-5" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv5-5-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;width:614px;height:345px;" id="contentDiv5-5-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv5-5-3Img"/>
+<span id = "contentSpan5-5Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-5-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+
+<div id = "contentDiv5-6" class = "contentDiv">
+<img style = "position:absolute;top:161px;left:601px;" id="contentDiv5-6-1Img"/>
+<img style = "position:absolute;top:175px;left:615px;" id="contentDiv5-6-2Img"/>
+<img style = "position:absolute;top:177px;left:53px;" id="contentDiv5-6-3Img"/>
+<span id = "contentSpan5-6Title" class = "contentSpanTitle"></span>
+<span id = "contentSpan5-6-1" class = "contentSpanNormal" style = "top:165px;left:75px;width:500px;"></span>
+</div>
+<!---Settings end---->
+
+<!---FAQ---->
+<div id = "contentDiv6-1" class = "contentDiv">
+<span id = "contentSpan6-1Title" class = "contentSpanTitle"></span>
+<img style = "position:absolute;top:155px;left:70px;" id="contentDiv6-1-1Img"/>
+<img style = "position:absolute;top:155px;left:710px;" id="contentDiv6-1-2Img"/>
+
+<span id = "contentSpan6-1-1" class = "contentSpanFAQ1" style = "top:368px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-1-1-1" class = "contentSpanFAQ2" style = "top:434px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-1-1-2" class = "contentSpanFAQ2" style = "top:490px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-1-1-3" class = "contentSpanFAQ2" style = "top:585px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-1-1-4" class = "contentSpanFAQ2" style = "top:650px;left:70px;width:590px;"></span>
+<img style = "position:absolute;top:444px;left:47px;" id="contentDiv6-1-4Img"/>
+<img style = "position:absolute;top:500px;left:47px;" id="contentDiv6-1-5Img"/>
+<img style = "position:absolute;top:595px;left:47px;" id="contentDiv6-1-6Img"/>
+<img style = "position:absolute;top:660px;left:47px;" id="contentDiv6-1-7Img"/>
+
+<span id = "contentSpan6-1-2" class = "contentSpanFAQ1" style = "top:368px;left:710px;width:590px;"></span>
+<span id = "contentSpan6-1-2-1" class = "contentSpanFAQ2" style = "top:434px;left:710px;width:550px;"></span>
+<span id = "contentSpan6-1-2-2" class = "contentSpanFAQ2" style = "top:490px;left:710px;width:550px;"></span>
+<span id = "contentSpan6-1-2-3" class = "contentSpanFAQ2" style = "top:550px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:444px;left:687px;" id="contentDiv6-1-8Img"/>
+<img style = "position:absolute;top:500px;left:687px;" id="contentDiv6-1-9Img"/>
+<img style = "position:absolute;top:560px;left:687px;" id="contentDiv6-1-10Img"/>
+
+</div>
+
+<div id = "contentDiv6-2" class = "contentDiv">
+<span id = "contentSpan6-2Title" class = "contentSpanTitle"></span>
+<img style = "position:absolute;top:155px;left:70px;" id="contentDiv6-2-1Img"/>
+<img style = "position:absolute;top:155px;left:710px;" id="contentDiv6-2-2Img"/>
+
+<span id = "contentSpan6-2-1" class = "contentSpanFAQ1" style = "top:368px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-2-1-1" class = "contentSpanFAQ2" style = "top:434px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-2-1-2" class = "contentSpanFAQ2" style = "top:490px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-2-1-3" class = "contentSpanFAQ2" style = "top:550px;left:70px;width:590px;"></span>
+<img style = "position:absolute;top:444px;left:47px;" id="contentDiv6-2-3Img"/>
+<img style = "position:absolute;top:500px;left:47px;" id="contentDiv6-2-4Img"/>
+<img style = "position:absolute;top:560px;left:47px;" id="contentDiv6-2-5Img"/>
+
+<span id = "contentSpan6-2-2" class = "contentSpanFAQ1" style = "top:368px;left:710px;width:590px;"></span>
+<span id = "contentSpan6-2-2-1" class = "contentSpanFAQ2" style = "top:434px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:444px;left:687px;" id="contentDiv6-2-6Img"/>
+
+</div>
+
+
+<div id = "contentDiv6-3" class = "contentDiv">
+<span id = "contentSpan6-3Title" class = "contentSpanTitle"></span>
+<img style = "position:absolute;top:155px;left:70px;" id="contentDiv6-3-1Img"/>
+<img style = "position:absolute;top:155px;left:710px;" id="contentDiv6-3-2Img"/>
+
+<span id = "contentSpan6-3-1" class = "contentSpanFAQ1LetterSpacing" style = "top:368px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-3-1-1" class = "contentSpanFAQ2" style = "top:434px;left:70px;width:590px;"></span>
+<img style = "position:absolute;top:444px;left:47px;" id="contentDiv6-3-3Img"/>
+<span id = "contentSpan6-3-1-2" class = "contentSpanFAQ2" style = "top:490px;left:70px;width:590px;"></span>
+<img style = "position:absolute;top:500px;left:47px;" id="contentDiv6-3-4Img"/>
+
+<span id = "contentSpan6-3-2" class = "contentSpanFAQ1" style = "top:368px;left:710px;width:590px;"></span>
+<span id = "contentSpan6-3-2-1" class = "contentSpanFAQ2" style = "top:434px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:444px;left:687px;" id="contentDiv6-3-5Img"/>
+<span id = "contentSpan6-3-2-2" class = "contentSpanFAQ2" style = "top:490px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:500px;left:687px;" id="contentDiv6-3-6Img"/>
+
+</div>
+
+<div id = "contentDiv6-4" class = "contentDiv">
+<span id = "contentSpan6-4Title" class = "contentSpanTitle"></span>
+<img style = "position:absolute;top:155px;left:70px;" id="contentDiv6-4-1Img"/>
+<img style = "position:absolute;top:155px;left:710px;" id="contentDiv6-4-2Img"/>
+
+<span id = "contentSpan6-4-1" class = "contentSpanFAQ1" style = "top:340px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-4-1-1" class = "contentSpanFAQ2" style = "top:434px;left:70px;width:590px;"></span>
+<img style = "position:absolute;top:444px;left:47px;" id="contentDiv6-4-3Img"/>
+<span id = "contentSpan6-4-1-2" class = "contentSpanFAQ2" style = "top:529px;left:70px;width:592px;"></span>
+<img style = "position:absolute;top:539px;left:47px;" id="contentDiv6-4-4Img"/>
+
+<span id = "contentSpan6-4-2" class = "contentSpanFAQ1" style = "top:340px;left:710px;width:590px;"></span>
+<span id = "contentSpan6-4-2-1" class = "contentSpanFAQ2" style = "top:434px;left:710px;width:590px;"></span>
+<img style = "position:absolute;top:444px;left:687px;" id="contentDiv6-4-5Img"/>
+
+</div>
+
+
+<div id = "contentDiv6-5" class = "contentDiv">
+<span id = "contentSpan6-5Title" class = "contentSpanTitle"></span>
+<img style = "position:absolute;top:155px;left:70px;" id="contentDiv6-5-1Img"/>
+<img style = "position:absolute;top:155px;left:710px;" id="contentDiv6-5-2Img"/>
+
+<span id = "contentSpan6-5-1" class = "contentSpanFAQ1" style = "top:340px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-5-1-1" class = "contentSpanFAQ2" style = "top:434px;left:70px;width:590px;"></span>
+<img style = "position:absolute;top:444px;left:47px;" id="contentDiv6-5-3Img"/>
+
+<span id = "contentSpan6-5-2" class = "contentSpanFAQ1" style = "top:340px;left:710px;width:550px;"></span>
+<span id = "contentSpan6-5-2-1" class = "contentSpanFAQ2" style = "top:434px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:444px;left:687px;" id="contentDiv6-5-4Img"/>
+<span id = "contentSpan6-5-2-2" class = "contentSpanFAQ2" style = "top:500px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:510px;left:687px;" id="contentDiv6-5-5Img"/>
+<span id = "contentSpan6-5-2-3" class = "contentSpanFAQ2" style = "top:593px;left:710px;width:550px;"></span>
+<img style = "position:absolute;top:604px;left:687px;" id="contentDiv6-5-6Img"/>
+
+</div>
+
+<div id = "contentDiv6-6" class = "contentDiv">
+<span id = "contentSpan6-6Title" class = "contentSpanTitle"></span>
+<img style = "position:absolute;top:155px;left:70px;" id="contentDiv6-6-1Img"/>
+
+<span id = "contentSpan6-6-1" class = "contentSpanFAQ1" style = "top:368px;left:70px;width:1120px;"></span>
+<span id = "contentSpan6-6-1-1" class = "contentSpanFAQ2" style = "top:444px;left:70px;width:1120px;"></span>
+<img style = "position:absolute;top:454px;left:47px;" id="contentDiv6-6-2Img"/>
+</div>
+
+<div id = "contentDiv6-7" class = "contentDiv">
+<span id = "contentSpan6-7Title" class = "contentSpanTitle"></span>
+<div class = "termsDiv">
+	<span id="contentSpan6-7" class = "contentSpanTerms"></span>
+</div>
+</div>
+
+
+<!--
+<div id = "contentDiv6-5" class = "contentDiv">
+<span id = "contentSpan6-5Title" class = "contentSpanTitle"></span>
+<img src = "../images/emanual/FAQ_9.png" style = "position:absolute;top:155px;left:70px;"/>
+<img src = "../images/emanual/FAQ_10.png" style = "position:absolute;top:155px;left:710px;"/>
+
+<span id = "contentSpan6-5-1" class = "contentSpanFAQ1" style = "top:368px;left:70px;width:590px;"></span>
+<span id = "contentSpan6-5-1-1" class = "contentSpanFAQ2" style = "top:414px;left:70px;width:590px;"></span>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:424px;left:47px;"/>
+
+<span id = "contentSpan6-5-2" class = "contentSpanFAQ1" style = "top:368px;left:710px;width:550px;"></span>
+<span id = "contentSpan6-5-2-1" class = "contentSpanFAQ2" style = "top:449px;left:710px;width:550px;"></span>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:459px;left:687px;"/>
+<span id = "contentSpan6-5-2-2" class = "contentSpanFAQ2" style = "top:505px;left:710px;width:550px;"></span>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:515px;left:687px;"/>
+<span id = "contentSpan6-5-2-3" class = "contentSpanFAQ2" style = "top:589px;left:710px;width:550px;"></span>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:599px;left:687px;"/>
+</div>
+
+<div id = "contentDiv6-6" class = "contentDiv">
+<span id = "contentSpan6-6Title" class = "contentSpanTitle"></span>
+<img src = "../images/emanual/FAQ_11.png" style = "position:absolute;top:155px;left:70px;"/>
+
+<span id = "contentSpan6-6-1" class = "contentSpanFAQ1" style = "top:368px;left:70px;width:1120px;"></span>
+<span id = "contentSpan6-6-1-1" class = "contentSpanFAQ2" style = "top:414px;left:70px;width:1120px;"></span>
+<img src = "../images/emanual/point.png" style = "position:absolute;top:424px;left:47px;"/>
+
+</div>
+---->
+
+<!---FAQ end---->
+
+</div>
+
+</div>
+
+<div id = "plateDiv2" class = "plateDiv2">
+<img id = "plateDivBg2" src = "../images/emanual/Bg_Plate_2.png"/>
+<span id = "plateDivPagenum2" class = "pagenum">2</span>
+</div>
+
+<div id = "plateDiv3" class = "plateDiv3">
+<img id = "plateDivBg3" src = "../images/emanual/Bg_Plate_3.png"/>
+<span id = "plateDivPagenum3" class = "pagenum">3</span>
+</div>
+
+<div id = "plateDiv4" class = "plateDiv4">
+<img id = "plateDivBg4" src = "../images/emanual/Bg_Plate_4.png"/>
+<span id = "plateDivPagenum4" class = "pagenum">4</span>
+</div>
+
+<div id="leftArrowDiv" style="display:none;">
+<img src="../images/emanual/arrow LN.png" id="leftArrow">
+</div>
+
+<div id="rightArrowDiv" style="display:none;">
+<img src="../images/emanual/arrow RN.png" id="rightArrow">
+</div>
+
+</div>
+
+</body>
+</html>

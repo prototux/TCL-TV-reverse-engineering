@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.listSecondProperty
+{
+	text-align:right;
+}
+</style>
+<script type="text/javascript" src="soundSet.js"></script>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  <div id="sndMenuLeft"></div>
+  <div id="sndMenuRight">
+		<ul style="top:80px; position:absolute">
+            <li class="list" >
+                <span class="listFirstProperty"></span>                
+                <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+            </li>
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                <div id="autoVolumeCtrlStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+             </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="sPDIFTypeStatus" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="sPDIFDelayPgreContainer" class="listSecondProgress">
+                	<div id="sPDIFDelayPgreLeft" class="progressBarLeft"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="sPDIFDelayPgreRight" class="progressBarRight"></div>
+                </div>
+                <lable id="sPDIFDelayValue" class="listThirdProperty"></lable>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="audioDelayPgreContainer" class="listSecondProgress">
+                	<div id="audioDelayPgreLeft" class="progressBarLeft"></div>
+                    <div class="progressBarCenter"></div>
+                    <div id="audioDelayPgreRight" class="progressBarRight"></div>
+                </div>
+                <lable id="audioDelayValue" class="listThirdProperty"></lable>
+            </li>
+            <li class="list">
+                <span class="listFirstProperty"></span>
+                <div id="audioScene" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div id="soundOutput" class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+            </li>            
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+            </li>
+   		</ul>
+        <img id="listFocus" src="images/Focus_Frame/Focus-1.png" />
+   </div>
+   
+   	<!----------------------弹出列表框使用---------------------->
+    <div id="listForm" class="fourthPopUpBox">
+    	<img id="listUpImg" src="images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+       	  <img id="listFormFocus" class="formFocus" src="images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+        <img id="listDownImg" src="images/arrow/D-Focus.png" />
+     </div>
+       <!------------------------说明提示框---------------------------------------->
+   <div id="promptWin">
+   		<img class="promptWinLeft"/>
+        <div class="promptWinRight">
+        	<span id="promptContent">
+            </span>
+        </div>
+   </div>
+   
+   
+   <!----------------------进度条调整项--------------------------->
+    <div id="adjustProgressBox">
+       <div id="adjustProgMinorUp">
+        	<span class="adjustProgSpan"></span>
+        </div>
+        <div id="adjustProgMain">
+        	 <img src="images/SS_1_02_3_Activation.png" style="position:absolute;left:10px;">
+        	 <div class="adjustName" style="width:280px;">
+        	 	<span class="adjustProgSpan" style="width:280px;"></span>
+             </div>
+             <div id="adjustProgBar" >
+                	<div class="progressBarLeft" style="width:250px;background:#00aadd;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:250px;"></div>
+             </div>
+             <div id="adjustProgValue">100</div>
+        </div>
+        <div id="adjustProgMinorDown">
+        	<span class="adjustProgSpan"></span>
+        </div>
+   </div>
+   
+   <!----------------------password弹出框使用---------------------->
+    <div id="passForm" class="dialogForm" style=" height:300px;top:300px; display:none;">
+        <span class="dialogTitle" ></span>
+        <div class="dialogInput" style="top:120px;">
+            <span class="dialogInputName"></span>
+            <div id="passContent" class="dialogInputContent" style="background:#333;"></div>
+        </div>
+         <div class="dialogInputFocus"  style="top:120px;"></div>
+        <span id="passRemind" class="dialogRemind" style="top:190px;"></span>
+   </div>
+</body>
+</html>

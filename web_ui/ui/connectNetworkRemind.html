@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#networkTips
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(images/Bg-Pop_up_box-04.png);
+	display:block;
+	z-index:200;
+}
+
+#dialogContent
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#dialogName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	bottom:30px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+
+</style>
+<body onload="init()">
+
+<div id="networkTips">
+   		<span id="dialogName"></span>
+        <span id="dialogContent" style=""></span>
+        <div class="dialogButton" style="left:200px; font-size:20px;"></div>
+        <div class="dialogButton" style="left:500px; font-size:20px;"></div>
+        <img id="netRemindFocus" style=" position:absolute ;left:490px; bottom:20px; height:60px; width:170px;" src="images/Focus_Frame/Focus2.png">
+</div>
+<script>
+document.onnotify = top.systemEventProc;
+document.onkeydown = keyproc;
+var remindButton              = [top.chOptions[0],top.others[14],top.okCancel[1]];
+var positionV                 = 0;
+function $(id)
+{
+    return document.getElementById(id);
+}
+function init()
+{
+	top.g_setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	top.keySetForUI(1); 
+	$("dialogName").innerHTML=top.others[28];
+	$("dialogContent").innerHTML=top.homePageRemind[0];
+	var divs=$("networkTips").getElementsByTagName("div");
+	divs[0].innerHTML=remindButton[1];
+	divs[1].innerHTML=remindButton[2];
+	positionV=1;
+	$("netRemindFocus").style.left="490px";
+}
+function keyproc(evt)
+{
+	var ret = true;
+	var keycode = evt.which;
+	switch(keycode)
+	{
+		case top.VK_ENTER:
+			toOK();
+			break ;
+		case top.VK_LEFT:
+		case top.VK_RIGHT:
+			changeFocus();
+			break;
+        case top.VK_POWER:            //for netflix
+        case top.VK_0:
+        case top.VK_1:
+        case top.VK_2:
+        case top.VK_3:
+        case top.VK_4:
+        case top.VK_5:
+        case top.VK_6:
+        case top.VK_7:
+        case top.VK_8:
+        case top.VK_9:
+        case top.VK_CHANNEL_UP:
+        case top.VK_CHANNEL_DOWN:
+            if(1 == top.netflixPowerOffFlag)
+            {
+                top.g_setting.setProperty("sita.bootup.led.work", "off");
+                setTimeout(function(){
+                    top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_BY_POWER_OFF);},10);   //停止netflix
+                setTimeout(function(){
+                    top.g_factory.systemReboot(1);},2000);
+            }
+            else
+            {
+                top.keyDownProcess(evt);
+            }
+            break;
+        case top.VK_NETFLIX:
+            if(1 == top.netflixPowerOffFlag)
+            {
+                top.g_setting.setProperty("app.ui.netflix.boot", "reboot");
+                top.g_setting.setProperty("sita.bootup.led.work", "off");
+                setTimeout(function(){
+                    top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_BY_POWER_OFF);},10);
+                setTimeout(function(){
+                    top.g_factory.systemReboot(1);},2000);
+            }
+            else
+            {
+                top.keyDownProcess(evt);
+            }
+            break;
+		default://power
+			top.keyDownProcess(evt);
+		 break ;
+	}
+}
+function changeFocus()
+{
+	if(positionV==1)
+	{
+		positionV = 0;
+		$("netRemindFocus").style.left="190px";
+	}
+	else
+	{
+		positionV = 1;
+		$("netRemindFocus").style.left="490px";
+	}
+}
+function toOK()
+{
+	if(positionV)
+	{
+		top.jumpPage();
+	}
+	else
+	{
+		top.g_nextHtmlPage = "networkSetting.html";
+		top.$("main").src="index.html";
+	}
+}
+</script>
+</body>
+</html>

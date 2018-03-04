@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+</style>
+<script type="text/javascript">
+/******************** created by chenhua ***********************/
+var inputLockTitleWords 		= top.sysLockOptions[3];
+var inputSourceWords			= top.sourceOptions;
+var inputLockStatus				= [0,0,0,0,0,0,0];		//0 没有锁，1 锁住
+var inputSourceEnumValue		= [[0,1],11,4,6,7,8,12];
+var setting 					= top.g_setting;
+var channel			 			= top.g_channel;
+var list_position_h				= 0;
+
+var SUB_MENU_START 				= 130;					//三级级菜单焦点移动起始位置
+var SUB_MENU_STEP 				= 70;					//三级级主菜单焦点移动的step
+var lockImg						= ["../images/option/check_1.png",
+									"../images/option/check_3.png"];
+document.onnotify 				= notifyProcess;
+function timeoutInit()
+{
+	document.onkeydown = top.timeoutMyFuc;
+	top.timeoutFuc.osdTimeoutStartFuc();
+    top.timeoutFuc.keydownFuc = keyDownProcess;
+}
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	switch(msg)
+	{
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+function keyDownProcess(evt)
+{
+	var ret = true;
+	var keycode = evt.which;
+	switch (keycode)
+	{
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;  
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_BACK:
+			toBack();
+			break;
+		default:
+			top.keyDownProcess(evt);
+			break;
+	}
+	return ret;
+}
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function toDown()
+{
+	if(list_position_h >= 6)
+	{
+		list_position_h = 0;
+	}
+	else
+	{
+		list_position_h++;
+	}
+	$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+}
+
+function toUp()
+{
+	if(list_position_h <= 0)
+	{
+		list_position_h = 6;
+	}
+	else
+	{
+		list_position_h--;
+	}
+	$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+}
+
+function doEnter()
+{
+	if(inputLockStatus[list_position_h] == 1)
+	{
+		if(list_position_h == 0)
+		{
+			setting.setInputSourceLock(0,0);
+			setting.setInputSourceLock(1,0);
+		}
+		else if(list_position_h == 1)
+		{
+			setting.setInputSourceLock(11,0);
+		}
+		else if(list_position_h == 2)
+		{
+			setting.setInputSourceLock(4,0);
+		}
+		else if(list_position_h >= 3 && list_position_h <= 5)
+		{
+			setting.setInputSourceLock(list_position_h + 3,0);
+		}
+		else if(list_position_h = 6)
+		{
+			setting.setInputSourceLock(12,0);
+		}
+		inputLockStatus[list_position_h] = 0;
+		fourthMenuRightImgList[list_position_h].src = lockImg[0];
+		
+		var source = channel.inputSource;
+		if(list_position_h == 0 && (source == inputSourceEnumValue[list_position_h][0] || source == inputSourceEnumValue[list_position_h][1]))
+		{
+			top.inputLock = 0;
+		}
+		else if(source = inputSourceEnumValue[list_position_h])
+		{
+			top.inputLock = 0;
+		}
+	}
+	else
+	{
+		if(list_position_h == 0)
+		{
+			setting.setInputSourceLock(0,1);
+			setting.setInputSourceLock(1,1);
+		}
+		else if(list_position_h == 1)
+		{
+			setting.setInputSourceLock(11,1);
+		}
+		else if(list_position_h == 2)
+		{
+			setting.setInputSourceLock(4,1);
+		}
+		else if(list_position_h >= 3 && list_position_h <= 5)
+		{
+			setting.setInputSourceLock(list_position_h + 3,1);
+		}
+		else if(list_position_h = 6)
+		{
+			setting.setInputSourceLock(12,1);
+		}
+		
+		inputLockStatus[list_position_h] = 1;
+		fourthMenuRightImgList[list_position_h].src = lockImg[1];
+		
+		
+		var source = channel.inputSource;
+		if(list_position_h == 0 && (source == inputSourceEnumValue[list_position_h][0] || source == inputSourceEnumValue[list_position_h][1]))
+		{
+			top.inputLock = 1;
+		}
+		else if(source = inputSourceEnumValue[list_position_h])
+		{
+			top.inputLock = 1;
+		}
+	}
+}
+function toBack()
+{
+	parent.returnPage(3);
+}
+function toLeft()
+{
+	toBack();
+}
+function toRight()
+{
+	doEnter();
+}
+
+var fourthMenuRightSpanList;
+var fourthMenuRightImgList;
+var fourthMenuRightLiList;
+function init()
+{
+	timeoutInit();
+	fourthMenuRightLiList = $("fourthMenuRight").getElementsByTagName("li");
+	fourthMenuRightImgList = $("fourthMenuRight").getElementsByTagName("img");
+	fourthMenuRightSpanList = $("fourthMenuRight").getElementsByTagName("span");
+	fourthMenuRightSpanList[0].innerHTML = inputLockTitleWords;
+	for(var i = 1; i < 8; i++)
+	{
+		fourthMenuRightSpanList[i].innerHTML = inputSourceWords[i-1];
+	}
+	
+	//保存锁状态
+	var atvLockS = setting.getInputSourceLock(0);
+	var dtvLockS = setting.getInputSourceLock(1);
+	if(atvLockS || dtvLockS)//有一个锁就是所有Tv都锁
+	{
+		if(atvLockS == 0)
+		{
+			setting.setInputSourceLock(0,1);
+		}
+		if(dtvLockS == 0)
+		{
+			setting.setInputSourceLock(1,1);
+		}
+		inputLockStatus[0] = 1;
+		fourthMenuRightImgList[0].src = lockImg[1];
+	}
+	else
+	{
+		inputLockStatus[0] = 0;
+		fourthMenuRightImgList[0].src = lockImg[0];
+	}
+	
+	if(setting.getInputSourceLock(11))//scart,AV
+	{
+		inputLockStatus[1] = 1;
+		fourthMenuRightImgList[1].src = lockImg[1];
+	}
+	else
+	{
+		inputLockStatus[1] = 0;
+		fourthMenuRightImgList[1].src = lockImg[0];
+	}
+	
+	if(setting.getInputSourceLock(4))//ypbpr,CMP
+	{
+		inputLockStatus[2] = 1;
+		fourthMenuRightImgList[2].src = lockImg[1];
+	}
+	else
+	{
+		inputLockStatus[2] = 0;
+		fourthMenuRightImgList[2].src = lockImg[0];
+	}
+	
+	for(var i = 3;i <= 5; i++)
+	{
+		inputLockStatus[i] = setting.getInputSourceLock(i + 3);
+		if(inputLockStatus[i] == 1)
+		{
+			fourthMenuRightImgList[i].src = lockImg[1];
+		}
+		else
+		{
+			fourthMenuRightImgList[i].src = lockImg[0];
+		}
+	}
+	
+	if(setting.getInputSourceLock(12))//HDMI4
+	{
+		inputLockStatus[6] = 1;
+		fourthMenuRightImgList[6].src = lockImg[1];
+	}
+	else
+	{
+		inputLockStatus[6] = 0;
+		fourthMenuRightImgList[6].src = lockImg[0];
+	}
+	
+	list_position_h = 0;
+	$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		top.timeoutFuc.osdTimeoutEndFuc();
+		if(evt.button == 2) toBack();//right key
+		top.timeoutFuc.osdTimeoutStartFuc();
+	}
+	
+	//menu
+	for(var i = 1; i < 8; i++)
+	{
+		fourthMenuRightLiList[i].setAttribute("newAttr",i);
+		fourthMenuRightLiList[i].onmousedown = function(evt){
+			top.timeoutFuc.osdTimeoutEndFuc();
+			if(evt.button == 0){//left key
+				list_position_h = parseInt(this.getAttribute("newAttr")) - 1;
+				$("fourthListFocus").style.top = SUB_MENU_START + SUB_MENU_STEP*list_position_h + "px";
+				doEnter();
+			}
+			top.timeoutFuc.osdTimeoutStartFuc();
+		}
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+  <div id="fourthMenuLeft"></div>
+  <div id="fourthMenuRight">
+		<ul>
+        	<li	class="titleName">
+                <span></span>
+            </li>
+           <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+           	<li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" />
+            </li>
+   		</ul>
+        <img id="fourthListFocus" src="../images/Focus_Frame/Focus-1.png">
+   </div>
+</body>
+</html>

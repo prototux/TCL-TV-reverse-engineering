@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<script type="text/javascript" src="channelUpdate.js"></script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.progressContainer/* 设置 关于列表每行第二项属性*/
+{
+	position:absolute;
+	left:200px;
+	width:420px;
+	height:27px;
+	padding-top:3px;
+	top:20px;
+}
+
+#productInfo
+{
+	position:absolute;
+	left:40px;
+	width:730px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.8;
+	top:380px;
+	background:#111;
+	list-style-type: none;
+	margin: 0;
+}
+	
+#productInfo li
+{
+	position:relative;
+	width:710px;
+	height:30px;
+	margin:30px 0px 30px 20px;
+	font-size:30px;
+	text-align:left;
+	color:#555;
+	font-weight:bold;
+}
+.scanProgressValue
+{
+	position:absolute;
+	top:0px;
+	height:50px;
+	line-height:50px;
+	left:620px;
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+	margin-top:-5px;
+}
+
+#loadingForm
+{
+	height:360px;
+	top:300px; 
+	display:none;
+}
+#loadingContent
+{
+	top:100px;
+}
+#loadingImg
+{
+	position:absolute;
+	left:334px; 
+	top:140px; 
+	width:130px; 
+	height:130px;
+}
+#loadingCancel/*对话框中按钮样式的焦点*/
+{ 
+	left:324px;
+	width:148px;
+	height:38px;
+	bottom:30px;
+	border-radius:14px;
+	border:solid medium #00aadd;
+}
+
+</style>
+</head>
+
+<body onload="init()">
+ 
+    <!----------------------remind 弹出框使用---------------------->
+    <div id="remindForm" class="dialogForm" style=" height:400px;top:300px;">
+        <span id="remindTitle" class="dialogTitle" ></span>
+        <span id="remindContent" class="dialogContent" style="top:100px;"></span>
+        
+        
+        <div id="progress" class="dialogScanProgressContainer" style="top:174px;">
+            <div id="progressLeft" class="progressBarLeft"></div>
+            <!--<div class="progressBarCenter"></div>-->
+            <div id="progressRight" class="progressBarRight" ></div>
+            <span id="progressValue" class="scanProgressValue"></span>
+        </div>
+        
+        <div id="buttons">
+            <div id="yes" class="dialogButton" style="left:200px;"></div>
+            <div id="no" class="dialogButton" style="left:450px;"></div>
+            <span id="remindFocus" class="dialogButtonFocus" style="left:198px;"></span>
+        </div>
+   </div>
+   
+   <!--       loading         -->
+    <div id="loadingForm" class="dialogForm">
+        <span id="loadingTitle" class="dialogTitle" ></span>
+        <span id="loadingContent" class="dialogContent"></span>
+        <img id="loadingImg" src="images/Loading-01.png">
+        <div id="loadingCancel" class="dialogButton"></div>
+        <!--<span class="dialogButtonFocus" style="left:324px;"></span>-->
+   </div>
+</body>
+</html>

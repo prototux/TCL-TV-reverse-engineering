@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Network Update Dialog</title>
+	<link rel="stylesheet" type="text/css" href="all.css" />
+	<script src="networkUpdateDialog.js"></script>
+	<style>
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+		#networkUpdateDialogBackground{
+			position:absolute;
+			height:250px;
+			top:330px;
+		}
+		#networkUpdateDialogContent{
+            font-size:26px;
+			top:80px;
+		}
+		#networkUpdateDialogReleaseNote{
+			top:130px;
+			/*padding:10px 0px 20px 0px;*/
+		}
+		#networkUpdateDialogButtonLeft{
+			left:100px;
+			bottom:20px;
+		}
+		#networkUpdateDialogButtonCenter{
+			left:325px;
+			bottom:20px;
+		}
+		#networkUpdateDialogButtonRight{
+			left:550px;
+			bottom:20px;
+		}
+		#networkUpdateDialogButtonFocus{
+			left:548px;
+			bottom:18px;
+		}
+		#networkUpdateDialogProgressSoftwareVer{
+			position:absolute;
+			top:140px;
+			left:80px;
+			font-size:20px;
+			font-weight:bold;
+			color:#fff;
+			display:none;
+		}
+		#networkUpdateDialogProgressValue{
+			position:absolute;
+			top:160px;
+			right:55px;
+			font-size:20px;
+			font-weight:bold;
+			color:#fff;
+			display:none;
+		}
+		#networkUpdateDialogProgressBarContainer{
+			position:absolute;
+			width:700px;
+			top:150px;
+			left:80px;
+			display:none;
+		}
+	</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+<div id="networkUpdateDialogBackground" class="dialogForm">
+	<span id="networkUpdateDialogTitle" class="dialogTitle"></span>
+	<div id="networkUpdateDialogContent" class="dialogContent"></div>
+	<div id="networkUpdateDialogReleaseNote" class="dialogContent"></div>
+	<div id="networkUpdateDialogButton">
+		<div id="networkUpdateDialogButtonLeft" class="dialogButton"></div>
+		<div id="networkUpdateDialogButtonCenter" class="dialogButton"></div>
+		<div id="networkUpdateDialogButtonRight" class="dialogButton"></div>
+		<div id="networkUpdateDialogButtonFocus" class="dialogButtonFocus"></div>
+	</div>
+	<div id="networkUpdateDialogProgressSoftwareVer"></div>
+	<div id="networkUpdateDialogProgressValue"></div>
+	<div id="networkUpdateDialogProgressBarContainer">
+		<div id="networkUpdateDialogProgressBarLeft" class="progressBarLeft"></div>
+		<div class="progressBarCenter"></div>
+		<div id="networkUpdateDialogProgressBarRight" class="progressBarRight"></div>
+	</div>
+</div>
+</body>
+</html>

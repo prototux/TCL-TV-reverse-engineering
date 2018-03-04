@@ -1,0 +1,136 @@
+/*--------------------------add by chenhua -----------------------------------*/
+
+
+#initDialog/*初始化对话框样式*/
+{
+	position:absolute;
+	top:240px;
+	left:460px;
+	width:1000px;
+	height:600px;
+	background:#000;
+	opacity:0.9;
+	border:#C30 solid medium;
+}
+
+/*初始化对话框中表示当前步骤的标题框样式*/
+#initStepForm
+{
+	position:absolute;
+	top:10px;
+	left:50px;
+	width:800px;
+}
+#initStepForm img/*当前步骤标题框背景切图*/
+{
+	left:0px;
+	height:100%;
+}
+#initStepForm span/*当前步骤标题框里边文字样式*/
+{
+	position:absolute;
+	height:100%;
+	font-size:30px;
+	font-weight:bold;
+	color:#f00;
+}
+
+.initReminds/* 一般文字提示样式*/
+{
+	position:absolute;
+	left:150px;
+	font-size:30px;
+	font-weight:bold;
+	color:#fff;
+	width:700px;
+	overflow:hidden;
+}
+
+/*单选列表样式*/
+.initSlects
+{
+	position:relative;
+	width:400px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	/*overflow:hidden;*/
+}
+.initSlects li/*单选列表框的每一行样式*/
+{
+	position:relative;
+	height:50px;
+}
+.initSlects li > img/*单选列表框的每一行中标记图片样式*/
+{
+	position:absolute;
+	top:8px;
+	left:20px;
+	width:30px;
+	height:30px;
+}
+.initSlects li > span/*单选列表框的每一行中提示文字样式*/
+{
+	position:absolute;
+	left:70px;
+	height:50px;
+	line-height:50px;
+	font-size:30px;
+	font-weight:bold;
+	color:#fff;
+}
+.initSlectsFocus/*单选列表框的焦点样式*/
+{
+	position: absolute;
+	top:0px;
+	height: 50px;
+	left: 5px;
+	width: 400px;
+}
+.initSlectsFocus2/*单选列表框的焦点样式中原点样式*/
+{
+	position:absolute;
+	top:8px;
+	left:20px;
+	width:30px;
+	height:30px;
+}
+
+
+
+/*进度条整体样式，包括进度条和进度值*/
+#progressForm
+{
+	position:absolute;
+	left:150px; 
+}
+
+#progressValue
+{
+	position:absolute;
+	height:38px;
+	line-height:38px;
+	left:720px;
+	font-size:26px;
+	font-weight:bold;
+	color:#fff;
+}
+#progressBar/*进度条样式*/
+{
+	position:absolute;
+	height:10px;
+	left:0px;
+	top:0px;
+	margin:14px 0px 14px 0px;
+	width:1000px;
+}
+.progressBarLeft/*设置进度条左边的进度*/
+{
+	position:relative;
+	height:10px;
+}
+.progressBarRight/*设置进度条右边的空白*/
+{
+	position:relative;
+	height:10px;
+}

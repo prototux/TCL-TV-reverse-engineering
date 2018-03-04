@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#databaseTips
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(images/Bg-Pop_up_box-04.png);
+	display:block;
+	z-index:200;
+}
+
+#dialogContent
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#dialogName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	bottom:30px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+
+</style>
+<body onload="init()">
+
+<div id="databaseTips">
+   		<span id="dialogName"></span>
+        <span id="dialogContent" style="">System has identified the database as damaged for some unknown reason and rebuilt it automatically, press OK to continue</span>
+        <div class="dialogButton" style="left:335px; font-size:20px;"></div>
+        <img id="cancelRemindFocus" style=" position:absolute ;left:325px; bottom:20px; height:60px; width:170px;" src="images/Focus_Frame/Focus2.png">
+</div>
+<script>
+document.onnotify = notifyProcess;
+document.onkeydown = keyproc;
+var remindButton              = [top.okCancel[0]];
+var tips                      = [top.others[28]];
+var databaseRemind            = top.databaseRemind;
+var positionV                 = 0;
+var keyValue                  = 0xffff;
+function $(id)
+{
+    return document.getElementById(id);
+}
+function init()
+{
+	top.g_setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	top.keySetForUI(1);
+	$("dialogName").innerHTML=tips[0];
+	$("dialogContent").innerHTML=databaseRemind;
+	var divs=$("databaseTips").getElementsByTagName("div");
+	divs[0].innerHTML=remindButton[0];
+}
+function notifyProcess(evt)
+{
+	var msg = evt.which;
+	switch(msg)
+	{
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+		default:
+	        break;
+	}
+}
+function keyproc(evt)
+{
+	var ret = true;
+	var keycode = evt.which;
+	switch(keycode)
+	{
+		case top.VK_ENTER:
+			toOK();
+			break ;
+		case top.VK_POWER://power
+			top.keyDownProcess(evt);
+		 break ;
+	}
+}
+
+function toOK()
+{
+	top.$("otherPage").src = "";
+	top.main.focus();
+	top.setFrameFocusPage("main");
+}
+</script>
+</body>
+</html>

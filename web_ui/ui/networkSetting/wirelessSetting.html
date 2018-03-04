@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>wirelessSetting</title>
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="wirelessSetting.js"></script>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#wirelessInputSSID
+{	
+    position:absolute;
+	left:560px;/*650px;*/
+	width:800px;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.92;
+	height:500px;
+	top:290px; 
+	background:#000; 
+	display:none;
+}
+#wirelessInputPassword
+{	
+    position:absolute;
+	left:560px;/*650px;*/
+	width:800px;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.92;
+	height:500px;
+	top:290px; 
+	background:#000; 
+	display:none;
+}
+#SSIDTitle/*设置对话框的title*/
+{
+	position:absolute;
+	width:730px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+	border-bottom:2px solid #1b1b1b;
+	background:#000;
+}
+#passwordTitle/*设置密码对话框的title*/
+{
+	position:absolute;
+	width:730px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+	border-bottom:2px solid #1b1b1b;
+	background:#000;
+}
+#dialogButtonFocus/*对话框中按钮样式的焦点*/
+{
+	position: absolute;
+	width: 170px;
+	height: 70px;
+	top:345px;
+	left: 440px;
+	display:none;
+	pointer-events:none;
+}
+#SSIDInputFocus/*对话框中输入框焦点样式*/
+{
+	position:absolute;
+	width:364px; 
+	height:45px;
+	left:345px;
+	top:114px;
+	pointer-events:none;
+}
+#passwordButtonFocus/*密码框button 焦点*/
+{
+	position: absolute;
+	width: 170px;
+	height: 70px;
+	bottom: 35px;
+	left: 440px;
+	display:none;
+	pointer-events:none;
+}
+#passwordInputFocus/*密码框输入框焦点*/
+{
+	position:absolute;
+	width:364px; 
+	height:45px;
+	left:305px;
+	top:115px;
+	pointer-events:none;
+}
+#SSIDInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:500px; 
+	height:35px;
+	left:50px;
+	top:120px;
+	background:#000;
+}
+#SSIDButtonList
+{
+	position:absolute;
+	top:350px;
+	left:30px;
+	height:50px;
+	width:730px;
+	border-top:2px solid #1b1b1b;
+}
+#passwordButtonList
+{
+	position:absolute;
+	top:350px;
+	left:30px;
+	height:50px;
+	width:730px;
+	border-top:2px solid #1b1b1b;
+}
+.SSIDButton/*对话框中的按钮样式*/
+{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	bottom: 0px;
+	padding-top: 7px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	background: #333;
+	border-radius: 10px;
+}
+#SSIDRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#CCC;
+	font-size: 24px;
+	text-align: left;
+	left: 61px;
+	width: 480px;
+	display:none;
+}
+#passwordRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#CCC;
+	font-size: 24px;
+	text-align: left;
+	left: 61px;
+	width: 480px;
+	display:block;
+}
+#popList/* 设置 关于列表每项的属性*/
+{
+	position:absolute;
+	width:500px;
+	height:70px;
+	left:50px;
+	top:250px;
+}
+#popListFocus
+{
+	position:absolute;
+	width:650px;
+	height:80px;
+	left:40px;
+	top:240px;
+	display:none;
+}
+#popListFirPro/* 设置 关于列表每行第一项属性*/
+{
+	position: absolute;
+	left: 13px;
+	color: #FFF;
+	font-size: 24px;
+	top: 15px;
+}
+#popListSndPro/* 设置 关于列表每行第二项属性*/
+{
+	position: absolute;
+	left: 203px;
+	width: 420px;
+	height: 27px;
+	color: #FFF;
+	font-size: 24px;
+	padding-top: 3px;
+	text-align: center;
+	top: 14px;
+}
+#popListThdPro/* 设置 关于列表每行第三项属性*/
+{
+	position: absolute;
+	left: 559px;
+	width: 70px;
+	top: 13px;
+	color: #FFF;
+	font-size: 24px;
+	padding-top: 3px;
+	text-align: center;
+}
+.passwordlist
+{
+	position:absolute;
+	width:800px;
+	height:70px;
+	color:white;
+	font-size:25px;
+}
+.smallBar
+{
+	position:absolute;
+	width:25px;
+	height:70px;
+	width:70px;
+	border:thin solid #FFFFFF;
+	background:#6FF;
+}
+.font3_small
+{
+	position:absolute;
+	top:10px;
+	color:#000;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:28px;
+	width:100%;
+	height:50px;
+	text-align:center;
+}
+.container
+{
+	position:absolute;
+	bottom:300px;
+	left:100px;
+	width:700px;
+	height:280px;
+	background-color:#FFF;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+   	<div id="thdMenuLeft"></div>
+    <div id="thdMenuRight">
+    	<ul id="menuList">
+            <li	class="titleName">
+                <span style="position:absolute;top:60px; ">Wireless settings</span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty">Scan</span>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty">Manual</span>
+            </li>
+             <li class="list" >
+                <span class="listFirstProperty">Auto</span>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+   		</ul>
+         <img id="thdListFocus" src="../images/Focus_Frame/Focus-1.png">
+        <div id="loading" style="display:none">
+            <div id="remindWord" style="position:absolute; width:600px; left:65px; top:400px; color:#FFFFFF; font-size:30px; text-align:center">
+            </div>
+            <img id="loadingImg" src="../images/Loading-01.png" style="position:absolute; top:500px; left:300px;"/>
+        </div>
+   </div>
+    <!-------------------------------------手动SSID输入框--------------------------------------------->
+	<div id="wirelessInputSSID">
+  		<span id="SSIDTitle" ></span>
+        <div id="SSIDInput">
+        	<span id="SSIDInputTitle" class="dialogInputName"></span>
+            <div id="SSIDInputContent" class="dialogInputContent" style="background:#000; width:350px; left:300px; border:2px solid #1b1b1b; height:30px; top:0px; border-radius:10px;">
+            </div>
+        </div>
+        <div id="SSIDRemind"></div>
+        <div id="popList" >
+            <span id="popListFirPro"></span>
+            <div id="popListSndPro"></div>
+            <div id="popListThdPro"><img src="../images/arrow/focus_R-Focus.png" /></div>
+        </div>
+        <div id="SSIDButtonList">
+            <div class="SSIDButton" style="left: 150px;"></div>
+            <div class="SSIDButton" style="left:420px;"></div>
+        </div>
+        <img id="popListFocus" src="../images/Focus_Frame/Focus.png" />
+  		<img id="dialogButtonFocus" src="../images/Focus_Frame/Focus2.png" />
+      	<img id="SSIDInputFocus" src="../images/Focus_Frame/Focus.png" />
+   </div>
+      <!-------------------------------------加密网络输入密码框--------------------------------------------->
+     <div id="wirelessInputPassword" style="height:400px;">
+  		<span id="passwordTitle" ></span>
+        <div id="SSIDInput">
+        	<span id="passwordInputTitle" class="dialogInputName"></span>
+            <div id="passwordInputContent" class="dialogInputContent" style="background:#000; width:350px; left:260px; border:2px solid #1b1b1b; height:30px; top:0px; border-radius:10px;">
+            </div>
+        </div>
+        <div id="passwordRemind" style="top:200px; display:none">
+        </div>
+        <div id="passwordButtonList" style="top:300px;">
+           <div class="SSIDButton" style="left: 150px;"></div>
+            <div class="SSIDButton" style="left:420px;"></div>
+        </div>
+         <img id="passwordButtonFocus" src="../images/Focus_Frame/Focus2.png" />
+      	 <img id="passwordInputFocus" src="../images/Focus_Frame/Focus.png" />
+   </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="homePageIndex.css">
+<script type="text/javascript" src="homePageTv.js"></script>
+<style>
+body
+{
+	/*background:url(images/BG_TV_1_b.png) no-repeat;*/
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+</style>
+<title>home page tv</title>
+</head>
+<body onload="init()" onunload="uninit()" onfocus="pageOnFocus()" onblur="pageLoseFocus()">
+    <!--------------------------TV 界面------------------------------------------------>    
+    <div id="TVPage">
+        <!--当前电视界面的显示窗口-->
+        <div id="bigWindow">
+            <div id="currentProgram" class="currentProgramInfo">
+                <span class="channelName" style=" top:20px; width:250px;" id="curChannelName"></span>
+              	<span class="programName" style=" left:259px; width:250px; top:10px; height:25px;" id="curProgramName"></span>
+                <span class="programTime" style=" left:259px; top:25px;" id="curProgramStartTime"></span>
+                <div class="timeCurrentProgress" style=" left:320px; width:180px; top:25px;">
+                    <div class="proTimeFinish" style="width:0px;" id="currentPorTimeFinish"></div>
+                    <div class="proTimeUnFinish" style="width:0px;" id="currentPorTimeUnFinish"></div>
+                </div>
+                <span class="programTime" style="left:530px; top:25px;" id="curProgramEndTime"></span>
+            </div>
+            <div id="bigWindowFocus"></div>
+            <div id="currentProgramRemind"></div>
+        </div>
+        <!--操作选项列表-->
+        <div id="littleList">
+            <div class="littleWindow">
+                <img src="images/TV-Set_icon_Source_AU.png" />
+                <span></span>
+            </div>
+            <div class="littleWindow" style="left:322px;">
+                <img src="images/TV-Set_icon_Setting_AU.png" />
+                <span></span>
+            </div>
+            <div class="littleWindow" style="top:200px;">
+                <img src="images/TV-Set_icon_Media_AU.png" />
+                <span></span>
+            </div>
+            <div class="littleWindow" style="top:200px;left:322px;">
+                <img src="images/TV-Set_icon_EPG_AU.png" />
+                <span></span>
+            </div>
+            <div id="littleWindowFocus"></div>
+        </div>
+        <!--要显示的节目列表-->
+        <div id="middleList">
+            <div class="middleWindow">
+                <span id="channelName0" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg0"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet0"/>
+                <div class="programInfo" id="programInfo0">
+                  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="left:350px;">
+            	<span id="channelName1" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg1"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet1"/>
+                <div class="programInfo"  id="programInfo1">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="left:700px;">
+                <span id="channelName2" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg2"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet2"/>
+                <div class="programInfo"  id="programInfo2">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="top:260px;">
+            	<span id="channelName3" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg3"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet3"/>
+                <div class="programInfo"  id="programInfo3">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="top:260px;left:350px;">
+            	<span id="channelName4" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg4"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet4"/>
+                <div class="programInfo"  id="programInfo4">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="top:260px;left:700px;">
+            	<span id="channelName5" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg5"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet5"/>
+                <div class="programInfo"  id="programInfo5">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow"style="top:520px;">
+            	<span id="channelName6" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg6"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet6"/>
+                <div class="programInfo"  id="programInfo6">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="top:520px;left:350px;">
+            	<span id="channelName7" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg7"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet7"/>
+                <div class="programInfo"  id="programInfo7">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div class="middleWindow" style="top:520px;left:700px;">
+            	<span id="channelName8" class="channelName"></span>
+                <img src="images/TV-Default-Posters.png" width="320" height="217" class="programImg" id="channelImg8"/>
+                <img width="320" height="217" class="programImgNet" id="channelImgNet8"/>
+                <div class="programInfo"  id="programInfo8">
+              	  	<span class="programName" style="top:5px;"></span>
+                    <span class="programTime" style="left:20px; top:12px;"></span>
+                    <div class="timeProgress">
+                        <div class="proTimeFinish" style="width:0px;"></div>
+                        <div class="proTimeUnFinish" style="width:0px;"></div>
+                    </div>
+                    <span class="programTime" style="left:260px;top:12px;"></span>
+                </div>
+            </div>
+            <div id="middleWindowFocus"></div>
+        </div>
+    </div>
+</body>
+</html>

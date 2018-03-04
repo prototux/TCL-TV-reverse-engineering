@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var initialTitleWords 		= top.initialTitle[1];
+var initStepWords			= top.initialOptions[3];
+var remindWords				= top.initChPrompt[4];
+var hotkeyWords				= top.initialHotkeys;
+var selectWords				= top.initChScanTypes;
+var operator				= "Others";		//Ziggo,UPC,Others
+var setting                 = top.g_setting;
+
+var list_position_h 		= 0;
+var SELECT_STEP				= 70;			//单选列表框相邻两个选项之间的距离
+var channelType				= "analogue+digital";//analogue+digital,digital,analogue
+
+var channel = top.g_channel;
+document.onnotify = notifyProcess;
+document.onkeydown = keyproc;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_LEFT:
+			// left
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_UP:
+			// up
+			toUp();
+			ret = false;
+			//alert("上");
+			break;
+		case top.VK_DOWN:
+			//down
+			toDown();
+			ret = false;
+			//alert("下")
+			break;
+		case top.VK_RIGHT:
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+function toLeft()
+{
+	//document.location.href = "initChDvbtInstScanType.html";
+	if(setting.getProperty("ro.sita.model.LiveTV.DVB-T","TRUE") == "TRUE")
+	{
+		document.location.href = "initChDvbtInstScanType.html";
+	}
+	else
+	{
+		document.location.href = "initChannelInstallEntry.html";
+	}
+}
+
+function toUp()
+{
+	if(list_position_h <= 0) 
+	{
+		list_position_h = 3;
+	}
+	else
+	{
+		list_position_h--;
+	}	
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+}
+function toDown()
+{
+	if(list_position_h >= 3) 
+	{
+		list_position_h=0;
+		
+	}
+	else
+	{
+		list_position_h++;
+	}	
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+}
+
+var upcAndZiggoCountryIndex=14;			//同时拥有ziggo、UPC和others的国家Netherlands，编号为14
+var upcScanCountryIndex = [1,11,33,16,18,24];//含有UPC和others的国家
+function doEnter()
+{
+	if(list_position_h < 2)
+	{
+		top.g_channel.tunerMode = 0;
+		if(list_position_h == 0)
+		{
+			channelType = "analogue+digital";
+		}
+		else if(list_position_h == 1)
+		{
+			channelType = "digital"
+		}
+		
+		var country = channel.systemCountry;
+		channel.testLog("country = " + country);
+		//var flag = 0;//0 no operator choice, 1 have operator
+		if(country == 7)//finland only have quich search
+		{
+			var scanMode = 2;//0 others full,1 others advanced ;2 others Quick,3 UPC,4 Ziggo
+			var frequency = -1;
+			var freqTo	= -1;
+			var modulation = -1;
+			var symbol	= -1;
+			var network = -1;
+			document.location.href = "initChDvbcScan.html?" + channelType + "&" + scanMode +  "&" + frequency + "&" + freqTo + "&" + modulation + "&" + symbol + "&" + network;
+		}
+		else if(upcAndZiggoCountryIndex == country)//当前国家拥有UPC、Ziggo搜台
+		{
+			document.location.href = "initChDvbcOperatorSelect.html?" + channelType;
+		}
+		else
+		{
+			for(var i = 0; i < 6; i++)
+			{
+				if(upcScanCountryIndex[i] == country)//当前国家拥有UPC搜台
+				{
+					document.location.href = "initChDvbcOperatorSelect.html?" + channelType;
+					return;
+				}
+			}
+			
+			if(i >= 6)//普通情况
+			{
+				operator = "Others";
+				document.location.href = "initChDvbcScanInfoSelect.html?" + channelType + "&" + operator;
+			}
+		}
+	}
+	else if(list_position_h == 2)
+	{
+		top.g_channel.tunerMode = 0;
+		channelType = "analogue";
+		document.location.href = "initChDvbcScan.html?" + channelType;
+	}
+	else
+	{
+		//document.location.href = "initChDvbsOperatorList.html";
+		//根据配置文件中配置的搜台方式显示。显示顺序为DVB-T，DVB-C，DVB-S
+		if(setting.getProperty("ro.sita.model.LiveTV.DVB-S","TRUE") == "TRUE")
+		{
+			document.location.href = "initChDvbsOperatorList.html";
+		}
+		else
+		{
+			document.location.href = "initClockSet.html";
+		}
+	}
+}
+var containerLiList;
+function init()
+{
+	containerLiList = $("container").getElementsByTagName("li");
+	$('initTitle').innerHTML = initialTitleWords;
+	$('subTitleTag').innerHTML = initStepWords;
+	$('selectTitleTag').innerHTML = remindWords;
+	
+	$('back').getElementsByTagName('span')[0].innerHTML = hotkeyWords[0];
+	$('select').getElementsByTagName('span')[0].innerHTML = hotkeyWords[1];
+	$('next').getElementsByTagName('span')[0].innerHTML = hotkeyWords[2];
+	
+	var spanList = $('container').getElementsByTagName('span');
+	spanList[0].innerHTML = selectWords[0];
+	spanList[1].innerHTML = selectWords[1];	
+	spanList[2].innerHTML = selectWords[2];
+	spanList[3].innerHTML = selectWords[3];	
+	list_position_h = 0;
+	$('initListFormFocus').style.top = list_position_h*SELECT_STEP + "px";
+	addMouseListener();
+}
+function addMouseListener()
+{
+	for(var i = 0; i < 4; i++)
+	{
+		containerLiList[i].setAttribute("newAttr",i);
+		containerLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				list_position_h = parseInt(this.getAttribute("newAttr"));
+				$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+				doEnter();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#container
+{
+	top:250px;
+	left:100px;
+	width:600px;
+}
+.initSlectsFocus
+{
+	width:600px;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:480px;" /><img src="../images/Title_bloc-Bg.png" style="width:720px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        <ul id="container" class="initSelects">
+          <div id="initListFormFocus">
+          	<img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+          	<img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+          </div>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span></span>
+          </li>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span ></span>
+          </li>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span ></span>
+          </li>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span ></span>
+          </li>
+        </ul>
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+    
+    <img style="position:absolute; left:1090px; top:380px;"  src="../images/Pic-Cable_TV.png"/>
+    
+</body>
+</html>

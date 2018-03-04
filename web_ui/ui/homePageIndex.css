@@ -1,0 +1,578 @@
+
+#infoStatus/* 用来显示一些消息 网络连接状态 天气等信息*/
+{
+	position:absolute;
+	left:1297px;
+	top:43px;
+	width:498px;
+}
+#usbImg
+{
+	position:absolute;
+	left:0px;
+}
+#networkImg
+{
+	position:absolute;
+	left:70px;
+}
+#Date
+{
+	position:absolute;
+	left:155px;
+	font-size:36px;
+	color:white;
+	top:0px;
+}
+#Time
+{
+	position:absolute;
+	left:397px;
+	font-size:36px;
+	color:white;
+	top:0px;
+}
+#title
+{
+	position:absolute;
+	top:80px;
+	left:121px;
+	width:1790px;
+	height:91px;
+}
+#mainTitle
+{
+	font-size:80px;
+	color:#FFF;
+	font-weight:bold;
+}
+#TVPage
+{
+	position:absolute;
+	left:0px;
+	top:-180px;
+	display: block;
+}
+#bigWindow
+{
+	position:absolute;
+	top:210px;
+	left:108px;
+	width:538px;
+	height:314px;
+}
+#bigWindowFocus
+{
+	position:absolute;
+	display:none;
+	top:8px;
+	width:654px;
+	height:378px;
+	background:url(images/TV-TV_Focus.png);
+}
+#middleList
+{
+	position:absolute;
+	top:218px;
+	left:748px;
+	width:1100px;
+	height:718px;
+}
+.middleWindow
+{
+	position:absolute;
+	height:284px;
+	width:364px;
+	background:url(images/TV-Posters_bg.png);
+}
+.channelName
+{
+	position:absolute;
+	top:30px;
+	left:30px;
+	width:330px;
+	overflow:hidden;
+	color:#cccccc;
+	font-size:24px;	
+	z-index:100;
+	overflow:hidden;
+}
+.programInfo
+{
+	position:absolute;
+	top:171px;
+	height:68px;
+	left:22px;
+	width:320px;
+	color:#cccccc;	
+	z-index:100;
+	display:none;
+    background:url(images/TV-Posters_Mask.png);
+}
+.currentProgramInfo
+{
+	position:absolute;
+	top:296px;
+	height:70px;
+	background:url(images/TV-TV_Mask.png);
+	left:22px;
+	width:610px;
+	z-index:100;
+}
+.programName
+{
+	position:absolute;
+	left:22px;
+	width:260px;
+	height:25px;
+	font-size:20px;
+	color:#cccccc;
+	font-weight:bold;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.programTime
+{
+	position:absolute;
+	line-height:58px;
+	left:164px;
+	width:50px;
+	height:58px;
+	color:#cccccc;
+	font-size:16px;
+}
+.timeCurrentProgress
+{
+	position:absolute;
+	left:216px;
+}
+.timeProgress
+{
+	position:absolute;
+	left:83px;
+	top:15px;
+}
+
+.proTimeFinish
+{
+	position:relative;
+	height:4px;
+	top:27px;
+	background:#66FFFF;
+	float:left;
+}
+.proTimeUnFinish
+{
+	position:relative;
+	height:4px;
+	top:27px;
+	background:#666;
+	float:left;
+}
+.programImg
+{
+	position:absolute;
+    left:22px;
+    top:22px;
+	z-index:50; 
+}
+.programImgNet
+{
+	position:absolute;
+	z-index:56;
+	top:22px;
+	left:22px;
+	border-radius:10px;
+	display:none;
+}
+#middleWindowFocus
+{
+	position:absolute;
+	height:284px;
+	width:364px;
+	display:none;
+	background:url(images/TV-Posters_Focus.png);
+}
+#littleList
+{
+	position:absolute;
+	top:575px;
+	left:130px;
+}
+.littleWindow
+{
+	position:absolute;
+}
+.littleWindow span
+{
+	position:absolute;
+	top:150px;
+	color:#b0b0b0;
+	font-size:24px;
+	text-align:center;
+	width:180px;
+	left:50px;
+	overflow:hidden;
+	white-space:nowrap;
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+#littleWindowFocus
+{
+	position:absolute;
+	height:204px;
+	width:288px;
+	display:none;
+	background:url(images/TV-Set_icon_Focus_AU.png);
+	pointer-events:none;
+}
+.littleWindow img
+{
+	position:absolute;
+}
+#APPPage
+{
+	position:absolute;
+	left:0px;
+	top:-180px;
+	display:none;
+}
+#appBigWindowPicList
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:3120px;
+	height:414px;
+	z-index:90;
+}
+#AppBigWindow
+{
+	position:absolute;
+	top:230px;
+	left:113px;
+	width:608px;
+	height:520px;
+	z-index:200;
+	/*background:url(images/App-Big_bg.png);*/
+	overflow:hidden;
+}
+#AppBigWindow img
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:608px;
+	height:520px;
+}
+.currentAPPInfo
+{
+	position:absolute;
+	top:422px;
+	height:70px;
+	left:22px;
+	width:580px;	
+	z-index:100;
+}
+#currentAppName
+{
+	position:absolute;
+	left:180px;
+	height:74px;
+	line-height:74px;
+	width:256px;
+	color:#cccccc;
+	font-size:30px;
+	overflow:hidden;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#appBigWindowFocus
+{
+	position:absolute;
+	display:none;
+	top: 0px;
+	left: 0px;
+	width:608px;
+	height:520px;
+	background:url(images/App-Big_bg_Focus.png);
+
+}
+#appFlagBox
+{
+	position:absolute;
+	left:30px;
+	top:18px;
+	height:74px;
+	line-height:74px;
+	width:256px;
+}
+#appFlagBox img
+{
+	position:absolute;
+	height:33px;
+	width:7px;
+}
+#AppLittleList
+{
+	position:absolute;
+	top:751px;
+	left:113px;
+}
+.appLittleWindow
+{
+	position:absolute;
+	height:260px;
+	width:298px;
+	background-image:url(images/App-Little_bg.png);
+}
+.appLittleWindow img
+{
+	position:absolute;
+	left:75px;
+	top:28px;
+	height:150px;
+	width:150px;
+	z-index:50;
+}
+.appLittleWindow span
+{
+	position:absolute;
+	top:195px;
+	height:40px;
+	width:260px;
+	line-height:40px;
+	color:#b0b0b0;
+	font-size:28px;
+	text-align:center;
+	z-index:100;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#appLittleWindowFocus
+{
+	position:absolute;
+	height:260px;
+	width:298px;
+	display:none;
+    z-index:110;
+	background:url(images/App-Little_bg_Focus.png);
+}
+#AppMiddleList
+{
+	position:absolute;
+	top:230px;
+	left:731px;
+}
+.AppMiddleWindow
+{
+	position:absolute;
+	height:260px;
+	width:260px;
+	background-image:url(images/App-Middle_bg.png);
+}
+.AppMiddleWindow img
+{
+	position:absolute;
+	left:55px;
+	top:30px;/*42*/
+	height:150px;
+	width:150px;
+	z-index:50; 
+}
+.AppMiddleWindow span
+{
+	position:absolute;
+	top:200px;
+	height:40px;
+	width:260px;
+	line-height:40px;
+	color:#b0b0b0;
+	font-size:24px;
+	text-align:center;
+	z-index:100;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	display:none;
+}
+#appMiddleWindowFocus
+{
+	position:absolute;
+	height:260px;
+	width:260px;
+	display:none;
+	background:url(images/App-Middle_bg_Focus.png);
+}
+#VideoPage
+{
+	position:absolute;
+	top:-180px;
+}
+#VideoMiddleList
+{
+	position:absolute;
+	top:218px;
+	left:108px;
+	width:1700px;
+	height:810px;
+	
+}
+.VideoMiddleWindow
+{
+	position:absolute;
+	height:284px;
+	width:352px;
+	background-image:url('images/Video-icon bg.png');
+}
+.VideoMiddleWindow img
+{
+	position:absolute;
+	left:70px;
+	top:55px;/*42*/
+	height:148px;
+	width:212px;
+	z-index:50; 
+}
+.VideoMiddleWindow span
+{
+	position:absolute;
+	top:194px;
+	height:40px;
+	width:352px;
+	line-height:40px;
+	color:#b0b0b0;
+	font-size:24px;
+	text-align:center;
+	z-index:100;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	display:none;
+}
+#VideoMiddleWindowFocus
+{
+	position:absolute;
+	height:284px;
+	width:352px;
+	display:none;
+	background:url(images/Video-icon_Focus.png);
+}
+
+#homePageTips
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(images/Bg-Pop_up_box-04.png);
+	display:none;
+	z-index:200;
+}
+
+#dialogContent
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#dialogName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:250px;
+	height:35px;
+	bottom:30px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+.dialogButtonFocus/*对话框中按钮样式的焦点*/
+{
+	position:absolute;
+	width:248px;
+	height:38px;
+	bottom:30px;
+	border-radius:14px;
+	border:solid medium #F00;
+}
+#currentProgramRemind
+{
+	position:absolute;
+	top:132px;
+	left:0px;
+	width:600px;
+	height:50px;
+	line-height:50px;
+	font-size:28px;
+	display:none;
+	left:22px;
+	text-align:center;
+	color:#FFF;
+}
+#smartTV
+{
+	position:absolute;
+	top:605px;
+	left:108px;	
+}
+#smartTV span
+{
+	position:absolute;
+	top:240px;
+	color:#b0b0b0;
+	font-size:24px;
+	text-align:center;
+	width:224px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#smartTV img
+{
+	position:absolute;
+}
+#smartTVFocus
+{
+	position:absolute;
+	height:393px;
+	width:224px;
+	display:none;
+	background:url(images/TV-Set_icon_SmartTV_Focus.png);
+}

@@ -1,0 +1,870 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+body
+{
+	background: transparent;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#homeMenu
+{
+	position:absolute;
+    height: 1080px;
+	width:310px;
+	z-index:101;
+}
+#subMenu1
+{
+	position:absolute;
+	left:0px;/*left:310px;*/
+	padding-left:310px;
+	height:1080px;
+	width:1920px;
+	z-index:1;
+}
+#subMenu2
+{
+	position:absolute;
+	left:0px;/*left:350px;*/
+	padding-left:350px;
+	height:1080px;
+	width:1920px;
+	z-index:2;
+}
+#subMenu3
+{
+	position:absolute;
+	left:0px;/*left:390px;*/
+	padding-left:390px;
+	height:1080px;
+	width:1920px;
+	z-index:3;
+}
+#subMenu4
+{
+	position:absolute;
+	left:0px;/*left:430px;*/
+	padding-left:430px;
+	height:1080px;
+	width:1920px;
+	z-index:4;
+}
+.pageFlag 
+{
+	position:absolute;
+	width:40px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	display:none;
+	z-index:1000;
+	pointer-events:none;
+}
+.pageFlag li
+{
+	position:relative;
+	list-style-type: none;
+	width:40px;
+	height:40px;
+	top:10px;
+}
+.pageFlag ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#pageFlagShadow
+{
+	position:absolute;
+	left:306px;
+	width:28px;
+	z-index:980;
+	display:none;
+	pointer-events:none;
+}
+@keyframes myOpacity
+{
+0%   {opacity: 0;}
+25%  {opacity: 0.4;}
+50%  {opacity: 0.8;}
+100% {opacity: 0.92;}
+}
+
+
+</style>
+<script>
+top.keySetForUI(1);
+document.onkeydown 	= keyDownProcess;
+document.onnotify 	= notifyProcess;
+
+var channel			= top.g_channel;
+var setting			= top.g_setting;
+var currentShowMenu	=0;
+var menuTimer  		= 0;
+var selecPictureFlag = 1;
+var pageFlag        = ["images/page/grading-1.png","images/page/grading-2.png"];
+
+var menuLock        = 0 ;
+var hotelEnable     = 0;
+var factory         = top.g_factory;
+var menuLockFlag    = 1;
+
+function timeout()
+{
+	menuTimer = setTimeout(function(){top.jumpPage();},15*1000);
+}
+
+function keyDownProcess(evt)
+{
+	evt.preventDefault();
+}
+
+function notifyProcess(evt)
+{
+	top.g_channel.testLog("in index notifyProcess");
+    top.systemEventProc(evt);
+}
+
+/*通过ID获取对象*/
+function $(id)
+{
+    return document.getElementById(id);
+}
+var showPageTimer = 0;
+var changePage  = 0;
+var onLoadPage  = 0;
+/*控制子iframe替换页*/
+function jumpPage(index,page) //index 将要跳转页所在iframe
+{
+	switch(index)
+	{
+		case 0:
+		    $("homeMenu").src=page;
+			$("homeMenu").focus();
+			setIndexFocusPage("homeMenu");
+			break;
+		case 1:
+			$("subMenu2").src="";
+			$("subMenu3").src="";
+			$("subMenu4").src="";
+			currentShowMenu=1;
+			onLoadPage=0;
+			$("subMenu1").onload=function(){
+				$("subMenu1").contentWindow.$("sndMenuLeft").style.webkitTransition = "left 200ms linear";
+				$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+			    $("subMenu1").contentWindow.$("sndMenuRight").style.webkitTransition = "left 200ms linear";
+				$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+				onLoadPage=1;
+				$("subMenu1").onload = function(){};
+			};
+			$("subMenu1").src=page;
+			showPageFlag(currentShowMenu);
+			$("pageFlagShadow").style.left="306px";
+			setIndexFocusPage("subMenu1");
+			break;
+		case 2:
+		    currentShowMenu=2;
+			showPageFlag(currentShowMenu);
+		    $("subMenu1").contentWindow.hiddenPromptCont();
+			hiddenRight(index);
+			$("subMenu2").onload = function(){
+				$("subMenu2").contentWindow.$("thdMenuLeft").style.webkitTransition = "left 200ms linear";	
+				$("subMenu2").contentWindow.$("thdMenuLeft").style.left = "0px";
+			    $("subMenu2").contentWindow.$("thdMenuRight").style.webkitTransition = "left 200ms linear";
+				$("subMenu2").contentWindow.$("thdMenuRight").style.left = "44px";
+				$("subMenu2").onload = function(){};
+			}
+			$("subMenu2").src=page;
+			$("pageFlagShadow").style.left="350px";
+			$("subMenu2").focus();
+			setIndexFocusPage("subMenu2");
+			break;
+		case 3:
+		    currentShowMenu=3;
+			showPageFlag(currentShowMenu);
+			hiddenRight(index);
+			$("subMenu3").onload = function(){
+				$("subMenu3").contentWindow.$("fourthMenuLeft").style.webkitTransition = "left 200ms linear";
+				$("subMenu3").contentWindow.$("fourthMenuLeft").style.left = "0px";
+			    $("subMenu3").contentWindow.$("fourthMenuRight").style.webkitTransition = "left 200ms linear";
+				$("subMenu3").contentWindow.$("fourthMenuRight").style.left = "44px";
+				$("subMenu3").onload = function(){};
+				};
+			$("subMenu3").src=page;
+			$("pageFlagShadow").style.left="390px";
+			$("subMenu3").focus();
+			setIndexFocusPage("subMenu3");
+			break;
+		case 4:
+		    currentShowMenu=4;
+			showPageFlag(currentShowMenu);
+			hiddenRight(index);
+			$("subMenu4").onload=function(){
+				$("subMenu4").contentWindow.$("fifthMenuLeft").style.webkitTransition = "left 200ms linear";
+				$("subMenu4").contentWindow.$("fifthMenuLeft").style.left = "0px";
+			    $("subMenu4").contentWindow.$("fifthMenuRight").style.webkitTransition = "left 200ms linear";
+				$("subMenu4").contentWindow.$("fifthMenuRight").style.left = "44px";
+				$("subMenu4").onload = function(){};
+				};
+			$("subMenu4").src=page;
+			$("pageFlagShadow").style.left="430px";
+			$("subMenu4").focus();
+			setIndexFocusPage("subMenu4");
+			break;
+		default:
+			break;
+	}
+}
+/*控制子iframe替换页*/
+function returnPage(index) //index 为当前页所在iframe
+{
+	switch(index)
+	{
+		case 0:
+			top.jumpPage();
+			break;
+		case 1:
+		    currentShowMenu=0;
+			hiddenSubMenu1Focus();
+			$("homeMenu").focus();
+			setIndexFocusPage("homeMenu");
+			$("homeMenu").contentWindow.timeoutInit();
+			onLoadPage=1;
+			//timeout();
+			break;
+		case 2:
+		    currentShowMenu=1;
+			$("subMenu2").src="";
+			showRight(index);
+			showPageFlag(currentShowMenu);
+			$("pageFlagShadow").style.left="306px";
+			$("subMenu1").contentWindow.showPromptCont();
+			if($("homeMenu").contentWindow.positionV==0)
+			{
+				$("subMenu1").contentWindow.initVarValue();
+				$("subMenu1").contentWindow.showScreenModeList();
+			}
+			$("subMenu1").focus();
+			setIndexFocusPage("subMenu1");
+			$("subMenu1").contentWindow.timeoutInit();
+			//$("subMenu1").contentWindow.timeout();
+			break;
+		case 3:
+		    currentShowMenu=2;
+			$("subMenu3").src="";
+			$("pageFlagShadow").style.left="350px";
+			showRight(index);
+			showPageFlag(currentShowMenu);
+			$("subMenu2").focus();
+			setIndexFocusPage("subMenu2");
+			$("subMenu2").contentWindow.timeoutInit();
+			break;
+		case 4:
+		    currentShowMenu=3;
+			$("subMenu4").src="";
+			$("pageFlagShadow").style.left="390px";
+			showPageFlag(currentShowMenu);
+			showRight(index);
+			$("subMenu3").focus();
+			setIndexFocusPage("subMenu3");
+			$("subMenu3").contentWindow.timeoutInit();
+			break;
+		default:
+			break;
+	}
+}
+
+function hiddenPage(index)
+{
+	switch(index)
+	{
+		case 0:
+			$("homeMenu").style.display="none";
+			break;
+		case 1:
+			$("homeMenu").style.display="none";
+			$("pageFlagShadow").style.display="none";
+			$("subMenu1").contentWindow.$("sndMenuLeft").style.display="none";
+			$("subMenu1").contentWindow.$("sndMenuRight").style.display="none";
+			$("subMenu1").style.paddingLeft = "0px";
+			break;
+		case 2:
+			$("homeMenu").style.display="none";
+			$("subMenu1").style.display="none";
+			showPageFlag(1);
+			$("pageFlagShadow").style.display="none";
+			$("subMenu2").contentWindow.$("thdMenuLeft").style.display="none";
+			$("subMenu2").contentWindow.$("thdMenuRight").style.display="none";
+			$("subMenu2").style.paddingLeft = "0px";
+			break;
+		case 3:
+			$("homeMenu").style.display="none";
+			$("subMenu1").style.display="none";
+			$("subMenu2").style.display="none";
+			$("pageFlagShadow").style.display="none";
+			showPageFlag(1);
+			$("subMenu3").contentWindow.$("fourthMenuLeft").style.display="none";
+			$("subMenu3").contentWindow.$("fourthMenuRight").style.display="none";
+			$("subMenu3").style.paddingLeft = "0px";
+			break;
+		case 4:
+			$("homeMenu").style.display="none";
+			$("subMenu1").style.display="none";
+			$("subMenu2").style.display="none";
+			$("subMenu3").style.display="none";
+			$("pageFlagShadow").style.display="none";
+			showPageFlag(1);
+			$("subMenu4").contentWindow.$("fifthMenuLeft").style.display="none";
+			$("subMenu4").contentWindow.$("fifthMenuRight").style.display="none";
+			$("subMenu4").style.paddingLeft = "0px";
+			break;
+		default:
+			break;
+	}
+}
+function showPage(index)
+{
+	switch(index)
+	{
+		case 0:
+			$("homeMenu").style.display="block";
+			break;
+		case 1:
+			$("homeMenu").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			$("subMenu1").contentWindow.$("sndMenuLeft").style.display="block";
+			$("subMenu1").contentWindow.$("sndMenuRight").style.display="block";
+			$("subMenu1").style.paddingLeft = "310px";
+			break;
+		case 2:
+			$("homeMenu").style.display="block";
+			$("subMenu1").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			$("subMenu2").contentWindow.$("thdMenuLeft").style.display="block";
+			$("subMenu2").contentWindow.$("thdMenuRight").style.display="block";
+			$("subMenu2").style.paddingLeft = "350px";
+			showPageFlag(2);
+			break;
+		case 3:
+			$("homeMenu").style.display="block";
+			$("subMenu1").style.display="block";
+			$("subMenu2").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			$("subMenu3").contentWindow.$("fourthMenuLeft").style.display="block";
+			$("subMenu3").contentWindow.$("fourthMenuRight").style.display="block";
+			$("subMenu3").style.paddingLeft = "390px";
+			showPageFlag(3);
+			break;
+		case 4:
+			$("homeMenu").style.display="block";
+			$("subMenu1").style.display="block";
+			$("subMenu2").style.display="block";
+			$("subMenu3").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			$("subMenu4").contentWindow.$("fifthMenuLeft").style.display="block";
+			$("subMenu4").contentWindow.$("fifthMenuRight").style.display="block";
+			$("subMenu4").style.paddingLeft = "430px";
+			showPageFlag(4);
+			break;
+		default:
+			break;
+	}
+}
+function hiddenRight(index)//隐藏页面右半部分
+{
+	switch(index)
+	{
+		case 2:
+		    $("subMenu1").contentWindow.$("sndMenuRight").style.display="none";
+			break;
+		case 3:
+			$("subMenu2").contentWindow.$("thdMenuRight").style.display="none";
+			break;
+		case 4:
+			$("subMenu3").contentWindow.$("fourthMenuRight").style.display="none";
+			break;
+		default:
+			break;
+	}
+
+}
+function showRight(index)//显示页面右半部分
+{
+	switch(index)
+	{
+		case 2:
+		    $("subMenu1").contentWindow.$("sndMenuRight").style.display="block";
+			break;
+		case 3:
+			$("subMenu2").contentWindow.$("thdMenuRight").style.display="block";
+			break;
+		case 4:
+			$("subMenu3").contentWindow.$("fourthMenuRight").style.display="block";
+			break;
+		default:
+			break;
+	}
+}
+function popWindow(index,page)
+{
+	switch(index)
+	{
+		case 2:
+		    currentShowMenu=2;
+			showPageFlag(1);
+			$("homeMenu").style.display="none";
+			$("subMenu1").style.display="none";
+			$("pageFlagShadow").style.display="none";
+			$("subMenu2").src=page;
+			$("subMenu2").focus();
+			setIndexFocusPage("subMenu2");
+			$("subMenu2").style.paddingLeft = "0px";
+			break;
+		case 3:
+		    currentShowMenu=3;
+			showPageFlag(1);
+			$("homeMenu").style.display="none";
+			$("subMenu1").style.display="none";
+			$("subMenu2").style.display="none";
+			$("pageFlagShadow").style.display="none";
+			$("subMenu3").src=page;
+			$("subMenu3").focus();
+			setIndexFocusPage("subMenu3");
+			$("subMenu3").style.paddingLeft = "0px";
+			break;
+		case 4:
+		    currentShowMenu=4;
+			showPageFlag(1);
+			$("homeMenu").style.display="none";
+			$("subMenu1").style.display="none";
+			$("subMenu2").style.display="none";
+			$("subMenu3").style.display="none";
+			$("pageFlagShadow").style.display="none";
+			$("subMenu4").src=page;
+			$("subMenu4").focus();
+			setIndexFocusPage("subMenu4");
+			$("subMenu4").style.paddingLeft = "0px";
+			break;
+		default:
+			break;
+	}
+}
+function returnPopWindow(index)
+{
+	switch(index)
+	{
+		case 2:
+		    currentShowMenu=1;
+		    $("subMenu2").src="";
+			$("homeMenu").style.display="block";
+			$("subMenu1").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			if($("homeMenu").contentWindow.positionV==0)
+			{
+				$("subMenu1").contentWindow.initVarValue();
+				$("subMenu1").contentWindow.showScreenModeList();
+			}
+			$("subMenu1").focus();
+			setIndexFocusPage("subMenu1");
+			$("subMenu1").contentWindow.timeoutInit();
+			$("subMenu2").style.paddingLeft = "350px";
+			//$("subMenu1").contentWindow.timeout();
+			break;
+		case 3:
+		    currentShowMenu=2;
+			showPageFlag(2);
+			$("subMenu3").src="";
+			$("homeMenu").style.display="block";
+			$("subMenu1").style.display="block";
+			$("subMenu2").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			$("subMenu2").focus();
+			setIndexFocusPage("subMenu2");
+			$("subMenu2").contentWindow.timeoutInit();
+			$("subMenu3").style.paddingLeft = "390px";
+			break;
+		case 4:
+			currentShowMenu=3;
+			showPageFlag(3);
+		    $("subMenu4").src="";
+			$("homeMenu").style.display="block";
+			$("subMenu1").style.display="block";
+			$("subMenu2").style.display="block";
+			$("subMenu3").style.display="block";
+			$("pageFlagShadow").style.display="block";
+			$("subMenu3").focus();
+			setIndexFocusPage("subMenu3");
+			$("subMenu3").contentWindow.timeoutInit();
+			$("subMenu4").style.paddingLeft = "430px";
+			break;
+		default:
+			break;
+	}
+}
+function checkPictureSelEnable()
+{
+	try
+	{
+		if((setting.location>0&&setting.checkPictureSelectEnable()==0) || setting.footballMode)
+		{
+			selecPictureFlag=0;
+		}
+		else
+		{
+			selecPictureFlag=1;
+		}
+	}
+	catch(er)
+	{
+		top.g_channel.testLog(er);
+	}
+}
+function init()
+{
+	top.RemoteConntrolType = "default";//lqt--设置默认的虚拟遥控器场景，为不显示
+	top.g_setting.setHideSubtitleForApp(1);
+	menuLock = factory.menuLock;
+	hotelEnable = factory.hotelEnable;
+	//top.main.focus();
+	//面板按键处理场景设置
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	checkPictureSelEnable();
+	//top.g_channel.testLog("in index init g_nextHtmlPage = " +　top.g_nextHtmlPage);
+	$("homeMenu").src="menu.html";
+	if(top.g_nextHtmlPage == "ciList.html")
+	{
+		$("subMenu2").src = "";
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+					showPageFlag(2);
+					onLoadPage=1;
+					setIndexFocusPage("subMenu1");
+					$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+					$("subMenu1").contentWindow.$("thdMenuLeft").style.left = "40px";
+					$("subMenu1").contentWindow.$("thdMenuRight").style.left = "84px";
+					$("pageFlagShadow").style.left="350px";
+					$("pageFlagShadow").style.display="block";
+					$("subMenu1").focus();
+					setIndexFocusPage("subMenu1");
+			}
+		$("subMenu1").src = "systemSetting/ciList.html";
+		//$("subMenu1").focus();
+	}
+	else if(top.g_nextHtmlPage == "common_interface.html")
+	{
+		$("subMenu2").src = "";
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+				showPageFlag(3);
+				onLoadPage=1;
+				$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+				$("subMenu1").contentWindow.$("thdMenuLeft").style.left = "40px";
+				$("subMenu1").contentWindow.$("fourthMenuLeft").style.left = "80px";
+				$("subMenu1").contentWindow.$("fourthMenuRight").style.left = "124px";
+				$("pageFlagShadow").style.left="390px";
+				$("pageFlagShadow").style.display="block";
+				$("subMenu1").focus();
+				setIndexFocusPage("subMenu1");
+			}
+		$("subMenu1").src = "systemSetting/common_interface.html";
+		//$("subMenu1").focus();
+		//setIndexFocusPage("subMenu1");
+	}
+	else if(top.g_nextHtmlPage == "channelScan.html")//无频道锁的时候nit进入channelScan
+	{
+		
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+			 onLoadPage=1;
+			 $("subMenu2").onload=function(){
+					$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+					$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+					$("subMenu2").contentWindow.$("thdMenuLeft").style.left = "0px";
+					$("subMenu2").contentWindow.$("thdMenuRight").style.left = "44px";
+					$("pageFlagShadow").style.left="350px";
+					showPageFlag(2)
+					$("pageFlagShadow").style.display="block";
+				 }
+			 $("subMenu2").src = "channelSetting/channelScan.html";
+			}
+		$("subMenu1").src = "channelSet.html";//在channelSet.html页面有对这种情况的特殊处理，在init函数中
+		$("subMenu2").focus();
+		setIndexFocusPage("subMenu2");
+	}
+	else if(top.g_nextHtmlPage == "autoSearch.html" || top.g_nextHtmlPage == "autoUpdate.html")
+	{
+		$("subMenu4").src = "";
+		$("subMenu3").src = "";
+		$("subMenu1").onload=function(){
+			 onLoadPage=1;
+			 $("subMenu2").onload=function(){
+						$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+						$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+						$("subMenu2").contentWindow.$("thdMenuLeft").style.left = "0px";
+						$("subMenu2").contentWindow.$("thdMenuRight").style.left = "44px";	
+						$("pageFlagShadow").style.left="350px";
+						showPageFlag(2)
+						currentShowMenu=2;
+						$("pageFlagShadow").style.display="block";
+				 }
+			 $("subMenu2").src = "channelSetting/channelScan.html";
+			}
+		$("subMenu1").src = "channelSet.html";//在channelSet.html页面有对这种情况的特殊处理，在init函数中
+		setIndexFocusPage("subMenu2");
+	}
+	else if(top.g_nextHtmlPage == "channelSet.html")//有频道锁的时候进入channelset即可
+	{
+		try
+		{
+		$("subMenu2").src = "";
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+				onLoadPage=1;
+				showPageFlag(1);
+				$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+				$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+				$("pageFlagShadow").style.display="block";		
+				showSubMenu1Focus();
+				 top.g_nextHtmlPage = "";
+			}
+		$("subMenu1").src = "channelSet.html";
+		}
+		catch(er)
+		{
+			top.g_channel.testLog(er);
+		}
+	}
+	/*
+	else if(top.g_nextHtmlPage == "menuLanguage.html")//menu languege切换语言，重新加载页面适配多语言
+	{
+		$("subMenu1").src = "systemSet.html";//在channelSet.html页面有对这种情况的特殊处理，在init函数中
+		setTimeout(function(){$("subMenu2").src = "systemSetting/menuLanguage.html";},200);
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("pageFlagShadow").style.left="350px";
+		showPageFlag(2)
+		$("subMenu2").focus();
+	}*/
+	else if(top.g_nextHtmlPage == "networkSetting.html")
+	{
+		$("subMenu2").src = "";
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+			onLoadPage=1;
+			showPageFlag(1);
+			$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+			$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+			$("pageFlagShadow").style.display="block";		
+			showSubMenu1Focus();
+			top.g_nextHtmlPage = "";
+			}
+		$("subMenu1").src = "networkSetting.html";
+
+	}
+	else if(top.g_nextHtmlPage == "wirelessScan.html")
+	{
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+				onLoadPage=1;
+				$("subMenu2").onload=function(){
+						$("subMenu3").onload=function(){
+								$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+								$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+								$("subMenu2").contentWindow.$("thdMenuLeft").style.left = "0px";
+								$("subMenu2").contentWindow.$("thdMenuRight").style.left = "44px";
+								$("subMenu3").contentWindow.$("fourthMenuLeft").style.left = "0px";
+								$("subMenu3").contentWindow.$("fourthMenuRight").style.left = "44px";	
+								$("pageFlagShadow").style.left="390px";
+								showPageFlag(3)
+								currentShowMenu=3;
+								$("pageFlagShadow").style.display="block";
+							}
+						$("subMenu3").src = "networkSetting/wirelessSetting/wirelessScan.html";
+					}
+				$("subMenu2").src = "networkSetting/wirelessSetting.html";
+			}
+		$("subMenu1").src = "networkSetting.html";//在channelSet.html页面有对这种情况的特殊处理，在init函数中
+		$("subMenu3").focus();
+		setIndexFocusPage("subMenu3");
+	}
+	else
+	{
+		$("subMenu2").src = "";
+		$("subMenu3").src = "";
+		$("subMenu4").src = "";
+		$("subMenu1").onload=function(){
+			$("subMenu1").contentWindow.$("sndMenuLeft").style.left = "0px";
+			$("subMenu1").contentWindow.$("sndMenuRight").style.left = "40px";
+			$("pageFlagShadow").style.display="block";
+			onLoadPage=1;top.g_channel.testLog("init  onLoadPage....");};
+		$("subMenu1").src = "userPictureSet.html";
+		$("homeMenu").focus();
+		setIndexFocusPage("homeMenu");
+	}
+	top.menu_visible_status = 1;
+}
+/*
+描述：将g_nextHtmlPage初始化，避免下次进入的时候init判断出现问题
+*/
+function uninit()
+{
+	top.g_nextHtmlPage == "";
+	top.menu_visible_status = 0;
+	top.g_setting.setHideSubtitleForApp(0);
+}
+var mentFocusImg = ["images/SS_icon/focus.png","images/SS_icon/focus_Activation.png"];
+function showSubMenu1Focus()
+{
+	if($("subMenu1").src=="userPictureSet.html"&&selecPictureFlag==0)
+	{
+		return;
+	}
+	else
+	{
+		onLoadPage=0;
+		$("homeMenu").contentWindow.document.getElementById("menuFocus").src=mentFocusImg[1];
+		$("subMenu1").contentWindow.showFocus();
+		currentShowMenu=1;
+		$("subMenu1").focus();
+		setIndexFocusPage("subMenu1");
+		if((menuLock) && (hotelEnable))
+		{
+			menuLockFlag = 0;
+			return;
+		}
+		else
+		{
+			$("subMenu1").contentWindow.showPromptCont();
+		}
+	}
+}
+function hiddenSubMenu1Focus()
+{
+	$("homeMenu").contentWindow.document.getElementById("menuFocus").src=mentFocusImg[0];
+	$("subMenu1").contentWindow.hiddenFocus();
+	$("subMenu1").contentWindow.hiddenPromptCont();
+}
+function showFlagShadow()
+{
+	$("pageFlagShadow").style.display="block";
+}
+function hiddenFlagShadow()
+{
+	$("pageFlagShadow").style.display="none";
+}
+function hiddenPageFlag()
+{
+	$("page1").style.display="none";
+	$("page2").style.display="none";
+	$("page3").style.display="none";
+}
+function showPageFlag(index)
+{
+	switch(index)
+	{
+		case 1:
+		{
+			$("page1").style.display="none";
+			$("page2").style.display="none";
+			$("page3").style.display="none";
+		}
+		break;
+		case 2:
+		{
+			$("page1").style.display="block";
+			$("page1").src=pageFlag[1];
+			$("page2").style.display="none";
+			$("page3").style.display="none";
+		}
+		break;
+		case 3:
+		{
+			$("page1").style.display="block";
+			$("page2").style.display="block";
+			$("page1").src=pageFlag[0];
+			$("page2").src=pageFlag[1];
+			$("page3").style.display="none";
+		}
+		break;
+		case 4:
+		{
+			$("page1").style.display="block";
+			$("page2").style.display="block";
+			$("page3").style.display="block";
+			$("page1").src=pageFlag[0];
+			$("page2").src=pageFlag[0];
+			$("page3").src=pageFlag[1];
+		}
+		break;
+		default:
+		break;
+	}
+}
+/*
+IndexPage,指定index页面中的Iframe的焦点页面
+*/
+function setIndexFocusPage(IndexPage)
+{
+	//top.Log("in setIndexFocusPage IndexPage = " + IndexPage);
+	top.setFrameFocusPage("main");//当页面冲operator Iframe返回的时候需要先调用此函数
+	switch(IndexPage)
+	{
+		case "homeMenu":
+			$("subMenu1").style.zIndex = 100;
+			$("subMenu2").style.zIndex = 2;
+			$("subMenu3").style.zIndex = 3;
+			$("subMenu4").style.zIndex = 4;
+			break;
+		case "subMenu1":
+			$("subMenu1").style.zIndex = 100;
+			$("subMenu2").style.zIndex = 2;
+			$("subMenu3").style.zIndex = 3;
+			$("subMenu4").style.zIndex = 4;
+			break;
+		case "subMenu2":
+			$("subMenu1").style.zIndex = 1;
+			$("subMenu2").style.zIndex = 100;
+			$("subMenu3").style.zIndex = 3;
+			$("subMenu4").style.zIndex = 4;
+			break;
+		case "subMenu3":
+			$("subMenu1").style.zIndex = 1;
+			$("subMenu2").style.zIndex = 2;
+			$("subMenu3").style.zIndex = 100;
+			$("subMenu4").style.zIndex = 4;
+			break;
+		case "subMenu4":
+			$("subMenu1").style.zIndex = 1;
+			$("subMenu2").style.zIndex = 2;
+			$("subMenu3").style.zIndex = 3;
+			$("subMenu4").style.zIndex = 100;
+		default:
+			break;
+	}
+}
+function focusToMenu()
+{
+	$("homeMenu").focus();
+}
+</script>
+</head>
+<body onLoad="init()" onUnload="uninit()" >
+	<iframe id="homeMenu" name="homeMenu"  frameborder="0" marginheight="0" marginwidth="0"></iframe>
+	<iframe id="subMenu1" name="subMenu1"  frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+    <iframe id="subMenu2" name="subMenu2"  frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+    <iframe id="subMenu3" name="subMenu3"  frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+    <iframe id="subMenu4" name="subMenu4"  frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+    <!---------------------页面标记显示--------------------------->
+    <img id="page1" class="pageFlag" style=" left:310px; top:80px;" />
+    <img id="page2" class="pageFlag" style=" left:350px; top:80px;" />
+    <img id="page3" class="pageFlag" style=" left:390px; top:80px;" />
+    <img id="pageFlagShadow" src="images/page/grading_shadow.png" />
+     <!----------------------页面标记显示---------------------------------->
+</body>
+</html>

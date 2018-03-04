@@ -1,0 +1,1426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title>无标题文档</title>
+<script type="text/javascript" src="mediaList.js"></script>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#title
+{
+	position:absolute;
+	top:0px;
+	width:1920px;
+	height:108px;
+	line-height:108px;
+	font-size:28px;
+	color:#aaaaaa;
+	float:left;
+	opacity:1;
+	font-weight:bold;
+	background:#000;
+	border:4px solid #1b1b1b;
+	border-style:none none solid none;
+	z-index:30;
+}
+#titleContent
+{
+	position:absolute;
+	top:4px;
+	left:60px;
+	height:100px;
+	width:1000px;
+	line-height:100px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#titleTips
+{
+	position:absolute;
+	top:4px;
+	right:60px;
+	height:100px;
+	margin:0;
+	padding:0;
+	font-size:28px;
+	color:#666666;
+	text-align:center;
+	float:left;
+}
+#emptyTips
+{
+	position:absolute;
+	top:108px;
+	left:0px;
+	width:1912px;
+	height:964px;
+	opacity:1;
+	background:#000;
+	text-align:center;
+	line-height:967px;
+	font-size:48px;
+	color:#aaaaaa;
+	display:none;
+	z-index:50;
+	border: 4px solid #1b1b1b;
+}
+#emptyListTips
+{
+	position:absolute;
+	top:108px;
+	left:287px;
+	width:1629px;
+	height:972px;
+	opacity:1;
+	background:#000;
+	text-align:center;
+	line-height:967px;
+	font-size:48px;
+	color:#aaaaaa;
+	display:none;
+	z-index:39;
+	border: 4px solid #1b1b1b;
+}
+#iconListEmptyTips
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:410px;
+	text-align:center;
+	font-size:48px;
+	color:#aaaaaa;
+	background-image:url(images/Bg-USB_Tip.png);
+	display:none;
+	z-index:50;
+}
+#focus
+{
+	position:absolute;
+	top:138px;
+	left:314px;
+	width:744px;
+	height:114px;
+	display:none;
+	pointer-events:none;
+	z-index:40;
+	background-image:url(images/Focus-list.png);
+	-webkit-transition-duration:200ms;
+}
+#menuFocus
+{
+	position:absolute;
+	top:120px;
+	left:0px;
+}
+#menu
+{
+	position:absolute;
+	top:108px;
+	width:287px;
+	height:972px;
+	background:#000;
+	border:4px solid #1b1b1b;
+	border-style:none solid none none;
+	opacity:1;	
+	z-index:20;
+}
+#menu ul 
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+}
+#menu ul li
+{
+	position: relative;
+	width: 287px;
+	height: 150px;
+	float: left;
+	color: #D6D6D6;
+}
+#menu ul li img
+{
+	position:absolute;
+	top:11px;
+	left:5px;
+	width:128px;
+	height:128px;
+	text-align:center;
+}
+#menu ul li div
+{
+	position: absolute;
+	top:11px;
+	left:120px;
+	width:149px;
+	height:128px;
+	line-height:128px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#musicCtl
+{
+	position:absolute;
+	left:0px;
+	top:792px;
+	width:287px;
+	height:288px;
+	background:#000;
+	opacity:1;
+	display:none;
+	z-index:20;
+}
+#playInfo
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:287px;
+	height:100px;
+	background:#000;
+	opacity:1;
+	border:1px solid #1b1b1b;
+	border-style:solid none none none;
+	z-index:20;
+}
+#playInfo span
+{
+	position:absolute;
+	top:0px;
+	left:90px;
+	width:180px;
+	height:35px;
+	line-height:35px;
+	text-align:left;
+	font-size:20px;
+	color:#cccccc;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#playCtl
+{
+	position:absolute;
+	left:0px;
+	top:72px;
+	width:287px;
+	height:216px;
+	z-index:20;
+}
+#playMusicAll
+{
+	position:absolute;
+	left:1920px;
+	top:113px;
+	width:816px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	border:1px solid #1b1b1b;	
+	display:none;
+	z-index:30;
+	-webkit-transition-duration:200ms;
+}
+#emptyFolderTips
+{
+	position:absolute;
+	left:1920px;
+	top:108px;
+	width:816px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	border:4px solid #1b1b1b;	
+	display:none;
+	z-index:30;
+	-webkit-transition-duration:200ms;
+}
+#loadingTips
+{
+	position:absolute;
+	left:1920px;
+	top:108px;
+	width:816px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	border:4px solid #1b1b1b;	
+	display:none;
+	z-index:24;
+	-webkit-transition-duration:200ms;
+}
+#gobackBox
+{
+	position:absolute;
+	top:108px;
+	left:288px;
+	width:40px;
+	height:972px;
+	display:none;
+	z-index:30;
+}
+#gobackBox img
+{
+	position:absolute;
+	top:73px;
+	left:0px;
+	pointer-events:none;
+}
+.fileArrowIcon
+{
+	position:absolute;
+	left:11px;
+	width:794px;
+	height:24px;
+	display:none;
+	background-image:url(images/Bg-list-TB.png);
+}
+.fileArrowIcon img
+{
+	position:absolute;
+	left:382px;
+}
+#fileInfo
+{
+	position:absolute;
+	left:1105px;
+	top:108px;
+	width:816px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	border:4px solid #1b1b1b;	
+	display:none;
+	z-index:25;
+	-webkit-transition-duration:200ms;
+}
+#fileInfo img
+{
+	position:absolute;
+	top:54px;
+	left:50%;
+	width:640px;
+	height:480px;
+	margin-left:-320px;
+}
+#fileInfo hr
+{
+	position:absolute;
+	top:687px;
+	left:50%;
+	margin-left:-358px;
+	width:716px;
+	border:1px solid #7c7c7c;
+}
+.fileInfoList
+{
+	position:absolute;
+	left:100px;
+	width:600px;
+	height:50px;
+	line-height:50px;
+	float:right;
+	font-size:28px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	color:#aaaaaa;
+}
+.scrollBG
+{
+	position:absolute;
+	top:30px;
+	left:798px;
+	width:7px;
+	height:912px;
+	background:#333;
+	opacity:1;
+}
+.scrollBar
+{
+	position:absolute;
+	top:22px;
+	left:798px;
+	width:7px;
+	height:0px;
+}
+.fileColumn
+{
+	position:absolute;
+	left:1921px;
+	top:108px;
+	width:816px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	border:4px solid #1b1b1b;	
+	display:block;
+	z-index:20;
+	-webkit-transition-duration:200ms;
+}
+.fileColumn ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.fileColumn ul li
+{
+	position:absolute;
+	width:756px;
+	height:114px;
+	left:20px;
+	float:left;
+	border:2px solid #1b1b1b;
+	border-style:none none solid none;	
+	color:#D6D6D6;
+}
+.fileColumn ul li img
+{
+	position: absolute;
+	top:3px;
+	left:75px;
+	width:107px;
+	height:107px;
+	text-align: center;
+}
+.fileColumn ul li div
+{
+	position:absolute;
+	left:200px;
+	width:500px;
+	height:107px;
+	line-height:107px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.fileColumnInfoStyle_marquee
+{
+	position:absolute;
+	left:0px;
+	width:500px;
+	height:107px;
+	line-height:107px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.fileColumnInfoStyle_static
+{
+	position:absolute;
+	left:0px;
+	width:500px;
+	height:107px;
+	line-height:107px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.fileColumnInfoStyle_animate
+{
+	position:absolute;
+	left:0px;
+	width:500px;
+	height:107px;
+	line-height:107px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move_f;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move_f
+{
+   from{left: 0px}
+   to{left: -500px}
+}
+/*
+.fileColumn ul li span
+{
+	position:absolute;
+	left:200px;
+	width:500px;
+	height:107px;
+	line-height:107px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+*/
+.iconArrowIcon
+{
+	position:absolute;
+	left:35px;
+	width:1490px;
+	height:24px;
+	display:none;
+	background-image:url(images/Bg-picture-TB.png);
+}
+.iconArrowIcon img
+{
+	position:absolute;
+	left:730px;
+}
+.iconColumn
+{
+	position:absolute;
+	left:1921px;
+	top:108px;
+	width:1632px;
+	height:972px;
+	background:#000;
+	opacity:1;
+	display:block;
+	border:4px solid #1b1b1b;	
+	z-index:26;
+}
+.iconColumn ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+	z-index:26;
+}
+.iconColumn ul li
+{
+	position:absolute;
+	width:1520px;
+	height:228px;
+	left:20px;
+	float:left;	
+	z-index:26;
+	border:2px solid #1b1b1b;
+	border-style:none none solid none;	
+	color:#D6D6D6;
+}
+.iconColumn ul li div
+{
+	position:absolute;
+	top:10px;
+	width:210px;
+	height:210px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.iconColumn ul li div img
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:210px;
+	height:150px;
+	text-align:center;
+}
+.iconColumnInfoStyle_marquee
+{
+	position:absolute;
+	top:150px;
+	left:0px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.iconColumnInfoStyle_static
+{
+	position:absolute;
+	top:150px;
+	left:0px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.iconColumnInfoStyle_animate
+{
+	position:absolute;
+	top:150px;
+	left:0px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move_i;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move_i
+{
+   from{left: 0px}
+   to{left: -210px}
+}
+/*
+.iconColumn ul li span
+{
+	position:absolute;
+	top:180px;
+	width:210px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+*/
+#optionFocus_1
+{
+	position:absolute;
+	top:60px;
+	left:0px;
+	width:540px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+#optionFocus_2
+{
+	position:absolute;
+	left:0px;
+	top:30px;
+	width:300px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+#optionFirstList
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:540px;
+	height:1080px;
+	border:3px solid #1b1b1b;	
+	border-style:none solid none none;
+	font-size:28px;
+	color:#aaaaaa;
+}
+#optionFirstList ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+}
+#optionFirstList ul li
+{
+	position:absolute;
+	top:0px;
+	left:50px;
+	width:440px;
+	height:80px;
+	line-height:80px;
+	color:#aaaaaa;
+}
+#optionFirstList ul li span
+{
+	position:absolute;
+	top:0px;
+	height:80px;
+	width:170px;
+	line-height:80px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#optionFirstList ul li img
+{
+	position:absolute;
+	top:0px;
+	right:-10px;
+	width:20px;
+	height:80px;
+	text-align:center;
+}
+#optionSecBg
+{
+	position:absolute;
+	top:40px;
+	left:0px;
+	width:300px;
+	height:203px;
+	background:#000;
+	opacity:0.85;
+}
+#optionSecondList
+{
+	position:absolute;
+	top:30px;
+	left:543px;
+	height:226px;
+	width:303px;
+	display:none;
+	z-index:30;
+	overflow:hidden;
+}
+#optionSec_1
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:220px;
+	width:300px;
+	display:block;
+	z-index:30;
+	overflow:hidden;
+	border: 4px solid #1b1b1b;
+	border-style:solid solid solid none;
+}
+.optionSecondUl
+{
+	position:absolute;
+	top:30px;
+	left:45px;
+	width:210px;
+	font-size:28px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow: hidden;
+	display:block;
+	color:#aaaaaa;
+	z-index:30;
+}
+.optionSecondUl li
+{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:210px;
+	line-height:80px;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	display: block;
+}
+#optionUpArrow
+{
+	position:absolute;
+	top:0px;
+	left:45px;
+	height:30px;
+	width:210px;
+	z-index:31;
+	display:none;
+}
+#optionDownArrow
+{
+	position:absolute;
+	bottom:0px;
+	left:45px;
+	height:30px;
+	width:210px;
+	z-index: 31;
+	display:none;
+}
+#progressBarUnuse
+{
+	position:absolute; 
+	left:100px;
+	bottom:0px;
+	display:block;
+}
+#progressBarUse
+{
+	position:absolute; 
+	left:72px;
+	top:62px;
+	display:block;
+}
+/*add for divx---------------------------------------*/
+#registForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+#deregistForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+#deregistConfirmForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+.button
+{
+	position:absolute;
+	top:350px;
+	width:204px;
+	height:64px;
+	color:#aaaaaa;
+	text-align:center;
+	line-height:64px;
+	z-index:100;
+	background-image:url(images/Focus_Pop_up_box_no.png);
+}
+/*end divx-------------------------------------------------------------*/
+#loadingBox
+{
+	position: absolute;
+	top:325px;
+	left:545px;
+	width:830px;
+	height:410px;
+	z-index: 55;
+	background:#000;
+	opacity:1;
+	border:4px solid #1b1b1b;
+	background-image:url(images/Bg-USB_Tip.png);
+	display:none;
+}
+.loadingImg
+{
+   position: absolute;
+   top:100px;
+   left:350px;
+   height:130px;
+   width:130px;
+   overflow:hidden;
+   display:block;
+   background-image:url(images/Loading-01_Reverse.png);
+   -webkit-animation-name: rotate;
+   -webkit-animation-duration: 3s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes rotate
+{
+   from{-webkit-transform: rotate(0deg)}
+   to{-webkit-transform: rotate(360deg)}
+}
+#tipsBox
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+</style>
+</head>
+
+<body onload="init()">
+<div style="position:absolute;left:0px;top:0px;width:1920px;height:1080px;background:#000;overflow:hidden;border:2px solid #1b1b1b;z-index:10;">
+    
+    <div id="emptyTips" style="display:none">
+    	<img style="position:absolute;top:280px;left:886px;width:148px;height:140px;display:block" src="images/icon-Oops.png" />
+        <span id="emptyTipsInfo"></span>
+    </div>
+
+    <div id="emptyListTips" style="display:none">
+    	<img style="position:absolute;top:280px;left:740px;width:148px;height:140px;display:block" src="images/icon-Oops.png" />
+        <span id="emptyListInfo"></span>
+    </div>
+
+    <div id="iconListEmptyTips" style="display:none">
+    	<img style="position:absolute;top:60px;left:341px;width:148px;height:140px;display:block" src="images/icon-Oops.png" />
+        <span id="iconListEmptyTipsInfo" style="position:absolute;top:230px;left:50px;width:730px;height:80px;word-wrap:break-word;"></span>
+    </div>
+
+    <div id="tipsBoxArea" style="position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:90;display:none">
+    	<div id="tipsBox">
+	    	<span id="eb_tips" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+	        <span id="eb_info" style="position:absolute;top:80px;left:40px;width:750px;height:220px;line-height:110px;"></span>
+	        <span id="noButton" class="button" style="left:140px;display:none"></span>
+	        <span id="yesButton" class="button" style="left:484px;display:none"></span>
+	        <span id="okButton" class="button" style="left:313px;display:block"></span>
+	        <span id="focusButton" class="button" style="left:313px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+        </div>
+    </div>
+    
+	<div id="focus"></div>
+	<div id="title">
+    	<span id="titleContent"></span>
+    	<div id="titleTips"></div>
+    </div>
+    <div id="menu">
+    	<ul>
+            <li>
+                <img src="images/Source.png" />
+                <div id="menu_all_file"></div>
+            </li>
+            <li>
+                <img src="images/Photo.png" />
+                <div id="menu_picture"></div>
+            </li>
+            <li>
+                <img src="images/Video.png"  />
+                <div id="menu_video"></div>
+            </li>
+            <li>
+                <img src="images/Music.png"  />
+                <div id="menu_music"></div>
+            </li>
+    	</ul>
+        <img id="menuFocus" src="images/focus.png" />   
+    </div>
+    
+    <div id="musicCtl" style="display:none">
+    	<div id="playInfo">
+        	<img id="musicCover" style="position:inherit;left:0px;top:0px;width:72px;height:72px" src="images/USB-Music-Control-Default-icon.png"/>
+            <span></span>
+            <span style="top:35px"></span>
+            
+            <div id="progressBarUse">
+                <img src="images/USB-Video-Progress-bar-bg.png" style="position:absolute;left:0px;top:5px;width:215px;height:5px;"/>
+                <img id="startBar" src="images/USB-Video-Progress-bar.png" style="position:absolute;top:5px;left:0px;width:0px;height:5px;" />
+                <img id="endBar" src="images/USB-Music-Progress-bar-Slider_.png" style="position:absolute;top:-10px;left:-15px;width:35px;height:35px;" />
+        	</div>            
+        </div>
+        <div id="playCtl">
+        	<img src="images/USB-Music-Control-icon-Previous-S.png" style="position:absolute;top:35px;left:20px;width:80px;height:80px"/>
+            <img src="images/USB-Music-Control-icon-Play-S.png" style="position:absolute;top:35px;left:104px;width:80px;height:80px"/>
+            <img src="images/USB-Music-Control-icon-Next-S.png" style="position:absolute;top:35px;left:188px;width:80px;height:80px"/>
+            
+            <img src="images/Previous.png" style="position:absolute;top:140px;left:14px;width:50px;height:22px"/>
+            <span style="position:absolute;top:140px;left:70px;width:86px;height:22px;font-size:18px;line-height:22px;color:#aaaaaa;">Previous</span>
+            <img src="images/Next.png" style="position:absolute;top:140px;left:170px;width:50px;height:22px"/>
+            <span style="position:absolute;top:140px;left:226px;width:86px;height:22px;font-size:18px;line-height:22px;color:#aaaaaa;">Next</span>
+            <img src="images/Play_Pause.png" style="position:absolute;top:180px;left:14px;width:50px;height:22px"/>
+        	<span style="position:absolute;top:180px;left:70px;width:86px;height:22px;font-size:18px;line-height:22px;color:#aaaaaa;">Play/Pause</span>
+        </div>
+    </div>
+
+    <div id="gobackBox">
+    	<img src="images/grading-1.png"/>
+    </div>
+    
+    <div id="fileColumn0" class="fileColumn">
+    	<div id="fileColumnUp0" class="fileArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="fileColumnDown0" class="fileArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+        <ul id="fileColumnUl0">
+            <li style="top:30px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:144px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:372px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:600px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:828px;border-style:none none none none;	">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>
+        <div id="scrollAreaF0" style="display:none">
+            <div class="scrollBG"></div>
+            <img id="scrollBarF0" src="images/Scroll_bar-Vertical.png" class="scrollBar"/>
+    	</div>
+    </div>
+    
+    <div id="fileColumn1" class="fileColumn">
+    	<div id="fileColumnUp1" class="fileArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="fileColumnDown1" class="fileArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+        <ul id="fileColumnUl1">
+            <li style="top:30px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:144px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:372px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:600px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:828px;border-style:none none none none;	">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>
+        <div id="scrollAreaF1" style="display:none">
+            <div class="scrollBG"></div>
+            <img id="scrollBarF1" src="images/Scroll_bar-Vertical.png" class="scrollBar"/>
+    	</div>
+    </div>
+    
+    <div id="fileColumn2" class="fileColumn">
+    	<div id="fileColumnUp2" class="fileArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="fileColumnDown2" class="fileArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+        <ul id="fileColumnUl2">
+            <li style="top:30px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:144px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:372px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:600px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:828px;border-style:none none none none;	">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>        
+        <div id="scrollAreaF2" style="display:none">
+            <div class="scrollBG"></div>
+            <img id="scrollBarF2" src="images/Scroll_bar-Vertical.png" class="scrollBar"/>
+    	</div>
+    </div>
+    
+    <div id="fileColumn3" class="fileColumn">
+    	<div id="fileColumnUp3" class="fileArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="fileColumnDown3" class="fileArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+        <ul id="fileColumnUl3">
+            <li style="top:30px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:144px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:372px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:600px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:828px;border-style:none none none none;	">
+                <img/>
+                <div><span class="fileColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>
+        <div id="scrollAreaF3" style="display:none">
+            <div class="scrollBG"></div>
+            <img id="scrollBarF3" src="images/Scroll_bar-Vertical.png" class="scrollBar"/>
+    	</div>
+    </div>
+    
+    <div id="fileInfo">
+        <img/>
+        <span id="info_str" style="position:absolute;left:100px;top:607px;width:300px;height:80px;line-height:80px;font-size:48px;color:#aaaaaa;"></span>
+        <hr/>
+        <span class="fileInfoList" style="top:700px"></span>
+        <span class="fileInfoList" style="top:750px"></span>
+        <span class="fileInfoList" style="top:800px"></span>
+        <span class="fileInfoList" style="top:850px"></span>
+        <span class="fileInfoList" style="top:900px"></span>
+        <span class="fileInfoList" style="top:950px"></span>
+    </div>
+    
+    <div id="playMusicAll">
+        <img style="position:absolute;top:100px;left:105px;width:600px;height:400px;" src="images/cc_music.png"/>
+        <span style="position:absolute;top:650px;width:780px;height:60px;line-height:60px;text-align:center;font-size:28px;color:white;"></span>
+    </div>
+    <div id="emptyFolderTips">
+        <img style="position:absolute;top:300px;left:334px;width:148px;height:140px;" src="images/icon-Oops.png"/>
+        <span id="emptyFolderInfo" style="position:absolute;top:500px;width:780px;height:60px;line-height:60px;text-align:center;font-size:32px;color:white;"></span>
+    </div>
+    <div id="loadingTips" style="display:none">
+        <!--<div class="loadingImg" style="top:350px"></div>-->
+    </div>
+    <div id="loadingBox" style="display:none">
+    	<div class="loadingImg"></div>
+    	<span id="laodingInfo" style="position:absolute;top:275px;left:115px;width:600px;height:60px;line-height:60px;text-align:center;font-size:48px;color:#aaaaaa;"></span>
+    </div>
+    
+    <div id="iconColumn0" class="iconColumn">
+    	<div id="iconColumnUp0" class="iconArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="iconColumnDown0" class="iconArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+    	<ul id="iconColumnUl0">
+            <li style="top:30px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px;border-style:none none none none;">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>
+        <div id="scrollAreaI0" style="display:none">
+            <div class="scrollBG" style="left:1560px"></div>
+            <img id="scrollBarI0" src="images/Scroll_bar-Vertical.png" class="scrollBar" style="left:1560px"/>
+    	</div>
+    </div>
+    
+    <div id="iconColumn1" class="iconColumn">
+    	<div id="iconColumnUp1" class="iconArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="iconColumnDown1" class="iconArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+    	<ul id="iconColumnUl1">
+           <li style="top:30px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px;border-style:none none none none;">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>
+        <div id="scrollAreaI1" style="display:none">
+            <div class="scrollBG" style="left:1560px"></div>
+            <img id="scrollBarI1" src="images/Scroll_bar-Vertical.png" class="scrollBar" style="left:1560px"/>
+    	</div>
+    </div>
+    
+    <div id="iconColumn2" class="iconColumn">
+    	<div id="iconColumnUp2" class="iconArrowIcon" style="top:3px;">
+    		<img style="top:-5px;" src="images/Icon-Top.png"/>
+    	</div>
+    	<div id="iconColumnDown2" class="iconArrowIcon" style="bottom:5px">
+    		<img style="top:-3px;" src="images/Icon-Bottom.png"/>
+    	</div>
+    	<ul id="iconColumnUl2">
+           <li style="top:30px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:258px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:486px">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+            <li style="top:714px;border-style:none none none none;">
+                <div style="left:100px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:470px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:840px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+                <div style="left:1210px"><img /><span class="iconColumnInfoStyle_marquee"></span></div>
+            </li>
+        </ul>
+        <div id="scrollAreaI2" style="display:none">
+            <div class="scrollBG" style="left:1560px"></div>
+            <img id="scrollBarI2" src="images/Scroll_bar-Vertical.png" class="scrollBar" style="left:1560px"/>
+    	</div> 
+    </div>
+    
+    <div id="option" style="position:absolute;top:0px;left:0px;display:none;z-index:40;">
+    	<div style="position:absolute;top:0px;left:0px;width:540px;height:1080px;background:#000;opacity:0.85;"></div> 
+    	<img id="optionFocus_1" src="images/Focus_USB_1.png" />
+        <div id="optionFirstList">
+            <ul id="optionFirstUl">
+                <li style="top:60px">
+                    <span id="optionInfo0" style="left:0px;width:240px;float:left;"></span>
+                    <span id="optionInfoContent0" style="right:20px;width:130px;text-align:right;"></span>
+                    <img src="images/Icon-R-Disable.png" />
+                </li>
+                <li  style="top:140px">
+                    <span id="optionInfo1" style="left:0px;width:240px;float:left;"></span>
+                    <span id="optionInfoContent1" style="right:20px;width:130px;text-align:right;"></span>
+                    <img src="images/Icon-R-Disable.png" />
+                </li>
+                <li style="top:220px">
+                	<span id="optionInfo2" style="left:0px;width:420px;float:left;"></span>
+                	<span id="optionInfoContent2" style="right:20px;width:130px;text-align:right;display:none;"></span>
+                	<img src="images/Icon-R-Disable.png" />
+                </li>
+                 <li style="top:300px">
+                	<span id="optionInfo3" style="left:0px;width:420px;float:left;"></span>
+                	<span id="optionInfoContent3" style="right:20px;width:130px;text-align:right;display:none;"></span>
+                	<img id="deregistPng" src="images/Icon-R-Disable.png" />
+                </li>
+            </ul>
+        </div>
+        <div id="optionSecondList" style="display:none">
+        	<img id="optionFocus_2" src="images/Focus_USB_2.png" />
+        	<div id="optionSec_1" style="display:block">
+        		<div style="position:absolute;width:300px;height:220px;background:#000;opacity:0.85;"></div>
+	        	<div id="optionUpArrow">
+	        		<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Top.png" />
+	        	</div>
+	            <ul id="optionSecondUl_1" class="optionSecondUl">
+	            	<li></li>
+	                <li></li>
+	            </ul>
+	            <div id="optionDownArrow">
+	            	<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Bottom.png" />
+	            </div>
+            </div>
+        </div>
+        <!--
+        <div id="optionSecondList" style="display:none">
+        	<div id="optionSecBg"></div>
+        	<img id="optionFocus_2" src="images/Focus_USB_2.png" />
+            <ul id="optionSecondUl">
+            	<li style="height:30px"></li>
+            	<li></li>
+                <li></li>
+                <li style="height:30px"></li>
+            </ul>
+		</div>
+		-->
+    </div>
+    <!--add for divx reg-->
+    <div id="registForm" style="display:none">
+        <span id="registTitle" style="position:absolute;top:20px;left:60px;font-size:32px;"></span>
+        <span id="registContent1" style="position:absolute;top:100px;left:40px;width:750px;height:60px;font-size:25px"></span>
+        <span id="registContent2" style="position:absolute;top:180px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registContent3" style="position:absolute;top:230px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registOk" class="button" style="left:313px;display:block"></span>
+        <span id="registFocus" class="button" style="left:313px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+   <!--add for divx dereg-->
+    <div id="deregistForm" style="display:none">
+    	<span id="deregistTitle" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+        <span id="deregistContent1" style="position:absolute;top:0px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="deregistContent2" style="position:absolute;top:50px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="deregistContent3" style="position:absolute;top:100px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="deregistZero" class="button" style="left:200px;display:block"></span>
+        <span id="deregistOne" class="button" style="left:450px;display:block"></span>
+        <span id="deregistFocus" class="button" style="left:448px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+    <!--add for deregist confirm-->
+    <div id="deregistConfirmForm" style="display:none">
+    	<span id="deregistConfirmTitle" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+        <span id="deregistConContent1" style="position:absolute;top:20px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="deregistConContent2" style="position:absolute;top:70px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="deregistConfirmZero" class="button" style="left:200px;display:block"></span>
+        <span id="deregistConfirmOne" class="button" style="left:450px;display:block"></span>
+        <span id="deregistConfirmFocus" class="button" style="left:448px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+  <!--end divx-->
+</div>
+</body>
+</html>

@@ -1,0 +1,2144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title>无标题文档</title>
+<script type="text/javascript" src="videoPlay.js"></script>
+<style>
+body
+{
+	width:1920px;
+	height:1080px;
+	overflow:hidden;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#focus
+{
+	position:absolute;
+	left:0px;
+	width:298px;
+	height:120px;
+	display:none;
+	pointer-events:none;
+	z-index:40;
+	background-image:url(images/Focus2.png);
+	-webkit-transition-duration:200ms;
+}
+.consoleArea
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1920px;
+	height:1080px;
+	display:block;
+	z-index:50;
+}
+.consoleImg
+{
+	position:absolute;
+	height:150px;
+	width:150px;
+	z-index: 51;
+}
+.consoleSpan
+{
+	position:absolute;
+	height:60px;
+	width:600px;
+	font-size:50px;
+	color:#ffffff;
+	line-height:60px;
+	z-index: 51;
+}
+#unavailable
+{
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:600px;
+	height:300px;
+	margin-top:-150px;
+	margin-left:-300px;
+	border:4px solid #00aadd;
+	z-index:20;
+	display:none;
+}
+#topTitle
+{
+	position:absolute;
+	top:50px;
+	left:45px;
+	width:1830px;
+	height:100px;
+	opacity:0.9;
+	background:#000;
+	border:3px solid #1b1b1b;
+	z-index:20;
+}
+#topTitleContent
+{
+	position:absolute;
+	top:0px;
+	left:50px;
+	width:1730px;
+	height:100px;
+	line-height:100px;
+	font-size:35px;
+	color:#ffffff;
+	float:left;
+}
+#tipsInfo
+{
+	position:absolute;
+	top:440px;
+	left:50%;
+	width:400px;
+	margin-left:-200px;
+	height:200px;
+	font-size:48px;
+	line-height:200px;
+	text-align:center;
+	color:#aaaaaa;
+}
+#playListFocus
+{
+	position:absolute;
+	top:60px;
+	left:5px;
+	width:660px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+.arrowBGPlayList
+{
+	position:absolute;
+	left:0px;
+	width:700px;
+	height:30px;
+	display:none;
+	background-image:url(images/Bg_list_arrow.png);
+}
+#playList
+{
+	position:absolute;
+	top:0px;
+	left:1920px;
+	width:700px;
+	height:1080px;
+	display:none;
+	background-image:url(images/USB-Music-Playlist-Bg.png);
+	z-index:30;
+	-webkit-transition-duration:200ms;
+}
+#playList ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+	z-index:30;
+}
+#playList ul li
+{
+	position:absolute;
+	left:70px;
+	width:565px;
+	height:80px;
+	overflow:hidden;
+}
+#playlistScrollBar
+{
+	position:absolute;
+	top:60px;
+	right:10px;
+	width:7px;
+	height:960px;
+	background:#444;
+	opacity:1;
+}
+#scrollBar
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:7px;
+	height:0px;
+}
+.playListStyle_marquee
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:580px;
+	height:106px;
+	float:right;
+	font-size:32px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.playListStyle_static
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:580px;
+	height:106px;
+	float:right;
+	font-size:32px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.playListStyle_animate
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:580px;
+	height:106px;
+	font-size:32px;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move
+{
+   from{left: 0px}
+   to{left: -650px}
+}
+#currentPlay
+{
+	position:absolute;
+	top:60px;
+	left:25px;
+	width:40px;
+	height:80px;
+	display:block;
+}
+
+/*
+#playList
+{
+	position:absolute;
+	top:844px;
+	left:0px;
+	width:1920px;
+	height:236px;
+	display:block;
+	z-index:20px;
+}
+#playList ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	float:right;
+	z-index:20px;	
+}
+#playList ul li
+{
+	position:absolute;
+	top:0px;
+	width:290px;
+	height:236px;
+}
+#playList ul li span
+{
+	position:inherit;
+	bottom:0px;
+	left:25px;
+	width:240px;
+	height:48px;
+	font-size:28px;
+	color:#ffffff;
+	line-height:48px;
+	text-align:center;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#playList ul li img
+{
+	position:inherit;
+	top:24px;
+	left:0px;
+	width:290px;
+	height:164px;
+	float:left;
+	text-align:center;
+}
+*/
+#progressArea
+{
+	position:absolute;
+	top:930px;
+	left:45px;
+	width:1830px;
+	height:100px;
+	background-image:url(images/USB-Video-Control-Bg.png);
+	display:block;
+	z-index:20;
+}
+#progressBarUse
+{
+	position:absolute;
+	top:20px;
+	left:165px;
+	width:1500px;
+	height:60px;
+}
+#seekInfo
+{
+	position:absolute;
+	top:740px;
+	left:60px;
+	width:300px;
+	height:225px;
+	z-index:22;
+}
+.timeArea
+{
+	position:absolute;
+	bottom:18px;
+	width:165px;
+	height:60px;
+	color:#aaaaaa;
+	line-height:60px;
+	text-align:center;
+	font-size:24px;
+}
+#bottomTips
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1920px;
+	height:150px;
+	background-image:url(images/help-bg.png);
+	z-index:19;
+}
+#bottomTips ul
+{
+	position:absolute;
+	top:109px;
+	width:100%;
+	height:32px;
+	margin:0;
+	padding:0;
+	text-align:center;
+	list-style:none;
+	float: left;
+}
+#bottomTips ul li
+{
+	margin:0px 0px 0px 10px;
+	display:inline-block;
+	height:100%;
+	width:auto;
+	line-height:32px;
+	color:#666666;
+	font-size:28px;
+	white-space:nowrap;
+	vertical-align:top;
+}
+#bottomTips ul img
+{
+	margin:0px 0px 0px 30px;
+	width:80px;
+	height:100%;
+}
+#focusOption
+{
+	position:absolute;
+	left:4px;
+	width:492px;
+	height:120px;
+	border-radius:18px;
+	border:5px solid #00aadd;
+	display:block;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+.arrowBGOption
+{
+	position:absolute;
+	left:0px;
+	width:540px;
+	height:30px;
+	display:none;
+	background-image:url(images/Bg_list_540.png);
+	z-index:40;
+}
+#optionFirstList
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:540px;
+	height:1080px;
+	border:3px solid #1b1b1b;	
+	border-style:none solid none none;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index: 30;
+}
+#optionFirstUl
+{
+	position:absolute;
+	top:0px;
+	list-style-type:none;
+	margin:0;
+	padding:0;	
+	z-index:30;
+	-webkit-transition-duration:200ms;
+}
+#optionFirstUl li
+{
+	position:absolute;
+	top:0px;
+	left:35px;
+	width:460px;
+	height:80px;
+	line-height:80px;
+	color:#aaaaaa;
+}
+/*
+#optionFirstList ul li div
+{
+	position:absolute;
+	top:0px;
+	left:130px;
+	height:80px;
+	width:195px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+}*/
+.optionFirstUlImg
+{
+	position:absolute;
+	top:0px;
+	right:-10px;
+	width:20px;
+	height:80px;
+	text-align:center;
+}
+.optionFirstListSpan_1_marquee
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:240px;
+	line-height:80px;
+	overflow:hidden;
+	float:left;
+	text-align:left;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.optionFirstListSpan_marquee
+{
+	position:absolute;
+	top:0px;
+	right:20px;
+	height:80px;
+	width:130px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.optionShortBar
+{
+	position:absolute;
+	top:0px;
+	left:275px;
+	width:100px;
+	height:80px;
+}
+.optionShortBarBG
+{
+	position:absolute;
+	top:37px;
+	left:0px;
+	width:100px;
+	height:6px;
+	background:#1b1b1b;
+}
+.optionShortBarStart
+{
+	position:absolute;
+	top:37px;
+	left:0px;
+	width:0px;
+	height:6px;
+	background:#aaa;
+}
+.optionShortBarEnd
+{
+	position:absolute;
+	top:31px;
+	left:0px;
+	width:6px;
+	height:18px;
+	background:#aaa;
+}
+.optionFirstListSpan_static
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:130px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.optionFirstListSpan_animate
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:195px;
+	line-height:80px;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move_first;
+	-webkit-animation-duration: 10s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move_first
+{
+   from{left: 0px}
+   to{left: -500px}
+}
+#optionFocus_1
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:540px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+#optionFocus_2
+{
+	position:absolute;
+	left:0px;
+	top:30px;
+	width:300px;
+	height:80px;
+	display:block;
+	pointer-events:none;
+	z-index:51;
+	-webkit-transition-duration:200ms;
+}
+#optionInfoDetails
+{
+	position:absolute;
+	top:30px;
+	left:543px;
+	width:450px;
+	height:466px;
+	background:#000;
+	opacity:0.85;
+	z-index:30;
+	display: none;
+	border: 4px solid #1b1b1b;
+	border-style:solid solid solid none;
+}
+.optionInfoDetails_marquee
+{
+	position:absolute;
+	top:0px;
+	left:50px;
+	width:350px;
+	height:80px;
+	line-height:80px;	
+	font-size:28px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#optionSecondList
+{
+	position:absolute;
+	top:30px;
+	left:543px;
+	height:566px;
+	width:303px;
+	display:none;
+	overflow:hidden;
+	z-index:30;
+}
+#optionSecDiv
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:460px;
+	width:300px;
+	display:block;
+	z-index:30;
+	overflow:hidden;
+	border: 4px solid #1b1b1b;
+	border-style:solid solid solid none;
+}
+#optionThirdDiv
+{
+	position:absolute;
+	top:0px;
+	left:300px;
+	height:460px;
+	width:300px;
+	display:block;
+	z-index:30;
+	overflow:hidden;
+	border: 4px solid #1b1b1b;
+	border-style:solid solid solid none;
+}
+.optionInfoUl
+{
+	position:absolute;
+	top:30px;
+	left:35px;
+	width:235px;
+	font-size:28px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow: hidden;
+	display:block;
+	color:#aaaaaa;
+	z-index:30;
+}
+.optionInfoUl li
+{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:240px;
+	line-height:80px;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+/*
+.optionInfoUl li div
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:210px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:right;
+	white-space:nowrap;
+}
+*/
+.optionInfoUl li img
+{
+	position:absolute;
+	top:0px;
+	right:5px;
+	width:20px;
+	height:80px;
+	text-align:center;
+	display:none;
+}
+.optionSecondListSpan_marquee
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:210px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:left;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.optionSecondListSpan_static
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:210px;
+	line-height:80px;
+	overflow:hidden;
+	text-align:left;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.optionSecondListSpan_animate
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:195px;
+	line-height:80px;
+	text-align:left;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: move_second;
+	-webkit-animation-duration: 10s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes move_second
+{
+   from{left: 0px}
+   to{left: -500px}
+}
+.optionUpArrow
+{
+	position:absolute;
+	top:0px;
+	left:45px;
+	height:30px;
+	width:210px;
+	z-index:31;
+	display:none;
+}
+.optionDownArrow
+{
+	position:absolute;
+	bottom:0px;
+	left:45px;
+	height:30px;
+	width:210px;
+	z-index: 31;
+	display:none;
+}
+#optionBarArea
+{
+	position:absolute;
+	top:800px;
+	left:270px;
+	width:1380px;
+	height:240px;
+	background-image:url(images/SS_1_02_3_bg.png);	
+}
+.optionBarArrowArea
+{
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:80px;
+	z-index: 20;
+}
+.optionBarStyle
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1380px;
+	height:60px;
+}
+.optionBarName
+{
+	position:absolute;
+	top:0px;
+	left:30px;
+	height:60px;
+	width:280px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-webkit-transform:scale(0.85);
+	-webkit-transition-duration:200ms;
+}
+.optionBarValue
+{
+	position:absolute;
+	top:0px;
+	right:30px;
+	height:60px;
+	width:80px;
+	line-height:60px;
+	text-align:center;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-webkit-transform:scale(0.85);
+	display:none;
+	-webkit-transition-duration:200ms;
+}
+.optionBarStyle_2
+{
+	position:absolute;
+	top:00px;
+	left:340px;
+	width:900px;
+	height:60px;
+	display:none;
+	-webkit-transform:scale(0.85);
+	-webkit-transition-duration:200ms;
+}
+.optionBarBG
+{
+	position:absolute;
+	left:0px;
+	top:27px;
+	width:900px;
+	height:6px;
+}
+.optionBarStart
+{
+	position:absolute;
+	top:27px;
+	left:0px;
+	width:450px;
+	height:6px;
+	pointer-events:none;
+	-webkit-transition-duration:100ms;
+}
+.optionBarEnd
+{
+	position:absolute;
+	top:21px;
+	left:450px;
+	width:6px;
+	height:18px;
+	pointer-events:none;
+	-webkit-transition-duration:100ms;
+}
+#picturePresetBar
+{
+	position:absolute;
+	top:920px;
+	left:110px;
+	width:1700px;
+	height:90px;
+    background:#000;
+    opacity:0.92;
+    border:4px solid #1b1b1b;
+	/*border:3px solid #1b1b1b;*/
+}
+#picturePresetTitle
+{
+	position:absolute;
+	top:0px;
+	left:5px;
+	height:90px;
+	width:308px;
+	line-height:90px;
+    text-align:center;
+    font-size:28px;
+    color:#aaaaaa;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+#picturePresetSelectBar
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1380px;
+	height:90px;
+	overflow:hidden;
+	-webkit-transition-duration:200ms;
+}
+#picturePresetSelectBar div
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:230px;
+	height:90px;
+	display:block;
+}
+.picPresetCheckbox
+{
+	position:absolute;
+	top:25px;
+	left:15px;
+	width:36px;
+	height:40px;
+	display:block;
+}
+#picturePresetFocus
+{
+	position:absolute;
+	top:11px;
+	left:318px;
+	width:223px;
+	height:69px;
+	display:block;
+	pointer-events:none;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+#picturePresetSelectBar div span
+{
+	position:absolute;
+	top:-3px;
+	left:50px;
+	width:155px;
+	height:90px;
+	line-height:90px;
+	text-align:center;
+	font-size:30px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+/*#authorizationContent
+{
+	position:absolute;
+	width:500px; 
+	left:150px;
+}
+#authorizationContent p
+{
+	position:absolute;
+	width:100%; 
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	word-break:normal;
+	margin:10px 0px 10px 0px;
+}
+#registContent
+{
+	position:absolute;
+	width:500px; 
+	left:150px;
+}
+#registContent p
+{
+	position:absolute;
+	width:100%; 
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;   
+	word-break:normal;
+	margin:10px 0px 10px 0px;
+}
+#rentalRegistContent
+{
+	position:absolute;
+	width:600px; 
+	left:100px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+}*/
+#registForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+#rentalRegistForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	/*line-height:250px;*/
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+#authorRegistForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	/*line-height:250px;*/
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+#tipsBox
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+.button
+{
+	position:absolute;
+	top:350px;
+	width:204px;
+	height:64px;
+	color:#aaaaaa;
+	text-align:center;
+	line-height:64px;
+	z-index:100;
+	background-image:url(images/Focus_Pop_up_box_no.png);
+}
+#loadingBox
+{
+	position: absolute;
+	top: 160px;
+	left: 895px;
+	display: block;
+}
+#laodingInfo
+{
+	position: absolute;
+	top:420px;
+	left:-40px;
+	width:200px;
+	color:#aaaaaa;
+	line-height:64px;
+	font-size:38px;
+	text-align:center;
+	font-weight:bold;
+}
+.loadingImg
+{
+   position: absolute;
+   top: 300px;
+   left: 0px;
+   display: block;
+   height: 130px;
+   width: 130px;
+   overflow: hidden;
+   background-image:url(images/Loading-01_Reverse.png);
+   -webkit-animation-name: rotate;
+   -webkit-animation-duration: 3s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes rotate
+{
+   from{-webkit-transform: rotate(0deg)}
+   to{-webkit-transform: rotate(360deg)}
+}
+#tmpInfoBox
+{
+	position: absolute;
+	top:50px;
+	left:45px;
+	height:80px;
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+}
+#tmpInfoBox li
+{
+	margin-top:10px;
+	margin-left:40px;
+	margin-right:40px;
+	height:60px;
+	font-size:28px;
+	color:#FFFFFF;
+	line-height:60px;
+	white-space:nowrap;
+}
+#PGBox
+{
+	position: absolute;
+	top:50px;
+	right:45px;
+	height:80px;
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+}
+#PGBox li
+{
+	margin-top:10px;
+	margin-left:40px;
+	margin-right:40px;
+	height:60px;
+	font-size:28px;
+	color:#FFFFFF;
+	line-height:60px;
+	white-space:nowrap;
+}
+#metaDataInfoBox
+{
+	position: absolute;
+	bottom:45px;
+	right:0px;
+	width:1376px;
+	height:250px;
+	/*
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+	*/
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	background-image:url(images/USB-metadata_Bg.png);
+}
+.metaDataInfoBox_marquee
+{
+	position: absolute;
+	top:0px;
+	left:45px;
+	width:1286px;
+	height:50px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:left;
+	line-height:50px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#fileInfoBox
+{
+	/*
+	position: absolute;
+	bottom:50px;
+	right:45px;
+	height:200px;
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+	*/
+	position: absolute;
+	bottom:50px;
+	right:50px;
+	width:640px;
+	height:200px;
+	background-color: rgba(10, 10, 10, 0.92);
+	border:4px solid #1b1b1b;
+	display: none;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	z-index: 50;
+}
+#fileInfoBox li
+{
+	/*
+	margin-left:40px;
+	margin-right:40px;
+	height:60px;
+	font-size:28px;
+	color:#FFFFFF;
+	line-height:60px;
+	white-space:nowrap;
+	*/
+	position: absolute;
+	top:0px;
+	left:45px;
+	width:550px;
+	height:50px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:left;
+	line-height:50px;
+	color:#aaaaaa;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+#quickMenu
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:540px;
+	height:1080px;
+	background-image:url(images/bg-ME-9-12.png);
+	z-index: 30;
+	-webkit-transition-duration:200ms;
+}
+#quickMenuTitle
+{
+	position: absolute;
+	top:50px;
+	left:55px;
+	font-weight:bold;
+	font-size:32px;
+	color:#aaaaaa;
+	line-height:60px;
+}
+.quickMenuInfo
+{
+	position: absolute;
+	left:40px;
+	width:450px;
+	height:80px;
+	font-size:28px;
+	color:#aaaaaa;
+	line-height:80px;
+	text-align:left;
+}
+.quickMenuInfo span
+{
+	position: absolute;
+	left:45px;
+	width:385px;
+	font-size:28px;
+	color:#aaaaaa;
+	line-height:80px;
+	text-align:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+#quickCheckBox
+{
+	position: absolute;
+	top:20px;
+	left:40px;
+	width:36px;
+	height:40px;
+	display:none;
+}
+.quickMenuImg
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	display:none;
+}
+#quickFocus
+{
+	position:absolute;
+	top:160px;
+	left:19px;
+	width:502px;
+	height:84px;
+	display:none;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+#quickUpList
+{
+	position:absolute;
+	top:120px;
+	left:250px;
+	display: none;
+}
+#quickDownList
+{
+	position:absolute;
+	bottom:0px;
+	left:250px;
+	display: none;
+}
+#pictureZoomSetBar
+{
+	position:absolute;
+	top:900px;
+	left:190px;
+	width:1540px;
+	height:120px;
+	background:#000;
+	opacity:0.92;
+	text-align:center;
+	border:4px solid #1b1b1b;
+	display:none;
+}
+#pictureZoomTitle
+{
+	position:absolute;
+	top:0px;
+	left:5px;
+	height:120px;
+	width:300px;
+	line-height:120px;
+    text-align:center;
+    font-size:28px;
+    color:#aaaaaa;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+	border-right:4px solid #1b1b1b;
+}
+.picZoomArrowArea
+{
+	position:absolute;
+	top:0px;
+	width:32px;
+	height:120px;
+	display:block;
+	z-index:40;
+}
+#pictureZoomFocus
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:234px;
+	height:120px;
+	pointer-events:none;
+	-webkit-transition-duration:200ms;
+}
+#pictureZoomSelectBar
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1872px;
+	height:120px;
+	-webkit-transition-duration:200ms;
+}
+#pictureZoomSelectBar div
+{
+	position:absolute;
+	top:0px;
+	width:234px;
+	height:120px;
+}
+.picZoomType
+{
+	position:absolute;
+	top:10px;
+	left:93px;
+	width:80px;
+	height:60px;
+}
+#pictureZoomSelectBar span
+{
+	position:absolute;
+	top:65px;
+	left:62px;
+	width:145px;
+	height:35px;
+	line-height:35px;
+	text-align:center;
+	font-size:26px;
+    color:#aaaaaa;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+
+	overflow-x:hidden;
+	/*overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+}
+.picZoomCheckbox 
+{
+	position:absolute;
+	top:44px;
+	left:22px;
+	width:32px;
+	height:32px;
+	display:none;
+}
+</style>
+</head>
+
+<body>
+	<div id="focus"></div>
+    
+    <div id="unavailable">
+    	<span style="position:inherit;width:100%;height:100%;font-size:50px;color:black;text-align:center;"></span>
+    </div>
+   	
+    <div id="tipsInfo" style="display:none">
+    	<img id="tipsInfoImg" style="position:absolute;top:0px;left:0px;width:100%;height:100%;" src="images/bg-ME-9-13.png" />
+    	<span id="tipsInfoContent" style="position:absolute;top:0px;left:0px;width:100%;height:100%;"></span>
+    </div>
+
+    <div id="tipsBox" style="display:none">
+    	<span id="eb_tips" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+        <span id="eb_info" style="position:absolute;top:80px;left:40px;width:750px;height:220px;line-height:110px;"></span>
+        <span id="noButton" class="button" style="left:140px;display:none"></span>
+        <span id="yesButton" class="button" style="left:484px;display:none"></span>
+        <span id="okButton" class="button" style="left:313px;display:block"></span>
+        <span id="focusButton" class="button" style="left:313px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+
+    <div id="loadingBox" style="pointer-events:none;display:block">
+    	<div class="loadingImg"></div>
+    	<span id="laodingInfo"></span>
+    </div>
+   
+ 	<div id="consoleTip" class="consoleArea" style="pointer-events:none;display:none">
+    	<div class="consoleArea" style="background:#000;opacity:0.9;"></div>
+        <img class="consoleImg" style="top:465px;left:60px;" src="images/USB-Icon-Arrow-L-03.png" />
+        <img class="consoleImg" style="top:465px;right:60px;" src="images/USB-Icon-Arrow-L-04.png" />
+        <img class="consoleImg" style="bottom:60px;left:50%;margin-left:-75px;" src="images/USB-Icon-Arrow-B-01.png" />
+        <img class="consoleImg" style="top:50%;left:50%;margin-top:-75px;margin-left:-75px;" src="images/USB-Icon-OK.png" />
+        <span id="consoleTips0" class="consoleSpan" style="top:510px;left:210px;text-align:left;"></span>
+        <span id="consoleTips1" class="consoleSpan" style="top:510px;right:210px;text-align:right;"></span>
+        <span id="consoleTips2" class="consoleSpan" style="top:600px;left:50%;width:300px;margin-left:-150px;text-align:center;"></span>
+        <span id="consoleTips3" class="consoleSpan" style="bottom:200px;left:50%;width:800px;margin-left:-400px;text-align:center;"></span>
+    </div>
+    
+    <div id="topTitle" style="display:none">
+    	<span id="topTitleContent"></span>
+    </div>
+    
+    <img id="statusIcon" style="position:absolute;top:440px;left:860px;width:200px;height:200px;pointer-events:none;display:none" />
+    
+    <div id="seekInfo" style="left:60px;display:none">
+    	<!--
+        <img id="screenShotImg" style="position:absolute;top:3px;left:5px;width:290px;height:164px;z-index:23;" src="images/test_shot.jpg" />
+        <img id="screenShotBG" style="position:absolute;top:0px;left:0px;width:300px;height:200px;" src="images/USB-Video-Thumbnail-frame.png" />
+        -->
+        <span id="screenShotTime" style="position:absolute;top:195px;width:300px;height:50px;font-size:25px;color:#aaaaaa;text-align:center;z-index:23;"></span>
+    </div>
+    
+    <div id="progressArea" style="display:none"> 
+		<span id="elspased" class="timeArea" style="left:0px">00:00:00</span>
+		<span id="duration" class="timeArea" style="right:0px">00:00:00</span>
+        
+        <div id="progressBarUse">
+        	<img id="progressBG" src="images/USB-Video-Progress-bar-bg.png" style="position:absolute;left:0px;top:25px;width:1500px;height:10px;"/>
+            <img id="startBar" src="images/USB-Video-Progress-bar.png" style="position:absolute;top:25px;left:0px;width:0px;height:10px;pointer-events:none;-webkit-transition-duration:100ms;" />
+            <img id="endBar" src="images/USB-Video-Progress-bar-Slider-01_.png" style="position:absolute;top:10px;left:-15px;width:40px;height:40px;pointer-events:none;-webkit-transition-duration:100ms;" />
+        </div>
+
+        <div id="bottomTips" style="pointer-events:none;display:block">
+			<ul>
+				<img src="images/icon-Ok.png" /><li></li>
+				<img src="images/icon-Back.png" /><li></li>
+				<img src="images/icon-Next.png" /><li></li>
+				<img src="images/icon-Down.png" /><li></li>
+				<img src="images/icon-Option.png" /><li></li>
+			</ul>
+		</div>
+	</div>
+
+	<ul id="tmpInfoBox" style="display:none">
+		<li id="tmpInfoContent"></li>
+	</ul>
+
+	<ul id="PGBox" style="display:none">
+		<li id="pgInfoContent"></li>
+	</ul>
+
+	<ul id="metaDataInfoBox" style="display:none">
+		<li id="metaDataInfoTitle" class="metaDataInfoBox_marquee" style="top:25px"></li>
+		<li id="metaDataInfoChapter" class="metaDataInfoBox_marquee" style="top:75px"></li>
+		<li id="metaDataInfoSoundTrack" class="metaDataInfoBox_marquee" style="top:125px"></li>
+		<li id="metaDataInfoSubtitle" class="metaDataInfoBox_marquee" style="top:175px"></li>
+	</ul>
+
+	<ul id="fileInfoBox" style="display:none">
+		<li style="top:25px"></li>
+		<li style="top:75px"></li>
+		<li style="top:125px"></li>
+	</ul>
+    
+    <!-- new play list -->
+    <div id="playList" style="display:none">
+    	<img id="currentPlay" src="images/USB-Music-Playlist-Play.png" />
+    	<img id="playListFocus" src="images/USB-Music_Playlist_Focus.png" />
+    	<div id="arrowUpPlayList" class="arrowBGPlayList" style="top:30px;display:none">
+    		<img style="position:absolute;left:335px;" src="images/Icon-Top.png" />
+    	</div>
+    	<div id="arrowDownPlayList" class="arrowBGPlayList" style="bottom:30px;display:none">
+    		<img style="position:absolute;left:335px;" src="images/Icon-Bottom.png" />
+    	</div>
+    	<div id="playlistScrollBar" style="display:none">
+            <img id="scrollBar" src="images/Scroll_bar-Vertical.png"/>
+    	</div>
+        <ul id="playListUl">
+            <li style="top:60px">
+                <span id="name0" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration0" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:140px">
+                <span id="name1" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration1" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:220px">
+                <span id="name2" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration2" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:300px">
+                <span id="name3" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration3" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:380px">
+                <span id="name4" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration4" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:460px">
+                <span id="name5" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration5" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:540px">
+                <span id="name6" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration6" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:620px">
+                <span id="name7" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration7" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:700px">
+                <span id="name8" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration8" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:780px">
+            	<span id="name9" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration9" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:860px">
+                <span id="name10" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration8" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+            <li  style="top:940px">
+            	<span id="name11" class="playListStyle_marquee" style="height:80px;line-height:80px;"></span>
+                <!--<span id="duration9" style="left:550px;height:106px;width:150px;line-height:106px;">00:00:00</span>-->
+            </li>
+        </ul>
+    </div>
+    <!-- old play list with screen shot 
+    <div id="playList" style="display:none;">
+        <div style="position:absolute;width:100%;height:100%;background:#000;opacity:0.8;display:block;"></div>
+        <ul>
+            <li style="left:30px">
+                <img />
+                <span></span>
+            </li>
+            <li  style="left:344px">
+                <img />
+               <span></span>
+            </li>
+            <li  style="left:658px">
+                <img />
+                <span></span>
+            </li>
+            <li  style="left:972px">
+                <img />
+                <span></span>
+            </li>
+            <li  style="left:1286px">
+                <img />
+                <span></span>
+            </li>
+            <li  style="left:1600px">
+                <img />
+                <span></span>
+            </li>
+        </ul>
+    </div>
+    -->
+    
+    <div id="quickMenu" style="display:none;">
+    	<span id="quickMenuTitle"></span>
+    	<img id="quickFocus" src="images/Focus_ME-9-12a.png" />
+    	<img id="quickUpList" src="images/Icon-T.png" />
+    	<div id="quickEmptyTipsBox" style="position:absolute;top:300px;width:540px;height:400px;display:none;">
+    		<span id="quickEmtpyTipsInfo" style="position:absolute;top:40px;left:40px;width:460px;text-align:center;font-size:32px;color:#aaaaaa;line-height:80px;word-wrap:break-word;"></span>
+    	</div>
+    	<div id="quickContainInfo" style="position:absolute;top:160px;width:540px;height:880px;display:block">
+    		<img id="quickCheckBox" src="images/Check-36.png" />
+	    	<div class="quickMenuInfo" style="top:0px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:80px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:160px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:240px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:320px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:400px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:480px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:560px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:640px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:720px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+	    	</div>
+	    	<div class="quickMenuInfo" style="top:800px">
+	    		<span></span>
+	    		<img class="quickMenuImg" src="images/Icon-R.png" />
+			</div>
+    	</div>
+    	<img id="quickDownList" src="images/Icon-B.png" />
+    </div>
+
+	<div id="option" style="position:absolute;top:0px;left:0px;display:none;z-index:40;">
+		<div style="position:absolute;top:0px;left:0px;width:540px;height:1080px;background:#000;opacity:0.85;z-index:10;"></div>
+		<div id="arrowUpOption" class="arrowBGOption" style="top:30px;display:none">
+    		<img style="position:absolute;left:255px;" src="images/Icon-Top.png" />
+    	</div>
+    	<div id="arrowDownOption" class="arrowBGOption" style="top:1020px;display:none">
+    		<img style="position:absolute;left:255px;" src="images/Icon-Bottom.png" />
+    	</div>
+        <div id="optionFirstList">
+        	<div style="position:absolute;top:60px;left:0px;width:540px;height:960px;overflow:hidden">
+	            <ul id="optionFirstUl">
+	            	<img id="optionFocus_1" src="images/Focus_USB_1.png" />
+	                <li id="optionPicturePreset" style="top:0px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionBackLight" style="top:80px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionBackLightBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+	                <li id="optionBrightness" style="top:160px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionBrightnessBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+	                <li id="optionContrast" style="top:240px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionContrastBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+	                <li id="optionSaturation" style="top:320px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionSaturationBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+	                <li id="optionTint" style="top:400px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionTintBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+					<li id="optionSharpness" style="top:480px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionSharpnessBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+	                <li id="optionSoundPreset" style="top:560px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionFootballMode" style="top:0px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionPlayMode" style="top:640px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span id="optionInfoContent8" class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionScreenMode" style="top:720px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="option3DMode" style="top:800px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionLRSwitch" style="top:880px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionFieldDepth" style="top:960px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <div id="optionFieldDepthBar" class="optionShortBar">
+				        	<div class="optionShortBarBG"></div>
+				            <div class = "optionShortBarStart" style="width:0px;"></div>
+				            <div class="optionShortBarEnd" style="left:0px;"></div>
+				        </div>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                </li>
+	                <li id="optionSubtitle" style="top:1040px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionSoundTrack" style="top:1120px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionTitle" style="top:1200px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionChapter" style="top:1280px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	                <li id="optionInfor" style="top:1360px">
+	                    <span class="optionFirstListSpan_1_marquee"></span>
+	                    <span class="optionFirstListSpan_marquee"></span>
+	                    <img class="optionFirstUlImg" src="images/Icon-R-Disable.png" />
+	                </li>
+	            </ul>
+	        </div>
+        </div>
+        <div id="optionInfoDetails" style="display:none">
+        	<span id="infoDetail0" class="optionInfoDetails_marquee" style="top:30px"></span>
+        	<span id="infoDetail1" class="optionInfoDetails_marquee" style="top:110px"></span>
+        	<span id="infoDetail2" class="optionInfoDetails_marquee" style="top:190px"></span>
+        	<span id="infoDetail3" class="optionInfoDetails_marquee" style="top:270px"></span>
+        	<span id="infoDetail4" class="optionInfoDetails_marquee" style="top:350px"></span>
+        </div>
+        <div id="optionSecondList" style="display:none;width:340px">
+        	<img id="optionFocus_2" style="left:0px" src="images/Focus_USB_2.png" />
+        	<div id="optionSecDiv" style="left:0px;display:block">
+        		<div style="position:absolute;width:300px;height:560px;background:#000;opacity:0.85;"></div>
+	        	<div id="optionUpArrow_1" class="optionUpArrow">
+	        		<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Top.png" />
+	        	</div>
+	            <ul id="optionSecondUl" class="optionInfoUl">
+	            	<li>
+		            	<!--<div><span id="optionSecLi_0" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_0" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	                <li>
+		            	<!--<div><span id="optionSecLi_1" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_1" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_2" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_2" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_3" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_3" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<!--<div><span id="optionSecLi_4" class="optionSecondListSpan_static"></span></div>-->
+		            	<span id="optionSecLi_4" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            	<li>
+		            	<span id="optionSecLi_5" class="optionSecondListSpan_marquee"></span>
+		            	<img src="images/Icon-R-Disable.png" />
+	            	</li>
+	            </ul>
+	            <div id="optionDownArrow_1" class="optionDownArrow">
+	            	<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Bottom.png" />
+	            </div>
+            </div>
+            <!--<div id="optionThirdDiv"  style="display:block;left:340px">
+        		<div style="position:absolute;width:300px;height:460px;background:#000;opacity:0.85;"></div>
+	        	<div id="optionUpArrow_2" class="optionUpArrow">
+	        		<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Top.png" />
+	        	</div>
+	            <ul id="optionThirdUl" class="optionInfoUl">
+	            	<li>
+		            	<div><span id="optionThirdLi_0" class="optionSecondListSpan_static"></span></div>
+		            	<img src="images/Icon-R-Disable.png" style="display:none" />
+	            	</li>
+	                <li>
+		            	<div><span id="optionThirdLi_1" class="optionSecondListSpan_static"></span></div>
+		            	<img src="images/Icon-R-Disable.png" style="display:none" />
+	            	</li>
+	            	<li>
+		            	<div><span id="optionThirdLi_2" class="optionSecondListSpan_static"></span></div>
+		            	<img src="images/Icon-R-Disable.png" style="display:none" />
+	            	</li>
+	            	<li>
+		            	<div><span id="optionThirdLi_3" class="optionSecondListSpan_static"></span></div>
+		            	<img src="images/Icon-R-Disable.png" style="display:none" />
+	            	</li>
+	            	<li>
+		            	<div><span id="optionThirdLi_4" class="optionSecondListSpan_static"></span></div>
+		            	<img src="images/Icon-R-Disable.png" style="display:none" />
+	            	</li>
+	            </ul>
+	            <div id="optionDownArrow_2" class="optionDownArrow">
+	            	<img style="position:absolute;left:90px;height:30px;width:30px;" src="images/Icon-Bottom.png" />
+	            </div>
+            </div>-->
+        </div>    
+    </div>
+
+    <div id="optionBarArea" style="display:none">
+    	<img id="optionBarUpArrow" src="images/Icon-Top.png" style="position:absolute;top:0px;left:155px;display:none" />
+    	<img id="optionBarDownArrow" src="images/Icon-Bottom.png" style="position:absolute;bottom:0px;left:155px;display:none" />
+    	<div id="optionBarUpArea" class="optionBarArrowArea" style="top:0px"></div>
+    	<div id="optionBarDownArea" class="optionBarArrowArea" style="bottom:0px"></div>
+    	<div style="position:absolute;top:30px;left:0px;width:1380px;height:180px;overflow:hidden;z-index:10;">
+    		<img src="images/SS_1_02_3_Activation.png" style="position:absolute;top:43px;left:10px;">
+    		<div id="optionBarBlock" style="position:absolute;top:0px;-webkit-transition-duration:200ms;">
+		   		<div id="backLightBar" class="optionBarStyle" style="display:block;top:60px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+
+			    <div id="brightnessBar" class="optionBarStyle" style="display:block;top:120px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+
+			    <div id="contrastBar" class="optionBarStyle" style="display:block;top:180px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+
+			    <div id="saturationBar" class="optionBarStyle" style="display:block;top:240px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+
+			    <div id="tintBar" class="optionBarStyle" style="display:block;top:300px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+
+			    <div id="sharpnessBar" class="optionBarStyle" style="display:block;top:360px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+
+			    <div id="fieldDepthBar" class="optionBarStyle" style="display:block;top:420px;">
+			    	<span class="optionBarName"></span>
+			    	<span class="optionBarValue"></span>
+			    	<div class="optionBarStyle_2">
+			        	<img id="mode3DFDBG" src="images/JSlider2_bg.png" class="optionBarBG"/>
+			            <img id="mode3DFDStartBar" src="images/JSlider2_Focus.png" class="optionBarStart" />
+			            <img id="mode3DFDEndBar" src="images/JSlider2_1.png" class="optionBarEnd" />
+			        </div>
+			    </div>
+			</div>
+	    </div>
+    </div>
+
+    <!--
+    <div id="picturePresetBar" style="display:none">
+    	<div id="picturePresetBarInfo" style="position:absolute;top:0px;left:5px;height:90px;width:308px;line-height:90px;
+    	text-align:center;font-size:28px;color:#aaaaaa;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"></div>
+    	<img id="picFocus" src="images/Focus2.png" />
+    	<img id="picCheckBox" src="images/Check-36.png" />
+    	<div style="left:350px"><span></span></div>
+        <div style="left:636px"><span></span></div>
+        <div style="left:922px"><span></span></div>
+        <div style="left:1208px"><span></span></div>
+    </div>
+    -->
+    <div id="picturePresetBar" style="display:none">
+    	<span id="picturePresetTitle"></span>
+		<div id = "picturePresetBarDiv" style="position:absolute;top:0px;left:316px;width:1380px;height:90px;overflow:hidden;">
+			<div id="picturePresetSelectBar">
+				<div style="left:0px;">
+					<img class="picPresetCheckbox" src="images/Check-36.png" /><span></span>
+				</div>
+				<div style="left:230px">
+					<img class="picPresetCheckbox" src="images/Check-36.png" /><span></span>
+				</div>
+				<div style="left:460px">
+					<img class="picPresetCheckbox" src="images/Check-36.png" /><span></span>
+				</div>
+				<div style="left:690px">
+					<img class="picPresetCheckbox" src="images/Check-36.png" /><span></span>
+				</div>
+				<div style="left:920px">
+					<img class="picPresetCheckbox" src="images/Check-36.png" /><span></span>
+				</div>
+                <div style="left:1150px">
+                    <img class="picPresetCheckbox" src="images/Check-36.png" /><span></span>
+                </div>
+			</div>
+		</div>
+		<img id="picturePresetFocus" src="images/Focus2.png" />
+    </div>
+
+	<div id="pictureZoomSetBar" style="display:none;">
+		<span id="pictureZoomTitle"></span>
+		<div style="position:absolute;top:0px;left:339px;width:1170px;height:120px;overflow:hidden;">
+			<div id="pictureZoomSelectBar">
+				<img id="pictureZoomFocus" src="images/pic_zoom_focus.png" />
+				<div style="left:0px;">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:234px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:468px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:702px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:936px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:1170px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:1404px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+				<div style="left:1638px">
+					<img class="picZoomCheckbox" src="images/Check-36.png" />
+					<img class="picZoomType" src="" /><span></span>
+				</div>
+			</div>
+		</div>
+		<div id="picZoomLeftArrow" class="picZoomArrowArea" style="left:310px;">
+			<img src="images/arrow/focus_L-Focus.png" style="position:absolute;top:44px;left:0px;"/>
+		</div>
+		<div id="picZoomRightArrow" class="picZoomArrowArea" style="left:1506px;">
+			<img src="images/arrow/focus_R-Focus.png" style="position:absolute;top:44px;left:0px;"/>
+		</div>
+	</div>
+    
+    <!--add for divx author-->
+    <div id="authorRegistForm" style="display:none">
+    	<span id="authorizationTitle" style="position:absolute;top:30px;left:60px;font-size:32px;"></span>
+        <span id="authorizationContent1" style="position:absolute;top:140px;left:115px;width:600px;height:220px;font-size:25px"></span>
+        <span id="authorRegistOk" class="button" style="left:313px;display:block"></span>
+        <span id="authorRegistFocus" class="button" style="left:313px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+    <!--add for divx reg-->
+   <div id="registForm" style="display:none">
+    	<span id="registTitle" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+        <span id="registContent1" style="position:absolute;top:0px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registContent2" style="position:absolute;top:50px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registContent3" style="position:absolute;top:100px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registOk" class="button" style="left:313px;display:block"></span>
+        <span id="registFocus" class="button" style="left:313px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+    <!--add for divx rental-->
+     <div id="rentalRegistForm" style="display:none">
+    	<span id="rentalRegistTitle" style="position:absolute;top:30px;left:60px;font-size:32px;"></span>
+        <span id="rentalRegistContent1" style="position:absolute;top:140px;left:115px;width:600px;height:220px;font-size:25px"></span>
+        <span id="rentalRegistZero" class="button" style="left:200px;display:block"></span>
+        <span id="rentalRegistOne" class="button" style="left:450px;display:block"></span>
+        <span id="rentalRegistFocus" class="button" style="left:450px;pointer-events:none;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+    
+    <!--end divx-->
+</body>
+</html>

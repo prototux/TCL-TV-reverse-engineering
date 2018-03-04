@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> all app </title>
+<script type="text/javascript" src="homePageAllApp.js"></script>
+<style>
+body
+{
+	background:url(images/BG_60.jpg);
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#titleName
+{
+	position:absolute;
+	top:50px;
+	left:50px;
+	height:30px;
+	color:white;
+	font-size:30px;
+}
+#sortBy
+{
+	position:absolute;
+	left:300px;
+	top:50px;
+	color:white;
+	border:thin solid white;
+	text-align:center;
+	width:150px;
+	height:30px;
+	font-size:28px;
+	background:#6FF;
+}
+#sortByList
+{
+	position:absolute;
+	left:300px;
+	top:65px;
+	width:150px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	border:thin solid #591616;
+	background:#000;
+	z-index:100;
+	display:none;
+}
+#sortByList li
+{
+	list-style-type:none;
+	color:white;
+	height:60px;
+	line-height:50px;
+	text-align:center;
+	font-size:22px;
+}
+#sortByListFocus
+{
+	position:absolute;
+	top:0px;
+	width:142px;
+	height:40px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	border:4px solid #591616;
+}
+#Category
+{
+	position:absolute;
+	left:500px;
+	top:50px;
+	color:white;
+	border:thin solid white;
+	text-align:center;
+	width:150px;
+	height:30px;
+	font-size:28px;
+}
+#CategoryList
+{
+	position:absolute;
+	left:500px;
+	top:65px;
+	width:150px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	opacity:0.92;
+	border:thin solid #591616;
+	background:#000;
+	z-index:100;
+	display:none;
+}
+#CategoryList li
+{
+	list-style-type:none;
+	top:10px;
+	color:white;
+	height:60px;
+	line-height:50px;
+	text-align:center;
+	font-size:22px;
+}
+#categoryListFocus
+{
+	position:absolute;
+	top:0px;
+	width:142px;
+	height:40px;
+	padding:0px;/*必须有，因为ul默认的padding是40px*/
+	border:4px solid #591616;
+}
+#selectFocus
+{
+	position:absolute;
+	left:298px;
+	top:48px;
+	width:150px;
+	height:30px;
+	border:4px solid #591616;
+	display:none;
+}
+.appList
+{
+	position:absolute;
+	top:100px;
+	left:50px;
+	float:left;
+	width:1800px;
+}
+.appList li
+{
+	position:relative;
+	margin:40px 40px;
+	width:200px;
+	height:200px;
+	float:left;
+	color:white;
+	text-align:center;
+	line-height:200px;
+	border:thin solid #00aadd;
+	list-style-type:none;
+	z-index:50;
+}
+#appListFocus
+{
+	position:absolute;
+	top:100px;
+	left:50px;
+	margin:38px 38px;
+	width:200px;
+	height:200px;
+	border:4px solid #591616;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<div id="topList">
+    	<span id="titleName">ALL APP</span>
+        <div id="sortBy">sortBy</div>
+        <div id="Category">Category</div>
+        <div id="selectFocus"></div>
+        <ul id="sortByList">
+        	<li>
+            	AppName
+            </li>
+            <li>
+            	useFrequency
+            </li>
+            <div id="sortByListFocus">
+            </div>
+        </ul>
+        <ul id="CategoryList">
+        	<li>
+            	All
+            </li>
+            <li>
+            	News
+            </li>
+            <li>
+            	Service
+            </li>
+            <li>
+            	Sport
+            </li>
+            <li>
+            	Entertainment
+            </li>
+            <li>
+            	Music
+            </li>
+            <li>
+            	Games
+            </li>
+            <li>
+            	VOD
+            </li>
+            <div id="categoryListFocus">
+            </div>
+        </ul>
+    </div>
+    <div id="page">
+            <div id="appListFocus"></div>
+    </div>
+    <!--------------------底层分页面表示-------------------------->
+    <hr style="position:absolute;top:980px; width:600px; height:2px;left:660px; background-color:#000000; border:0px;"/>
+    <hr id="pageFlag" style="position:absolute;top:980px; width:200px; height:2px;left:660px; background-color:#F00; border:0px;"/>
+    <span id="pageCout" style="position:absolute;top:970px; width:600px; height:2px;left:1300px; color:#000000; font-size:24px;">1/3 page</span>
+</body>
+</html>

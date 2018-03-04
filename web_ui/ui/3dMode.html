@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#preSetBarPlay
+{
+	position:absolute;
+	background:#000;
+	/*bottom:100px;*/
+	overflow:hidden;
+	opacity:0.92;
+	background:url(images/History_bg.png);
+	width:360px;
+	height:1080px;
+	top:0px;
+	left:0px;
+	display:block;
+}
+#preSetOptionPlay
+{
+	position:absolute;
+	top:55px;
+	left:20px;
+	font-size:28px;
+	color:#b0b0b0;
+}
+</style>
+<script type="text/javascript">
+top.keySetForUI(1); 
+var mode_setting = top.pic3DMode;
+var mode_option = top._3dOptions[0];
+var other_timer = 0;
+var positionH = 0;
+var pic3dMode = 0;
+var modePage  =0;
+var spans;
+var setting = top.g_setting;
+var presetFocusWidth=70;
+var sourceInput = top.g_channel.inputSource;
+
+var panelType   = top.currentPanel;
+function init()
+{
+	//面板按键处理场景设置
+	top.stopTimeout();
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	$("preSetOptionPlay").innerHTML=mode_option;
+	spans=$("preSetBarPlay").getElementsByTagName("span");//picPreset[pictureMode];
+	if(setting.pic3DNavigtion==2)
+	{
+		setting.pic3DMode=5;
+	}
+	switch(setting.pic3DMode)
+	{
+		case 0:
+		pic3dMode = 0;
+		break;
+		case 1:
+		pic3dMode = 1;
+		break;
+		case 8:
+		pic3dMode = 2;
+		break;
+		case 9:
+		pic3dMode = 3;
+		break;
+		default:
+		break;
+	}
+	if(panelType==1)
+	{
+		if(top.glassConnectFlag==0&&pic3dMode!=0)
+		{
+			top.$("globleShow").contentWindow.showGlassRemind(0);
+			if(top.bluetoothStart==0)
+			{
+				top.bluetoothStart=1;
+				setTimeout("setting.bluetoothMaster()",800);
+			}
+
+		}
+		else
+		{
+			top.$("globleShow").contentWindow.hiddenGlassRemind();
+		}
+	}
+	positionH = pic3dMode;
+	showSelMode();
+	other_timer = setTimeout("hiddenOther()",15000);
+	addMouseListener();
+}
+function showSelMode()
+{
+	if(sourceInput==11 || sourceInput==0)
+	{
+		for(var i=0;i<2;i++)
+		{
+			spans[i+1].innerHTML=mode_setting[i];
+		}
+		for(var i=2;i<7;i++)
+		{
+			spans[i+1].innerHTML="";
+		}
+	}
+	else
+	{
+		for(var i=0;i<4;i++)
+	    {
+			spans[i+1].innerHTML=mode_setting[i];
+		}
+	}
+	$("preSetSelectFocusPlay").style.top=105+positionH*presetFocusWidth+"px";
+}
+function hiddenOther()
+{
+	clearTimeout(other_timer);
+	top.$("main").src = "channelPlay.html";
+	
+}
+function startBlueAndShowGlass()
+{
+	if(top.glassConnectFlag==0)
+	{
+		top.$("globleShow").contentWindow.showGlassRemind(0);
+		if(top.bluetoothStart==0)
+		{
+			setTimeout("setting.bluetoothMaster()",800);
+		}
+		top.bluetoothStart=1;
+
+	}
+}
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+document.onkeydown = keyproc;
+
+function keyproc(evt)
+{
+	top.g_previousHtmlPage = "channelPlay.html";
+    var keycode = evt.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+		case top.VK_TV://tv
+		case top.VK_SLEEP://sleep
+		case top.VK_SOURCE://source
+		case top.VK_ECO://eco
+        case top.VK_SOURCE_CMP1:
+        case top.VK_SOURCE_VGA:
+        case top.VK_SOURCE_AV1:
+        case top.VK_SOURCE_HDMI1:
+        case top.VK_SOURCE_HDMI2:
+        case top.VK_SOURCE_HDMI3:
+        case top.VK_SOURCE_HDMI4:
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_VOLUME_UP://volume up
+		case top.VK_VOLUME_DOWN://volume down
+			window.location.href = "channelPlay.html";
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_MUTE://mute
+		case top.VK_INFO://info
+		case top.VK_CHANNEL_UP://channel up
+		case top.VK_CHANNEL_DOWN://channel down
+		case top.VK_OPTION://option
+		case top.VK_SMARTTV://smart tv
+		case top.VK_YOUTUBE:
+		case top.VK_GUIDE://guide
+		case 36://home
+		case top.VK_PRE_CH://pre-ch
+		case top.VK_FAV://fav
+		case top.VK_LIST://list
+		case top.VK_ZOOM_DOWN://zoom-
+		case top.VK_ZOOM_UP://zoom+
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_LANG://language
+		case top.VK_SUBTITLE://subtitle
+		case top.VK_TELETEXT://text
+		case top.VK_RECORD://record
+		case top.VK_PLAY_PAUSE://pause/play timeshift
+		case top.VK_PAUSE:
+		case top.VK_PLAY:
+			top.specialKeyDownProcess(evt);
+			return;
+		case top.E_DLNA_DMR_PUSH_MOVIE:
+		case top.E_DLNA_DMR_PUSH_MUSIC:
+		case top.E_DLNA_DMR_PUSH_PICTURE:
+			top.systemEventProc(evt);
+			break;
+	    case top.VK_ENTER:
+		{
+			//OK 键
+			toOK();
+			ret = false;
+			break;
+		}
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_3D://3d  
+		case top.VK_BACK: //back
+		case top.VK_MENU://menu
+		case top.VK_EXIT://exit
+			window.location.href = "channelPlay.html";
+			break;
+		default:
+			break;
+	}
+}
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	//全局消息
+	switch(msg)
+	{
+		case top.E_SIGNAL_UNLOCK:
+		case top.E_DTV_SERVICE_PLAY://播放流数据更新
+			top.g_isShowInfoBar = 1;
+			hiddenOther();
+			break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+function toUp()
+{
+	positionH--;
+	if(sourceInput==11 || sourceInput==0)
+	{
+		if(positionH<0)
+		{
+			positionH=1;
+		}
+	}
+	else
+	{
+		if(positionH<0)
+		{
+			positionH=3;
+		}
+	}
+	switch(positionH)
+	{
+		case 0:
+		setting.pic3DMode = 0;
+		if(panelType==1)
+		{
+			top.$("globleShow").contentWindow.hiddenGlassRemind();
+		}
+		break;
+		case 1:
+		setting.pic3DMode = 1;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		case 2:
+		setting.pic3DMode = 8;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		case 3:
+		setting.pic3DMode = 9;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		case 4:
+		setting.pic3DMode = 6;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		default:
+		break;
+	}
+	$("preSetSelectFocusPlay").style.top=105+positionH*presetFocusWidth+"px";
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",15000);
+}
+function toDown()
+{
+	positionH++;
+	if(sourceInput==11 || sourceInput==0)
+	{
+		if(positionH>1)
+		{
+			positionH=0;
+		}
+	}
+	else
+	{
+		if(positionH>3)
+		{
+			positionH=0;
+		}
+	}
+	switch(positionH)
+	{
+		case 0:
+		setting.pic3DMode = 0;
+		if(panelType==1)
+		{
+			top.$("globleShow").contentWindow.hiddenGlassRemind();
+		}
+		break;
+		case 1:
+		setting.pic3DMode = 1;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		case 2:
+		setting.pic3DMode = 8;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		case 3:
+		setting.pic3DMode = 9;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		case 4:
+		setting.pic3DMode = 6;
+		if(panelType==1)
+		{
+			startBlueAndShowGlass()
+		}
+		break;
+		default:
+		break;
+	}
+	$("preSetSelectFocusPlay").style.top=105+positionH*presetFocusWidth+"px";
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",15000);
+}
+function toOK()
+{
+	hiddenOther();
+}
+function uninit()
+{
+	top.timeoutFuc.timeoutEnable=1;
+}
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2)
+		{
+			hiddenOther();
+		}//right key
+	}
+	var spans=$("preSetBarPlay").getElementsByTagName("span");
+	for(var i = 0; i < 4; i++)
+	{
+		spans[i+1].setAttribute("newAttr",i);
+		spans[i+1].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+					positionH = parseInt(this.getAttribute("newAttr"));
+					switch(positionH)
+					{
+						case 0:
+						setting.pic3DMode = 0;
+						if(panelType==1)
+						{
+							top.$("globleShow").contentWindow.hiddenGlassRemind();
+						}
+						break;
+						case 1:
+						setting.pic3DMode = 1;
+						if(panelType==1)
+						{
+							startBlueAndShowGlass();
+						}
+						break;
+						case 2:
+						setting.pic3DMode = 8;
+						if(panelType==1)
+						{
+							startBlueAndShowGlass();
+						}
+						break;
+						case 3:
+						setting.pic3DMode = 9;
+						if(panelType==1)
+						{
+							startBlueAndShowGlass();
+						}
+						break;
+						default:
+						break;
+					}
+					$("preSetSelectFocusPlay").style.top=105+positionH*presetFocusWidth+"px";
+					toOK();
+			}
+		}
+	}
+}
+</script>
+
+</head>
+
+<body onload="init()" onunload="uninit()">
+	 <!----------------------重置选择列表------------------------D--->
+    <div id="preSetBarPlay">
+            <span id="preSetOptionPlay" >3D</span>
+            <span class="preSetValue" style="width:310px;left:25px; top:100px; height:70px; line-height:70px;"></span>
+            <span class="preSetValue" style="width:310px;left:25px;top:170px; height:70px; line-height:70px;"></span>
+            <span class="preSetValue" style="width:310px;left:25px;top:240px; height:70px; line-height:70px;"></span>
+            <span class="preSetValue" style="width:310px;left:25px;top:310px; height:70px; line-height:70px;"></span>
+            <span class="preSetValue" style="width:310px;left:25px;top:380px; height:70px; line-height:70px;"></span>
+            <span class="preSetValue" style="width:310px;left:25px;top:450px; height:70px; line-height:70px;"></span>
+            <span class="preSetValue" style="width:310px;left:25px;top:520px; height:70px; line-height:70px;"></span>
+            <img id="preSetSelectFocusPlay" src="images/focus-Tuner_mode.png" style=" position:absolute;display:block; top:120px; left:5px; pointer-events:none; width:350px; height:64px;"/>
+  </div>
+</body>
+</html>

@@ -1,0 +1,2244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="init.css" rel="stylesheet" />
+
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var FirstTitle 				= top.initialTitle[1];
+var subTitle				= top.initialOptions[3];
+var remindWords				= top.initChPrompt[9]
+var hotkeyWords				= [top.initialHotkeys[0],top.initialHotkeys[1],top.initialHotkeys[2],top.okCancel[0],top.others[20]/*Edit*/,
+								top.others[9]/*delete*/,top.others[21]/*Insert*/];
+var satOther				= top.chSatOthers[0];
+var satEditOptions			= top.chSatEidtOptions;
+var offOn					= top.offOn;
+var position				= top.chSatPosition;
+var lNBFreq					= [top.chSatLNBFreq[0],"9750-10750","9750-10700","5150","5750","9750","10600","10750","11250","11300","11475"];
+var diSEqCInput				= top.chSatDiSEqCInput;
+var tone22KHz				= top.chSatTone22KHz;
+var toneBurst				= top.chSatToneBurst;
+var polarization			= top.chSatPolarization;
+var okCannel 				= top.okCancel;
+var tipsT					= top.others[28];
+var noSelectSatelliteRemind = top.pleaseSelectSat;
+
+
+var list_position_h 		= 0;			//å½“å‰è¯­è¨€åœ¨æ˜¾ç¤ºä¸­çš„ç„¦ç‚¹çš„ä½ç½®
+var distance 				= 0;			//distanceç›¸ä½å·®
+var operatorIndex			= 0;		
+var selectFlagImg			= ["../images/option/check_5.png","../images/option/check_7.png"];
+var selectTagImg			= ["../images/icon-Select_1.png","../images/icon-Select_2.png"];
+var focusOn 				= "satellite";//satellite,satEdit,transponder,satellteSelectRemind
+
+//æ»šåŠ¨æ¡ä½¿ç”¨
+var SCROLL_START_TOP		= 240;			//æ»šåŠ¨æ¡èµ·å§‹çš„topä½ç½®
+var SCROLL_MAX_HEIGHT		= 300;			//æ»šåŠ¨æ¡å¯ä»¥æ»šåŠ¨èŒƒå›´é•¿åº¦
+var DISPLAY_COUNT			= 6;			//æ¯ä¸€æ¬¡æœ€å¤šå¯ä»¥æ˜¾ç¤ºçš„è¡Œæ•°
+var line_count				= 0;			//ä½¿ç”¨æ»šåŠ¨æ¡çš„å†…å®¹æœ€å¤§è¡Œæ•°
+
+var setting = top.g_setting;
+var channel = top.g_channel;
+document.onkeydown = keyproc;
+document.onnotify = notifyProcess;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //å…¨å±€æ¶ˆæ¯
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	
+	//å¿«æ·é”®å¤„ç†
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			break;
+		case top.VK_RED:
+			if(focusOn == "satellite")
+			{
+				initSatelliteEdit(list_position_h + distance);
+			}
+			else if(focusOn == "transponder")
+			{
+				if(form_position_h == 0)
+				{
+					nowSatelliteInfo.frequency = "" + deleteCharFromString(nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+					sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+				}
+				else if(form_position_h == 0)
+				{
+					nowSatelliteInfo.symbolRate = "" + deleteCharFromString(nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+					sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+				}
+			}
+			break;
+		case top.VK_GREEN:
+			if(focusOn == "transponder")
+			{
+				if(form_position_h == 0)
+				{
+					insertCharPreToString(nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+					sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+				}
+				else if(form_position_h == 1)
+				{
+					insertCharPreToString(nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+					sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+				}
+			}
+			break;
+		case top.VK_0:
+		case top.VK_1:
+		case top.VK_2:
+		case top.VK_3:
+		case top.VK_4:
+		case top.VK_5:
+		case top.VK_6:
+		case top.VK_7:
+		case top.VK_8:
+		case top.VK_9:
+			if(focusOn == "transponder")
+			{
+				if(form_position_h == 0 || form_position_h == 1)
+				{
+					checkNumInput(keycode);
+				}
+			}
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function toLeft()
+{
+	if(focusOn == "satellite")
+	{
+		document.location.href = "initChDvbsOperatorList.html";
+	}
+	else if(focusOn == "satEdit")
+	{
+		if(satAntennaType == 0)
+		{
+			//é¢„ç•™
+		}
+		else
+		{
+			switch(form_position_h + satEditOffset)
+			{
+				case 0:
+					if(nowSatelliteInfo.isSelect == 0)
+					{
+						nowSatelliteInfo.isSelect = 1;
+					}
+					else
+					{
+						nowSatelliteInfo.isSelect = 0;
+					}
+					$("statusSpan").innerHTML = offOn[nowSatelliteInfo.isSelect];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 1:
+					if(nowSatelliteInfo.lNBPower == 0)
+					{
+						nowSatelliteInfo.lNBPower = 1;
+					}
+					else
+					{
+						nowSatelliteInfo.lNBPower--;
+					}
+					$("lNBPowerSpan").innerHTML = offOn[nowSatelliteInfo.lNBPower];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 2:
+					if(nowSatelliteInfo.lNBFreq <= 0)
+					{
+						nowSatelliteInfo.lNBFreq = 10;
+					}
+					else
+					{
+						nowSatelliteInfo.lNBFreq--;
+					}
+					$("lNBFreqSpan").innerHTML = lNBFreq[nowSatelliteInfo.lNBFreq];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 3:
+					if(nowSatelliteInfo.diSEqCInput <= 0)
+					{
+						nowSatelliteInfo.diSEqCInput = 4;
+					}
+					else
+					{
+						nowSatelliteInfo.diSEqCInput--;
+					}
+					$("diSEqCInputSpan").innerHTML = diSEqCInput[nowSatelliteInfo.diSEqCInput];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 4:
+					if(nowSatelliteInfo.tone22KHz <= 0)
+					{
+						nowSatelliteInfo.tone22KHz = 2;
+					}
+					else
+					{
+						nowSatelliteInfo.tone22KHz--;
+					}
+					$("tone22KHzSpan").innerHTML = tone22KHz[nowSatelliteInfo.tone22KHz];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 5:
+					if(nowSatelliteInfo.toneBurst <= 0)
+					{
+						nowSatelliteInfo.toneBurst = 2;
+					}
+					else
+					{
+						nowSatelliteInfo.toneBurst--;
+					}
+					$("tonBurstSpan").innerHTML = toneBurst[nowSatelliteInfo.toneBurst];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	else if(focusOn == "transponder")
+	{
+		switch(form_position_h)
+		{
+			case 0:
+				if(strPosition <= 0)
+				{
+					if(nowSatelliteInfo.frequency.length == FREQUENCY_MAX_LENGTH)
+					{
+						strPosition = FREQUENCY_MAX_LENGTH - 1;
+						strFocusFlag = 0;
+					}
+					else
+					{
+						strPosition = nowSatelliteInfo.frequency.length;
+						strFocusFlag = 1;
+					}
+				}
+				else
+				{
+					//æ— è®ºstrFocusFlagä¸º0è¿˜æ˜¯1æ“ä½œç›¸åŒ
+						strPosition--;
+						strFocusFlag = 0;
+				}
+				sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+				break;
+			case 1:
+				channel.testLog("in left strPosition 0 = " + strPosition);
+				if(strPosition <= 0)
+				{
+					if(nowSatelliteInfo.symbolRate.length == SYMBOL_RATE_MAX_LENGTH)
+					{
+						channel.testLog("in left symbol max strPosition = " + strPosition);
+						strPosition = SYMBOL_RATE_MAX_LENGTH - 1;
+						channel.testLog("in left symbol max strPosition = " + strPosition);
+						strFocusFlag = 0;
+						channel.testLog("in left symbol max strPosition = " + strPosition);
+					}
+					else
+					{
+						strPosition = nowSatelliteInfo.symbolRate.length;
+						strFocusFlag = 1;
+					}
+				}
+				else
+				{
+					//æ— è®ºstrFocusFlagä¸º0è¿˜æ˜¯1æ“ä½œç›¸åŒ
+						strPosition--;
+						strFocusFlag = 0;
+				}
+				channel.testLog("in left strPosition = " + strPosition);
+				sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+				break;
+			case 2:
+				if(nowSatelliteInfo.polarization == 0)
+				{
+					nowSatelliteInfo.polarization = 1;
+				}
+				else
+				{
+					nowSatelliteInfo.polarization--;
+				}
+				$("polarizationSpan").innerHTML = polarization[nowSatelliteInfo.polarization];
+				setSatInfo(satelliteInfoList[list_position_h + distance]);
+				break;
+			case 3:
+				form_position_h = 4;
+				$("transponderOk").style.border = "medium solid #00aadd";
+				$("transponderCancel").style.border = "none";
+				break;
+			case 4:
+				form_position_h = 3;
+				$("transponderOk").style.border = "none";
+				$("transponderCancel").style.border = "medium solid #00aadd";
+				break;
+			default:	
+				break;
+		}
+	}
+}
+
+function toRight()
+{
+	if(focusOn == "satellite")
+	{
+		for(var i = 0; i < satelliteInfoList.length; i++)
+		{
+			if(satelliteInfoList[i].isSelect == 1)
+			{
+				document.location.href = "initChDvbsScanInfoSelect.html?" + operatorId;
+				return;
+			}
+		}
+
+		//如果没有选中任何卫星
+			$("tips").style.display = "block";
+			focusOn = "satellteSelectRemind";
+			setTimeout(function(){$("tips").style.display = "none";
+				focusOn = "satellite";},2000);
+	}
+	else if(focusOn == "satEdit")
+	{
+		if(satAntennaType == 0)
+		{
+			//é¢„ç•™
+		}
+		else
+		{
+			switch(form_position_h + satEditOffset)
+			{
+				case 0:
+					if(nowSatelliteInfo.isSelect == 0)
+					{
+						nowSatelliteInfo.isSelect = 1;
+					}
+					else
+					{
+						nowSatelliteInfo.isSelect = 0;
+					}
+					$("statusSpan").innerHTML = offOn[nowSatelliteInfo.isSelect];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 1:
+					if(nowSatelliteInfo.lNBPower == 1)
+					{
+						nowSatelliteInfo.lNBPower = 0;
+					}
+					else
+					{
+						nowSatelliteInfo.lNBPower++;
+					}
+					$("lNBPowerSpan").innerHTML = offOn[nowSatelliteInfo.lNBPower];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 2:
+					if(nowSatelliteInfo.lNBFreq >= 10)
+					{
+						nowSatelliteInfo.lNBFreq = 0;
+					}
+					else
+					{
+						nowSatelliteInfo.lNBFreq++;
+					}
+					$("lNBFreqSpan").innerHTML = lNBFreq[nowSatelliteInfo.lNBFreq];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 3:
+					if(nowSatelliteInfo.diSEqCInput >= 4)
+					{
+						nowSatelliteInfo.diSEqCInput = 0;
+					}
+					else
+					{
+						nowSatelliteInfo.diSEqCInput++;
+					}
+					$("diSEqCInputSpan").innerHTML = diSEqCInput[nowSatelliteInfo.diSEqCInput];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 4:
+					if(nowSatelliteInfo.tone22KHz >= 2)
+					{
+						nowSatelliteInfo.tone22KHz = 0;
+					}
+					else
+					{
+						nowSatelliteInfo.tone22KHz++;
+					}
+					$("tone22KHzSpan").innerHTML = tone22KHz[nowSatelliteInfo.tone22KHz];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				case 5:
+					if(nowSatelliteInfo.toneBurst >= 2)
+					{
+						nowSatelliteInfo.toneBurst = 0;
+					}
+					else
+					{
+						nowSatelliteInfo.toneBurst++;
+					}
+					$("tonBurstSpan").innerHTML = toneBurst[nowSatelliteInfo.toneBurst];
+					setSatInfo(satelliteInfoList[list_position_h + distance]);
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	else if(focusOn == "transponder")
+	{
+		switch(form_position_h)
+		{
+			case 0:
+				if(strPosition >= (FREQUENCY_MAX_LENGTH - 1) || strPosition == nowSatelliteInfo.frequency.length)
+				{
+					strPosition = 0;
+					strFocusFlag = 0;
+				}
+				else if(strPosition == (nowSatelliteInfo.frequency.length - 1))
+				{
+					strPosition++;
+					strFocusFlag = 1;
+				}
+				else
+				{
+					if(strFocusFlag == 1)
+					{
+						//strPositionä¸å˜
+						strFocusFlag = 0;
+					}
+					else
+					{
+						strPosition++;
+						strFocusFlag = 0;
+					}
+				}
+				
+				sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+				break;
+			case 1:
+				if(strPosition >= (SYMBOL_RATE_MAX_LENGTH - 1) || strPosition == nowSatelliteInfo.symbolRate.length)
+				{
+					strPosition = 0;
+					strFocusFlag = 0;
+				}
+				else if(strPosition == (nowSatelliteInfo.symbolRate.length - 1))
+				{
+					strPosition++;
+					strFocusFlag = 1;
+				}
+				else
+				{
+					if(strFocusFlag == 1)
+					{
+						//strPositionä¸å˜
+						strFocusFlag = 0;
+					}
+					else
+					{
+						strPosition++;
+						strFocusFlag = 0;
+					}
+				}
+				sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+				break;
+			case 2:
+				if(nowSatelliteInfo.polarization == 0)
+				{
+					nowSatelliteInfo.polarization = 1;
+				}
+				else
+				{
+					nowSatelliteInfo.polarization--;
+				}
+				$("polarizationSpan").innerHTML = polarization[nowSatelliteInfo.polarization];
+				setSatInfo(satelliteInfoList[list_position_h + distance]);
+				break;
+			case 3:
+				form_position_h = 4;
+				$("transponderOk").style.border = "medium solid #00aadd";
+				$("transponderCancel").style.border = "none";
+				break;
+			case 4:
+				form_position_h = 3;
+				$("transponderOk").style.border = "none";
+				$("transponderCancel").style.border = "medium solid #00aadd";
+				break;
+			default:	
+				break;
+		}
+		//setSatInfo(satelliteInfoList[list_position_h + distance]);
+	}
+}
+
+function doEnter()
+{
+	top.Log(" in enter focusOn = " + focusOn + ",form_position_h = " + form_position_h);
+	if(focusOn == "satellite")
+	{
+		if(satelliteInfoList[list_position_h + distance].isSelect == 0)
+		{
+			satelliteInfoList[list_position_h + distance].isSelect = 1;
+			satelliteContentImgList[list_position_h].src = selectFlagImg[1];
+		}
+		else
+		{
+			satelliteInfoList[list_position_h + distance].isSelect = 0;
+			satelliteContentImgList[list_position_h].src = selectFlagImg[0];
+		}
+	}
+	else if(focusOn == "satEdit")
+	{
+		if(satAntennaType == 0)
+		{
+			//é¢„ç•™
+		}
+		else
+		{
+			if((form_position_h + satEditOffset) == 6)//transponder
+			{
+				initTransponder();
+			}
+			else if(form_position_h == 10)
+			{
+				setSatInfo(satelliteInfoList[list_position_h + distance]);
+				channel.playCurrentTv();
+				//list_position_h ä¿æŒåŽŸæ ·
+				$("showWindow").style.display = "none";
+				$("satInfoOther").style.display = "none";
+				$("bigForm").style.display = "block";
+				$("red").getElementsByTagName("span")[0].innerHTML = hotkeyWords[4];
+				$("select").getElementsByTagName("img")[0].src = selectTagImg[0];
+				$("back").style.display = "block";
+				$("next").style.display = "block";
+				$("red").style.display = "block";
+				$("green").style.display = "none";
+				SCROLL_START_TOP = 290;
+				SCROLL_MAX_HEIGHT = 360;
+				DISPLAY_COUNT = 5;
+				line_count = satSum;
+				showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,distance,line_count,DISPLAY_COUNT);
+	
+				focusOn = "satellite";
+			}
+		}
+	}
+	else if(focusOn == "transponder")
+	{
+		switch(form_position_h)
+		{
+			case 0://edit freq
+			case 1://edit syb
+				toDown();
+				break;
+			case 3:
+				form_position_h = 4;
+				satEditOffset = 2;
+				$("red").style.display = "none";
+				$("green").style.display = "none";
+							
+				$("satInfoContent").style.display = "block";
+				$("transponderContent").style.display = "none";
+				$("transponderButton").style.display = "none";
+				$("satInfoOther").style.display = "block";
+				$("ScrollBar").style.display = "block";
+	
+				focusOn = "satEdit";
+				break;
+			case 4:
+				form_position_h = 4;
+				satEditOffset = 2;
+				$("red").style.display = "none";
+				$("green").style.display = "none";
+				
+				satelliteInfoList[list_position_h + distance].frequency = parseInt(nowSatelliteInfo.frequency,10);
+				satelliteInfoList[list_position_h + distance].symbolRate = parseInt(nowSatelliteInfo.symbolRate,10);
+				channel.lockSatelliteFreq(satelliteInfoList[list_position_h + distance].id);//å«æ˜Ÿé”é¢‘
+									
+				$("satInfoContent").style.display = "block";
+				$("transponderContent").style.display = "none";
+				$("transponderButton").style.display = "none";
+				$("satInfoOther").style.display = "block";
+				focusOn = "satEdit";
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+function toUp()
+{
+	top.Log(" in up focusOn = " + focusOn + ",form_position_h = " + form_position_h);
+	if(focusOn == "satellite")
+	{
+		if(list_position_h <= 0) 
+		{
+			if(satSum > 5)
+			{
+				if(distance > 0)
+				{
+					distance--;
+					showSatelliteList(distance,satSum);
+				}
+				else
+				{
+					list_position_h = 4;
+					distance = satSum - 5;//(satSum + 1)æ˜¯å› ä¸ºå¤šä¸€ä¸ªå–æ¶ˆå«æ˜Ÿæ‰‹å°çš„æžšä¸¾
+					showSatelliteList(distance,satSum);
+				}
+			}
+			else
+			{
+				list_position_h = satSum - 1;
+			}
+		}
+		else
+		{
+			list_position_h--;
+		}	
+		$("satFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+	}
+	else if(focusOn == "satEdit")
+	{
+		$("red").style.display = "none";
+		$("green").style.display = "none";
+		if(satAntennaType == 0)//signal cable
+		{
+			//é¢„ç•™
+		}
+		else
+		{
+			switch(form_position_h)
+			{
+				case 0:
+					if(satEditOffset <= 0)
+					{
+						form_position_h = 10;
+						$("satEditOk").style.border = "medium solid #00aadd";
+						$("satInfoFocus").style.display = "none";
+					}
+					else
+					{
+						satEditOffset--;
+						$("satInfoContent").style.top = -satEditOffset*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+						showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,satEditOffset,line_count,DISPLAY_COUNT);
+					}
+					break;
+				case 10://æŠŠOkæŒ‰é’®ä½ç½®è®¾ç½®10
+					form_position_h = 4;
+					satEditOffset = 2;
+					
+					$("satInfoContent").style.top = -satEditOffset*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+					$("satEditOk").style.border = "none";
+					$("satInfoFocus").style.display = "block";
+					showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,satEditOffset,line_count,DISPLAY_COUNT);
+					break;
+				default:
+					form_position_h--;
+					break;
+			}
+			$("satInfoFocus").style.top = SCAN_FOCUS_START + (form_position_h + satEditOffset)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+		}
+	}
+	else if(focusOn == "transponder")
+	{
+		switch(form_position_h)
+		{
+			case 0:
+				freqContentSpanList[0].innerHTML = nowSatelliteInfo.frequency;
+				freqContentSpanList[1].innerHTML = "";
+				freqContentSpanList[2].innerHTML = "";
+				
+				form_position_h = 4;
+				$("transponderOk").style.border = "medium solid #00aadd";
+				$("transponderFocus").style.display = "none";
+				break;
+			case 1:
+				sybContentSpanList[0].innerHTML = nowSatelliteInfo.symbolRate;
+				sybContentSpanList[1].innerHTML = "";
+				sybContentSpanList[2].innerHTML = "";
+				form_position_h--;
+				
+				strPosition = 0;
+				strFocusFlag = 0;
+				sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+				$("red").style.display = "block";
+				$("green").style.display = "block";
+				$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+				break;
+			case 2:
+				form_position_h--;
+				strPosition = 0;
+				strFocusFlag = 0;
+				sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+				$("red").style.display = "block";
+				$("green").style.display = "block";
+				$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+				break;
+			case 3:
+			case 4:
+				form_position_h = 2;
+				
+				$("transponderCancel").style.border = "none";
+				$("transponderOk").style.border = "none";
+				$("transponderFocus").style.display = "block";
+				$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+				break;
+			default:
+				break;
+		}
+		$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";		
+	}
+}
+function toDown()
+{
+	top.Log(" in down focusOn = " + focusOn + ",form_position_h = " + form_position_h);
+	if(focusOn == "satellite")
+	{
+		if(list_position_h >= 4) 
+		{
+			if((distance + list_position_h) >= (satSum - 1))
+			{
+				distance = 0;
+				list_position_h =0;
+				showSatelliteList(distance,satSum);
+			}
+			else
+			{
+				distance++;
+				showSatelliteList(distance,satSum);
+			}
+		}
+		else if(satSum <= 5 && list_position_h == (satSum - 1))
+		{
+			list_position_h = 0;
+		}
+		else
+		{
+			list_position_h++;
+		}
+		$("satFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+	}
+	else if(focusOn == "satEdit")
+	{
+		$("red").style.display = "none";
+		$("green").style.display = "none";
+		if(satAntennaType == 0)
+		{
+			//é¢„ç•™
+		}
+		else
+		{
+			switch(form_position_h)
+			{
+				case 4:
+					if(satEditOffset >= 2)
+					{
+						form_position_h = 10;
+						
+						$("satEditOk").style.border = "medium solid #00aadd";
+						$("satInfoFocus").style.display = "none";
+					}
+					else
+					{
+						satEditOffset++;
+						$("satInfoContent").style.top = -satEditOffset*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+						showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,satEditOffset,line_count,DISPLAY_COUNT);
+					}
+					break;
+				case 10:
+					form_position_h = 0;
+					satEditOffset = 0;
+					
+					$("satInfoContent").style.top = -satEditOffset*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+					$("satEditOk").style.border = "none";
+					$("satInfoFocus").style.display = "block";
+					showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,satEditOffset,line_count,DISPLAY_COUNT);
+					break;
+				default:
+					form_position_h++;
+					break;
+			}
+			$("satInfoFocus").style.top = SCAN_FOCUS_START + (form_position_h + satEditOffset)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+		}
+	}
+	else if(focusOn == "transponder")
+	{
+		switch(form_position_h)
+		{
+			case 3:
+			case 4:
+				$("transponderOk").style.border = "none";
+				$("transponderCancel").style.border = "none";
+				$("transponderFocus").style.display = "block";
+				
+				form_position_h = 0;
+				strPosition = 0;
+				strFocusFlag = 0;
+				sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+				$("red").style.display = "block";
+				$("green").style.display = "block";
+				$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+				break;
+			case 0:
+				freqContentSpanList[0].innerHTML = nowSatelliteInfo.frequency;
+				freqContentSpanList[1].innerHTML = "";
+				freqContentSpanList[2].innerHTML = "";
+				form_position_h++;
+				strPosition = 0;
+				strFocusFlag = 0;
+				sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+				$("red").style.display = "block";
+				$("green").style.display = "block";
+				$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+				break;
+			case 1:
+				sybContentSpanList[0].innerHTML = nowSatelliteInfo.symbolRate;
+				sybContentSpanList[1].innerHTML = "";
+				sybContentSpanList[2].innerHTML = "";
+				form_position_h++;
+				$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+				break;
+			case 2:
+				form_position_h = 4;
+				
+				$("transponderOk").style.border = "medium solid #00aadd";
+				$("transponderFocus").style.display = "none";
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+/*
+æè¿°ï¼šæ ¹æ®ç„¦ç‚¹çš„indexå’Œç„¦ç‚¹æ˜¯â€œ_â€è¿˜æ˜¯è½åœ¨å­—æ¯ä¸ŠæŠŠè¾“å…¥çš„å­—ä¸²åˆ†åˆ°3ä¸ªç›¸åŒçš„æ ‡ç­¾ä¸­ï¼Œå¹¶è®©å½“å‰çš„ç„¦ç‚¹æ˜¾ç¤ºä¸ºçº¢è‰²ï¼›
+å‚æ•°ï¼štagListï¼šå­˜æ”¾åˆ‡åˆ†åŽçš„å­—ä¸²çš„å®¹å™¨ï¼›stringï¼šè¦åˆ‡åˆ†çš„å­—ç¬¦ä¸²ï¼›indexï¼šç„¦ç‚¹æ‰€åœ¨ç´¢å¼•å€¼ï¼›cursorFlagï¼šç„¦ç‚¹ç±»åž‹ï¼ˆ0è¡¨ç¤ºå½“å‰æ–‡å­—æ˜¯ç„¦ç‚¹ï¼Œ1è¡¨ç¤ºç„¦ç‚¹æ˜¯â€œ_â€ï¼‰ï¼›maxLength:å…è®¸çš„å­—ä¸²æœ€å¤§é•¿åº¦
+å…¨å±€å˜é‡ï¼šstrPositionï¼ŒstrFocusFlag
+è¿”å›žå€¼ï¼š//æ›´æ”¹åŽçš„å­—ç¬¦ä¸²
+*/
+var strPosition = 0;//å­—ä¸²ç„¦ç‚¹å­—ç¬¦çš„ä¸‹æ ‡
+var strFocusFlag = 0;//0 å­—ç¬¦ï¼Œ1 â€œ_â€
+function sliceStringToTags(tagList,string,index,cursorFlag,maxLength)
+{
+	channel.testLog("in sliceStringToTags string=" + string + ",index=" + index + ",cursorFlag=" + cursorFlag + ",maxLength=" + maxLength);
+	channel.testLog("in sliceStringToTags strPosition=" + strPosition + ",strFocusFlag=" + strFocusFlag);
+	tagList[0].style.color="#FFF";
+	tagList[1].style.color="#F00";
+	tagList[2].style.color="#FFF";
+	var str = "" + string;
+	if(str.length > maxLength)
+	{
+		str = str.substring(0,maxLength);
+	}
+	channel.testLog("in sliceStringToTags str=" + str + ",str.length=" + str.length);
+	if(index < 0)
+	{
+		if(str.length == 0)
+		{
+			tagList[0].innerHTML = "";
+			tagList[1].innerHTML = "_";
+			tagList[2].innerHTML = "";
+			strPosition = 0;
+			strFocusFlag = 1;
+		}
+		else if(str.length >= maxLength)
+		{
+			tagList[0].innerHTML = str.substring(0,maxLength - 1);
+			tagList[1].innerHTML = str.substring(maxLength - 1);
+			tagList[2].innerHTML = "";
+			strPosition = maxLength - 1;
+			strFocusFlag = 0;
+		}
+		else
+		{
+			tagList[0].innerHTML = str;
+			tagList[1].innerHTML = "_";
+			tagList[2].innerHTML = "";
+			strPosition = str.length;
+			strFocusFlag = 1;//"_"
+		}
+	}
+	else if(index == 0)
+	{
+		channel.testLog("in sliceStringToTags index == 0");
+		if(str.length == 0)
+		{
+			tagList[0].innerHTML = "";
+			tagList[1].innerHTML = "_";
+			tagList[2].innerHTML = "";
+			strPosition = 0;
+			strFocusFlag = 1;
+		}
+		else
+		{
+			channel.testLog("in sliceStringToTags str.length > 0");
+			if(cursorFlag == 0)//å­—ç¬¦
+			{
+				tagList[0].innerHTML = "";
+				tagList[1].innerHTML = str.substring(0,1);
+				tagList[2].innerHTML = str.substring(1);
+				strPosition = 0;
+				strFocusFlag = 0;
+				channel.testLog("in sliceStringToTags end  cursorFlag == 0");
+			}
+			else
+			{
+				tagList[0].innerHTML = "";
+				tagList[1].innerHTML = "_";
+				tagList[2].innerHTML = str;
+				strPosition = 0;
+				strFocusFlag = 1;
+			}
+		}
+	}
+	else if(index > str.length)//XXX_å†å¾€å³ç§»åŠ¨ï¼Œéœ€è¦å˜æˆXXX
+	{
+		tagList[0].innerHTML = "";
+		tagList[1].innerHTML = str.substring(0,1);
+		tagList[2].innerHTML = str.substring(1);
+		strPosition = 0;
+		strFocusFlag = 0;
+	}
+	else if(index == str.length)//æ˜¾ç¤ºXXX_
+	{
+		tagList[0].innerHTML = str;
+		tagList[1].innerHTML = "_";
+		tagList[2].innerHTML = "";
+		strPosition = index;
+		strFocusFlag = 1;
+	}
+	else//index > 0 && index < str.length
+	{
+		if(cursorFlag == 0)//å­—ç¬¦
+		{
+			tagList[0].innerHTML = str.substring(0,index);
+			tagList[1].innerHTML = str.substring(index,index + 1);
+			tagList[2].innerHTML = str.substring(index + 1);
+			strPosition = index;
+			strFocusFlag = 0;
+		}
+		else
+		{
+			tagList[0].innerHTML = str.substring(0,index);
+			tagList[1].innerHTML = "_";
+			tagList[2].innerHTML = str.substring(index);
+			strPosition = index;
+			strFocusFlag = 1;
+		}
+	}
+	channel.testLog("in sliceStringToTags strPosition=" + strPosition);
+	//return str;
+}
+
+/*
+æè¿°ï¼šæ ¹æ®è¾“å…¥çš„æ•°å­—å¡«å†™æ•°å€¼å€¼å¹¶å°†å½“å‰å­—ç¬¦ç„¦ç‚¹ä¸‹ç§»ä¸€ä½
+å‚æ•°ï¼šnumStringï¼šåŽŸæ¥æœ‰çš„æ•°å€¼ä¸²ï¼›indexï¼šç„¦ç‚¹æ‰€åœ¨ç´¢å¼•å€¼ï¼›cursorFlagï¼šç„¦ç‚¹ç±»åž‹ï¼ˆ0è¡¨ç¤ºå½“å‰æ–‡å­—æ˜¯ç„¦ç‚¹ï¼Œ1è¡¨ç¤ºç„¦ç‚¹æ˜¯â€œ_â€ï¼‰ï¼›maxLength:å…è®¸çš„å­—ä¸²æœ€å¤§é•¿åº¦
+å…¨å±€å˜é‡ï¼šstrPositionï¼ŒstrFocusFlag
+è¿”å›žå€¼ï¼šæ›´æ”¹åŽçš„å­—ç¬¦ä¸²
+*/
+function inputNumToNumber(numString,index,cursorFlag,num,maxLength)
+{
+	channel.testLog(" in inputNumToNumber numString = " + numString + ",index = " + index + ",cursorFlag = " + cursorFlag + ",num = " + num + ",maxLength = " + maxLength);
+	var str = "" + numString;
+	if(str.length > maxLength)
+	{
+		return;//str = str.substring(0,maxLength);
+	}
+	if(index < 0 || index >= maxLength)
+	{
+		return;
+	}
+	
+	if(index == 0)
+	{
+		if(num == 0 || num == "0")
+		{
+			if(cursorFlag == 0)//å­—ç¬¦
+			{
+				var value = "" + num + str.substring(1);
+			}
+			else
+			{
+				var value = "" + num + str;
+			}
+			str = "" + parseInt(value,10);
+			strPosition = 0;
+			strFocusFlag = 0;
+			return str;
+		}
+		else
+		{
+			if(str.length == 0)
+			{
+				str = num;
+				strPosition++;
+				strFocusFlag = 1;
+			}
+			else if(str.length == 1)
+			{
+				if(cursorFlag == 0)//å­—ç¬¦
+				{
+					str = num;
+					strPosition++;
+					strFocusFlag = 1;
+				}
+				else
+				{
+					str = num + str;
+					strPosition++;
+					strFocusFlag = 0;
+				}
+			}
+			else
+			{
+				if(cursorFlag == 0)//å­—ç¬¦
+				{
+					str = num + str.substring(index + 1);
+					strPosition++;
+					strFocusFlag = 0;
+				}
+				else
+				{
+					str = num + str;
+					strPosition++;
+					strFocusFlag = 0;
+				}
+			}
+		}
+	}
+	else if(index == (maxLength - 1))
+	{
+		str = str.substring(0,maxLength - 1) + num;
+		strPosition = 0;
+		strFocusFlag = 0;
+	}
+	else
+	{
+		if(index == str.length)//å¦‚ç±»ä¼¼XXXXX_è¾“å…¥ä¸€ä¸ªå­—æ¯çš„æ—¶å€™
+		{
+			str = str + num;
+			strPosition++;
+			strFocusFlag = 1;
+		}
+		else
+		{
+			if(cursorFlag == 0)
+			{
+				str = str.substring(0,index) + num + str.substring(index + 1);
+			}
+			else//å¦‚ç±»ä¼¼XXXX_Xè¾“å…¥ä¸€ä¸ªå­—æ¯çš„æ—¶å€™
+			{
+				str = str.substring(0,index) + num + str.substring(index);
+			}
+			strPosition++;
+			strFocusFlag = 0;
+		}
+	}
+	return str;
+}
+
+/*
+frequency and symbol rateæ—¶ä½¿ç”¨
+*/
+function checkNumInput(keycode)
+{channel.testLog("in checkNumInput");
+	inputChar = keycode - 48;
+		
+	if(satAntennaType == 0)
+	{
+		//é¢„ç•™
+	}
+	else
+	{
+		if(form_position_h == 0)
+		{
+			nowSatelliteInfo.frequency = "" + inputNumToNumber(nowSatelliteInfo.frequency,strPosition,strFocusFlag,inputChar,FREQUENCY_MAX_LENGTH);
+			sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+		}
+		else if(form_position_h == 1)
+		{
+			nowSatelliteInfo.symbolRate = "" + inputNumToNumber(nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,inputChar,SYMBOL_RATE_MAX_LENGTH);
+			
+			sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+		}
+	}
+	
+}
+
+/*
+æè¿°ï¼šæ ¹æ®ç„¦ç‚¹çš„indexå’Œç„¦ç‚¹æ˜¯â€œ_â€è¿˜æ˜¯è½åœ¨å­—æ¯ä¸Šåˆ é™¤ç„¦ç‚¹æ–‡å­—ï¼Œç„¦ç‚¹ä¸‹ç§»ä¸€ä½ï¼Œå¹¶è®©å½“å‰çš„ç„¦ç‚¹æ˜¾ç¤ºä¸ºçº¢è‰²ï¼›
+å‚æ•°ï¼štagListï¼šå­˜æ”¾åˆ‡åˆ†åŽçš„å­—ä¸²çš„å®¹å™¨ï¼›stringï¼šè¦åˆ‡åˆ†çš„å­—ç¬¦ä¸²ï¼›indexï¼šç„¦ç‚¹æ‰€åœ¨ç´¢å¼•å€¼ï¼›cursorFlagï¼šç„¦ç‚¹ç±»åž‹ï¼ˆ0è¡¨ç¤ºå½“å‰æ–‡å­—æ˜¯ç„¦ç‚¹ï¼Œ1è¡¨ç¤ºç„¦ç‚¹æ˜¯â€œ_â€ï¼‰ï¼›maxLength:å…è®¸çš„å­—ä¸²æœ€å¤§é•¿åº¦
+å…¨å±€å˜é‡ï¼šstrPositionï¼ŒstrFocusFlag
+è¿”å›žå€¼ï¼šæ›´æ”¹åŽçš„å­—ç¬¦ä¸²
+*/
+function deleteCharFromString(string,index,cursorFlag,maxLength)
+{
+	channel.testLog(" in inputCharToString string = " + string + ",index = " + index + ",cursorFlag = " + cursorFlag + ",maxLength = " + maxLength );
+	var str = "" + string;
+	if(str.length > maxLength)
+	{
+		return;//str = str.substring(0,maxLength);
+	}
+	
+	if(index < 0 || index >= maxLength)
+	{
+		return;
+	}
+	
+	if(index >= (str.length - 1))//å½“å‰ç„¦ç‚¹åœ¨æœ€åŽ
+	{
+		if(cursorFlag == 0)//ç„¦ç‚¹åœ¨å­—æ¯ä¸Š
+		{
+			str = str.substring(0,str.length - 1);
+		}
+		else
+		{
+			//ä¸å˜
+		}
+		strPosition--;
+		strFocusFlag = 0;
+		
+		if(strPosition < 0)//æŠŠæœ€åŽä¸€ä¸ªæ–‡å­—åˆ é™¤å®Œäº†,éœ€è¦æ˜¾ç¤ºâ€œ_"
+		{
+			strPosition = 0;
+			strFocusFlag = 1;
+		}
+	}
+	else
+	{
+		if(cursorFlag == 0)
+		{
+			str = str.substring(0,index) + str.substring(index + 1);
+		}
+		else
+		{
+			//ä¸å˜
+		}
+		//strPositionä¸å˜;
+		strFocusFlag = 0;
+	}
+	return str;
+}
+/*
+æè¿°ï¼šåœ¨ç„¦ç‚¹å­—ç¬¦å‰æ’å…¥ä¸€ä¸ªâ€œ_â€åŽï¼Œæ”¹å˜ç„¦ç‚¹ç±»åž‹å’Œç„¦ç‚¹ä½ç½®
+å‚æ•°ï¼šstringï¼šè¦å¡«å…¥çš„å­—ç¬¦ä¸²ï¼›indexï¼šç„¦ç‚¹æ‰€åœ¨ç´¢å¼•å€¼ï¼›cursorFlagï¼šç„¦ç‚¹ç±»åž‹ï¼ˆ0è¡¨ç¤ºå½“å‰æ–‡å­—æ˜¯ç„¦ç‚¹ï¼Œ1è¡¨ç¤ºç„¦ç‚¹æ˜¯â€œ_â€ï¼‰ï¼›maxLength:å…è®¸çš„å­—ä¸²æœ€å¤§é•¿åº¦
+å…¨å±€å˜é‡ï¼šstrPositionï¼ŒstrFocusFlag
+è¿”å›žå€¼
+*/
+function insertCharPreToString(string,index,cursorFlag,maxLength)
+{
+	channel.testLog(" in inputCharToString string = " + string + ",index = " + index + ",cursorFlag = " + cursorFlag + ",maxLength = " + maxLength);
+	var str = "" + string;
+	if(str.length >= maxLength)
+	{
+		return;//str = str.substring(0,maxLength);
+	}
+	
+	if(index < 0 || index >= (maxLength - 1))
+	{
+		return;
+	}
+	
+	if(cursorFlag == 0)//ç„¦ç‚¹æ˜¯å­—æ¯ï¼Œåˆ™åœ¨å‰é¢æ’å…¥â€œ_â€,ç­‰ä»·äºŽå°†strFocusFlagç½®ä¸º1ï¼›
+	{
+		//strPositionä¸å˜;
+		strFocusFlag = 1;
+		return;
+	}
+	else
+	{
+		return;
+	}
+}
+
+
+/*
+æè¿°ï¼šä¿å­˜å«æ˜Ÿä¿¡æ¯
+å‚æ•°ï¼šsatellite:æ­£ç¼–è¾‘çš„å«æ˜Ÿå¯¹è±¡
+*/
+function setSatInfo(satellite)
+{
+	if(satAntennaType == 0)
+	{
+		//é¢„ç•™
+	}
+	else
+	{
+		if(focusOn == "satEdit")
+		{
+			switch(form_position_h + satEditOffset)
+			{
+				case 0:
+					satellite.isSelect = nowSatelliteInfo.isSelect;
+					break;
+				case 1:
+					satellite.lNBPower = nowSatelliteInfo.lNBPower;
+					break;
+				case 2:
+					satellite.lNBFreq = nowSatelliteInfo.lNBFreq;
+					break;
+				case 3:
+					satellite.diSEqCInput = nowSatelliteInfo.diSEqCInput;
+					break;
+				case 4:
+					satellite.tone22KHz = nowSatelliteInfo.tone22KHz;
+					break;
+				case 5:
+					satellite.toneBurst = nowSatelliteInfo.toneBurst;
+					break;
+			}
+		}
+		else if(focusOn == "transponder")
+		{
+			switch(form_position_h)
+			{
+				case 0:
+					satellite.frequency = parseInt(nowSatelliteInfo.frequency,10);
+					break;
+				case 1:
+					satellite.symbolRate = parseInt(nowSatelliteInfo.symbolRate,10);
+					break;
+				case 2:
+					satellite.polarization = nowSatelliteInfo.polarization;
+					break;
+				default:	
+					break;
+			}
+		}
+	}
+	channel.lockSatelliteFreq(satellite.id);//å«æ˜Ÿé”é¢‘
+}
+
+/*
+æè¿°ï¼šæ ¹æ®è¿›åº¦å’Œè¿›åº¦æ¡å›¾æ ‡åˆ—è¡¨åˆ·æ–°è¿›åº¦
+å‚æ•°ï¼švalueï¼šprogress,tagList:è¿›åº¦æ¡å›¾ç‰‡åˆ—è¡¨,valueTag:æ˜¾ç¤ºè¿›åº¦å€¼çš„æ ‡ç­¾;progressMax:è¿›åº¦æ¡æœ€å¤§å®½åº¦
+*/
+function refreshProgressBarMore(tagList,value,valueTag,progressMax)
+{
+	tagList[0].style.width = parseInt(value*progressMax/100,10) + "px";
+	tagList[2].style.width = parseInt((100 - value)*progressMax/100,10) + "px";
+	valueTag.innerHTML = value + "%";
+}
+
+
+var freqContentSpanList;
+var sybContentSpanList;
+var transponderLiList;
+function initTransponder()
+{
+	nowSatelliteInfo.frequency = satelliteInfoList[list_position_h + distance].frequency;
+	nowSatelliteInfo.symbolRate = satelliteInfoList[list_position_h + distance].symbolRate;
+	
+	var tansponderLabelList = $("transponderContent").getElementsByTagName("label");
+	for(var i = 0; i < 3; i++)
+	{
+		tansponderLabelList[i].innerHTML = satEditOptions[i + 7];
+	}
+	
+	freqContentSpanList = $("freqContent").getElementsByTagName("span");
+	sybContentSpanList = $("sybContent").getElementsByTagName("span");
+	freqContentSpanList[0].innerHTML = nowSatelliteInfo.frequency;
+	freqContentSpanList[1].innerHTML = "";
+	freqContentSpanList[2].innerHTML = "";
+	sybContentSpanList[0].innerHTML = nowSatelliteInfo.symbolRate;
+	sybContentSpanList[1].innerHTML = "";
+	sybContentSpanList[2].innerHTML = "";
+	$("polarizationSpan").innerHTML = polarization[nowSatelliteInfo.polarization];
+	
+	form_position_h = 0;
+	strPosition = 0;
+	strFocusFlag = 0;
+	sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+	$("transponderCancel").innerText = okCannel[1];
+	$("transponderOk").innerText = okCannel[0];
+	$("transponderCancel").style.border = "none";
+	$("transponderOk").style.border = "none";
+	$("transponderFocus").style.display = "block";
+	$("transponderFocus").style.top = SCAN_FOCUS_START + (form_position_h)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+	$("red").style.display = "block";
+	$("green").style.display = "block";
+	
+	$("satInfoContent").style.display = "none";
+	$("transponderContent").style.display = "block";
+	$("transponderButton").style.display = "block";
+	$("satInfoOther").style.display = "none";
+	$("ScrollBar").style.display = "none";
+	focusOn = "transponder";
+}
+
+/*
+æè¿°ï¼šåˆå§‹åŒ–é€‰ä¸­çš„å«æ˜Ÿçš„è¯¦ç»†ä¿¡æ¯
+å‚æ•°:infoIndex:é€‰ä¸­çš„å«æ˜Ÿçš„ä¿¡æ¯çš„ç¼–å·
+*/
+var satInfoContentLiList;
+var nowSatelliteInfo;
+var sigStrengthDivList;
+var sigQualityDivList;
+var SAT_NAME_MAX_LENGTH = 32;
+var FREQUENCY_MAX_LENGTH = 8;
+var SYMBOL_RATE_MAX_LENGTH = 5;
+var satAntennaType		= 0;
+var form_position_h = 0;
+var satEditOffset	= 0;
+var SCAN_SAT_EDIT_FOCUS_STEP = 60;
+var SAT_PROGRESS_WIDTH 	= 400;
+function initSatelliteEdit(infoIndex)
+{
+	satAntennaType = 1;//channel.getSatelliteAntennaInfo().type;
+	strPosition = 0;
+	strFocusFlag = 0;
+	form_position_h = 0;
+	satEditOffset = 0;
+	
+	if(satAntennaType == 0)//signal cable
+	{
+		satInfoContentLiList[0].style.display = "block";
+		satInfoContentLiList[1].style.display = "block";
+		satInfoContentLiList[2].style.display = "none";
+		satInfoContentLiList[3].style.display = "none";
+		satInfoContentLiList[4].style.display = "none";
+		satInfoContentLiList[5].style.display = "none";
+		satInfoContentLiList[6].style.display = "none";
+	}
+	else if(satAntennaType == 1)
+	{
+		satInfoContentLiList[0].style.display = "block";
+		satInfoContentLiList[1].style.display = "none";
+		satInfoContentLiList[2].style.display = "block";
+		satInfoContentLiList[3].style.display = "block";
+		satInfoContentLiList[4].style.display = "block";
+		satInfoContentLiList[5].style.display = "block";
+		satInfoContentLiList[6].style.display = "block";
+	}
+	//top.Log("in satellite edit 0 infoindex = " + infoIndex);
+	
+	var satInfoLabel = $("satInfoContent").getElementsByTagName("label");
+	satInfoLabel[0].innerHTML = satEditOptions[12];
+	for(var i = 1; i < 7; i++)
+	{
+		satInfoLabel[i].innerHTML = satEditOptions[i];
+	}
+	satInfoLabel[7].innerHTML = satOther;
+	
+	var labelList2 = $("satInfoOther").getElementsByTagName("label");
+	labelList2[0].innerHTML = satEditOptions[10];
+	labelList2[1].innerHTML = satEditOptions[11];
+	
+	var info = satelliteInfoList[infoIndex];
+	channel.stopTv();
+	channel.lockSatelliteFreq(info.id);//å«æ˜Ÿé”é¢‘
+	nowSatelliteInfo = {
+		isSelect		: info.isSelect,
+		id				: info.id,
+		name 			: info.name,
+		position		: info.position,
+		lNBPower		: info.lNBPower,
+		lNBFreq			: info.lNBFreq,
+		diSEqCInput		: info.diSEqCInput,
+		tone22KHz		: info.tone22KHz,
+		toneBurst		: info.toneBurst,
+		frequency		: "" + info.frequency,//è½¬åŒ–æˆå­—ç¬¦ä¸²
+		symbolRate		: "" + info.symbolRate,//è½¬åŒ–æˆå­—ç¬¦ä¸²
+		polarization	: info.polarization
+	}
+	$("statusSpan").innerHTML = offOn[nowSatelliteInfo.isSelect];
+	$("positionSpan").innerHTML = position[nowSatelliteInfo.position];
+	$("lNBPowerSpan").innerHTML = offOn[nowSatelliteInfo.lNBPower];
+	$("lNBFreqSpan").innerHTML = lNBFreq[nowSatelliteInfo.lNBFreq];
+	$("diSEqCInputSpan").innerHTML = diSEqCInput[nowSatelliteInfo.diSEqCInput];
+	$("tone22KHzSpan").innerHTML = tone22KHz[nowSatelliteInfo.tone22KHz];
+	$("tonBurstSpan").innerHTML = toneBurst[nowSatelliteInfo.toneBurst];
+	$("transponderSpan").innerHTML = "...";
+	
+	sigStrengthDivList = $("sigStrength").getElementsByTagName("div");
+	sigQualityDivList = $("sigQuality").getElementsByTagName("div");
+	
+	$("satEditOk").innerHTML = hotkeyWords[3];
+	$("select").getElementsByTagName("img")[0].src = selectTagImg[1];
+	$("red").getElementsByTagName("span")[0].innerHTML = hotkeyWords[5];
+	$("back").style.display = "none";
+	$("next").style.display = "none";
+	$("red").style.display = "none";
+	$("green").style.display = "none";
+	
+	
+	$("satEditOk").style.border = "none";
+	$("satInfoFocus").style.top = SCAN_FOCUS_START + (form_position_h + satEditOffset)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+	$("satInfoFocus").style.display = "block";
+	$("satInfoContent").style.top = "0px";
+	
+	$("bigForm").style.display = "none";
+	$("satInfoOther").style.display = "block";
+	$("showWindow").style.display = "block";
+	$("satInfoContent").style.display = "block";
+	$("transponderContent").style.display = "none";
+	$("transponderButton").style.display = "none";
+	focusOn = "satEdit";
+	channel.testLog("in satellite edit 4");
+	
+	line_count = 7;
+	SCROLL_MAX_HEIGHT = 300;
+	DISPLAY_COUNT = 5;
+	SCROLL_START_TOP = 240;
+	showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,satEditOffset,line_count,DISPLAY_COUNT);
+	setInterval("refreshSignalQualityAndStrength()",1000);
+}
+/*
+optionIndex:é€‰é¡¹åœ¨æ‰€æœ‰optionSumä¸­çš„ä½ç½®ï¼›optionSumï¼šæ‰€æœ‰é€‰é¡¹ä¸ªæ•°ï¼›showSumï¼šæ¯æ¬¡æœ€å¤šå¯æ˜¾ç¤ºçš„é€‰é¡¹ä¸ªæ•°
+*/
+function showScrollBar(startTop,hight,optionIndex,optionSum,showSum)
+{
+	$("ScrollBar").style.top = startTop + parseInt(hight*optionIndex/optionSum,10) + "px";
+	$("ScrollBar").style.height = parseInt(hight*showSum/optionSum,10) + "px";
+	$("ScrollBar").style.display = "block";
+}
+
+/*
+æè¿°:ä¸æ–­èŽ·å–ä¿¡å·è´¨é‡å’Œå¼ºåº¦
+*/
+function refreshSignalQualityAndStrength()
+{
+	if(focusOn == "satEdit")
+	{
+		refreshProgressBarMore(sigStrengthDivList,setting.channelCurrentSignalStrength,$("sigStrengthValue"),SAT_PROGRESS_WIDTH);
+		refreshProgressBarMore(sigQualityDivList,setting.channelCurrentSignalQuality,$("sigQualityValue"),SAT_PROGRESS_WIDTH);
+	}
+}
+
+
+/*
+æè¿°ï¼šæ ¹æ®distanceå’ŒsatSumæ¥åˆ·æ–°å«æ˜Ÿåˆ—è¡¨æ˜¾ç¤º
+*/
+function showSatelliteList(dis,sSum)
+{
+	if(sSum <= 5)
+	{
+		for(var i = 0; i < 5; i++)
+		{
+			if(i < sSum)
+			{
+				satelliteContentlabelList[i].innerHTML = satelliteInfoList[i].name;
+				satelliteContentImgList[i].src = selectFlagImg[satelliteInfoList[i].isSelect];
+				satelliteContentLiList[i].style.display = "block";
+			}
+			else
+			{
+				satelliteContentLiList[i].style.display = "none";
+			}
+		}
+		$("ScrollBar").style.display = "none";
+	}
+	else
+	{
+		for(var i = 0; i < 5; i++)
+		{
+			satelliteContentlabelList[i].innerHTML = satelliteInfoList[dis + i].name;
+			satelliteContentImgList[i].src = selectFlagImg[satelliteInfoList[dis + i].isSelect];
+			satelliteContentLiList[i].style.display = "block";
+		}
+		
+		SCROLL_START_TOP = 290;
+		SCROLL_MAX_HEIGHT = 360;
+		DISPLAY_COUNT = 5;
+		line_count = sSum;
+		showScrollBar(SCROLL_START_TOP,SCROLL_MAX_HEIGHT,dis,line_count,DISPLAY_COUNT);
+	}
+	showUpDownFlagImg(sSum,dis)
+}
+
+var satelliteContentlabelList;
+var satelliteContentLiList;
+var satelliteContentImgList;
+var satelliteInfoList;
+var satSum = 0;
+var SCAN_FOCUS_START = 10;
+var SCAN_SAT_LIST_FOCUS_STEP = 70;
+function initSatellite(operatorId)
+{
+	satelliteContentlabelList = $("satelliteContent").getElementsByTagName("label");
+	satelliteContentImgList = $("satelliteContent").getElementsByTagName("img");
+	list_position_h = 0;
+	distance = 0;
+	
+	satelliteInfoList = channel.getSatelliteList(operatorId);
+	satSum = satelliteInfoList.length;
+	channel.testLog("in initSatellite satSum = " + satSum);
+	if(satSum==1)
+	{
+		document.location.href = "initChDvbsScanInfoSelect.html?" + operatorId;
+		return;
+	}
+	showSatelliteList(distance,satSum)
+	
+	$("select").getElementsByTagName("img")[0].src = selectTagImg[0];
+	$("satFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+	$("satInfoOther").style.display = "none";
+	$("showWindow").style.display = "none";
+	$("satelliteContent").style.display = "block";
+	$("transponderButton").style.display = "none";
+	focusOn = "satellite";
+	
+}
+
+
+function showUpDownFlagImg(optionSum,positionOffset)
+{
+	//µÚÒ»½×¶Î²»×öÊó±ê£¬ËùÒÔÒþ²Ø¡£
+	$("initListUpImg").style.opacity = 0;
+	$("initListDownImg").style.opacity = 0;
+	return;
+	//µÚÒ»½×¶Î²»×öÊó±ê£¬ËùÒÔÒþ²Ø¡£
+	
+	if(optionSum <= 5)
+	{
+		$("initListUpImg").style.opacity = 0;
+		$("initListDownImg").style.opacity = 0;
+		return;
+	}
+	
+	if(positionOffset > 0)
+	{
+		$("initListUpImg").style.opacity = 1;
+	}
+	else
+	{
+		$("initListUpImg").style.opacity = 0;
+	}
+	
+	if((positionOffset + 4) >= (optionSum - 1))
+	{
+		$("initListDownImg").style.opacity = 0;
+	}
+	else
+	{
+		$("initListDownImg").style.opacity = 1;
+	}
+}
+
+var operatorId = 0;
+function init()
+{
+	var datas = window.location.search;
+	operatorId = datas.substring(1);
+	top.g_channel.testLog("in satellite operatorId = " + operatorId);
+	
+	satelliteContentLiList = $("satelliteContent").getElementsByTagName("li");
+	satInfoContentLiList = $("satInfoContent").getElementsByTagName("li");
+	transponderLiList = $("transponderContent").getElementsByTagName("li");
+	
+	$("initTitle").innerHTML = FirstTitle;
+	$("subTitleTag").innerHTML = subTitle;
+	$("selectTitleTag").innerHTML = remindWords;
+	$("tipsTitle").innerHTML = tipsT;
+	$("tipsContent").innerHTML = noSelectSatelliteRemind;
+	
+	$("back").getElementsByTagName("span")[0].innerHTML = hotkeyWords[0];
+	$("select").getElementsByTagName("span")[0].innerHTML = hotkeyWords[1];
+	$("next").getElementsByTagName("span")[0].innerHTML = hotkeyWords[2];
+	$("ok").getElementsByTagName("span")[0].innerHTML = hotkeyWords[3];
+	$("red").getElementsByTagName("span")[0].innerHTML = hotkeyWords[4];
+	$("green").getElementsByTagName("span")[0].innerHTML = hotkeyWords[6];
+	$("back").style.display = "block";
+	$("next").style.display = "block";
+	$("green").style.display = "none";
+	initSatellite(operatorId);
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	for(var i = 0; i < 5; i++)
+	{
+		satelliteContentLiList[i].setAttribute("newAttr",i);
+		satelliteContentLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "satellite")
+				{
+					list_position_h = parseInt(this.getAttribute("newAttr"));
+					$("satFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+					doEnter();
+				}
+			}
+		}
+	}
+	$("initListUpImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "satellite" && $("initListUpImg").style.opacity == 1)
+			{
+				list_position_h = 0;
+				$("satFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+				toUp();
+			}
+		}
+	}
+	$("initListDownImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "satellite" && $("initListDownImg").style.opacity == 1)
+			{
+				list_position_h = 4;
+				$("satFocus").style.top = SCAN_FOCUS_START + list_position_h*SCAN_SAT_LIST_FOCUS_STEP + "px";
+				toDown();
+			}
+		}
+	}
+	
+	for(var i = 0; i < 8; i++)
+	{
+		satInfoContentLiList[i].setAttribute("newAttr",i);
+		satInfoContentLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "satEdit")
+				{
+					//hiden focus and reset input container
+					$("satEditOk").style.border = "none";
+					$("red").style.display = "none";
+					$("green").style.display = "none";
+					if(satAntennaType == 0)//signal cable
+					{
+						//é¢„ç•™
+					}
+					else
+					{
+						switch(form_position_h)
+						{
+							case 10:
+								$("satEditOk").style.border = "none";
+								break;
+							default:
+								break;
+						}
+					}
+					
+					//reset focus/scroller/input container
+					if(satAntennaType == 0)//signal cable
+					{
+						//é¢„ç•™
+					}
+					else
+					{
+						if(parseInt(this.getAttribute("newAttr")) < 1)
+						{
+							form_position_h = parseInt(this.getAttribute("newAttr"));
+						}
+						else if(parseInt(this.getAttribute("newAttr")) > 1)
+						{
+							form_position_h = (parseInt(this.getAttribute("newAttr")) - 1) - satEditOffset;
+						}
+						else
+						{
+							return;
+						}
+						$("satInfoFocus").style.top = SCAN_FOCUS_START + (form_position_h + satEditOffset)*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+					} 
+					$("satInfoFocus").style.display = "block";
+					doEnter();
+				}
+			}
+		}
+	}
+	$("satEditOk").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "satEdit")
+			{
+				//hiden focus and reset input container
+				$("satInfoFocus").style.display = "none";
+				$("red").style.display = "none";
+				$("green").style.display = "none";
+				
+				//reset focus/scroller/input container
+				form_position_h = 10;
+				$("satEditOk").style.border = "medium solid #00aadd";
+				doEnter();
+			}
+		}
+	}
+	
+	for(var i = 0; i < 3; i++)
+	{
+		transponderLiList[i].setAttribute("newAttr",i);
+		transponderLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "transponder")
+				{
+					//hiden focus and reset input container
+					$("transponderCancel").style.border = "none";
+					$("transponderOk").style.border = "none";
+					$("red").style.display = "none";
+					$("green").style.display = "none";
+					switch(form_position_h)
+					{
+						case 0://freq
+							setSatInfo(satelliteInfoList[list_position_h + distance]);
+							freqContentSpanList[0].innerHTML = nowSatelliteInfo.frequency;
+							freqContentSpanList[1].innerHTML = "";
+							freqContentSpanList[2].innerHTML = "";
+							break;
+						case 1://symbol rate
+							setSatInfo(satelliteInfoList[list_position_h + distance]);
+							sybContentSpanList[0].innerHTML = nowSatelliteInfo.symbolRate;
+							sybContentSpanList[1].innerHTML = "";
+							sybContentSpanList[2].innerHTML = "";
+							break;
+						default:
+							break;
+					}
+					
+					//reset focus/scroller/input container
+					form_position_h = parseInt(this.getAttribute("newAttr"));
+					
+					switch(form_position_h)
+					{
+						case 0:
+							strPosition = 0;
+							strFocusFlag = 0;
+							sliceStringToTags(freqContentSpanList,nowSatelliteInfo.frequency,strPosition,strFocusFlag,FREQUENCY_MAX_LENGTH);
+							$("red").style.display = "block";
+							$("green").style.display = "block";
+							break;
+						case 1:
+							strPosition = 0;
+							strFocusFlag = 0;
+							sliceStringToTags(sybContentSpanList,nowSatelliteInfo.symbolRate,strPosition,strFocusFlag,SYMBOL_RATE_MAX_LENGTH);
+							$("red").style.display = "block";
+							$("green").style.display = "block";
+							break;
+						default:
+							break;
+					}
+					$("transponderFocus").style.top = SCAN_FOCUS_START + form_position_h*SCAN_SAT_EDIT_FOCUS_STEP + "px";
+					$("transponderFocus").style.display = "block";
+				}
+			}
+		}
+	}
+	$("transponderCancel").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "transponder")
+			{
+				//hiden focus and reset input container
+				$("transponderFocus").style.display = "none";
+				$("red").style.display = "none";
+				$("green").style.display = "none";
+				
+				//reset focus/scroller/input container
+				form_position_h = 3;
+				$("transponderCancel").style.border = "medium solid #00aadd";
+				doEnter();
+			}
+		}
+	}
+	$("transponderOk").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "transponder")
+			{
+				//hiden focus and reset input container
+				$("transponderFocus").style.display = "none";
+				$("red").style.display = "none";
+				$("green").style.display = "none";
+				
+				//reset focus/scroller/input container
+				form_position_h = 4;
+				$("transponderOk").style.border = "medium solid #00aadd";
+				doEnter();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+.initList2Options
+{
+	position:relative;
+	left:0px;/*150px;*/
+	/*height:480px;
+	top:240px;*/
+	width:1060px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.initList2Options li
+{
+	position:relative;
+	width:100%;
+	height:50px;
+	padding:10px 0px 10px 0px;
+	display:none;
+}
+.initList2Input/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†å®¹å™¨*/
+{
+	position:absolute;
+	width:100%;
+	height:50px;
+	line-height:50px;
+}
+.initList2InputName/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†è¾“å…¥é€‰é¡¹åç§°æç¤º*/
+{
+	position:absolute;
+	left:10px;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+}
+.initList2InputTag/*å¯¹è¯æ¡†ä¸­ç‰¹æ®Šè¾“å…¥æ¡†æœ€å³è¾¹çš„å°å›¾æ ‡æç¤º*/
+{
+	position: absolute;
+	right:10px;
+	height:40px;
+	margin:4px 0px 6px 0px;
+}
+.initList2InputFocus/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†ç„¦ç‚¹æ ·å¼*/
+{
+	position:absolute;
+	width:100%;
+	height:60px;
+	border:solid #00aadd;
+	border-width:4px;
+	margin-top:-4px;
+	border-radius:10px;
+}
+
+/***************å¼¹å‡ºå¯¹è¯æ¡†é€šç”¨æ ·å¼************************/
+
+.dialogOptions/*è®¾ç½®å¯¹è¯æ¡†ä¸»ä½“æ¡†æž¶ï¼Œæ–°çš„å¯¹è¯æ¡†åªéœ€è¦è°ƒæ•´é«˜åº¦å’Œtopå€¼*/
+{
+	position:absolute;
+	left:150px;
+	top:0px;
+	width:1060px;
+	height:860px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.dialogOptions li
+{
+	position:relative;
+	width:100%;
+	height:40px;
+	padding:10px 0px 10px 0px;
+}
+
+.dialogInput/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†å®¹å™¨*/
+{
+	position:absolute;
+	right:50px;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	left:10px;
+}
+.dialogInputFocus/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†ç„¦ç‚¹æ ·å¼*/
+{
+	position:absolute;
+	width:450px;
+	height:40px;
+	right:0px;
+	border:solid #00aadd;
+	border-width:4px;
+	margin-top:-4px;
+	border-radius:10px;
+}
+.dialogInputName/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†è¾“å…¥é€‰é¡¹åç§°æç¤º*/
+{
+	position:absolute;
+	left:5px;
+	font-size:26px;
+	font-weight:bold;
+	color:#fff;
+}
+.dialogInputContent/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†è¾“å…¥éƒ¨åˆ†æ ·å¼*/
+{
+	position:absolute;
+	right:50px;
+	width:350px;/*250px;*/
+	top:5px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#FFF;
+	font-size:26px;
+	font-weight:bold;
+	overflow:hidden;
+}
+.dialogInputTag/*å¯¹è¯æ¡†ä¸­ç‰¹æ®Šè¾“å…¥æ¡†æœ€å³è¾¹çš„å°å›¾æ ‡æç¤º*/
+{
+	position: absolute;
+	width:450px;
+	right:0px;
+	height:40px;
+}
+.dialogInputValue
+{
+	position: absolute;
+	right:10px;
+	height:30px;
+	line-height:30px;
+	margin:5px 0px 5px 0px;
+	color:#FFF;
+	font-size:24px;
+}
+.dialogInputProgressContainer/*å¯¹è¯æ¡†ä¸­è¾“å…¥æ¡†ä¸­ä½¿ç”¨çš„è¿›åº¦æ¡å®¹å™¨*/
+{
+	position:absolute;
+	right:70px;
+	width:464px;/*264px;*/ 
+	height:40px;
+}
+.dialogButton/*å¯¹è¯æ¡†ä¸­çš„æŒ‰é’®æ ·å¼*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	padding-top:7px;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+#satEditOk
+{
+	left:454px;
+}
+#transponderCancel
+{
+	left:330px;
+}
+#transponderOk
+{
+	right:330px;
+}
+#transponderButton
+{
+	position:absolute;
+	top:540px;
+	left:150px;
+	width:1060px;
+	height:60px;
+	display:none;
+}
+#bigForm
+{
+	position:absolute;
+	left:150px;
+	top:240px;
+}
+#initListUpImg
+{
+	margin:10px 510px 10px 510px;
+}
+#initListDownImg
+{
+	margin:10px 510px 10px 510px;
+}
+/***************å¼¹å‡ºå¯¹è¯æ¡†é€šç”¨æ ·å¼************************/
+
+#tips
+{
+	position:absolute;
+	left:544px;
+	top:334px;
+	width:830px;
+	height:410px;
+	background-image:url(../images/Bg-Pop_up_box-04.png);
+	background-size:100% 100%;
+	display:none;
+}
+#tipsTitle
+{
+	position:absolute;
+	left:60px;
+	top:30px;
+	font-size:32px;
+	color:#fff;
+}
+#tipsContent
+{
+	position:absolute;
+	left:60px;
+	top:126px;
+	width:710px;
+	font-size:28px;
+	color:#bbb;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+     <!-----------å¤§åœ†å±…ä¸­ï¼Œå¤§åœ†åŠ ä¸ŠåŽé¢çš„å°åœ†ã€è¿žçº¿çš„æ€»é•¿åº¦æ˜¯1000px,å¤§åœ†å‰é¢çš„æ€»é•¿åº¦æ˜¯920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog" style="display:block;">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:960px;" /><img src="../images/Title_bloc-Bg.png" style="width:240px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:180px;"></span>
+        
+        
+        <img id="ScrollBar" src="../images/Scroll_bar-Vertical.png" style="	position:absolute;width:10px;left:1250px;top:290px;"/>
+        <!----------------------satelite formä½¿ç”¨---------------------->
+        <div id="bigForm">
+        	<img id="initListUpImg" src="../images/arrow/U-Focus.png"/>
+            <ul id="satelliteContent" class="initList2Options" >
+                <div id="satFocus" class="initList2InputFocus"  style="top:10px;"></div>
+                <li>
+                    <div class="initList2Input">
+                        <label class="initList2InputName"></label>
+                        <img class="initList2InputTag" src="../images/option/check_5.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="initList2Input">
+                        <label class="initList2InputName"></label>
+                        <img class="initList2InputTag" src="../images/option/check_7.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="initList2Input">
+                        <label class="initList2InputName"></label>
+                        <img class="initList2InputTag" src="../images/option/check_7.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="initList2Input">
+                        <label class="initList2InputName"></label>
+                        <img class="initList2InputTag" src="../images/option/check_7.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="initList2Input">
+                        <label class="initList2InputName"></label>
+                        <img class="initList2InputTag" src="../images/option/check_7.png">
+                    </div>
+                </li>
+            </ul>
+            <img id="initListDownImg" src="../images/arrow/D-Focus.png"/>
+         </div>
+   
+         <!----------------------satelite edit formä½¿ç”¨---------------------->
+         <div id="showWindow" style="position:absolute; top:240px; left:0px; width:1360px; height:300px; overflow:hidden; display:none;">
+            <ul id="satInfoContent" class="dialogOptions" >
+            	<div id="satInfoFocus" class="dialogInputFocus"  style="top:10px;"></div>
+                <li>
+                     <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="statusSpan" class="dialogInputContent"></span>
+                        <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="positionSpan" class="dialogInputContent"></span>
+                        <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="lNBPowerSpan" class="dialogInputContent"></span>
+                       <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="lNBFreqSpan" class="dialogInputContent"></span>
+                       <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="diSEqCInputSpan" class="dialogInputContent"></span>
+                       <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="tone22KHzSpan" class="dialogInputContent"></span>
+                       <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="tonBurstSpan" class="dialogInputContent"></span>
+                       <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+                <!--2014.5.29æ–°åŠ ,ä¸ºæ»¡è¶³specè¦æ±‚-->
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="transponderSpan" class="dialogInputContent"></span>
+                       <!--<img class="dialogInputTag" src="../images/arrow/icon_Submenu_focus.png">-->
+                    </div>
+                </li>
+                <!--2014.5.29æ–°åŠ ,ä¸ºæ»¡è¶³specè¦æ±‚ end-->
+            </ul>
+            
+            <ul id="transponderContent" class="dialogOptions">
+                <div id="transponderFocus" class="dialogInputFocus"  style="top:10px;"></div>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <div id="freqContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <div id="sybContent" class="dialogInputContent" style="background:#333;border-radius:15px;">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dialogInput">
+                        <label class="dialogInputName"></label>
+                        <span id="polarizationSpan" class="dialogInputContent"></span>
+                       <img class="dialogInputTag" src="../images/Icon-LR-Focus.png">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div id="transponderButton">
+            <span id="transponderCancel" class="dialogButton"></span>
+            <span id="transponderOk" class="dialogButton"></span>
+        </div>
+        
+        <!--ä¿¡å·è´¨é‡å’Œä¿¡å·å¼ºåº¦ç‹¬ç«‹å‡ºæ¥-->
+        <ul id="satInfoOther" class="dialogOptions" style="top:540px; display:none;">
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="sigStrength" class="dialogInputProgressContainer" >
+                        <div class="progressBarLeft"></div>
+                        <div class="progressBarCenter" style="top:1px;"></div>
+                        <div class="progressBarRight"></div>
+                    </div>
+                    <span id="sigStrengthValue" class="dialogInputValue" ></span>
+                </div>
+            </li>
+            <li>
+                <div class="dialogInput">
+                    <label class="dialogInputName"></label>
+                    <div id="sigQuality" class="dialogInputProgressContainer" >
+                        <div class="progressBarLeft"></div>
+                        <div class="progressBarCenter" style="top:1px;"></div>
+                        <div class="progressBarRight"></div>
+                    </div>
+                    <span id="sigQualityValue" class="dialogInputValue" ></span>
+                </div>
+            </li>
+            <li>
+                <span id="satEditOk" class="dialogButton"></span>
+            </li>
+        </ul>
+        
+            
+        <div id="back" class="hotkey" style="left:40px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:300px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:560px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+        <div id="ok" class="hotkey" style="left:820px;" >
+          	<img src="../images/icon-Ok.png"/>
+            <span></span>
+        </div>
+        <div id="red" class="hotkey" style="left:1080px;" >
+          	<img src="../images/icon-Color_key_R.png"/>
+            <span></span>
+        </div>
+        <div id="green" class="hotkey" style="left:560px; display:none;" >
+          	<img src="../images/icon-Color_key_G.png"/>
+            <span></span>
+        </div>
+    </div>
+
+    <div id="tips">
+    	<span id="tipsTitle"></span>
+        <span id="tipsContent"></span>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<script type="text/javascript">
+top.keySetForUI(1); 
+var sleep_setting = top.sysSleepTimer;
+var last_time = [top.sysTimerOptions[3],top.timeUnit[1]];
+var other_timer = 0;
+var showTimer = 0;
+var positionH = 0;
+var setting = top.g_setting;
+var hour = 0;
+var minutes = 0;
+var seconds = 0;
+var showHour ="";
+var showMinutes ="";
+var showSeconds ="";
+var presetFocusWidth=100;
+var time = setting.getSleepTime();
+function getCountDownTime()
+{
+	time = setting.getSleepTime();
+	hour=parseInt(time/3600);
+	minutes=parseInt((time%3600)/60);
+	seconds=parseInt(time%60);
+	showHour=""+hour;
+	showMinutes=""+minutes;
+	showSeconds=""+seconds;
+	if(showHour.length==1)
+	{
+		showHour="0"+showHour;
+	}
+	if(showMinutes.length==1)
+	{
+		showMinutes="0"+showMinutes;
+	}
+	if(showSeconds.length==1)
+	{
+		showSeconds="0"+showSeconds;
+	}
+	$("promptContent").innerHTML = showHour+ ":" + showMinutes + ":" + showSeconds;
+	showTimer=setTimeout("getCountDownTime()",1000);
+}
+function isOverflowed(element)
+{
+	//console.log("isOverflowed:element.scrollWidth="+element.scrollWidth +"element.clientWidth="+element.clientWidth);
+    if(element.scrollWidth > element.clientWidth)
+	{
+		element.setAttribute("class","marquee");
+	}
+}
+function init()
+{
+	//面板按键处理场景设置
+	try
+	{	top.stopTimeout();
+		setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+		
+		$("preSetOptionSleep").innerHTML=last_time[0];
+		isOverflowed($("preSetOptionSleep"));
+		var spans=$("preSetBarSleep").getElementsByTagName("span");//picPreset[pictureMode];
+		for(var i=0;i<9;i++)
+		{
+			spans[i+1].innerHTML=sleep_setting[i];
+		}
+		positionH=setting.sleepTimer;
+		$("preSetSelectFocusSleep").style.top=120+positionH*presetFocusWidth+"px";
+		if(positionH!= 0)//已经有睡眠有倒计时
+		{
+			getCountDownTime();
+			$("promptContent").style.display="block";
+		}
+		else
+		{
+			$("promptContent").style.display="none";
+		}
+		other_timer = setTimeout("hiddenOther()",5000);
+		addMouseListener();
+	}
+	catch(er)
+	{
+		top.g_channel.testlog(er);
+	}
+}
+function uninit()
+{
+	top.timeoutFuc.timeoutEnable=1;
+}
+function hiddenOther()
+{
+	if(top.g_temp == "homePage")
+	{
+		clearTimeout(other_timer);
+		top.$("main").contentWindow.focusType= top.$("main").contentWindow.preFocusType;
+		top.$('operatePage').src="";
+	}
+	else
+	{
+		clearTimeout(other_timer);
+		top.document.getElementById('main').src = "channelPlay.html";
+	}
+}
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+document.onkeydown = keyproc;
+
+function keyproc(evt)
+{
+	top.g_previousHtmlPage = "channelPlay.html";
+    var keycode = evt.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+		case top.VK_3D://3d
+		case top.VK_TV://tv
+		case top.VK_SOURCE://source
+		case top.VK_ECO://eco
+        case top.VK_SOURCE_CMP1:
+        case top.VK_SOURCE_VGA:
+        case top.VK_SOURCE_AV1:
+        case top.VK_SOURCE_HDMI1:
+        case top.VK_SOURCE_HDMI2:
+        case top.VK_SOURCE_HDMI3:
+        case top.VK_SOURCE_HDMI4:
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_VOLUME_UP://volume up
+		case top.VK_VOLUME_DOWN://volume down
+			top.document.getElementById('main').src = "channelPlay.html";
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_MUTE://mute
+		case top.VK_INFO://info
+		case top.VK_CHANNEL_UP://channel up
+		case top.VK_CHANNEL_DOWN://channel down
+		case top.VK_OPTION://option
+		case top.VK_SMARTTV://smart tv
+		case top.VK_YOUTUBE://youtube
+		case top.VK_GUIDE://guide
+		case 36://home
+		case top.VK_PRE_CH://pre-ch
+		case top.VK_FAV://fav
+		case top.VK_LIST://list
+		case top.VK_ZOOM_DOWN://zoom-
+		case top.VK_ZOOM_UP://zoom+
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_LANG://language
+		case top.VK_SUBTITLE://subtitle
+		case top.VK_TELETEXT://text
+		case top.VK_RECORD://record
+		case top.VK_PLAY_PAUSE://pause/play timeshift
+		case top.VK_PAUSE:
+		case top.VK_PLAY:
+			top.specialKeyDownProcess(evt);
+			return;
+	    case top.VK_ENTER:
+		{
+			//OK 键
+			toOK();
+			ret = false;
+			break;
+		}
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;  
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_SLEEP://sleep
+		case top.VK_BACK: //back
+		case top.VK_MENU://menu
+		case top.VK_EXIT://exit
+			top.document.getElementById('main').src = "channelPlay.html";
+			break;
+		default:
+			break;
+	}
+}
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	//全局消息
+	switch(msg)
+	{
+		case top.E_DTV_SERVICE_PLAY://播放流数据更新
+			top.g_isShowInfoBar = 1;
+			top.document.getElementById('main').src = "channelPlay.html";
+			break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+function toUp()
+{
+	positionH--;
+	if(positionH<0)
+	{
+		positionH=8;
+	}
+	$("preSetSelectFocusSleep").style.top=120+positionH*presetFocusWidth+"px";
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",5000);
+}
+function toDown()
+{
+	positionH++;
+	if(positionH>8)
+	{
+		positionH=0;
+	}
+	$("preSetSelectFocusSleep").style.top=120+positionH*presetFocusWidth+"px";
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",5000);
+}
+function toOK()
+{
+	if(positionH==0)
+	{
+		setting.sleepTimer=positionH;
+		clearTimeout(showTimer);
+		$("promptContent").style.display="none";
+	}
+	else
+	{
+		setting.sleepTimer=positionH;
+		if(showTimer!=0)
+		{
+			clearTimeout(showTimer);
+		}
+		getCountDownTime();
+		$("promptContent").style.display="block";
+	}
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",5000);
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 2){	
+		if(top.g_temp == "homePage")
+		{
+			top.$("main").contentWindow.focusType= top.$("main").contentWindow.preFocusType;
+			top.$('operatePage').src="";
+		}
+		else
+		{
+			top.jumpPage();
+		}
+		};//right key
+	}
+	var spans=$("preSetBarSleep").getElementsByTagName("span");
+	for(var i = 0; i < 9; i++)
+	{
+		spans[i+1].setAttribute("newAttr",i);
+		spans[i+1].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+					positionH = parseInt(this.getAttribute("newAttr"));
+					$("preSetSelectFocusSleep").style.top=120+positionH*presetFocusWidth+"px";
+					toOK();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#countDown
+{
+	position:absolute;
+	width:295px;
+	height:100px;
+	line-height:100px;
+	background:#000;
+	/*bottom:100px;*/
+	top:108px;
+	left:308px;
+	overflow:hidden;
+	opacity:0.92;
+	color:#FFFFFF;
+	font-size:24px;
+	border-top:4px solid #1b1b1b;
+	border-bottom:4px solid #1b1b1b;
+	border-right:4px solid #1b1b1b;
+	display:block;
+}
+#preSetBarSleep
+{
+	position:absolute;
+	background:#000;
+	/*bottom:100px;*/
+	overflow:hidden;
+	opacity:0.92;
+	background:url(images/History_bg.png);
+	width:360px;
+	height:1080px;
+	left:0px;
+	display:block;
+}
+#preSetOptionSleep
+{
+	position:absolute;
+	top:55px;
+	left:20px;
+	font-size:28px;
+	color:#b0b0b0;
+	width:180px;
+	white-space:nowrap;
+}
+#promptContent
+{
+	position:absolute;
+	top:60px;
+	text-align:center;
+	font-size:24px; 
+	width:100px; 
+	left:200px;
+	color:#b0b0b0;
+}
+.marquee
+{
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+</style>
+
+</head>
+
+<body onload="init()" onunload="uninit()">
+	 <!----------------------重置选择列表--------------------------->
+       <div id="preSetBarSleep">
+            <span id="preSetOptionSleep" >Sleep Timer</span>
+            <span class="preSetValue" style="width:310px;left:25px; top:100px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:200px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:300px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:400px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:500px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:600px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:700px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:800px;">10 Min</span>
+            <span class="preSetValue" style="width:310px;left:25px;top:900px;">10 Min</span>
+            <img id="preSetSelectFocusSleep" src="images/focus-Tuner_mode.png" style="position:absolute;display:block; top:120px; left:5px; pointer-events:none; width:350px; height:64px;"/>
+       </div>
+       <span id="promptContent">
+       10:10:10
+       </span>
+   </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Network Update</title>
+	<link rel="stylesheet" type="text/css" href="../../all.css" />
+	<script src="H5Draw.js"></script>
+	<script src="networkUpdate.js"></script>
+	<style>
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+		#networkUpdateBackground{
+			position:absolute;
+			left:560px; /* 300 --> (1920-800)/2 */
+			height:250px;
+			top:330px;
+		}
+		.networkUpdateText{
+			text-align:center;
+			padding:10px;
+			font-size:26px;
+			font-weight:bold;
+			color:#fff;
+		}
+		#promptText{
+			position:absolute;
+			width:760px;
+			top:65px;
+			padding:10px 20px 10px 20px;
+		}
+		#networkUpdateReleaseNote{
+			position:absolute;
+			width:760px;
+			top:135px;
+			padding:0px 20px 0px 20px;
+		}
+		#loadingPic{
+			position:absolute;
+			left:50%;
+			top:65%;
+			margin:-40px 0 0 -40px;
+		}
+		#networkUpdateButton{
+			display:none;
+		}
+		#networkUpdateButtonLeft{
+			left:125px; /* 100px */
+			bottom:20px;
+            width:200px; /* 150px*/
+		}
+		#networkUpdateButtonCenter{
+			left:325px;
+			bottom:20px;
+            width:200px;
+		}
+		#networkUpdateButtonRight{
+			left:475px;  /* 550px */
+			bottom:20px;
+            width:200px;
+		}
+		#networkUpdateButtonFocus{
+			left:98px;
+			bottom:18px;
+            width:198px; /* 148px*/
+		}
+	</style>
+</head>
+
+<body onload="init()">
+<div id="networkUpdateBackground" class="dialogForm">
+	<span id="networkUpdateTitle" class="dialogTitle"></span>
+	<div id="promptText" class="networkUpdateText"></div>
+	<div id="networkUpdateReleaseNote" class="networkUpdateText"></div>
+	<canvas id="loadingPic" width="80" height="80"></canvas>
+	<div id="networkUpdateButton">
+		<div id="networkUpdateButtonLeft" class="dialogButton"></div>
+		<div id="networkUpdateButtonCenter" class="dialogButton"></div>
+		<div id="networkUpdateButtonRight" class="dialogButton"></div>
+		<div id="networkUpdateButtonFocus" class="dialogButtonFocus"></div>
+	</div>
+</div>
+</body>
+</html>

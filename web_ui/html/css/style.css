@@ -1,0 +1,115 @@
+/*global*/
+body{margin:0;color:white;background:#042143;}
+a:link,a:visited{color:white;text-decoration:none;}
+a:hover{color:yellow;}
+
+/******************************favorite.html******************************/
+#favorite div#content{width:1024px;height:720px;background:url("../images/favorite.jpg") no-repeat center #042143;margin:0 auto;}
+
+/*recommand*/
+#favorite .recommand{position:relative;top:-482px;left:660px;width:275px;height:530px;font-size:20px;}
+#favorite .recommand ul{padding:0 20px;}
+#favorite .recommand ul li{list-style:none;line-height:25px;margin-left:20px;}
+#favorite .recommand ul li img{height:19px;width:19px;}
+#favorite .more{text-align:right;}
+#favorite .space20{padding:0 10px;}
+
+/*favorite*/
+#favorite a.tidy{position:relative;top:77px;left:368px;width:142;height:30px;background:yellow;-webkit-transition: all 0.5s ease-in-out;opacity:0;display:block;}
+#favorite a.back{position:relative;top:47px;left:540px;width:60;height:30px;background:yellow;-webkit-transition: all 0.5s ease-in-out;opacity:0;display:block;}
+#favorite a.tidy:hover,#favorite a.back:hover{opacity:0.4;}
+#favorite .favlist{position:relative;top:68px;left:90px;width:490px;height:545px;overflow:auto;}
+#favorite .favlist table{font-size:20px;margin:16px 20px;line-height:23px;table-layout:fixed;}
+#favorite .favlist table td{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+
+
+/******************************setting.html******************************/
+#setting div#content{width:1024px;height:720px;background:url("../images/setting.jpg") no-repeat center #042143;margin:0 auto;}
+
+#setting a.favTidy{position:relative;top:71px;left:54px;width:344px;height:54px;display:block;background:url("../images/settingfocus.png") no-repeat;-webkit-transition: all 0.5s ease-in-out;opacity:0;}
+#setting a.homeSet{position:relative;top:73px;left:54px;width:344px;height:54px;display:block;background:url("../images/settingfocus.png") no-repeat;-webkit-transition: all 0.5s ease-in-out;opacity:0;}
+#setting a.help{position:relative;top:76px;left:54px;width:344px;height:54px;display:block;background:url("../images/settingfocus.png") no-repeat;-webkit-transition: all 0.5s ease-in-out;opacity:0;}
+#setting a:hover{opacity:1;}
+#setting .goBack{position:relative;bottom:-478px;left:240px;font-size:20px;width:150px;}
+
+#setting .settingContent{position:relative;top:-113px;left:458px;width:470px;height:586px;overflow:auto;padding-bottom:7px;}
+#setting .settingContent .helplist{display:none;padding:0 10px;}
+#setting .settingContent .favlist table{font-size:18px;line-height:23px;table-layout:fixed;}
+#setting .settingContent .favlist table td{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+#setting .settingContent .homesetting{display:none;}
+#setting .settingContent .homesetting table{font-size:20px;line-height:23px;table-layout:fixed;}
+#setting .settingContent .homesetting table td{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+
+#setting .noticeSetHomeContent{display:none;position:absolute;top:610px;left:840px;width:300px;height:40px;z-index:10;text-align:center;padding-top:2px;/*background:url(../images/notice.png) no-repeat*/;color:yellow;font-size:25px;}
+#setting .favReferContent{display:none;position:relative;top:-40px;left:520px;width:300px;height:150px;z-index:10;background:#7385A3;text-align:center;padding:5px;}
+#setting .favReferContent span{font-size:23px;}
+
+
+/******************************keyboard.html******************************/
+#keyboard div#content{width:1024px;height:720px;background:url("../images/keyboard.jpg") no-repeat center;margin:0 auto;}
+
+#keyboard div a{display:block;-webkit-transition: all 0.5s ease-in-out;opacity:0;}
+#keyboard div a:hover{background:yellow;opacity:0.4;}
+#keyboard .addrInput{position:relative;top:163px;left:270px;width:485px;height:44px;background:transparent;color:#042143;font-size:22px;border:0;}
+#keyboard .kb_gotofav{position:relative;top:180px;left:728px;width:132px;height:33px;-webkit-transition: all 0.5s ease-in-out;}
+#keyboard .kb_return{position:relative;top:147px;left:870px;width:56px;height:33px;-webkit-transition: all 0.5s ease-in-out;}
+
+#keyboard .kb_http{position:relative;top:99px;left:96px;width:80px;height:50px;}
+#keyboard .kb_www{position:relative;top:49px;left:179px;width:80px;height:50px;}
+#keyboard .kb_enter{position:relative;top:-1px;left:766px;width:80px;height:50px;}
+#keyboard .kb_delete{position:relative;top:-51px;left:850px;width:80px;height:50px;}
+
+#keyboard .kb_q{position:relative;top:-44px;left:96px;width:80px;height:50px;}
+#keyboard .kb_w{position:relative;top:-94px;left:179px;width:80px;height:50px;}
+#keyboard .kb_e{position:relative;top:-144px;left:263px;width:80px;height:50px;}
+#keyboard .kb_r{position:relative;top:-194px;left:347px;width:80px;height:50px;}
+#keyboard .kb_t{position:relative;top:-244px;left:431px;width:80px;height:50px;}
+#keyboard .kb_y{position:relative;top:-294px;left:515px;width:80px;height:50px;}
+#keyboard .kb_u{position:relative;top:-344px;left:599px;width:80px;height:50px;}
+#keyboard .kb_i{position:relative;top:-394px;left:682px;width:80px;height:50px;}
+#keyboard .kb_o{position:relative;top:-444px;left:766px;width:80px;height:50px;}
+#keyboard .kb_p{position:relative;top:-494px;left:850px;width:80px;height:50px;}
+
+#keyboard .kb_a{position:relative;top:-488px;left:96px;width:80px;height:50px;}
+#keyboard .kb_s{position:relative;top:-538px;left:179px;width:80px;height:50px;}
+#keyboard .kb_d{position:relative;top:-588px;left:263px;width:80px;height:50px;}
+#keyboard .kb_f{position:relative;top:-638px;left:347px;width:80px;height:50px;}
+#keyboard .kb_g{position:relative;top:-688px;left:431px;width:80px;height:50px;}
+#keyboard .kb_h{position:relative;top:-738px;left:515px;width:80px;height:50px;}
+#keyboard .kb_j{position:relative;top:-788px;left:599px;width:80px;height:50px;}
+#keyboard .kb_k{position:relative;top:-838px;left:682px;width:80px;height:50px;}
+#keyboard .kb_l{position:relative;top:-888px;left:766px;width:80px;height:50px;}
+#keyboard .kb_l1{position:relative;top:-938px;left:850px;width:80px;height:50px;}
+
+#keyboard .kb_z{position:relative;top:-930px;left:96px;width:80px;height:50px;}
+#keyboard .kb_x{position:relative;top:-980px;left:179px;width:80px;height:50px;}
+#keyboard .kb_c{position:relative;top:-1030px;left:263px;width:80px;height:50px;}
+#keyboard .kb_v{position:relative;top:-1080px;left:347px;width:80px;height:50px;}
+#keyboard .kb_b{position:relative;top:-1130px;left:431px;width:80px;height:50px;}
+#keyboard .kb_n{position:relative;top:-1180px;left:515px;width:80px;height:50px;}
+#keyboard .kb_m{position:relative;top:-1230px;left:599px;width:80px;height:50px;}
+#keyboard .kb_m1{position:relative;top:-1280px;left:682px;width:80px;height:50px;}
+#keyboard .kb_m2{position:relative;top:-1330px;left:766px;width:80px;height:50px;}
+#keyboard .kb_m3{position:relative;top:-1380px;left:850px;width:80px;height:50px;}
+
+#keyboard .kb_net{position:relative;top:-1474px;left:96px;width:80px;height:50px;}
+#keyboard .kb_cn{position:relative;top:-1424px;left:179px;width:80px;height:50px;}
+#keyboard .kb_com{position:relative;top:-1374px;left:263px;width:80px;height:50px;}
+#keyboard .kb_go{position:relative;top:-1524px;left:347px;width:80px;height:50px;}
+#keyboard .kb_space{position:relative;top:-1574px;left:431px;width:163px;height:50px;}
+#keyboard .kb_space1{position:relative;top:-1624px;left:599px;width:80px;height:50px;}
+#keyboard .kb_space2{position:relative;top:-1674px;left:682px;width:80px;height:50px;}
+#keyboard .kb_space3{position:relative;top:-1724px;left:766px;width:80px;height:50px;}
+#keyboard .kb_space4{position:relative;top:-1774px;left:850px;width:80px;height:50px;}
+
+#keyboard .kb_1{position:relative;top:-1767px;;left:96px;width:80px;height:50px;}
+#keyboard .kb_2{position:relative;top:-1817px;left:179px;width:80px;height:50px;}
+#keyboard .kb_3{position:relative;top:-1867px;left:263px;width:80px;height:50px;}
+#keyboard .kb_4{position:relative;top:-1917px;left:347px;width:80px;height:50px;}
+#keyboard .kb_5{position:relative;top:-1967px;left:431px;width:80px;height:50px;}
+#keyboard .kb_6{position:relative;top:-2017px;left:515px;width:80px;height:50px;}
+#keyboard .kb_7{position:relative;top:-2067px;left:599px;width:80px;height:50px;}
+#keyboard .kb_8{position:relative;top:-2117px;left:682px;width:80px;height:50px;}
+#keyboard .kb_9{position:relative;top:-2167px;left:766px;width:80px;height:50px;}
+#keyboard .kb_0{position:relative;top:-2217px;left:850px;width:80px;height:50px;}
+

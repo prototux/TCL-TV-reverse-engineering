@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="timeshift.js"></script>
+<link type="text/css" href="pvr.css" rel="stylesheet" />
+<style type="text/css">
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#ok
+{
+	position:absolute;
+	top:400px;
+	left:440px;
+	width:120px;
+	height:40px;
+	line-height:40px;
+	font-size:30px;
+	color:#fff;
+	font-weight:bold;
+	border:medium solid #00aadd;
+	border-radius:10px;
+	text-align:center;
+}
+#timeshiftForm
+{
+	position:absolute;
+	left:420px;
+	bottom:100px;
+	width:1080px;
+	height:270px;
+	background:url(../images/Time_shift-Bg_02.png);
+}
+#bottomForm
+{
+	position:absolute;
+	top:214px;
+	left:20px;
+}
+#bottomForm img
+{
+	position:absolute;
+	top:2px;
+	height:28px;
+	width:70px;
+}
+#bottomForm span
+{
+	position:absolute;
+	width:130px;
+	color:#666;
+	font-size:28px;
+	font-weight:bold;	
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis;
+	
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  
+	overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  
+	overflow-x: marquee-line;*/
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+
+#timeshiftBorder
+{
+	position:absolute;
+	top:80px;
+	left:90px;
+	width:900px;
+	height:8px;
+	background:url(../images/Time_shift-Progress_bar-bg.png) no-repeat;
+	z-index:10;
+	overflow:hidden;
+}
+
+#timeshiftRecordBar
+{
+	position:absolute;
+	top:0px;
+	height:6px;
+	z-index:1;
+}
+#playStatusExtra
+{
+	position:absolute;
+	top:100px;
+	right:590px;
+	height:66px;
+	line-height:66px;
+	font-size:40px;
+	color:#fff;
+}
+#playStatusImg
+{
+	position:absolute;
+	top:86px;
+	left:510px;
+	width:60px;
+	height:80px;
+	z-index:5;
+}
+#offsetTime
+{
+	position:absolute;
+	top:100px;
+	left:590px;
+	height:66px;
+	line-height:66px;
+	font-size:28px;
+	color:#fff;
+}
+
+
+#timeshiftTimepieceContent
+{
+	position:absolute;
+	top:40px;
+	width:660px;
+	height:52px;
+	z-index:10;
+}
+.timeshiftTimePieceName
+{
+	position:absolute;
+	top:0px;
+	width:300px;
+	font-size:26px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+}
+.timeshiftTimePieceImg
+{
+	position:absolute;
+	top:30px;
+	height:8px;
+	width:0px;
+	border:1px solid #00aadd;
+	z-index:2;
+}
+
+
+#remind
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(../images/Bg-Pop_up_box-04.png);
+	display:none;
+}
+
+#remindWord
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#remindName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+.dialogButton/*对话框中的按钮样式*/
+{
+	position:absolute;
+	width:150px;
+	height:35px;
+	bottom:30px;
+	padding-top:7px;
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#333;
+	border-radius:10px;
+}
+#remindFocus
+{
+	position:absolute;
+	left:490px;
+	bottom:20px;
+	height:60px;
+	width:170px;
+	pointer-events:none;
+}
+#autoDisapearedForm
+{
+	position:absolute;
+	left:420px;
+	bottom:372px;
+	width:1080px;
+	height:100px;
+	background:url(../images/Time_shift-Bg_04.png);
+	font-size:28px;
+	text-align:center;
+	line-height:100px;
+	color:#fff;
+	overflow:hidden;
+	display:none;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+	<div id="timeshiftForm" style="display:block;"> 
+        <div id="timeshiftTimepieceContent" style="left:90px;">
+        	<span class="timeshiftTimePieceName" style="left:-200px;"></span>
+            <span class="timeshiftTimePieceName" style="left:200px;"></span>
+            <span class="timeshiftTimePieceName" style="left:600px;"></span>
+            <span class="timeshiftTimePieceName" style="left:1000px;"></span>
+            <span class="timeshiftTimePieceName" style="left:1400px;"></span>
+            <span class="timeshiftTimePieceName" style="left:1800px;"></span>
+            <span class="timeshiftTimePieceName" style="left:2200px;"></span>
+            <span class="timeshiftTimePieceName" style="left:2600px;"></span>
+            <span class="timeshiftTimePieceName" style="left:3000px;"></span>
+            <span class="timeshiftTimePieceName" style="left:3400px;"></span>
+            <span class="timeshiftTimePieceName" style="left:3800px;"></span>
+            
+            <div class="timeshiftTimePieceImg" style="left:0px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:400px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:800px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:1200px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:1600px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:2000px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:2400px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:2800px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:3200px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:3600px;"></div>
+            <div class="timeshiftTimePieceImg" style="left:4000px;"></div>
+        </div>
+        
+        <div id="timeshiftBorder">
+        	<img id="timeshiftRecordBar" src="../images/Time_shift-Progress_bar.png" />
+        </div>
+        
+        <span id="playStatusExtra"></span>
+        <img id="playStatusImg" src="../images/Time_shift-Pause.png" >
+        <span id="offsetTime"></span>
+        
+        <div id="bottomForm">
+            <img src="../images/icon-Backward.png" style="left:0px;"/>
+            <span style="left:70px;"></span>
+            <img src="../images/icon-Stop.png" style="left:210px;"/>
+            <span style="left:280px;"></span>
+            <img src="../images/icon-Next.png" style="left:420px;"/>
+            <span style="left:490px;"></span>
+            <img src="../images/icon-Pause.png" style="left:630px;" />
+            <span style="left:700px;"></span>
+            <img src="../images/icon-Forward.png" style="left:840px;" />
+            <span style="left:910px;"></span>
+        </div>
+	</div>
+    
+   <!--**********************操作提醒******************************-->
+   <div id="remind">
+   		<span id="remindName"></span>
+        <span id="remindWord"></span>
+        <div id="remindLeftWords" class="dialogButton" style="left:200px;"></div>
+        <div id="remindRightWords" class="dialogButton" style="left:500px;"></div>
+        <img id="remindFocus" src="../images/Focus_Frame/Focus2.png">
+   </div>
+   
+   <!--**********************display on timeshift form and will disapeared after 3 seconds******************************-->
+   <div id="autoDisapearedForm"></div>
+</body>
+</html>

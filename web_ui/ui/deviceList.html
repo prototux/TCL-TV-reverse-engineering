@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="deviceList.js"></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#focus
+{
+	position:absolute;
+	top:188px;
+	left:13px;
+	width:404px;
+	height:604px;
+	display:none;
+	pointer-events:none;
+	z-index:40;
+	-webkit-transition-duration:200ms;
+}
+.device
+{
+	position:absolute;
+	top:200px;
+	left:30px;
+	width:380px;
+	height:580px;
+	display:block;
+	z-index:10;
+	background-image:url(images/UsbDisk-bg.png);
+	-webkit-transition-duration:200ms;
+}
+.deviceInfo
+{
+	position:inherit;
+	top:404px;
+	left:0px;
+	width:380px;
+	height:170px;
+	font-size:38px;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.spanInfo_1_animate
+{
+	position: absolute;
+	top:0px;
+	left:20px;
+	width:340px;
+	height:85px;
+	line-height:85px;
+	font-size:38px;
+	color:#e5e5e5;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name: scroll_name;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes scroll_name
+{
+   from{left: 0px}
+   to{left: -210px}
+}
+.spanInfo_1_static
+{
+	position: absolute;
+	top:0px;
+	left:20px;
+	width:340px;
+	height:85px;
+	line-height:85px;
+	font-size:38px;
+	color:#b8b8b8;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.spanInfo_2
+{
+	position: absolute;
+	top:86px;
+	left:20px;
+	width:340px;
+	height:85px;
+	line-height:85px;
+	font-size:38px;
+	color:#777777;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.imgInfo
+{
+	position:inherit;
+	top:74px;
+	left:50%;
+	width:256px;
+	height:256px;
+	margin-left:-128px;
+}
+#noDeviceTip
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1920px;
+	height:1080px;
+	font-size:42px;
+	color:#aaaaaa;
+	display:none;
+	z-index:50;
+	text-align:center;
+	line-height:1080px;
+}
+#exitBox
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(images/Bg-Pop-up-box-04.png);
+}
+.button
+{
+	position:absolute;
+	top:350px;
+	width:204px;
+	height:64px;
+	color:#aaaaaa;
+	text-align:center;
+	line-height:64px;
+	background-image:url(images/Focus_Pop_up_box_no.png);
+	z-index:100;
+}
+#arrowLeft
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:30px;
+	height:1080px;
+	background-image:url(images/UsbDisk-bg-LR.png);
+}
+#arrowRight
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:30px;
+	height:1080px;
+	background-image:url(images/UsbDisk-bg-LR.png);
+}
+.arrowStyle
+{
+	position: absolute;
+	top:525px;
+	left:0px;
+}
+
+</style>
+</head>
+<body onload="init()" style="opacity:1;background:#000;">
+	<div id="noDeviceTip" style="display:none">
+    	<img style="position:absolute;top:280px;left:886px;width:148px;height:140px;display:block" src="images/icon-Oops.png" />
+        <span id="noDeviceTipInfo" style="position:absolute;top:450px;left:660px;width:600px;line-height:80px;"></span>
+    </div>
+    <div id="arrowLeft" style="display:none">
+    	<img class="arrowStyle"  src="images/Icon-L-device.png" />
+    </div>
+    <div id="arrowRight" style="display:none">
+    	<img class="arrowStyle" src="images/Icon-R-device.png" />
+    </div>
+    <div id="mainDiv" style="position:absolute;left:70px;top:0px;width:1780px;height:1080px;overflow:hidden;">
+	    <img id="focus" src="images/UsbDisk-Focus.png" />
+	    <div id="exitBox" style="display:none">
+	    	<span id="eb_tips" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+	        <span id="eb_info" style="position:absolute;top:80px;left:40px;width:750px;height:220px;line-height:160px;"></span>
+	        <span id="yesButton" class="button" style="left:174px"></span>
+	        <span id="noButton" class="button" style="left:452px"></span>
+	        <span id="focusButton" class="button" style="left:174px;background-image:url(images/Focus_Pop_up_box.png);z-index:101"></span>
+	    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>picture 3D</title>
+<link rel="stylesheet" type="text/css" href="../../all.css">
+<script type="text/javascript" src="motionClarity.js"></script>
+    <style type="text/css">
+        body{
+            font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+        }
+    </style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+  	<div id="fourthMenuLeft"></div>
+    <div id="fourthMenuRight">
+    	<ul>
+            <li	class="titleName">
+                <span style="top:60px; position:absolute"></span>
+            </li>
+             <li class="list">
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../../images/arrow/focus_R-Focus.png" />
+            </li>
+             <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="ledmotionclarity">
+                     <div class="progressBarLeft" style="width:300px;"></div>
+                     <div class="progressBarCenter"></div>
+                     <div class="progressBarRight" style="width:0px;"></div>
+                 </div>
+                 <div class="listThirdProperty"></div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="blur">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+                 <div class="listSecondProgress" id="judder">
+                	<div class="progressBarLeft" style="width:300px;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:0px;"></div>
+                </div>
+                <div class="listThirdProperty"></div>
+            </li> 
+             <li class="list">
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty"></div>
+                <img class="listThirdPropertyImg" src="../../images/arrow/icon_Submenu_focus.png" />
+            </li>
+        </ul>
+        <img id="fourthListFocus" src="../../images/Focus_Frame/Focus-1.png">
+   </div>
+    <!----------------------进度条调整项--------------------------->
+    <div id="adjustProgressBox">
+   		<div id="adjustProgMinorUp">
+        	<span class="adjustProgSpan"></span>
+        </div>
+        <div id="adjustProgMain">
+        	  <img src="../../images/SS_1_02_3_Activation.png" style="position:absolute;left:10px;">
+        	 <div class="adjustName">
+        	 	<span class="adjustProgSpan"></span>
+             </div>
+             <div id="adjustProgBar">
+                	<div class="progressBarLeft" style="width:250px; background:#00aadd;"></div>
+                    <div class="progressBarCenter"></div>
+                    <div class="progressBarRight" style="width:250px;"></div>
+             </div>
+             <div id="adjustProgValue"></div>
+        </div>
+        <div id="adjustProgMinorDown">
+        	<span class="adjustProgSpan"></span>
+        </div>
+   </div>
+        <!----------------------重置选择列表--------------------------->
+      <div style="position:absolute; width:1920px; height:108px; top:900px; text-align:center;">
+       <div id="preSetBar" style="display:none;">
+       		
+            <span id="preSetOption" ></span>
+            <img id="currentOption" src="../../images/Check-36.png" style="position:absolute; top:34px; left:320px; display:none;" />
+            <span class="preSetValue" style="left:350px; width:140px;"></span>
+            <span class="preSetValue" style="left:580px; width:140px;"></span>
+            <span class="preSetValue" style="left:810px; width:140px;"></span>
+            <span class="preSetValue" style="left:1040px; width:140px;"></span>
+            <span class="preSetValue" style="left:1270px; width:140px;" ></span>
+            <span class="preSetValue" style="left:1500px; width:140px;" ></span>
+            <img id="preSetSelectFocus" src="../../images/OP-01-1_Focus.png" style=" width:230px; left:305px; height:90px; top:7px;"/>
+       </div>
+   </div>
+      <!----------------------图像重置对话框--------------------------->
+   <div id="picReset" class="dialogForm" style="height:300px;top:390px; left:560px; display:none;">
+   		<span class="dialogTitle"></span>
+        <span class="dialogContent" style="top:100px;"></span>
+        <div class="dialogButton" style="left:200px;"></div>
+        <div class="dialogButton" style="left:430px;"></div>
+        <img id="picResetFocus" style=" position:absolute ;left:420px; bottom:20px; height:60px; width:170px;pointer-events:none;" src="../../images/Focus_Frame/Focus2.png">
+   </div>
+</body>
+</html>
+

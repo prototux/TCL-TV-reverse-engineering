@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+</style>
+<script type="text/javascript">
+top.keySetForUI(1);
+var reminds = [top.nitRefresh,top.okCancel[0],top.okCancel[1]];
+
+document.onkeydown 		= notifyProcess;
+document.onkeydown 		= keyproc;
+
+var setting				= top.g_setting;
+
+var position 			= 1;
+var channel 			= top.g_channel;
+var DLOG_BUTTON_START	= 200;				//对话框中的按钮焦点开始的位置
+var DLOG_BUTTON_STEP	= 250;				//对话框中按钮焦点移动的step
+function $(id)//获得id为id元素
+{
+	return document.getElementById(id);	
+}
+
+function notifyProcess(evt)
+{
+	channel.testLog("in nitRefresh notify");
+	return;
+    var msg = evt.which;
+	//全局消息
+	switch(msg)
+	{
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+
+function keyproc(e)
+{
+	var keycode = e.which;
+	//alert("keycode = " + keycode + " isMenuHidden = " + isMenuHidden);
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_LEFT:
+			if(position == 0)
+			{
+				position = 1;
+			}
+			else
+			{
+				position = 0;
+			}
+			$("focus").style.left = DLOG_BUTTON_START + position*DLOG_BUTTON_STEP + "px";
+			break;
+		case top.VK_RIGHT:
+			if(position == 0)
+			{
+				position = 1;
+			}
+			else
+			{
+				position = 0;
+			}
+			$("focus").style.left = DLOG_BUTTON_START + position*DLOG_BUTTON_STEP + "px";
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			break;
+        case top.VK_POWER:
+            setting.powerOff();
+            break;
+		default:
+			break;
+	}
+}
+
+function doEnter()
+{
+	if(position == 0)
+	{
+		var factory = top.g_factory;
+		channel.nitRefreshNotifyAnswer(1);
+		var install_lock = setting.installLock;//off 0    on 1
+		if(factory.hotelEnable == 1 && factory.hotelChLock == 1)
+		{
+			top.g_nextHtmlPage = "channelSet.html";
+			top.$("main").src = "index.html";
+		}
+		else if(install_lock == 1)
+		{//开
+			top.g_nextHtmlPage = "channelSet.html";
+			top.$("main").src = "index.html";
+		}
+		else 
+		{
+			if(channel.tunerMode == 1)
+			{
+				top.g_nextHtmlPage = "autoUpdate.html";
+				top.$("main").src = "index.html";
+				top.$("main").style.display = "none";
+			}
+			else if(channel.tunerMode == 0)
+			{
+				top.g_nextHtmlPage = "autoSearch.html";
+				top.$("main").src = "index.html";
+				top.$("main").style.display = "none";
+			}
+			else
+			{
+				top.g_nextHtmlPage = "channelScan.html";
+				top.$("main").src = "index.html";
+			}
+		}
+		top.$("operatePage").src = "";
+		top.main.focus();
+		top.setFrameFocusPage("main");
+	}
+	else
+	{
+		channel.nitRefreshNotifyAnswer(0);
+		channel.testLog("nitRefreshNotifyAnswer 0 end");
+		top.jumpPage();
+	}
+}
+function init()
+{
+	//面板按键处理场景设置
+	top.g_temp = "nitrefresh";
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	top.stopTimeout();
+	top.showDialogPosition($("form"),800,250,1920,1080,0,0);
+	$("remind").innerHTML = reminds[0];
+	$("yes").innerHTML = reminds[1];
+	$("no").innerHTML = reminds[2];
+	$("focus").style.left = DLOG_BUTTON_START + position*DLOG_BUTTON_STEP + "px";
+	addMouseListener();
+}
+function uninit()
+{
+	top.g_temp = "";
+	//Ϣҳ˳Ӧʱ
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+	}
+	
+	$("yes").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			position = 0;
+			$("focus").style.left = DLOG_BUTTON_START + position*DLOG_BUTTON_STEP + "px";
+			doEnter();
+		}
+	}
+	$("no").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			position = 1;
+			$("focus").style.left = DLOG_BUTTON_START + position*DLOG_BUTTON_STEP + "px";
+			doEnter();
+		}
+	}
+}
+</script>
+</head>
+
+<body onload="init()" onunload="uninit()">
+    <div id="form" class="dialogForm" style=" height:250px;">
+        <span id="remind" class="dialogContent" style="top:60px;"></span>
+        <div id="yes" class="dialogButton" style="left:200px;"></div>
+        <div id="no" class="dialogButton" style="left:450px;"></div>
+        <div id="focus" class="dialogButtonFocus" style="left:200px;"></div>
+   </div>
+   
+</body>
+</html>

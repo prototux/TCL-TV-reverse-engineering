@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<title>无标题文档</title>
+<script type="text/javascript" src="newDeviceList.js"></script>
+<style>
+body
+{
+	width:1920px;
+	height:1080px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#mainFrame
+{
+	position:absolute;
+	top:0px;
+	left:1930px;
+	width:540px;
+	height:1080px;
+	background-image:url(images/bg-ME-9-12.png);
+	z-index: 30;
+	-webkit-transition-duration:200ms;
+}
+#frameTitle
+{
+	position:absolute;
+	top:65px;
+	left:45px;
+	font-size:32px;
+	font-weight:bold;
+	color:#aaaaaa;
+	text-align:left;
+}
+#frameFocus
+{
+	position:absolute;
+	top:153px;
+	left:0px;
+	width:540px;
+	height:134px;
+	display:none;
+	z-index:40;
+	pointer-events:none;
+	-webkit-transition-duration:200ms;
+}
+#frameUpList
+{
+	position:absolute;
+	top:120px;
+	left:250px;
+	display: none;
+}
+#frameDownList
+{
+	position:absolute;
+	bottom:30px;
+	left:250px;
+	display: none;
+}
+#frameContainInfo
+{
+	position: absolute;
+	top:160px;
+	width:540px;
+	height:840px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+#frameContainInfo li
+{
+	position: absolute;
+	top:0px;
+	left:10px;
+	width:480px;
+	height:120px;
+	display: none;
+}
+#frameContainInfo img
+{
+	position: absolute;
+	top:0px;
+	left:30px;
+	width:60px;
+	height:120px;
+}
+#frameContainInfo div
+{
+	position: absolute;
+	top:0px;
+	left:100px;
+	width:350px;
+	height:120px;
+	color:#aaaaaa;
+	font-size:28px;
+	line-height:120px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.scrollBG
+{
+	position:absolute;
+	top:160px;
+	left:515px;
+	width:7px;
+	height:840px;
+	background:#333;
+	opacity:1;
+}
+.scrollBar
+{
+	position:absolute;
+	top:160px;
+	left:515px;
+	width:7px;
+	height:0px;
+}
+.listInfoStyle_static
+{
+	position:absolute;
+	left:0px;
+	width:350px;
+	height:120px;
+	line-height:120px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.listInfoStyle_animate
+{
+	position:absolute;
+	left:0px;
+	width:350px;
+	height:120px;
+	line-height:120px;
+	text-align:left;
+	font-size:28px;
+	color:#aaaaaa;
+	white-space:nowrap;
+	text-overflow:clip;
+	-webkit-animation-name:move_f;
+	-webkit-animation-duration:15s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+@-webkit-keyframes move_f
+{
+   from{left: 0px}
+   to{left: -350px}
+}
+</style>
+</head>
+
+<body>
+	<div id="mainFrame">
+		<span id="frameTitle"></span>
+		<img id="frameFocus" src="images/Source_List_Focus.png" />
+    	<img id="frameUpList" src="images/Icon-Top.png" />
+    	<ul id="frameContainInfo" style="display:block">
+	    	<li style="top:0px">
+                <img src="images/Source_new_list.png"/>
+                <div><span></span></div>
+            </li>
+            <li style="top:120px">
+                <img src="images/Source_new_list.png"/>
+                <div><span></span></div>
+            </li>
+            <li style="top:240px">
+                <img src="images/Source_new_list.png"/>
+                <div><span></span></div>
+            </li>
+            <li style="top:360px">
+                <img src="images/Source_new_list.png"/>
+                <div><span ></span></div>
+            </li>
+            <li style="top:480px">
+                <img src="images/Source_new_list.png"/>
+                <div><span ></span></div>
+            </li>
+            <li style="top:600px">
+                <img src="images/Source_new_list.png"/>
+                <div><span ></span></div>
+            </li>
+            <li style="top:720px">
+                <img src="images/Source_new_list.png"/>
+                <div><span></span></div>
+            </li>
+    	</ul>
+    	<img id="frameDownList" src="images/Icon-Bottom.png" />
+    	<div id="frameScroll" style="display:none">
+            <div class="scrollBG"></div>
+            <img id="frameScrollBar" src="images/Scroll_bar-Vertical.png" class="scrollBar"/>
+    	</div>
+	</div>
+</body>
+
+</html>

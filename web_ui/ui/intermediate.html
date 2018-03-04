@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title> New Document </title>
+<meta name="Generator" content="EditPlus">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+
+<style>
+body
+{
+    background: transparent;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+
+#remind
+{
+	position: absolute;
+    left: 710px;
+    top: 440px;
+    width: 500px;
+    height: 200px;
+	line-height:200px;
+    background: rgba(0,0,0,0.8);
+    border:solid 4px #1b1b1b;
+    color:#fff;
+    font-size:28px;
+    font-weight:bold;
+    text-align: center;
+    display: block;
+}
+
+</style>
+
+<script>
+top.keySetForUI(1);
+var notAvailable = top.screenSavers[6];
+var wait = top.othersPromt[0];
+var noText = top.screenSavers[7];
+
+
+var setting			= top.g_setting;
+
+function init()
+{
+	//面板按键处理场景设置
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	
+	top.showBackground(0);
+	if(top.g_remindWord == "notAvailable")
+	{
+		$('remind').innerHTML = notAvailable;
+		if(top.g_temp == "homePage")
+		{
+			
+		}
+		else
+		{
+			setTimeout("jumpPage()",3000);
+		}
+	}
+	else if(top.g_remindWord == "TvHotKey")
+	{
+		if(top.g_channel.inputSource > 1)
+		{
+			$("remind").innerHTML = wait;//等消息然后跳转c
+			top.g_channel.changeTvSource();
+		}
+		else
+		{
+		    $("remind").style.display="none";
+			jumpPage();
+		}
+	}
+	else if(top.g_remindWord == "noTeletext")
+	{
+		$('remind').innerHTML = noText;
+		setTimeout("jumpPage()",3000);
+	}
+	else if(top.g_remindWord =="notFunction")
+	{
+		$('remind').innerHTML = top.screenSavers[20];
+		setTimeout("jumpPage()",3000);
+	}
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function jumpPage()
+{
+	if(top.g_remindWord == "notAvailable"  || top.g_remindWord == "TvHotKey" || top.g_remindWord == "noTeletext" || top.g_remindWord =="notFunction")
+	{
+		top.g_remindWord = "";
+		window.location.href = "channelPlay.html";
+	}
+}
+document.onkeydown = keyproc;
+function keyproc(e)
+{
+	var keycode = e.which;
+	if(top.g_remindWord == "notAvailable" || top.g_remindWord == "noTeletext" || top.g_remindWord =="notFunction")
+	{
+		jumpPage();
+	}
+	else if(keycode == top.VK_MENU)
+	{
+		window.location.href = "index.html";
+	}
+	//top.keyDownProcess(e);
+}
+
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;//alert(msg)
+	//全局消息
+	switch(msg)
+	{
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+	
+	if(msg == top.E_TV_EXCHANGE_END)//tv source change end
+	{
+		top.isChangeSourceJustNow = 1;
+		//前面两个锁标志是在切台消息后才发送的，信源锁消息是在信源切换完成之前就发送的
+		//top.parentalLock=0;
+		//top.channelLock=0;
+		//top.inputLock = 0;//
+		jumpPage();
+	}
+}
+</script>
+</head>
+
+<body onload="init()" >
+
+
+<div id="remind">Not available</div>
+
+</body>
+</html>

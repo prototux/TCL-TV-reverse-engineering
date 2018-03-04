@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<script type="text/javascript" src="systemSet.js"></script>
+</head>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.showMenu
+{
+    position:absolute;
+    overflow:hidden;
+    top:80px;
+    height:840px;
+    width:800px;
+}
+#listUpRemind
+{
+    position:absolute;
+    width:730px;
+    height:80px;
+    top:10px;
+    text-align:center;
+}
+#listDownRemind
+{
+    position:absolute;
+    width:730px;
+    height:80px;
+    top:1000px;
+    text-align:center;
+}
+#listFocus/*设置二级菜单中焦点属性*/
+{
+    position:absolute;
+    width:725px;
+    height:70px;
+    top:90px;
+    left:0px;
+    display:none;
+    z-index:100;
+    pointer-events:none;
+}
+</style>
+<body onload="init()">
+    <div id="sndMenuLeft"></div>
+    <div id="sndMenuRight">
+        <div id="listUpRemind" style="display:none;">
+            <img src="images/arrow/U-Focus.png"/>
+        </div>
+        <img id="listFocus" src="images/Focus_Frame/Focus-1.png"/>
+        <div class="showMenu">
+            <ul id="menuUl" style="position:absolute">
+                <li class="list">
+                    <span class="listFirstProperty"></span>
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>                
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>                
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>                
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>                
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>                
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>
+                    <div id="locationStatus" class="listSecondProperty"></div>
+                    <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>
+                    <div id="hbbtvModeStatus" class="listSecondProperty"></div>
+                	<img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>
+                    <div id="cookieStatus" class="listSecondProperty"></div>
+                    <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+                </li>
+                <li class="list">
+                    <span class="listFirstProperty"></span>
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list">
+                    <span class="listFirstProperty"></span>
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>
+                    <div id="noticeSourceStatus" class="listSecondProperty"></div>
+                    <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>
+                    <div id="footballModeStatus" class="listSecondProperty"></div>
+                    <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+                </li>
+                <li class="list" >
+                    <span class="listFirstProperty"></span>
+                    <div id="LEDStatus" class="listSecondProperty"></div>
+                    <img class="listThirdPropertyImg" src="images/arrow/focus_R-Focus.png" />
+                </li>
+                <li class="list">
+                    <span class="listFirstProperty"></span>
+                    <img class="listThirdPropertyImg" src="images/arrow/icon_Submenu_focus.png" />
+                </li>
+            </ul>
+        </div>
+        <div id="listDownRemind"  style="display:none;">
+            <img src="images/arrow/D-Focus.png" />
+        </div>
+	</div>
+       
+    <!-- add for football mode selecting box-->
+    <div id="preSetBar" style="display:none; width:1770px; z-index:1001; position:absolute; top:900px; height:108px;">  
+        <span id="preSetOption" ></span>
+        <img id="currentOption" src="images/Check-36.png" style="position:absolute; top:34px; left:360px; display:none; pointer-events:none;" />
+        <span class="preSetValue" style="left:390px; width:140px;"></span>
+        <span class="preSetValue" style="left:620px; width:140px;"></span>
+        <span class="preSetValue" style="left:850px; width:140px;"></span>
+        <span class="preSetValue" style="left:1080px; width:140px;"></span>
+        <span class="preSetValue" style="left:1310px; width:140px;"></span>
+        <span class="preSetValue" style="left:1540px; width:140px;"></span>
+        <img id="preSetSelectFocus" src="images/OP-01-1_Focus.png" style=" width:230px; left:345px; height:90px; top:7px; pointer-events:none;"/>
+    </div>
+
+    <!----------------------弹出列表框使用---------------------->
+    <div id="listForm" class="fourthPopUpBox">
+        <img id="listUpImg" src="images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+            <img id="listFormFocus" class="formFocus" src="images/Focus_Frame/Focus2.png">
+            <li ></li>
+            <li ></li>
+            <li ></li>
+            <li ></li>
+            <li ></li>
+        </ul>
+        <img id="listDownImg" src="images/arrow/D-Focus.png" />
+    </div>
+        
+    <!----------------------password弹出框使用---------------------->
+    <div id="passForm" class="dialogForm" style=" height:300px;display:none;">
+        <span class="dialogTitle" ></span>
+        <div class="dialogInput" style="top:120px;">
+            <span class="dialogInputName"></span>
+            <div id="passContent" class="dialogInputContent" style="background:#333;"></div>
+        </div>
+        <div class="dialogInputFocus"  style="top:120px;"></div>
+        <span id="passRemind" class="dialogRemind" style="top:190px;"></span>
+    </div>
+       
+    <!----------------------重置确认弹出框使用---------------------->
+    <div id="resetForm" class="dialogForm" style=" height:300px;display:none;">
+        <span class="dialogTitle" ></span>
+        <span class="dialogContent" style="top:120px;"></span>
+        <span class="dialogButton" style="left:200px;"></span>
+        <span class="dialogButton" style="left:450px;"></span>
+        <img id="resetFocus" class="dialogButtonImgFocus" src="images/Focus_Frame/Focus2.png">
+    </div>
+
+    <!------------------------说明提示框---------------------------------------->
+    <div id="promptWin">
+        <img class="promptWinLeft"/>
+        <div class="promptWinRight">
+            <span id="promptContent"></span>
+        </div>
+    </div>
+    
+    <!----------------------重置确认弹出框使用---------------------->
+    <div id="remind" class="dialogForm" style=" height:240px;display:none;">
+        <span class="dialogContent" style="top:100px;"></span>
+    </div>
+</body>
+</html>

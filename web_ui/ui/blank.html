@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+</style>
+<script type="text/javascript">
+//top.showBackground(0);//此处不能加这个东西，否则会导致整个页面全部透明
+document.onkeydown = keyproc;
+function keyproc(e)
+{
+	var keycode = e.which;
+	if(keycode == top.VK_POWER)//power
+	{
+		top.keyDownProcess(e);
+		return;
+	}
+	else if(keycode == top.VK_MENU)
+	{
+		top.$("main").src = "index.html";
+	}
+}
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;//alert(msg)
+	
+	switch(msg)
+	{
+		case top.E_DLNA_DMR_PUSH_MOVIE:
+		case top.E_DLNA_DMR_PUSH_MUSIC:
+		case top.E_DLNA_DMR_PUSH_PICTURE:
+		case top.E_SIGNAL_UNLOCK://unlock
+		case top.E_PVR_NO_SIGNAL:
+		case top.E_SIGNAL_LOCK://lock
+		case top.E_SS_CH_BLOCK://channel lock
+		case top.E_SS_PARENTAL_BLOCK://有节目锁
+		case top.E_DTV_SS_INPUT_BLOCK://信源锁
+			//在节目预定中需要有此步标志变更
+			top.systemEventProc(evt);
+			break;
+		default:
+			break;
+	}
+}
+</script>
+</head>
+
+<body >
+</body>
+</html>

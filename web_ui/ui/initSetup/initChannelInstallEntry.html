@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var initialTitleWords 		= top.initialTitle[1];
+var initStepWords			= top.initialOptions[3];
+var remindWords				= top.initChPrompt[0];
+var hotkeyWords				= top.initialHotkeys;
+var selectWords				= top.initChannelIns;
+
+var list_position_h 		= 0;
+var SELECT_STEP				= 70;			//单选列表框相邻两个选项之间的距离
+
+var setting = top.g_setting;
+document.onnotify = notifyProcess;
+document.onkeydown = keyproc;
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_LEFT:
+			// left
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_UP:
+			// up
+			toUp();
+			doElementScroll();
+			ret = false;
+			//alert("上");
+			break;
+		case top.VK_DOWN:
+			//down
+			toDown();
+			doElementScroll();
+			ret = false;
+			//alert("下")
+			break;
+		case top.VK_RIGHT:
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+function $(id)
+{
+	return document.getElementById(id);
+}
+function toLeft()
+{
+	document.location.href = "initNetCondition.html";
+}
+
+function toUp()
+{
+	if(list_position_h <= 0) 
+	{
+		list_position_h = 1;
+	}
+	else
+	{
+		list_position_h--;
+	}	
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+}
+function toDown()
+{
+	if(list_position_h >= 1) 
+	{
+		list_position_h=0;
+		
+	}
+	else
+	{
+		list_position_h++;
+	}	
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+}
+
+function doEnter()
+{
+	if(list_position_h == 0)
+	{
+		//document.cookie = "isSetChannelInstall=1";
+		//document.location.href = "initChDvbtInstScanType.html";
+		//根据配置文件中配置的搜台方式显示。显示顺序为DVB-T，DVB-C，DVB-S
+		if(setting.getProperty("ro.sita.model.LiveTV.DVB-T","TRUE") == "TRUE")
+		{
+			document.cookie = "isSetChannelInstall=1";
+			document.location.href = "initChDvbtInstScanType.html";
+		}
+		else if(setting.getProperty("ro.sita.model.LiveTV.DVB-C","TRUE") == "TRUE")
+		{
+			document.cookie = "isSetChannelInstall=1";
+			document.location.href = "initChDvbcInstScanType.html";
+		}
+		else if(setting.getProperty("ro.sita.model.LiveTV.DVB-S","TRUE") == "TRUE")
+		{
+			document.cookie = "isSetChannelInstall=1";
+			document.location.href = "initChDvbsOperatorList.html";
+		}
+		else
+		{
+			document.cookie = "isSetChannelInstall=0";
+			document.location.href = "initClockSet.html";
+		}
+	}
+	else
+	{
+		document.cookie = "isSetChannelInstall=0";
+		/*top.Log("network networkStatus  = " + setting.networkStatus());
+		if(setting.networkStatus() != 0 || setting.wirelessNetworkConnectStatus != 0)//有网
+		{
+			document.location.href = "initClockEntry.html";
+		}
+		else
+		{
+			document.location.href = "initClockTimeSet.html";
+		}
+		*/
+		document.location.href = "initClockSet.html";
+	}
+}
+
+function doElementScroll()
+{
+	setScrollAttribute(containerSpanList,2,list_position_h);
+	setTimeout(function(){resetScrollHtmlInner(containerSpanList,2);},1);
+}
+
+function isOverflowed(element)
+{
+    return element.scrollWidth > element.clientWidth;
+}
+
+/*
+把整个列表属性更改，如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数；focusPosition：当前焦点选项在内容标签上的位置
+*/
+function setScrollAttribute(htmlTagList,ListLength,focusPosition)
+{
+	for(var i = 0; i < ListLength; i++)
+	{
+		/*var tempText = htmlTagList[i].innerHTML;*/
+		htmlTagList[i].setAttribute("contentText",htmlTagList[i].innerHTML);
+		if(focusPosition == i && isOverflowed(htmlTagList[i]))//如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+		{
+			htmlTagList[i].style.overflowX = "-webkit-marquee";
+			htmlTagList[i].style.textOverflow = "clip";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		else
+		{
+			htmlTagList[i].style.overflowX = "hidden";
+			htmlTagList[i].style.textOverflow = "ellipsis";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		htmlTagList[i].innerHTML = "";
+	}
+}
+/*
+重新为整个列表属性更改完成的列表赋值
+htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数
+*/
+function resetScrollHtmlInner(htmlTagList,ListLength)
+{
+	for(var i = 0; i < ListLength; i++)
+	{
+		//top.Log("in resetScrollHtmlInner htmlTagList[i].contentText = " + htmlTagList[i].getAttribute("contentText"));
+		htmlTagList[i].innerHTML = htmlTagList[i].getAttribute("contentText");
+	}
+}
+
+var containerLiList;
+var containerSpanList;
+function init()
+{
+	containerLiList = $("container").getElementsByTagName("li");
+	$("initTitle").innerHTML = initialTitleWords;
+	$("subTitleTag").innerHTML = initStepWords;
+	$("selectTitleTag").innerHTML = remindWords;
+	
+	$("back").getElementsByTagName("span")[0].innerHTML = hotkeyWords[0];
+	$("select").getElementsByTagName("span")[0].innerHTML = hotkeyWords[1];
+	$("next").getElementsByTagName("span")[0].innerHTML = hotkeyWords[2];
+	
+	containerSpanList = $("container").getElementsByTagName("span");
+	containerSpanList[0].innerHTML = selectWords[0];
+	containerSpanList[1].innerHTML = selectWords[1];	
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	addMouseListener();
+	doElementScroll();
+}
+function addMouseListener()
+{
+	for(var i = 0; i < 2; i++)
+	{
+		containerLiList[i].setAttribute("newAttr",i);
+		containerLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				list_position_h = parseInt(this.getAttribute("newAttr"));
+				$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+				doEnter();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#container
+{
+	top:250px;
+	left:100px;
+	width:600px;
+}
+.initSlectsFocus
+{
+	width:600px;
+}
+.initSelects li > span/*单选列表框的每一行中提示文字样式*/
+{
+	width:520px;
+}
+.marquee 
+{
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  */
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  */
+	overflow-x: marquee-line;
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepBigImg" src="../images/Step_big-04.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:100px;" /><img src="../images/Title_bloc-Bg.png" style="width:1100px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        <ul id="container" class="initSelects">
+          <div id="initListFormFocus">
+          	<img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+          	<img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+          </div>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span class="marquee"></span>
+          </li>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span class="marquee"></span>
+          </li>
+        </ul>
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="channelScan.js"></script>
+<link rel="stylesheet" type="text/css" href="../all.css" />
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+.dialogOptions
+{
+	position:absolute;
+	top:80px;
+	width:100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.dialogOptions li
+{
+	position:relative;
+	width:100%;
+	height:40px;
+	padding:10px 0px 10px 0px;
+}
+
+</style>
+</head>
+
+<body onload="init()">
+   	<div id="thdMenuLeft"></div>
+    <div id="thdMenuRight">
+    	<ul id="titleContent">
+            <li	class="titleName">
+                <span style="top:60px; position:absolute"></span>
+            </li>
+        </ul>
+        <ul id="optionContent">
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty" id="countryDisplay"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <div class="listSecondProperty" id="tunerDisplay"></div>
+                <img class="listThirdPropertyImg" src="../images/arrow/focus_R-Focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+            </li>
+            <li class="list" >
+                <span class="listFirstProperty"></span>
+                <img class="listThirdPropertyImg" src="../images/arrow/icon_Submenu_focus.png" />
+            </li>
+            <li class="list" >
+                 <span class="listFirstProperty"></span>
+            </li>
+            <img id="thdListFocus" src="../images/Focus_Frame/Focus-1.png">
+   		</ul>
+   </div>
+   
+   <!----------------------country password使用---------------------->
+   <div id="passForm" class="dialogForm" style=" height:350px;top:360px; display:none;">
+        <span id="passTitle" class="dialogTitle" ></span>
+        <div class="dialogInput" style="top:130px;">
+        	<span id="passInputTitle" class="dialogInputName"></span>
+            <div id="passInputContent" class="dialogInputContent"  style="background:#333;"></div>
+        </div>
+        <div class="dialogInputFocus"  style="top:130px;"></div>
+        <span id="passRemind" class="dialogRemind" style="top:200px;"></span>
+   </div>
+   
+   <!----------------------弹出列表框使用---------------------->
+    <div id="listForm" class="fourthPopUpBox">
+    	<img id="listUpImg" src="../images/arrow/U-Focus.png"/>
+        <ul id="listBox">
+       	  <img id="listFormFocus" class="formFocus" src="../images/Focus_Frame/Focus2.png">
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+          <li ></li>
+        </ul>
+        <img id="listDownImg" src="../images/arrow/D-Focus.png" />
+     </div>
+  
+   <!----------------------删除列表时使用------------------------->
+    <div id="cleanForm" class="dialogForm" style=" height:250px;top:300px; display:none;">
+        <span id="cleanTitle" class="dialogTitle" ></span>
+        <span id="cleanContent" class="dialogContent" style="top:100px;"></span>
+        <div class="dialogButton" style="left:200px;"></div>
+        <div class="dialogButton" style="left:450px;"></div>
+        <div id="cleanFocus" class="dialogButtonFocus" style="left:200px;"></div>
+   </div>
+   
+</body>
+</html>

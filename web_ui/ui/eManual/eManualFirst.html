@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="eManualFirst.js"></script> 
+<style>
+
+body
+{
+	background:url('../images/home-page-TV/bg1.png');
+	background-repeat:repeat;
+    margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	width: 3084px;
+	height: 1080px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+
+}
+
+#titleDiv
+{
+	position:fixed;
+	top:68px;
+	left:237px;
+	/***
+	-webkit-animation-name: titleMove;
+   -webkit-animation-duration: 2s;
+   -webkit-animation-iteration-count: 1;
+   -webkit-animation-timing-function: ease-out;
+   -webkit-animation-delay:0s;
+   ***/
+}
+/***
+@-webkit-keyframes titleMove
+{
+   from {top:-300px;}
+   to {top:68px;}
+}
+**/
+
+#title
+{
+	
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:72px;
+	text-align:left;
+	width:360px;
+	color:#b0b0b0;
+}
+
+#moveBlock
+{
+	position:absolute;
+	top:160px;
+	left:240px;
+	width:1920px;
+	height:786px;
+}
+
+#lineImgDefault
+{
+	postion:absolute;
+	width:2230px;
+	height:4px;
+}
+
+.lineImg
+{
+	position:absolute;
+	width:435px;
+	height:6px;
+	top:0px;
+	visibility:hidden;
+}
+
+#lineImg1
+{
+	left:-40px;
+}
+
+
+#lineImg2
+{
+	left:334px;
+}
+
+#lineImg3
+{
+	left:708px;
+}
+
+#lineImg4
+{
+	left:1082px;
+}
+
+#lineImg5
+{
+	left:1456px;
+}
+
+#lineImg6
+{
+	left:1830px;
+}
+
+#lineImg7
+{
+	left:2214px;
+}
+
+.iconDiv
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+}
+
+.iconDivFocus
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	z-index:10;
+	-webkit-transform:scale(1.21);
+	-webkit-transition-duration:100ms;
+}
+
+.iconDivStatic
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+}
+
+
+.iconDiv1Animation
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:0px;
+	-webkit-animation-name: move1;
+	-webkit-animation-duration: 1.2s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+	
+}
+
+@-webkit-keyframes move1
+{
+   from {left:2240px;}
+   to {left:0px;}
+}
+
+.iconDiv2Animation
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:374px;
+	-webkit-animation-name: move2;
+	-webkit-animation-duration: 1.4s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+}
+
+@-webkit-keyframes move2
+{
+   from {left:2614px;}
+   to {left:374px;}
+}
+
+.iconDiv3Animation
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:748px;
+	-webkit-animation-name: move3;
+	-webkit-animation-duration: 1.6s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+}
+
+@-webkit-keyframes move3
+{
+   from {left:2988px;}
+   to {left:748px;}
+}
+
+
+.iconDiv4Animation
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:1122px;
+	-webkit-animation-name: move4;
+	-webkit-animation-duration: 1.8s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+}
+
+@-webkit-keyframes move4
+{
+   from {left:3362px;}
+   to {left:1122px;}
+}
+
+.iconDiv5Animation
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:1496px;
+	-webkit-animation-name: move5;
+	-webkit-animation-duration: 2.0s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay:0s;
+}
+
+@-webkit-keyframes move5
+{
+   from {left:3736px;}
+   to {left:1496px;}
+}
+
+.iconDiv6
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:1870px; <!--(360+14)*5-->
+}
+
+.iconDiv7
+{
+	position:absolute;
+	top:160px;
+	width:360px;
+	height:626px;
+	-webkit-transform:scale(1);
+	left:2244px; <!--(360+14)*6-->
+}
+
+.iconSpan
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:52px;
+	text-align:center;
+	width:360px;
+	word-wrap: break-word;
+	/**white-space : nowrap;**/
+}
+
+#iconSpan1
+{
+	color:#c4fc97;
+	top:330px;
+}
+
+#iconSpan2
+{
+	color:#ffffff;
+	top:330px;
+}
+
+#iconSpan3
+{
+	color:#fae19c;
+	top:350px;
+}
+
+#iconSpan4
+{
+	color:#f2d3e6;
+	top:350px;
+}
+
+#iconSpan5
+{
+	color:#cde3f7;
+	top:350px;
+}
+
+#iconSpan6
+{
+	color:#e7acff;
+	top:350px;
+}
+
+#iconSpan7
+{
+	color:#e7acff;
+	top:350px;
+}
+
+#focusDiv
+{
+	position:absolute;
+	top:75px;
+	left:-57px;
+	width:474px;
+	height:620px;
+	visibility:hidden;
+}
+
+#footerDiv
+{
+	position:fixed;
+	top:1000px;
+	left:0px;
+	width:1920px;
+	height:100px;
+}
+
+
+#footer
+{
+	position:absolute;
+	font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:30px;
+	text-align:right;
+	width:1890px;
+	color:#b0b0b0;
+}
+
+#leftArrowDiv
+{
+	position:fixed;
+	top:400px;
+	left:20px;
+	width:150px;
+	height:230px;
+	z-index: 99;
+}
+
+#rightArrowDiv
+{
+	position:fixed;
+	top:400px;
+	left:1750px;
+	width:150px;
+	height:230px;
+	z-index: 99;
+}
+
+</style>
+
+
+</head>
+
+<body onload="init()">
+
+<div id = "titleDiv">
+<span id = "title"></span>
+</div>
+
+<div id = "moveBlock">
+<img src="../images/emanual/Line_1.png" id = "lineImgDefault"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg1" class = "lineImg"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg2" class = "lineImg"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg3" class = "lineImg"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg4" class = "lineImg"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg5" class = "lineImg"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg6" class = "lineImg"/>
+<img src="../images/emanual/Line_red.png" id = "lineImg7" class = "lineImg"/>
+
+<div id = "iconDiv1" class = "iconDiv" style = "left:0px;">
+<img id = "iconImg1">
+<span id = "iconSpan1" class = "iconSpan"></span>
+</div>
+
+<div id = "iconDiv2" class = "iconDiv" style = "left:374px;">
+<img id = "iconImg2">
+<span id = "iconSpan2" class = "iconSpan"></span>
+</div>
+
+<div id = "iconDiv3" class = "iconDiv" style = "left:748px;">
+<img id = "iconImg3">
+<span id = "iconSpan3" class = "iconSpan"></span>
+</div>
+
+<div id = "iconDiv4" class = "iconDiv" style = "left:1122px;">
+<img id = "iconImg4">
+<span id = "iconSpan4" class = "iconSpan"></span>
+</div>
+
+<div id = "iconDiv5" class = "iconDiv" style = "left:1496px;">
+<img id = "iconImg5">
+<span id = "iconSpan5" class = "iconSpan"></span>
+</div>
+
+<div id = "iconDiv6" style = "left:1870px;">
+<img id = "iconImg6">
+<span id = "iconSpan6" class = "iconSpan"></span>
+</div>
+
+
+<div id = "focusDiv" style = "left:2244px;">
+<img src="../images/emanual/Focus.png">
+</div>
+
+</div>
+
+<div id = "footerDiv">
+<span id = "footer"></span>
+</div>
+
+<div id="leftArrowDiv" style="display:none;">
+<img src="../images/emanual/arrow LN.png" id="leftArrow">
+</div>
+
+<div id="rightArrowDiv" style="display:none;">
+<img src="../images/emanual/arrow RN.png" id="rightArrow">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="homePageHistory.js" ></script>
+<style>
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#main
+{
+	position:absolute;
+	width:360px;
+	height:1080px;
+	left:0px;
+	background:url(images/History_bg.png);
+}
+.Title
+{
+	position:absolute;
+	top:46px;
+	left:38px;
+	font-size:40px;
+	color:#b0b0b0;
+}
+.optionTitle
+{
+	position:absolute;
+	top:154px;
+	color:#d30000;
+	font-size:25px;
+}
+.curOptionTitle
+{
+	position:absolute;
+	top:136px;
+	color:#d30000;
+	font-size:44px;
+	width:440px;
+	text-align:center;
+}
+#historyList
+{
+	position:absolute;
+	top:112px;
+	left:38px;
+	overflow:hidden;
+	height:870px;
+	width:284px;
+	float:left;
+}
+.list
+{
+	position:relative;
+	width:284px;
+	height:194px;
+	margin:20px 0px;
+	background:url('images/History_bg_Posters.png');
+}
+.bgPic
+{
+	position:absolute;
+	left:102px;
+    top:66px;
+	z-index:50; 
+}
+.historyPic
+{
+	position:absolute;
+	display:none;
+	border-radius:10px;
+	left:2px;
+	top:2px;
+	width:280px;
+	height:190px;
+	z-index:150; 
+}
+.playPic
+{
+	position:absolute;
+	top:44px;
+	left:156px;
+}
+.showNumBg
+{
+	position:absolute;
+	top:144px;
+	z-index:200;
+}
+.name
+{
+	position:absolute;
+	top:146px;
+	font-size:28px;
+	color:#b0b0b0;
+	width:265px;
+	height:30px;
+	left:15px;
+	z-index:210;
+	overflow:hidden;
+}
+#listFocus
+{
+	position:absolute;
+	top:120px;
+	height:218px;
+	width:324px;
+	left:18px;
+	z-index:220;
+}
+</style>
+<title> home Page History</title>
+
+</head>
+
+<body onload="init()" onunload="uninit()">
+<div id="main">
+	<span class="Title">History</span>
+    <img src="images/History_Del.png" style="position:absolute;top:46px;left:284px;"/>
+    <div id="historyList">
+    </div>
+    <!--
+    <div id="pageFlag" style="position:absolute;top:210px; height:800px; width:4px;left:400px; background-color:#aaaaaa; border:0px;"/></div>-->
+    <img id="listFocus" src="images/historyFocus.png">
+</div>
+</body>
+</html>

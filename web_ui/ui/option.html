@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Option menu</title>
+<!--link rel="stylesheet" type="text/css" href="./all.css"-->
+<script type="text/javascript" src="option.js"></script> 
+<style>
+body
+{
+	width:1920px;
+	height:1080px;
+	overflow:hidden;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#smallPopWin
+{
+	position:absolute;
+	left:0px;
+	width:500px;
+	height:1080px;
+	padding:0px;
+	opacity:0.92;
+	background:#000;
+	color:#ccc;
+	border:4px solid #1b1b1b;
+}
+#smallPopWin ul
+{
+	position:absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	top:60px;
+}
+.popList
+{
+	position:relative;
+	width:500px;
+	height:84px;
+	top:10px;
+}
+.popListFirPro
+{
+	position:absolute;
+	left:40px;
+	top:14px;
+	height:40px;
+	line-height:40px;
+	width:250px;
+	font-size:24px;
+	color:#fff;
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis;
+	
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  
+	overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  
+	overflow-x: marquee-line;*/
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+.popListSndPro
+{
+	position: absolute;
+	top: 14px;
+	left: 320px;
+	width: 100px;
+	height: 40px;
+	line-height:40px;
+	font-size: 24px;
+	text-align: right;
+	color:#fff;
+	overflow:hidden;white-space: nowrap;text-overflow: ellipsis;
+	
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  
+	overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  
+	overflow-x: marquee-line;*/
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+.popListThdPro
+{
+	position: absolute;
+	left: 420px;
+	width: 60px;
+	top: 16px;
+	font-size: 24px;
+	padding-top: 3px;
+	text-align: center;
+	color:#fff;
+}
+.marquee 
+{
+	white-space: nowrap; 
+	/*overflow: hidden;*/
+	
+	/* Safari and Chrome  
+	overflow-x:-webkit-marquee;*/
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	
+	/* W3C  
+	overflow-x: marquee-line;*/
+	marquee-direction: forward;
+	marquee-style: scroll;
+	marquee-speed: fast;
+	marquee-play-count: infinite;
+}
+#popListFocus
+{
+	position: absolute;
+	left: 10px;
+	width: 480px;
+	height: 70px;
+	top: 13px;
+	z-index: 100;
+	pointer-events:none;
+}
+
+/************ѡѡʽ*************************************************************************/
+#preSetBar
+{
+	position:absolute;
+	height:100px;
+	background:#000;
+	/*bottom:100px;*/
+	left:350px;
+	overflow:hidden;
+	opacity:0.92;
+	border:4px solid #1b1b1b;
+	display:none;
+}
+#preSetOption
+{
+	position:absolute;
+	width:295px;
+	left:0px;
+	color:white;
+	font-size:26px;
+	height:100px;
+	line-height:100px;
+	border-right:4px solid #1b1b1b;
+	text-align:center;
+	white-space:nowrap;	
+}
+.preSetValue
+{
+	position:absolute;
+	left:300px;
+	font-size:22px;
+	height:100px;
+	line-height:100px;
+	text-align:center;
+	color:#666;
+	white-space:nowrap;	
+}
+#preSetBox
+{
+	position: absolute;
+	width: 280px;
+	left: 350px;
+	color: white;
+	font-size: 28px;
+	text-align: left;
+	bottom:100px;
+	/*top:400px;*/
+	background: #999;
+	display: none;
+}
+#preSetBox ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#preSetBox li
+{
+	height:50px;
+	text-align:center;
+	margin:10px 0px 10px 0px;
+}
+#preSetSelectFocus
+{
+	position: absolute;
+	width: 200px;
+	left:300px;
+	height: 48px;
+	top:20px;
+	pointer-events:none;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+    <div id="smallPopWin">
+        <img id="popListFocus" src="./images/Focus_Frame/Focus.png">
+    	<ul>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+               	<div class="popListThdPro"><img src="images/arrow/focus_R-Focus.png" /></div> 
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+               <div class="popListThdPro"><img src="images/arrow/focus_R-Focus.png" /></div> 
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"><img src="images/arrow/focus_R-Focus.png" /></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"><img src="images/arrow/focus_R-Focus.png" /></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"><img src="images/arrow/icon_Submenu_focus.png" /></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"><img src="images/arrow/icon_Submenu_focus.png" id="pvrTagImg" /></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"></div>
+            </li>
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"><img src="images/arrow/icon_Submenu_focus.png" /></div>
+            </li>               
+            <li class="popList" >
+                <span class="popListFirPro"></span>
+                <div class="popListSndPro"></div>
+                <div class="popListThdPro"><img src="images/arrow/icon_Submenu_focus.png" /></div>
+            </li>         
+   		</ul>
+   	</div>
+   
+   	<!--  item bar -->
+    <!----------------------重置选择列表-------------------------->
+    <div style="position:absolute; width:1920px; height:108px; top:900px; text-align:center;">
+       	<div id="preSetBar" style="display:none;"> 		
+            <span id="preSetOption" ></span>
+            <img id="currentOption" src="images/Check-36.png" style="position:absolute; top:34px; left:320px; display:none;" />
+            <span class="preSetValue" style="left:350px; width:140px;"></span>
+            <span class="preSetValue" style="left:580px; width:140px;"></span>
+            <span class="preSetValue" style="left:810px; width:140px;"></span>
+            <span class="preSetValue" style="left:1040px; width:140px;"></span>
+            <span class="preSetValue" style="left:1270px; width:140px;"></span>
+            <span class="preSetValue" style="left:1500px; width:140px;"></span>
+            <img id="preSetSelectFocus" src="images/OP-01-1_Focus.png" style=" width:230px; left:305px; height:90px; top:7px;"/>
+       </div>
+   </div>
+</body>
+</html>

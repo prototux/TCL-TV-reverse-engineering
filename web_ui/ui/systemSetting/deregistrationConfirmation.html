@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="deregistrationConfirmation.js"></script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#registForm
+{
+	position:absolute;
+	top:335px;
+	left:545px;
+	width:830px;
+	height:430px;
+	font-size:28px;
+	color:#aaaaaa;
+	z-index:100;
+	text-align:center;
+	line-height:250px;
+	opacity:0.9;
+	background:#000;
+	background-image:url(../images/Bg-Pop-up-box-04.png);
+}
+.button
+{
+	position:absolute;
+	top:350px;
+	width:204px;
+	height:64px;
+	color:#aaaaaa;
+	text-align:center;
+	line-height:64px;
+	z-index:100;
+	background-image:url(../images/Focus_Pop_up_box_no.png);
+}
+</style>
+</head>
+<body onload="init()">
+     <div id="registForm" style="display:none">
+    	<span id="registTitle" style="position:absolute;top:-80px;left:60px;font-size:32px;"></span>
+        <span id="registContent1" style="position:absolute;top:20px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registContent2" style="position:absolute;top:70px;left:40px;width:750px;height:220px;font-size:25px"></span>
+        <span id="registZero" class="button" style="left:200px;display:block"></span>
+        <span id="registOne" class="button" style="left:450px;display:block"></span>
+        <span id="registFocus" class="button" style="left:448px;pointer-events:none;background-image:url(../images/Focus_Pop_up_box.png);z-index:101"></span>
+    </div>
+</body>
+</html>

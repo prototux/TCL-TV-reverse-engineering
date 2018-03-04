@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<script src="programGuide.js" type="text/javascript"></script>
+<style type="text/css">
+body
+{
+	background:url(images/EPG-Bg-60.jpg) no-repeat;
+	width:1920px;
+	height:1080px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#title
+{
+	position:absolute;
+	top:0px;
+	left:70px;
+	height:130px;
+	line-height:130px;
+	width:800px;
+	font-size:60px;
+	color:#FFF;
+}
+#dateTime
+{
+	position:absolute;
+	left:1050px;
+	top:0px;
+	height:130px;
+	line-height:130px;
+	width:800px;
+	font-size:40px;
+	color:#FFF;
+	text-align:right
+}
+#program_date
+{
+	position:absolute;
+	left:70px;
+	top:160px;
+	width:530px;
+	height:70px;
+	line-height:70px;
+	text-align:center;
+	font-size:30px;
+	color:#fff;
+}
+.time_piece
+{
+	position:absolute;
+	top:160px;
+	height:70px;
+	line-height:70px;
+	font-size:30px;
+	color:#fff;
+}
+#channel_list
+{
+	position:absolute;
+	width:530px; 
+	left:70px;
+	top:230px;
+}
+.channel
+{
+	position:absolute;
+	left:0px;
+	width:530px;
+	height:50px;
+	background:url(images/EPG-List-Default.png) no-repeat;
+	background-size:100% 100%;
+}
+.channel_img
+{
+	position:absolute;
+	left:5px;
+	width:50px;
+	height:50px;
+}
+.channel_num
+{
+	position:absolute;
+	left:70px;
+	top:10px;
+	font-size:30px;
+	color:#fff;
+}
+.channel_name
+{
+	position:absolute;
+	left: 150px;
+	width:350px;
+	top:10px;
+	font-size:30px;
+	color:#fff;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+#program_list
+{
+	position:absolute;
+	width:1200px;
+	left:650px;
+	top:230px;
+}
+.program_piece
+{
+	position:absolute;
+	left:0px;
+	width:1200px;
+	height:50px;
+}
+.program
+{
+	position:absolute;
+	left:0px;
+	height:50px;
+	line-height:50px;
+	font-size:30px;
+	text-align:center;
+	color:#fff;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+	background:url(images/EPG-Button-Default.png);
+	background-size:100% 100%;
+}
+.leftEventImg
+{
+	position:absolute;
+	left:-10px;
+	width:30px;
+	height:50px;
+}
+.rightEventImg
+{
+	position:absolute;
+	left:1180px;
+	width:30px;
+	height:50px;
+}
+#programContentContainer
+{
+	position:absolute;
+	top:650px;
+	left:70px;
+	width:1780px;
+	height:310px;
+	background:url(images/EPG-Bg-Txt.png);
+	background-size:100% 100%;
+}
+#program_content_name
+{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:30px;
+	color:#FFF;
+	width:800px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+#program_content_contain
+{
+	position:absolute;
+	top:100px;
+	left:0px;
+	width:1780px;
+	height:210px;
+	overflow:hidden;
+}
+
+#parentRating
+{
+	position:absolute;
+	top:10px;
+	left:850px;
+	font-size:30px;
+	color:#FFF;
+}
+.program_content_extra
+{
+	position:absolute;
+	top:50px;
+	font-size:30px;
+	color:#FFF;
+}
+#program_content
+{
+	position:absolute;
+	top:0px;
+	left:50px;
+	width:1680px;
+	font-size:30px;
+	color:#FFF;
+	word-break:normal;
+}
+.key_img
+{
+	position:absolute;
+	top:40px;
+	width:80px;
+}
+.key_remind
+{
+	position:absolute;
+	font-size:28px;
+	top:38px;
+	color:#666666;
+	padding-left:10px;
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+
+#user_password
+{
+	position: absolute;
+	top:664px;/*424px; */
+	left:660px; 
+	height:230px; 
+	width:602px; 
+	background:#000;
+	opacity:0.9;
+}
+#password_notice
+{
+	position: absolute;
+	color: white;
+	font-size: 22px;
+	top:30px; 
+	left:20px;
+}
+#password 
+{
+	position:absolute;
+	left:50px;
+	top:90px;
+	width:500px;
+	height:32px;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	padding-top:6px;
+	border: thin solid white;
+	border-radius: 10px;
+}
+.password_img
+{
+	position:absolute;
+	width:80px; 
+	height:32px;
+	top:10px;
+}
+.lable_word
+{
+	position:absolute;
+	width:100px;
+	top:11px; 
+	display:inline; 
+	color:#FFF;
+	font-size:20px;
+	padding-top:3px;
+	text-align:left;
+}
+#upPageImg
+{
+	position:absolute;
+	top:580px;
+	left:890px;
+	width:70px;
+	height:70px;
+	display:none;
+}
+#downPageImg
+{
+	position:absolute;
+	top:580px;
+	left:980px;
+	width:70px;
+	height:70px;
+	display:none;
+}
+#leftPageImg
+{
+	position:absolute;
+	top:330px;
+	left:1850px;
+	width:70px;
+	height:70px;
+	display:none;
+}
+#rightPageImg
+{
+	position:absolute;
+	top:420px;
+	left:1850px;
+	width:70px;
+	height:70px;
+	display:none;
+}
+#no_channel
+{
+	position:absolute;
+	top:370px;
+	width:1920px;
+	font-size:30px;
+	color:#fff;
+	text-align:center;
+	display:none;
+}
+.initButton
+{
+	position:absolute;
+	width:300px;
+	height:80px;
+	left:810px;
+	top:500px;
+	line-height:80px;
+	font-size:30px;
+	color:#fff;
+	text-align:center;
+	background-image:url(images/Focus-02.png);
+	background-size:300px 80px;
+	display:none;
+}
+</style>
+</head>
+<body onload="init()" onUnload="uninit()">
+	<div id="title"></div>
+    <span id="dateTime"></span>
+    
+    <div id="programContent">
+        <span id="program_date"></span>
+        <span id="time_piece1" class="time_piece" style="left:650px;"></span>
+        <span id="time_piece2" class="time_piece" style="left:1250px;"></span>
+        
+        <div id="channel_list" >
+            <div class="channel" style="top:0px;">
+              <img class="channel_img" style="display:none;"/>
+              <span class="channel_num"></span>
+              <span class="channel_name"></span>
+            </div>
+            <div class="channel" style="top:60px;">
+                <img class="channel_img"  style="display:none;"/>
+                <span class="channel_num"></span>
+                <span class="channel_name"></span>
+            </div>
+            <div class="channel" style="top:120px;">
+                <img class="channel_img" style="display:none;"/>
+                <span class="channel_num"></span>
+                <span class="channel_name"></span>
+            </div>
+            <div class="channel" style="top:180px;">
+                <img class="channel_img"  style="display:none;"/>
+                <span class="channel_num"></span>
+                <span class="channel_name"></span>
+            </div>
+            <div class="channel" style="top:240px;">
+                <img class="channel_img" style="display:none;"/>
+                <span class="channel_num"></span>
+                <span class="channel_name"></span>
+            </div>
+            <div class="channel" style="top:300px;">
+                <img class="channel_img" style="display:none;"/>
+                <span class="channel_num"></span>
+                <span class="channel_name"></span>
+            </div>
+        </div>
+      
+        <div id="program_list">
+            <div class="program_piece" style="top:0px;">
+              <span  class="program" style="width:1200px;"></span>
+            </div>
+            <div class="program_piece" style="top:60px;">
+                 <span  class="program" style="width:1200px;"></span>
+            </div>
+            <div class="program_piece" style="top:120px;">
+                <span class="program" style="width:1200px;"></span>
+            </div>
+            <div class="program_piece" style="top:180px;">
+                <span  class="program" style="width:1200px;"></span>
+            </div>
+            <div class="program_piece" style="top:240px;">
+                <span  class="program" style="width:1200px;"></span>
+            </div>
+            <div class="program_piece" style="top:300px;">
+                <span  class="program" style="width:1200px;"></span>
+            </div>
+        </div>
+        
+        <div id="programContentContainer">
+            <span id="program_content_name"></span>
+            <span id="parentRating"></span>
+            
+            <span id="program_content_timeInfo" class="program_content_extra" style="left:10px;"></span>
+            <span id="program_content_genre" class="program_content_extra" style="left:500px;"></span>
+            
+            <div id="program_content_subtitle" style=" position:absolute;left:1500px;top:50px;">
+                <img style="position:absolute;left:0px;display:none;"  src="images/icon_TTX.png" />
+                <img style="position:absolute;left:90px;display:none;"  src="images/icon_STTL.png" />
+                <img style="position:absolute;left:180px;display:none;"  src="images/icon_hard_hearing.png"/>
+            </div>
+            
+            <img id="program_content_lock" style=" position:absolute;top:50px;left:1410px; width:32px;display:none;" src="images/icon_CH_Lock_focus.png">
+            <div id="program_content_contain" >
+                <span id="program_content"></span>
+            </div>
+        </div>
+       
+        <!--******************加密节目密码输入框***********************-->
+     	<div id="user_password" style="display:none;">
+            <div id="password_notice" ></div>
+            <div id="password" style=""></div>
+            <div style="position:absolute;height:55px; width:600px; top:150px;">
+                <img  class="password_img" style="left:100px;" src="images/icon-Back.png" />
+                <span class="lable_word" style=" left:190px; "></span>
+                <img  class="password_img" style=" left:350px;" src="images/icon-Return.png" />
+                <span class="lable_word" style="left:440px;"></span>
+            </div>
+        </div> 
+        
+        <!--*************************最下边按键提示框********************-->
+        <div id="key_list" style="position:absolute; top:980px; left:70px; width:1780px; display:none;">
+            <img class="key_img" style="left:0px;" src="images/icon-Backward.png" />
+            <span class="key_remind" style="left:80px;"></span>
+            
+            <img class="key_img" style="left:356px;" src="images/icon-Forward.png" />
+            <span class="key_remind" style="left:436px;"></span>
+            
+            <img class="key_img" style="left:712px;" src="images/icon-Option.png" />
+            <span class="key_remind" style="left:792px;"></span>
+            
+            <img class="key_img" style="left:1068px;" src="images/icon-Color_key_Y.png"  />
+            <span class="key_remind" style="left:1148px;"></span>
+            
+            <img class="key_img" style="left:1504px;" src="images/icon-Color_key_R.png"/>
+            <span class="key_remind" style="left:1584px;"></span>
+        </div>
+        
+        <!--*****************翻页样式箭头**********************-->
+        <img id="upPageImg" src="images/EPG_T_Focus.png" />
+        <img id="downPageImg" src="images/EPG_B_Focus.png" />
+        <img id="leftPageImg" src="images/EPG_L_Focus.png" />
+        <img id="rightPageImg" src="images/EPG_R_Focus.png" />
+    </div>
+    
+    <span id="no_channel"></span>
+    <div id="firstButton" class="initButton"></div>
+</body>
+</html>

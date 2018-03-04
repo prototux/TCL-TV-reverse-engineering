@@ -1,0 +1,502 @@
+body
+{
+	background:transparent;
+	cellspacing= 0;
+	cellpadding= 0;
+	width:1920px;
+	height:1080px;
+/* 	background-image: url("../images/virtualRemote/virtual-9.jpg");  */
+}
+
+.hello1
+{
+	font-size: 39px;
+	color: fuchsia;
+}
+
+.virtualremote
+{
+	position: absolute;
+	left: 1700px;
+	top: 750px;
+}
+
+.point-left_top
+{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
+.point-right_top
+{
+	position: absolute;
+	left: 1910px;
+	top: 10px;
+}
+
+.point-left_bottom
+{
+	position: absolute;
+	left: 10px;
+	top: 1070px;
+}
+
+.virtualRemoteForTV
+{
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------  */
+
+.virtualremoteTest
+{
+	position: absolute;
+	
+	left: 1430px;
+	top: 900px;
+	width: 440px;
+	height: 130px;
+	background-image:url("../images/virtualRemote/Vkey_bg_5.png"); 
+	display: inline-table;
+}
+
+/* div{ border-left:2px dashed #0F0;border-right:2px dashed #0F0}  */
+
+
+
+/* 1、基础的数字键表格的样式 */
+.table_basicKey
+{
+	
+	width:420px;
+	height:360px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	
+	border-collapse:collapse;/* 这样写是去除表格自带的间距 */
+	border-spacing:0;/* 这样写是去除表格自带的间距 */
+	
+	display: none;
+	
+}
+
+/* 基础的数字键的表格td 的样式，这样写是去除表格自带的间距 */
+.table_basicKey td
+{
+	padding:0px;/* 这样写是去除表格自带的间距 */
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+
+
+/* 2、    5个播放键表格的样式 */
+.table_playKey
+{
+	width:420px;
+	height:90px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	
+	border-collapse:collapse;/* 这样写是去除表格自带的间距 */
+	border-spacing:0;/* 这样写是去除表格自带的间距 */
+	
+	display: none;
+}
+
+/* 5个播放键的td的样式 */
+.table_playKey td
+{
+	padding:0px;/* 这样写是去除表格自带的间距 */
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+
+
+/* 3、  快捷键的表格的样式 */
+.table_shortcutKey
+{
+	width:440px;
+	height:90px;
+	margin-top: 0px;
+	padding-top:0px;
+	
+	border-collapse:collapse;/* 这样写是去除表格自带的间距 */
+	border-spacing:0;/* 这样写是去除表格自带的间距 */
+	
+	display: none;
+	
+}
+
+/* 快捷键的表格的td的样式 */
+.table_shortcutKey td
+{
+	padding:0px;/* 这样写是去除表格自带的间距 */
+	text-align: center; 
+	width: 110px; 
+	height: 90px;
+}
+
+
+/* 大焦点的样式 */
+.focusForRemote
+{
+	position:absolute;  
+	top:560px; 
+	left:1560px; 
+	width: 180px; 
+	height: 90px; 
+	background-image: url("../images/virtualRemote/Vkey_Focus_1.png");
+	display: inline-table;
+}
+
+/* 小焦点的样式 */
+.focusForRemote_Focus2
+{
+	position:absolute;  
+	top:560px; 
+	left:1560px; 
+	width: 130px; 
+	height: 90px; 
+	background-image: url("../images/virtualRemote/Vkey_Focus_2.png");
+	display: inline-table;
+}
+
+
+/* ---------------------------- */
+
+/* 数字键的非选中时的样式 */
+.table_basicKey_span
+{
+	font-size: 40px;
+	color: #aaaaaa;
+}
+
+/* 数字键的选中时的样式 */
+.table_basicKey_span_focus
+{
+	font-size: 40px;
+	color: #ffffff;
+}
+/* zoom+,zoom-的非选中时的样式 */
+.table_basicKey_span_zoomLeft
+{
+	visibility:hidden;
+}
+
+
+/* zoom+,zoom-的非选中时的样式 */
+.table_basicKey_span_zoomRight
+{
+	visibility:hidden;
+}
+
+/* play按键非选中时的样式 */
+.table_playKey_td_play
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Play.png");
+}
+
+/* play按键选中时的样式 */
+.table_playKey_td_play_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Play_Hi.png");
+}
+
+
+
+
+/* stop按键非选中时的样式 */
+.table_playKey_td_stop
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Stop.png");
+}
+
+/* stop按键选中时的样式 */
+.table_playKey_td_stop_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Stop_Hi.png");
+}
+
+
+
+
+
+
+/* pause按键非选中时的样式 */
+.table_playKey_td_pause
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Pause.png");
+}
+
+
+/* pause按键选中时的样式 */
+.table_playKey_td_pause_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Pause_Hi.png");
+}
+
+
+
+
+/* FB按键非选中时的样式 */
+.table_playKey_td_fb
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FB.png");
+}
+
+
+/* FB按键选中时的样式 */
+.table_playKey_td_fb_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FB_Hi.png");
+}
+
+
+
+
+
+
+
+/* FF按键非选中时的样式 */
+.table_playKey_td_ff
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FF.png");
+}
+
+
+/* FF按键选中时的样式 */
+.table_playKey_td_ff_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FF_Hi.png");
+}
+
+
+
+
+/* 红色按键非选中时的样式 */
+.table_shortcutKey_td_r
+{
+	background-image:url("../images/virtualRemote/Vkey_K_R.png");
+}
+
+/* 红色按键选中时的样式 */
+.table_shortcutKey_td_r_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_R_Hi.png");
+}
+
+
+
+/* 绿色按键非选中时的样式 */
+.table_shortcutKey_td_g
+{
+	background-image:url("../images/virtualRemote/Vkey_K_G.png");
+}
+
+/* 绿色按键选中时的样式 */
+.table_shortcutKey_td_g_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_G_Hi.png");
+}
+
+
+
+
+
+
+/* 黄色按键非选中时的样式 */
+.table_shortcutKey_td_y
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Y.png");
+}
+
+/* 黄色按键选中时的样式 */
+.table_shortcutKey_td_y_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Y_Hi.png");
+}
+
+
+
+
+
+
+
+
+
+
+/* 蓝色按键非选中时的样式 */
+.table_shortcutKey_td_b
+{
+	background-image:url("../images/virtualRemote/Vkey_K_B.png");
+}
+
+/* 蓝色按键选中时的样式 */
+.table_shortcutKey_td_b_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_B_Hi.png");
+}
+
+
+
+
+
+/* -------TV下的文字table不显示-------- */
+
+.table_text
+{
+	display: none;
+}
+
+/* -------PVR部分的table不显示-------- */
+
+.table_PVR
+{
+	display: none;
+}
+
+
+/* -------Media下的table布局-------- */
+
+
+
+
+
+/* FB按键非选中时的样式 */
+.table_Media_td_fb
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FB.png");
+}
+
+
+/* FB按键选中时的样式 */
+.table_Media_td_fb_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FB_Hi.png");
+}
+
+
+/* stop按键非选中时的样式 */
+.table_Media_td_stop
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Stop.png");
+}
+
+/* stop按键选中时的样式 */
+.table_Media_td_stop_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_Stop_Hi.png");
+}
+
+
+
+
+/* FF按键非选中时的样式 */
+.table_Media_td_ff
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FF.png");
+}
+
+
+/* FF按键选中时的样式 */
+.table_Media_td_ff_focus
+{
+	background-image:url("../images/virtualRemote/Vkey_K_FF_Hi.png");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.table_Media
+{
+	width:420px;
+	height:90px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	
+	border-collapse:collapse;/* 这样写是去除表格自带的间距 */
+	border-spacing:0;/* 这样写是去除表格自带的间距 */
+	
+	display: inline-block;
+}
+
+
+
+
+
+#table_Media_td_fb
+{
+	padding:0px;/* 这样写是去除表格自带的间距 */
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+#table_Media_td_stop
+{
+	padding:0px;/* 这样写是去除表格自带的间距 */
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+
+
+#table_Media_td_ff
+{
+	padding:0px;/* 这样写是去除表格自带的间距 */
+	text-align: center; 
+	width: 140px; 
+	height: 90px;
+}
+
+
+
+.table_hdmi_text
+{
+	display: none;
+}
+
+
+
+

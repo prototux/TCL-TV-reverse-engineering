@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../all.css">
+<script type="text/javascript" src="initWirelessSecurity.js"></script>
+<style>
+body{
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#wirelessInputSSID
+{	
+    position:absolute;
+	left:50px;/*650px;*/
+	width:600px;
+	opacity:0.92;
+	height:500px;
+	top:180px; 
+	display:block;
+}
+#wirelessInputPassword
+{	
+   position:absolute;
+	left:350px;/*650px;*/
+	width:600px;
+	opacity:0.8;
+	height:320px;
+	top:250px; 
+	display:none;
+}
+#SSIDTitle/*设置对话框的title*/
+{
+	position:absolute;
+	width:530px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+}
+#passwordTitle/*设置密码对话框的title*/
+{
+	position:absolute;
+	width:530px;
+	height:41px;
+	top:30px;
+	left:30px;
+	font-size:30px;
+	color:#FFF;
+	font-weight:bold;
+}
+#dialogButtonFocus/*对话框中按钮样式的焦点*/
+{
+	position: absolute;
+	left: 650px;
+	top:30px;
+	display:none;
+}
+#SSIDInputFocus/*对话框中输入框焦点样式*/
+{
+	position:absolute;
+	left:330px;
+	top:120px;
+	display:block;
+}
+#passwordButtonFocus/*密码框button 焦点*/
+{
+	position: absolute;
+	top:30px;
+	left: 350px;
+	display:none;
+}
+#passwordInputFocus/*密码框输入框焦点*/
+{
+	position:absolute;
+	width:364px; 
+	height:45px;
+	left:205px;
+	top:115px;
+}
+#SSIDInput/*对话框中输入框容器*/
+{
+	position:absolute;
+	width:500px; 
+	height:35px;
+	left:50px;
+	top:120px;
+}
+#SSIDButtonList
+{
+	position:absolute;
+	top:350px;
+	left:30px;
+	height:50px;
+	width:530px;
+}
+#passwordButtonList
+{
+	position:absolute;
+	top:350px;
+	left:30px;
+	height:50px;
+	width:530px;
+}
+.SSIDButton/*对话框中的按钮样式*/
+{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	bottom: 0px;
+	padding-top: 7px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	background: #333;
+	border-radius: 10px;
+}
+#SSIDRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#CCC;
+	font-size: 24px;
+	text-align: left;
+	left: 61px;
+	width: 480px;
+	display:none;
+}
+#passwordRemind
+{
+	position: absolute;
+	top: 180px;
+	height: 70px;
+	color:#CCC;
+	font-size: 24px;
+	text-align: left;
+	left: 61px;
+	width: 480px;
+	display:block;
+}
+#popList/* 设置 关于列表每项的属性*/
+{
+	position:absolute;
+	width:500px;
+	height:70px;
+	left:400px;
+	top:250px;
+}
+#popListFocus
+{
+	position:absolute;
+	width:520px;
+	height:80px;
+	left:390px;
+	top:240px;
+	display:none;
+}
+#popListFirPro/* 设置 关于列表每行第一项属性*/
+{
+	position: absolute;
+	left: 13px;
+	color: #b0b0b0;
+	font-size: 28px;
+	top: 15px;
+}
+#popListSndPro/* 设置 关于列表每行第二项属性*/
+{
+	position: absolute;
+	left: 233px;
+	width: 220px;
+	height: 27px;
+	color: #b0b0b0;
+	font-size: 28px;
+	padding-top: 3px;
+	text-align: center;
+	top: 14px;
+}
+#popListThdPro/* 设置 关于列表每行第三项属性*/
+{
+	position: absolute;
+	left: 409px;
+	width: 70px;
+	top: 13px;
+	color: #b0b0b0;
+	font-size: 28px;
+	padding-top: 3px;
+	text-align: center;
+}
+.passwordlist
+{
+	position:absolute;
+	width:800px;
+	height:70px;
+	color:white;
+	font-size:25px;
+}
+.smallBar
+{
+	position:absolute;
+	width:25px;
+	height:70px;
+	width:70px;
+	border:thin solid #FFFFFF;
+	background:#6FF;
+}
+.font3_small
+{
+	position:absolute;
+	top:10px;
+	color:#000;
+	font-family:"Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium",Arial, Helvetica, sans-serif;
+	font-size:28px;
+	width:100%;
+	height:50px;
+	text-align:center;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle">initial setup</span>
+<!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px-->
+ 	<div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:822px;" /><img class="initStepBigImg" src="../images/Step_big-02.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:728px;" /><img class="initStepSmallImg" src="../images/Step_Small-03.png" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:800px;" /><img src="../images/Title_bloc-Bg.png" style="width:400px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+      
+        
+        <!-------------------------------------选择安全级别--------------------------------------------->
+         <span id="selectTitleTag" class="leftRemind" style="top:200px;"></span>
+        
+        <div id="initBigSelectForm" style="top:180px;">
+        	<img id="initListUpImg" src="../images/arrow/U-Focus.png"/>
+            <ul id="container" class="initSelects" >
+              <div id="initListFormFocus">
+                <img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+                <img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+              </div>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span ></span>
+              </li>
+              <li>
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <img id="initListDownImg" src="../images/arrow/D-Focus.png"/>
+            </ul>
+        </div>
+        
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

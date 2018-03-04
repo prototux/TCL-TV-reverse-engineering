@@ -1,0 +1,542 @@
+<html>
+<head>
+<style type="text/css" >
+body
+{
+	background:transparent;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#form
+{
+	position:absolute;
+	top:390px;
+	left:560px;/*650px;*/ 
+	width:800px;/*600px;*/
+	height:300px;
+	border:4px  solid #1b1b1b;/*设置边框颜色;*/
+	opacity:0.92;
+	background:#000;
+	overflow:hidden;
+}
+#timer
+{
+	position:absolute;
+	width:100%;
+	top:40px;
+	text-align:center;
+	font-size:28px;
+	color:#FFF;
+	font-weight:bold;
+}
+#remind
+{
+	position:absolute;
+	top:100px;
+	width:100%;
+	left:0px;
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:#FFF;
+}
+.keyWords
+{
+	position:absolute;
+	top:240px;
+	height:32px;
+	line-height:32px;
+	font-size:28px;
+	color:#FFF;
+	font-weight:bold;
+}
+.img
+{
+	position:absolute;
+	top:240px;
+}
+</style>
+
+<script type="text/javascript">
+top.keySetForUI(1);
+var currentRecord 				= top.chBookingPromt[0];
+var otherRecord 				= top.chBookingPromt[1];
+var currentReminder				= top.chBookingPromt[2];
+var otherReminder 				= top.chBookingPromt[3];
+var ok_cancel 					= top.okCancel;
+var sec 						= " " + top.timeUnit[0];
+
+var channel 					= top.g_channel;
+var setting						= top.g_setting;
+var chanenlIndex 					= 0;
+var tunerMode 					= 0;
+var timer 						= 0;
+var restTime 					= 60;
+var isCurrentChannelFlag 		= 1;				//判断是否是当前正在播放的节目，0 不是，1 是
+var bookingOperate				= 0;				//0 还没有做操作，1 表示doBooking,2 取消
+
+document.onkeydown = keyproc;
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	//add chenhua for youtobe app
+	//不能响应别的快捷键，不然在YouTube应用运行的时候焦点会乱掉。
+	switch(keycode)
+	{
+		case top.VK_POWER://power
+			if(setting.powerBacklightState == 0)//自动待机中（预约录制到期但是电视是关着的的时候，电视会打开但是没有声音和没有点亮屏）
+			{
+				setting.powerBacklightState = 1;
+			}
+			else
+			{
+				setting.powerOff();
+			}
+			break;
+		case top.VK_MUTE://mute
+			top.keyDownProcess(e);
+			break;
+		case top.VK_ENTER:
+			if(bookingOperate == 0)//还没有操作
+			{
+				doBooking();//调用bookingRemind.html的函数
+			}
+			break;
+		case top.VK_EXIT://exit
+			if(bookingOperate == 0)//还没有操作
+			{
+				cancelBooking();//调用bookingRemind.html的函数
+			}
+			break;
+		default:
+			break;
+	}
+}
+function $(id)
+{
+    return document.getElementById(id);
+}
+function displayFocusBox(flag){}
+function countDown()//剩余时间递减
+{
+	restTime--;
+	if(restTime <= 0)
+	{
+		doBooking();
+	}
+	else
+	{
+		$("timer").innerHTML = restTime + sec;
+	}
+}
+
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;//alert("msg = " + msg)
+	if(msg==top.E_APP_CLOSE)
+	{
+		if(bookingOperate == 1)
+		{
+			startBooking();
+		}
+		top.systemEventProc(evt);
+	}
+	if(bookingOperate == 1)//此种情况表示当前正切台，!isCurrentChannelFlag
+	{
+		if(msg == top.E_CHANNEL_PLAY_END)//切台成功
+		{
+			top.Log("in booking notify E_CHANNEL_PLAY_END come on top.bookingMode = " + top.bookingMode);
+			top.channelLock = 0;
+			top.parentalLock = 0;
+			top.inputLock = 0;
+			
+			if(top.bookingMode == 1)//record
+			{
+				setTimeout("jumpToPvrRecording()",3000);
+			}
+			else if(top.bookingMode == 2)//reminder
+			{
+				top.$('main').src = "channelPlay.html";
+				top.$('otherPage').src = "";
+				top.main.focus();
+				top.setFrameFocusPage("main");
+				top.pvrBookingDuration=0;
+			}
+		}
+	}
+	else
+	{
+		if(top.g_temp == "media" || top.g_temp == "pvr" || top.g_temp == "homepage")
+		{
+			top.$("main").contentWindow.notifyProcess(evt);
+		}
+		else
+		{
+			//全局消息
+			switch(msg)
+			{
+				case top.E_PVR_DISK_UNPLUG://usb remove//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_PVR_DISK_FULL://no free space
+				case top.E_PVR_TIMESHIFT_AUTO_START://pvr录制满时，如果当前timeshift是暂停的会自动播放
+				case top.E_READY_TO_CHANGE_SCART://ready to change to cart source
+				case top.E_READY_TO_CHANGE_CEC://ready to change to cec source
+				case top.E_DTV_SERVICE_PLAY://播放流数据更新,//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_SS_INVALID_SERVICE://invalid service//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_SS_SCRAMBLED_PROGRAM:// screamble//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_SS_DATA_ONLY://data only//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_SS_CH_BLOCK://channel lock//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_SS_PARENTAL_BLOCK://有节目锁//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_DTV_SS_INPUT_BLOCK://信源锁//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+				case top.E_SIGNAL_UNLOCK://unlock
+				case top.E_PVR_NO_SIGNAL:
+				case top.E_CHANNEL_PLAY_END://add chenhua 2014.5.14 for pvr and timeshift
+					if(msg == top.E_DTV_SS_INPUT_BLOCK)
+					{
+						top.inputLock = 1;
+					}
+					else if(msg == top.E_SS_PARENTAL_BLOCK)
+					{
+						top.parentalLock = 1;
+					}
+					else if(msg == top.E_SS_CH_BLOCK)
+					{
+						top.channelLock = 1;
+					}
+					if(top.recordStatusFlag == 1 || top.timeShiftStatusFlag == 1)
+					{
+						//这些都是要跳转页面的消息
+						top.$('otherPage').src = "";
+						top.main.focus();
+						top.setFrameFocusPage("main");
+						top.systemEventProc(evt);
+					}
+					break;
+				case top.E_MEDIA_USB_INSERTED://usb insert
+				return;
+				case top.E_DLNA_DMR_PUSH_MOVIE://dmr push player
+				case top.E_DLNA_DMR_PUSH_MUSIC://dmr push player
+				case top.E_DLNA_DMR_PUSH_PICTURE://dmr push player
+				case top.E_CIPLUS_PROGRAM_CHANGE://ci 主动换台发出换台刷新节目信息
+				case top.E_POWER_OFF_TIMER://power off timer
+				case top.E_BOOKING_PLAY_START://booking play start开机时节目预定的时间已过，但是依然要提醒用户做一些切台等操作
+				case top.E_BOOKING_RECORD_START://booking record start开机时录制预定已经过期，但是依然要提醒用户切台录制
+				case top.E_BOOKING_AHEAD_PLAY_START://booking ahead play start,正常情况下切台提醒，一分钟前提醒
+				case top.E_BOOKING_AHEAD_RECORD_START://booking ahead record start正常情况下录制提醒,，一分钟前提醒
+				case top.E_CI_DATA_READY://ci data ready
+				case top.E_CI_CAM_NAME_READY://CI_CAM_NAME_READY
+				case top.E_CI_OP_UPDATE_CHANNEL://CMD_UI_NOTIFY_OP_UPDATE_CHANNEL
+				case top.E_CI_OP_UPDATE_NIT://CMD_UI_NOTIFY_OP_UPDATE_NIT
+				case top.E_SCART_CHANGE_INPUT_SRC://scart change start:CMD_UI_NOTIFY_SCART_CHANGE_INPUT_SRC
+				case top.E_CI_MHEG_OPEN://MMH打开，需要进入channel_play页面并
+				case top.E_CI_EXIT_CI:
+				case top.E_DTV_NIT_VERSION_CHANGED://nit refresh notify
+				case top.E_CEC_COMMON://cec 切换，需要显示info信息
+				/*--------工厂相关--------*/
+				case top.E_FACTORY_OSD_SHOW:
+				case top.E_FACTORY_OSD_HIDE:
+				case top.E_FACTORY_INFORMATION_SHOW:
+				case top.E_FACTORY_INFORMATION_HIDE:
+				case top.E_FACTORY_WARMUP_ON:
+				case top.E_FACTORY_WARMUP_OFF:
+				case top.E_FACTORY_SOURCE_CHANGE:
+				case top.E_FACTORY_PORTAL_CHECK:
+				case top.E_FACTORY_PCLINK_CHECK:
+				case top.E_FACTORY_COLOR_TEMP_SHOW:
+				case top.E_FACTORY_USB_TO_NVM:
+				case top.E_FACTORY_IR_SHOP_RESET:
+				case top.E_FACTORY_IR_NVM_RESET:
+				case top.E_FAC_SOUND_TEST:
+				case top.E_FACTORY_ENTER_MEDIA:
+				case top.E_FACTORY_WIFI_ON:
+				case top.E_FACTORY_CMD_SHOP_INIT:
+				/*---------工厂相关-------*/
+				case top.E_UPDATE_DOWNLOAD_COMPLETE:
+				case top.E_DOWNLOADING_NETWORK_ABNORMAL:
+				case top.E_UPDATE_CHANNEL_GET_UPDATED_INFORMATION:
+				case top.E_SHOW_PANEL_TEST_PICTURE:
+				case top.E_APP_OPEN:
+				case top.E_APP_CLOSE:
+					//这些都是要跳转页面的消息
+					top.$('otherPage').src = "";
+					top.main.focus();
+					top.setFrameFocusPage("main");
+					top.systemEventProc(evt);
+					break;
+				default:
+					top.systemEventProc(evt);
+					break;
+			}
+		}
+	}
+	
+}
+
+function jumpToPvrRecording()
+{
+	if(top.g_factory.pvrOpenStatus != 1)
+	{
+		top.g_remindWord = "notAvailable";
+		top.$("main").src = "intermediate.html";
+		top.$("main").style.display = "block";
+		top.$("operatePage").src = "";
+		top.$('otherPage').src = "";
+		top.main.focus();
+		top.setFrameFocusPage("main");
+	}
+	else
+	{
+		top.pvrTotalTime = top.pvrBookingDuration;
+		top.$('main').src = "pvr/Pvr.html?menu";
+		top.$("main").style.display = "block";
+		top.$("operatePage").src = "";
+		top.$('otherPage').src = "";
+		top.main.focus();
+		top.setFrameFocusPage("main");
+	}
+	
+}
+
+function doBooking()//执行booking
+{
+	//进入录制之前，如果hbbtv是开着的需要关掉.
+	if(channel.checkhbbtvStatus() >= 1)
+	{
+		setting.hbbTVSwitchState = 0;
+	}
+	bookingOperate = 1;
+	clearInterval(timer);
+	if(top.appOpenFlag == 1)
+	{
+		//add chenhua for opera app,进入录制前，需要关闭opera 相关应用。
+		top.g_ulits.closeOperaApplication();
+	}
+	else
+	{
+		startBooking();
+	}
+	
+}
+function startBooking()
+{
+	top.Log("in doBooking top.g_temp = " +　top.g_temp + ",top.recordStatusFlag = " + top.recordStatusFlag + ",top.timeShiftStatusFlag  = " + top.timeShiftStatusFlag + ",isCurrentChannelFlag = " + isCurrentChannelFlag);
+	
+	
+	
+			
+	
+	
+	//如果pvr或timeshift正在运行，则需要关闭
+	if(top.recordStatusFlag == 1)
+	{
+		top.recordStatusFlag =0;
+		top.g_pvr.recordStop();
+		top.g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+		top.$("globleShow").contentWindow.hiddenRecord();
+		top.pvrCurrentTime=0;
+		top.pvrTotalTime=2*60*60;
+	}
+	else if(top.timeShiftStatusFlag == 1)
+	{
+		top.g_pvr.timeshiftStop();
+		top.g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+		top.timeShiftStatusFlag = 0;
+		top.$("globleShow").contentWindow.hiddenTimeShift();
+		if(isCurrentChannelFlag)//如果当前播放的频道不是booking需要跳转到的频道后面会做切台，不需要做下面的操作，如果做了会导致后面的切台不成功
+		{
+			top.g_pvr.returnToLive();//返回实时播放页面,相当于切台。
+		}
+	}
+	
+	/*--需要注意在多媒体和pvr下需要在做booking前把pvr或多媒体停止掉-----*/
+	if(top.g_temp == "media" ||  top.g_temp == "pvr"/* || top.g_temp == "homepage"*/)
+	{//top.Log("in booking media contentWindow=" + top.$("main").contentWindow + ",Window = " + parent.frames["main"].window);
+		parent.frames["main"].window.bookingPreOperate();//top.$("main").contentWindow.bookingPreOperate();//需要注意的是这个函数的名字不能改变。
+	}
+	//top.Log("in booking bookingPreOperate end 3");
+	if(!isCurrentChannelFlag)//如果当前播放的频道不是booking需要跳转到的频道
+	{
+		channel.playVideo(1/*inputSource==dtv*/,tunerMode,chanenlIndex);
+		/*----等待频道切换完成的消息，然后再根据情况确定是否需要进入pvr页面去----*/
+	}
+	else
+	{
+		if(top.bookingMode == 1)//record
+		{
+			if(top.timeShiftStatusFlag == 1)//切台需要等待
+			{
+				setTimeout("jumpToPvrRecording()",3000);
+			}
+			else
+			{
+				jumpToPvrRecording();
+			}
+		}
+		else if(top.bookingMode == 2)//reminder
+		{
+			top.$('main').src = "channelPlay.html";
+			top.$('otherPage').src = "";
+			top.main.focus();
+			top.setFrameFocusPage("main");
+			top.pvrBookingDuration=0;
+		}
+	}
+}
+function cancelBooking()//取消booking
+{
+	bookingOperate = 2;
+	top.$('otherPage').src = "";
+	
+	//add chenhua for opera app such an YouTuBe is open
+	if(top.appOpenFlag > 0)
+	{
+		top.keySetForUI(0);
+		top.$('otherPage').style.display = "none";
+		top.$('main').style.display = "none";
+	}
+	
+	if(top.g_temp == "media" || top.g_temp == "pvr" || top.g_temp == "homepage")//在pvr和多媒体下执行预订倒计时只推出booking，不退出pvr或多媒体
+	{
+		//do nothing
+	}
+	else
+	{
+		top.$('main').src = "channelPlay.html";
+	}
+	top.main.focus();
+	top.setFrameFocusPage("main");
+}
+
+/*
+描述：获取booking消息带有的channelIndex,tunerMode的值
+参数：
+返回值：
+全局变量：window.location.search:url带有的参数;channelIndex;tunerMode;
+*/
+function getChannelNumAndServiceType()
+{
+	//将消息中带的参数切分
+	var str = window.location.search;
+	var value = str.substring(str.indexOf("?") + 1);
+	var notifyValue = 0;
+	if(value != "")
+	{
+		notifyValue = parseInt(value,10);
+	}
+	chanenlIndex =  notifyValue>>16;
+	top.currentChannelIndex = chanenlIndex;
+	var schId = (notifyValue<<16)>>24;
+	top.pvrBookingDuration= channel.getBookingDuration(schId);
+	var temp = 7;
+	tunerMode = notifyValue&temp;
+	top.Log("booking notify value = " + str + ",schId = "+schId + ",pvrBookingDuration = "+top.pvrBookingDuration + " current channelindex = " + chanenlIndex + ",nowIndex = " +  channel.currentIndex);
+}
+
+function init()
+{
+	top.stopTimeout();
+	$("ok").innerHTML = ok_cancel[0];
+	$("cancel").innerHTML = ok_cancel[1];
+	
+	getChannelNumAndServiceType();
+	
+	
+	isCurrentChannelFlag = channel.isCurrentChannel(1/*inputSource==dtv*/,tunerMode,chanenlIndex);
+	
+	//top.Log("in bookingRemind.html init before isCurrentChannelFlag tunerMode = " + tunerMode + ",chanenlIndex = " + chanenlIndex + ",isCurrentChannelFlag = " + isCurrentChannelFlag);
+	if(top.bookingMode == 1)//record
+	{
+		if(isCurrentChannelFlag)//要提醒的台就是当前的台
+		{
+			$("remind").innerHTML = currentRecord;
+		}
+		else//非当前播放台
+		{
+			$("remind").innerHTML = otherRecord.replace(/XXXX/,channel.getBookingChannelName(chanenlIndex,tunerMode));
+		}
+	}
+	else if(top.bookingMode == 2)//reminder
+	{
+		if(isCurrentChannelFlag)//要提醒的台就是当前的台
+		{
+			$("remind").innerHTML = currentReminder;
+		}
+		else//非当前播放台
+		{
+			$("remind").innerHTML = otherReminder.replace(/XXXX/,channel.getBookingChannelName(chanenlIndex,tunerMode));
+		}
+	}
+	
+	restTime = channel.getBookingRestTime();//
+	$("timer").innerHTML = restTime + sec;
+	timer = setInterval("countDown()",1000);
+	addMouseListener();
+}
+function uninit()
+{
+	//top.Log("uninit top.bookingMode = " + top.bookingMode + ",bookingOperate = " + bookingOperate);
+	if(top.bookingMode == 1)//record
+	{
+		if(bookingOperate == 1)//跳转到录制页面中(或是切台完成跳转到录制页面中）
+		{
+			//top.bookingMode 不做变化
+			//do nothing
+		}
+		else
+		{
+			top.bookingMode = 0;// 提醒结束，提醒标志初始化
+			channel.bookingRecordStart(0);//提醒底层录制开始状态，0表示无法或取消录制或是取消reminder，1表示开始录制或开始reminder。底层会根据预约是否是once模式判断是否要删除预约记录
+		}
+	}
+	else if(top.bookingMode == 2)//reminder
+	{
+		top.bookingMode = 0;// 提醒结束，提醒标志初始化
+		if(bookingOperate == 1)
+		{
+			channel.bookingRecordStart(1);//提醒底层录制开始状态，0表示无法或取消录制或是取消reminder，1表示开始录制或开始reminder。底层会根据预约是否是once模式判断是否要删除预约记录
+		}
+		else
+		{
+			channel.bookingRecordStart(0);//提醒底层录制开始状态，0表示无法或取消录制或是取消reminder，1表示开始录制或开始reminder。底层会根据预约是否是once模式判断是否要删除预约记录
+		}
+	}
+	top.timeoutFuc.timeoutEnable=1;
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+	}
+	
+	$("okImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(bookingOperate == 0)//还没有操作
+			{
+				doBooking();//调用bookingRemind.html的函数
+			}
+		}
+	}
+	$("cancelImg").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(bookingOperate == 0)//还没有操作
+			{
+				cancelBooking();
+			}
+		}
+	}
+}
+</script>
+</head>
+<body onLoad="init()" onUnload="uninit()">
+	<div id="form">
+    	<span id="timer"></span>
+        <span id="remind"></span>
+        <img id="okImg" class="img" src="images/icon-Ok.png" style="left:50px;">
+        <span id="ok" class="keyWords" style=" left:140px;"></span>
+        
+        <img id="cancelImg" class="img" src="images/icon-Exit.png" style="left:570px;">
+        <span id="cancel" class="keyWords" style="left:660px;"></span>
+    </div>
+</body>
+</html>

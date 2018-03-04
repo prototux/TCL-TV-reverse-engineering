@@ -1,0 +1,213 @@
+<html>
+<head>
+
+<script type="text/javascript" src="serviceMenu.js"></script>
+<script type="text/javascript" src="normalNotifyRecv.js"></script>
+<style type="text/css">
+body
+{
+	background:transparent;
+}
+#menu
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:451px;
+	width:400px;
+	background-color:#FFF;
+}
+#title
+{
+	position:absolute;
+	left:0px;
+	width:398px;
+	height:25px;
+	border:thin solid #999;
+	text-align:center;
+	font-size:20px;
+	padding-top:5px;
+	color:#000;
+	font-weight:bold;
+	background-color:#0FF;
+}
+.item
+{
+	position:absolute;
+	left:0px;
+	width:398px;
+	height:25px;
+	border:thin solid #999;
+	text-align:left;
+	font-size:20px;
+	padding-top:5px;
+	color:#000;
+	font-weight:bold;
+}
+.flag
+{
+	position:absolute;
+	left:0px;
+	width:398px;
+	height:25px;
+	text-align:right;
+	font-size:20px;
+	padding-top:5px;
+	color:#000;
+	font-weight:bold;
+
+}
+#errorCode
+{
+	position:absolute;
+	width:500px;
+	height:500px;
+	left:500px;
+	top:50px;
+	background:#CCC;
+	display:none;
+}
+.codeText
+{
+	position:absolute;
+	width:250px;
+	left:125px;
+	height:40px;
+	background:#3CF;
+	border-style:ridge;
+	border:double solid;
+	border-top-color:#FFF;
+	border-left-color:#FFF;
+	border-right-color:#999;
+	border-bottom-color:#999;
+	text-align:left;
+	font-size:20px;
+	font-weight:bold;
+	padding-top:20px;
+}
+.errorValue
+{
+	position:absolute;
+	width:200px;
+	height:40px;
+	top:0px;
+	right:0px;
+	text-align:right;
+	font-size:20px;
+	font-weight:bold;
+	padding-top:20px;
+}
+#projectIdRemind
+{
+	position:absolute;
+	width:398px;
+	height:100px;
+	left:0px;
+	top:250px;
+	background:#F99;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+	display:none;
+}
+#usbUpdateRemind
+{
+	position:absolute;
+	width:240px;
+	height:150px;
+	left:30px;
+	top:200px;
+	background:#F99;
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	display:none;
+}
+.bar
+{
+	position:absolute;
+	width:50px;
+	height:25px;
+	top:100px;
+	padding-top:5px;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+}
+</style>
+</head>
+
+<body onLoad="init()" onUnload="uninit()">
+    <div id="menu">
+    	<div id="title"></div>
+        
+        <div class="item" style="top:30px;"></div>
+        <span class="flag" style="top:30px;"></span>
+        
+        <div class="item" style="top:60px;"></div>
+        <span class="flag" style="top:60px;"></span>
+        
+        <div class="item" style="top:90px;"></div>
+        <span class="flag" style="top:90px;"></span>
+        
+        <div class="item" style="top:120px;"></div>
+        <span class="flag" style="top:120px;"></span>
+        
+        <div class="item" style="top:150px;"></div>
+        <span class="flag" style="top:150px;"></span>
+        
+        <div class="item" style="top:180px;"></div>
+        <span class="flag" style="top:180px;"></span>
+        
+        <div class="item" style="top:210px;"></div>
+        <span class="flag" style="top:210px;"></span>
+        
+        <div class="item" style="top:240px;"></div>
+        <span class="flag" style="top:240px;"></span>
+        
+        <div class="item" style="top:270px;"></div>
+        <span class="flag" style="top:270px;"></span>
+        
+        <div class="item" style="top:300px;"></div>
+        <span class="flag" style="top:300px;"></span>
+        
+        <div class="item" style="top:330px;"></div>
+        <span class="flag" style="top:330px;"></span>
+        
+        <div class="item" style="top:360px;"></div>
+        <span class="flag" style="top:360px;"></span>
+        
+        <div class="item" style="top:390px;"></div>
+        <span class="flag" style="top:390px;"></span>
+        
+        <div class="item" style="top:420px;"></div>
+        <span class="flag" style="top:420px;"></span>
+        
+      <div id="projectIdRemind"></div>
+      <div id="usbUpdateRemind">
+          <br><br><span id="usbRemind"></span><br><br>
+          <div id="yes" class="bar" style="left:40px;"></div>
+          <div id="no" class="bar" style="right:40px;"></div>
+        </div>
+    </div>
+    
+    <div id="errorCode">
+    	<div class="codeText" style="top:60px;">CODE:
+        	<span class="errorValue">96</span>
+        </div>
+        <div class="codeText" style="top:140px;">CODE:
+        	<span class="errorValue">0</span>
+        </div>
+        <div class="codeText" style="top:220px;">CODE:
+        	<span class="errorValue">2</span>
+        </div>
+        <div class="codeText" style="top:300px;">CODE:
+        	<span class="errorValue">146</span>
+        </div>
+        <div class="codeText" style="top:380px;">CODE:
+        	<span class="errorValue">24</span>
+        </div>
+    </div>
+    
+</body>
+</html>

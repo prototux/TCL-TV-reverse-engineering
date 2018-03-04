@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="all.css">
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+</style>
+<script type="text/javascript">
+var mode_option                  = top.souOptions[7];
+var other_timer                  = 0;
+var positionH                    = 0;
+var firstAudioLanguage           = 0;
+var now_language                 = 0;
+var page                         = 0;
+var setting                      = top.g_setting;
+var presetFocusWidth             = 200;
+var language_index 			     = [6,9,5,7,12,0,10,2,13,14,
+								15,16,17,19,25,20,21,22,23,35,
+								8,24,18,33,279,36,468];
+function fixfirstAudioLanguageFocus()
+{
+    for (var i=0; i<language_index.length; i++)
+    {
+        if (language_index[i] == firstAudioLanguage)
+        {
+            now_language = i;
+            break;
+        }
+    }
+	page = parseInt(now_language/5);
+	positionH = now_language%5;
+}
+function init()
+{
+	setting.contextOf5in1 = top.CONTEXT_MENU_SELECT;
+	firstAudioLanguage = setting.firstAudioLanguage;
+	fixfirstAudioLanguageFocus();
+	$("preSetOption").innerHTML=mode_option[0];
+	var spans=$("preSetBar").getElementsByTagName("span");//picPreset[pictureMode];
+	for(var i=0;i<5;i++)
+	{
+		if(page==5&&i>1)
+		{
+			break;
+		}
+		spans[i+1].innerHTML=top.all_language[language_index[page*5+i]];
+	}
+	$("preSetSelectFocus").style.left=300+positionH*presetFocusWidth+"px";
+	other_timer = setTimeout("hiddenOther()",5000);
+}
+function showAudioLanguage()
+{
+	var spans=$("preSetBar").getElementsByTagName("span");//picPreset[pictureMode];
+	for(var i=0;i<5;i++)
+	{
+		if(page==5&&i>1)
+		{
+			spans[i+1].style.display="none";
+		}
+		else
+		{
+			spans[i+1].innerHTML=top.all_language[language_index[page*5+i]];
+			spans[i+1].style.display="block";
+		}
+	}
+}
+function hiddenOther()
+{
+	clearTimeout(other_timer);
+	window.location.href = "channelPlay.html";
+}
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+function displayFocusBox(flag){}
+document.onkeydown = keyproc;
+
+function keyproc(evt)
+{
+	top.g_previousHtmlPage = "channelPlay.html";
+    var keycode = evt.which;
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+		case top.VK_3D://3d
+		case top.VK_TV://tv
+		case top.VK_SOURCE://source
+		case top.VK_ECO://eco
+        case top.VK_SOURCE_CMP1:
+        case top.VK_SOURCE_VGA:
+        case top.VK_SOURCE_AV1:
+        case top.VK_SOURCE_HDMI1:
+        case top.VK_SOURCE_HDMI2:
+        case top.VK_SOURCE_HDMI3:
+        case top.VK_SOURCE_HDMI4:
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_VOLUME_UP://volume up
+		case top.VK_VOLUME_DOWN://volume down
+			window.location.href = "channelPlay.html";
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_MUTE://mute
+		case top.VK_INFO://info
+		case top.VK_CHANNEL_UP://channel up
+		case top.VK_CHANNEL_DOWN://channel down
+		case top.VK_OPTION://option
+		case top.VK_SMARTTV://smart tv
+		case top.VK_YOUTUBE://youtube
+		case top.VK_GUIDE://guide
+		case 36://home
+		case top.VK_PRE_CH://pre-ch
+		case top.VK_FAV://fav
+		case top.VK_LIST://list
+		case top.VK_ZOOM_DOWN://zoom-
+		case top.VK_ZOOM_UP://zoom+
+			top.keyDownProcess(evt);
+			return;
+		case top.VK_LANG://language
+		case top.VK_SUBTITLE://subtitle
+		case top.VK_TELETEXT://text
+		case top.VK_RECORD://record
+		case top.VK_PLAY_PAUSE://pause/play timeshift
+		case top.VK_PAUSE:
+		case top.VK_PLAY:
+			top.specialKeyDownProcess(evt);
+			return;
+		case top.VK_SLEEP://sleep
+			return;
+	    case top.VK_ENTER:
+		{
+			//OK 键
+			toOK();
+			ret = false;
+			break;
+		}
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;  
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_BACK: //back
+		case top.VK_MENU://menu
+		case top.VK_EXIT://exit
+			window.location.href = "channelPlay.html";
+			break;
+		default:
+			break;
+	}
+}
+document.onnotify = notifyProcess;
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	//全局消息
+	switch(msg)
+	{
+		case top.E_DLNA_DMR_PUSH_MOVIE:
+		case top.E_DLNA_DMR_PUSH_MUSIC:
+		case top.E_DLNA_DMR_PUSH_PICTURE:
+			top.systemEventProc(evt);
+			break;
+		case top.E_DTV_SERVICE_PLAY://播放流数据更新
+			top.g_isShowInfoBar = 1;
+			window.location.href = "channelPlay.html";
+			break;
+		default:
+			top.systemEventProc(evt);
+			break;
+	}
+}
+function toLeft()
+{
+	positionH--;
+	if(positionH<0)
+	{
+		page--;
+		if(page<0)
+		{
+			page=5;
+			positionH=1;
+		}
+		else
+		{
+			positionH=4;
+		}
+	}
+	showAudioLanguage();
+	$("preSetSelectFocus").style.left=300+positionH*presetFocusWidth+"px";
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",5000);
+}
+function toRight()
+{
+	positionH++;
+	if(page==5)
+	{
+		if(positionH>1)
+		{
+			page=0;
+			positionH=0;
+		}
+	}
+	else
+	{
+		if(positionH>4)
+		{
+			page++;
+			positionH=0;
+		}
+	}
+	showAudioLanguage();
+	$("preSetSelectFocus").style.left=300+positionH*presetFocusWidth+"px";
+	clearTimeout(other_timer);
+	other_timer = setTimeout("hiddenOther()",5000);
+}
+function toOK()
+{
+	setting.firstAudioLanguage=language_index[page*5+positionH];
+}
+</script>
+
+</head>
+
+<body onload="init()">
+	 <!----------------------重置选择列表--------------------------->
+   <div style="position:absolute; width:1920px; height:200px; top:500px; text-align:center;">
+       <div id="preSetBar" style="display:block; width:1300px">
+            <span id="preSetOption" ></span>
+            <span class="preSetValue" style="width:200px;left:300px;">Off</span>
+            <span class="preSetValue" style="width:200px;left:500px;">2D-to-3D</span>
+            <span class="preSetValue" style="width:200px;left:700px;">Side-by-side</span>
+            <span class="preSetValue" style="width:200px;left:900px;">Top-and-Bottom</span>
+            <span class="preSetValue" style="width:200px;left:1100px;">Sensio</span>
+            <img id="preSetSelectFocus" src="images/Focus_Frame/Focus2.png" style="width:200px"/>
+       </div>
+   </div>
+</body>
+</html>

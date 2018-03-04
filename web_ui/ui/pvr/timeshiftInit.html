@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="pvr.css" rel="stylesheet" />
+<script type="text/javascript" src="timeshiftInit.js"></script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#initTitle/*初始化对话框上面的标题样式*/
+{
+	position:absolute;
+	left:50px;
+	top:10px;
+	height:50px;
+	line-height:50px;
+	color:#fff;
+	font-size:40px;
+	font-weight:900;
+	background:#000;
+	border-radius:10px;
+}
+#remind
+{
+	position:absolute;
+	height:410px;
+	width:830px;
+	top:334px; 
+	left:544px; 
+	background:url(../images/Bg-Pop_up_box-04.png);
+}
+
+#remindWord
+{
+	position:absolute;
+	width:710px;
+	top:125px;
+	color:#b0b0b0; 
+	font-size:28px;
+	left:60px; 
+	text-align:left;
+	line-height:48px;
+}
+#remindName
+{
+	position:absolute;
+	width:710px;
+	top:30px;
+	color:#b0b0b0; 
+	font-size:32px;
+	left:60px; 
+	text-align:left;
+}
+#ok
+{
+	position:absolute;
+	top:400px;
+	left:440px;
+	width:120px;
+	height:40px;
+	line-height:40px;
+	font-size:30px;
+	color:#fff;
+	font-weight:bold;
+	border:medium solid #00aadd;
+	border-radius:8px;
+	text-align:center;
+}
+/*页面左下角显示的热键样式*/
+.hotkey
+{
+	position:absolute;
+	height:50px;
+	bottom:10px;
+}
+.hotkey img/*热键图片样式*/
+{
+	position:absolute;
+	width:80px;
+	height:30px;
+	margin:10px 0px 10px 0px;
+}
+.hotkey span/*热键文字样式*/
+{
+	position:absolute;
+	left:90px;
+	height:50px;
+	line-height:50px;
+	font-size:30px;
+	font-weight:bold;
+	color:#fff;
+}
+#initListUpImg
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	margin:10px 180px 10px 180px;
+	opacity:0;
+}
+#initListDownImg
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	margin:10px 180px 10px 180px;
+	opacity:0;
+}
+#initDialog
+{
+	display:none;
+}
+#selectContainer
+{
+	position:absolute;
+	top:160px;
+	left:300px; 
+	display:none;
+}
+</style>
+</head>
+
+<body onload="init()" onunload="uninit()">
+    <div id="initDialog">
+        <span id="initTitle"></span>
+        <hr style=" position:absolute;left:50px; width:900px; top:65px;" />
+        <hr style=" position:absolute;left:50px; width:900px; bottom:65px;" />
+        
+        <span id="remind1" class="initReminds" style="top:100px;"></span>
+        <span id="remind2" class="initReminds" style="top:270px; text-align:center;"></span>
+        
+        <div id="selectContainer">
+            <img id="initListUpImg" src="../images/Icon-T.png"/>
+            <ul class="initSlects">
+              <div id="listFormFocus" style="position:absolute; height:50px; top:0px;">
+                <img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+                <img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+              </div>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG" />
+                <span ></span>
+              </li>
+              <li>
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+              <li >
+                <img src="../images/option/Radio_2.PNG"/>
+                <span></span>
+              </li>
+            </ul>
+            <img id="initListDownImg" src="../images/Icon-B.png"/>
+        </div>
+        
+        <div id="progressForm" style="top:230px;width:800px; display:none;" >
+            <div id="progressBar">
+                <img class="progressBarLeft" src="../images/JSlider2_2.png" /><img class="progressBarRight" src="../images/JSlider2_3.png"  style="width:700px;"/>
+            </div>
+            <span id="progressValue"></span>
+        </div>
+        
+        <span id="ok" style="display:block"></span>
+        
+        <div id="back" class="hotkey" style="left:50px;" >
+            <img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:440px;" >
+            <img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:800px;" >
+            <img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+    </div>
+    
+     <!------------------------------操作提醒---------------------------------------- -->
+   <div id="remind" style="display:none;">
+   		<span id="remindName"></span>
+        <span id="remindWord"></span>
+   </div>
+</body>
+</html>

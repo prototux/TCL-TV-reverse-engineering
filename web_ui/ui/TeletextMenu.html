@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- *****************************************************************************
+*Description: teletext menu
+*Author:    sunjianping
+*Date:  2013.4.25
+*Others:
+*****************************************************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Page-Enter" content="revealTrans(Duration=2.0,Transition=10)" />
+
+<script type="text/javascript" src="teletextmenu.js"></script>
+<style type="text/css">
+body
+{
+    margin: 0px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+#menu
+{
+	position: absolute;
+	left: 0px;
+	width: 420px;
+	height: 1080px;
+	overflow: hidden;
+	z-index:55;
+	filter:alpha(opacity=50);
+	opacity:0.92;
+	background:#000000;
+	border:4px solid #1b1b1b;
+	display:none;
+}
+
+#file_list_table
+{
+	position: absolute;
+	left: 0px;
+	top: 100px;
+	color: #fff;
+	font-size: 24px;
+}
+
+
+#file_list_table ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+#file_list_table li
+{
+	position: relative;
+}
+.file_info
+{
+    width:400px;
+    height: 80px;
+}
+.file_name
+{
+	position: absolute;
+	left: 15px;
+	top: 20px;
+	width:200px;
+	height:40px;
+	line-height:40px;
+	white-space:nowrap;
+
+}
+.file_picture1
+{
+	position: absolute;
+	left:350px;
+	top: 25px;
+	width:30px;
+	height:30px;
+}
+.file_picture2
+{
+	position: absolute;
+	left:370px;
+	top: 25px;
+	width:30px;
+	height:30px;
+}
+.file_type
+{
+	position: absolute;
+	left: 200px;
+	top: 20px;
+	width:150px;
+	height:40px;
+	text-align:right;
+	line-height:40px;
+	white-space:nowrap;
+}
+#focus
+{
+	position: absolute;
+	left: 3px;
+	top: 110px;
+	background:url(images/Focus-04.png);
+	background-size: 100% 100%;
+	width: 420px;
+	height: 70px;
+	display: none;
+	z-index:150;
+	pointer-events:none;
+}
+.top_help
+{
+	 position:absolute;
+	 color:#b0b0b0;
+	 font-weight: bold;
+	 left:20px;
+	 width:90%;
+	 font-size: 28px;
+	 top:40px;
+	 border-bottom:2px solid #b0b0b0;
+	 text-align:left;
+}
+</style>
+</head>
+<body onLoad="init()" onunload="uninit()">
+<div id="menu">
+    <div id="file_list_table">
+        <ul>
+            <li>
+                <div class="file_info">
+                   <div class="file_name"></div>
+                   <div class="file_type"></div>
+                   <img  class="file_picture1" src="images/Icon-L-device.png" />
+                   <img  class="file_picture2" src="images/Icon-R-device.png" />
+                </div>
+            </li>
+            <li>
+                <div class="file_info">
+                   <div class="file_name" style="width:240px;"></div>
+                   <div class="file_type" style="width:100px; left:250px;"></div>
+                   <img  class="file_picture1" src="images/arrow/focus_L-Focus.png"  />
+                   <img  class="file_picture2" src="images/arrow/focus_R-Focus.png" />
+                </div>
+            </li>
+            <li>
+                <div class="file_info">
+                   <div class="file_name"></div>
+                   <div class="file_type"></div>
+                   <img  class="file_picture1" src="images/arrow/focus_L-Focus.png"  />
+                   <img  class="file_picture2" src="images/arrow/focus_R-Focus.png" />
+                </div>
+            </li>
+             <li>
+                <div class="file_info">
+                   <div class="file_name" style="width:250px;"></div>
+                   <div class="file_type"></div>
+                </div>
+            </li>
+            <li>
+                <div class="file_info">
+                   <div class="file_name"></div>
+                   <div class="file_type"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="focus"></div>
+</body>
+</html>

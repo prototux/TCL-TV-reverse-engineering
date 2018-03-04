@@ -1,0 +1,5246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+body
+{
+    margin: 0;
+    /*background: rgba(0,0,0,0.9);*/
+    background-size: 1920px 1080px;
+
+    font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+}
+  
+#main
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+	z-index:0;
+}
+
+#globleShow
+{
+    position: absolute;
+	left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+	z-index:1000;
+}
+#virtualRemote
+{
+    position: absolute;
+	left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    display:none;
+	z-index:-1000;
+}
+#otherPage
+{
+	 position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+	z-index:2;
+}
+#operatePage
+{
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+	z-index:1;
+}
+#frontPanel
+{
+	position:absolute;
+	bottom:30px;
+	left:50px;
+	width:600px;
+	height:70px;
+	line-height:70px;
+	border:solid 4px #1b1b1b;
+	font-size:32px;
+	color:#fff;
+	background: #000000;
+	text-align:center;
+	pointer-events:none;
+	z-index:1000;
+	display:none;
+}
+#backgroundDownloadContainer{
+	bottom:10px;
+	right:10px;
+	pointer-events:none;
+	z-index:1000;
+}
+#downloadProgressValue{
+	top:0px;
+	left:0px;
+	line-height:160px;
+	text-align:center;
+	font-size:25px;
+	font-weight:bold;
+	color:#fff;
+}
+#bgDownloadTitle{
+    top:0px;
+    left:0px;
+    line-height:160px;
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+    color:#fff;
+}
+.backgroundDownload{
+	position:absolute;
+	width:160px;
+	height:160px;
+}
+#factoryHotkeyForm
+{
+	position: absolute;
+    left: 50px;
+    bottom: 50px;
+    width: 400px;
+    height: 220px;
+	background:#000;
+	opacity:0.7;
+	border-radius:10;
+	pointer-events:none;
+	z-index:1000;
+	display:none;
+}
+.atrrH
+{
+	position: absolute;
+	left:5px;
+	font-size:20px;
+	font-weight:bold;
+	color:#F00;
+}
+.atrrL
+{
+	position: absolute;
+	left:5px;
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+}
+.atrrR
+{
+	position: absolute;
+	right:20px;
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+}
+#mute
+{
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    width: 90px;
+    height: 90px;
+	pointer-events:none;
+	z-index:1000;
+	display:none;
+}
+#glassRemind
+{
+	position:absolute;
+	width:700px;
+	height:200px;
+	left:610px;
+	font-size:30px;
+	line-height:60px;
+	text-align:center;
+	padding-top:40px;
+	top:390px;
+	border:4px solid #1b1b1b;
+	background:#000000;
+	opacity:0.92;
+	color:#ffffff;
+	pointer-events:none;
+	z-index:-10;
+	display:none;
+}
+#volumeOffRemind
+{
+	position:absolute;
+	width:700px;
+	height:200px;
+	left:610px;
+	font-size:30px;
+	line-height:60px;
+	text-align:center;
+	padding-top:40px;
+	top:390px;
+	border:4px solid #1b1b1b;
+	background:#000000;
+	opacity:0.92;
+	color:#ffffff;
+	pointer-events:none;
+	z-index:1000;
+	display:none;
+}
+#nScreenPhoneConnectToTvRemind
+{
+	position: absolute;
+    left: 660px;
+    top: 440px;
+    width: 600px;
+    height: 200px;
+	line-height:200px;
+    background: rgba(0,0,0,1);
+    border:solid 4px #1b1b1b;
+    color:#fff;
+    font-size:28px;
+    font-weight:bold;
+    text-align: center;
+	pointer-events:none;
+	z-index:1000;
+	display:none;
+}
+#nScreenPhoneConnectToTvRemind span
+{
+	position:absolute;
+	top:70px;
+	height:40px;
+	width:100%;
+	line-height:40px;
+	text-align:center;
+	
+}
+</style>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript" src="keyboard.js"></script>
+<script>
+/**********系统相关变量 start*********************/
+var g_setting 				= tv.setting;
+var g_channel 				= tv.channel;
+var g_factory 				= tv.factory;
+var g_media 				= tv.media;
+var g_pvr 					= tv.pvr;
+var pvr                     = g_pvr;
+var g_ulits                 = tv.utils;
+var currentPanel            = g_setting.is3DPanel;
+var bluetooth 			    = tv.bluetooth;//add yums  2015-3-28
+var switchsourceflag = 0;
+var g_isUsedHotKeyToIntoPage= 0;					//是否通过快捷键进入页面，如fav,list,guide等,0 否， 1 是
+var g_isUsedNotifyIntoPage 	= 0;					//是否通过消息进入页面，如CI_NAME_READY消息等,0 否， 1 是
+var g_superPassword 		= "0423";
+
+var g_remindWord 			= "";					//notAvailable,noTeleText
+///////////////////////////////////////////////////////////快捷键使用的变量 end
+var g_lastTime 				= -1;					//关机时间倒计时,power off timer
+var g_previousHtmlPage 		= "";					//页面的前一个页面名称，比如在channel_play.html页面中按guide页面时进入guide，g_previousHtmlPage = “channel_play.html”,返回时从新返回channel_play.html页面。
+var g_nextHtmlPage 			= "";
+var g_volume_timer 			= 0;
+var g_volume_visible 		= 0;					//判断当前的声音调是否可用
+var mute_status 			= 0;
+var g_temp                  = "";
+var isFirstInitNotifyThread = 1;					//1 第一次初始化（创建）消息接收线程
+var isChangeToScartAfterInit= 0;
+var isChangeSourceJustNow 	= 0;					//是否刚刚切换完成信源1 是，0 否;用来判断分辨率是否应该显示的问题
+var menu_visible_status 	= 0;					//表示菜单显示与否，这里的菜单不仅仅指index主菜单,只要退出了channelPlay都算是进入了菜单，0 没有显示，1 显示
+var g_satellites_name		= ["Astra HD+","Sky DE","ORS","Astra 19.2E","Astra 23.5E","Astra 28.2E","Hotbird 13.0E","Atlbird 5.0W","Turksat 42.0E","Eutel W3A 7.0E","Hispasat 30.0W","Eutelsat 36.0E","Astra 4A 4.8E","Sat1","Sat2","Sat3","Sat4","Thor (1W)","Sirius (5E)","Hotbird","Astra","nc+ / nc ++ MIX","n na karte"];
+var g_operators_name		= ["Astra HD+","Sky Deutschland","ORS","AustriaSat","Others","CannalDigitaal HD","CannalDigitaal SD","TV VLAANDEREN HD","TV VLAANDEREN SD","TELESAT_Belgium","TELESAT_Luxembourg","Seznam kanalu pro Cesko","Seznam kanalu pro Slovensko","Canal Digital","nc+ / nc ++ MIX","n na karte"];
+//缩写的都不翻译
+/*
+ENG（英语）	SPA,GLG,BAQ,EUS,CAT（西班牙）	FRE（法语）	GER（德语）	ITA（意大利语）	CZE（捷克斯洛伐克语）
+SCR（克罗地亚语）	DAN（丹麦语）	HUN（匈牙利语）	DUT（荷兰语）	NOR（挪威语）	POL（波兰语）
+POR（葡萄牙语）	RUM（罗马尼亚语）	SLO（斯洛伐克语）	SLV（斯洛文尼亚语）	SCC（塞尔维亚语）	FIN（芬兰语）
+SWE（瑞典语）	TUR（土耳其）	GRE（希腊语）	BUL（保加利亚语）	RUS（俄语）	LAT（拉脱维亚语）	LIT（立陶宛语）
+EST（爱沙尼亚语）	UKR（乌克兰语）
+English,Spanish,French,German,Italian,
+Czech,Croatian,Danish,Hungarian,Dutch,
+Norwegian,Polish,Portuguese,Romanian,Slovak,
+Slovenian,Serbian,Finnish,Swedish,Turkish,
+Greek,Bulgarian,Russian,Latvian,Lithuanian,
+Estonian,Ukrainian
+*/
+var mlmLangIndex 			= [6,7,9,5,12,
+								0,10,2,13,14,
+								15,16,17,19,25,
+								20,21,22,23,35,
+								8,24,18,33,279,
+								36,468];				//按照上面的语言排序得到的多语言index
+var mlmCountryIndex 		= [25,22,8,9,12,
+								5,4,6,11,14,
+								15,16,17,18,31,
+								21,20,7,23,32,
+								10,3,19,30,58,
+								28,59];					//多语言mlmLangIndex对应的country index
+var mlmName 				= ["English","Spanish","French","German","Italian", //语言的名称，即Translate文件夹下对应的js文件的名称
+								"Czech","Croatian","Danish","Hungarian","Dutch",
+								"Norwegian","Polish","Portuguese","Romanian","Slovak",
+								"Slovenian","Serbian","Finnish","Swedish","Turkish",
+								"Greek","Bulgarian","Russian","Latvian","Lithuanian",
+								"Estonian","Ukrainian"];
+var sysMenuLang				= ["English","Español","Français","Deutsch","Italiano", 
+								"Čeština","Hrvatski","Dansk","Magyar","Nederlands",
+								"Norsk","Polski","Português","Română","Slovenčina",
+								"Slovenščina","Srpski","Suomi","Svenska","Türkçe",
+								"Ελληνικά","Български","Русский","Latviešu","Lietuvių",
+								"Eesti","Українська"];
+
+var sourceOptions			= ["TV","AV","CMP","HDMI1", "HDMI2", "HDMI3" ,"HDMI4"];
+var soundSystem 			= ["BG", "A2 B/G", "L", "L'", "I", "D/K","A2 D/K","A2 D/K1","A2 D/K2"];
+var factoryOpenPromt		= [["D","P","W","S"],
+								["NG","OK"],
+								["NG","MAC","D_ID","U_ID","NID"]];
+var netWlessAuto			= ["PIN","PBC"];
+var sdHd					= ["SD","HD"];
+var pOrI            		= ["p","i"];
+var pvrOther     			= ["CH"];
+/*audioSttlTtxLang:
+Basque,Bulgarian,Catalan,Croatian,Czech,Danish,Dutch,English,Estonian,Finnish,
+French,Gaelic,Irish,Galician,German,Greek,Hungarian,Italian,Icelandic,Latvian,
+Lithuanian,Norwegian,Polish,Portuguese,Romanian,Russian,Sami,Serbian,Slovak,Slovenian,
+Spanish,Swedish,Turkish,Welsh,Ukrainian,Original Audio*/
+var audioSttlTtxLang		= [97,24,117,10,0,2,14,6,36,22,
+								9,28,32,185,5,8,13,12,214,33,
+								279,15,16,17,19,18,383,21,25,20,
+								7,23,35,30,468,46];
+
+/*备份
+var souSoundType	= ["Invalid","Mono","Forced Mono","G Stereo","K Stereo",
+						"Mono Sap","Stereo Sap","Dual A","Dual B","Dual AB",
+						"Nicam Mono","Nicam Stereo","Nicam Dual A","Nicam Dual B","Nicam Dual AB",
+						"Hidev Mono","Left Left","Right Right","Left Right"];// 无翻译
+*/
+/**********系统相关变量 相关变量 end*********************/
+
+/**********channel 相关变量 start*********************/
+var g_isShowInfoBar 		= 0;					// 0 no, 1 yes,初始化为1，因为初次进入channel_play.html要更新channel info 数据
+var g_MMHStatus 			= 0;					//0 MMH not open ,1 MMH open 除了没有信号外刚进入channel_play.html要隐藏info bar和 信号提示框
+var channelType				= 1;
+////////////////////booking 时使用
+var bookingMode 			= 0;						//0 no booking ,1  record, 2 reminder
+/**********channel 相关变量 end*********************/
+
+
+
+/*********************************setting  start*********************************/
+var g_language 				= g_setting.menuLanguage;
+var g_country;
+/*********ci*************/
+var g_ciIsInUpdateForm 		= 0;					//1 在ci 数据更新的弹出对话框上，0 其他
+var g_ciUpdateType 			= -1;					//-1 默认值，0 响应消息CI_OP_UPDATE_CHANNEL，1 响应消息CI_OP_UPDATE_NIT
+var g_ciCurrentCardName;							//当前ci card的名称
+var g_ciUpdateStatus		= 0;					//ci 升级状态，0：没有在升级中；1：在升级中。在升级过程中不能做相关的ci操作
+/*********network*************/
+
+/*********************************setting end*****************************/
+
+
+/***********media 多媒体使用的变量 start ****************/
+var g_page 					= new Array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1);
+var g_pfposition			= new Array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+										-1,-1,-1,-1,-1,-1,-1,-1,-1,-1);
+var g_searchFlag 			= 0;						//files searching flag:[0] unfinish [1] finish
+
+if(1)
+{
+	var NDM_Others = 0;
+	var NDM_Device_List = 1;
+	var NDM_Media_List = 2;
+	var NDM_VIDEO_Play = 3;
+	var NDM_Music_Play = 4;
+	var NDM_Pic_Play = 5;
+	var NDM_PVR_List = 6;
+	var NDM_PVR_Play = 7;
+	var NDM_DMR_Video = 8;
+	var NDM_DMR_Music = 9;
+	var NDM_DMR_Pic = 10;
+}
+var g_isMediaCenter = NDM_Others;
+var g_newDeviceCount = 0;
+
+var g_MediaVideoPlayCount = 0;
+var g_MediaPicPlayCount = 0;
+
+var g_mediaList;										//多媒体列表，多媒体使用，用完以后要释放内存,每次最多存放21个元素
+var g_movieList 			= "";
+var g_musicList 			= "";
+var g_pictureList 			= "";
+var g_deviceList 			= "";
+var g_diskPosition 			= 0;
+var g_mediaPosition 		= 0;						//初始化时焦点媒体在总的媒体列表中的序号位置
+var g_currentMedia 			= "";						//这个是从index传进来的参数,例如：myMoive,myMusic,myPicture,myFile
+var g_path;
+var g_fileInfo;
+var g_availableStatus 		= 0;						//0 媒体可以播放，其他为 媒体不可以播放
+
+var g_deviceInfo 			= "";//g_media device
+var g_focusTab				= "";//"Menu" "FirstColumn" "MusicCtl" "Option" "OptionList"
+var g_mediaFolderPath		= "";//for saving current view folder path
+var g_filePathDepth			= 0;
+var g_currentMediaType		= "";//current view list type:[0]all file [1]pic [2]video [3]music
+var g_listIndex = new Array(4);//for saving last list: list start index & focus index
+
+var g_BGMmdiaFolderPath    =""//记录上一次背景音乐媒体播放的所在的路径  //add yums
+var g_BGMmediaListIndex    = -1;//用于记录上一次播放的
+var g_BGMmediaListStart    = -1;
+var g_BGMmediaPath         = "";
+var g_BGMmediaPathIndex    = "";/0-2/
+var g_fileListDepth        = -1;
+
+/***********多媒体使用的变量 end ****************/
+
+/****************dlna 使用的变量 start***/
+var g_focusPosition			= [[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],
+								[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],
+								[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],
+								[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],
+								[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1]];
+							/*layerIndex进入文件夹从下标为1的地方开始*/
+var g_dlnaPage				= [0,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+								-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+								-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+								-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+								-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+var surfaceFlag				= 0;
+var selectType				= 0;						//0 movie ,1 music ,2 photo ,3 dir
+var g_dlnaPath;											//进入dlna文件浏览时使用
+var g_dlnaName;
+var g_dlnaMode;											//"dmr","dmp";chenhua add
+/****************dlna 使用的变量 end***/
+
+
+/*******************factory start *********************************/
+var g_factory_designModeHotkey = 0;						//工厂菜单中DesignModeHotkey属性，0 off,1 on
+var g_factory_hotkey 		= 0;						//工厂菜单factory menu 下factory hotkey 属性，0 off,1 on
+var g_factory_mode 			= 0;						//工厂模式：0 设计师模式，1 工厂模式
+
+var g_openMheg5State 		= 0;
+var g_motionClarity		= "Off";
+/*********************factory end ******************************/
+
+/*********************pvr and timeshit ******************************/
+var pvrTotalTime            = 2*60*60;
+var pvrCurrentTime          = 0;
+var recordStatusFlag        = 0;
+var timeShiftStatusFlag		= 0;						//0 no time shift run.1 time shift  runing
+var pvrBookingDuration      = 0;
+
+/*********************pvr and timeshit******************************/
+
+/***************Upgrade related variables start***************/
+/* g_whichUpdateDialogWillBeUsed
+ * 0:Whether to download
+ * 1:Whether to update after finishing downloading
+ * 2:Update again
+ * 3:Abnormal dialog. For example, network error.*/
+var g_whichUpdateDialogWillBeUsed = 0;
+var g_isDownloading = -1;  //-1:initial value 0:is not downloading 1: is downloading
+var g_isForceUpgrade = false;
+var bisUpgrade =0; //yiling0609
+/****************Upgrade related variables end****************/
+
+
+var shopRemindFlag 			= 1;						//1 shop remind is show,0 shop remind is not show
+var isFirstInChanenlPlay 	= 1;						//1 yes, 0 no
+
+var parentalLock			= 0;
+var channelLock				= 0;
+var inputLock 				= 0;
+var playNumFromHref;
+
+
+var startT;
+var endT;
+
+var initSSID                ="";
+var initSecurityMode        = 0; 
+var nextIndex               = 0;
+var preIndex                = 0;
+var glassConnectFlag        = 0;
+var netCheckStatus          = 0; //表示检测到网络的状态
+var netCheckFlag            = 0;//1表示正在检测网络 0 表示没有在检测网络
+var hbbtvStatus             = 0;
+var pressKeyDownTimer       = 0;
+var standByTime             = 0;
+var bluetoothStart          = 0;
+var lastInputSource         = 0;
+var enterInputSource       = -1;
+var powerOffAsNosignal      = 0;
+var initWireManual          = {
+	ip                      :"",
+	subMask                 :"",
+	gateway                 :"",
+	priDNS                  :"",
+	secDNS                  :"",
+}
+var g_booking_interrelated = {
+	bookingChannel			: "",
+	isHaveProgramMoreInfo	: "",
+	bookingEvent			: "",
+}
+
+
+//声音设置缓存变量
+var g_sound_settings = {
+	isFirstTimeIntoSound		: 1,
+	autoVolumeCtrl				: "",
+	sPDIFType					: "",
+	sPDIFDelay					: "",
+	audioScene					: "",
+}
+
+//开机初始化中搜台结果缓存
+var g_init_installations = 
+{
+	TAtv						: -1,
+	TDtv						: -1,
+	CAtv						: -1,
+	CDtv						: -1,
+	SDtv						: -1,
+}/*-1 表示么有搜过，0 表示搜过但是没有搜到台，> 0 表示搜到台了*/
+
+//五合一按键使用场景枚举
+if(1)
+{
+	var CONTEXT_HOME_PAGE 			= 0;	//智能主界面,launcher
+	var CONTEXT_ATV_DTV_FULL_SCREEN = 1;	//atv/dtv全屏播放模式,TV mode
+	var CONTEXT_OTHER_FULL_SCREEN	= 2;	//其他信源全屏模式,other source
+	var CONTEXT_MENU_SELECT			= 3;	//菜单选择模式,TV Options
+	var CONTEXT_MUSIC_MOVIE_PLAYER	= 4;	//音视频播放器
+	var CONTEXT_PICTURE_PLAYER		= 5;	//图片播放器
+	var CONTEXT_OTHER_SMART_PAGE	= 6;	//其他智能应用界面,other apps
+	var CONTEXT_PANEL_OPERATION		= 7;	//panel key events
+}
+var homePageBgImg = new Image();
+
+var homePageBgImg1 = new Image();
+var preload = [];
+
+var scheduleNetflix = 0;
+var setProjTimeoutId = 0;
+var changeProjIdPwd = "";
+var panelTestPicture = 0;
+//for mhl 
+var mhl_inserted_status = 0;
+var appOpenFlag =0;
+var powerLogoFlag =1;    //工厂酒店菜单power logo开时开机显示welcome页面
+var isFromOptionIntoUsb	= 0; 
+var willJumpLocalEPG = 0;
+var enterChannelPlay = 0;
+var START_NETFLIX_BY_HOTKEY = 0xF041;//0xf001;1111000001000001
+var STOP_NETFLIX_BY_POWER_OFF = 0xF061;//0xf001;
+var STOP_NETFLIX_KEY_EVENT = 0xF062;//0xf001;
+var FAV_LIST_TYPE = 5;
+var runCount = 0;
+var ledStatusDefault = "off";
+
+
+var bt_soundOutPutValue = 0;//蓝牙音箱使用变量
+var bt_soundOutputShowFlag = false;
+var bt_connectDevicePosition = -1;//当前连接的蓝牙设备在列表中的位置
+var OUT_PUT_NAME_FOR_DB = "app.bluetooth.soundoutput";//存入数据库中的字段名
+var BT_SWITCH_STATE_FOR_DB = "app.bluetooth.switch";//存入数据库中蓝牙开关状态
+
+var netflixDialogFlag = 0;    //netflix 对话框弹出标志位
+var netflixPowerOffFlag = 0;  //netflix 待机运行标志位
+var netflixPowerOffTimeOut = 0;  //netflix 定时待机索引
+
+var virtualRemoteCount = 2;//暂时的计数器，测试用的。lqt
+var virtualRemoteState = 0;//0  ：   表示  没有显示虚拟遥控器                           1 ： 表示  显示虚拟遥控器
+var virtualRemote_timer;//计时器，5秒内没有操作即使虚拟遥控器消失
+var hotkeysIntoUSB = false; //判断是否是根据快捷键进入USB的，默认是false--不是通过快捷键进入的。
+var initFocus_timer;
+var commonTeletextShow = 0;
+
+var RemoteConntrolType = "default";
+var entryUpgrade = 0; //用于表示是否进入过提网络升级示框，1 表示进入过， 0 表示没有进入过
+var g_EnterVolumn		   = 0; //0: 表示没有进入音量条， 1表示进入音量条,这个只针对homepage页面
+var g_EnterUsb		   = 0; //0: 表示没有进入Usb， 1表示进入Usb,这个只针对homepage页面
+var downloadSignalFlag = 0;
+var downLoadOpenApp = 0;
+var g_EpgUpdateUrl = "";
+var g_CurrentchannelListType = 0;
+function gotoChannelPlay()
+{
+	console.log("show the tips dlg");
+	top.g_setting.cancelOadUpdate();
+	top.$("otherPage").src = "";
+	top.$('main').src = 'channelPlay.html';
+	top.main.focus();
+	setFrameFocusPage("main");
+}
+
+document.onnotify = function(evt)
+{
+    var msg = evt.which;
+    console.log("warnning, framework focused");
+    main.focus();
+    if (msg==E_APP_CLOSE)
+        $("main").contentWindow.notifyProcess(evt);
+}
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+var currentKeySet = 0;
+var preKeySet     = 0;
+function keySetForUI(level)
+{
+	g_channel.testLog(g_ulits);
+	preKeySet = currentKeySet;
+	switch(level)
+	{
+		case 0:
+		top.g_ulits.setKeySet(0x1|0x2|0x4|0x8|0x10|0x20|0x40|0x80|0x100|0x200|0x400|0x800,2,0);
+		currentKeySet=0;
+		break;
+		case 1:
+		top.g_ulits.setKeySet(0x1|0x2|0x4|0x8|0x10|0x20|0x40|0x80|0x100|0x200|0x400|0x800,0,2);
+		currentKeySet=1;
+		break;
+		default:
+		top.g_ulits.setKeySet(0x1|0x2|0x4|0x8|0x10|0x20|0x40|0x80|0x100|0x200|0x400|0x800,0,2);
+		currentKeySet=1;
+		break;
+	}
+	return preKeySet;
+}
+
+function toJumpNexFlix()
+{
+	if(top.checkNetStatus()==false)
+	{
+		$("operatePage").src = "";
+		$("otherPage").src ="";
+		$("main").src="connectNetworkRemind.html";
+		top.main.focus();
+		setFrameFocusPage("main");
+		return;
+	}
+	if(recordStatusFlag == 1)
+	{
+		g_pvr.recordStop();
+		g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+		$("globleShow").contentWindow.hiddenRecord();
+		top.pvrCurrentTime=0;
+		top.recordStatusFlag =0;
+		top.pvrTotalTime=2*60*60;
+	}
+	else if(timeShiftStatusFlag == 1)
+	{
+		//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+		g_pvr.timeshiftStop();
+		g_pvr.returnToLive();//返回实时播放页面
+		//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+		$("globleShow").contentWindow.hiddenTimeShift();
+	}
+	if(top.appOpenFlag == 1)
+	{
+		top.g_ulits.closeOperaApplication();
+		top.scheduleNetflix = 1;
+		return;
+	}
+	top.RemoteConntrolType = "Netflix";//lqt- 设置虚拟遥控器的场景类型--主页中通过图标进入Netflix
+	top.appOpenFlag = 1;
+	$("operatePage").src = "";
+	$("otherPage").src ="";
+	$("main").onload = function(){
+		top.$("main").style.display="none";
+		top.$("operatePage").style.display="none";
+		top.$("otherPage").style.display="none";
+		$("main").onload =  function(){};
+		setTimeout(function(){
+			top.g_channel.inputSource=10;
+			top.g_ulits.sendMsgToApplication("vod.netflix", START_NETFLIX_BY_HOTKEY);},10);
+	}
+	$("main").src="channelPlay.html";
+	top.main.focus();
+	setFrameFocusPage("main");
+	menu_visible_status = 0;
+	top.lastInputSource = top.g_channel.inputSource;
+	//top.g_channel.inputSource=10;
+	//top.g_ulits.sendMsgToApplication("vod.netflix", START_NETFLIX);//启动netflix，可以自己加个宏定义该
+	return;
+}
+function initGlobalVariable()
+{
+	
+	 g_isUsedHotKeyToIntoPage = 0;//是否通过快捷键进入页面，如fav,list,guide等,0 否， 1 是
+	 g_isUsedNotifyIntoPage = 0;//是否通过消息进入页面，如CI_NAME_READY消息等,0 否， 1 是
+	 g_remindWord = "";//notAvailable,noTeleText
+	///////////////////////////////////////////////////////////快捷键使用的变量 end
+	 g_lastTime = -1;//关机时间倒计时,power off timer
+	 g_previousHtmlPage = "";//页面的前一个页面名称，比如在channel_play.html页面中按guide页面时进入guide，g_previousHtmlPage = “channel_play.html”,返回时从新返回channel_play.html页面。
+	 g_nextHtmlPage = "";
+	 g_volume_timer = 0;
+	 g_volume_visible = 0;//判断当前的声音调是否可用
+	 mute_status = 0;
+	 isFirstInitNotifyThread = 1;//1 第一次初始化（创建）消息接收线程
+	 g_ciIsInUpdateForm = 0;//1 在ci 数据更新的弹出对话框上，0 其他
+	 isChangeToScartAfterInit = 0;
+	 isChangeSourceJustNow = 0;//是否刚刚切换完成信源1 是，0 否;用来判断分辨率是否应该显示的问题
+	/**********系统相关变量 相关变量 end*********************/
+	
+	/**********channel 相关变量 start*********************/
+	 g_isShowInfoBar = 0;// 0 no, 1 yes,初始化为1，因为初次进入channel_play.html要更新channel info 数据
+	 g_MMHStatus = 0;//0 MMH not open ,1 MMH open 除了没有信号外刚进入channel_play.html要隐藏info bar和 信号提示框
+	 channelType=1;
+	////////////////////booking 时使用
+	 bookingMode = 0;//0 no booking ,1  record, 2 reminder
+	/**********channel 相关变量 end*********************/
+
+
+/*******************factory start *********************************/
+	   g_factory_designModeHotkey = 0;//工厂菜单中DesignModeHotkey属性，0 off,1 on
+	   g_factory_hotkey = 0;//工厂菜单factory menu 下factory hotkey 属性，0 off,1 on
+	   g_factory_mode = 0;//工厂模式：0 设计师模式，1 工厂模式
+	   g_openMheg5State = 0;
+	   g_factory_IR_status = 0;
+	   g_factory_IR_msg = 0;
+/*********************factory end ******************************/
+
+
+	
+	 shopRemindFlag = 1;//1 shop remind is show,0 shop remind is not show
+	 isFirstInChanenlPlay = 1;//1 yes, 0 no
+	
+	 parentalLock=0;
+	 channelLock=0;
+	 inputLock = 0;
+	 hbbtvStatus  = 0;
+	 playNumFromHref="";
+	 
+	 g_sound_settings.isFirstTimeIntoSound = 1;
+	 g_init_installations = 
+	{
+		TAtv						: -1,
+		TDtv						: -1,
+		CAtv						: -1,
+		CDtv						: -1,
+		SDtv						: -1,
+	}
+	menu_visible_status = 0;
+	clearTimeout(pressKeyDownTimer);
+	pressKeyDownTimer=0;
+	standByTime=0;
+}
+
+//lqt
+function virtualRemoteControl()
+{
+	
+	//如果是偶数的话，就显示
+	if(virtualRemoteState == 0)
+	{
+		document.getElementById("virtualRemote").contentWindow.showVirtualRemote(RemoteConntrolType);
+	}
+	//如果是奇数的话，就隐藏
+	else
+	{
+		//隐藏虚拟遥控器
+		document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+	}
+}
+
+/*
+keyDownProcess:响应共有的快捷键处理，如果只是在特定页面处理的快捷键，请特殊处理，最好不要放在该函数中
+*/
+function keyDownProcess(evt)
+{
+	clearMyTimeout();
+	top.g_channel.testLog("*******sun>>>>************framework**********************"+evt.which);
+	var keycode = evt.which;//alert(" keycode = " + keycode)
+    switch(keycode)
+    {
+    
+  		//虚拟遥控器快捷键-lqt---TV、HDMI下的虚拟遥控器的响应走此流程
+	    case VK_VIRTUAL_REMOTE:
+		{
+			virtualRemoteControl();
+			
+			break;
+		}
+		
+		case VK_VIRTUAL_KEYBOARD_UP:
+		{
+			document.getElementById("virtualRemote").contentWindow.keyDownForUp();
+			
+			break;
+		}
+		case VK_VIRTUAL_KEYBOARD_DOWN:
+		{
+			document.getElementById("virtualRemote").contentWindow.keyDownForDown();
+			
+			break;
+		}
+		case VK_VIRTUAL_KEYBOARD_LEFT:
+		{
+			document.getElementById("virtualRemote").contentWindow.keyDownForLeft();
+			
+			break;
+		}
+		case VK_VIRTUAL_KEYBOARD_RIGHT:
+		{
+			document.getElementById("virtualRemote").contentWindow.keyDownForRight(); 
+			
+			break;
+		}
+		//确认 
+		case VK_VIRTUAL_KEYBOARD_OK:
+		{
+			document.getElementById("virtualRemote").contentWindow.keyDownForOK(); 
+			
+			break;
+		}
+		//返回
+		case VK_VIRTUAL_KEYBOARD_BACK:
+		{
+			//如果是显示的话，就隐藏
+			if(virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+			
+			break;
+		}
+		case VK_POWER://power
+			toPowerOff();
+			return;
+		case VK_PANEL_LONG_OK:
+		case VK_PANEL_OK:
+		case VK_PANEL_UP:
+		case VK_PANEL_DOWN:
+		case VK_PANEL_LEFT:
+		case VK_PANEL_RIGHT:
+			top.$('globleShow').contentWindow.keyProc(evt);
+			break;
+		case VK_3D://3d
+			if(g_channel.checkhbbtvStatus()>1)
+			{
+				return;
+			}
+			var source = g_channel.inputSource;
+			if(top.currentPanel>0&&(g_channel.inputUnlockState(source)==0&&g_channel.currentSignalStatus==1)&&((source!=1 && source!=0) || (source==1&&g_channel.channelProgramStatus()==1&&top.parentalLock != 1 && top.channelLock != 1 && g_channel.currentScreenSaverMode==8) ||(source==0&&g_channel.channelProgramStatus()==1&& top.channelLock != 1)))
+			{
+				$("operatePage").src = "";
+				top.g_previousHtmlPage = "channelPlay.html";
+				$("main").src = "3dMode.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else
+			{
+				$("operatePage").src = "";
+				g_remindWord = "notFunction";
+				$("main").src = "intermediate.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			return;
+			/*
+		case VK_TV://tv
+		 if(g_channel.inputSource > 1)
+		 {
+			top.g_previousHtmlPage = "channelPlay.html";
+			g_remindWord = "TvHotKey";
+			$("main").src = "intermediate.html";
+			top.main.focus();
+			$("operatePage").src = "";
+		 }
+		 return;
+		 */
+		case VK_ECO://eco
+			toECOSetting();
+			return;
+		case VK_SOURCE://source
+			//lqt
+			if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+			toSource();
+			break;
+        case VK_SOURCE_CMP1:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 4);
+            break;
+        case VK_SOURCE_VGA:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 5);
+            break;
+        case VK_SOURCE_AV1:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 11);
+            break;
+        case VK_SOURCE_HDMI1:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 6);
+            break;
+        case VK_SOURCE_HDMI2:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 7);
+            break;
+        case VK_SOURCE_HDMI3:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 8);
+            break;
+        case VK_SOURCE_HDMI4:
+            if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+            toSourceEx(keycode, 12);
+            break;
+		case VK_VOLUME_DOWN://volume down,多媒体不能共用
+		
+			//lqt
+			if(top.virtualRemoteState == 1&&RemoteConntrolType == "CH")
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+		
+			//g_channel.testLog("VK_VOLUME_DOWN"+VK_VOLUME_DOWN);
+			$('globleShow').contentWindow.initVolume();
+			$("operatePage").src = "";
+			g_volume_visible = 1;
+			if(top.timeShiftStatusFlag==1 || top.recordStatusFlag == 1)
+			{
+				//doNothing
+			}
+			else
+			{
+				 top.g_isShowInfoBar = 0;
+				$("main").src="channelPlay.html";//多媒体不能共用，需要去掉这一句话
+			}
+			$("globleShow").contentWindow.$("adjustProgressBox").style.display = "block";
+			top.globleShow.focus();
+			setFrameFocusPage("globleShow");
+			//showMute(0);//不能解除mute
+			//top.startVolumeTimer();
+			return;
+		case VK_VOLUME_UP://volume up
+		
+			//lqt
+			if(top.virtualRemoteState == 1&&RemoteConntrolType == "CH")
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+		
+			//g_channel.testLog("VK_VOLUME_UP"+VK_VOLUME_UP);
+			$('globleShow').contentWindow.initVolume();
+			g_volume_visible = 1;
+			$("operatePage").src = "";
+			if(top.timeShiftStatusFlag==1 || top.recordStatusFlag == 1)
+			{
+				//doNothing
+			}
+			else
+			{
+				 top.g_isShowInfoBar = 0;
+				$("main").src="channelPlay.html"//多媒体不能共用，需要去掉这一句话
+			}
+		
+			$("globleShow").contentWindow.$("adjustProgressBox").style.display = "block";
+			top.globleShow.focus();
+			setFrameFocusPage("globleShow");
+			//showMute(0);
+			//top.startVolumeTimer();
+			return;
+		case VK_CHANNEL_UP://channel +
+			if(g_channel.checkhbbtvStatus()==2)
+			{
+				 $("operatePage").src = "";
+				 $("otherPage").src ="";
+				 $("main").src = "hbbtvCancelRemind.html?"+VK_CHANNEL_UP;
+				 $("main").style.display = "block";
+				
+				 top.main.focus();
+				 setFrameFocusPage("main");
+				 return;
+			}
+			toChannelUp()
+			return;
+		case VK_CHANNEL_DOWN://channel -
+			if(g_channel.checkhbbtvStatus()==2)
+			{
+				 $("operatePage").src = "";
+				 $("otherPage").src ="";
+				 $("main").src = "hbbtvCancelRemind.html?"+VK_CHANNEL_DOWN;
+				 $("main").style.display = "block";
+				
+				 top.main.focus();
+				 setFrameFocusPage("main");
+				 return;
+			}
+		    toChannelDown();
+			return;
+		case VK_MUTE://key mute
+			top.endT = new Date();
+			if(g_setting.soundOutput == 0 && (mute_status != g_setting.getCecMuteStatus() && g_setting.getCecARCStatus() ==1))
+			{
+			}
+			else
+			{
+				g_setting.sendCecKeyValue(VK_MUTE);
+			}
+			showMute(1);
+			return;
+		case VK_INFO://info
+			top.g_previousHtmlPage = "channelPlay.html";
+			g_isShowInfoBar = 1;
+			$("operatePage").src = "";
+			top.jumpPage();
+		
+			return;
+		case VK_OPTION://option
+			//lqt
+			if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+			
+			if(hbbtvCancelKeyOperation(VK_OPTION)==true)
+			{
+				return;
+			}
+			top.g_previousHtmlPage = "channelPlay.html";
+			$("operatePage").src = "";
+			//$('otherPage').src = "option.html";
+			$('main').src = "option.html";
+			//$('main').src = "initSetup/initEnvironmentSet.html";
+			//$("main").src = "";
+			//top.otherPage.focus();
+			top.main.focus();
+			setFrameFocusPage("main");
+			
+			return;
+		
+		case VK_ZOOM_DOWN://zoom-
+		case VK_ZOOM_UP://zoom+
+			if(g_channel.checkhbbtvStatus()==2)
+			{
+				return;
+			}
+			var source = g_channel.inputSource;
+			if(top.recordStatusFlag == 0&& (g_channel.inputUnlockState(source)==0&&g_channel.currentSignalStatus==1&&g_setting.zoomSmallWindowsState==0)&&((source!=1 && source!=0) || (source==1&&g_channel.channelProgramStatus()==1&&top.parentalLock != 1 && top.channelLock != 1 && g_channel.currentScreenSaverMode==8) ||(source==0&&g_channel.channelProgramStatus()==1&& top.channelLock != 1)))
+			{
+				$("operatePage").src = "";
+				top.g_previousHtmlPage = "channelPlay.html";
+				$("main").src = "zoom.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				
+			}
+			else
+			{
+				$("operatePage").src = "";
+				g_remindWord = "notFunction";
+				$("main").src = "intermediate.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				
+			}
+			return;
+		case VK_TV://tv
+		         if(g_channel.inputSource > 1)
+		         {
+		 		top.$("globleShow").contentWindow.hiddenGlassRemind();
+		         }    
+		         
+			if(g_channel.checkhbbtvStatus()==0)
+			{
+				if(g_channel.inputSource > 1)
+				 {
+					 $("operatePage").src = "";
+					top.g_previousHtmlPage = "channelPlay.html";
+					g_remindWord = "TvHotKey";
+					$("main").src = "intermediate.html";
+					top.main.focus();
+					
+				 }
+			}
+			else if(g_channel.checkhbbtvStatus()==1)
+			{
+				
+				if(g_channel.inputSource > 1)
+				 {
+					 g_setting.hbbTVSwitchState = 0;
+					 $("operatePage").src = "";
+					top.g_previousHtmlPage = "channelPlay.html";
+					g_remindWord = "TvHotKey";
+					$("main").src = "intermediate.html";
+					top.main.focus();
+				 }
+			}
+			else
+			{
+				 $("operatePage").src = "";
+				 $("otherPage").src ="";
+				 $("main").src = "hbbtvCancelRemind.html?"+VK_TV;
+				 $("main").style.display = "block";
+				
+				 top.main.focus();
+				 setFrameFocusPage("main");
+			}
+		     
+			return;
+		case VK_SMARTTV://smart tv
+			if("AU" == g_setting.getProperty("ro.sita.model.MODEL_REGION_NAME_CFG.REGION_NAME", "EU"))
+			{
+				//add for au requirement by luochangliang
+				return;
+			}
+			if(hbbtvCancelKeyOperation(VK_SMARTTV)==true)
+			{
+				return;
+			}
+			if(top.checkNetStatus()==false)
+			{
+				$("operatePage").src = "";
+				$("otherPage").src ="";
+				$("main").src="connectNetworkRemind.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				return;
+			}
+            if(top.currentPanel==1)          //退出3D
+            {
+                if(top.g_setting.pic3DMode!=0)
+                {
+                    top.g_setting.pic3DMode=0;
+                    top.$("globleShow").contentWindow.hiddenGlassRemind();
+                }
+            }
+            else if(top.currentPanel==2)
+            {
+                if(top.g_setting.pic3DMode!=0)
+                {
+                    top.g_setting.pic3DMode=0;
+                }
+            }
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		        top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			top.appOpenFlag = 1;
+			top.RemoteConntrolType = "HbbTV";//lqt- 设置虚拟遥控器的场景类型---在channelPlay中按SmartTV快捷键进入SmartTV。
+			$("operatePage").src = "";
+			$("otherPage").src ="";
+			$("main").onload = function(){
+					//top.$("main").style.display="none";
+					main.document.body.style.display = "none";
+					top.$("operatePage").style.display="none";
+					top.$("otherPage").style.display="none";
+					$("main").onload =  function(){};
+				}
+			$("main").src="channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			menu_visible_status = 0;
+			if(1 == g_isDownloading)
+			{
+				uiPauseDownloadingUpFile();
+				downLoadOpenApp = 1;
+			}
+			top.lastInputSource = top.g_channel.inputSource;
+			top.g_ulits.openApplication("opera.mmh",""/*"-u "+applist[12].url+" "*/);
+			return;
+		case VK_SETTING:
+		{
+			top.$("main").onload = function(){
+				top.resetFramePacking3DMode();
+				top.$("main").onload = function(){};
+			}
+			top.$('main').src = "index.html";
+			top.main.focus();
+			if(top.g_isDownloading == 0){
+				top.g_isDownloading = 1;
+				g_setting.restartDownloadUpdateFile();
+			}
+			break;
+		}
+		case VK_YOUTUBE:
+			if(hbbtvCancelKeyOperation(VK_SMARTTV)==true)
+			{
+				return;
+			}
+			if(top.checkNetStatus()==false)
+			{
+				$("operatePage").src = "";
+				$("otherPage").src ="";
+				$("main").src="connectNetworkRemind.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				return;
+			}
+			if(top.currentPanel==1)          //退出3D
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+					top.$("globleShow").contentWindow.hiddenGlassRemind();
+				}
+			}
+			else if(top.currentPanel==2)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+				}
+			}
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+				top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			top.appOpenFlag = 1;
+			top.RemoteConntrolType = "HbbTV";//lqt- 设置虚拟遥控器的场景类型---在channelPlay中按SmartTV快捷键进入SmartTV。
+			$("operatePage").src = "";
+			$("otherPage").src ="";
+			$("main").onload = function(){
+				//top.$("main").style.display="none";
+				main.document.body.style.display = "none";
+				top.$("operatePage").style.display="none";
+				top.$("otherPage").style.display="none";
+				$("main").onload =  function(){};
+			}
+			$("main").src="channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			menu_visible_status = 0;
+			top.lastInputSource = top.g_channel.inputSource;
+			top.g_ulits.openApplication("opera.youtube","-u"+"https://www.youtube.com/tv?launch=menu&additionalDataUrl=http%3a%2f%2flocalhost%3a56789%2fapps%2fYouTube%2fdial_data"+" ");
+			return;
+    	case VK_NETFLIX:
+			g_setting.hbbTVSwitchState = 0;
+			if(top.checkNetStatus()==false)
+			{
+				$("operatePage").src = "";
+				$("otherPage").src ="";
+				$("main").src="connectNetworkRemind.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				return;
+			}
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		        top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+            if(top.appOpenFlag == 1)
+            {
+                top.g_ulits.closeOperaApplication();
+                top.scheduleNetflix = 1;
+                return;
+            }
+			top.appOpenFlag = 1;
+			top.RemoteConntrolType = "Netflix";//lqt- 设置虚拟遥控器的场景类型
+			$("operatePage").src = "";
+			$("otherPage").src ="";
+			$("main").onload = function(){
+					top.$("main").style.display="none";
+					top.$("operatePage").style.display="none";
+					top.$("otherPage").style.display="none";
+					$("main").onload =  function(){};
+					setTimeout(function(){
+					if(1 == g_isDownloading)
+					{
+						uiPauseDownloadingUpFile();
+						downLoadOpenApp = 1;
+					}
+					top.g_channel.inputSource=10;
+					top.g_ulits.sendMsgToApplication("vod.netflix", START_NETFLIX_BY_HOTKEY);},10);
+				}
+			$("main").src="channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			menu_visible_status = 0;
+			top.lastInputSource = top.g_channel.inputSource;
+			//top.g_channel.inputSource=10;
+            //top.g_ulits.sendMsgToApplication("vod.netflix", START_NETFLIX);//启动netflix，可以自己加个宏定义该
+			return;
+		case VK_SLEEP://sleep
+			top.g_previousHtmlPage = "channelPlay.html";
+			$("operatePage").src = "";
+			$("otherPage").src ="";
+			$("main").src = "sleepTimer.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+
+			return;
+		case VK_PRE_CH://pre-ch
+			top.g_previousHtmlPage = "channelPlay.html";
+			var source = g_channel.inputSource;
+			if(source == 0 || source == 1)
+			{
+				if(g_channel.checkhbbtvStatus()==2)
+				{
+					 $("operatePage").src = "";
+					 $("otherPage").src ="";
+					 $("main").src = "hbbtvCancelRemind.html?"+VK_PRE_CH;
+					 $("main").style.display = "block";
+					 top.main.focus();
+					 setFrameFocusPage("main");
+					 return;
+				}
+				toPreKey();
+				return;
+			}
+			else
+			{
+				$("operatePage").src = "";
+				g_remindWord = "notAvailable";
+				$("main").src = "intermediate.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+
+			return;
+		case VK_FAV://fav
+			if(g_channel.checkhbbtvStatus()==2)
+			{
+				 $("operatePage").src = "";
+				 $("otherPage").src ="";
+				 $("main").src = "hbbtvCancelRemind.html?"+VK_FAV;
+				 $("main").style.display = "block";
+				 top.main.focus();
+				 setFrameFocusPage("main");
+				 return;
+			}
+			toFavList();
+			return;
+		case VK_LIST://list
+			if(g_channel.checkhbbtvStatus()==2)
+			{
+				 $("operatePage").src = "";
+				 $("otherPage").src ="";
+				 $("main").src = "hbbtvCancelRemind.html?"+VK_LIST;
+				 $("main").style.display = "block";
+				 top.main.focus();
+				 setFrameFocusPage("main");
+				 return;
+			}
+			toChannelList();
+			return;
+		case VK_EXIT:
+			//if(changeProjIdPwd == "041758650")
+			//	enterProjIdPwd(keycode);
+			top.jumpPage();
+			return;
+		case VK_FRONT_PANEL_LOCKED:
+			$("frontPanel").innerHTML = top.frontPanelRemind;
+			$("frontPanel").style.display = "block";
+			setTimeout("$(\"frontPanel\").style.display = \"none\";",3000);
+			break;
+		case top.VK_STOP:
+			if(top.recordStatusFlag==1)
+			{
+				$("globleShow").contentWindow.hiddenRecord();
+				$('main').src = "pvr/Pvr.html?exit";
+				top.main.focus();
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("stop");
+				return;
+			}
+			break;
+		case top.VK_BLUE:
+			if(top.recordStatusFlag==1)
+			{
+				$("globleShow").contentWindow.hiddenRecord();
+				$('main').src = "pvr/Pvr.html?menu";
+			}
+			break;
+		case 36://home
+		case top.VK_MENU: //menu,在菜单弹出的情况下使用
+			//check pwd for changing Prject Id
+		//if((changeProjIdPwd == "062598")||(changeProjIdPwd == "041758"))
+		//enterProjIdPwd(keycode);
+			if(virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器--lqt
+				document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+				
+			}
+			toMenu();
+			break;
+		case top.VK_0:
+		case top.VK_1:
+		case top.VK_2:
+		case top.VK_3:
+		case top.VK_4:
+		case top.VK_5:
+		case top.VK_6:
+		case top.VK_7:
+		case top.VK_8:
+		case top.VK_9:
+			//enterProjIdPwd(keycode);
+			break;
+		default:
+			break;
+    }
+}
+function toECOSetting()
+{
+//	var source = g_channel.inputSource;
+//	var is4K1K = g_setting.checkPQis4K1k;
+    var ledMotionClarityVal = g_setting.ledMotionClarityVal;
+    var is4K1kEnable = g_setting.getProperty("ro.sita.model.TCL_PANEL_SETTING.PANEL_4K1K_ENABLE", "0");
+    var panelFrequency = g_setting.getPanelFrequency;
+
+//    if((source == 6 || source == 7 || source == 8 || source == 12)&&(g_setting.hdmiMode&65535)==1)
+//	{
+//		return;
+//	}
+//	else if(is4K1K == 1)
+//	{
+//		return;
+//	}
+    if (g_setting.pic3DMode > 0 || (1 == ledMotionClarityVal && 60 == panelFrequency && 0 == is4K1kEnable) || (((60 == panelFrequency && 1 == is4K1kEnable) || 120 == panelFrequency) && (g_setting.motionEnhancementSwitch == 2 || g_setting.motionEnhancementSwitch == 3)))
+    {
+        $("operatePage").src = "";
+        g_remindWord = "notAvailable";
+        $("main").src = "intermediate.html";
+        top.main.focus();
+        setFrameFocusPage("main");
+        return;
+    }
+    else
+    {
+        top.g_previousHtmlPage = "channelPlay.html";
+        $("operatePage").src = "";
+        $("otherPage").src = "";
+        $("main").src = "EcoSetting.html";
+        top.main.focus();
+        setFrameFocusPage("main");
+    }
+}
+function toFavList()
+{
+	if(recordStatusFlag == 1)
+	{
+		$("globleShow").contentWindow.hiddenRecord();
+		top.$('otherPage').src = "";
+		top.$('operatePage').src = "";
+		top.$('main').src = "pvr/Pvr.html?Fav";
+		
+		top.main.focus();
+		setFrameFocusPage("main");
+	}
+	else if(timeShiftStatusFlag == 1)
+	{
+		operateWhenTimeshifting("Fav");
+	}
+	else
+	{
+		top.g_previousHtmlPage = "channelPlay.html";
+		var source = g_channel.inputSource;
+		if(source == 0 || source == 1)
+		{
+			g_isUsedHotKeyToIntoPage = 1;
+			$("main").src="channelPlay.html";
+			g_CurrentchannelListType = g_channel.channelListType;
+			g_channel.channelListType = FAV_LIST_TYPE;
+			$("operatePage").src = "channelList.html";
+			top.operatePage.focus();
+			setFrameFocusPage("operatePage");
+		}
+		else
+		{
+			$("operatePage").src = "";
+			g_remindWord = "notAvailable";
+			$("main").src = "intermediate.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+
+		}
+	}
+}
+function toChannelList()
+{
+	if(recordStatusFlag == 1)
+	{
+		$("globleShow").contentWindow.hiddenRecord();
+		top.$('otherPage').src = "";
+		top.$('operatePage').src = "";
+		top.$('main').src = "pvr/Pvr.html?channelList";
+		
+		top.main.focus();
+		setFrameFocusPage("main");
+	}
+	else if(timeShiftStatusFlag == 1)
+	{
+		operateWhenTimeshifting("channelList");
+	}
+	else
+	{
+		top.g_previousHtmlPage = "channelPlay.html";
+		var source = g_channel.inputSource;
+		if(source == 0 || source == 1)
+		{
+			g_isUsedHotKeyToIntoPage = 1;
+			$("main").src="channelPlay.html";
+			$("operatePage").src = "channelList.html";
+			top.operatePage.focus();
+			setFrameFocusPage("operatePage");
+		}
+		else
+		{
+			$("operatePage").src = "";
+			g_remindWord = "notAvailable";
+			$("main").src = "intermediate.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+
+		}
+	}
+}
+function toPreKey()
+{
+	preIndex = g_channel.lastIndex;
+	currentChannelIndex = preIndex;
+	channelChange();
+}
+function toChannelUp()
+{
+	var inputSource=g_channel.inputSource;
+	var programStatus = g_channel.channelProgramStatus();
+	if(inputSource <= 1 &&programStatus == 1  && top.inputLock != 1)
+	{
+		var systemCountry = g_channel.systemCountry;
+		if( systemCountry == 15 || systemCountry == 6 || systemCountry == 7 || systemCountry == 23 )
+		{
+			var currentIndex = g_channel.currentIndex;
+			currentChannelIndex = g_channel.getNextIndexByIndex(currentIndex);
+			$("operatePage").src = "";
+			channelChange();
+			
+		}
+		else
+		{
+			var currentIndex = g_channel.currentIndex;
+			var endIndex = g_channel.endIndex;
+			if(currentIndex>=endIndex)
+			{
+				if(top.recordStatusFlag == 1)
+				{
+					top.$("globleShow").contentWindow.hiddenRecord();
+					top.$('main').src = "pvr/Pvr.html?inputsource&11";
+					return;
+				}
+				else if(top.timeShiftStatusFlag == 1)
+				{
+					operateWhenTimeshifting("inputsource&11");
+					return;
+				}
+				 if(top.currentPanel==1)
+				{
+					if(top.g_setting.pic3DMode!=0)
+					{
+						top.g_setting.pic3DMode=0;
+						top.$("globleShow").contentWindow.hiddenGlassRemind();
+					}
+				}else if(top.currentPanel==2)
+				{
+					if(top.g_setting.pic3DMode!=0)
+					{
+						top.g_setting.pic3DMode=0;
+					}
+				}
+				g_channel.inputSource = 11;
+				g_isShowInfoBar = 1;
+				top.jumpPage();
+			}
+			else
+			{
+				nextIndex = g_channel.getNextIndexByIndex(currentIndex);
+				currentChannelIndex = nextIndex;
+				$("operatePage").src = "";
+				channelChange();
+				
+			}
+		}
+	}
+	else if(inputSource <= 1 &&(programStatus == 0  || top.inputLock == 1))
+	{
+		var systemCountry = g_channel.systemCountry;
+		if( systemCountry == 15 || systemCountry == 6 || systemCountry == 7 || systemCountry == 23 )
+		{
+		}
+		else
+		{
+			if(top.currentPanel==1)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+					top.$("globleShow").contentWindow.hiddenGlassRemind();
+				}
+			}else if(top.currentPanel==2)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+				}
+			}
+			g_channel.inputSource=11;
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+		}
+	}
+	else if(inputSource > 1)
+	{
+		var systemCountry = g_channel.systemCountry;
+		if( systemCountry == 15 || systemCountry == 6 || systemCountry == 7 || systemCountry == 23 )
+		{
+		}
+		else
+		{
+			if(top.currentPanel==1)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+					top.$("globleShow").contentWindow.hiddenGlassRemind();
+				}
+			}else if(top.currentPanel==2)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+				}
+			}
+			if(inputSource==11)
+			{
+				g_channel.inputSource=4;
+			}
+			else if(inputSource==4)
+			{
+				g_channel.inputSource=6;
+			}
+			else if(inputSource==6)
+			{
+				g_channel.inputSource=7;
+			}
+			else if(inputSource==7)
+			{
+				g_channel.inputSource=8;
+			}
+			else if(inputSource==8)
+			{
+				g_channel.inputSource=12;
+			}
+			else if(inputSource==12)
+			{
+
+				top.channelLock = 0;
+				top.parentalLock = 0;
+				top.inputLock = 0;
+				var firstIndex=g_channel.firstIndex;
+				if(firstIndex>=65535)
+				{
+					firstIndex=channel.currentIndex;
+				}
+				if(firstIndex<65535)
+				{
+					top.currentChannelIndex = firstIndex;
+					g_channel.playByIndex(firstIndex);
+				}
+				else
+				{
+					g_channel.inputSource=1;
+				}
+			}
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+		}
+	}
+}
+function toChannelDown()
+{
+	var inputSource=g_channel.inputSource;
+	var systemCountry = g_channel.systemCountry;
+	var programStatus = g_channel.channelProgramStatus();
+	if(inputSource <= 1 &&programStatus == 1  && top.inputLock != 1)
+	{
+		if( systemCountry == 15 || systemCountry == 6 || systemCountry == 7 || systemCountry == 23 )
+		{
+			var currentIndex = g_channel.currentIndex;
+			currentChannelIndex = g_channel.getPreviousIndexByIndex(currentIndex);
+			$("operatePage").src = "";
+			channelChange();
+			return;
+		}
+		else
+		{
+			var currentIndex = g_channel.currentIndex;
+			var firstIndex = g_channel.firstIndex;
+			if(currentIndex<=firstIndex)
+			{
+				if(top.recordStatusFlag == 1)
+				{
+					top.$("globleShow").contentWindow.hiddenRecord();
+					top.$('main').src = "pvr/Pvr.html?inputsource&12";
+					return;
+				}
+				else if(top.timeShiftStatusFlag == 1)
+				{
+					operateWhenTimeshifting("inputsource&12");
+					return;
+				}
+				if(top.currentPanel==1)
+				{
+					if(top.g_setting.pic3DMode!=0)
+					{
+						top.g_setting.pic3DMode=0;
+						top.$("globleShow").contentWindow.hiddenGlassRemind();
+					}
+				}else if(top.currentPanel==2)
+				{
+					if(top.g_setting.pic3DMode!=0)
+					{
+						top.g_setting.pic3DMode=0;
+					}
+				}
+				g_channel.inputSource = 12;
+				g_isShowInfoBar = 1;
+				top.jumpPage();
+			}
+			else
+			{
+				currentChannelIndex = g_channel.getPreviousIndexByIndex(currentIndex);
+				$("operatePage").src = "";
+				channelChange();
+				
+				return;
+			}
+		}
+	}
+	else if(inputSource <= 1 &&(programStatus == 0  || top.inputLock == 1))
+	{
+		if( systemCountry == 15 || systemCountry == 6 || systemCountry == 7 || systemCountry == 23 )
+		{
+		}
+		else
+		{
+			if(top.currentPanel==1)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+					top.$("globleShow").contentWindow.hiddenGlassRemind();
+				}
+			}else if(top.currentPanel==2)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+				}
+			}
+			g_channel.inputSource=12;
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+		}
+	}
+	else
+	{
+		if( systemCountry == 15 || systemCountry == 6 || systemCountry == 7 || systemCountry == 23 )
+		{
+		}
+		else
+		{
+		   if(top.currentPanel==1)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+					top.$("globleShow").contentWindow.hiddenGlassRemind();
+				}
+			}else if(top.currentPanel==2)
+			{
+				if(top.g_setting.pic3DMode!=0)
+				{
+					top.g_setting.pic3DMode=0;
+				}
+			}
+			if(inputSource==11)
+			{
+				top.channelLock = 0;
+				top.parentalLock = 0;
+				top.inputLock = 0;
+				var endIndex=g_channel.endIndex;
+				if(endIndex>=65535)
+				{
+					endIndex=channel.currentIndex;
+				}
+				if(endIndex<65535)
+				{
+					top.currentChannelIndex = endIndex;
+					g_channel.playByIndex(endIndex);
+				}
+				else
+				{
+					g_channel.inputSource=1;
+				}
+			}
+			else if(inputSource==4)
+			{
+				g_channel.inputSource=11;
+			}
+			else if(inputSource==6)
+			{
+				g_channel.inputSource=4;
+			}
+			else if(inputSource==7)
+			{
+				g_channel.inputSource=6;
+			}
+			else if(inputSource==8)
+			{
+				g_channel.inputSource=7;
+			}
+			else if(inputSource==12)
+			{
+				g_channel.inputSource=8;
+			}
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+		}
+	}
+}
+function toPowerOff()
+{
+
+	if(g_setting.powerBacklightState == 0 && recordStatusFlag == 1)//自动待机中（预约录制到期但是电视是关着的的时候，电视会打开但是没有声音和没有点亮屏）
+	{
+		g_setting.powerBacklightState = 1;
+	}
+	else
+	{
+		if(recordStatusFlag == 1)
+		{
+			top.$('otherPage').src = "";
+			top.$('operatePage').src = "";
+			$("globleShow").contentWindow.hiddenRecord();
+			top.$('main').src = "pvr/Pvr.html?power";
+		
+			top.main.focus();
+			setFrameFocusPage("main");
+		}
+		else
+		{
+            //不进入假待机情况：1.开机时在netflix 2.没有网络 3.有其他app打开时 4.设置了定时开机 5.设置预定PVR录制时
+            if(0 == netflixPowerOffFlag && true == top.checkNetStatus() && 0 == top.appOpenFlag && 0 == g_setting.powerOnTimer &&  0 >= g_channel.showSchedule().length)
+            {
+                //g_setting.powerBacklightState = 0;
+                g_setting.powerOffForNetflix();
+                top.$('main').src = "netflixPowerOff.html";
+                top.main.focus();
+                netflixPowerOffFlag = 1;
+                if(1 == bluetooth.getStatus())           //关闭蓝牙
+                {
+                    bluetooth.disable();
+                }
+                if (top.g_setting.getProperty("ui.eu.breathing", top.ledStatusDefault) == "on")
+                {
+                    setTimeout(function(){
+                        top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_BY_POWER_OFF);},1 * 60 * 1000 - 5 * 1000);
+                    netflixPowerOffTimeOut = setTimeout('g_setting.setProperty("sita.bootup.led.work", "off");g_setting.setProperty("sita.bootup.led.standby", "breathing");g_setting.powerOff();',1 * 60 * 1000);
+                }
+                else
+                {
+                    setTimeout(function(){
+                        top.g_ulits.sendMsgToApplication("vod.netflix", top.STOP_NETFLIX_BY_POWER_OFF);},1 * 60 * 1000 - 5 * 1000);
+                    netflixPowerOffTimeOut = setTimeout('g_setting.setProperty("sita.bootup.led.work", "off");g_setting.setProperty("sita.bootup.led.standby", "on");g_setting.powerOff();',1 * 60 * 1000);
+                }
+
+            }
+            else
+            {
+                g_setting.powerOff();
+            }
+		}
+	}
+}
+
+function toSource()
+{
+	if(hbbtvCancelKeyOperation(VK_SOURCE)==true)
+	{
+		return;
+	}
+	g_isUsedHotKeyToIntoPage = 1;
+	top.g_previousHtmlPage = "channelPlay.html";
+	if((g_factory.sourceLock)&&(g_factory.hotelEnable))
+	{
+		$('main').src = "password.html?sourceLock";
+		top.main.focus();
+		setFrameFocusPage("main");
+	}
+	else
+	{
+		$("operatePage").src = "";
+		$('main').src = "inputSource.html";
+		top.main.focus();
+		setFrameFocusPage("main");
+		
+	}
+}
+
+function toSourceEx(key, value)
+{
+	if(hbbtvCancelKeyOperation(key)==true)
+	{
+		return;
+	}
+
+	if((g_factory.sourceLock)&&(g_factory.hotelEnable))
+	{
+		$('main').src = "password.html?sourceLock";
+		top.main.focus();
+		setFrameFocusPage("main");
+	}
+	else
+	{
+        g_channel.inputSource = value;
+        g_isShowInfoBar = 1;
+		top.jumpPage();
+	}
+}
+
+function toMenu()
+{
+	if(hbbtvCancelKeyOperation(VK_MENU)==true)
+	{
+		return;
+	}
+	g_channel.testLog("menu_visible_status = " + menu_visible_status);
+	if(menu_visible_status)//菜单显示
+	{
+		menu_visible_status = 0;
+		top.jumpPage();
+	}
+	else
+	{
+		if(top.recordStatusFlag == 1)
+		{
+			$("globleShow").contentWindow.hiddenRecord();
+			clearMyTimeout();
+			$("operatePage").src = "";
+			top.$('main').src = "pvr/Pvr.html?homePage&tv";
+			$("main").style.display = "block";
+			
+			top.main.focus();
+			setFrameFocusPage("main");
+			return;
+		}
+		else if(top.timeShiftStatusFlag == 1)
+		{
+			$("globleShow").contentWindow.hiddenTimeShift();
+			$("operatePage").src = "";
+			top.$('main').src = "pvr/timeshift.html?homePage&tv";
+			$("main").style.display = "block";
+			
+			top.main.focus();
+			setFrameFocusPage("main");
+			return;
+		}
+		if(g_isDownloading == 1){
+			g_isDownloading = 0;
+			if(!g_isForceUpgrade){
+				hideDownloadRing();
+			}
+			g_setting.pauseDownloadUpdateFile();
+		}
+		 if(top.currentPanel==1)
+		 {
+			if(top.g_setting.pic3DMode!=0)
+			{
+				top.g_setting.pic3DMode=0;
+				top.$("globleShow").contentWindow.hiddenGlassRemind();
+			}
+		}
+		else if(top.currentPanel==2)
+		{
+			if(top.g_setting.pic3DMode!=0)
+			{
+				top.g_setting.pic3DMode=0;
+			}
+		}
+		top.g_previousHtmlPage = "channelPlay.html";
+		$("operatePage").src = "";
+		$('otherPage').src = "";
+		if(top.g_setting.getProperty("ro.sita.model.MODEL_REGION_NAME_CFG.REGION_NAME", "EU") == "AU")//Austrulia platform
+		{
+			top.$("main").src = "homePageIndex.html";
+		}
+		else
+		{
+			top.$("main").src = "homePageVP.html?tv&title";
+		}
+		top.main.focus();
+		setFrameFocusPage("main");
+		
+		return;
+	}
+}
+function hbbtvCancelKeyOperation(VK_KEY)
+{
+	if(g_channel.checkhbbtvStatus()==0)
+	{
+		g_setting.hbbTVSwitchState = 0;
+		return false;
+	}
+	else if(g_channel.checkhbbtvStatus()==1)
+	{
+		g_setting.hbbTVSwitchState = 0;
+		return false;
+	}
+    else if (g_channel.checkhbbtvStatus()==2 && VK_KEY==VK_RECORD)
+    {
+        return true;
+    }
+	else
+	{
+		 $("operatePage").src = "";
+		 $("otherPage").src ="";
+		 $("main").src = "hbbtvCancelRemind.html?"+VK_KEY;
+		 $("main").style.display = "block";
+		
+		 top.main.focus();
+		 setFrameFocusPage("main");
+		return true;
+	}
+}
+/*
+specialKeyDownProcess:响应共某一些特殊的快捷键处理，不是全部页面都响应的那种
+*/
+function specialKeyDownProcess(e)
+{
+	clearMyTimeout();
+	/*下面这些键只在特殊页面才有处理，现在为channel_play.html页面，本不应该放在这个函数中，但因为改动有些困难所以放在此处处理了,当前能使用这些键的页面为channel_play.html，option.html,eco.html,sleepTimer.html,globleShow.html,zoom.html*/
+	var keycode = e.which;//alert(" keycode = " + keycode)
+	switch(keycode)
+	{
+		case VK_LANG://language
+			if(g_channel.checkhbbtvStatus()>=1)
+			{
+				
+				return ;
+			}
+			top.g_previousHtmlPage = "channelPlay.html";
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+			break;
+		case VK_SUBTITLE://subtitle
+			if(g_channel.checkhbbtvStatus()>=1)
+			{
+				
+				return ;
+			}
+			top.g_previousHtmlPage = "channelPlay.html";
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+			break;
+		case VK_TELETEXT://text
+
+			top.g_previousHtmlPage = "channelPlay.html";
+			if(channelLock || parentalLock || inputLock || top.recordStatusFlag==1 || top.timeShiftStatusFlag == 1)
+			{
+				g_remindWord = "noTeletext";
+				$("main").src = "intermediate.html";
+			}
+			else
+			{
+				if(!g_channel.currentSignalStatus)
+				{
+				   g_remindWord = "noTeletext";
+				   $("operatePage").src = "";
+				   $("main").src = "intermediate.html";
+				   $("main").style.display = "block";
+					
+				   return;
+				}
+				else
+				{
+					if(hbbtvCancelKeyOperation(VK_TELETEXT)==true)
+					{
+						return;
+					}
+					if(g_setting.openttx())
+					{
+						$("operatePage").src = "";
+						$("main").src = "TeletextMenu.html";
+						$("main").style.display = "block";
+						
+					}
+					else
+					{
+						var Mheg5Status=g_channel.getMheg5Status();
+						if(Mheg5Status==1)
+						{
+							g_openMheg5State=1;
+							g_channel.transportKeyToMheg5(keycode);
+						}
+						else
+						{
+							$("operatePage").src = "";
+							g_remindWord = "noTeletext";
+						   $("main").src = "intermediate.html";
+						   $("main").style.display = "block";
+							
+						}
+					}
+				}
+			}
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case VK_RECORD://record
+
+	        if(hbbtvCancelKeyOperation(VK_RECORD)==true)
+			{
+				return;
+			}
+			top.g_previousHtmlPage = "channelPlay.html";
+			if(g_channel.inputSource == 1)
+			{
+				g_channel.testLog("g_factory.pvrOpenStatus="+g_factory.pvrOpenStatus);
+				if(g_factory.pvrOpenStatus == 1)
+				{
+					if(top.recordStatusFlag==1)
+					{
+						$("globleShow").contentWindow.hiddenRecord();
+					}
+					$("operatePage").src = "";
+					$('main').src = "pvr/Pvr.html?menu";
+					$("main").style.display = "block";
+					
+				}
+				else
+				{
+						top.$("operatePage").src = "";
+					top.g_remindWord = "notAvailable";
+					top.$("main").src = "intermediate.html";
+					top.$("main").style.display = "block";
+				
+				}
+			}
+			else
+			{
+				$("operatePage").src = "";
+				g_remindWord = "notAvailable";
+				$("main").src = "intermediate.html";
+				$("main").style.display = "block";
+				
+			}
+			top.main.focus();
+			setFrameFocusPage("main");
+			
+			break;
+		case VK_PLAY_PAUSE://pause/play to timeshift
+		case top.VK_PLAY:
+
+
+			top.g_previousHtmlPage = "channelPlay.html";
+			if(g_channel.inputSource == 1)
+			{
+				g_channel.testLog("g_factory.pvrOpenStatus="+g_factory.pvrOpenStatus);
+				if(g_factory.pvrOpenStatus == 1)
+				{
+					$("operatePage").src = "";
+					$("globleShow").contentWindow.hiddenTimeShift();
+					if(timeShiftStatusFlag == 1)
+					{
+						top.$('main').src = "pvr/timeshift.html?menu&play";
+					}
+					else
+					{
+						$('main').src = "pvr/timeshiftInit.html";
+					}
+					$("main").style.display = "block";
+					
+				}
+			}
+			else
+			{
+				$("operatePage").src = "";
+				g_remindWord = "notAvailable";
+				$("main").src = "intermediate.html";
+				$("main").style.display = "block";
+				
+			}
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.VK_PAUSE:
+
+			top.g_previousHtmlPage = "channelPlay.html";
+			if(g_channel.inputSource == 1)
+			{
+				g_channel.testLog("g_factory.pvrOpenStatus="+g_factory.pvrOpenStatus);
+				if(g_factory.pvrOpenStatus == 1)
+				{
+					$("operatePage").src = "";
+					$("globleShow").contentWindow.hiddenTimeShift();
+					if(timeShiftStatusFlag == 1)
+					{
+						top.$('main').src = "pvr/timeshift.html?menu&pause";
+					}
+					else
+					{
+						$('main').src = "pvr/timeshiftInit.html";
+					}
+					$("main").style.display = "block";
+					
+				}
+			}
+			else
+			{
+				$("operatePage").src = "";
+				g_remindWord = "notAvailable";
+				$("main").src = "intermediate.html";
+				$("main").style.display = "block";
+				
+			}
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.VK_STOP:
+			if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("stop");
+			}
+			else if(top.recordStatusFlag==1)
+			{
+				$("globleShow").contentWindow.hiddenRecord();
+				$('main').src = "pvr/Pvr.html?exit";
+			}
+			break;
+		case top.VK_REWIND://fastBackward
+			if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("menu&fastBackward");
+			}
+			break;
+		case top.VK_FAST_FWD://fastForward
+			if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("menu&fastForward");
+			}
+			break;
+		default:
+			break;
+	}
+}
+var playTimer = 0;
+var currentChannel;
+var currentChannelIndex = 0;
+function channelChange()
+{
+	if(recordStatusFlag == 1)
+	{
+		$("globleShow").contentWindow.hiddenRecord();
+		clearMyTimeout();
+		top.$('main').src = "pvr/Pvr.html?channelChange&"+currentChannelIndex;
+		return;
+	}
+	else if(timeShiftStatusFlag == 1)
+	{
+		operateWhenTimeshifting("channelChange&" + currentChannelIndex);
+		return;
+	}
+	if(currentChannelIndex !=g_channel.currentIndex && currentChannelIndex<65535)
+	{
+		top.g_openMheg5State=0;
+		 if(top.currentPanel==1)
+		{
+			if(top.g_setting.pic3DMode!=0)
+			{
+				top.g_setting.pic3DMode=0;
+				top.$("globleShow").contentWindow.hiddenGlassRemind();
+			}
+		}else if(top.currentPanel==2)
+		{
+			if(top.g_setting.pic3DMode!=0)
+			{
+				top.g_setting.pic3DMode=0;
+			}
+		}
+		  top.channelLock = 0;
+		top.parentalLock = 0;
+		top.inputLock = 0;
+		g_channel.playByIndex(currentChannelIndex);
+	}
+	g_previousHtmlPage = "channelPlay.html";
+	g_isShowInfoBar = 1;
+	top.jumpPage();
+}
+
+function hideVolume()
+{
+	top.keySetForUI(0);
+	$("globleShow").contentWindow.$("adjustProgressBox").style.display = "none";
+	g_volume_visible = 0;
+	if(g_newDeviceCount>0 ||top.switchsourceflag == 1)
+	{
+		top.otherPage.focus();
+		setFrameFocusPage("otherPage");
+	}
+	else
+	{
+		if(g_EnterVolumn == 1)
+		{
+			$("main").contentWindow.resetFocus();
+			g_EnterVolumn = 0;
+		}
+		else
+		{
+			top.main.focus();
+			setFrameFocusPage("main");
+		}
+
+	}
+}
+function clearVolumeTimer()
+{
+	 clearTimeout(g_volume_timer); 
+}
+
+function startVolumeTimer()
+{
+	g_volume_timer = setTimeout("hideVolume()",3000);
+}
+
+function systemEventProc(evt)
+{
+	g_channel.testLog("in framework systemEventProc");
+    var msg = evt.which;
+	var value = evt.modifiers;
+
+    switch(msg)
+    {
+		case top.E_NETFLIX_NETWORK_ERROR:
+			{
+				$("operatePage").src = "";
+				$("otherPage").src ="";
+				$("main").src="connectNetworkRemind.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				//return;
+			}
+			break;
+			
+		case top.E_BOOKING_RECORD_END://booking record end
+			if(!g_setting.powerBacklightState)//待机录制中
+			{
+				g_setting.powerOff();
+				return;
+			}
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				recordStatusFlag=0;
+				$("globleShow").contentWindow.hiddenRecord();
+			}
+			break;
+		case top.E_PVR_DISK_UNPLUG://usb remove//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?usbRemove";
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("usbRemove");
+			}
+			break;
+		case top.E_PVR_DISK_FULL://no free space
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?noSpace";
+			}
+			//time shift没有满盘的说法
+			break;
+		case top.E_PVR_TIMESHIFT_AUTO_START://pvr录制满时，如果当前timeshift是暂停的会自动播放
+			if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("menu&autoPlay");
+			}
+			break;
+		case top.E_PVR_RECORD_END://record end，record异常退出,只需要退出pvr即可
+			if(!g_setting.powerBacklightState)//待机录制中
+			{
+				g_setting.powerOff();
+				return;
+			}
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+		        top.recordStatusFlag =0;
+				$("globleShow").contentWindow.hiddenRecord();
+			}
+			break;
+		case top.E_PVR_NO_SIGNAL://pvr no signal,这个消息是pvr自己判断有无信号的消息//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			if(!g_setting.powerBacklightState)//待机录制中
+			{
+				g_setting.powerOff();
+				return;
+			}
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+		        top.recordStatusFlag =0;
+				$("globleShow").contentWindow.hiddenRecord();
+			}/*
+			else if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("notAvailable");
+			}*/
+			break;
+		case top.E_READY_TO_CHANGE_SCART://ready to change to cart source
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				top.$('otherPage').src = "";
+				top.$('operatePage').src = "";
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?pin8&"+value;
+
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("pin8&"+value);
+			}
+			else {
+				top.$('otherPage').src = "";
+				top.$('operatePage').src = "";
+				if (top.appOpenFlag == 1)
+				{
+					top.enterChannelPlay  = 1;
+					top.enterInputSource = value;
+					top.main.focus();
+					top.g_ulits.closeOperaApplication();
+				}
+				else
+				{
+					g_channel.inputSource = value;
+					top.g_isShowInfoBar = 1;
+					top.$('main').src = "channelPlay.html";
+					top.main.focus();
+					setFrameFocusPage("main");
+				}
+			}
+			break;
+		case top.E_READY_TO_CHANGE_CEC://ready to change to cec source
+			if(recordStatusFlag == 1)
+			{
+				g_channel.testLog("cecInput===="+value);
+				clearMyTimeout();
+				top.$('otherPage').src = "";
+				top.$('operatePage').src = "";
+				setTimeout(function(){
+					$("globleShow").contentWindow.hiddenRecord();
+					top.$('main').src = "pvr/Pvr.html?cec&"+value;
+					top.main.focus();
+					setFrameFocusPage("main");
+				}, 50);
+
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("cec&"+value);
+			}
+			else 
+			{
+				
+				top.$('otherPage').src = "";
+				top.$('operatePage').src = "";
+				g_channel.inputSource=value;
+				top.g_isShowInfoBar = 1;
+				top.$('main').src = "channelPlay.html";
+				
+				top.main.focus();
+				setFrameFocusPage("main");
+
+			}
+			break;
+		case top.E_DTV_SERVICE_PLAY://播放流数据更新,//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			top.g_isShowInfoBar = 1;
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+		        top.recordStatusFlag =0;
+				$("globleShow").contentWindow.hiddenRecord();
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notAvailable");
+				return;
+			}			
+			$('main').src = "channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_SS_INVALID_SERVICE://invalid service//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+		{
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				top.$('otherPage').src = "";
+				top.$('operatePage').src = "";
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?notSurport";
+				
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notAvailable");
+			}
+			channelLock = 0;
+			parentalLock = 0;
+			inputLock = 0;
+			break;	
+		}
+		case top.E_SS_SCRAMBLED_PROGRAM:// screamble//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+		{
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?notAvailable";
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notSurpport");
+			}
+			channelLock = 0;
+			parentalLock = 0;
+			inputLock = 0;
+			break;	
+		}
+		case top.E_SS_DATA_ONLY://data only//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+		{
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?notAvailable";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notAvailable");
+			}
+			channelLock = 0;
+			parentalLock = 0;
+			inputLock = 0;
+			break;	
+		}
+		case top.E_SS_AUDIO_ONLY://audio only
+		case top.E_DTV_SS_RUNNING_STATUS_NOT_RUNNING:
+			channelLock = 0;
+			parentalLock = 0;
+			inputLock = 0;
+			break;
+		case top.E_SS_CH_BLOCK://channel lock//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			channelLock = 1;
+			if(timeShiftStatusFlag == 1)
+			{
+				operateWhenTimeshifting("notAvailable");
+			}
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?notAvailable";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			break;
+		case top.E_SS_PARENTAL_BLOCK://有节目锁//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			parentalLock=1;
+			if(!g_setting.powerBacklightState)//待机录制中
+			{
+				g_setting.powerOff();
+				return;
+			}
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?notAvailable";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else if(timeShiftStatusFlag == 1)//底层自动停止timeshift
+			{
+				operateWhenTimeshifting("notAvailable");
+			}
+			break;
+		case top.E_DTV_SS_INPUT_BLOCK://信源锁//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			inputLock = 1;
+			if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notAvailable");
+			}
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?notAvailable";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			break;
+		case top.E_SS_COMMON_VIDEO:// service ready
+			parentalLock=0;
+			channelLock=0;
+			inputLock = 0;
+			break;
+		case top.E_SIGNAL_UNLOCK://unlock
+		case top.E_PVR_NO_SIGNAL:
+		
+			if(recordStatusFlag == 1)
+			{
+				clearMyTimeout();
+				g_pvr.recordStop();
+				$("globleShow").contentWindow.hiddenRecord();
+				top.$('main').src = "pvr/Pvr.html?saveFile";
+				top.pvrCurrentTime=0;
+		        top.pvrTotalTime=2*60*60;
+			}
+			//time shift 等待自己的no signal消息
+			break;
+		case top.E_SIGNAL_LOCK://lock
+			break;
+		case top.E_MEDIA_USB_INSERTED://usb insert
+			if(isFirstInChanenlPlay)
+			{
+				return;
+			}
+			//lqt
+			if(top.virtualRemoteState == 1)
+			{
+				//隐藏虚拟遥控器
+				top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+			}
+			g_factory_hotkey = g_factory.factoryHotkey;
+			if(g_factory_hotkey)
+			{
+				return;
+			}
+			if(bisUpgrade)//yiling0609
+			{
+				bisUpgrade=0;
+				g_media.getNewDiskListInfo(g_media.getNewDiskListCount());
+				return;
+			}
+			if($("main").src == "connectNetworkRemind.html")
+			    return;
+			if(g_isMediaCenter == NDM_Others)
+			{
+				$("operatePage").src = "";
+				$("main").onload=function(){
+				$("main").style.display = "block";
+				$("main").onload=function(){};
+				}
+				$("main").src="channelPlay.html";
+				
+			}
+			stopVolumeTimer();
+			top.$("otherPage").src = "newDeviceList.html";
+			top.otherPage.focus();
+			setFrameFocusPage("otherPage");
+			break;
+		case top.E_DLNA_DMR_PUSH_MOVIE://dmr push player
+			g_dlnaMode = "dmr";
+			g_previousHtmlPage = "channelPlay.html";
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		         top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			stopTimeout();
+			 top.$("otherPage").src="";
+	         top.$("operatePage").src="";
+			top.main.focus();
+				setFrameFocusPage("main");
+			$("main").src = "videoPlay.html?dmr";
+			break;
+		case top.E_DLNA_DMR_PUSH_MUSIC://dmr push player
+			g_dlnaMode = "dmr";
+			g_previousHtmlPage = "channelPlay.html";
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		         top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			stopTimeout();
+			top.$("otherPage").src="";
+	         top.$("operatePage").src="";
+			top.main.focus();
+				setFrameFocusPage("main");
+			$("main").src = "musicPlay.html?dmr";
+			break;
+		case top.E_DLNA_DMR_PUSH_PICTURE://dmr push player
+			g_dlnaMode = "dmr";
+			g_previousHtmlPage = "channelPlay.html";
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		         top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			stopTimeout();
+			top.$("otherPage").src="";
+	         top.$("operatePage").src="";
+			top.main.focus();
+				setFrameFocusPage("main");
+			$("main").src = "picturePlay.html?dmr";
+			break;
+		case top.E_CIPLUS_PROGRAM_CHANGE://ci 主动换台发出换台刷新节目信息//对于此消息，我们只需要处理页面显示就可，所有停止pvr、timeshift的函数调用都在底层处理
+			g_isShowInfoBar = 1;
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		         top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notAvailable");
+				return;
+			}
+			top.jumpPage();
+			break;
+		case top.E_POWER_OFF_TIMER://power off timer
+		    if(top.pressKeyDownTimer!=0)
+			{
+				clearTimeout(top.pressKeyDownTimer);
+				top.pressKeyDownTimer=0;
+			}
+			stopVolumeTimer();
+			top.g_lastTime = value;
+			$("operatePage").src = "";
+			if(g_temp == "media" || g_temp == "pvr" || g_temp == "homePage")//在pvr和多媒体下执行预订倒计时只推出booking，不退出pvr或多媒体)
+			{
+				$("otherPage").src = "powerOffTimer.html";
+				top.otherPage.focus();
+				setFrameFocusPage("otherPage");
+			}
+			else
+			{
+				$("main").src = "powerOffTimer.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			
+			break;
+		case top.E_BOOKING_PLAY_START://booking play start开机时节目预定的时间已过，但是依然要提醒用户做一些切台等操作
+			bookingMode = 2;//reminder
+			$("operatePage").src = "";
+			if(g_temp == "media" || g_temp == "pvr" || g_temp == "homePage")//在pvr和多媒体下执行预订倒计时只推出booking，不退出pvr或多媒体)
+			{
+				stopVolumeTimer();
+				$("otherPage").src = "bookingRemind.html?" + value;
+				top.otherPage.focus();
+				setFrameFocusPage("otherPage");
+				//add chenhua for youtube app
+				$("otherPage").style.display = "block";
+			}
+			else
+			{
+				$("main").src = "bookingRemind.html?" + value;
+				top.main.focus();
+				setFrameFocusPage("main");
+				//add chenhua for youtube app
+				$("main").style.display = "block";
+			}
+			break
+		case top.E_DATABASE_FILE_DAMAGE:
+			stopVolumeTimer();
+			$("operatePage").src = "";
+			$("otherPage").src = "databaseDamageRemind.html";
+			top.otherPage.focus();
+			setFrameFocusPage("otherPage");
+			break;
+		case top.E_BOOKING_RECORD_START://booking record start开机时录制预定已经过期，但是依然要提醒用户切台录制
+			bookingMode = 1;//record
+			$("operatePage").src = "";
+			if(g_temp == "media" || g_temp == "pvr" || g_temp == "homePage")//在pvr和多媒体下执行预订倒计时只推出booking，不退出pvr或多媒体)
+			{
+				stopVolumeTimer();
+				$("otherPage").src = "bookingRemind.html?" + value;
+				top.otherPage.focus();
+				setFrameFocusPage("otherPage");
+				//add chenhua for youtube app
+				$("otherPage").style.display = "block";
+			}
+			else
+			{
+				$("otherPage").src ="";
+					$("main").src = "bookingRemind.html?" + value;
+					top.main.focus();
+					setFrameFocusPage("main");
+					//add chenhua for youtube app
+					$("main").style.display = "block";				
+			}
+			break;
+		case top.E_BOOKING_AHEAD_PLAY_START://booking ahead play start,正常情况下切台提醒，一分钟前提醒
+			bookingMode = 2;//reminder
+			$("operatePage").src = "";
+			if(g_temp == "media" || g_temp == "pvr" || g_temp == "homePage")//在pvr和多媒体下执行预订倒计时只推出booking，不退出pvr或多媒体)
+			{
+				stopVolumeTimer();
+				$("otherPage").src = "bookingRemind.html?" + value;
+				top.otherPage.focus();
+				setFrameFocusPage("otherPage");
+				//add chenhua for youtube app
+				$("otherPage").style.display = "block";
+			}
+			else
+			{
+				$("main").src = "bookingRemind.html?" + value;
+				top.main.focus();
+				setFrameFocusPage("main");
+				//add chenhua for youtube app
+				$("main").style.display = "block";
+			}
+			break;
+		case top.E_BOOKING_AHEAD_RECORD_START://booking ahead record start正常情况下录制提醒,，一分钟前提醒
+			bookingMode = 1;//record
+			$("operatePage").src = "";
+			if(g_temp == "media" || g_temp == "pvr" || g_temp == "homePage")//在pvr和多媒体下执行预订倒计时只推出booking，不退出pvr或多媒体)
+			{
+				stopVolumeTimer();
+				$("otherPage").src = "bookingRemind.html?" + value;
+				top.otherPage.focus();
+				setFrameFocusPage("otherPage");
+				//add chenhua for youtube app
+				$("otherPage").style.display = "block";
+			}
+			else
+			{
+
+				$("main").src = "bookingRemind.html?" + value;
+				top.main.focus();
+				setFrameFocusPage("main");
+				//add chenhua for youtube app
+				$("main").style.display = "block";
+			}
+			break;
+		case top.E_BOOKING_PLAY_END://booking play end
+			break;
+		case top.E_CI_DATA_READY://ci data ready
+			if(top.g_ciIsInUpdateForm == 0 && top.g_temp != "EPG")
+			{
+				//在页面common_interface.html中停止计时//stopTimeout();
+				$("operatePage").src = "";
+				g_previousHtmlPage = "channelPlay.html";
+				g_nextHtmlPage = "common_interface.html";
+				g_ciCurrentCardName = g_setting.getCIName(value);
+				$("main").src = "index.html?id="+Math.random();
+				
+				$("main").style.display = "block";
+			}
+			break;
+		case top.E_CI_CAM_NAME_READY://CI_CAM_NAME_READY
+			if(top.g_ciIsInUpdateForm == 0 && top.g_temp != "EPG")
+			{
+				//在页面ciList.html中有自己的计时，不用管，页面自己停止计时stopTimeout();
+				$("operatePage").src = "";
+				g_isUsedNotifyIntoPage = 1;
+				g_nextHtmlPage = "ciList.html";
+				$("main").src = "index.html";
+				
+				$("main").style.display = "block";
+			}
+			break;
+		case top.E_CI_OP_UPDATE_CHANNEL://CMD_UI_NOTIFY_OP_UPDATE_CHANNEL
+			top.g_ciIsInUpdateForm = 1;
+			g_previousHtmlPage = "channelPlay.html";
+			g_ciUpdateType = 0
+			$("main").src = "ciUpdate.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_CI_OP_UPDATE_NIT://CMD_UI_NOTIFY_OP_UPDATE_NIT
+			top.g_ciIsInUpdateForm = 1;
+			g_previousHtmlPage = "channelPlay.html";
+			g_ciUpdateType = 1;
+			$("main").src = "ciUpdate.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_CI_UPGR_INPROGRESS:
+			g_ciUpdateStatus=1;
+			break;
+		case top.E_CI_UPGR_NOT_INPROGRESS://CI update end
+			g_ciUpdateStatus=0;
+			break;
+		case top.E_SCART_CHANGE_INPUT_SRC://scart change start:CMD_UI_NOTIFY_SCART_CHANGE_INPUT_SRC
+			parentalLock=0;
+			channelLock=0;
+			inputLock = 0;
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+			break;
+		case top.E_TV_EXCHANGE_END://tv source change end
+			//parentalLock=0;
+			//channelLock=0;
+			//inputLock = 0;//信源锁是在信源切换成功就发，
+			break;
+		case top.E_CI_MHEG_OPEN://ci MHEG打开，需要进入channel_play页面并
+			g_MMHStatus = 1;
+			if(top.g_temp != "EPG")
+			{
+				top.jumpPage();
+			}
+			break;
+		case top.E_CI_MHEG_CLOSE://ci MHEG closed
+			g_MMHStatus = 0;
+			//$("main").src = "systemSetting/common_interface.html";
+			break;
+		case top.E_CI_EXIT_CI:
+			if(top.g_temp != "EPG")
+			{
+				clearMyTimeout();
+				timeoutFuc.timeoutEnable = 1;
+				/*避免在otherpage等页面跳转回main页面时有显示main跳转前页面内容的情况*/
+				$("main").onload=function(){
+					$("main").style.display = "block";
+					top.main.focus();
+					$("main").onload=function(){};
+					}
+				$("main").src="channelPlay.html";
+				setFrameFocusPage("main");
+				menu_visible_status = 0;
+				top.$("operatePage").src = "";
+				top.$('otherPage').src = "";
+			}
+			break;
+		case top.E_DTV_NIT_VERSION_CHANGED://nit refresh notify,此消息不作为停止pvr或timeshift的标志，如果底层切台的话会发送E_CHANNEL_PLAY_END的消息
+			stopVolumeTimer();
+			$("main").onload=function(){
+                $("main").style.display = "block";
+                $("main").contentWindow.show_moreInfo_flag=2;
+                $("main").contentWindow.refreshChannelInfo();
+                $("main").contentWindow.hideRemind();
+                $("main").contentWindow.showInfoFrom();
+                $("main").onload=function(){};
+			}
+			$("main").src = "channelPlay.html";
+            if(1)//("1" == g_setting.getProperty("app.hotel.networkupdate","1"))
+            {
+                $("operatePage").onload = function () {
+                    $("operatePage").style.display = "block";
+                    $("operatePage").onload = function () {
+                    };
+                }
+                $("operatePage").src = "nitRefresh.html";
+                top.operatePage.focus();
+                setFrameFocusPage("operatePage");
+            }
+			$("otherPage").src ="";
+			break;
+		case top.E_CEC_COMMON://cec 切换，需要显示info信息
+			g_isShowInfoBar = 1;
+			top.jumpPage();
+			break;
+		case top.E_OSD_STATUS_ON:
+			$("factoryOsdShow").style.display="none";
+			break;
+		case top.E_OSD_STATUS_OFF:
+			$("factoryOsdShow").style.display="block";
+			break;
+		case top.E_FACTORY_PS_MODE_ON:
+		case top.E_FACTORY_PS_MODE_OFF:
+			g_factory_hotkey = g_factory.factoryHotkey;
+			frames["globleShow"].window.showHotkey();
+			break;
+		case top.E_FACTORY_OSD_SHOW:
+			g_factory_mode = 1;
+			$("main").src= "factory/factoryMenu.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_FACTORY_OSD_HIDE:
+			if(g_factory_mode == 1)
+				top.jumpPage();	
+			g_factory_mode = 0;	
+			break;	
+		case top.E_FACTORY_INFORMATION_SHOW:
+			g_factory_mode = 2;
+			$("main").src = "factory/serviceMenu.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_FACTORY_INFORMATION_HIDE:
+			if(g_factory_mode == 2)	
+				top.jumpPage();
+			g_factory_mode = 0;	
+			break;
+		case top.E_FACTORY_WARMUP_ON:
+			$("main").src ="factory/factoryWarmUp.html";
+			frames["globleShow"].window.showHotkey();
+			//showFactoryHotkey();
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_FACTORY_WARMUP_OFF:
+		    //showFactoryHotkey();//显示factory hotkey弹出框
+		    frames["globleShow"].window.showHotkey();
+		    top.jumpPage();
+			break;
+		case top.E_FACTORY_VOLUME_SHOW:
+			clearVolumeTimer();
+			$('globleShow').contentWindow.initVolume();
+			g_volume_visible = 1;
+			$("globleShow").contentWindow.$("adjustProgressBox").style.display = "block";
+			top.globleShow.focus();
+			setFrameFocusPage("globleShow");
+			//showMute(0);
+			//top.startVolumeTimer();
+			break;
+		case top.E_FACTORY_SOURCE_CHANGE:
+			g_isUsedHotKeyToIntoPage = 1;
+			top.g_isShowInfoBar = 1;
+			top.jumpPage();
+			/*
+			clearMyTimeout();
+			top.g_previousHtmlPage = "channelPlay.html";
+			$('main').src = "inputSource.html";
+			top.main.focus();
+			setFrameFocusPage("main");*/
+			break;
+		case top.E_MUTE_ON:
+			showMute(1);
+			break;
+		case top.E_MUTE_OFF:
+			showMute(0);
+			break;
+		case top.E_FACTORY_PORTAL_CHECK:
+			 g_factory_IR_msg = 0;
+			showFactoryIRStatus(value);
+			 break;
+		case top.E_FACTORY_PCLINK_CHECK:
+			 g_factory_IR_msg = 1;
+			 showFactoryIRStatus(value);
+			 break;
+		case top.E_FACTORY_COLOR_TEMP_SHOW:
+			g_factory_IR_msg = 2;
+			showFactoryIRStatus(value);
+			 break;
+		case top.E_FACTORY_USB_TO_NVM:
+			 g_factory_IR_msg = 3;
+			 showFactoryIRStatus(value);
+			 break;			 
+		case top.E_FACTORY_IR_SHOP_RESET:
+			showMute(0);
+			initGlobalVariable();
+			top.showFactoryHotkey();
+			g_factory_IR_msg = 4;
+			showFactoryIRStatus(value);//when do reset shop the msg couldn't be recevied ,so this msg need some time to exe
+			setTimeout(function(){
+			$("main").src = "initSetup/initEnvironmentSet.html";
+			g_factory.resetShop();
+			},300);
+			break;
+		case top.E_FACTORY_IR_NVM_RESET:
+			g_factory_IR_msg = 5;
+			showFactoryIRStatus(value);
+			break;
+		case top.E_UPDATE_DOWNLOAD_PROGRESS:
+			g_isDownloading = 1;
+			if(!g_isForceUpgrade){
+				drawDownloadRing(value);
+			}
+			break;
+		case top.E_UPDATE_DOWNLOAD_COMPLETE:
+			g_isDownloading = -1;  //0
+			if(!g_isForceUpgrade){
+				hideDownloadRing();
+			}
+			g_setting.networkDownloadButton = 0;
+			// value, 0: MD5 check failed. 1: MD5 check successful
+			if(value == 1){
+				g_whichUpdateDialogWillBeUsed = 1;
+				 top.$("otherPage").src="";
+	                top.$("operatePage").src="";
+	                top.$('main').style.display="block";
+				top.$('main').src = "networkUpdateDialog.html";
+               
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else{
+				g_whichUpdateDialogWillBeUsed = 3;
+				 top.$("otherPage").src="";
+                top.$("operatePage").src="";
+                top.$('main').style.display="block";
+				top.$('main').src = "networkUpdateDialog.html?MD5CheckFailed";
+               
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			break;
+		case top.E_DOWNLOADING_NETWORK_ABNORMAL:
+			g_isDownloading = -1; //0
+			g_whichUpdateDialogWillBeUsed = 3;
+			if(!g_isForceUpgrade){
+				hideDownloadRing();
+			}
+			 top.$("otherPage").src="";
+            top.$("operatePage").src="";
+            top.$('main').style.display="block";
+			top.$('main').src = "networkUpdateDialog.html?networkAbnormal";
+           
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_CHANNEL_PLAY_END://add chenhua 2014.5.14 for pvr and timeshift
+			if(top.g_channel.inputSource == 1)//dtv中因为切台后并不一定能发送屏保消息，所以没法复位锁的标志，所以在这里做了锁的标志的复位
+			{
+				top.channelLock = 0;
+				top.parentalLock = 0;
+				top.inputLock = 0;
+			}
+			
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		         top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				operateWhenTimeshifting("notAvailable");
+			}
+			break;
+		case top.E_UPDATE_CHANNEL_GET_UPDATED_INFORMATION:
+			stopVolumeTimer();
+			clearMyTimeout();
+			downloadSignalFlag = 1;
+			top.$("operatePage").src = "";
+			top.$('main').src = "channelPlay.html";
+			top.$("otherPage").src = "OADSoftwareUpdate.html?" + value;
+			top.otherPage.focus();
+			setFrameFocusPage("otherPage");
+			break;
+		case top.E_UPDATE_CHANNALE_GET_FUTURE_UPDATED_INFO:
+			bisUpgrade =1; //yiling0609
+			stopVolumeTimer();
+			clearMyTimeout();
+			top.$("operatePage").src = "";
+			top.$("otherPage").src = "";
+			top.$('main').src = "channelUpdateFuture.html?"+value;
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_UPDATE_BGM_TRIGGER://yiling0609
+			stopVolumeTimer();
+			clearMyTimeout();
+			top.$("operatePage").src = "";
+			top.$('otherPage').src = "";
+			top.$("main").src = "channelUpdate.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case top.E_REFRESH_PICTURE_SIZE:
+			break;
+		case top.E_SHOW_PANEL_TEST_PICTURE:
+		           panelTestPicture = value;
+		           showPanelPicture();
+			break;
+		case top.E_FACTORY_P_MODE_CTRL:
+			frames["globleShow"].window.showHotkey();
+			break;
+		case top.E_3D_GLASSES_SUIT_OK:
+			$("globleShow").contentWindow.showGlassRemind(1);
+			break;
+		case top.E_3D_GLASSES_SUIT_FAIL:
+			$("globleShow").contentWindow.showGlassRemind(2);
+			glassConnectFlag=0;
+			break;
+	    case top.E_IS_CURRENT_3D_MODE:
+			if(evt.modifiers == 0)//hide 3d tips
+			{
+			    top.$("globleShow").contentWindow.hiddenGlassRemind();
+			}
+			break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+			netCheckStatus = 1;
+			if(downloadSignalFlag == 1)
+			{
+				return;
+			}
+			showNetflixDialog();
+			break;
+		case top.E_WIRE_CONNECT_SUCCESS:
+		case top.E_WIRELESS_CONNECT_SUCCESS:
+			break;
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_WIRE_CONNECT_FAILURE:
+		case top.E_WIRELESS_CONNECT_FAILURE:
+		{
+			netCheckStatus = 0;
+		}
+		break;
+        case top.E_NETWORK_CONNECT_TEST_FAIL_NETFLIX:
+		{
+			$("operatePage").src = "";
+            $("otherPage").src ="";
+            $("main").src="connectNetworkRemind.html";
+            top.main.focus();
+            setFrameFocusPage("main");
+		}
+        break;
+		case top.E_MHL_CABLE_INSERTED:
+			mhl_inserted_status = value;
+			break;
+		case top.E_HBBTV_STATE_CHANGE:
+		    hbbtvStatus = value
+			break;
+		case top.E_FAC_SOUND_TEST:
+			g_factory_IR_msg = 6;
+			showFactoryIRStatus(value);
+			 break;
+		case top.E_FACTORY_ENTER_MEDIA:
+			 top.$('main').src = "deviceList.html";
+			 break;
+		case top.E_FACTORY_WIFI_ON:
+			if(recordStatusFlag == 1)
+			{
+				return;
+			}
+			if(top.g_ciIsInUpdateForm == 0 && top.g_temp != "EPG")
+			{
+				clearMyTimeout();
+				g_isUsedNotifyIntoPage = 1;
+				g_nextHtmlPage = "wirelessScan.html";
+				$("main").src = "index.html";
+			}
+			break;
+		case top.E_CHANNEL_LIST_UPDATE:
+		{
+			break;
+		}
+		case top.E_APP_CLOSE:
+		{
+            if (top.scheduleNetflix)
+            {
+                top.scheduleNetflix = 0;
+                top.RemoteConntrolType = "Netflix";//lqt- 设置虚拟遥控器的场景类型
+                top.g_ulits.sendMsgToApplication("vod.netflix", START_NETFLIX_BY_HOTKEY);
+                return;
+            }
+			if(top.g_channel.inputSource==10)
+			{
+		   		 top.g_channel.inputSource=top.lastInputSource;
+			}
+			top.appOpenFlag = 0;
+			if(1 == downLoadOpenApp)
+			{
+				uiResumeDownloadingUpFile();
+				downLoadOpenApp = 0;
+			}
+			//top.g_ulits.setKeySet(0x1|0x2|0x4|0x8|0x10|0x20|0x40|0x80|0x100|0x200|0x400|0x800,2,0);
+			top.$("main").onload=function(){
+				   	top.$("main").style.display="block";
+					top.$("operatePage").style.display="block";
+					top.$("otherPage").style.display="block";
+					top.$("main").onload=function(){};
+				}
+			//top.$("main").src="channelPlay.html"
+			//top.main.focus();
+			//setFrameFocusPage("main");
+			break;
+		}
+		case top.E_APP_OPEN:
+		{
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		        top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			if(top.g_channel.inputSource!=10&&top.appOpenFlag == 0)
+			{
+				top.lastInputSource = top.g_channel.inputSource;
+				top.g_channel.inputSource = 10;
+			}
+			top.appOpenFlag = 1;
+				$("operatePage").src = "";
+			$("otherPage").src ="";
+			$("main").src="channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			menu_visible_status = 0;
+		
+			top.$("main").style.display="none";
+			top.$("operatePage").style.display="none";
+			top.$("otherPage").style.display="none";
+	
+			break;
+		}
+		case top.E_APP_PROCESS_INITIALIZATION:
+		{
+			if(recordStatusFlag == 1)
+			{
+				g_pvr.recordStop();
+				g_pvr.pvrMhegSuspend(0);/*将mheg状态和显示恢复*/
+				$("globleShow").contentWindow.hiddenRecord();
+				top.pvrCurrentTime=0;
+				top.recordStatusFlag =0;
+		        top.pvrTotalTime=2*60*60;
+			}
+			else if(timeShiftStatusFlag == 1)
+			{
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				g_pvr.timeshiftStop();
+				g_pvr.returnToLive();//返回实时播放页面
+				//现在底层还没有做停止的逻辑，所以这个部分我们自己先做
+				$("globleShow").contentWindow.hiddenTimeShift();
+			}
+			if(top.g_channel.inputSource!=10&&top.appOpenFlag == 0)
+			{
+				top.lastInputSource = top.g_channel.inputSource;
+				top.g_channel.inputSource = 10;
+			}
+			top.appOpenFlag = 1;
+			$("operatePage").src = "";
+			$("otherPage").src ="";
+			$("main").src="channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			menu_visible_status = 0;
+		
+			top.$("main").style.display="none";
+			top.$("operatePage").style.display="none";
+			top.$("otherPage").style.display="none";
+			top.g_ulits.sendMsgToApplication("T-DIAL",E_APP_PROCESS_READY);
+			break;
+		}
+		case top.E_DLNA_DMR_CONNECT://nScreen connect to TV
+			$("globleShow").contentWindow.showPhoneConnectToTV();
+			//$("otherPage").src = "nScreenPhoneConnected.html";
+			break;
+		case top.E_FACTORY_CMD_SHOP_INIT:
+			showMute(0);
+			initGlobalVariable();
+			top.showFactoryHotkey();
+			$("main").src = "initSetup/initEnvironmentSet.html";
+			break;
+		case top.E_FACTORY_IR_3D_ON:
+			top.g_setting.pic3DMode = 1;
+			if(top.currentPanel == 1)
+			{
+
+					if(top.glassConnectFlag==0)
+					{
+						top.$("globleShow").contentWindow.showGlassRemind(0);
+						if(top.bluetoothStart==0)
+						{
+							setTimeout("top.g_setting.bluetoothMaster()",800);
+						}
+						top.bluetoothStart=1;
+
+					}
+			}
+			break;
+		case top.E_FACTORY_IR_3D_OFF:
+			top.g_setting.pic3DMode = 0;
+			if(top.currentPanel == 1)
+			{
+				top.$("globleShow").contentWindow.hiddenGlassRemind();
+			}
+			break;
+		case top.E_CEC_ARC_AUDIO_STATUS_CHANGE:
+		{
+			updateCecMute();
+		}
+		break;
+		case top.UI_BLUETOOTH_EVENT_DEVICES_CHANGE: //add yums 蓝牙断开
+			console.log("YM framework UI_BLUETOOTH_EVENT_DEVICES_CHANGE");
+			$("globleShow").contentWindow.showBluetoothDisconnectToTV();
+			//Add 判断当前断开的设备是否是音频设备
+			var currentBluetoothDevice = bluetooth.getBluetoothDeviceById(evt.modifiers);//蓝牙消息时，modifiers为连接的蓝牙设备的ID
+			console.log("YM currentBluetoothDevice.deviceType:" + currentBluetoothDevice.deviceType);
+			if(currentBluetoothDevice.deviceType == 1 ||
+				currentBluetoothDevice.deviceType == 2 ||
+				currentBluetoothDevice.deviceType == 0)
+			{
+				g_setting.setProperty("app.ui.bluetoothStatus","0");
+				if(g_setting.speakerStatus == 0)
+				{
+					g_setting.speakerStatus = 1;
+				}
+				if(bt_soundOutputShowFlag)
+					bt_soundOutputShowFlag = false;
+				
+				//if(mute_status == 0)//判断当前是否为静音状态
+				//{
+				//	bluetooth.setAudioMute(0);
+				//}
+				bt_connectDevicePosition = -1
+			}
+			break;
+		
+		case top.UI_BLUETOOTH_EVENT_CONNECT_SUCCESS:
+			console.log("YM framework UI_BLUETOOTH_EVENT_CONNECT_SUCCESS");
+			var vol = bluetooth.getBluetoothVolume();
+			bluetooth.setBluetoothVolume(vol);
+			$("globleShow").contentWindow.showBluetoothConnectToTV();
+			//Add 判断当前连接的设备是否是音频设备
+			var currentBluetoothDevice = bluetooth.getBluetoothDeviceById(evt.modifiers);//蓝牙消息时，modifiers为连接的蓝牙设备的ID
+			console.log("YM currentBluetoothDevice.deviceType:" + currentBluetoothDevice.deviceType);
+			if(currentBluetoothDevice.deviceType == 1 ||
+				currentBluetoothDevice.deviceType == 2 ||
+				currentBluetoothDevice.deviceType == 0)
+			{
+				bt_soundOutputShowFlag = true;
+				g_setting.setProperty("app.ui.bluetoothStatus","1");
+				if(g_setting.speakerStatus == 1)
+				{
+					g_setting.speakerStatus = 0;
+				}
+				g_setting.setProperty(OUT_PUT_NAME_FOR_DB,"1");
+				bt_soundOutPutValue = 1;//parseInt(g_setting.getProperty(OUT_PUT_NAME_FOR_DB,"0"));//获取上一次保存的蓝牙设置界面设置的通导值
+				console.log("YM bt_soundOutPutValue:" + bt_soundOutPutValue);
+				if(mute_status == 0)//判断当前是否为静音状态
+				{
+					bluetooth.setBluetoothMute(0);//unmute
+
+					/*
+					switch(bt_soundOutPutValue)
+					{
+						case 0:
+							bluetooth.setAudioMute(0);//unmute
+							bluetooth.setBluetoothMute(1);//mute
+							break;
+						case 1:
+							bluetooth.setAudioMute(1);//mute
+							bluetooth.setBluetoothMute(0);//unmute
+							break;	
+						case 2:
+							bluetooth.setAudioMute(0);//unmute
+							bluetooth.setBluetoothMute(0);//unmute
+							break;
+						default:
+							bluetooth.setAudioMute(0);//unmute
+							//bluetooth.setBluetoothMute(0);//unmute
+							break;
+					}*/
+					//bluetooth.setBluetoothVolume(50);
+				}
+				else
+				{
+					//bluetooth.setAudioMute(1);
+					bluetooth.setBluetoothMute(1);
+				}
+			}
+			break;
+		case E_NETWORK_UPDATE_GET_UPDATED_INFORMATION:
+		{
+			powerOnCheckNetUpgrade(evt);
+		}
+		break;
+		default:
+			break;
+    }
+}
+function powerOnCheckNetUpgrade(evt)
+{
+	if(appOpenFlag==1)
+	{
+		return;
+	}
+	var isNewSoftwareFound = evt.modifiers;  // <=0:Not found 100:Unforce upgrade 200:Force upgrade
+	if(isNewSoftwareFound == 100){
+		g_isForceUpgrade = false;
+		if(top.g_setting.networkDownloadButton == 2)
+		{
+			/* If "Never" button was selected, the dialog would not
+			 show until a new software occurred. */
+			var updateInfo = g_setting.getUpdateInfo();
+			var softwareVersionInDB = g_setting.networkUpdateSoftwareVersionInDB;
+			var softwareVersionInServer = 0;
+			if(updateInfo)
+			{
+				if(updateInfo.version.length > 15)
+				{
+					softwareVersionInServer = parseInt(updateInfo.version.slice(15), 10); /* -3 */
+				}
+				else
+				{
+					g_channel.testLog("[Error] version length is short !");
+				}
+			}
+			g_channel.testLog(" ~~~[UI]GetUpdateInformation VersionInServer="+softwareVersionInServer + "--VersionInDB="+softwareVersionInDB);
+			if(softwareVersionInServer != softwareVersionInDB)
+			{
+				top.g_setting.networkDownloadButton = 0;
+				g_whichUpdateDialogWillBeUsed = 0;
+				$("operatePage").src = "";
+				$("otherPage").src ="";
+				$("main").src = "networkUpdateDialog.html";
+				main.focus();
+				setFrameFocusPage("main");
+			}
+		}
+		else
+		{
+			g_whichUpdateDialogWillBeUsed = 0;
+			$("operatePage").src = "";
+			$("otherPage").src ="";
+			if(entryUpgrade == 1)
+			{
+				$("main").src = "";
+			}
+			else
+			{
+				$("main").src = "networkUpdateDialog.html";
+			}
+			main.focus();
+			setFrameFocusPage("main");
+		}
+	}
+	else if(isNewSoftwareFound == 200)
+	{
+		g_isForceUpgrade = true;
+		setting.networkDownloadButton = 0;
+		setting.startDownloadUpdateFile(1);
+	}
+}
+function stopVolumeTimer()
+{
+	clearVolumeTimer();
+	top.keySetForUI(0);
+	$("globleShow").contentWindow.$("adjustProgressBox").style.display = "none";    
+	g_volume_visible = 0;
+}
+function showTVMiddleRemind(string)
+{
+	top.g_remindWord = string;
+	top.$("main").src = "intermediate.html";
+	top.$("operatePage").src = "";
+	top.$('otherPage').src = "";
+	top.main.focus();
+	top.setFrameFocusPage("main");
+}
+
+function operateWhenTimeshifting(operate)
+{
+		top.$("operatePage").src = "";
+	top.$('otherPage').src = "";
+	top.$("globleShow").contentWindow.hiddenTimeShift();
+	top.$('main').src = "pvr/timeshift.html?" + operate;
+	top.$("main").style.display = "block";
+
+	top.main.focus();
+	top.setFrameFocusPage("main");
+}
+
+// flag : 0 hidden 1 auto
+function showMute(flag)
+{
+	console.log("YM showMute flag:" + flag);
+	console.log("YM showMute top.bt_soundOutPutValue:" + top.bt_soundOutPutValue);
+    if (flag==0)
+    {
+        if (mute_status == 1)
+        {
+			//原来的逻辑
+            top.$("mute").style.display = "none";
+            mute_status = 0;
+			g_setting.mute = 0;
+			if(top.bt_soundOutputShowFlag)
+			{
+				if(top.bt_soundOutPutValue == 1)
+				{
+					bluetooth.setBluetoothMute(0);
+				}
+			}
+			
+			/*
+			top.$("mute").style.display = "none";
+            mute_status = 0;
+			switch(top.bt_soundOutPutValue)
+			{
+				case 0:
+					g_setting.mute = 0;
+					//bluetooth.setBluetoothMute(1);
+					break;
+				case 1:
+					if(!(top.bt_soundOutputShowFlag))//判断是否有音频蓝牙设备连上
+					{
+						g_setting.mute = 0;
+					}
+					else
+					{
+						bluetooth.setBluetoothMute(0);
+					}
+					break;
+				case 2:
+					g_setting.mute = 0;
+					if(top.bt_soundOutputShowFlag)
+						bluetooth.setBluetoothMute(0);
+					break;
+				default:
+					g_setting.mute = 0;
+					break;
+			}*/
+        }
+    }
+    else
+    {
+        if (mute_status == 1)
+        {
+			//原来的逻辑
+            top.$("mute").style.display = "none";
+            mute_status = 0;
+			g_setting.mute = 0;
+			if(top.bt_soundOutputShowFlag)
+			{
+				if(top.bt_soundOutPutValue == 1)
+				{
+					bluetooth.setBluetoothMute(0);
+				}
+			}
+			//
+			//添加蓝牙音箱的逻辑
+			/*top.$("mute").style.display = "none";
+            mute_status = 0;
+			switch(top.bt_soundOutPutValue)
+			{
+				case 0:
+					g_setting.mute = 0;
+					//bluetooth.setBluetoothMute(1);
+					break;
+				case 1:
+					if(!(top.bt_soundOutputShowFlag))//判断是否有音频蓝牙设备连上
+					{
+						g_setting.mute = 0;
+					}
+					else
+					{
+						bluetooth.setBluetoothMute(0);
+					}	
+					break;
+				case 2:
+					g_setting.mute = 0;
+					if(top.bt_soundOutputShowFlag)
+						bluetooth.setBluetoothMute(0);
+					break;
+				default:
+					g_setting.mute = 0;
+					break;
+			}*/
+        }
+        else
+        {
+			//原来的逻辑
+            top.$("mute").style.display = "block";
+            mute_status = 1;
+			g_setting.mute = 1;
+			if(top.bt_soundOutputShowFlag)
+			{
+				bluetooth.setBluetoothMute(1);
+			}
+			//
+			/*//添加蓝牙音箱的逻辑
+			top.$("mute").style.display = "block";
+            mute_status = 1;
+			switch(top.bt_soundOutPutValue)
+			{
+				case 0:
+					g_setting.mute = 1;
+					//bluetooth.setBluetoothMute(1);
+					break;
+				case 1:
+					if(!(top.bt_soundOutputShowFlag))//判断是否有音频蓝牙设备连上
+					{
+						g_setting.mute = 1;
+					}
+					else
+					{
+						bluetooth.setBluetoothMute(1);
+					}
+					break;
+				case 2:
+					g_setting.mute = 1;
+					if(top.bt_soundOutputShowFlag)//判断是否有音频蓝牙设备连上
+						bluetooth.setBluetoothMute(1);
+					break;
+				default:
+					g_setting.mute = 1;
+					break;
+			}*/
+        }
+    }
+}
+function updateCecMute()
+{
+	if(g_setting.getCecARCStatus() ==1 && g_setting.soundOutput != 0)
+	{
+		if(g_setting.getCecMuteStatus()==0)
+		{
+			 top.$("mute").style.display = "none";
+			 mute_status = 0;
+		}
+		else
+		{
+			 top.$("mute").style.display = "block";
+			 mute_status = 1;
+		}
+	}
+	else
+	{
+		if(g_setting.mute==0)
+		{
+			 top.$("mute").style.display = "none";
+			 mute_status = 0;
+		}
+		else
+		{
+			 top.$("mute").style.display = "block";
+			 mute_status = 1;
+		}
+	}
+}
+function showFactoryHotkey()
+{
+	g_factory.designModeHotkey = g_factory_designModeHotkey;
+	g_factory.factoryHotkey = g_factory_hotkey;
+	frames["globleShow"].window.showHotkey();
+}
+
+function showFactoryIRStatus(flag)
+{	
+		g_factory_IR_status = flag;
+		clearMyTimeout();
+		$("otherPage").src = "factory/factoryIRNotify.html";			
+		top.otherPage.focus();
+		setFrameFocusPage("otherPage");
+}
+function showPanelPicture()
+{	
+		clearMyTimeout();
+		$("main").src = "factory/panelTest.html";			
+		top.main.focus();
+		setFrameFocusPage("main");
+}
+
+//初始化AU配置，主要是语言和国家
+function initAuData()
+{
+	mlmLangIndex 	= [6,7,9,5,12,
+						0,10,2,13,14,
+						15,16,17,19,25,
+						26,499,/*45,52,*/20,21,
+						22,23,35,8,24,
+						18,33,279,36,468];				//要显示的语言在语言数组中对应的位置
+						
+	mlmCountryIndex 	= [0,22,8,9,12,
+							5,4,6,11,14,
+							15,16,17,18,31,
+							0,0/*,0,0*/,21,20,
+							7,23,32,10,3,
+							19,30,58,28,59];//选择要显示的语言后，默认对应的国家在国家数组中的位置
+	
+	mlmName 			= ["English","Spanish","French","German","Italian",
+								"Czech","Croatian","Danish","Hungarian","Dutch",
+								"Norwegian","Polish","Portuguese","Romanian","Slovak",
+								"Chinese","ChineseTraditional",/*"English","Achinese",*/"Slovenian","Serbian","Finnish","Swedish","Turkish",
+								"Greek","Bulgarian","Russian","Latvian","Lithuanian",
+								"Estonian","Ukrainian"];//选择语言后对应的翻译文件
+	
+	sysMenuLang 		= ["English","Español","Français","Deutsch","Italiano", 
+								"Čeština","Hrvatski","Dansk","Magyar","Nederlands",
+								"Norsk","Polski","Português","Română","Slovenčina",
+								"简体中文","繁體中文",/*"Maori","Achinese",*/"Slovenščina","Srpski",
+								"Suomi","Svenska","Türkçe","Ελληνικά","Български",
+								"Русский","Latviešu","Lietuvių","Eesti","Українська"]; 				//UI中要显示的语言
+}
+
+function init()
+{
+    top.main.focus();
+	setFrameFocusPage("main");
+    window.onfocus=function(){main.focus();console.log("framework on focus");};
+	g_EpgUpdateUrl = "http://eurepg.huan.tv/";
+    if(g_setting.getProperty("ro.sita.model.MODEL_REGION_NAME_CFG.REGION_NAME", "EU") == "AU")//澳洲平台 重新初始化变量
+    {
+        initAuData();
+		g_EpgUpdateUrl = "http://ausfr.huan.tv/";
+    }
+	doChangeMultilanguage(g_language);
+
+	g_motionClarity = g_setting.getProperty("ro.sita.model.FUNCTION_ENABLE_CFG.cfg_motion_clarity_enable", "Off");
+	g_setting.setProperty("memory.app.ui.virtualRemote.state","off");//设置对按键的响应逻辑为默认的逻辑，非虚拟遥控器的。-lqt
+	setTimeout(function(){
+		$("main").onload=function(){
+				if(top.isFirstInitNotifyThread)//初始化消息接收线程
+				{
+					$("main").style.display = "block";
+										
+					g_setting.createNotifyThread();
+					g_setting.browserIsStart();
+					top.isFirstInitNotifyThread = 0;
+					$("main").onload=function(){};
+				}
+			}
+		if("1" == g_setting.getProperty("app.ui.bluetoothStatus","1") &&　g_setting.speakerStatus == 0)//in case stanby TV with bluetooth.
+		{
+			g_setting.setProperty("app.ui.bluetoothStatus","0");
+			g_setting.speakerStatus = 1;
+		}
+		$("frontPanel").innerHTML = top.frontPanelRemind;
+		g_factory_designModeHotkey = g_factory.designModeHotkey;
+		g_factory_hotkey = g_factory.factoryHotkey;
+		if(g_factory_hotkey == 1 || g_factory_designModeHotkey == 1)
+		{
+				showFactoryHotkey();
+				if(g_factory.warnUpStatus==1)
+				{
+					$("main").src = "factory/factoryWarmUp.html";
+				}		
+				else
+				{
+					if((g_factory.hotelEnable == 1) && (g_factory.hotelPowerLogo == 1) &&(powerLogoFlag == 1))
+					{
+						clearMyTimeout();
+						timeoutFuc.timeoutEnable = 1;
+						$("operatePage").src = "";
+						$("main").src="factory/powerLogo.html";
+						top.main.focus();
+						setFrameFocusPage("main");
+
+						menu_visible_status = 0;
+						
+						//setTimeout(function(){$("main").style.display = "block";},20);
+						$("main").style.display = "block";
+
+						if((g_factory.hotelEnable == 1) && (g_factory.hotelPowerLogo == 1) && (powerLogoFlag == 1))
+						{
+							setTimeout(function()
+										{
+
+											$("operatePage").src = "";
+											$("main").src="channelPlay.html";
+											top.main.focus();
+											setFrameFocusPage("main");
+											//menu_visible_status = 0;
+											powerLogoFlag = 0;
+											//$("operatePage").src = "";
+										},5000);
+						}
+					}
+					else
+					{
+		    			top.jumpPage();
+					}
+				}				
+		}
+		else if(g_setting.tvRunningMode == 0)
+		{
+			clearMyTimeout();
+			$("main").src = "initSetup/initEnvironmentSet.html";
+		}
+		else if(g_setting.tvRunningMode == 1)
+		{
+			if((g_factory.hotelEnable == 1) && (g_factory.hotelPowerLogo == 1) &&(powerLogoFlag == 1))
+			{
+				clearMyTimeout();
+				$("operatePage").src = "";
+				timeoutFuc.timeoutEnable = 1;
+				$("main").src="factory/powerLogo.html";
+				top.main.focus();
+				setFrameFocusPage("main");
+				menu_visible_status = 0;
+				
+				//setTimeout(function(){$("main").style.display = "block";},20);
+				$("main").style.display = "block";
+				if((g_factory.hotelEnable == 1) && (g_factory.hotelPowerLogo == 1) && (powerLogoFlag == 1))
+				{
+					setTimeout(function()
+								{
+									$("operatePage").src = "";
+								//	$("main").style.display = "none";
+									$("main").src="channelPlay.html";
+									top.main.focus();
+									setFrameFocusPage("main");
+								//	menu_visible_status = 0;
+									powerLogoFlag = 0;
+								//	$("operatePage").src = "";
+								},5000);
+				}
+			}
+			else
+			{
+		     	top.jumpPage();
+			}
+		}
+		else if(g_setting.tvRunningMode == 2)
+		{
+			var locationValue = g_setting.location;
+			if(locationValue == 1)
+			{
+				var usbList = "";
+				var playUsb = "";
+				//获取usb设备列表
+				if (g_media.deviceStatus()) {
+					usbList = g_media.getDiskListInfo();
+				}
+				var list;
+				for(var i = 0;i < usbList.length;i++)
+				{
+					list = g_media.getMediaFileList(top.g_deviceInfo.type, 0, usbList[i].path+"/TCL DEMO", 0, -1);
+					if (list.length != 0) 
+					{
+						playUsb = usbList[i].path+"/TCL DEMO";
+						break;
+					};
+				}
+				if (playUsb != "") 
+				{
+					top.jumpHotkeyPage("eSticker/eStickerVideo.html");
+				}
+				else
+				{
+					top.jumpPage();
+				}
+			}
+			else if(locationValue == 2)
+			{
+				if(g_setting.getProperty("ro.sita.model.FUNCTION_ENABLE_CFG.cfg_esticker_type", "Off") == 1)
+				{
+					top.jumpHotkeyPage("eSticker/eStickerNew.html");
+				}
+				else
+				{
+					top.jumpHotkeyPage("eSticker/eSticker.html");
+				}
+			}
+			else
+			{
+				top.jumpPage();
+			}
+		}
+		else
+		{
+			clearMyTimeout();
+			$("main").src="channelPlay.html";
+		}
+	},100);
+
+    //判断是非netflix开机流程，如果是，则不弹出进入netflix提示框，否则走正常逻辑
+    console.log("NETFLIX :app.ui.netflix.boot = " + g_setting.getProperty("app.ui.netflix.boot", "false"));
+    if("netflix-key" == g_setting.getProperty("app.ui.netflix.boot", "false"))
+    {
+        top.appOpenFlag = 1;
+		top.RemoteConntrolType = "Netflix";
+        netflixDialogFlag = 1;
+    }
+    else if("reboot" == g_setting.getProperty("app.ui.netflix.boot", "false"))
+    {
+        netflixDialogFlag = 1;
+    }
+    g_setting.setProperty("app.ui.netflix.boot", "false");
+
+	//获取蓝牙状态并打开蓝牙 add yums
+	
+	console.log("YM g_setting.getProperty:" + g_setting.getProperty(BT_SWITCH_STATE_FOR_DB,"OFF"));
+	if (g_setting.getProperty("ro.sita.model.FUNCTION_ENABLE_CFG.cfg_BluetoothSoundbox_support", "0")=="1")
+	{
+		setTimeout(function(){
+			if(bluetooth.isSupport() == 1)//平台支持蓝牙
+			{
+				if(g_setting.getProperty(BT_SWITCH_STATE_FOR_DB,"OFF") == "ON")
+				{
+					setTimeout(function(){
+						var res = bluetooth.enable();
+						if(res == 1)
+						{
+							console.log("YM enable success!");
+							g_setting.setProperty("bluetoothSwitchState","ON");
+						}
+						else
+						{
+							console.log("YM enable failed!");
+						}
+					},2500);
+					
+				}
+			}
+			else
+			{
+				$("globleShow").contentWindow.showBluetoothModuleError();
+			}
+	
+		},1000);//延迟一秒，规避bluetooth初始化未完成时，程序已经执行到这
+	}
+	
+    g_channel.resetChannelListType(g_channel.channelListType);
+	updateCecMute();
+    if (g_setting.manufacturer=="JVC")
+        homePageBgImg1.src = "images/BG_TV_1080.png";
+    else
+        homePageBgImg1.src = "images/BG_TV_2.png";
+
+
+	if(g_setting.getProperty("ro.sita.model.MODEL_REGION_NAME_CFG.REGION_NAME", "EU") == "AU")//澳洲平台 重新初始化变量
+	{
+		preload[0] = new Image();
+		preload[0].src ="images/TV-Set_icon_Source_AU.png"
+		preload[1] = new Image();
+		preload[1].src ="images/TV-Set_icon_Setting_AU.png"
+		preload[2] = new Image();
+		preload[2].src ="images/TV-Set_icon_Media_AU.png"
+		preload[3] = new Image();
+		preload[3].src ="images/TV-Set_icon_EPG_AU.png"
+		preload[4] = new Image();
+		preload[4].src = "images/TV-Posters_bg.png";
+		preload[5] = new Image();
+		preload[5].src = "images/TV-Default-Posters.png";
+		preload[6] = new Image();
+		preload[6].src ="images/Channel_list-Bg.png"
+		preload[7] = new Image();
+		preload[7].src ="images/BG_TV_2.png"
+		preload[8] = new Image();
+		preload[8].src ="images/BG_60.jpg"
+	}
+	else
+	{
+		preload[0] = new Image();
+		preload[0].src = "images/TV-Set_icon_Source.png";
+		preload[1] = new Image();
+		preload[1].src = "images/TV-Set_icon_Setting.png";
+		preload[2] = new Image();
+		preload[2].src = "images/TV-Set_icon_Media.png";
+		preload[3] = new Image();
+		preload[3].src = "images/TV-Set_icon_EPG.png";
+		preload[4] = new Image();
+		preload[4].src = "images/TV-Posters_bg.png";
+		preload[5] = new Image();
+		preload[5].src = "images/TV-Default-Posters.png";
+		preload[6] = new Image();
+		preload[6].src = "images/TV-Set_icon_SmartTV.png";
+		preload[7] = new Image();
+		preload[7].src ="images/Channel_list-Bg.png"
+	}
+
+	console.log(" i will check this way");
+	top.g_media.getNewDiskListInfo(0);//for device driver init(ndm/multimedia)
+	if(g_setting.isStartedBy5n1())
+	{
+		setTimeout(function(){
+			top.$('globleShow').contentWindow.display5n1Logo();
+			}, 2000);
+	}
+    runCount = parseInt(g_setting.getProperty("persist.app.runntingTime","0"));
+    setInterval(function (){
+        runCount++;
+        g_setting.setProperty("persist.app.runntingTime",runCount);
+    },20*60*1000);
+    printfRunningTime();
+}
+
+var background_visible = 1;
+function showBackground(visible)
+{
+    if (visible && !background_visible)
+    {
+        background_visible = 1;
+        //document.body.style.background = "url(images/background_3.jpg) no-repeat";
+        document.body.style.background = "rgba(0,0,0,0.9)";
+    }
+    else if (!visible && background_visible)
+    {
+        background_visible = 0;
+        document.body.style.background = "transparent";
+    }
+}
+
+function jumpPage()
+{
+	//lqt---避免按退出键时，虚拟遥控器不隐藏
+	if(top.virtualRemoteState == 1)
+	{
+		//隐藏虚拟遥控器
+		top.document.getElementById("virtualRemote").contentWindow.hideVirtualRemote();
+	}
+	clearMyTimeout();
+			$("operatePage").src = "";
+		top.$('otherPage').src = "";
+	timeoutFuc.timeoutEnable = 1;
+		/*避免在otherpage等页面跳转回main页面时有显示main跳转前页面内容的情况*/
+		$("main").onload=function(){
+			$("main").style.display = "block";
+			$("main").onload=function(){};
+			}
+		$("main").src="channelPlay.html";
+		top.main.focus();
+		setFrameFocusPage("main");
+		menu_visible_status = 0;
+
+}
+function jumpHotkeyPage(page)
+{
+	clearMyTimeout();
+	$("operatePage").src = "";
+	$("main").src=page;
+	
+	top.main.focus();
+	setFrameFocusPage("main");
+}
+/*
+功能描述：需要跳转到operatePage页面处理的情况
+参数：page:需要跳转到的页面（相对于framework.html页面的相对位置）
+全局变量：
+*/
+function jumpToOperatePage(page)
+{
+	clearMyTimeout();
+	$("operatePage").src = page;
+	top.operatePage.focus();
+	setFrameFocusPage("operatePage");
+	$("main").style.display = "none";
+}
+
+/*
+功能描述：从别的页面恢复到main iframe的页面index页面
+参数：focusIndex:焦点编号:0 homeMenu focus,1 subMenu1 focus,2 subMenu2 focus,3 subMenu3 focus,4 subMenu4 focus
+全局变量：
+*/
+function focusToIndexHtml(focusIndex)
+{
+	//contentWindow是父窗口的iframe document对象的属性，所以不能用top.main.contentWindow,而需要用document.getElementById("main").contentWindow;
+	$("main").style.display = "block";
+	if(focusIndex == 0)
+	{
+		$("main").contentWindow.homeMenu.focus();
+		$("main").contentWindow.setIndexFocusPage("homeMenu");
+		$("main").contentWindow.$("homeMenu").contentWindow.timeoutInit()
+	}
+	else if(focusIndex == 1)
+	{
+		$("main").contentWindow.subMenu1.focus();
+		$("main").contentWindow.setIndexFocusPage("subMenu1");
+		$("main").contentWindow.$("subMenu1").contentWindow.timeoutInit()
+	}
+	else if(focusIndex == 2)
+	{
+		$("main").contentWindow.subMenu2.focus();
+		$("main").contentWindow.setIndexFocusPage("subMenu2");
+		$("main").contentWindow.$("subMenu2").contentWindow.timeoutInit()
+	}
+	else if(focusIndex == 3)
+	{
+		$("main").contentWindow.subMenu3.focus();
+		$("main").contentWindow.setIndexFocusPage("subMenu3");
+		$("main").contentWindow.$("subMenu3").contentWindow.timeoutInit()
+	}
+	else if(focusIndex == 4)
+	{
+		$("main").contentWindow.subMenu4.focus();
+		$("main").contentWindow.setIndexFocusPage("subMenu4");
+		$("main").contentWindow.$("subMenu4").contentWindow.timeoutInit()
+	}
+	$("operatePage").src = "";
+}
+
+
+/*
+描述：根据输入的对话框宽高，电视分辨率宽高，相对左位移和相对上位移调整dialog的位置
+参数：DiaTag：对话框的容器标签；DiaHeight,DiaWidth：对话框高和宽；WindowHeight,WindowWidth：窗口的高和宽；
+offsetLeft,offsetTop：页面相对于（0,0）的相对左偏移和上偏移
+*/
+function showDialogPosition(DiaTag,DiaWidth,DiaHeight,WindowWidth,WindowHeight,offsetLeft,offsetTop)
+{
+	var topV = parseInt((WindowHeight - DiaHeight)/2 -  offsetTop,10);
+	var leftV = parseInt((WindowWidth -  DiaWidth)/2 - offsetLeft,10);
+	if(1 == topV%2)
+	{
+		topV -= 1;
+	}
+	if(1 == leftV%2)
+	{
+		leftV -= 1;
+	}
+	DiaTag.style.top = topV + "px";
+	DiaTag.style.left = leftV + "px";
+}
+
+/*
+描述：用来切换多语言js脚本
+参数：m_language：语言的枚举
+ENG（英语）	SPA,GLG,BAQ,EUS,CAT（西班牙）	FRE（法语）	GER（德语）	ITA（意大利语）	CZE（捷克斯洛伐克语）
+SCR（塞尔维亚语或者波斯尼亚语）	DAN（丹麦语）	HUN（匈牙利语）	DUT（荷兰语）	NOR（挪威语）	POL（波兰语）
+POR（葡萄牙语）	RUM（罗马尼亚语）	SLO（斯洛伐克语）	SLV（斯洛文尼亚语）	SCC（塞尔维亚语或者波斯尼亚语）	FIN（芬兰语）
+SWE（瑞典语）	TUR（土耳其）	GRE（希腊语）	BUL（保加利亚语）	RUS（俄语）	LAT（拉脱维亚语）	LIT（立陶宛语）
+EST（爱沙尼亚语）	UKR（乌克兰语）
+English,Spanish,French,German,Italian,
+Czech,Serbian,Danish,Hungarian,Dutch,
+Norwegian,Polish,Portuguese,Romanian,Slovak,
+Slovenian,Bosnian,Finnish,Swedish,Turkish,
+Greek,Bulgarian,Russian,Latvian,Lithuanian,
+Estonian,Ukrainian
+*/
+function doChangeMultilanguage(m_language)
+{
+	g_channel.testLog("in doChangeMultilanguage m_language = " + m_language);
+	$("translation").innerHTML = "";
+	var languageSrc = "translation/";
+	for(var i = 0; i < mlmLangIndex.length; i++)
+	{
+		if(m_language == mlmLangIndex[i])
+		{
+			break;
+		}
+	}
+	languageSrc = languageSrc + mlmName[i] + ".js";
+	
+	var piece = document.createElement('script');
+	piece.setAttribute("type","text/javascript");//firefox
+	piece.setAttribute("src",languageSrc);//firefox
+	$("translation").appendChild(piece);
+}
+function drawDownloadRing(progress) {
+	$("downloadProgressValue").innerHTML = progress + "%";
+	$("downloadProgressValue").style.display="block";
+    $("bgDownloadTitle").innerHTML =   top.netBGDownloadTitle;
+    $("bgDownloadTitle").style.display="block";
+	var outerRingRadius=70;
+	var ringRadius=55;
+	var canvasWidth=$("backgroundDownloadRing").width;
+	var canvasHeight=$("backgroundDownloadRing").height;
+	var centerX=canvasWidth/2;
+	var centerY=canvasHeight/2;
+	var c=$("backgroundDownloadRing");
+	var ctx=c.getContext("2d");
+
+	ctx.clearRect(0,0,canvasWidth,canvasHeight);
+	// Draw outer ring
+	ctx.beginPath();
+	ctx.lineWidth=3;
+	ctx.strokeStyle="rgba(255,255,255,0.4)";
+	ctx.arc(centerX,centerY,outerRingRadius,1.5*Math.PI,3.5*Math.PI);
+	ctx.stroke();
+	// Draw progress Indicator
+	ctx.beginPath();
+	ctx.lineWidth=20;
+	ctx.strokeStyle="rgba(255,255,255,0.4)";
+	ctx.arc(centerX,centerY,ringRadius,1.5*Math.PI,(2*progress/100+1.5)*Math.PI);
+	ctx.stroke();
+}
+function hideDownloadRing(){
+	$("downloadProgressValue").style.display="none";
+    $("bgDownloadTitle").style.display="none";
+	var canvasWidth=$("backgroundDownloadRing").width;
+	var canvasHeight=$("backgroundDownloadRing").height;
+	var c=$("backgroundDownloadRing");
+	var ctx=c.getContext("2d");
+
+	ctx.clearRect(0,0,canvasWidth,canvasHeight);
+}
+
+function uiPauseDownloadingUpFile()
+{
+    g_channel.testLog("framework PauseDownloadingUpFile g_isDownloading="+g_isDownloading);
+    if(g_isDownloading == 1){
+        g_isDownloading = 0;
+        if(!g_isForceUpgrade){
+            hideDownloadRing();
+        }
+        g_setting.pauseDownloadUpdateFile();
+    }
+}
+
+function uiResumeDownloadingUpFile()
+{
+    g_channel.testLog("framework ResumeDownloadingUpFile g_isDownloading="+g_isDownloading);
+    if(g_isDownloading == 0){
+        g_isDownloading = 1;
+        g_setting.restartDownloadUpdateFile();
+    }
+}
+
+//check Remote Project ID Password
+function enterProjIdPwd(keycode)
+{
+	if(setProjTimeoutId == 0)
+	{
+		changeProjIdPwd = "" + (keycode - 48);
+		setProjTimeoutId = setTimeout("changeProjId()",10000);
+	}
+	else
+	{
+		changeProjIdPwd += (keycode - 48);
+		if(changeProjIdPwd.length == 11)
+		{
+			//clearTimeout(setProjTimeoutId);
+			//setProjTimeoutId = 0;
+			changeProjId();
+		}
+	}
+}
+//062598+65(VK_MENU)+Project ID
+function changeProjId()
+{
+	var tempPwd = 0;
+	g_channel.testLog("changeProjId = " + changeProjIdPwd);
+	//for erg pwd :041758+65(VK_MENU:113-48)+0+72(VK_EXIT:120-48)
+	if(changeProjIdPwd == "04175865072")
+	{
+		//g_factory.setPvrOpenStatus(1);
+		g_factory.pvrOpenStatus = 0;
+		clearTimeout(setProjTimeoutId);
+		setProjTimeoutId = 0;
+		changeProjIdPwd = "";
+		setTimeout(function(){g_factory.systemReboot(1)},200)
+	}
+	else if(changeProjIdPwd.length == 11)
+	{
+		//alert("changeProjIdPwd:"+changeProjIdPwd);
+		tempPwd = parseInt(changeProjIdPwd,10);
+		//alert("tempPwd:"+tempPwd);
+		tempPwd = tempPwd -6259865000;
+		//alert("tempPwd_2:"+tempPwd);
+		if((tempPwd >= 0)&&(tempPwd <255))
+		{
+			g_factory.projectId = tempPwd;
+			clearTimeout(setProjTimeoutId);
+			setProjTimeoutId = 0;
+			changeProjIdPwd = "";
+			setTimeout(function(){g_factory.systemReboot(1)},200)
+			//alert("projectId:"+g_factory.projectId);
+		}
+		else
+		{
+			changeProjIdPwd = "";
+			clearTimeout(setProjTimeoutId);
+			setProjTimeoutId = 0;
+		}
+	}
+	else
+	{
+			changeProjIdPwd = "";
+			clearTimeout(setProjTimeoutId);
+			setProjTimeoutId = 0;
+	}
+}
+function  timeoutMyFuc(evt)
+{
+	timeoutFuc.osdTimeoutEndFuc();
+	timeoutFuc.osdTimeoutStartFuc();
+	
+	//按键回调函数处理中可能也会涉及到对timeout的开关的控制，所以子页面的开关应该放在最后面，而不受timeoutFuc.osdTimeoutStartFuc()重启timeout的影响。
+	timeoutFuc.keydownFuc(evt);
+}
+function  timeoutMyOpFuc(evt)
+{
+	timeoutFuc.osdTimeoutEndFuc();
+	timeoutFuc.osdTimeoutStartOpFuc();
+	
+	//按键回调函数处理中可能也会涉及到对timeout的开关的控制，所以子页面的开关应该放在最后面，而不受timeoutFuc.osdTimeoutStartFuc()重启timeout的影响。
+	timeoutFuc.keydownFuc(evt);
+}
+var timeoutFuc = 
+{
+	timeoutEnable : 1,
+	timeoutTimes  : 30,   //from 15 to 30
+	timeoutTimer  : 0,
+	osdTimeoutStartFuc : function(){
+			clearTimeout(timeoutFuc.timeoutTimer);
+			timeoutFuc.timeoutTimer=0;
+		if(timeoutFuc.timeoutEnable==1 &&top.appOpenFlag==0&& top.main.src!="channelPlay.html")
+		{
+			timeoutFuc.timeoutTimer=setTimeout(function(){
+			if(top.g_temp == "homePage")
+			{
+				top.$("main").style.display = "block";
+				top.$("operatePage").src = "";
+				top.main.focus();
+				setFrameFocusPage("main");
+			}
+			else
+			{
+				top.jumpPage();
+			}
+			timeoutFuc.timeoutTimes=30;  //from 15 to 30
+			timeoutFuc.timeoutTimer=0;
+			},timeoutFuc.timeoutTimes*1000)
+		}
+	},
+	osdTimeoutStartOpFuc : function(){
+			clearTimeout(timeoutFuc.timeoutTimer);
+			timeoutFuc.timeoutTimer=setTimeout(function(){
+			top.jumpPage();
+			timeoutFuc.timeoutTimes=30;  //from 15 to 30
+			timeoutFuc.timeoutTimer=0;
+			},timeoutFuc.timeoutTimes*1000)
+	},
+	osdTimeoutEndFuc : function(){
+			clearTimeout(timeoutFuc.timeoutTimer);
+			timeoutFuc.timeoutTimer=0;
+		},
+	resetValue : function (timeoutEnable,timeoutTimes,timeoutTimer){
+		timeoutFuc.timeoutEnable=timeoutEnable;
+		timeoutFuc.timeoutTimes=timeoutTimes;
+		timeoutFuc.timeoutTimer=timeoutTimer;
+	},
+	keydownFuc :"",
+}
+function clearMyTimeout()
+{
+	timeoutFuc.osdTimeoutEndFuc();
+}
+/*
+最好不要使用该函数，使用clearMyTimeout和restartTimeout就Ok
+*/
+function stopTimeout()
+{
+	timeoutFuc.timeoutEnable=0;
+	timeoutFuc.osdTimeoutEndFuc();
+}
+function restartTimeout()
+{
+	timeoutFuc.timeoutEnable=1;
+	timeoutFuc.osdTimeoutStartFuc();
+}
+
+/*
+描述：实现弹出列表菜单初始化显示
+参数：formTag：弹出列表菜单的句柄，可以用来访问里面的内容；
+topOffset：菜单相对于窗口顶部的位置
+leftOffset：菜单相对于窗口最左边的位置
+listFormLis：formTag里面所有标签为li的集合
+optionContents：所有要显示的选项的内容保存在该数组中
+optionSum：选项的总个数
+focusIndex：选项在菜单列表当前显示的列表中的位置，用来确定焦点位置的
+positionOffset：当前显示的列表的第一个元素在整个optionContents中的位置。
+*/
+function initListForm(formTag,topOffset,leftOffset,listFormLis,optionContents,optionSum,focusIndex,positionOffset)
+{
+	//g_channel.testLog("in framework" + "," + formTag + "," + topOffset + "," + leftOffset + "," + listFormLis + "," + optionContents[0] + "," + optionSum + "," +  focusIndex + "," + positionOffset);
+	var LIST_FORM_START = 10;
+	var LIST_FORM_STEP = 80;
+	var UP_DOWN_IMG_HEIGHT = 40;
+	var MAX_OPTION_IN_ONE_PAGE = 6;
+	formTag.style.top = topOffset + "px";
+	formTag.style.left = leftOffset + "px";
+	var listImgList = formTag.getElementsByTagName("img");
+	if(optionSum > 6)
+	{
+		formTag.style.height = UP_DOWN_IMG_HEIGHT*2 + LIST_FORM_START + LIST_FORM_STEP*MAX_OPTION_IN_ONE_PAGE + "px";
+		if(positionOffset > 0)
+		{
+			listImgList[0].style.display = "block";
+		}
+		else
+		{
+			listImgList[0].style.display = "none";
+		}
+		
+		if((positionOffset + 4) >= (optionSum - 1))
+		{
+			listImgList[2].style.display = "none";
+		}
+		else
+		{
+			listImgList[2].style.display = "block";
+		}
+		
+		for(i = 0; i < 5; i++)
+		{
+			listFormLis[i].innerHTML = optionContents[i + positionOffset];
+			listFormLis[i].style.display = "block";
+		}
+	}
+	else
+	{
+		formTag.style.height = LIST_FORM_START + LIST_FORM_STEP*optionSum + "px";
+		listImgList[0].style.display = "none";
+		listImgList[2].style.display = "none";
+		for(var i = 0; i < optionSum; i++)
+		{
+			listFormLis[i].innerHTML = optionContents[i];
+			listFormLis[i].style.display = "block";
+		}
+		for(var i = optionSum; i < 5; i++)
+		{
+			listFormLis[i].style.display = "none";
+		}
+	}
+	formTag.style.display = "block";
+	listImgList[1].style.top = focusIndex*LIST_FORM_STEP + "px";//list focus img
+	doEleScrForNoOption(listFormLis, focusIndex, 0);
+	//g_channel.testLog("in framework end");
+}
+function checkNetStatus()
+{
+	var  currentIp = g_setting.networkIP;
+	var invalidIp = "169.254";
+	g_channel.testLog("currentIp="+currentIp);
+	try
+	{
+	if(currentIp.substring(0,7)==invalidIp || currentIp=="0.0.0.0")
+	{
+		return false;
+	}
+	else if(netCheckStatus==0)
+	{
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
+	}catch(er)
+	{
+		console.log("checkNetStatus:"+er);
+	}
+	
+}
+function Log(str)
+{
+	g_channel.testLog(str);
+}
+function showEsticker()
+{
+	if(top.appOpenFlag==1)
+	{
+		return;
+	}
+	
+	var locationValue = g_setting.location;
+	if(locationValue == 1)
+	{
+		var usbList = "";
+		var playUsb = "";
+		//获取usb设备列表
+		if (g_media.deviceStatus()) {
+			usbList = g_media.getDiskListInfo();
+		}
+		var list;
+		for(var i = 0;i < usbList.length;i++)
+		{
+			list = g_media.getMediaFileList(top.g_deviceInfo.type, 0, usbList[i].path+"/TCL DEMO", 0, -1);
+			if (list.length != 0) 
+			{
+				playUsb = usbList[i].path+"/TCL DEMO";
+				break;
+			};
+		}
+		if (playUsb != "") 
+		{
+			g_setting.hbbTVSwitchState = 0;
+			top.jumpHotkeyPage("eSticker/eStickerVideo.html");
+		}
+	}
+	else if(locationValue == 2)
+	{
+		g_setting.hbbTVSwitchState = 0;
+		if(g_setting.getProperty("ro.sita.model.FUNCTION_ENABLE_CFG.cfg_esticker_type", "Off") == 1)
+		{
+			top.jumpHotkeyPage("eSticker/eStickerNew.html");
+		}
+		else
+		{
+			top.jumpHotkeyPage("eSticker/eSticker.html");
+		}
+
+	}
+}
+
+/*
+FramePage,指定Framework页面中的Iframe的焦点页面
+*/
+function setFrameFocusPage(FramePage)
+{
+	switch(FramePage)
+	{
+		case "main":
+			$("main").style.zIndex = 100;
+			$("operatePage").style.zIndex = 1;
+			$("otherPage").style.zIndex = 2;
+			//$("globleShow").style.zIndex = 1000;
+			$("globleShow").style.pointerEvents = "none";
+			break;
+		case "operatePage":
+			$("main").style.zIndex = 0;
+			$("operatePage").style.zIndex = 100;
+			$("otherPage").style.zIndex = 2;
+			//$("globleShow").style.zIndex = 1000;
+			$("globleShow").style.pointerEvents = "none";
+			break;
+		case "otherPage":
+			$("main").style.zIndex = 0;
+			$("operatePage").style.zIndex = 1;
+			$("otherPage").style.zIndex = 100;
+			//$("globleShow").style.zIndex = 1000;
+			$("globleShow").style.pointerEvents = "none";
+			break;
+		case "globleShow":
+			$("main").style.zIndex = 0;
+			$("operatePage").style.zIndex = 1;
+			$("otherPage").style.zIndex = 2;
+			//$("globleShow").style.zIndex = 1000;
+			$("globleShow").style.pointerEvents = "auto";
+			break;
+		default:
+			break;
+	}
+}
+
+function setContext5In1Type(tmp)
+{
+	if(g_setting.contextOf5in1 == CONTEXT_PANEL_OPERATION)
+	{
+		contentBackup = tmp;
+	}
+	else
+	{
+		g_setting.contextOf5in1 = tmp;
+	}
+}
+
+function panelMenu()
+{
+	switch(g_isMediaCenter)
+	{
+		case NDM_Others:
+			top.$("operatePage").src = "";
+			top.$("otherPage").src = "";
+			top.$("main").src = "index.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case NDM_Device_List://go back to home or channelplay
+		case NDM_Media_List:
+		case NDM_VIDEO_Play:
+		case NDM_Music_Play:
+		case NDM_Pic_Play:
+		case NDM_PVR_List:
+		case NDM_PVR_Play:
+		case NDM_DMR_Video:
+		case NDM_DMR_Music:
+		case NDM_DMR_Pic:
+			break;
+	}
+}
+
+function panelSource()
+{
+	switch(g_isMediaCenter)
+	{
+		case NDM_Others:
+			toSource();
+			break;
+		case NDM_Device_List://go back to home or channelplay
+		case NDM_Media_List:
+		case NDM_VIDEO_Play:
+		case NDM_Music_Play:
+		case NDM_Pic_Play:
+		case NDM_PVR_List:
+		case NDM_PVR_Play:
+		case NDM_DMR_Video:
+		case NDM_DMR_Music:
+		case NDM_DMR_Pic:
+			break;
+	}
+}
+
+function panelHomePage()
+{
+	switch(g_isMediaCenter)
+	{
+		case NDM_Others:
+			toMenu();
+			break;
+		case NDM_Device_List://go back to home or channelplay
+			top.$("main").contentWindow.toHomePage();
+			break;
+		case NDM_Media_List:
+			top.$("main").contentWindow.toHomePage();
+			break;
+		case NDM_VIDEO_Play:
+		case NDM_Music_Play:
+		case NDM_Pic_Play:
+			top.$("main").contentWindow.focusTab = top.$("main").contentWindow.DISPLAY_AREA;
+			top.$("main").contentWindow.toHomePage();
+			break;
+		case NDM_PVR_List:
+			break;
+		case NDM_PVR_Play:
+			break;
+		case NDM_DMR_Video:
+		case NDM_DMR_Music:
+		case NDM_DMR_Pic:
+			top.$("main").contentWindow.toBack();
+			break;
+	}
+}
+
+function panelGoback()
+{
+	switch(g_isMediaCenter)
+	{
+		case NDM_Others:
+			top.$("operatePage").src = "";
+			top.$("otherPage").src = "";
+			top.$("main").src = "channelPlay.html";
+			top.main.focus();
+			setFrameFocusPage("main");
+			break;
+		case NDM_Device_List://go back to home or channelplay
+			top.$("main").contentWindow.toBack();
+			break;
+		case NDM_Media_List:
+			top.$("main").src = "deviceList.html?media";
+			break;
+		case NDM_VIDEO_Play:
+		case NDM_Music_Play:
+		case NDM_Pic_Play:
+			top.$("main").contentWindow.focusTab = top.$("main").contentWindow.DISPLAY_AREA;
+			top.$("main").contentWindow.toBack();
+			break;
+		case NDM_PVR_List:
+			break;
+		case NDM_PVR_Play:
+			break;
+		case NDM_DMR_Video:
+		case NDM_DMR_Music:
+		case NDM_DMR_Pic:
+			top.$("main").contentWindow.toBack();
+			break;
+	}
+}
+
+function panelPowerOff()
+{
+	toPowerOff();
+}
+
+function keyPressAutoSandBy()
+{
+	clearTimeout(top.pressKeyDownTimer);
+	top.pressKeyDownTimer=0;
+	top.pressKeyDownTimer=setTimeout(function(){
+			try
+			{
+				switch(top.standByTime)
+				{
+					case 0:
+					break;
+					case 1:
+					g_setting.autoStandby = top.standByTime;
+					break;
+					case 2:
+					g_setting.autoStandby = top.standByTime;
+					break;
+					case 3:
+					g_setting.autoStandby = top.standByTime;
+					break;
+					default:
+					break;
+				}
+				//console.log("top.standByTime=="+top.standByTime);
+			}
+			catch(er)
+			{
+				g_channel.testLog(er);
+			}
+			top.pressKeyDownTimer=0;
+		},30*1000);
+}
+function doElementScroll(spanList, position)
+{
+	setTimeout(
+	function(){setScrollAttribute(spanList, position);
+	setTimeout(resetScrollHtmlInner(spanList), 1);}, 1);
+}
+function doEleScrForNoOption(spanList, position, moveFlag)/*moveFlag :0 初始 1 down -1 up*/
+{
+	setTimeout(
+	function(){setScrollAttrForNoOption(spanList, position);
+	setTimeout(resetScrollHtmlInner(spanList), 1);}, 1);
+}
+function clearCurrentSroll(spanList,position)
+{
+	setTimeout(function(){
+	spanList[position].setAttribute("contentText",spanList[position].innerHTML);
+	spanList[position].style.overflowX = "hidden";
+	spanList[position].style.textOverflow = "ellipsis";
+	setTimeout(resetScrollHtmlInner(spanList[position]), 1);
+	},1);
+}
+function isOverflowed(element)
+{
+	//console.log("isOverflowed:element.scrollWidth="+element.scrollWidth +"element.clientWidth="+element.clientWidth);
+    return element.scrollWidth > element.clientWidth;
+}
+function setScrollAttrForNoOption(htmlTagList,focusPosition)
+{
+	//console.log("setScrollAttribute: htmlTagList.length="+htmlTagList.length+"focusPosition="+focusPosition);
+	for(var i = 0; i < htmlTagList.length; i++)
+	{
+		/*var tempText = htmlTagList[i].innerHTML;*/
+		htmlTagList[i].setAttribute("contentText",htmlTagList[i].innerHTML);
+		if(focusPosition == i && isOverflowed(htmlTagList[i]))//如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+		{
+			htmlTagList[i].style.overflowX = "-webkit-marquee";
+			htmlTagList[i].style.textOverflow = "clip";
+			htmlTagList[i].style.webkitMarqueeDirection = "backwards";
+			htmlTagList[i].style.webkitMarqueeStyle = "scroll";
+			htmlTagList[i].style.webkitMarqueeSpeed = "fast";
+			htmlTagList[i].style.webkitMarqueeIncrement = "small";
+			htmlTagList[i].style.webkitMarqueeRepetition = "infinite";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		else
+		{
+			htmlTagList[i].style.overflowX = "hidden";
+			htmlTagList[i].style.textOverflow = "ellipsis";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+	}
+}
+/*
+把整个列表属性更改，如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数；focusPosition：当前焦点选项在内容标签上的位置
+*/
+function setScrollAttribute(htmlTagList,focusPosition)
+{
+	//console.log("setScrollAttribute: htmlTagList.length="+htmlTagList.length+"focusPosition="+focusPosition);
+	for(var i = 0; i < htmlTagList.length; i++)
+	{
+		/*var tempText = htmlTagList[i].innerHTML;*/
+		htmlTagList[i].setAttribute("contentText",htmlTagList[i].innerHTML);
+		if(i==0&& isOverflowed(htmlTagList[i]))
+		{
+		    htmlTagList[i].style.overflowX = "-webkit-marquee";
+			htmlTagList[i].style.textOverflow = "clip";
+			htmlTagList[i].style.webkitMarqueeDirection = "backwards";
+			htmlTagList[i].style.webkitMarqueeStyle = "scroll";
+			htmlTagList[i].style.webkitMarqueeSpeed = "fast";
+			htmlTagList[i].style.webkitMarqueeIncrement = "small";
+			htmlTagList[i].style.webkitMarqueeRepetition = "infinite";
+		}
+		else if(focusPosition+1 == i && isOverflowed(htmlTagList[i]))//如果当前焦点选项真实句子长度长于预留的长度则需要做滚动显示
+		{
+			htmlTagList[i].style.overflowX = "-webkit-marquee";
+			htmlTagList[i].style.textOverflow = "clip";
+			htmlTagList[i].style.webkitMarqueeDirection = "backwards";
+			htmlTagList[i].style.webkitMarqueeStyle = "scroll";
+			htmlTagList[i].style.webkitMarqueeSpeed = "fast";
+			htmlTagList[i].style.webkitMarqueeIncrement = "small";
+			htmlTagList[i].style.webkitMarqueeRepetition = "infinite";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+		else
+		{
+			htmlTagList[i].style.overflowX = "hidden";
+			htmlTagList[i].style.textOverflow = "ellipsis";
+			/*htmlTagList[i].innerHTML = tempText;*/
+		}
+	}
+}
+/*
+重新为整个列表属性更改完成的列表赋值
+htmlTagList:内容标签列表；ListLength：当前有内容的列表标签的个数
+*/
+function resetScrollHtmlInner(htmlTagList)
+{
+	for(var i = 0; i < htmlTagList.length; i++)
+	{
+		htmlTagList[i].innerHTML = "";
+		htmlTagList[i].innerHTML = htmlTagList[i].getAttribute("contentText");
+	}
+}
+
+function resetFramePacking3DMode()
+{
+	if(g_setting.getFramePackingMode()==1)
+	{
+		g_setting.pic3DMode = 9;//top - bottom
+		if(top.bluetoothStart==0)
+		{
+			top.bluetoothStart=1;
+			setTimeout("g_setting.bluetoothMaster()",800);
+		}
+		
+	}
+}
+var currentSubtitleModeIndex = 0;
+var currentSubtitleStatus = 0;
+function getCurrentSubtitleIndex()
+{
+	var currentChannel=g_channel.getChannelInfoByIndex(top.g_channel.currentIndex);
+	var str = currentChannel.programSubtitleMode;
+	str = str.substring(str.indexOf("#") + 1);
+	currentSubtitleModeIndex = parseInt(str.substring(0,str.indexOf("#")),10);
+	str = str.substring(str.indexOf("#") + 1);
+	var subtitleModeCount = parseInt(str.substring(0,str.indexOf("#")),10);
+	if(currentSubtitleModeIndex>=subtitleModeCount || currentSubtitleModeIndex==255)
+	{
+		currentSubtitleModeIndex = -1;
+	}
+	//console.log("subtitleModeCount=="+subtitleModeCount+"currentSubtitleModeIndex=="+currentSubtitleModeIndex);
+}
+function closeSubtitle()
+{
+	getCurrentSubtitleIndex();
+	if(g_setting.enableSubtitle==1)
+	{
+		currentSubtitleStatus = 1;
+	}
+	else
+	{
+		currentSubtitleStatus = 0;
+	}
+	g_setting.enableSubtitle = 0;
+	//console.log("I will close the subtitle");
+}
+function restartSubtitle()
+{
+	if(currentSubtitleStatus==1)
+	{
+		g_setting.enableSubtitle = 1;
+	}
+	if(currentSubtitleModeIndex==-1)
+	{
+		//return;
+	}
+	else
+	{
+		g_channel.setSubtitleByIndex(currentSubtitleModeIndex);
+	}
+	//console.log("I will open the subtitle  currentSubtitleModeIndex =="+currentSubtitleModeIndex);
+}
+function printfRunningTime()
+{
+    var runningTime = parseInt(g_setting.getProperty("persist.app.runntingTime", "0"))*20;
+    var year = runningTime/(365*24*60);
+    var year1 = runningTime%(365*24*60);
+    var month = year1/(30*60*24);
+    var month1 = year1%(30*60*24);
+    var day = month1/(60*24);
+    var day1 = month1%(60*24);
+    var hour = day1/60;
+    var minute = day1%60;
+    console.log("Total running time is " + Math.floor(year)+"Y/"+Math.floor(month)+"M/"+Math.floor(day)+"D "+Math.floor(hour)+":"+minute);
+}
+
+function showNetflixDialog()
+{
+
+    /* 在部分情况下，不弹出提示框
+    * 1.在应用内
+    * 2.本次开机已经弹出过提示框.
+    * 3.之前选择过never show
+    * 4.存在开机向导时
+    * 5.存在提示购买netflix遥控器提示框时
+    * 6.hbbtv前端运行时
+    * 7.该国家没有支持netflix
+    * */
+    if(1 != top.appOpenFlag && 0 == netflixDialogFlag && 0 == g_setting.getProperty("app.ui.netflixDialog","0") && 0 != g_setting.tvRunningMode && 0 == g_channel.checkhbbtvStatus() && checkCountry(g_channel.systemCountry))
+    {
+        if($('main').src != "channelPlay.html" || $("globleShow").contentWindow.$("adjustProgressBox").style.display == "block")   //如果正在操作菜单，则不弹出提示框
+        {
+            setTimeout(function(){
+                showNetflixDialog();
+            },5 * 1000);
+            return ;
+        }
+        top.jumpPage();
+        top.$('otherPage').src = "netflixDialog.html";
+        top.otherPage.focus();
+        top.setFrameFocusPage("otherPage");
+        netflixDialogFlag = 1;
+    }
+
+    function checkCountry(country)
+    {
+        //UK, Ireland ,Norway, Denmark, Finland, Sweden, Germany, Austria, Switzerland, France, Belgium, Netherlands, Luxembourg, Portugal, Spain, Italy
+        var countryList = [25,33,15,6,7,23,9,1,24,8,2,14,13,17,22,12];
+        for(var i = 0;i < countryList.length; i++)
+        {
+            if(country == countryList[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+var focusFrame = null;
+function requestFocus(frame, sign)
+{
+	if (frame.src != undefined)
+		console.log("requestFocus "+frame.src);
+	else
+		console.log("requestFocus "+frame.location);
+	if (sign)
+		focusFrame = frame;
+	frame.focus();
+}
+
+function resumeFocus()
+{
+	if (frame.src != undefined)
+		console.log("resumeFocus "+frame.src);
+	else
+		console.log("resumeFocus "+frame.location);
+	if (focusFrame != null)
+	{
+		focusFrame.focus();
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+	<div id="factoryOsdShow">
+        <div id="translation"><script type="text/javascript" src="translation/English.js"></script></div>
+        <iframe id="main" name="main" src="" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+        <!--全局功能对话框，对话框出现的时候需要隐藏主菜单，但是返回后主菜单需要再次显示，比如搜台对话框，图像设置中对比度等对话框-->
+        <iframe id="operatePage" name="operatePage" src="" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+        <!--全局弹出式对话框，比如poweroff弹出框，booking倒计时框等-->
+        <iframe id="otherPage" name="otherPage" src="" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+        <!--globleShow 包括mute/factoryHotkey/volume-->
+        <iframe id="globleShow" name="globleShow" src="globleShow.html" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+        <!-- lqt-虚拟遥控器 -->
+        <iframe id="virtualRemote" name="virtualRemote" src="virtualRemote.html" frameborder="0"  marginheight="0" marginwidth="0"></iframe>
+        <div id="backgroundDownloadContainer" class="backgroundDownload">
+            <div id="downloadProgressValue" class="backgroundDownload"></div>
+            <div id="bgDownloadTitle" class="backgroundDownload" style="position: absolute;width:186px;left:-186px;overflow: hidden"></div>
+            <canvas id="backgroundDownloadRing" width="160" height="160"></canvas>
+        </div>
+         
+        
+        <img id="mute" src="images/volume_MUTE.png">
+        
+         <!--工厂模式打开后左下角的闪烁提示-->
+         <div id="factoryHotkeyForm">
+            <span id="warnUptime" class="atrrH" style="top:5px;"></span>
+            <span class="atrrH" style="top:40px;"></span>
+            <span class="atrrL" style="top:75px;"></span>
+            <span class="atrrR" style="top:75px;"></span>
+            <span class="atrrL" style="top:110px;"></span>
+            <span class="atrrR" style="top:110px;"></span>
+            <span class="atrrL" style="top:145px;"></span>
+            <span class="atrrL" style="top:180px;"></span>
+        </div>
+        
+        <span id="frontPanel"></span>
+         
+        
+        <!--3D 眼睛佩戴提示框-->
+    	<div id="glassRemind"></div>
+        <div id="volumeOffRemind"></div>
+        <!--nScreen phone connected to tv-->
+    	<div id="nScreenPhoneConnectToTvRemind"><span></span></div>
+     </div>
+     
+     
+     
+</body>
+</html>

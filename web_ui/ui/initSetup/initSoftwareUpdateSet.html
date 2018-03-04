@@ -1,0 +1,879 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" href="init.css" rel="stylesheet" />
+<script type="text/javascript">
+/*************** created by chenhua ***************************/
+var initialTitleWords 		= top.initialTitle[1];
+var initStepWords			= top.initialOptions[2];
+var remindWords				= [top.netUpdateLoadingPrompt[0],top.initialPrompt[17],top.initialPrompt[18],top.netUpdateLoadingPrompt[1],top.netUpdatePrompt[6],
+							top.initialPrompt[21],top.initialPrompt[23],top.netUpdatePrompt[0],top.initialPrompt[24],top.sysUpdateDes[8]];
+var tips					= top.initialPrompt[19];
+var tipsT					= top.others[28];
+var selectWords				= top.initSoftUpdates;
+var yesNoWords				= top.yesNo;
+var hotkeyWords				= top.initialHotkeys;
+var okCancel				= top.okCancel;
+var promptText 				= top.netUpdatePrompt;
+var retryCancel				= [top.others[16],top.okCancel[1]];
+var stopWords				= top.others[17];
+var updateEndTips			= top.initialPrompt[20];
+
+var setting 				= top.g_setting;
+document.onkeydown 			= keyproc;
+document.onnotify 			= notifyProcess;
+
+var focusOn					= "updateSearch";//updateSearch,loginFailed,fileCheckFailed,updateFound,updateLaterForm,updateDownload,updateReady,updating
+var distance 				= 0;			//distance = position_on_languageList - list_position_h
+var position_on_languageList= 0;			//当前语言在语言列表中的绝对位置
+var SELECT_STEP				= 70;			//单选列表框相邻两个选项之间的距离
+var list_position_h 		= 0;			//主页面中使用
+var form_position_h 		= 0;			//弹出页面中使用
+var loadingImgs				= ["../images/Loading-01.png",
+								"../images/Loading-02.png",
+								"../images/Loading-03.png",
+								"../images/Loading-04.png",
+								"../images/Loading-05.png",
+								"../images/Loading-06.png",
+								"../images/Loading-07.png",
+								"../images/Loading-08.png"];
+var rightDescImgs			= ["../images/Pic-Software_New.png",
+								"../images/Pic-Software_Updating.png"];
+//download 使用
+var progressValue			= 0;
+var PROGRESS_WIDTH			= 700;
+//update end 使用
+var updateEndFlag			= "needNotUpgrade";//needNotUpgrade,updateNormalEnd,updateLater
+
+function notifyProcess(evt)
+{
+    var msg = evt.which;
+	var value = evt.modifiers;
+    //全局消息
+    switch(msg)
+    {
+	    case top.E_READY_TO_CHANGE_SCART://ready to cart
+	        top.isChangeToScartAfterInit = 1;
+	    	break;
+		case top.E_UPDATE_LOGIN_FAILED_POTAL:
+			if(focusOn == "updateSearch")
+			{
+				/*focusOn = "loginFailed";
+				showSearchEndTips();*/
+				//when failed find update info,display softeware is newnest info
+				updateEndFlag = "needNotUpgrade";
+				initUpdateEnd();
+			}
+			break;
+		case top.E_UPDATE_NOT_GET_TO_UPDATE_INFORMATION:
+			if(focusOn == "updateSearch")
+			{
+				/*if(value == 0) // 0:Failed to get
+				{
+				}
+				else if(value == 1)//1:Failed to parse
+				{
+				}
+				focusOn = "fileCheckFailed";
+				showSearchEndTips();*/
+				//when failed find update info,display softeware is newnest info
+				updateEndFlag = "needNotUpgrade";
+				initUpdateEnd();
+			}
+			break;
+		case top.E_NETWORK_UPDATE_GET_UPDATED_INFORMATION:
+			// <=0:Not found >0:Found
+			if(focusOn == "updateSearch")
+			{
+				if(value > 0)
+				{
+					initUpgradeFound();
+				}
+				else
+				{
+					updateEndFlag = "needNotUpgrade";
+					initUpdateEnd();
+				}
+			}
+			break;
+		case top.E_UPDATE_DOWNLOAD_PROGRESS:
+			if(focusOn == "updateDownload")
+			{
+				refreshProgress(value);
+			}
+	        break;
+		case top.E_UPDATE_DOWNLOAD_COMPLETE:
+			if(focusOn == "updateDownload")
+			{
+				// value, 0: MD5 check failed. 1: MD5 check successful
+				if(value == 1){
+					initUpdateReady();
+				}
+			}
+			break;
+		case top.E_UPDATE_DOWNLOAD_FAILED:
+		case top.E_DOWNLOADING_NETWORK_ABNORMAL:
+			if(focusOn == "updateDownload")
+			{
+				doEnter();
+			}
+			break;
+		case top.E_UPDATE_UPDATING_PROGRESS:
+			if(focusOn == "updating")
+			{
+				refreshProgress(value);
+			}
+	        break;
+		case top.E_UPDATE_RESULT:
+			if(focusOn == "updating")
+			{
+				if(value == 1)
+				{
+					updateEndFlag = "updateNormalEnd";
+					initUpdateEnd();
+				}
+			}
+			break;
+		case top.E_UPDATE_DOWNLOAD_FAILED:
+			if(focusOn == "updating")
+			{
+				doEnter();
+			}
+			break;
+		case top.E_NETWORK_CONNECT_TEST_SUCCESS:
+		case top.E_NETWORK_CONNECT_TEST_FAIL:
+		case top.E_DATABASE_FILE_DAMAGE:
+		{
+			top.systemEventProc(evt);
+		}
+		break;
+	    default:
+	        break;
+    }
+}
+
+function keyproc(e)
+{
+	var ret = true;
+	var keycode = e.which;
+	
+	//快捷键处理
+	switch (keycode)
+	{
+		case top.VK_POWER://power
+			top.keyDownProcess(e);
+			break;
+		case top.VK_UP:
+			toUp();
+			ret = false;
+			break;
+		case top.VK_DOWN:
+			toDown();
+			ret = false;
+			break;
+		case top.VK_ENTER:
+			doEnter();
+			ret = false;
+			break;
+		case top.VK_RIGHT:
+			toRight();
+			ret = false;
+			break;
+		case top.VK_LEFT:
+			toLeft();
+			ret = false;
+			break;
+		case top.VK_RED:
+			top.jumpPage();
+			break;
+		default:
+			ret = true;
+			break;
+	}
+	return ret;
+
+}
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+
+function toLeft()
+{
+	if(focusOn == "updateSearch" || focusOn == "updateFound" || focusOn == "updateReady" || focusOn == "updateEnd")
+	{
+		window.location.href = "initNetCondition.html";
+	}
+	else if(focusOn == "loginFailed" || focusOn == "fileCheckFailed" || focusOn == "updateLaterForm")
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+			$("tipsButtonFocus").style.left = "476px";
+		}
+		else 
+		{
+			form_position_h = 0;
+			$("tipsButtonFocus").style.left = "150px";
+		}
+	}
+}
+function toRight()
+{
+	if(focusOn == "loginFailed" || focusOn == "fileCheckFailed" || focusOn == "updateLaterForm")
+	{
+		if(form_position_h == 0)
+		{
+			form_position_h = 1;
+			$("tipsButtonFocus").style.left = "476px";
+		}
+		else 
+		{
+			form_position_h = 0;
+			$("tipsButtonFocus").style.left = "150px";
+		}
+	}
+	else if(focusOn == "updateFound" || focusOn == "updateReady" ||　focusOn == "updateEnd")
+	{
+		doEnter();
+	}
+}
+
+function toUp()
+{
+	if(focusOn == "updateFound" || focusOn == "updateReady")
+	{
+		if(list_position_h <= 0) 
+		{
+			list_position_h = 1;
+		}
+		else
+		{
+			list_position_h--;
+		}	
+		$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	}
+}
+function toDown()
+{
+	if(focusOn == "updateFound" || focusOn == "updateReady")
+	{
+		if(list_position_h >= 1) 
+		{
+			list_position_h=0;
+			
+		}
+		else
+		{
+			list_position_h++;
+		}	
+		$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	}
+}
+
+
+function doEnter()
+{
+	
+	if(focusOn == "loginFailed" || focusOn == "fileCheckFailed")
+	{
+		if(form_position_h == 0)
+		{
+			window.location.reload();
+		}
+		else 
+		{
+			updateEndFlag = "updateLater";
+			initUpdateEnd();
+		}
+	}
+	else if(focusOn == "updateFound")
+	{
+		if(list_position_h == 0)
+		{
+			initUpdateDownload();
+		}
+		else
+		{
+			initUpdateLaterForm();
+		}
+	}
+	else if(focusOn == "updateLaterForm")
+	{
+		if(form_position_h == 0)
+		{
+			updateEndFlag = "updateLater";
+			initUpdateEnd();
+		}
+		else
+		{
+			focusOn = "updateFound";
+			$("tips").style.display = "none";
+		}
+	}
+	else if(focusOn == "updateDownload" || focusOn == "updating")
+	{
+		updateEndFlag = "updateLater";
+		initUpdateEnd();
+	}
+	else if(focusOn == "updateReady")
+	{
+		if(list_position_h == 0)
+		{
+			initUpdating();
+		}
+		else
+		{
+			updateEndFlag = "updateLater";
+			initUpdateEnd();
+		}
+	}
+	else if(focusOn == "updateEnd")
+	{
+		document.location.href = "initChannelInstallEntry.html";
+	}
+}
+
+function initUpdateEnd()
+{
+	$('remind1').innerHTML = "";
+	$("remind2").innerHTML = "";
+	stepImgList[0].style.width = "1200px";
+	stepImgList[1].style.width = "0px";
+	
+	if(updateEndFlag == "needNotUpgrade")
+	{
+		initNeedNotUpgrade();
+	}
+	else if(updateEndFlag == "updateLater")
+	{
+		initUpdateLater();
+	}
+	else if(updateEndFlag == "updateNormalEnd")
+	{
+		initUpdateNormalEnd();
+	}
+	
+	$("firstButton").style.display = "none";
+	$("tips").style.display = "none";
+	$('back').style.display = "block";
+	$('select').style.display = "none";
+	$('next').style.display = "block";
+	$("ok").style.display = "none";
+	$("container").style.display = "none";
+	$("loadingImg").style.display = "none";
+	$("rightDescImg").style.display = "none";
+	$("progressForm").style.display = "none";
+	$("updateEndShow").style.display = "block";
+	focusOn = "updateEnd";
+}
+/*
+描述：软件已经是最新，不需要更新
+参数：
+全局变量：
+*/
+function initNeedNotUpgrade()
+{
+	$('updateEndRemind').innerHTML = remindWords[7];
+	$("updateEndTips").innerHTML = updateEndTips;
+}
+/*
+描述：想要update later结果初始化
+参数：
+全局变量：
+*/
+function initUpdateLater()
+{
+	$('updateEndRemind').innerHTML = remindWords[8];
+	$("updateEndTips").innerHTML = updateEndTips;
+}
+/*
+描述：升级完成
+参数：
+全局变量：
+*/
+function initUpdateNormalEnd()
+{
+	$('updateEndRemind').innerHTML = remindWords[9];
+	$("updateEndTips").innerHTML = updateEndTips;
+}
+
+function initUpdating()
+{
+	$("remindForm").style.width = "660px";
+	$('remind1').innerHTML = remindWords[6];
+	$("remind2").innerHTML = tipsT + ":" + remindWords[5];
+	$("firstButton").innerHTML = stopWords;
+	$("firstButton").style.left = "430px";
+	stepImgList[0].style.width = "1000px";
+	stepImgList[1].style.width = "200px";
+	$("rightDescImg").src = rightDescImgs[1];
+	$("progressForm").style.width = "600px";
+	$("progressForm").style.left = "430px";
+	$("progressForm").style.top = "600px";
+	PROGRESS_WIDTH = 600;
+	
+	$("firstButton").style.display = "block";
+	$("tips").style.display = "none";
+	$('back').style.display = "none";
+	$('select').style.display = "none";
+	$('next').style.display = "none";
+	$("ok").style.display = "block";
+	$("container").style.display = "none";
+	$("loadingImg").style.display = "none";
+	$("rightDescImg").style.display = "block";
+	$("progressForm").style.display = "block";
+	$("updateEndShow").style.display = "none";
+	focusOn = "updating";
+	
+	refreshProgress(0);
+	setting.startUpdating(1);
+}
+
+function initUpdateReady()
+{
+	$("remindForm").style.width = "1060px";
+	list_position_h = 0;
+	$("remind1").innerHTML = remindWords[4];
+	$("remind2").innerHTML = tipsT + ":" + remindWords[5];
+	$("firstButton").innerHTML = "";
+	selectSpanList[0].innerHTML = yesNoWords[0];
+	selectSpanList[1].innerHTML = yesNoWords[1];
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	stepImgList[0].style.width = "800px";
+	stepImgList[1].style.width = "400px";
+	
+	$("firstButton").style.display = "none";
+	$("tips").style.display = "none";
+	$('back').style.display = "block";
+	$('select').style.display = "block";
+	$('next').style.display = "block";
+	$("ok").style.display = "none";
+	$("container").style.display = "block";
+	$("loadingImg").style.display = "none";
+	$("rightDescImg").style.display = "none";
+	$("progressForm").style.display = "none";
+	$("updateEndShow").style.display = "none";
+	focusOn = "updateReady";
+}
+
+function initUpdateDownload()
+{
+	$("remindForm").style.width = "1060px";
+	$('remind1').innerHTML = remindWords[3];
+	$("remind2").innerHTML = "";
+	$("firstButton").innerHTML = stopWords;
+	$("firstButton").style.left = "858px";
+	stepImgList[0].style.width = "600px";
+	stepImgList[1].style.width = "600px";
+	$("progressForm").style.width = "700px";
+	$("progressForm").style.left = "610px";
+	$("progressForm").style.top = "550px";
+	PROGRESS_WIDTH = 700;
+	
+	$("firstButton").style.display = "block";
+	$("tips").style.display = "none";
+	$('back').style.display = "none";
+	$('select').style.display = "none";
+	$('next').style.display = "none";
+	$("ok").style.display = "block";
+	$("container").style.display = "none";
+	$("loadingImg").style.display = "none";
+	$("rightDescImg").style.display = "none";
+	$("progressForm").style.display = "block";
+	$("updateEndShow").style.display = "none";
+	focusOn = "updateDownload";
+	
+	refreshProgress(0);
+	setting.startDownloadUpdateFile(1);
+}
+/*
+描述：刷新进度条
+参数：
+全局变量：
+*/
+function refreshProgress(progress)
+{
+	if(progress <= 100)
+	{
+		$("progressLeft").style.width = parseInt(progress*PROGRESS_WIDTH/100,10) + "px";
+		$("progressRight").style.width = parseInt((100 - progress)*PROGRESS_WIDTH/100,10) + "px";
+		$("progressValue").innerHTML = parseInt(progress,10) + "%";
+	}
+}
+
+
+
+/*
+描述：升级文件被发现，提示是否需要升级的初始化
+参数：
+全局变量：
+*/
+function initUpgradeFound()
+{
+	$("remindForm").style.width = "660px";
+	list_position_h = 0;
+	$("remind1").innerHTML = remindWords[1];
+	$("remind2").innerHTML = tipsT + ":" + remindWords[2];
+	$("firstButton").innerHTML = "";
+	selectSpanList[0].innerHTML = selectWords[0];
+	selectSpanList[1].innerHTML = selectWords[1];
+	$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+	stepImgList[0].style.width = "400px";
+	stepImgList[1].style.width = "800px";
+	$("rightDescImg").src = rightDescImgs[0];
+	
+	$("firstButton").style.display = "none";
+	$("tips").style.display = "none";
+	$('back').style.display = "block";
+	$('select').style.display = "block";
+	$('next').style.display = "block";
+	$("ok").style.display = "none";
+	$("container").style.display = "block";
+	$("loadingImg").style.display = "none";
+	$("rightDescImg").style.display = "block";
+	$("progressForm").style.display = "none";
+	$("updateEndShow").style.display = "none";
+	focusOn = "updateFound";
+}
+/*
+描述：想要update later的确认
+参数：
+全局变量：
+*/
+function initUpdateLaterForm()
+{
+	form_position_h = 0;
+	$("tipsTitle").innerHTML = tipsT;
+	var buttons = $("tips").getElementsByTagName("div");
+	focusOn = "updateLaterForm";
+	$("tipsContent").innerHTML = tips;
+	buttons[0].innerHTML = yesNoWords[0];
+	buttons[1].innerHTML = yesNoWords[1];
+	$("tipsButtonFocus").style.left = "150px";
+	$("tips").style.display = "block";
+}
+
+
+
+function initUpdateSearch()
+{
+	$("remindForm").style.width = "1060px";
+	$("remind1").innerHTML = remindWords[0];
+	$("remind2").innerHTML = "";
+	$("firstButton").innerHTML = "";
+	stepImgList[0].style.width = "200px";
+	stepImgList[1].style.width = "1000px";
+	
+	$("firstButton").style.display = "none";
+	$("tips").style.display = "none";
+	$('back').style.display = "block";
+	$('select').style.display = "none";
+	$('next').style.display = "none";
+	$("ok").style.display = "none";
+	$("container").style.display = "none";
+	$("loadingImg").style.display = "block";
+	$("rightDescImg").style.display = "none";
+	$("progressForm").style.display = "none";
+	$("updateEndShow").style.display = "none";
+	focusOn = "updateSearch";
+	
+	setting.softwareUpdate(1/*network update*/);
+	startloading();
+}
+/*
+描述：开始加载等待
+*/
+var loadingTimer = 0;
+var loadingCount = 0;
+function startloading()
+{
+	$('loadingImg').src = loadingImgs[loadingCount%8];
+	loadingCount++;
+	loadingTimer=setTimeout("startloading()",300);
+}
+function showSearchEndTips()
+{
+	if(loadingTimer)
+	{
+		clearTimeout(loadingTimer);
+	}
+	$("loadingImg").style.display = "none";
+	
+	$("tipsTitle").innerHTML = tipsT;
+	var buttons = $("tips").getElementsByTagName("div");
+	if(focusOn == "loginFailed")
+	{
+		$("tipsContent").innerHTML = promptText[2];
+	}
+	else if(focusOn == "fileCheckFailed")
+	{
+		$("tipsContent").innerHTML = promptText[8];
+	}
+	
+	buttons[0].innerHTML = retryCancel[0];
+	buttons[1].innerHTML = retryCancel[1];
+	form_position_h = 0;
+	$("tipsButtonFocus").style.left = "150px";
+	$("tips").style.display = "block";
+}
+
+
+var selectSpanList;
+var containerLiList;
+var tipsButtonClassList;
+var stepImgList;
+function init()
+{
+	stepImgList = $("subTitleForm").getElementsByTagName("img");
+	containerLiList = $("container").getElementsByTagName("li");
+	selectSpanList = $("container").getElementsByTagName("span");
+	tipsButtonClassList = $("tips").getElementsByClassName("tipsButton");
+	$("initTitle").innerHTML = initialTitleWords;
+	$("subTitleTag").innerHTML = initStepWords;
+	
+	$("back").getElementsByTagName("span")[0].innerHTML = hotkeyWords[0];
+	$("select").getElementsByTagName("span")[0].innerHTML = hotkeyWords[1];
+	$("next").getElementsByTagName("span")[0].innerHTML = hotkeyWords[2];
+	$('ok').getElementsByTagName('span')[0].innerHTML = okCancel[0];
+	
+	initUpdateSearch();
+	addMouseListener();
+}
+
+function addMouseListener()
+{
+	document.body.onmousedown = function(evt){evt.preventDefault();
+		if(evt.button == 0){//left key
+			if(focusOn == "updateEnd")
+			{
+				doEnter();
+			}
+		}
+	}
+	
+	for(var i = 0; i < 2; i++)
+	{
+		containerLiList[i].setAttribute("newAttr",i);
+		containerLiList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "updateFound" || focusOn == "updateReady"){
+					list_position_h = parseInt(this.getAttribute("newAttr"));
+					$("initListFormFocus").style.top = list_position_h*SELECT_STEP + "px";
+					doEnter();
+				}
+			}
+		}
+	}
+	
+	for(var i = 0; i < 2; i++)
+	{
+		tipsButtonClassList[i].setAttribute("newAttr",i);
+		tipsButtonClassList[i].onmousedown = function(evt){
+			if(evt.button == 0){//left key
+				if(focusOn == "loginFailed" || focusOn == "fileCheckFailed" || focusOn == "updateLaterForm")
+				{
+					form_position_h = parseInt(this.getAttribute("newAttr"));
+					if(form_position_h == 0)
+					{
+						$("tipsButtonFocus").style.left = "150px";
+					}
+					else
+					{
+						$("tipsButtonFocus").style.left = "476px";
+					}
+					doEnter();
+				}
+			}
+		}
+	}
+	
+	$("firstButton").onmousedown = function(evt){
+		if(evt.button == 0){//left key
+			if(focusOn == "updateDownload" || focusOn == "updating")
+			{
+				doEnter();
+			}
+		}
+	}
+}
+</script>
+<style type="text/css">
+    body{
+        font-family: "Helvetica World test","MYingHei_18030_C-Medium","MYingHei_B5HK_C-Medium";
+    }
+#tips
+{
+	position:absolute;
+	left:544px;
+	top:334px;
+	width:830px;
+	height:410px;
+	background-image:url(../images/Bg-Pop_up_box-03.png);
+	background-size:100% 100%;
+	display:none;
+}
+#tipsTitle
+{
+	position:absolute;
+	left:60px;
+	top:30px;
+	font-size:32px;
+	color:#fff;
+}
+#tipsContent
+{
+	position:absolute;
+	left:60px;
+	top:126px;
+	width:710px;
+	font-size:28px;
+	color:#bbb;
+}
+.tipsButton
+{
+	position:absolute;
+	top:328px;
+	background:url(../images/Focus-02-no.png) no-repeat; 
+	width:204px; 
+	height:64px; 
+	line-height:64px; 
+	text-align:center; 
+	color:#FFF; 
+	font-size:28px; 
+	font-weight:bold;
+}
+#tipsButtonFocus
+{
+	position:absolute;
+	top:328px;
+}
+#container
+{
+	top:520px;
+	left:100px;
+}
+.leftRemind
+{
+	width:660px;
+	top:200px;
+}
+.leftRemind span
+{
+	position:relative;
+	display:block;
+}
+#remind2
+{
+	font-style:italic;
+	color:#bbb;
+}
+.centerLoadingImg
+{
+	 position:absolute;
+	 margin:0px 894px 0px 896px;
+	 width:130px;
+	 height:130px;
+}
+.OnlyButton
+{
+	position:absolute;
+	top:770px;
+	left:858px;
+	background:url(../images/Focus-02.png) no-repeat; 
+	width:204px; 
+	height:64px; 
+	line-height:64px; 
+	text-align:center; 
+	color:#FFF; 
+	font-size:28px; 
+	font-weight:bold;
+}
+</style>
+</head>
+
+<body onload="init()">
+	<span id="initTitle"></span>
+    <!-----------大圆居中，大圆加上后面的小圆、连线的总长度是1000px,大圆前面的总长度是920px,每个小圆的宽度是48px-->
+    <div id="initStep" style="left:0px;">
+    	<img class="initStepSmallImg" src="../images/Step_Small-00.png" /><img class="initStepSmallImg" src="../images/Step_Small-01.png" /><img class="initStepSmallImg" src="../images/Step_Small-02.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:776px;" /><img class="initStepBigImg" src="../images/Step_big-03.png" /><img class="initStepLine" src="../images/Step_Line.png" style="width:774px;" /><img class="initStepSmallImg" src="../images/Step_Small-04.png" /><img class="initStepSmallImg" src="../images/Step_Small-05.png" /><img class="initStepSmallImg" src="../images/Step_Small-06.png" />
+    </div>
+    
+    <div id="initDialog">
+    	<div id="subTitleForm">
+        	<img  src="../images/Title_bloc-Progress.png" style="width:400px;" /><img src="../images/Title_bloc-Bg.png" style="width:800px;" />
+            <span id="subTitleTag"  style="left:10px;"></span>
+        </div>
+        
+        <!--显示提示语-->
+        <div id="remindForm" class="leftRemind">
+            <span id="remind1"></span>
+            <span >&nbsp;</span>
+            <span id="remind2"></span>
+        </div>
+        
+        <!--显示选择控件-->
+        <ul id="container" class="initSelects">
+          <div id="initListFormFocus">
+          	<img class="initSlectsFocus2" src="../images/option/Radio_3.PNG"/>
+          	<img class="initSlectsFocus" src="../images/Focus_Frame/Focus.png">
+          </div>
+          <li >
+          	<img src="../images/option/Radio_2.PNG" />
+            <span ></span>
+          </li>
+          <li>
+          	<img src="../images/option/Radio_2.PNG"/>
+            <span></span>
+          </li>
+        </ul>
+    
+        <div id="back" class="hotkey" style="left:150px;" >
+          	<img src="../images/icon-Back.png"/>
+            <span></span>
+        </div>
+        <div id="select" class="hotkey" style="left:530px;" >
+          	<img src="../images/icon-Select_1.png"/>
+            <span></span>
+        </div>
+        <div id="next" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Next.png"/>
+            <span></span>
+        </div>
+        <div id="ok" class="hotkey" style="left:910px;" >
+          	<img src="../images/icon-Ok.png"/>
+            <span></span>
+        </div>
+        
+        <div id="updateEndShow">
+        	<span id="updateEndRemind" class="midRemind" style="top:230px; font-size:28px;"></span>
+        	<span id="updateEndTips" class="midRemind" style="top:430px; font-size:36px;"></span>
+        </div>
+    </div>
+    
+    
+    <div id="progressForm" style="top:550px;width:700px; left:610px;">
+        <span id="progressValue"></span>
+        <div id="progressBar">
+            <div id="progressLeft" class="progressBarLeft"></div>
+            <div id="progressRight" class="progressBarRight" ></div>
+        </div>
+    </div>
+    <div id="firstButton" class="OnlyButton"></div>
+        
+    <img id="loadingImg" class="centerLoadingImg" src="../images/Loading-01.png" style="top:640px;">
+    <img id="rightDescImg" style="position:absolute; left:1090px; top:380px;"  src="../images/Pic-Software_New.png"/>
+
+   <div id="tips">
+        <img id="tipsButtonFocus" src="../images/Focus-02.png"/>
+    	<span id="tipsTitle"></span>
+        <span id="tipsContent"></span>
+        <div class="tipsButton" style="left:150px;"></div>
+        <div class="tipsButton" style="left:476px;"></div>
+    </div>
+</body>
+</html>
