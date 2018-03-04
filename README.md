@@ -1,4 +1,5 @@
 #TCL-TV-RE
+
 Reverse engineering of a TCL TV firmware (NB: i'm reorganizing this repo, if some files seems missing, they'll be back soon!)
 
 ## Context
@@ -70,3 +71,7 @@ The security is probably not very high on this TV, at minimum, you can plug a de
 For the "can the CIA do weeping angel on my TV" question, the answer is definitively yes, there's the same "fake off" possibilities (that i actually use in my replacement of sitatvservice). but there's no camera and it doesn't seems to have any microphone.
 
 Basically, i wouldn't call this TV "secure" if you're using the OperaTV browser (quite old) or didn't replaced the sitatvservice binary that listen to the network (and possibly other binaries as well) with a custom binary. and this TV is defintiively not secure against physical tampering given the console port is accessible even without opening the TV.
+
+## Thanks and credits
+Thanks to KailoKyra and gab for their help about reverse engineering and embedded ARM platforms.
+Tools used in this effort: binwalk, dd, binary ninja, retdec, gdb, dropbear, picocom, strace, caffein, probably some i forgot.
