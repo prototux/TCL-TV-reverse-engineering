@@ -1,4 +1,4 @@
-#TCL-TV-RE
+# TCL-TV-RE
 
 Reverse engineering of a TCL TV firmware (NB: i'm reorganizing this repo, if some files seems missing, they'll be back soon!)
 
