@@ -1,0 +1,330 @@
+execve("/bin/bootlogoEXE", ["/bin/bootlogoEXE"], 0xbefa6e20 /* 11 vars */) = 0
+uname({sysname="Linux", nodename="(none)", ...}) = 0
+brk(NULL)                               = 0x18f2000
+brk(0x18f2d00)                          = 0x18f2d00
+set_tls(0x18f24c0, 0x75010, 0, 0x77f70, 0x77f68) = 0
+brk(0x1913d00)                          = 0x1913d00
+brk(0x1914000)                          = 0x1914000
+open("/dev/mmcblk0p1", O_RDONLY)        = 3
+lseek(3, 1704448, SEEK_SET)             = 1704448
+read(3, "h\365ZiFRC=0\0SEP=0\0VX1=1\0au8Name=US"..., 8192) = 8192
+close(3)                                = 0
+open("/dev/mem", O_RDWR|O_SYNC)         = 3
+mmap2(NULL, 96468992, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0xfa000000) = 0xb1327000
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=1000000}, NULL) = 0
+fstat64(1, {st_mode=S_IFCHR|0622, st_rdev=makedev(3, 0), ...}) = 0
+ioctl(1, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb1326000
+write(1, "nt72668_stbc_wait_response timeo"..., 37nt72668_stbc_wait_response timeout !) = 37
+write(1, "disable wdog no response !\n", 27disable wdog no response !) = 27
+access("/dev/mmcblk0p8", F_OK)          = 0
+rt_sigaction(SIGINT, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGQUIT, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x18f2068) = 11234
+wait4(11234, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 11234
+rt_sigaction(SIGINT, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=11234, si_uid=0, si_status=0, si_utime=0, si_stime=1} ---
+open("/mnt/usr_stbc.bin", O_RDONLY)     = 4
+fstat64(4, {st_mode=S_IFREG|0644, st_size=20, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb1325000
+read(4, "STBC\1\0\0\0\0\0\0\0\0\0\0\0\1\0\0\0", 1024) = 20
+close(4)                                = 0
+munmap(0xb1325000, 4096)                = 0
+rt_sigaction(SIGINT, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, 8) = 0
+rt_sigaction(SIGQUIT, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x18f2068) = 11236
+wait4(11236, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 11236
+rt_sigaction(SIGINT, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x29520}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=11236, si_uid=0, si_status=0, si_utime=0, si_stime=1} ---
+write(1, "Set in VX1 mode\n", 16Set in VX1 mode)       = 16
+write(1, "FRC is 667\n", 11FRC is 667)            = 11
+write(1, "Scanning panel\n", 15Scanning panel)        = 15
+write(1, "set stMode60Hz.u16Width 1920\n", 29set stMode60Hz.u16Width 1920) = 29
+write(1, "set stMode60Hz.u16Height 1080\n", 30set stMode60Hz.u16Height 1080) = 30
+write(1, "set b8PWMDutyInv 0\n", 19set b8PWMDutyInv 0)    = 19
+write(1, "set u16aDIMFreq2D50Hz 18000\n", 28set u16aDIMFreq2D50Hz 18000) = 28
+write(1, "set u16PDIMFreq2D60Hz 120\n", 26set u16PDIMFreq2D60Hz 120) = 26
+write(1, "set b8LocalDIMControl 0\n", 24set b8LocalDIMControl 0) = 24
+write(1, "set u16PanelTiming2D 1\n", 23set u16PanelTiming2D 1) = 23
+write(1, "set u16PWM2DSync 1\n", 19set u16PWM2DSync 1)    = 19
+write(1, "set u8Tcon 2\n", 13set u8Tcon 2)          = 13
+write(1, "set u16PanelPowerOnDelay2 580\n", 30set u16PanelPowerOnDelay2 580) = 30
+write(1, "Panel BackLight ON!\n", 20Panel BackLight ON!)   = 20
+write(1, "+++++++++++++++++++++duty=1023++"..., 50+++++++++++++++++++++duty=1023+++++++++++++++++++) = 50
+write(1, "+++++++++++++++++++++0xFC0E6008="..., 56+++++++++++++++++++++0xFC0E6008=0xdf+++++++++++++++++++) = 56
+write(1, "+++++++++++++++++++++freq=0xcb73"..., 64+++++++++++++++++++++freq=0xcb735 ==>0xcb735+++++++++++++++++++) = 64
+write(1, "+++++++++++++++++++++setting=0x1"..., 54+++++++++++++++++++++setting=0x13e+++++++++++++++++++) = 54
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+nanosleep({tv_sec=0, tv_nsec=50000000}, NULL) = 0
+write(1, "+++++++++++++++++++++current mux"..., 67+++++++++++++++++++++current mux to 0x536872993+++++++++++++++++++) = 67
+write(1, "+++++++++++++++++++++current set"..., 60+++++++++++++++++++++current setting=13e+++++++++++++++++++) = 60
+write(1, "+++++++++++++++++++++current dut"..., 58+++++++++++++++++++++current duty=1023+++++++++++++++++++) = 58
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=4"..., 36tttttttttttttttttttttt22222222=4055) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=4"..., 36tttttttttttttttttttttt22222222=4015) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3975) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3935) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3895) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3855) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3815) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3775) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3735) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3695) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3655) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3615) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3575) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3455) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3335) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3215) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=3"..., 36tttttttttttttttttttttt22222222=3095) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=2"..., 36tttttttttttttttttttttt22222222=2975) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=2"..., 36tttttttttttttttttttttt22222222=2175) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=1"..., 36tttttttttttttttttttttt22222222=1375) = 36
+nanosleep({tv_sec=0, tv_nsec=20000000}, NULL) = 0
+write(1, "tttttttttttttttttttttt22222222=9"..., 35tttttttttttttttttttttt22222222=941) = 35
+write(1, "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"..., 34rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr) = 34
+write(1, "panel power on sequence end...\n", 31panel power on sequence end...) = 31
+open("/dev/mem", O_RDWR|O_SYNC)         = 4
+mmap2(NULL, 5242880, PROT_READ|PROT_WRITE, MAP_SHARED, 4, 0x14eda000) = 0xb0e26000
+open("/dev/mmcblk0", O_RDONLY)          = 5
+lseek(5, 2761216, SEEK_SET)             = 2761216
+read(5, 0xb0e26000, 5242880)            = 5242880
+close(5)                                = 0
+write(1, "LOGO typte:JPEG\n", 16LOGO typte:JPEG)       = 16
+write(1, "image info:width (1920) height ("..., 118image info:width (1920) height (1080) offset (0x247) u32ImageLength (0x1422b) u16ColorSpace (3) u8RestartInterval (0)) = 118
+munmap(0xb0e26000, 5242880)             = 0
+close(4)                                = 0
+write(1, "1section set OSD output to 4K\n", 301section set OSD output to 4K) = 30
+write(1, "!![OSD-RevB]: nt72668_OSD_Set(0x"..., 46!![OSD-RevB]: nt72668_OSD_Set(0x14eda000) ...) = 46
+write(1, "OSD-Size, SrcWin: WxH = 1920x108"..., 59OSD-Size, SrcWin: WxH = 1920x1080, DstWin: WxH = 3840x2160) = 59
+munmap(0xb1327000, 96468992)            = 0
+close(3)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
+

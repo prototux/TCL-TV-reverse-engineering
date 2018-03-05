@@ -1,0 +1,9 @@
+sita_property_get
+sita_property_hash_add
+sita_property_hash_get
+sita_property_hash_remove
+sita_property_hash_remove_all
+sita_property_init
+sita_property_remove
+sita_property_reset
+sita_property_set
