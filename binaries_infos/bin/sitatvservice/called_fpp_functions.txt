@@ -1,0 +1,451 @@
+# 3D (not used in my TV, seems to handle active glasses)
+	fpp_3d_auto_detect_3d
+	fpp_3d_get_2d_to_3d_depth
+	fpp_3d_get_3d_aspect_mode
+	fpp_3d_get_3d_lr_switch
+	fpp_3d_get_3d_to_2d_mode
+	fpp_3d_get_current_3d_mode
+	fpp_3d_init
+	fpp_3d_set_2d_to_3d_depth
+	fpp_3d_set_3d_aspect_mode
+	fpp_3d_set_3d_lr_switch
+	fpp_3d_set_3d_mode
+	fpp_3d_set_3d_to_2d_mode
+
+# HDMI-ARC settings (audio return for external amps)
+	fpp_arc_setting
+
+# Analog TV input
+	fpp_atv_process_signal_formatchange
+	fpp_atv_process_signal_locked
+	fpp_atv_process_signal_unlock
+
+# Audio (obvious...)
+	fpp_audio_amp_set_sence_mode
+	fpp_audio_avout_mute
+	fpp_audio_bluetooth_mute
+	fpp_audio_get_digital_info
+	fpp_audio_get_ktv_audio_volume
+	fpp_audio_headphone_mute
+	fpp_audio_headphone_set_balance
+	fpp_audio_headphone_set_bass
+	fpp_audio_headphone_set_equalizer
+	fpp_audio_headphone_set_treble
+	fpp_audio_headphone_set_volume
+	fpp_audio_init
+	fpp_audio_lineout_mute
+	fpp_audio_set_AD_volume
+	fpp_audio_set_audio_boostCutParams
+	fpp_audio_set_audio_CompMode
+	fpp_audio_set_avout_volume
+	fpp_audio_set_bluetooth_volume
+	fpp_audio_set_delay
+	fpp_audio_set_dolby_sence_mode
+	fpp_audio_set_dolby_sence_mode_graphic_EQ
+	fpp_audio_set_dolby_sence_mode_personal
+	fpp_audio_set_ktv_audio_volume
+	fpp_audio_set_lineout_volume
+	fpp_audio_set_main_volume
+	fpp_audio_set_output_channel_type
+	fpp_audio_set_SPDIF_delay
+	fpp_audio_set_SPDIF_scms
+	fpp_audio_set_SPDIF_type
+	fpp_audio_set_stereo
+	fpp_audio_SPDIF_mute
+	fpp_audio_speaker_enable_avl
+	fpp_audio_speaker_mute
+	fpp_audio_speaker_set_balance
+	fpp_audio_speaker_set_bass
+	fpp_audio_speaker_set_equalizer
+	fpp_audio_speaker_set_treble
+	fpp_audio_speaker_set_volume
+	fpp_capture_audio_mute # capture = mic
+    fpp_get_audio_mts_mode
+    fpp_set_audio_mts_mode
+
+# Board (init "ic" (which one?), the SoC, and manage the RTC clock)
+	fpp_board_get_soft_svn_info
+	fpp_board_ic_init
+	fpp_board_rtc_get_clk
+	fpp_board_rtc_init
+	fpp_board_rtc_set_clk
+	fpp_board_soc_init
+
+# HDMI-CEC (remote control via HDMI)
+	fpp_cec_clear_buffer
+	fpp_cec_config_wake_up
+	fpp_cec_get_msg_count
+	fpp_cec_get_rx_data
+	fpp_cec_init_chip
+	fpp_cec_set_arc_atmos_status
+	fpp_cec_set_arc_type
+	fpp_cec_setting
+	fpp_cec_tx_msg
+
+# Channel (TV channels i guess)
+	fpp_channel_check_sync_status
+	fpp_channel_get_aft_status
+	fpp_channel_get_analog_min_step
+	fpp_channel_init
+	fpp_channel_set_If
+	fpp_channel_start_audio_auto_detection
+	fpp_channel_stop_audio_auto_detection
+	fpp_channel_tune_analog
+	fpp_channel_tune_start
+
+# Common Interface cards (for payTV or whatever)
+	fpp_ci_dm_close_session
+	fpp_ci_dm_erase_certificate
+	fpp_ci_dm_get_auth_context
+	fpp_ci_dm_get_credential_data
+	fpp_ci_dm_get_credential_length
+	fpp_ci_dm_init
+	fpp_ci_dm_open_session
+	fpp_ci_dm_set_auth_context_active
+	fpp_ci_dm_store_auth_context
+	fpp_ci_dm_update_certificate
+
+# Component (YPbPr signals) video input
+	fpp_component_process_signal_formatchange
+	fpp_component_process_signal_locked
+	fpp_component_process_signal_unlock
+
+# Composite video input
+	fpp_cvbs_process_signal_formatchange
+	fpp_cvbs_process_signal_locked
+	f#pp_cvbs_process_signal_unlock
+
+# Demod (digital tv apparently)
+# Maybe the layer on top of atv and dtv?
+	fpp_demod_get_current_delivery
+	fpp_demod_get_dvbt2_plp_list
+	fpp_demod_get_lock_status
+	fpp_demod_get_signal_quality
+	fpp_demod_get_signal_strength
+	fpp_demod_init
+	fpp_demod_register_callback
+	fpp_demod_send_blind_scan_command
+	fpp_demod_send_diseqc_command
+	fpp_demod_set_0_12v_switch
+	fpp_demod_set_22k_switch
+	fpp_demod_set_active
+	fpp_demod_set_antenna_power
+	fpp_demod_set_lnb_type
+	fpp_demod_set_tone_burst
+	fpp_demod_start_connect
+	fpp_demod_stop_connect
+
+# Descrambler (for pay DVB-T channels i guess)
+	fpp_desc_close_descrambler
+	fpp_desc_get_capability
+	fpp_desc_init
+	fpp_desc_open_descrambler
+	fpp_desc_set_descrambler_key
+	fpp_desc_set_descrambler_pid
+	fpp_desc_set_descrambler_type
+	fpp_desc_terminate
+
+# "Driver", probably to init the DRV_* functions
+# Needed at the start of everything...
+	fpp_driver_init
+
+# Digital TV input
+	fpp_dtv_av_pause
+	fpp_dtv_av_play
+	fpp_dtv_av_resume
+	fpp_dtv_av_stop
+	fpp_dtv_get_audio_status
+	fpp_dtv_get_video_status
+	fpp_dtv_is_av_sync
+	fpp_dtv_play_init
+	fpp_dtv_process_signal_formatchange
+	fpp_dtv_process_signal_locked
+	fpp_dtv_process_signal_unlock
+	fpp_dtv_video_set_freeze
+
+# "Expands", no idea
+# Doesn't seems tu be used at all
+# Apparently, it sets some video options
+# and can also record the microphone
+	fpp_expands
+
+# "Factory"
+# Seems to handle various parts
+# Such as the watchdog
+# The other parts seems here only for debug
+	fpp_factory_close_mode_uart
+	fpp_factory_get_ic_version
+	fpp_factory_ic_dump
+	fpp_factory_ic_write
+	fpp_factory_open_mode_uart
+	fpp_factory_read_mode_uart
+	fpp_factory_set_adc_gain_offset
+	fpp_factory_set_auto_adc
+	fpp_factory_set_ssc
+	fpp_factory_set_white_balance
+	fpp_factory_uart_operate
+	fpp_factory_watch_dog_operate
+	fpp_factory_write_mode_uart
+
+# GPIO
+	fpp_gpio_configure
+	fpp_gpio_get
+	fpp_gpio_init
+	fpp_gpio_set
+
+# Graphics (seems to be the OSD)
+	fpp_graphics_mute
+
+# HDMI input
+	fpp_hdmi_process_signal_formatchange
+	fpp_hdmi_process_signal_locked
+	fpp_hdmi_process_signal_unlock
+
+# I2C
+	fpp_iic_init
+	fpp_iic_read
+	fpp_iic_write
+
+# LineIn (input selection)
+	fpp_linein_close_atv
+	fpp_linein_close_component
+	fpp_linein_close_cvbs
+	fpp_linein_close_dtv
+	fpp_linein_close_hdmi
+	fpp_linein_close_ktv
+	fpp_linein_close_pc
+	fpp_linein_close_scart
+	fpp_linein_close_storage
+	fpp_linein_open_atv
+	fpp_linein_open_component
+	fpp_linein_open_cvbs
+	fpp_linein_open_dtv
+	fpp_linein_open_hdmi
+	fpp_linein_open_pc
+	fpp_linein_open_scart
+	fpp_linein_open_storage
+	fpp_linein_open_svideo
+	fpp_linein_src_insert_check
+
+# MCT -> Miracast
+	fpp_mct_enter
+	fpp_mct_exit
+	fpp_mct_hdcp_deinit
+	fpp_mct_hdcp_init
+	fpp_mct_play
+	fpp_mct_push_data
+
+# MHL (the "mini hdmi for mobile devices")
+# Apparently these only manage the MHL specific parts
+# Such as the remote control
+	fpp_mhl_get_input_cable_status
+	fpp_mhl_get_input_signal_status
+	fpp_mhl_init_chip
+	fpp_mhl_set_cmd_to_device
+
+# MediaServer init (probably calls the mediaserver binary)
+	fpp_ms_init
+
+# NVRAM
+	fpp_nvram_init
+
+# Panel (used in fpi_power_set_backlight)
+	fpp_panel_power_on_off
+
+# Parser (for what?)
+# Apparently, it's used in EPG (electronic program guide)
+# Subtitles and Teletext, so it's probably a parser for vbi data
+	fpp_parser_add_request
+	fpp_parser_remove_request
+	fpp_parser_restart_request
+	fpp_parser_stc_get
+
+# PBI (?)
+# Caled in fpi_zoom_get_output_window_by_pbi
+# No idea what pbi means here...
+	fpp_pbi_get_window_by_aspec_ratio
+
+# PCMCIA (used for CI cards)
+	fpp_pcmcia_get_interrupt_mode
+	fpp_pcmcia_hardware_reset
+	fpp_pcmcia_init
+	fpp_pcmcia_is_card_insert
+	fpp_pcmcia_is_ready
+	fpp_pcmcia_power_off
+	fpp_pcmcia_power_on
+	fpp_pcmcia_read_attribute
+	fpp_pcmcia_read_data
+	fpp_pcmcia_read_io
+	fpp_pcmcia_set_bypass
+	fpp_pcmcia_statusreg_isr_install
+	fpp_pcmcia_write_attribute
+	fpp_pcmcia_write_data
+	fpp_pcmcia_write_io
+
+# PC (VGA) input
+	fpp_pc_process_signal_formatchange
+	fpp_pc_process_signal_locked
+	fpp_pc_process_signal_unlock
+
+# Power management
+	fpp_power_get_backlight
+	fpp_power_get_led_status
+	fpp_power_get_wakeup_source
+	fpp_power_off
+	fpp_power_set_ir_wakeup_method
+	fpp_power_set_keypad_wakeup_method
+	fpp_power_set_led_status
+
+# PVR (recording of tv shows)
+	fpp_pvr_audio_buffer_get_fullness
+	fpp_pvr_get_record_free_pids_filter_number
+	fpp_pvr_hd_encrypt_enable_disable
+	fpp_pvr_query_playback_motion_prop
+	fpp_pvr_record_start
+	fpp_pvr_record_stop
+	fpp_pvr_set_playback_motion
+	fpp_pvr_set_record_pids
+	fpp_pvr_tsi_change_buffer_fullness
+	fpp_pvr_tsi_get_buffer
+	fpp_pvr_tsi_get_buffer_fullness
+	fpp_pvr_tsi_init
+	fpp_pvr_tsi_reset_buffer_fullness
+	fpp_pvr_tsi_start_stop
+	fpp_pvr_tsi_term
+	fpp_pvr_vdec_is_step_disp_done
+	fpp_pvr_video_buffer_get_fullness
+
+# SCART (aka peritel) shitty input
+	fpp_scart_get_pin16_level
+	fpp_scart_get_pin8_level
+	fpp_scart_get_port_enable_status
+	fpp_scart_init
+	fpp_scart_in_set_video_type
+	fpp_scart_out_insert_ttx
+	fpp_scart_out_mute
+	fpp_scart_out_set_cgms_a_mode
+	fpp_scart_out_set_macrovision_mode
+	fpp_scart_out_set_pin8_level
+	fpp_scart_out_set_source
+	fpp_scart_out_set_wss
+
+# SEC (?)
+# Used in TDAL_SEC_GetUniqueID
+# Seems to be related to T-DIAL?
+# Seems to be a bool ...(char *pBuffer, int pSize)
+	fpp_sec_get_unique_id
+
+# Signal (generic for all inputs)
+	fpp_signal_get_color_space
+	fpp_signal_get_color_system
+	fpp_signal_get_disp_framerate
+	fpp_signal_get_format
+	fpp_signal_get_frequncy
+	fpp_signal_get_hdmi_provider_type
+	fpp_signal_get_info
+	fpp_signal_get_lock_state
+	fpp_signal_get_sound_system
+	fpp_signal_get_video_size
+	fpp_signal_get_wss
+	fpp_signal_is_dvi
+	fpp_signal_is_interlaced
+	fpp_signal_monitor_afd_change
+	fpp_signal_monitor_exinit
+	fpp_signal_monitor_formatchange
+	fpp_signal_monitor_init
+	fpp_signal_monitor_lock
+	fpp_signal_monitor_scart_change
+	fpp_signal_monitor_src_insert
+	fpp_signal_monitor_unlock
+	fpp_signal_monitor_wss_change
+	fpp_signal_set_color_system
+	fpp_signal_set_hdmi_provider_type
+	fpp_signal_set_sound_system
+
+# S-Video input
+	fpp_svideo_process_signal_formatchange
+	fpp_svideo_process_signal_locked
+	fpp_svideo_process_signal_unlock
+
+# System
+	fpp_system_debug_key_set
+	fpp_system_enter_4k2k_mode
+	fpp_system_exit_4k2k_mode
+	fpp_system_fpp_debug_switch
+	fpp_system_get_average_luma
+	fpp_system_get_luma_level_distribution
+	fpp_system_get_panel_resolution
+	fpp_system_get_pixel_info
+	fpp_system_get_pq_demo_mode
+	fpp_system_is_4k2k_mode
+	fpp_system_monitor_bluetooth
+	fpp_system_panel_get_param_bool
+	fpp_system_panel_set_bit_mode
+	fpp_system_panel_set_osd_mirror
+	fpp_system_panel_set_param_bool
+	fpp_system_panel_set_polarity
+	fpp_system_panel_set_swap_port
+	fpp_system_panel_set_ti_mode
+	fpp_system_panel_set_video_mirror
+	fpp_system_pwm_set
+	fpp_system_set_bluetooth_enable
+	fpp_system_set_config_path_and_name
+	fpp_system_set_gpu_ddr_ratio
+	fpp_system_set_panel_file_name
+	fpp_system_set_pq_demo_mode
+	fpp_system_set_pq_dir_path
+	fpp_system_usb_format
+	fpp_system_usb_get_formatting_progress
+
+# Time
+	fpp_timer_power_on_time
+
+# Trustzone (for HDCP/Netflix)
+	fpp_trustzone_read_manufss
+	fpp_trustzone_verify_manufss
+	fpp_trustzone_write_manufss
+
+# Teletext
+	fpp_vbi_ttx_init
+	fpp_vbi_ttx_register_callback
+	fpp_vbi_ttx_start_capture
+	fpp_vbi_ttx_stop_capture
+
+# Video (general)
+	fpp_video_enable_dynamic_contrast
+	fpp_video_enable_film_mode
+	fpp_video_freeze
+	fpp_video_get_black_field_status
+	fpp_video_init
+	fpp_video_mute
+	fpp_video_out_mute_output
+	fpp_video_set_background_light
+	fpp_video_set_black_stretch
+	fpp_video_set_brightness
+	fpp_video_set_color_param
+	fpp_video_set_contrast
+	fpp_video_set_filterwindow
+	fpp_video_set_flesh_tone
+	fpp_video_set_game_mode
+	fpp_video_set_gamma
+	fpp_video_set_hue
+	fpp_video_set_mpeg_nr
+	fpp_video_set_mute_color
+	fpp_video_set_noise_reduction
+	fpp_video_set_pq_algorithm
+	fpp_video_set_saturation
+	fpp_video_set_sharpness
+	fpp_video_turn_on_backlight
+
+# Zoom (is it only for VGA?)
+# Apparently, not all functions are used
+	fpp_zoom_get_afd_info
+	fpp_zoom_get_vga_para
+	fpp_zoom_set_aspect_ratio
+	fpp_zoom_set_crop_window
+	fpp_zoom_set_display_window
+	#fpp_zoom_set_vga_clock
+	#fpp_zoom_set_vga_hpos
+	#fpp_zoom_set_vga_phase
+	#fpp_zoom_set_vga_vpos
+	fpp_zoom_vga_autoadjust

@@ -1,0 +1,6 @@
+cmd :iic
+ct test .... chip id = 0
+ct test .... u32_length = 1
+ct test .... u32_sub_addr = 0
+ct test .... pdata = 0
+
