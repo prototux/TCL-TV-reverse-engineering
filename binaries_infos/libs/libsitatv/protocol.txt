@@ -1,0 +1,17 @@
+The protocol seems to be just the struct in README.md send directly to sitatvservice, but there's a more detailed description of it:
+
+32 bits: client_id
+32 bits: entry_id
+32 bits: data_lenght
+32_bits: request_result
+8 bits: extended_parameters
+40960 bits max: parameters
+
+* The client_id seems to be almost always 0, and in some cases 1
+* The entry_id is one of the enum in the other txt
+* The data_lenght is equal to the lenght of data in parameters
+* The request_result is always equal to zero
+* The extended parameters is 1 if parameters overflows
+* The parameters depend of the entry_id
+
+For example, for poweroff: 0x00000000000001c500000001000000000000
