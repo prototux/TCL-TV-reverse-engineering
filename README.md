@@ -1,6 +1,6 @@
 # TCL-TV-RE
 
-Reverse engineering of a TCL TV firmware (NB: i'm reorganizing this repo, if some files seems missing, they'll be back soon!)
+Reverse engineering of a TCL TV firmware
 
 ## Context
 I bought a TCL U55S6908 to use as a monitor for my steambox/htpc, and wanted to add it to my home automation system, so i can start it and set some settings over the network.
