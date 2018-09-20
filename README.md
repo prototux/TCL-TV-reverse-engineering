@@ -2,10 +2,12 @@
 
 Reverse engineering of a TCL TV firmware
 
+# NOTE: This is only the documentation repository, for the current re-implementation project, see [https://github.com/prototux/FvgnTvService](https://github.com/prototux/FvgnTvService)
+
 ## Context
 I bought a TCL U55S6908 to use as a monitor for my steambox/htpc, and wanted to add it to my home automation system, so i can start it and set some settings over the network.
 
-If this TV supports UPNP remote control, the bootloader (uboot with secos) doesn't support WakeOnLan, also, the remote control is pretty basic, only repeating the remote control. i wanted something better.
+If this TV supports UPNP remote control, the bootloader (uboot with secos) doesn't support WakeOnLan, also, the UPNP remote control is pretty basic, only doing the same as the IR remote control. i wanted something better.
 
 Also, the "Smart TV 2" system is slow and useless, if i can get rid of it, that would be a nice thing, i don't need a minesweeper game on my TV.
 
@@ -68,7 +70,7 @@ The 3D seems to be done with a small additional board (USB bluetooth maybe?). ap
 ### Security and exploitation
 The security is probably not very high on this TV, at minimum, you can plug a device that uses the console port and reboot the TV to gain remote root access to the device. As sitatvservice have plenty of debug features, and that it listen on the network for some things, i would guess that they may be a way to run remote commands as root from a brand new TV using these features. I may dig into this to make an installer for my binary and dropbear.
 
-For the "can the CIA do weeping angel on my TV" question, the answer is definitively yes, there's the same "fake off" possibilities (that i actually use in my replacement of sitatvservice). but there's no camera and it doesn't seems to have any microphone.
+For the "can the CIA do weeping angel on my TV" question, the answer is definitively yes, there's the same "fake off" possibilities (that i actually use in my replacement of sitatvservice). but there's no camera and it doesn't seems to have any microphone (at least on the S69 series).
 
 Basically, i wouldn't call this TV "secure" if you're using the OperaTV browser (quite old) or didn't replaced the sitatvservice binary that listen to the network (and possibly other binaries as well) with a custom binary. and this TV is defintiively not secure against physical tampering given the console port is accessible even without opening the TV.
 
