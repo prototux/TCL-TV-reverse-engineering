@@ -2,7 +2,7 @@
 
 Reverse engineering of a TCL TV firmware
 
-# NOTE: This is only the documentation repository, for the current re-implementation project, see [https://github.com/prototux/FvgnTvService](https://github.com/prototux/FvgnTvService)
+## NOTE: This is only the documentation repository, for the current re-implementation project, see [https://github.com/prototux/FvgnTvService](https://github.com/prototux/FvgnTvService)
 
 ## TV models this applies to
 
@@ -22,7 +22,7 @@ The TV is using a Novatek SoC (the NT72668) along with 512MB of RAM and 4GB of e
 
 The TV and satellite receivers seems to be self-contained module, and pretty much everything else seems to be handled directly by the SoC (novatek makes DTV SoC, so it's not far fetched to assume that the NT72668 contains a scaler and other TV/LCD related features). I didn't went too far on the TV side, i just desoldered the modules.
 
-TCL also makes very similar TVs with the same SoC and more RAM (2GB instead of 512M) and with AndroidTV or RokuTV. i guess the hardware is pretty similar otherwise.
+TCL also makes very similar TVs with the same SoC and more RAM (2GB instead of 512M) and with AndroidTV or RokuTV. i guess the hardware is the same otherwise.
 
 ## Booting process
 On the PCB, there's an obvious UART port near the HDMI interface: (from the left) GND, RX, TX, VCC (didn't measured VCC, didn't needed it). They're using TTL levels, so any UART-to-USB interface will do. the port is configured with 115200 8n1. (the same port seems to be available in the USB2 port, that also contains USB3 additional pads, the port is also marked as being USB2/Console)
@@ -40,9 +40,9 @@ From there, the /etc/rc.local load the partitions and do some basic init. The /e
 The run.sh file prepare the environement for the sitatvservice, it also loads some mali/directfb related modules. it runs the tvRcConfig, sitatvservice, event_manager, mediaserver and ipepg_server.
 
 ## General organisation
-The main binary here is sitatvservice, that manages basically everything. the other binaries are mostly sidekicks.
+The main binary here is sitatvservice, that manages basically everything. the other binaries are mostly sidekicks (that manages electronic program guide, IR events, UPNP/DIAL, and the like).
 
-The main interface is web-based, running on webkit (that renders using directfb, and is connected to sitatvservice using an library). OperaTV is also used, but only when it "starts the smart tv" (all the "smart tv apps" are running on opera, with the exception of netflix, and starting the smart tv menu actually starts OperaTV). there's also an HBBTV-Browser, that is called when you press the "red key" for interactive TV.
+The main interface is web-based, running on webkit (that renders using directfb, and is connected to sitatvservice using an library that use a custom protocol over a network, unfortunately binded to localhost only). OperaTV is also used, but only when it "starts the smart tv" (all the "smart tv apps" are running on opera, with the exception of netflix, and starting the smart tv menu actually starts OperaTV). there's also an HBBTV-Browser, that is called when you press the "red key" for interactive TV.
 
 The TV seems very netflix-compliant, as many thing are setup only to plase the netflix binary, from the custom bootloader to specific hacks in the rc.local. that binary seems otherwise a pretty standard netflix binary (called "gibbon" at netflix). my guess is that the TV is mostly a netflix and generic TV, OperaTV is here to add some side features (and youtube), but their "high end" is actually their AndroidTV models, that also seems to use the sitatvservice binary at it's core.
 
@@ -54,6 +54,8 @@ Libfpp.so have several "namespaces", groups of functions that starts with the sa
 * fpp is the "apparent" layer, that's the one used by sitatvservice, it provide functions to handle things more easily. they call the DEV and PLAT functions.
 
 Sitatvservice also have this sandwich of abstraction layers organization, with fpi functions being the ones that talk to the fpp functions, and some services running on top of these.
+
+Given that sitatvservice seems to be designed to run across multiple series and models, it's a kinda complicated piece of software, using it's own internal event bus, it seems that roughly half the binary is dedicated to TV features (that includes the TV, analog and digital, recording features, subtitles, teletext, some interactive tv protocols...). intestingly enough, i didn't found any tracking nor advertising features (that doesn't mean they don't exist, i didn't looked a lot into this).
 
 ## Possibilities
 
